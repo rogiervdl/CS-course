@@ -1,0 +1,59 @@
+pre {
+   border: 1px solid #cccccc;
+   border-radius: 3px;
+   white-space: pre-wrap;
+   overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+   padding: 23px;
+   line-height: 19px;
+}
+
+:not(pre):not(.hljs)>code {
+   color: #C9AE75;
+   font-size: inherit;
+}
+
+figure {
+   line-height: 1.2;
+   margin-left: 0;
+}
+
+figcaption {
+   font-size: smaller;
+   font-style: italic;
+}
+
+pre {
+   padding: 0 !important;
+}
+
+code.hljs {
+   padding: 1em;
+}
+
+#toc ul {
+   list-style: none;
+   padding-left: 0;
+}
+
+#toc ul ul {
+   padding-left: 25px;
+}
+
+.bordered {
+   border: 1px solid #ccc;
+}
+
+h2 {
+   margin-top: 2em;
+}
+
+body {
+   max-width: 1200px;
+}
+
+table>tbody>tr+tr>td {
+   border-top-color: #ccc;
+}
