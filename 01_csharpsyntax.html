@@ -5,12 +5,11 @@
 <head>
    <title>Cheat Sheet C#.md</title>
    <meta charset="UTF-8">
-   <link rel="stylesheet" href="css/vscode.css">
-   <link rel="stylesheet" href="css/hljs.css">
+   <link rel="stylesheet" href="vendor/prism-vs-light.css">
    <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body class="language-cs">
    <h1>Cheat Sheet C# (Introductie in programmeren)</h1>
    <div id="toc"></div>
 
@@ -20,32 +19,32 @@
    <p>Met commentaar voeg je extra informatie toe aan je code. Commentaar is vrije tekst die niet uitgevoerd wordt.</p>
 
    <h3>Commentaar op één regel</h3>
-   <pre><code class="language-cs">// Eerste regel
+   <pre><code>// Eerste regel
 // Tweede regel
 </code></pre>
    <h3>Commentaar over meerdere regels</h3>
-   <pre><code class="language-cs">/* Eerste regel
+   <pre><code>/* Eerste regel
    Tweede regel */
 </code></pre>
 
    <h2>Variabelen</h2>
-   <p>Een variabele is een <strong>naam</strong> die een <strong>waarde</strong> van een bepaald <strong>type</strong> kan bevatten.</p>
+   <p>Een variabele is een <strong>naam</strong> die een <strong>waarde</strong> van een bepaald <strong>type</strong> kan bevatten. Het vermelden van het bestaan van een variabele met type en naam noemt men <em>declaratie</em>, het geven van een eerste waarde <em>initialisatie</em>.</p>
    <h3>Declaratie</h3>
-   <p><strong>Algemene syntax:</strong> <code class="language-cs">type naam;</code></p>
-   <pre><code class="language-cs">string halloTekst; // tekst
+   <pre><code>string halloTekst; // tekst
 int leeftijd; // geheel getal
 float leeftijd; // kommagetal
 char teken; // karakter
 bool isCorrectAntwoord; // ja of nee
 </code></pre>
    <h3>Initialisatie</h3>
-   <pre><code class="language-cs">string halloTekst;
+   <pre><code>string halloTekst;
 halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
 </code></pre>
-   <p>Of in één keer:</p>
-   <pre><code class="language-cs">string halloTekst = "Hallo Wereld!"; // variabele meteen geïnitialiseerd
+   <p>Of declaratie en initialisatie in één keer:</p>
+   <pre><code>string halloTekst = "Hallo Wereld!"; // variabele meteen geïnitialiseerd
 </code></pre>
    <h3>Overzicht datatypes</h3>
+   <p>Het <em>datatype</em> beperkt welke waarden de variabele kan bevatten. Types gebruikt in deze cursus:</p>
    <table>
       <thead>
          <tr>
@@ -58,41 +57,41 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
          <tr>
             <td><code>int</code></td>
             <td>gehele getallen (pos/neg)</td>
-            <td><code class="language-cs">int age = 25;</code></td>
+            <td><code>int age = 25;</code></td>
          </tr>
          <tr>
             <td><code>long</code></td>
             <td>gehele getallen (pos/neg)</td>
-            <td><code class="language-cs">long wait = 42L;</code></td>
+            <td><code>long wait = 42L;</code></td>
          </tr>
          <tr>
             <td><code>float</code></td>
             <td>kommagetallen (6-7 tekens) (pos/neg)</td>
-            <td><code class="language-cs">float price = 2.95F;</code></td>
+            <td><code>float price = 2.95F;</code></td>
          </tr>
          <tr>
             <td><code>double</code></td>
             <td>kommagetallen (15-16 tekens) (pos/neg)</td>
-            <td><code class="language-cs">double area = 12.3;</code></td>
+            <td><code>double area = 12.3;</code></td>
          </tr>
          <tr>
             <td><code>string</code></td>
             <td>tekenreeks (tekst)</td>
-            <td><code class="language-cs">string auto = &quot;Honda&quot;;</code></td>
+            <td><code>string auto = &quot;Honda&quot;;</code></td>
          </tr>
          <tr>
             <td><code>char</code></td>
             <td>één teken (letter, cijfer, leesteken, ...)</td>
-            <td><code class="language-cs">char geslacht = 'V';</code></td>
+            <td><code>char geslacht = 'V';</code></td>
          </tr>
          <tr>
             <td><code>bool</code></td>
             <td>booleaanse waarde: waar/onwaar (true/false)</td>
-            <td><code class="language-cs">bool gevonden = false;</code></td>
+            <td><code>bool gevonden = false;</code></td>
          </tr>
       </tbody>
    </table>
-   <h3>Stijlregels</h3>
+   <h3>Naamgeving</h3>
    <p>De naam van een variabele <strong>moet</strong> aan de volgende vereisten voldoen:</p>
    <ul>
       <li>bevat enkel letters, cijfers en underscore</li>
@@ -102,45 +101,48 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
    </ul>
    <p>Bijkomende stijlregels:</p>
    <ul>
-      <li>camelCase-notatie (<code class="language-cs">mijnVariabele</code>, <strong>niet</strong> <code class="language-cs">mijn_variabele</code>)</li>
+      <li>camelCase-notatie (<code>mijnVariabele</code>, <strong>niet</strong> <code>mijn_variabele</code>)</li>
       <li>betekenisvolle namen</li>
       <li>één taal (Engels/Nederlands), wees consistent!</li>
    </ul>
    <h2>Rekenkundige Operatoren</h2>
+   <p>
+      Dit zijn de klassieke bewerkingen die je uit de wiskunde kent: optellen, aftrekken...
+   </p>
    <h3>Overzicht</h3>
    <table>
       <thead>
          <tr>
-            <th scope="col" class="center">Operator</th>
+            <th scope="col" class="centered">Operator</th>
             <th scope="col">Beschrijving</th>
             <th scope="col">Voorbeeld</th>
          </tr>
       </thead>
       <tbody>
          <tr>
-            <td class="center">+</td>
+            <td class="centered"><code>+</code></td>
             <td>optellen</td>
-            <td><code class="language-cs">int som = 5 + 3;</code></td>
+            <td><code>int som = 5 + 3;</code></td>
          </tr>
          <tr>
-            <td class="center">&minus;</td>
+            <td class="centered"><code>&minus;</code></td>
             <td>aftrekken</td>
-            <td><code class="language-cs">int verschil = 5 &minus; 3;</code></td>
+            <td><code>int verschil = 5 &minus; 3;</code></td>
          </tr>
          <tr>
-            <td class="center">*</td>
+            <td class="centered"><code>*</code></td>
             <td>vermenigvuldigen</td>
-            <td><code class="language-cs">int product = 5 * 3;</code></td>
+            <td><code>int product = 5 * 3;</code></td>
          </tr>
          <tr>
-            <td class="center">/</td>
+            <td class="centered"><code>/</code></td>
             <td>delen</td>
-            <td><code class="language-cs">int quotient = 5 / 3;</code></td>
+            <td><code>int quotient = 5 / 3;</code></td>
          </tr>
          <tr>
-            <td class="center">%</td>
+            <td class="centered"><code>%</code></td>
             <td>modulo (rest na deling)</td>
-            <td><code class="language-cs">int rest = 5 % 3;</code></td>
+            <td><code>int rest = 5 % 3;</code></td>
          </tr>
       </tbody>
    </table>
@@ -155,107 +157,68 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
       </thead>
       <tbody>
          <tr>
-            <td>++</td>
+            <td><code>++</code></td>
             <td>increment</td>
-            <td><code class="language-cs">int getal = 3;</code><br><code class="language-cs">getal++; // getal: 4</code></td>
+            <td><code>int getal = 3;</code><br><code>getal++; // getal: 4</code></td>
          </tr>
          <tr>
-            <td>&minus;&minus;</td>
+            <td><code>&minus;&minus;</code></td>
             <td>decrement</td>
-            <td><code class="language-cs">int getal = 3;</code><br><code class="language-cs">getal&minus;&minus;; // getal: 2</code></td>
+            <td><code>int getal = 3;</code><br><code>getal&minus;&minus;; // getal: 2</code></td>
          </tr>
          <tr>
-            <td>+= n</td>
+            <td><code>+= n</code></td>
             <td>n bijtellen</td>
-            <td><code class="language-cs">int getal = 6;</code><br><code class="language-cs">getal += 3; // getal: 9</code></td>
+            <td><code>int getal = 6;</code><br><code>getal += 3; // getal: 9</code></td>
          </tr>
          <tr>
-            <td>&minus;= n</td>
+            <td><code>&minus;= n</code></td>
             <td>n aftrekken</td>
-            <td><code class="language-cs">int getal = 3;</code><br><code class="language-cs">getal &minus;= 10; // getal: &minus;7</code></td>
+            <td><code>int getal = 3;</code><br><code>getal &minus;= 10; // getal: &minus;7</code></td>
          </tr>
          <tr>
-            <td>*= n</td>
+            <td><code>*= n</code></td>
             <td>vermenigvuldigen met n</td>
-            <td><code class="language-cs">int getal = 3;</code><br><code class="language-cs">getal *= 5; // getal: 15</code></td>
+            <td><code>int getal = 3;</code><br><code>getal *= 5; // getal: 15</code></td>
          </tr>
          <tr>
-            <td>/= n</td>
+            <td><code>/= n</code></td>
             <td>delen door n</td>
-            <td><code class="language-cs">double getal = 3;</code><br><code class="language-cs">getal /= 2; // getal: 1.5</code></td>
+            <td><code>double getal = 3;</code><br><code>getal /= 2; // getal: 1.5</code></td>
          </tr>
       </tbody>
    </table>
    <h3>Math-klasse</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Methode</th>
-            <th scope="col">Beschrijving</th>
-            <th scope="col">Voorbeeld</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Ceiling()</code></td>
-            <td>getal naar boven afronden</td>
-            <td><code class="language-cs">Math.Ceiling(3.14); // resultaat: 4.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Floor()</code></td>
-            <td>getal naar beneden afronden</td>
-            <td><code class="language-cs">Math.Floor(3.14); // resultaat: 3.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Round()</code></td>
-            <td>getal afronden tot aantal decimalen</td>
-            <td><code class="language-cs">Math.Round(3.1415, 2); // resultaat: 3.14</code></td>
-         </tr>
-         <tr>
-            <td><code>Sqrt()</code></td>
-            <td>vierkantswortel (square root)</td>
-            <td><code class="language-cs">Math.Sqrt(25); // resultaat: 5.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Max()</code></td>
-            <td>grootste van twee getallen</td>
-            <td><code class="language-cs">Math.Max(10, 20); // resultaat: 20.0</code></td>
-         </tr>
-         <tr>
-            <td><code>PI</code><sup>*</sup></td>
-            <td>benadering van getal <em>pi</em></td>
-            <td><code class="language-cs">double getal = Math.PI; // 3.1415926535897931</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <p><em><sup>(*)</sup>Dit is geen methode maar een <strong>constante</strong>.</em></p>
+   <p>
+      Voor bewerkingen als <em>Round()</em>, <em>Max()</em> enz... en constanten als <em>PI</em> zie <a href="02_dotnetclasses.html#math">deze pagina</a>
+   </p>
 
    <h2>Logische Operatoren</h2>
-   <p>Overzicht:</p>
+   <p>Dit zijn operatoren op booleans (waar/niet waar), en hebben zelf ook weer een boolean als resultaat (waar/niet waar). Overzicht:</p>
    <table>
       <thead>
          <tr>
-            <th scope="col" class="center">Operator</th>
+            <th scope="col" class="centered">Operator</th>
             <th scope="col">Beschrijving</th>
          </tr>
       </thead>
       <tbody>
          <tr>
-            <td class="center">&amp;&amp;</td>
+            <td class="centered"><code>&amp;&amp;</code></td>
             <td>AND (logische EN)</td>
          </tr>
          <tr>
-            <td class="center">||</td>
+            <td class="centered"><code>||</code></td>
             <td>OR (logische OF)</td>
          </tr>
          <tr>
-            <td class="center">!</td>
+            <td class="centered"><code>!</code></td>
             <td>NOT (logische NIET)</td>
          </tr>
       </tbody>
    </table>
    <p>Voorbeelden:</p>
-   <pre><code class="language-cs">bool heeftGelogen = false;
+   <pre><code>bool heeftGelogen = false;
 bool heeftGestolen = true;
 
 bool heeftIetsMispeuterd = heeftGelogen || heeftGestolen; // "OF"; true
@@ -263,46 +226,51 @@ bool krijgtHuisarrest = heeftGelogen &amp;&amp; heeftGestolen; // "EN"; false
 bool sprakWaarheid = !heeftGelogen; // "NIET"; true
 bool isBraaf = !heeftGelogen &amp;&amp; !heeftGestolen; // false
 
-Console.WriteLine("Heeft iets mispeuterd: " + heeftIetsMispeuterd);
-Console.WriteLine("Krijgt huisarrest: " + krijgtHuisarrest);
-Console.WriteLine("Sprak waarheid: " + sprakWaarheid);
-Console.WriteLine("Is Braaf: " + isBraaf);
+Console.WriteLine($"Heeft iets mispeuterd: {heeftIetsMispeuterd}");
+Console.WriteLine($"Krijgt huisarrest: {krijgtHuisarrest}");
+Console.WriteLine($"Sprak waarheid: {sprakWaarheid}");
+Console.WriteLine($"Is Braaf: {isBraaf}");
 </code></pre>
-   <pre><code class="language-cs">Heeft iets mispeuterd: True
+   <figure class="console">
+      <pre>
+Heeft iets mispeuterd: True
 Krijgt huisarrest: False
 Sprak waarheid: True
-Is Braaf: False
-</code></pre>
+Is Braaf: False</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h2>Strings</h2>
-   <p>Een string is een <strong>datatype</strong> dat een reeks van karakters (letters, cijfers, ...) kan bevatten.
-      String's worden altijd tussen <strong>dubbele quotes</strong> geplaatst.</p>
-   <pre><code class="language-cs">string boodschap = "Hello, World!";
-Console.WriteLine(boodschap);
-</code></pre>
-   <pre><code class="language-cs">Hello, World!
-</code></pre>
-   <p>De volgende karakters moeten ge-escaped worden d.m.v. een backslash (<code class="language-cs">\</code>):</p>
+   <p>Een string is een <strong>datatype</strong> dat een reeks van karakters (letters, cijfers, ...) kan bevatten. String's worden altijd tussen <strong>dubbele quotes</strong> geplaatst.</p>
+   <pre><code>string boodschap = "Hello, World!";
+Console.WriteLine(boodschap);</code></pre>
+   <figure class="console">
+      <pre>Hello, World!</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <p>De volgende karakters moeten ge-escaped worden d.m.v. een backslash (<code>\</code>):</p>
    <ul>
-      <li>dubbele quote (<code class="language-cs">&quot;</code>)</li>
-      <li>backslash (<code class="language-cs">\</code>)</li>
+      <li>dubbele quote (<code>&quot;</code>)</li>
+      <li>backslash (<code>\</code>)</li>
    </ul>
-   <pre><code class="language-cs">Console.WriteLine("Simon says: \"jump\"");
-Console.WriteLine("C:\\users\\john.doe\\documents");
-</code></pre>
-   <pre><code class="language-cs">Simon says: &quot;jump&quot;
-C:\users\john.doe\documents
-</code></pre>
+   <pre><code>Console.WriteLine("Simon says: \"jump\"");
+Console.WriteLine("C:\\users\\john.doe\\documents");</code></pre>
+   <figure class="console">
+      <pre>Simon says: &quot;jump&quot;
+C:\users\john.doe\documents</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Lengte van een string</h3>
    <p>Met de lengte van de string, wordt het aantal karakters in de string bedoeld.
-      Je kunt het aantal karakters binnen een string opvragen met behulp van de <code class="language-cs">Length</code>-property:</p>
-   <pre><code class="language-cs">string str = "Hallo!"; // 5 letters + 1 leesteken = 6
-Console.WriteLine(str.Length);
-</code></pre>
-   <pre><code class="language-cs">6
-</code></pre>
+      Je kunt het aantal karakters binnen een string opvragen met behulp van de <code>Length</code>-property:</p>
+   <pre><code>string str = "Hallo!"; // 5 letters + 1 leesteken = 6
+Console.WriteLine(str.Length);</code></pre>
+   <figure class="console">
+      <pre>6</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Concatenatie</h3>
-   <p>Om meerdere strings samen te voegen tot één string (_= concatenatie), maak je gebruik van de <code class="language-cs">+</code>-operator:</p>
-   <pre><code class="language-cs">// voorbeeld 1
+   <p>Om meerdere strings samen te voegen tot één string (<em>concatenatie</em>), maak je gebruik van de <code>+</code>-operator:</p>
+   <pre><code>// voorbeeld 1
 string begroeting = "Hallo, ";
 string naam = "John";
 
@@ -310,57 +278,63 @@ string boodschap = begroeting + naam;
 Console.WriteLine(boodschap);
 
 // voorbeeld 2
-Console.WriteLine("Mijn naam is: " + naam);
-</code></pre>
-   <pre><code class="language-cs">Hallo, John
-Mijn naam is: John
-</code></pre>
+Console.WriteLine("Mijn naam is: " + naam);</code></pre>
+   <figure class="console">
+      <pre>Hallo, John
+Mijn naam is: John</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Newlines</h3>
    <p>Je kunt op twee manieren het begin van een nieuwe regel markeren:</p>
    <ol>
-      <li>met behulp van het <code class="language-cs">\n</code>-karakter</li>
-      <li>met de constante <code class="language-cs">Environment.NewLine</code></li>
+      <li>met behulp van het <code>\n</code>-karakter</li>
+      <li>met de constante <code>Environment.NewLine</code></li>
    </ol>
-   <pre><code class="language-cs">Console.WriteLine("Regel 1\nRegel 2"); // optie 1
-Console.WriteLine("Regel 1" + Environment.NewLine + "Regel 2"); // optie 2
-</code></pre>
-   <pre><code class="language-cs">Regel 1
+   <pre><code>Console.WriteLine("Regel 1\nRegel 2"); // optie 1
+Console.WriteLine("Regel 1" + Environment.NewLine + "Regel 2"); // optie 2</code></pre>
+   <figure class="console">
+      <pre>Regel 1
 Regel 2
 Regel 1
-Regel 2
-</code></pre>
+Regel 2</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>multiline strings</h3>
-   <p>Om een string over meerdere regels te spreiden, kan je gebruik maken van <em>multiline strings</em>. Om een multiline string te maken, zet je een <code class="language-cs">@</code>-karakter vóór de openings-quote:</p>
-   <pre><code class="language-cs">Console.WriteLine(@"Regel 1
+   <p>Om een string over meerdere regels te spreiden, kan je gebruik maken van <em>multiline strings</em>. Om een multiline string te maken, zet je een <code>@</code>-karakter vóór de openings-quote:</p>
+   <pre><code>Console.WriteLine(@"Regel 1
 Regel 2
 Regel 3");
 </code></pre>
-   <pre><code class="language-cs">Regel 1
+   <figure class="console">
+      <pre>Regel 1
 Regel 2
-Regel 3
-</code></pre>
-   <p><strong>Opgelet:</strong> bij multiline strings hoef je <code class="language-cs">\</code>-karakters <strong>niet</strong> te escapen! Een dubbele quote (<code class="language-cs">&quot;</code>) moet je wél escapen, door deze te verdubbelen!</p>
-   <pre><code class="language-cs">Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
-Console.WriteLine(@"Simon says: ""jump!"""); // quotes verdubbelen
-</code></pre>
-   <pre><code class="language-cs">C:\users\john.doe\documents
-Simon says: &quot;jump!&quot;
-</code></pre>
+Regel 3</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <p><strong>Opgelet:</strong> bij multiline strings hoef je <code>\</code>-karakters <strong>niet</strong> te escapen! Een dubbele quote (<code>&quot;</code>) moet je wél escapen, door deze te verdubbelen!</p>
+   <pre><code>Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
+Console.WriteLine(@"Simon says: ""jump!"""); // quotes verdubbelen</code></pre>
+   <figure class="console">
+      <pre>Simon says: &quot;jump&quot;
+C:\users\john.doe\documents</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>String interpolatie</h3>
-   <p>Via string-interpolatie kan je eenvoudig strings samenstellen.
-      Dit kan op twee verschillende manieren:</p>
-   <pre><code class="language-cs">string naam = "John";
+   <p>Via string-interpolatie kan je eenvoudig strings samenstellen. Dit kan op twee verschillende manieren:</p>
+   <pre><code>string naam = "John";
 int leeftijd = 35;
 
 Console.WriteLine("Mijn naam is {0}, ik ben {1} jaar oud.", naam, leeftijd); // interpolatie met {}
-Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud."); // interpolatie met $
-</code></pre>
-   <pre><code class="language-cs">Mijn naam is John, ik ben 35 jaar oud.
-Mijn naam is John, ik ben 35 jaar oud.
-</code></pre>
+Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud."); // interpolatie met $ &rarr; gebruik bij voorkeur deze notatie</code></pre>
+   <figure class="console">
+      <pre>Mijn naam is John, ik ben 35 jaar oud.
+Mijn naam is John, ik ben 35 jaar oud.</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+
    <h2>Selecties</h2>
    <h3>Relationele operatoren</h3>
-   <p>Relationele operatoren worden gebruikt om twee waarden met elkaar te vergelijken. Het resultaat van een vergelijking is altijd een <strong>boolean</strong> (<code class="language-cs">bool</code>).</p>
+   <p>Relationele operatoren worden gebruikt om twee waarden met elkaar te vergelijken. Het resultaat van een vergelijking is altijd een <strong>boolean</strong> (<code>bool</code>).</p>
    <table>
       <thead>
          <tr>
@@ -373,40 +347,40 @@ Mijn naam is John, ik ben 35 jaar oud.
          <tr>
             <td>==</td>
             <td>gelijk aan</td>
-            <td><code class="language-cs">x == 100</code></td>
+            <td><code>x == 100</code></td>
          </tr>
          <tr>
             <td>!=</td>
             <td>niet gelijk aan</td>
-            <td><code class="language-cs">x != 100</code></td>
+            <td><code>x != 100</code></td>
          </tr>
          <tr>
             <td>&lt;</td>
             <td>kleiner dan</td>
-            <td><code class="language-cs">x &lt; 100</code></td>
+            <td><code>x &lt; 100</code></td>
          </tr>
          <tr>
             <td>&gt;</td>
             <td>groter dan</td>
-            <td><code class="language-cs">x &gt; 100</code></td>
+            <td><code>x &gt; 100</code></td>
          </tr>
          <tr>
             <td>&lt;=</td>
             <td>kleiner dan of gelijk aan</td>
-            <td><code class="language-cs">x &lt;= 100</code></td>
+            <td><code>x &lt;= 100</code></td>
          </tr>
          <tr>
             <td>&gt;=</td>
             <td>groter dan of gelijk aan</td>
-            <td><code class="language-cs">x &gt;= 100</code></td>
+            <td><code>x &gt;= 100</code></td>
          </tr>
       </tbody>
    </table>
    <h3>String's vergelijken</h3>
    <p>Je kunt string's op twee verschillende maniere vergelijken:</p>
    <ul>
-      <li>met behulp van de <code class="language-cs">==</code>-operator (<code class="language-cs">true</code> indien beide string's dezelfde zijn, anders <code class="language-cs">false</code>)</li>
-      <li>met de methode <code class="language-cs">CompareTo</code>, return-waarden:
+      <li>met behulp van de <code>==</code>-operator (<code>true</code> indien beide string's dezelfde zijn, anders <code>false</code>)</li>
+      <li>met de methode <code>CompareTo</code>, return-waarden:
          <ul>
             <li>&minus;1 indien de string kleiner is dat de gegeven string</li>
             <li>0 indien beide string's gelijk zijn aan elkaar</li>
@@ -414,7 +388,7 @@ Mijn naam is John, ik ben 35 jaar oud.
          </ul>
       </li>
    </ul>
-   <pre><code class="language-cs">string str1 = "banaan";
+   <pre><code>string str1 = "banaan";
 string str2 = "banaan";
 string str3 = "citroen";
 string str4 = "appel";
@@ -431,45 +405,46 @@ Console.WriteLine(test3);  // &minus;1; "banaan" komt alfabetisch vóór "citroe
 int test4 = str1.CompareTo(str4);
 Console.WriteLine(test4); // 1; "banaan" komt alfabetisch ná "appel"
 </code></pre>
-   <pre><code class="language-cs">True
+   <figure class="console">
+      <pre>True
 0
 -1
-1
-</code></pre>
+1</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Selectie-structuren</h3>
    <p>Met behulp van selectie-structuren kan je bepalen welk(e) statement(s) moet(en) uitgevoerd worden op basis van een voorwaarde (<em>= conditie</em>).</p>
    <h4>IF-selectie</h4>
-   <p>Indien de voorwaarde <code class="language-cs">true</code> oplevert, worden de statements binnen de accolades uitgevoerd.</p>
+   <p>Indien de voorwaarde <code>true</code> oplevert, worden de statements binnen de accolades uitgevoerd.</p>
    <p><img src="img/01_csharpsyntax/if_flowchart.png" alt="if-flowchart"></p>
-   <pre><code class="language-cs">if (voorwaarde) 
+   <pre><code>if (voorwaarde) 
 {
     // statements indien waar
-}
-</code></pre>
+}</code></pre>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">int getal = 10;
+   <pre><code>int getal = 10;
 
 if (getal &gt; 5) 
 {
     Console.WriteLine("Het getal is groter dan 5");
-}
-</code></pre>
-   <pre><code class="language-cs">Het getal is groter dan 5
-</code></pre>
+}</code></pre>
+   <figure class="console">
+      <pre>Het getal is groter dan 5</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>IF ELSE-selectie</h4>
-   <p>Indien de voorwaarde <code class="language-cs">true</code> oplevert, worden de statements binnen het <em>if</em>-blok uitgevoerd. In het andere geval, worden de statements binnen het <em>else</em>-blok uitgevoerd.</p>
+   <p>Indien de voorwaarde <code>true</code> oplevert, worden de statements binnen het <em>if</em>-blok uitgevoerd. In het andere geval, worden de statements binnen het <em>else</em>-blok uitgevoerd.</p>
    <p><img src="img/01_csharpsyntax/if_else_flowchart.png" alt="if-flowchart"></p>
-   <pre><code class="language-cs">if (voorwaarde) 
+   <pre><code>if (voorwaarde) 
 {
     // statements indien waar
 } 
 else 
 {
     // statements indien niet waar
-}
-</code></pre>
+}</code></pre>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">int leeftijd = 15;
+   <pre><code>int leeftijd = 15;
 
 if (leeftijd &gt;= 18) 
 {
@@ -478,13 +453,14 @@ if (leeftijd &gt;= 18)
 else 
 {
     Console.WriteLine("Je bent nog niet oud genoeg om te stemmen");
-}
-</code></pre>
-   <pre><code class="language-cs">Je bent nog niet oud genoeg om te stemmen
-</code></pre>
+}</code></pre>
+   <figure class="console">
+      <pre>Je bent nog niet oud genoeg om te stemmen</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Multiple IF ELSE-selectie</h4>
    <p>De multiple IF – ELSE structuur is een uitbreiding op de gewone IF ELSE-structuur, waarbij je meerdere voorwaarden controleert:</p>
-   <pre><code class="language-cs">if (voorwaarde1) 
+   <pre><code>if (voorwaarde1) 
 {
    // instructies indien voorwaarde1 waar
 } 
@@ -499,11 +475,10 @@ else if (voorwaarde3)
 else 
 {
    // instructies in alle andere gevallen
-}
-</code></pre>
+}</code></pre>
    <p><strong>Opmerking:</strong> het laatste <em>else</em>-blok is optioneel.</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">string maand = "sep";
+   <pre><code>string maand = "sep";
 
 if (maand == "feb") 
 {
@@ -518,12 +493,14 @@ else
     Console.WriteLine("De maand telt 31 dagen");
 }
 </code></pre>
-   <pre><code class="language-cs">Deze maand telt 30 dagen
-</code></pre>
+   <figure class="console">
+      <pre>Deze maand telt 30 dagen</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>[Switch-case selectie]</h4>
    <p>Bij een switch-case selectie wordt een variabele vergeleken met een reeks waarden, waarna de bijhorende instructies uitgevoerd worden.</p>
    <p><img src="img/01_csharpsyntax/switch_case_flowchart.png" alt="switch-case flowchart"></p>
-   <pre><code class="language-cs">switch (variabele) 
+   <pre><code>switch (variabele) 
 {
    case (waarde 1): instructie 1; break;
    case (waarde 2): instructie 2; break;
@@ -535,7 +512,7 @@ else
 </code></pre>
    <p><strong>Opmerking:</strong> het default-label zal uitgevoerd worden indien de waarde van de variabele met geen enkele case-waarde overeenkomt. Het opnemen van een default-label is optioneel.</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">int dagNummer = 4;
+   <pre><code>int dagNummer = 4;
 
 switch (dagNummer) 
 {
@@ -549,25 +526,30 @@ switch (dagNummer)
     default: Console.WriteLine("Ongeldig dagnummer!"); break;
 }
 
-Console.WriteLine(" is een hatelijke dag");
-</code></pre>
-   <pre><code class="language-cs">donderdag is een hatelijke dag
-</code></pre>
-   <h4>[Ternaire operator]</h4>
+Console.WriteLine(" is een hatelijke dag");</code></pre>
+   <figure class="console">
+      <pre>donderdag is een hatelijke dag</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+
+
+   <h4>Ternaire operator</h4>
    <p>De ternaire operator is een verkorte notatie om een keuze te maken tussen twee waarden, op basis van een voowaarde.</p>
-   <pre><code class="language-cs">voorwaarde ? waarde-als-true : waarde-als-false
+   <pre><code>voorwaarde ? waarde-als-true : waarde-als-false
 </code></pre>
-   <pre><code class="language-cs">int getal1 = 10;
+   <pre><code>int getal1 = 10;
 int getal2 = 15;
 
 int grootste = getal1 &gt; getal2 ? getal1 : getal2;
 
 Console.WriteLine($"Het grootste getal is: {grootste}");
 </code></pre>
-   <pre><code class="language-cs">Het grootste getal is: 15
-</code></pre>
+   <figure class="console">
+      <pre>Het grootste getal is: 15</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <p><strong>Opmerking:</strong> bovenstaande code is equivalent aan onderstaande <em>if-else</em>-structuur:</p>
-   <pre><code class="language-cs">int getal1 = 10;
+   <pre><code>int getal1 = 10;
 int getal2 = 15;
 
 int grootste;
@@ -583,8 +565,11 @@ else
 
 Console.WriteLine($"Het grootste getal is: {grootste}");
 </code></pre>
-   <pre><code class="language-cs">Het grootste getal is: 15
-</code></pre>
+   <figure class="console">
+      <pre>Het grootste getal is: 15</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+
    <h2>Iteraties</h2>
    <ul>
       <li>Een ander woord voor iteratie is <strong>herhaling</strong>.</li>
@@ -593,12 +578,12 @@ Console.WriteLine($"Het grootste getal is: {grootste}");
    <h3>WHILE-iteratie</h3>
    <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Deze voorwaarde wordt <strong>eerst</strong> gecontroleerd (0 of meerdere keren herhaald).</p>
    <p><img src="img/01_csharpsyntax/while_flowchart.png" alt="while-flowchart"></p>
-   <pre><code class="language-cs">while (voorwaarde) {
+   <pre><code>while (voorwaarde) {
     // te herhalen instructies
 }
 </code></pre>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">int getal = 0;
+   <pre><code>int getal = 1;
 
 while (getal &lt;= 5) 
 {
@@ -606,36 +591,40 @@ while (getal &lt;= 5)
     getal++;
 }
 </code></pre>
-   <pre><code class="language-cs">0
-1
+   <figure class="console">
+      <pre>1
 2
 3
 4
-5
-</code></pre>
+5</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>DO WHILE-iteratie</h3>
    <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Statements worden <strong>éérst</strong> uitgevoerd, nadien pas wordt voorwaarde gecontroleerd (1 of meerdere keren herhaald).</p>
    <p><img src="img/01_csharpsyntax/do_while_flowchart.png" alt="while-flowchart"></p>
-   <pre><code class="language-cs">do 
+   <pre><code>do 
 {
     // te herhalen instructies
-} while(voorwaarde);
+} while (voorwaarde);
 </code></pre>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">int getal = 1;
+   <pre><code>int getal = 1;
 
 do 
 {
     Console.WriteLine(getal);
     getal++;
-} while(getal &lt;= 5);
+} while (getal &lt;= 5);
 </code></pre>
-   <pre><code class="language-cs">1
+
+   <figure class="console">
+      <pre>1
 2
 3
 4
-5
-</code></pre>
+5</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>FOR-iteratie</h3>
    <p>Een for-iteratie bestaat uit drie delen:</p>
    <ul>
@@ -644,81 +633,87 @@ do
       <li>increment: wordt uitgevoerd ná de instructies binnen de lus</li>
    </ul>
    <p><img src="img/01_csharpsyntax/for_flowchart.png" alt="for-flowchart"></p>
-   <pre><code class="language-cs">for (begin; voorwaarde; increment) 
+   <pre><code>for (begin; voorwaarde; increment) 
 {
     // te herhalen instructies
 }
 </code></pre>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">for (int i = 1; i &lt;= 5; i++) 
+   <pre><code>for (int i = 1; i &lt;= 5; i++) 
 {
     Console.WriteLine(i);
 }
 </code></pre>
-   <pre><code class="language-cs">1
+   <figure class="console">
+      <pre>1
 2
 3
 4
-5
-</code></pre>
+5</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <p><strong>Opmerking:</strong> increment hoeft niet altijd met één omhoog te gaan, onderstaande lus telt met sprongen van twee:</p>
-   <pre><code class="language-cs">for (int i = 1; i &lt;=10; i+=2) {
+   <pre><code>for (int i = 1; i &lt;=10; i+=2) {
     Console.WriteLine(i);
-}
-</code></pre>
-   <pre><code class="language-cs">1
+}</code></pre>
+   <figure class="console">
+      <pre>1
 3
 5
 7
-9
-</code></pre>
-   <p><strong>Opmerking:</strong> je kunt ook aftellen door gebruik te maken van de decrement-operator (<code class="language-cs">&minus;&minus;</code> of <code class="language-cs">&minus;=</code>):</p>
-   <pre><code class="language-cs">for (int i = 5; i &gt;= 1; i&minus;&minus;) {
+9</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <p><strong>Opmerking:</strong> je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
+   <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;) {
     Console.WriteLine(i);
-}
-</code></pre>
-   <pre><code class="language-cs">5
+}</code></pre>
+   <figure class="console">
+      <pre>5
 4
 3
 2
-1
-</code></pre>
+1</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>FOREACH-iteratie</h3>
    <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten, ListBoxItem's, ...).</p>
-   <p><strong>Opmerking:</strong> een string is een collectie van karakters (<code class="language-cs">char</code>'s) en kan je dus ook overlopen d.m.v. een foreach-iteratie:</p>
-   <pre><code class="language-cs">string str = "Hello!";
+   <p><strong>Opmerking:</strong> een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een foreach-iteratie:</p>
+   <pre><code>string str = "Hello!";
 
 foreach (char letter in str) 
 {
     Console.WriteLine(letter);
 }
 </code></pre>
-   <pre><code class="language-cs">H
+   <figure class="console">
+      <pre>H
 e
 l
 l
 o
-!
-</code></pre>
+!</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Juiste iteratie kiezen</h3>
    <ul>
-      <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code class="language-cs">while</code></li>
-      <li>aantal iteraties afhankelijk van voorwaarde, <strong>1 of meer keer</strong>: <code class="language-cs">do while</code></li>
-      <li><strong>vast aantal</strong> iteraties: <code class="language-cs">for</code></li>
-      <li>itereren over <strong>alle elementen binnen een verzameling</strong>: <code class="language-cs">foreach</code></li>
+      <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code>while</code></li>
+      <li>aantal iteraties afhankelijk van voorwaarde, <strong>1 of meer keer</strong>: <code>do while</code></li>
+      <li><strong>vast aantal</strong> iteraties: <code>for</code></li>
+      <li>itereren over <strong>alle elementen binnen een verzameling</strong>: <code>foreach</code></li>
    </ul>
    <h2>Methodes</h2>
    <h3>Methodes schrijven</h3>
    <p>De <strong>declaratie</strong> van een nieuwe methode bestaat uit de volgende onderdelen:</p>
    <ul>
-      <li>zichtbaarheid: <code class="language-cs">private</code> of <code class="language-cs">public</code>, in deze cursus altijd <code class="language-cs">private</code></li>
-      <li>return-type: <code class="language-cs">int</code>, <code class="language-cs">double</code>, <code class="language-cs">string</code>, ... <code class="language-cs">void</code> indien geen return-waarde</li>
+      <li>zichtbaarheid: <code>private</code> of <code>public</code>, in deze cursus altijd <code>private</code></li>
+      <li>return-type: <code>int</code>, <code>double</code>, <code>string</code>, ... <code>void</code> indien geen return-waarde</li>
       <li>naam: zelfgekozen, in <em>CamelCase</em></li>
       <li>parameterlijst: parameters met vermelding van <strong>type</strong> en <strong>naam</strong>, gescheiden door komma's</li>
-      <li>body: instructies tussen <code class="language-cs">{}</code>, eventueel afgesloten met een <code class="language-cs">return</code></li>
+      <li>body: instructies tussen <code>{}</code>, eventueel afgesloten met een <code>return</code></li>
    </ul>
    <p>Algemene syntax:</p>
-   <pre><code class="language-cs">private returntype MethodeNaam(type1 parameter1, type2 parameter2…) 
+   <pre><code>private returntype MethodeNaam(type1 parameter1, type2 parameter2…) 
 {
    // instructies
    // ...
@@ -727,19 +722,19 @@ o
 </code></pre>
    <p>Code voorbeelden:</p>
    <p>Voorbeeld zonder parameters en zonder return-waarde:</p>
-   <pre><code class="language-cs">private void PrintBegroeting() 
+   <pre><code>private void PrintBegroeting() 
 {
     Console.WriteLine("Hello, World!");
 }
 </code></pre>
    <p>Voorbeeld mét parameters, zonder return-waarde:</p>
-   <pre><code class="language-cs">private void PrintVoorstelling(string naam, int leeftijd) 
+   <pre><code>private void PrintVoorstelling(string naam, int leeftijd) 
 {
     Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud.");
 }
 </code></pre>
    <p>Voorbeeld zonder parameters, mét return-waarde:</p>
-   <pre><code class="language-cs">private int VraagPositiefGetal() 
+   <pre><code>private int VraagPositiefGetal() 
 {
     int getal; // lokale variabele
     
@@ -756,7 +751,7 @@ o
 }
 </code></pre>
    <p>Voorbeeld mét parameters en return-waarde:</p>
-   <pre><code class="language-cs">private int GrootsteGemeneDeler(int get1, int get2) 
+   <pre><code>private int GrootsteGemeneDeler(int get1, int get2) 
 { 
     int ggd = Math.Min(get1, get2);
     
@@ -768,8 +763,8 @@ o
     return ggd;
 }
 </code></pre>
-   <p><strong>Opmerking:</strong> bij console-applicaties moeten methodes steeds voorafgegaan worden door het keyword <code class="language-cs">static</code></p>
-   <pre><code class="language-cs">static private int VraagPositiefGetal() 
+   <p><strong>Opmerking:</strong> bij console-applicaties moeten methodes steeds voorafgegaan worden door het keyword <code>static</code></p>
+   <pre><code>static private int VraagPositiefGetal() 
 {
     // ... lees een positief getal in
     return getal; 
@@ -782,7 +777,7 @@ static private int GrootsteGemeneDeler(int get1, int get2)
 }
 </code></pre>
    <h3>Methodes gebruiken</h3>
-   <pre><code class="language-cs">
+   <pre><code>
 static private void PrintTitel() 
 {
     Console.WriteLine("GROOTSTE GEMENE DELER");
@@ -821,14 +816,14 @@ static private void Main(string[] args)
          <p><strong>return-waarde</strong> is <strong>altijd dezelfde</strong> voor dezelfde argumentwaarden</p>
          <ul>
             <li>geen gebruik van globale variabelen</li>
-            <li>leest geen input van de gebruiker (<code class="language-cs">Console.ReadLine()</code>, <code class="language-cs">Console.ReadKey()</code>, ...)</li>
+            <li>leest geen input van de gebruiker (<code>Console.ReadLine()</code>, <code>Console.ReadKey()</code>, ...)</li>
          </ul>
       </li>
       <li>
          <p><strong>geen enkel neveneffect</strong> buiten het bepalen van de return-waarde</p>
          <ul>
             <li>verandert geen globale variabelen</li>
-            <li>schrijf niet naar de console (<code class="language-cs">Console.Write(...)</code>, <code class="language-cs">Console.WriteLine(...)</code>, ...)</li>
+            <li>schrijf niet naar de console (<code>Console.Write(...)</code>, <code>Console.WriteLine(...)</code>, ...)</li>
             <li>verandert geen waarden/inhoud van WPF-controls</li>
          </ul>
       </li>
@@ -840,48 +835,50 @@ static private void Main(string[] args)
    </p>
    <h4>Declaratie</h4>
    <p><strong>Algemene syntax:</strong></p>
-   <pre><code class="language-cs">datatype[] naamVanDeArray = new datatype[aantalElementen];
+   <pre><code>datatype[] naamVanDeArray = new datatype[aantalElementen];
 </code></pre>
    <p>Voorbeelden:</p>
-   <pre><code class="language-cs">int[] cijfers = new int[6]; // array van 6 ints
+   <pre><code>int[] cijfers = new int[6]; // array van 6 ints
 string[] namen = new string[20]; // array van 20 strings
 bool[] weekdagenOpen = new bool[7]; // array van 7 bools
 </code></pre>
    <h4>Initialisatie</h4>
    <p>Je kunt een array initialiseren door de elementen tussen accolades te zetten, gescheiden d.m.v. komma's.</p>
    <p>Voorbeelden</p>
-   <pre><code class="language-cs">int[] getallen = { 5, 8, 3, 12, 7 };
+   <pre><code>int[] getallen = { 5, 8, 3, 12, 7 };
 double[] kommagetallen = { 1.5, 10.2, 19.85, 3.1415 };
 char[] letters = { 'a', 'b', 'c', 'd' };
 string[] fruit = { "appel", "banaan", "citroen" };
 </code></pre>
    <h4>Waarden toekennen aan een array</h4>
    <p><strong>Algemene syntax:</strong></p>
-   <pre><code class="language-cs">naamVanDeArray[index] = waarde;
+   <pre><code>naamVanDeArray[index] = waarde;
 </code></pre>
    <p>Voorbeelden:</p>
-   <pre><code class="language-cs">int[] getallen = new int[5];
+   <pre><code>int[] getallen = new int[5];
 getallen[0] = 10;  // zet getal 10 op eerste plaats in array
 getallen[2] = 7;   // zet getal 7 op derde plaats in array
 getallen[4] = 12;  // zet getal 12 op vijfde (laatste) plaats in array
 </code></pre>
    <h4>Waarden uitlezen uit een array</h4>
    <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element:</p>
-   <pre><code class="language-cs">string[] kleuren = { "blauw", "groen", "rood" };
+   <pre><code>string[] kleuren = { "blauw", "groen", "rood" };
 
 string eerste = kleuren[0]; // item op index 0 &rarr; "blauw"
 Console.WriteLine("Het eerste element is: " + eerste);
 
 Console.WriteLine("Het laatste element is: " + kleuren[2]); // item op index 2 (derde en laatste element) &rarr; "rood"
 </code></pre>
-   <pre><code class="language-cs">Het eerste element is: blauw
-Het laatste element is: rood
-</code></pre>
+   <figure class="console">
+      <pre>Het eerste element is: blauw
+Het laatste element is: rood</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Lengte van een array</h4>
    <p>Onder de lengte van een array, wordt het aantal elementen van de array verstaan.
-      De lengte van een array kan je bekomen door de <code class="language-cs">Length</code>-property van de array op te vragen.</p>
+      De lengte van een array kan je bekomen door de <code>Length</code>-property van de array op te vragen.</p>
    <p><strong>Opgelet:</strong> dit is het totaal aantal &quot;gereserveerde&quot; plaatsen binnen de array, ook al werden deze posities nog niet geïnitialiseerd met een andere waarde</p>
-   <pre><code class="language-cs">int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
+   <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
 
 getallen[0] = 10;
 getallen[2] = 5;
@@ -892,47 +889,54 @@ int lengte = getallen.Length;
 
 Console.WriteLine($"De lenget van de array is: {lengte}");
 </code></pre>
-   <pre><code class="language-cs">De lenget van de array is: 7
-</code></pre>
+   <figure class="console">
+      <pre>De lengte van de array is: 7</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Array's overlopen</h4>
    <h5>Met for-iteratie</h5>
    <p>Indien je de index van het element in de array nodig hebt.</p>
-   <pre><code class="language-cs">string[] namen = { "Jan", "Piet", "Joris", "Corneel" };
+   <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
 
 for (int i = 0; i &lt; namen.Length; i++) 
 {
     int positie = i + 1; // index begint op 0, positie op 1
     string naam = namen[i]; // element op index i
     Console.WriteLine($"{positie}. {naam}");
-}
-</code></pre>
-   <pre><code class="language-cs">1. Jan
-2. Piet
-3. Joris
-4. Corneel
-</code></pre>
+}</code></pre>
+   <figure class="console">
+      <pre>1. Zakaria
+2. Nelly
+3. Killian
+4. Chun</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Met foreach-iteratie</h5>
    <p>Indien je de index van het element niet nodig hebt.</p>
-   <pre><code class="language-cs">int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
+   <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
 
 foreach (int num in numbers) 
 {
     Console.WriteLine(num);
 }
 </code></pre>
-   <pre><code class="language-cs">2
+   <figure class="console">
+      <pre>2
 5
 9
 3
 4
 6
-7
-</code></pre>
+7</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Methodes voor arrays</h4>
    <h5>Een array splitsen op basis van een waarde</h5>
-   <p>Om een array te splitsen op basis van een waarde, kan je gebruik maken van de methode <code class="language-cs">Split()</code>.
-      Aangezien je een string kunt beschouwen als een array van karakters (<code class="language-cs">char</code>), kan je de <code class="language-cs">Split()</code>-methode ook gebruiken om een string te &quot;verknippen&quot; op basis van een bepaalde waarde die in de string voorkomt.</p>
-   <pre><code class="language-cs">string zin = "dit is een zin met meerdere woorden";
+   <p>
+      Om een array te splitsen op basis van een waarde, kan je gebruik maken van de methode <code>Split()</code>.
+      Aangezien je een string kunt beschouwen als een array van karakters (<code>char</code>), kan je de <code>Split()</code>-methode ook gebruiken om een string te &quot;verknippen&quot; op basis van een bepaalde waarde die in de string voorkomt.
+   </p>
+   <pre><code>string zin = "dit is een zin met meerdere woorden";
 string[] woorden = zin.Split(' '); // verdeel zin in woorden
 
 foreach (string woord in woorden) 
@@ -940,17 +944,19 @@ foreach (string woord in woorden)
     Console.WriteLine(woord);
 }
 </code></pre>
-   <pre><code class="language-cs">dit
+   <figure class="console">
+      <pre>dit
 is
 een
 zin
 met
 meerdere
-woorden
-</code></pre>
+woorden</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Nagaan of element voorkomt in een array</h5>
-   <p>Met de methode <code class="language-cs">Contains()</code> kan je nagaan of een element voorkomt in een array. De methode stuurt true terug indien de meegegeven waarde zich in de array bevindt:</p>
-   <pre><code class="language-cs">string[] fruit = { "appel", "banaan", "citroen" };
+   <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een array. De methode stuurt true terug indien de meegegeven waarde zich in de array bevindt:</p>
+   <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 bool gevonden = fruit.Contains("citroen");
 
 if (gevonden) 
@@ -959,8 +965,8 @@ if (gevonden)
 }
 </code></pre>
    <h5>Een array sorteren</h5>
-   <p>De methode <code class="language-cs">Array.Sort()</code> kan je de elementen in een array sorteren in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-   <pre><code class="language-cs">int[] getallen = { 7, 3, 9, 2, 6 };
+   <p>De methode <code>Array.Sort()</code> kan je de elementen in een array sorteren in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
+   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 
 Array.Sort(getallen); // sorteer getallen van klein naar groot
 
@@ -969,28 +975,31 @@ foreach (int getal in getallen)
     Console.WriteLine(getal);
 }
 </code></pre>
-   <pre><code class="language-cs">2
+   <figure class="console">
+      <pre>2
 3
 6
 7
-9
-</code></pre>
+9</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Elementen in een lijst samenvoegen tot één string</h5>
    <p>Met de methode string.Join() kan je de elementen van een array samenvoegen tot één string. Als eerste argument kan je een string meegeven die tussen twee elementen in de array moet geplaatst worden.</p>
-   <pre><code class="language-cs">int[] getallen = { 7, 3, 9, 2, 6 };
+   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 
-Console.WriteLine(string.Join(" - ", getallen));
-</code></pre>
-   <pre><code class="language-cs">7 - 3 - 9 - 2 - 6
-</code></pre>
+Console.WriteLine(string.Join(" - ", getallen));</code></pre>
+   <figure class="console">
+      <pre>7 - 3 - 9 - 2 - 6</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>List's</h3>
-   <p>Een <code class="language-cs">List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code class="language-cs">string</code>, <code class="language-cs">int</code>, <code class="language-cs">double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
+   <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
    <h4>Declaratie</h4>
    <p><strong>Algemene syntax:</strong></p>
-   <pre><code class="language-cs">List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
+   <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
 </code></pre>
    <p>Code voorbeelden:</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;(); // een lijst van int's
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;(); // een lijst van int's
 List&lt;bool&gt; myList = new List&lt;bool&gt;(); // een lijst van bool's
 List&lt;string&gt; namen = new List&lt;string&gt;(); // een lijst van string's
 </code></pre>
@@ -998,11 +1007,11 @@ List&lt;string&gt; namen = new List&lt;string&gt;(); // een lijst van string's
    <p>Bij de declaratie van een List, kan je de elementen meegeven die in de lijst moeten gezet worden.
       Je kunt nadien nog elementen toevoegen/verwijderen.</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
 </code></pre>
    <h4>Elementen toevoegen</h4>
-   <p>Je kunt elementen toevoegen met de <code class="language-cs">Add()</code>-methode:</p>
-   <pre><code class="language-cs">List&lt;string&gt; fruit = new List&lt;string&gt;(); // declaratie (nieuwe lijst van string's)
+   <p>Je kunt elementen toevoegen met de <code>Add()</code>-methode:</p>
+   <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;(); // declaratie (nieuwe lijst van string's)
 
 fruit.Add("appel"); // lijst bevat 1 element
 fruit.Add("banaan"); // lijst bevat 2 elementen
@@ -1012,7 +1021,7 @@ fruit.Add("citroen"); // lijst bevat 3 elementen
    <p>Je kunt een element uit een lijst opvragen op basis van de index van het element.
       Net zoals bij arrays, beginnen indexen bij List's vanaf 0.</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">List&lt;string&gt; kleuren = new List&lt;string&gt;();
+   <pre><code>List&lt;string&gt; kleuren = new List&lt;string&gt;();
 kleuren.Add("rood");
 kleuren.Add("groen");
 kleuren.Add("blauw");
@@ -1021,15 +1030,16 @@ string eerste = kleuren[0]; // element op index 0 (eerste element)
 Console.WriteLine("Het eerste element is: " + eerste);
 
 string derde = kleuren[2]; // element op index 2b (derde en laatste element)
-Console.WriteLine("Het derde element is: " + derde);
-</code></pre>
-   <pre><code class="language-cs">Het eerste element is: rood
-Het derde element is: blauw
-</code></pre>
+Console.WriteLine("Het derde element is: " + derde);</code></pre>
+   <figure class="console">
+      <pre>Het eerste element is: rood
+Het derde element is: blauw</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Elementen wijzigen</h4>
-   <p>Om een bestaand element op een bepaalde index te overschrijven met een andere waarde, maak je gebruik van de toekennings-operator (<code class="language-cs">=</code>).</p>
+   <p>Om een bestaand element op een bepaalde index te overschrijven met een andere waarde, maak je gebruik van de toekennings-operator (<code>=</code>).</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(4);
 getallen.Add(8);
 getallen.Add(3);  // inhoud van de lijst: 4, 8, 3
@@ -1039,12 +1049,12 @@ getallen[1] = 5; // element op index 1 gewijzigd naar 5, inhoud van de lijst: 4,
    <h4>Elementen verwijderen</h4>
    <p>Je kunt elementen op twee manieren verwijderen uit een List:</p>
    <ul>
-      <li>Op basis van de <strong>waarde</strong> van het element (<code class="language-cs">Remove()</code>-methode)</li>
-      <li>Op basis van de <strong>index</strong> van het element (<code class="language-cs">RemoveAt()</code>-methode)</li>
+      <li>Op basis van de <strong>waarde</strong> van het element (<code>Remove()</code>-methode)</li>
+      <li>Op basis van de <strong>index</strong> van het element (<code>RemoveAt()</code>-methode)</li>
    </ul>
    <h5>Op basis van de waarde</h5>
    <p><strong>Opmerking:</strong> indien een waarde meermaals in de lijst voorkomt, zal enkel het <strong>eerste</strong> voorkomen van het element uit de lijst verwijderd worden.</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(2);
 getallen.Add(5);
 getallen.Add(7);
@@ -1054,7 +1064,7 @@ getallen.Remove(5); // verwijer het element 5 uit de lijst (enkel eerste)
 // inhoud van de lijst: 2, 7, 5
 </code></pre>
    <h5>Op basis van de positie (index) van het element</h5>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(2);
 getallen.Add(5);
 getallen.Add(7);
@@ -1064,37 +1074,37 @@ getallen.RemoveAt(2); // verwijder element op index 2
 // inhoud van de lijst: 2, 5, 5
 </code></pre>
    <h5>Alle elementen verwijderen</h5>
-   <p>Met de methode <code class="language-cs">Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(2);
 getallen.Add(5);
 getallen.Add(7);
 getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
 
-getallen.Clear(); // de lijst is nu leeg
-</code></pre>
+getallen.Clear(); // de lijst is nu leeg</code></pre>
    <h4>Aantal elementen in een lijst</h4>
-   <p>Met de property <code class="language-cs">Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen.</p>
+   <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen.</p>
    <p>Code voorbeeld:</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(2);
 getallen.Add(5);
 getallen.Add(8);
 
 int aantal = getallen.Count; // vraag aantal elementen in lijst op
 
-Console.WriteLine(aantal);
-</code></pre>
-   <pre><code class="language-cs">3
-</code></pre>
+Console.WriteLine(aantal);</code></pre>
+   <figure class="console">
+      <pre>3</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>List's overlopen</h4>
    <h5>Met for-iteratie</h5>
    <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
-   <pre><code class="language-cs">List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Jan");
-namen.Add("Piet");
-namen.Add("Joris");
-namen.Add("Corneel");
+   <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
+namen.Add("Zakaria");
+namen.Add("Nelly");
+namen.Add("Killian");
+namen.Add("Chun");
 
 for (int i = 0; i &lt; namen.Count; i++) 
 {
@@ -1103,33 +1113,37 @@ for (int i = 0; i &lt; namen.Count; i++)
     Console.WriteLine($"{pos}. {naam}");
 }
 </code></pre>
-   <pre><code class="language-cs">1. Jan
-2. Piet
-3. Joris
-4. Corneel
-</code></pre>
+   <figure class="console">
+      <pre>1. Zakaria
+2. Nelly
+3. Killian
+4. Chun</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Met foreach-iteratie</h5>
    <p>Indien je de index (positie) van het element niet nodig hebt.</p>
-   <pre><code class="language-cs">List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Jan");
-namen.Add("Piet");
-namen.Add("Joris");
-namen.Add("Corneel");
+   <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
+namen.Add("Zakaria");
+namen.Add("Nelly");
+namen.Add("Killian");
+namen.Add("Chun");
 
 foreach (string naam in namen) 
 {
     Console.WriteLine(naam);
 }
 </code></pre>
-   <pre><code class="language-cs">Jan
-Piet
-Joris
-Corneel
-</code></pre>
+   <figure class="console">
+      <pre>Zakaria
+Nelly
+Killian
+Chun</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h4>Methodes voor List's</h4>
    <h5>Nagaan of element voorkomt in lijst</h5>
-   <p>Met de methode <code class="language-cs">Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code class="language-cs">true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
-   <pre><code class="language-cs">List&lt;string&gt; fruit = new List&lt;string&gt;();
+   <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
+   <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
 fruit.Add("appel");
 fruit.Add("banaan");
 fruit.Add("citroen");
@@ -1145,11 +1159,13 @@ else
     Console.WriteLine("Het element komt niet in de lijst voor.");
 }
 </code></pre>
-   <pre><code class="language-cs">Het element komt in de lijst voor
-</code></pre>
+   <figure class="console">
+      <pre>Het element komt in de lijst voor</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Een lijst sorteren</h5>
-   <p>De methode <code class="language-cs">Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(7);
 getallen.Add(3);
 getallen.Add(9);
@@ -1162,24 +1178,27 @@ foreach (int getal in getallen)
     Console.WriteLine(getal);
 }
 </code></pre>
-   <pre><code class="language-cs">3
+   <figure class="console">
+      <pre>3
 5
 7
-9
-</code></pre>
+9</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h5>Elementen in een lijst samenvoegen tot één string</h5>
-   <p>Met de methode <code class="language-cs">string.Join()</code> kan je de elementen van een list samenvoegen tot één string.
+   <p>Met de methode <code>string.Join()</code> kan je de elementen van een list samenvoegen tot één string.
       Als eerste argument kan je een string meegeven die tussen twee elementen in de lijst moet geplaatst worden.</p>
-   <pre><code class="language-cs">List&lt;int&gt; getallen = new List&lt;int&gt;();
+   <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
 getallen.Add(7);
 getallen.Add(3);
 getallen.Add(9);
 getallen.Add(5);
 
-Console.WriteLine(string.Join(" - ", getallen));
-</code></pre>
-   <pre><code class="language-cs">7 - 3 - 9 - 5
-</code></pre>
+Console.WriteLine(string.Join(" - ", getallen));</code></pre>
+   <figure class="console">
+      <pre>7 - 3 - 9 - 5</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
    <h3>Arrays vs List's</h3>
    <table>
       <thead>
@@ -1197,54 +1216,52 @@ Console.WriteLine(string.Join(" - ", getallen));
          </tr>
          <tr>
             <td>declaratie</td>
-            <td><code class="language-cs">int[] cijfers = new int[3];</code></td>
-            <td><code class="language-cs">List&lt;int&gt; cijfers = new List&lt;int&gt;();</code></td>
+            <td><code>int[] cijfers = new int[3];</code></td>
+            <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;();</code></td>
          </tr>
          <tr>
             <td>initialisatie</td>
-            <td><code class="language-cs">int[] cijfers = { 4, 1, 11 };</code></td>
-            <td><code class="language-cs">List&lt;int&gt; cijfers = new List&lt;int&gt;() { 4, 1, 11 };</code></td>
+            <td><code>int[] cijfers = { 4, 1, 11 };</code></td>
+            <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;() { 4, 1, 11 };</code></td>
          </tr>
          <tr>
             <td>elementen toevoegen/verwijderen</td>
             <td>niet mogelijk</td>
-            <td><code class="language-cs">Add()</code>, <code class="language-cs">Remove()</code>, <code class="language-cs">RemoveAt()</code>, <code class="language-cs">Clear()</code></td>
+            <td><code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code>, <code>Clear()</code></td>
          </tr>
          <tr>
             <td>elementen lezen/schrijven</td>
-            <td><code class="language-cs">cijfers[i]</code></td>
-            <td><code class="language-cs">cijfers[i]</code></td>
+            <td><code>cijfers[i]</code></td>
+            <td><code>cijfers[i]</code></td>
          </tr>
          <tr>
             <td>aantal elementen</td>
-            <td><code class="language-cs">cijfers.Length</code></td>
-            <td><code class="language-cs">cijfers.Count</code></td>
+            <td><code>cijfers.Length</code></td>
+            <td><code>cijfers.Count</code></td>
          </tr>
          <tr>
             <td>sorteren</td>
-            <td><code class="language-cs">Array.Sort(cijfers)</code></td>
-            <td><code class="language-cs">cijfers.Sort()</code></td>
+            <td><code>Array.Sort(cijfers)</code></td>
+            <td><code>cijfers.Sort()</code></td>
          </tr>
          <tr>
             <td>bevat waarde</td>
-            <td><code class="language-cs">cijfers.Contains(4)</code></td>
-            <td><code class="language-cs">cijfers.Contains(4)</code></td>
+            <td><code>cijfers.Contains(4)</code></td>
+            <td><code>cijfers.Contains(4)</code></td>
          </tr>
          <tr>
             <td>splitten</td>
-            <td><code class="language-cs">string txt = &quot;aap noot mies&quot;;</code><br><code class="language-cs">string[] woorden = txt.Split(' ');</code></td>
+            <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
             <td>niet mogelijk</td>
          </tr>
          <tr>
             <td>samenvoegen</td>
-            <td><code class="language-cs">string.Join(&quot;, &quot;, cijfers)</code></td>
-            <td><code class="language-cs">string.Join(&quot;, &quot;, cijfers)</code></td>
+            <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
+            <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
          </tr>
       </tbody>
    </table>
-   <script src="vendor/highlight/highlight.pack.js"></script>
+   <script src="vendor/prism.js"></script>
    <script src="js/scripts.js"></script>
-
 </body>
-
 </html>

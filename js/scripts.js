@@ -42,10 +42,6 @@ function startApp() {
    // add to dom
    DOM.toc.innerHTML = toc;
 
-   // part 3: add syntax highlight
-	for (const block of DOM.codeBlocks) {
-		hljs.highlightBlock(block, { language: 'cs' });
-	}
 }
 
 /**

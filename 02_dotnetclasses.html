@@ -5,12 +5,11 @@
 <head>
    <title>Cheat Sheet C#.md</title>
    <meta charset="UTF-8">
-   <link rel="stylesheet" href="css/vscode.css">
-   <link rel="stylesheet" href="css/hljs.css">
+   <link rel="stylesheet" href="vendor/prism-vs-light.css">
    <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body class="language-cs">
    <h1>Cheat Sheet .NET Classes</h1>
    <div id="toc"></div>
 
@@ -76,21 +75,21 @@
    <p>Een Bitmap is een klasse die een in-memory afbeelding voorstelt. Je kunt de <code>BitmapImage</code>-klasse gebruiken om een afbeeldingsbestand in te laden en vervolgens weer te geven in een WPF Image-control (zie voorbeeld-code hieronder).</p>
    <h3>Using toevoegen</h3>
    <p>Opmerking: de klasse <code>BitmapImage</code> bevindt zich in de namespace <code>System.Windows.Media.Imaging</code>. Je dient deze namespace dus eerst te importeren (m.b.v. een <code>using</code>-statement), alvorens je deze klasse kunt gebruiken in je code:</p>
-   <pre><code class="language-CS">using System.Windows.Media.Imaging;
+   <pre><code>using System.Windows.Media.Imaging;
 
 //... rest van je code</code></pre>
    <h3>Constructie</h3>
-   <pre><code class="language-CS">new BitmapImage(Uri resource);</code></pre>
+   <pre><code>new BitmapImage(Uri resource);</code></pre>
    <h3>Voorbeeld</h3>
    <h4>Afbeelding inladen en weergeven in WPF Image-control:</h4>
-   <pre><code class="language-CS">Uri bitmapSource = new Uri("img/02_dotnetclasses/photo1.jpg", UriKind.Relative); // bestand: img/02_dotnetclasses/photo1.jpg
+   <pre><code>Uri bitmapSource = new Uri("img/02_dotnetclasses/photo1.jpg", UriKind.Relative); // bestand: img/02_dotnetclasses/photo1.jpg
 wpfImage.Source = new BitmapImage(bitmapSource);</code></pre>
 
    <h2>Brushes</h2>
    <p>Een klasse die een aantal <code>Brush</code>-properties bevat die standaardkleuren voorstellen (bv.: <code>Aqua</code>, <code>Blue</code>, <code>Green</code>, ...). Voor een volledig overzicht van alle beschikbare kleuren, zie de <a href="https://docs.microsoft.com/en-us/dotnet/api/system.drawing.brushes?view=dotnet-plat-ext-3.1#properties">documentatie</a>.</p>
    <h3>Voorbeeld</h3>
    <h4>Instellen van voor- en achtergrondkleur Label-control:</h4>
-   <pre><code class="language-CS">lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
+   <pre><code>lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
 lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code></pre>
    <figure>
       <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered">
@@ -122,9 +121,9 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
    </table>
    <h3>Voorbeelden</h3>
    <h4>Tekst op het klembord plaatsen</h4>
-   <pre><code class="language-CS">Clipboard.SetText("text to be copied");</code></pre>
+   <pre><code>Clipboard.SetText("text to be copied");</code></pre>
    <h4>Tekstuele inhoud van het klembord opvragen</h4>
-   <pre><code class="language-CS">string content = Clipboard.GetText();</code></pre>
+   <pre><code>string content = Clipboard.GetText();</code></pre>
 
    <!-- COLOR -->   
    <h2>Color</h2>
@@ -146,7 +145,7 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
    </table>
    <h3>Voorbeeld</h3>
    <h4>Instellen van voor- en achtergrondkleur Button</h4>
-   <pre><code class="language-CS">Color tekstkleur = Color.FromRgb(227, 227, 227);
+   <pre><code>Color tekstkleur = Color.FromRgb(227, 227, 227);
 btnKlikHier.Foreground = new SolidColorBrush(tekstkleur);
 
 Color achtergrondkleur = Color.FromRgb(11, 212, 21);
@@ -219,7 +218,7 @@ btnKlikHier.Background = new SolidColorBrush(achtergrondkleur);</code></pre>
    </table>
    <h3>Waarde schrijven</h3>
    <h4>Tekst schrijven op één regel</h4>
-   <pre><code class="language-CS">Console.Write("a");
+   <pre><code>Console.Write("a");
 Console.Write("b");
 Console.Write("c");</code></pre>
    <figure>
@@ -227,7 +226,7 @@ Console.Write("c");</code></pre>
       <figcaption>Write(): schrijf en blijf op dezelfde regel</figcaption>
    </figure>
    <h4>Tekst schrijven over meerdere regels</h4>
-   <pre><code class="language-CS">Console.WriteLine("a");
+   <pre><code>Console.WriteLine("a");
 Console.WriteLine("b");
 Console.WriteLine("c");</code></pre>
    <figure>
@@ -236,7 +235,7 @@ Console.WriteLine("c");</code></pre>
    </figure>
    <h3>Waarde inlezen</h3>
    <h4>Tekst inlezen en weergeven in de console</h4>
-   <pre><code class="language-CS">Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
+   <pre><code>Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
 string naam = Console.ReadLine();   // lees de naam in en sla deze op in een variabele
 
 Console.WriteLine("Hallo, " + naam); // schrijf een boodschap naar de console</code></pre>
@@ -246,12 +245,12 @@ Console.WriteLine("Hallo, " + naam); // schrijf een boodschap naar de console</c
    </figure>
    <h4>Getal inlezen</h4>
    <p>Console.ReadLine() geeft altijd een tekst terug; als je een getal wil, moet je het converteren met <code>Convert.ToInt32()</code> (gehele getallen) of  <code>Convert.ToDouble()</code> (kommagetallen):</p>
-   <pre><code class="language-CS">Console.Write("Geef een aantal in: "); 
+   <pre><code>Console.Write("Geef een aantal in: "); 
 int aantal = Convert.ToInt32(Console.ReadLine());   // zet de tekst om naar een geheel getal met Convert.ToInt32()
 Console.Write("Geef een prijs in: "); 
 double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToInt32()</code></pre>
    <h4>Karakter inlezen met weergave</h4>
-   <pre><code class="language-CS">Console.Write("Wil je verder gaan? [j/n]: ");
+   <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey().KeyChar; 
 Console.WriteLine("\nJe koos: " + keuze);</code></pre>
    <figure>
@@ -259,7 +258,7 @@ Console.WriteLine("\nJe koos: " + keuze);</code></pre>
       <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
    </figure>
    <h4>Karakter inlezen zonder weergave</h4>
-   <pre><code class="language-CS">Console.Write("Wil je verder gaan? [j/n]: ");
+   <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet weergegeven in console
 Console.WriteLine("\nJe koos: " + keuze);</code></pre>
    <figure>
@@ -269,7 +268,7 @@ Console.WriteLine("\nJe koos: " + keuze);</code></pre>
    <h3>Console kleuren</h3>
    <h4>Tekstkleur en/of achtergrondkleur instellen</h4>
    <p>Met de properties <code>ForegroundColor</code> en <code>BackgroundColor</code> kan je de tekstkleur, respectievelijk de achtergrondkleur van de uitvoer in de console instellen.</p>
-   <pre><code class="language-CS">Console.ForegroundColor = ConsoleColor.Red; // rode tekstkleur
+   <pre><code>Console.ForegroundColor = ConsoleColor.Red; // rode tekstkleur
 Console.BackgroundColor = ConsoleColor.White; // witte achtergrond
 
 Console.WriteLine("Hello, World!");</code></pre>
@@ -279,10 +278,10 @@ Console.WriteLine("Hello, World!");</code></pre>
    </figure>
    <h4>Tekst- en achtergrondkleur herstellen</h4>
    <p>Om opnieuw de oorspronkelijke tekst- en achtergrondkleur in te stellen, maak je gebruik van de methode <code>ResetColor()</code>:</p>
-   <pre><code class="language-CS">Console.ResetColor();</code></pre>
+   <pre><code>Console.ResetColor();</code></pre>
    <h3>Console wissen</h3>
    <p>Om het console-venster leeg te maken, maak je gebruik van de <code>Clear()</code>-methode:</p>
-   <pre><code class="language-CS">Console.Clear(); // wis de inhoud van het console-venster</code></pre>
+   <pre><code>Console.Clear(); // wis de inhoud van het console-venster</code></pre>
 
    <!-- CONVERT -->   
    <h2>Convert</h2>
@@ -316,17 +315,17 @@ Console.WriteLine("Hello, World!");</code></pre>
    </table>
    <h3>Code voorbeelden</h3>
    <h4>ToChar</h4>
-   <pre><code class="language-CS">char letter = Convert.ToChar("a"); // string naar char
+   <pre><code>char letter = Convert.ToChar("a"); // string naar char
 char letter2 = Convert.ToChar(65); // int naar char (ASCII-waarde &rarr; 'A')</code></pre>
    <h4>ToDouble</h4>
-   <pre><code class="language-CS">double kommagetal = Convert.ToDouble("3.14"); // string naar double</code></pre>
+   <pre><code>double kommagetal = Convert.ToDouble("3.14"); // string naar double</code></pre>
    <h4>ToInt32</h4>
-   <pre><code class="language-CS">int a = Convert.ToInt32("15"); // string naar int
+   <pre><code>int a = Convert.ToInt32("15"); // string naar int
 int b = Convert.ToInt32(3.14); // double naar int &rarr; afronding (b = 3)
 int c = Convert.ToInt32(3.91); // double naar int &rarr; afronding (c = 4)</code></pre>
    <p>Opmerking: wanneer je een kommagetal (double) omzet naar een geheel getal (int), wordt het getal wiskundig afgerond (d.w.z. &lt; 0.5 naar beneden, &gt;= 0.5 naar boven)</p>
    <h4>ToString</h4>
-   <pre><code class="language-CS">string str1 = Convert.ToString('a');        // char &rarr; string "a"
+   <pre><code>string str1 = Convert.ToString('a');        // char &rarr; string "a"
 string str2 = Convert.ToString(32);         // int &rarr; string "32"
 string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</code></pre>
 
@@ -373,19 +372,19 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
    </table>
    <h3>Code voorbeelden</h3>
    <h4>Platform-onafhankelijke NewLine (Windows/Linux/Mac OSX/...)</h4>
-   <pre><code class="language-CS">Console.Write("Regel 1" + Environment.NewLine + "Regel 2");</code></pre>
+   <pre><code>Console.Write("Regel 1" + Environment.NewLine + "Regel 2");</code></pre>
    <figure>
       <img src="img/02_dotnetclasses/enviroment-newline.png" alt="" width="250">
       <figcaption>resultaat in de console</figcaption>
    </figure>
    <h4>Pad naar Desktop opvragen</h4>
-   <pre><code class="language-CS">string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // op mijn PC is dit C:\Users\rogie\Pictures</code></pre>
+   <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // op mijn PC is dit C:\Users\rogie\Pictures</code></pre>
    <figure>
       <img src="img/02_dotnetclasses/environment-specialfolder.png" alt="" width="250">
       <figcaption>resultaat in de console</figcaption>
    </figure>
    <h4>Programma afsluiten</h4>
-   <pre><code class="language-CS">Environment.Exit(0);</code></pre>
+   <pre><code>Environment.Exit(0);</code></pre>
    <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
 
    <!-- MATH -->   
@@ -450,7 +449,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
    </table>
    <h3>Voorbeelden</h3>
    <h4>Berekening oppervlakte cirkel (m.b.v. PI)</h4>
-   <pre><code class="language-CS">int straal = 5;
+   <pre><code>int straal = 5;
 double oppervlakte = straal * straal * Math.PI;
 
 Console.WriteLine("De oppervlakte bedraagt: " + oppervlakte);</code></pre>
@@ -459,7 +458,7 @@ Console.WriteLine("De oppervlakte bedraagt: " + oppervlakte);</code></pre>
       <figcaption>gebruik van de Math PI constante</figcaption>
    </figure>
    <h4>Wiskundige methodes</h4>
-   <pre><code class="language-CS">double a = Math.Ceiling(3.14); // resultaat: 4.0
+   <pre><code>double a = Math.Ceiling(3.14); // resultaat: 4.0
 double b = Math.Floor(3.14);   // resultaat: 3.0
 double c = Math.Pow(5, 2);     // resultaat: 5² = 25
 double d = Math.Round(3.1415, 2); // resultaat: 3.14 (afgerond tot op 2 cijfers na de komma)
@@ -499,13 +498,13 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
    </table>
    <h3>Code voorbeelden</h3>
    <h4>Dialoogvenster met enkel een boodschap</h4>
-   <pre><code class="language-CS">MessageBox.Show("Hello, World!");</code></pre>
+   <pre><code>MessageBox.Show("Hello, World!");</code></pre>
    <figure>
       <img src="img/02_dotnetclasses/messagebox_example1.png" alt="">
       <figcaption>MessageBox met enkel boodschap</figcaption>
    </figure>
    <h4>Dialoogvenster met boodschap en titel</h4>
-   <pre><code class="language-CS">MessageBox.Show("Hello, World!", "Voorbeeld MessageBox");</code></pre>
+   <pre><code>MessageBox.Show("Hello, World!", "Voorbeeld MessageBox");</code></pre>
    <figure>
       <img src="img/02_dotnetclasses/messagebox_example2.png" alt="" width="150">
       <figcaption>MessageBox met boodschap en titel</figcaption>
@@ -515,7 +514,7 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
    <h2>Random</h2>
    <p>Met de klasse <code>Random</code> kan je een willekeurige waarde (getal) genereren.</p>
    <h3>Constructie</h3>
-   <pre><code class="language-CS">Random rnd = new Random();</code></pre>
+   <pre><code>Random rnd = new Random();</code></pre>
    <h3>Methodes</h3>
    <table>
       <thead>
@@ -533,7 +532,7 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
    </table>
    <h3>Code voorbeeld</h3>
    <h4>Willekeurig getal van 1 tot en met 20</h4>
-   <pre><code class="language-CS">Random rnd = new Random();
+   <pre><code>Random rnd = new Random();
 int getal1 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 int getal2 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 
@@ -568,7 +567,7 @@ Console.WriteLine("Random getal 2: " + getal2);</code></pre>
    </table>
    <h3>Code voorbeelden</h3>
    <h4>Nagaan of een string leeg is</h4>
-   <pre><code class="language-CS">string str1 = "test";
+   <pre><code>string str1 = "test";
 Console.WriteLine("str1: " + string.IsNullOrEmpty(str1));
 
 string str2 = null;
@@ -585,7 +584,7 @@ Console.WriteLine("str4: " + string.IsNullOrEmpty(str4));</code></pre>
    </figure>
    <p>Opmerking: een spatie (<code>&quot; &quot;</code>) wordt <strong>niet</strong> al een lege string gezien!</p>
    <h4>Nagaan of de gebruiker een TextBox heeft ingevuld</h4>
-   <pre><code class="language-CS">if (string.IsNullOrEmpty(txtNaam))
+   <pre><code>if (string.IsNullOrEmpty(txtNaam))
 {
    lblFoutboodschap.Content = "Het 'naam'-veld is niet ingevuld";
 } 
@@ -594,7 +593,7 @@ else
    lblFoutboodschap.Content = "";
 }</code></pre>
    <h4>Een lijst met string's samenvoegen tot één string, gescheiden d.m.v. een streepje</h4>
-   <pre><code class="language-CS">List&lt;string&gt; fruit = new List&lt;string&gt;();
+   <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
 fruit.Add("appel");
 fruit.Add("banaan");
 fruit.Add("citroen");
@@ -608,14 +607,14 @@ Console.WriteLine(reeks);</code></pre>
       <figcaption>Join() voorbeeld</figcaption>
    </figure>
    <h4>Een array met getallen samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
-   <pre><code class="language-CS">int[] getallen = {5, 7, 12, 8, 3};
+   <pre><code>int[] getallen = {5, 7, 12, 8, 3};
 string reeks = string.Join(", ", getallen);
 
 Console.WriteLine(reeks);</code></pre>
    <pre><code>5, 7, 12, 8, 3
 </code></pre>
 
-   <script src="vendor/highlight/highlight.pack.js"></script>
+   <script src="vendor/prism.js"></script>
    <script src="js/scripts.js"></script>
 </body>
 

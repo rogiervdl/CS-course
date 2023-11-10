@@ -1,18 +1,18 @@
-pre {
-   border: 1px solid #cccccc;
-   border-radius: 3px;
-   white-space: pre-wrap;
-   overflow-wrap: break-word;
+/* ELEMENTS */
+
+body {
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+   margin-bottom: 50px;
+   max-width: 1200px;
+   padding: 0 25px;
 }
 
-pre:not(.hljs) {
-   padding: 23px;
-   line-height: 19px;
+a {
+   text-decoration: none;
 }
 
-:not(pre):not(.hljs)>code {
-   color: #C9AE75;
-   font-size: inherit;
+a:hover {
+   text-decoration: underline;
 }
 
 figure {
@@ -25,13 +25,46 @@ figcaption {
    font-style: italic;
 }
 
-pre {
-   padding: 0 !important;
+h1,
+h2,
+h3 {
+   font-weight: normal;
 }
 
-code.hljs {
-   padding: 1em;
+h1 {
+   padding-bottom: 0.3em;
+   line-height: 1.2;
+   border-bottom-width: 1px;
+   border-bottom-style: solid;
 }
+
+h2 {
+   border-bottom: 4px double #ccc;
+   display: inline-block;
+   margin-top: 1em;
+   padding-bottom: 5px;
+}
+
+img {
+   max-width: 100%;
+}
+
+figure {
+   margin-bottom: 1.5em;
+   margin-top: 0;
+}
+
+/* CLASSES */
+
+.bordered {
+   border: 1px solid #ccc;
+}
+
+.centered {
+   text-align: center;
+}
+
+/* TABLE OF CONTENTS */
 
 #toc ul {
    list-style: none;
@@ -42,18 +75,71 @@ code.hljs {
    padding-left: 25px;
 }
 
-.bordered {
-   border: 1px solid #ccc;
+/* TABLES */
+
+table {
+   border-collapse: collapse;
 }
 
-h2 {
-   margin-top: 2em;
-}
-
-body {
-   max-width: 1200px;
-}
-
-table>tbody>tr+tr>td {
+table > tbody > tr + tr > td {
    border-top-color: #ccc;
+}
+
+table > thead > tr > th {
+   text-align: left;
+   border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+   padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+   border-top: 1px solid;
+}
+
+/* CODE */
+
+code {
+   font-family: Consolas, Menlo, Monaco, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+   font-size: 0.9em;
+   line-height: 1.357em;
+}
+
+:not(pre) > code { /* inline code */
+   color: #917230;
+}
+
+pre {
+   border: 1px solid #ccc;
+   border-radius: 3px;
+   font-weight: 100;
+   line-height: 19px;
+   margin-bottom: 1.5em;
+   margin-top: 0;
+   overflow-wrap: break-word;
+   padding: 1em;
+   white-space: pre-wrap;
+}
+
+figure.console pre {
+   background-color: black;
+   color: #ddd;
+   display: inline-block;
+   font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+   font-size: 0.9em;
+   line-height: 1.357em;
+   margin: 0;
+   min-width: 300px;
+}
+
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+code[class*="language-"] {
+	background: none;
 }
