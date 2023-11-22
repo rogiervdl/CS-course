@@ -1,15 +1,24 @@
 /* ELEMENTS */
 
+html {
+   scroll-behavior: smooth;   
+}
+
 body {
    counter-reset: chapter;
    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+   margin: 0;
    margin-bottom: 50px;
-   padding: 0 25px;
+   padding: 0;
 }
 
 a {
    color: #00c;
    text-decoration: none;
+}
+
+h1, #toc, main {
+   margin: 0 25px;
 }
 
 main a::after {
@@ -97,6 +106,10 @@ img {
 figure {
    margin-bottom: 1.5em;
    margin-top: 0;
+}
+
+nav {
+   background-color: #faf5e6;   
 }
 
 p, table {
