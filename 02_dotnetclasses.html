@@ -6,459 +6,510 @@
    <title>.NET classes | C# cheat sheets</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="vendor/prism-vs-light.css">
+   <link rel="stylesheet" href="fonts/leaguegothic/webfont.css">
    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="language-cs">
-   <h1>Cheat Sheet .NET Classes</h1>
+   <nav class="site__nav">
+      <a href="01_csharpsyntax.html" class="main__thumb">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb active">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>02. .NET Classes</h1>
    <div id="toc"></div>
 
-   <!-- OVERZICHT -->   
-   <h2>Overzicht</h2>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Klasse</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><a href="#bitmap">Bitmap</a></td>
-            <td>In-memory afbeelding</td>
-         </tr>
-         <tr>
-            <td><a href="#brushes">Brushes</a></td>
-            <td>Bevat een aantal voorgedefinieerde kleuren</td>
-         </tr>
-         <tr>
-            <td><a href="#clipboard">Clipboard</a></td>
-            <td>Geeft toegang tot het Window-klembord</td>
-         </tr>
-         <tr>
-            <td><a href="#color">Color</a></td>
-            <td>Werken met RGB-kleuren</td>
-         </tr>
-         <tr>
-            <td><a href="#console">Console</a></td>
-            <td>Basis I/O via de console</td>
-         </tr>
-         <tr>
-            <td><a href="#convert">Convert</a></td>
-            <td>Omzetten (converteren) tussen verschillende datatypes</td>
-         </tr>
-         <tr>
-            <td><a href="#environment">Environment</a></td>
-            <td>Geeft toegang tot de omgeving waarin de applicatie wordt uitgevoerd</td>
-         </tr>
-         <tr>
-            <td><a href="#math">Math</a></td>
-            <td>Bevat wiskundige methodes en constanten</td>
-         </tr>
-         <tr>
-            <td><a href="#messagebox">MessageBox</a></td>
-            <td>Tonen van dialoogvensters</td>
-         </tr>
-         <tr>
-            <td><a href="#random">Random</a></td>
-            <td>Genereren van willekeurige waarden (getallen)</td>
-         </tr>
-         <tr>
-            <td><a href="#string">String</a></td>
-            <td>Werken met tekstuele data</td>
-         </tr>
-      </tbody>
-   </table>
+   <main>
 
-   <!-- BITMAP -->   
-   <h2>Bitmap</h2>
-   <p>Een Bitmap is een klasse die een in-memory afbeelding voorstelt. Je kunt de <code>BitmapImage</code>-klasse gebruiken om een afbeeldingsbestand in te laden en vervolgens weer te geven in een WPF Image-control (zie voorbeeld-code hieronder).</p>
-   <h3>Using toevoegen</h3>
-   <p>Opmerking: de klasse <code>BitmapImage</code> bevindt zich in de namespace <code>System.Windows.Media.Imaging</code>. Je dient deze namespace dus eerst te importeren (m.b.v. een <code>using</code>-statement), alvorens je deze klasse kunt gebruiken in je code:</p>
-   <pre><code>using System.Windows.Media.Imaging;
+      <!-- OVERZICHT -->
+      <h2>Overzicht</h2>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><a href="#bitmap">Bitmap</a></td>
+               <td>In-memory afbeelding</td>
+            </tr>
+            <tr>
+               <td><a href="#brushes">Brushes</a></td>
+               <td>Bevat een aantal voorgedefinieerde kleuren</td>
+            </tr>
+            <tr>
+               <td><a href="#clipboard">Clipboard</a></td>
+               <td>Geeft toegang tot het Window-klembord</td>
+            </tr>
+            <tr>
+               <td><a href="#color">Color</a></td>
+               <td>Werken met RGB-kleuren</td>
+            </tr>
+            <tr>
+               <td><a href="#console">Console</a></td>
+               <td>Basis I/O via de console</td>
+            </tr>
+            <tr>
+               <td><a href="#convert">Convert</a></td>
+               <td>Omzetten (converteren) tussen verschillende datatypes</td>
+            </tr>
+            <tr>
+               <td><a href="#environment">Environment</a></td>
+               <td>Geeft toegang tot de omgeving waarin de applicatie wordt uitgevoerd</td>
+            </tr>
+            <tr>
+               <td><a href="#math">Math</a></td>
+               <td>Bevat wiskundige methodes en constanten</td>
+            </tr>
+            <tr>
+               <td><a href="#messagebox">MessageBox</a></td>
+               <td>Tonen van dialoogvensters</td>
+            </tr>
+            <tr>
+               <td><a href="#random">Random</a></td>
+               <td>Genereren van willekeurige waarden (getallen)</td>
+            </tr>
+            <tr>
+               <td><a href="#string">String</a></td>
+               <td>Werken met tekstuele data</td>
+            </tr>
+         </tbody>
+      </table>
+
+      <!-- BITMAP -->
+      <h2>Bitmap</h2>
+      <p>Een Bitmap is een klasse die een in-memory afbeelding voorstelt. Je kunt de <code>BitmapImage</code>-klasse gebruiken om een afbeeldingsbestand in te laden en vervolgens weer te geven in een WPF Image-control (zie voorbeeld-code hieronder).</p>
+      <h3>Using toevoegen</h3>
+      <p>Opmerking: de klasse <code>BitmapImage</code> bevindt zich in de namespace <code>System.Windows.Media.Imaging</code>. Je dient deze namespace dus eerst te importeren (m.b.v. een <code>using</code>-statement), alvorens je deze klasse kunt gebruiken in je code:</p>
+      <pre><code>using System.Windows.Media.Imaging;
 
 //... rest van je code</code></pre>
-   <h3>Constructie</h3>
-   <pre><code>new BitmapImage(Uri resource);</code></pre>
-   <h3>Voorbeeld</h3>
-   <h4>Afbeelding inladen en weergeven in WPF Image-control:</h4>
-   <pre><code>Uri bitmapSource = new Uri("img/02_dotnetclasses/photo1.jpg", UriKind.Relative); // bestand: img/02_dotnetclasses/photo1.jpg
+      <h3>Constructie</h3>
+      <pre><code>new BitmapImage(Uri resource);</code></pre>
+      <h3>Voorbeeld</h3>
+      <h4>Afbeelding inladen en weergeven in WPF Image-control:</h4>
+      <pre><code>Uri bitmapSource = new Uri("img/02_dotnetclasses/photo1.jpg", UriKind.Relative); // bestand: img/02_dotnetclasses/photo1.jpg
 wpfImage.Source = new BitmapImage(bitmapSource);</code></pre>
 
-   <h2>Brushes</h2>
-   <p>Een klasse die een aantal <code>Brush</code>-properties bevat die standaardkleuren voorstellen (bv.: <code>Aqua</code>, <code>Blue</code>, <code>Green</code>, ...). Voor een volledig overzicht van alle beschikbare kleuren, zie de <a href="https://docs.microsoft.com/en-us/dotnet/api/system.drawing.brushes?view=dotnet-plat-ext-3.1#properties">documentatie</a>.</p>
-   <h3>Voorbeeld</h3>
-   <h4>Instellen van voor- en achtergrondkleur Label-control:</h4>
-   <pre><code>lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
+      <h2>Brushes</h2>
+      <p>Een klasse die een aantal <code>Brush</code>-properties bevat die standaardkleuren voorstellen (bv.: <code>Aqua</code>, <code>Blue</code>, <code>Green</code>, ...). Voor een volledig overzicht van alle beschikbare kleuren, zie de <a href="https://docs.microsoft.com/en-us/dotnet/api/system.drawing.brushes?view=dotnet-plat-ext-3.1#properties">documentatie</a>.</p>
+      <h3>Voorbeeld</h3>
+      <h4>Instellen van voor- en achtergrondkleur Label-control:</h4>
+      <pre><code>lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
 lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered">
-      <figcaption>resultaat van instellen Foreground en Background</figcaption>
-   </figure>
-   <p>Opmerking: voor algemenere manieren om kleuren te definiëren zie de <a href="#color"><code>Color</code></a> klasse</p>
+      <figure>
+         <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered">
+         <figcaption>resultaat van instellen Foreground en Background</figcaption>
+      </figure>
+      <p>Opmerking: voor algemenere manieren om kleuren te definiëren zie de <a href="#color"><code>Color</code></a> klasse</p>
 
-   <!-- CLIPBOARD -->   
-   <h2>Clipboard</h2>
-   <p>De klasse <code>Clipboard</code> geeft je toegang tot het klembord van Windows (wordt gebruik bij copy-paste van gegevens).</p>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>SetText()</code></td>
-            <td>Plaatst de meegegeven tekst op het klembord van de gebruiker</td>
-         </tr>
-         <tr>
-            <td><code>GetText()</code></td>
-            <td>Vraagt de huidige (tekstuele) waarde van het klembord op</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Tekst op het klembord plaatsen</h4>
-   <pre><code>Clipboard.SetText("text to be copied");</code></pre>
-   <h4>Tekstuele inhoud van het klembord opvragen</h4>
-   <pre><code>string content = Clipboard.GetText();</code></pre>
+      <!-- CLIPBOARD -->
+      <h2>Clipboard</h2>
+      <p>De klasse <code>Clipboard</code> geeft je toegang tot het klembord van Windows (wordt gebruik bij copy-paste van gegevens).</p>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SetText()</code></td>
+               <td>Plaatst de meegegeven tekst op het klembord van de gebruiker</td>
+            </tr>
+            <tr>
+               <td><code>GetText()</code></td>
+               <td>Vraagt de huidige (tekstuele) waarde van het klembord op</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Tekst op het klembord plaatsen</h4>
+      <pre><code>Clipboard.SetText("text to be copied");</code></pre>
+      <h4>Tekstuele inhoud van het klembord opvragen</h4>
+      <pre><code>string content = Clipboard.GetText();</code></pre>
 
-   <!-- COLOR -->   
-   <h2>Color</h2>
-   <p>Deze klasse wordt gebruikt voor het werken met (RGB-)kleuren.</p>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>FromRgb()</code></td>
-            <td>Construeert een <code>Color</code>-object, op basis van de R-, G- en B-componenten van de kleur</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeeld</h3>
-   <h4>Instellen van voor- en achtergrondkleur Button</h4>
-   <pre><code>Color tekstkleur = Color.FromRgb(227, 227, 227);
+      <!-- COLOR -->
+      <h2>Color</h2>
+      <p>Deze klasse wordt gebruikt voor het werken met (RGB-)kleuren.</p>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>FromRgb()</code></td>
+               <td>Construeert een <code>Color</code>-object, op basis van de R-, G- en B-componenten van de kleur</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeeld</h3>
+      <h4>Instellen van voor- en achtergrondkleur Button</h4>
+      <pre><code>Color tekstkleur = Color.FromRgb(227, 227, 227);
 btnKlikHier.Foreground = new SolidColorBrush(tekstkleur);
 
 Color achtergrondkleur = Color.FromRgb(11, 212, 21);
 btnKlikHier.Background = new SolidColorBrush(achtergrondkleur);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/color_example1.png" alt="color button">
-      <figcaption>button met tekst- en achtergrondkleur</figcaption>
-   </figure>
+      <figure>
+         <img src="img/02_dotnetclasses/color_example1.png" alt="color button">
+         <figcaption>button met tekst- en achtergrondkleur</figcaption>
+      </figure>
 
-   <!-- CONSOLE -->   
-   <h2>Console</h2>
-   <p>Met de klasse <code>Console</code> is het mogelijk om tekst naar de console te schrijven en invoer van de gebruiker uit de console uit te lezen (basis I/O).</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>ForegroundColor</code></td>
-            <td>De tekstkleur voor het weergeven van tekst in de console</td>
-         </tr>
-         <tr>
-            <td><code>BackgroundColor</code></td>
-            <td>De achtergrondkleur die achter de tekst in de console wordt weergegeven</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Clear()</code></td>
-            <td>Wist de inhoud van het console-venster</td>
-         </tr>
-         <tr>
-            <td><code>Write()</code></td>
-            <td>Schrijft de waarde naar de console</td>
-         </tr>
-         <tr>
-            <td><code>WriteLine()</code></td>
-            <td>Schrijft de waarde naar de console en eindigt de regel met een newline-karakter</td>
-         </tr>
-         <tr>
-            <td><code>Read()</code></td>
-            <td>Lees één karakter uit, uit de console</td>
-         </tr>
-         <tr>
-            <td><code>ReadKey()</code></td>
-            <td>Leest één karakter uit, uit de console. Biedt de mogelijkheid om de ingetypte toets niet weer te geven</td>
-         </tr>
-         <tr>
-            <td><code>ReadLine()</code></td>
-            <td>Leest een volledige regel uit, uit de console</td>
-         </tr>
-         <tr>
-            <td><code>ResetColor()</code></td>
-            <td>Herstelt de voor- en achtergrondkleur naar de oorspronkelijke kleuren</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Waarde schrijven</h3>
-   <h4>Tekst schrijven op één regel</h4>
-   <pre><code>Console.Write("a");
+      <!-- CONSOLE -->
+      <h2>Console</h2>
+      <p>Met de klasse <code>Console</code> is het mogelijk om tekst naar de console te schrijven en invoer van de gebruiker uit de console uit te lezen (basis I/O).</p>
+      <h3>Properties en methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>BackgroundColor</code></td>
+               <td>De achtergrondkleur die achter de tekst in de console wordt weergegeven</td>
+            </tr>
+            <tr>
+               <td><code>ForegroundColor</code></td>
+               <td>De tekstkleur voor het weergeven van tekst in de console</td>
+            </tr>
+            <tr>
+               <td><code>OutputEncoding</code></td>
+               <td>Het karakterset gebruikt in de console</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Clear()</code></td>
+               <td>Wist de inhoud van het console-venster</td>
+            </tr>
+            <tr>
+               <td><code>Read()</code></td>
+               <td>Lees één karakter uit, uit de console</td>
+            </tr>
+            <tr>
+               <td><code>ReadKey()</code></td>
+               <td>Leest één karakter uit, uit de console. Biedt de mogelijkheid om de ingetypte toets niet weer te geven</td>
+            </tr>
+            <tr>
+               <td><code>ReadLine()</code></td>
+               <td>Leest een volledige regel uit, uit de console</td>
+            </tr>
+            <tr>
+               <td><code>ResetColor()</code></td>
+               <td>Herstelt de voor- en achtergrondkleur naar de oorspronkelijke kleuren</td>
+            </tr>
+            <tr>
+               <td><code>Write()</code></td>
+               <td>Schrijft de waarde naar de console</td>
+            </tr>
+            <tr>
+               <td><code>WriteLine()</code></td>
+               <td>Schrijft de waarde naar de console en eindigt de regel met een newline-karakter</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Waarde schrijven</h3>
+      <h4>Tekst schrijven op één regel</h4>
+      <pre><code>Console.Write("a");
 Console.Write("b");
 Console.Write("c");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-write.png" alt="" width="250">
-      <figcaption>Write(): schrijf en blijf op dezelfde regel</figcaption>
-   </figure>
-   <h4>Tekst schrijven over meerdere regels</h4>
-   <pre><code>Console.WriteLine("a");
+      <figure class="console">
+         <pre>
+abc</pre>
+         <figcaption>Write(): schrijf en blijf op dezelfde regel</figcaption>
+      </figure>
+      <h4>Tekst schrijven over meerdere regels</h4>
+      <pre><code>Console.WriteLine("a");
 Console.WriteLine("b");
 Console.WriteLine("c");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-writeline.png" alt="" width="250">
-      <figcaption>WriteLine(): schrijf en ga naar de volgende regel</figcaption>
-   </figure>
-   <h3>Waarde inlezen</h3>
-   <h4>Tekst inlezen en weergeven in de console</h4>
-   <pre><code>Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
+      <figure class="console">
+         <pre>
+a
+b
+c</pre>
+         <figcaption>WriteLine(): schrijf en ga naar de volgende regel</figcaption>
+      </figure>
+      <h3>Waarde inlezen</h3>
+      <h4>Tekst inlezen en weergeven in de console</h4>
+      <pre><code>Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
 string naam = Console.ReadLine();   // lees de naam in en sla deze op in een variabele
 
 Console.WriteLine("Hallo, " + naam); // schrijf een boodschap naar de console</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-lezen.gif" alt="regel inlezen en weergeven" width="250">
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h4>Getal inlezen</h4>
-   <p>Console.ReadLine() geeft altijd een tekst terug; als je een getal wil, moet je het converteren met <code>Convert.ToInt32()</code> (gehele getallen) of  <code>Convert.ToDouble()</code> (kommagetallen):</p>
-   <pre><code>Console.Write("Geef een aantal in: "); 
+      <figure>
+         <img src="img/02_dotnetclasses/console-lezen.gif" alt="regel inlezen en weergeven" width="250">
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Getal inlezen</h4>
+      <p>Console.ReadLine() geeft altijd een tekst terug; als je een getal wil, moet je het converteren met <code>Convert.ToInt32()</code> (gehele getallen) of <code>Convert.ToDouble()</code> (kommagetallen):</p>
+      <pre><code>Console.Write("Geef een aantal in: "); 
 int aantal = Convert.ToInt32(Console.ReadLine());   // zet de tekst om naar een geheel getal met Convert.ToInt32()
 Console.Write("Geef een prijs in: "); 
 double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToInt32()</code></pre>
-   <h4>Karakter inlezen met weergave</h4>
-   <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
+      <h4>Karakter inlezen met weergave</h4>
+      <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey().KeyChar; 
 Console.WriteLine("\nJe koos: " + keuze);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" width="250">
-      <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
-   </figure>
-   <h4>Karakter inlezen zonder weergave</h4>
-   <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
+      <figure>
+         <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" width="250">
+         <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
+      </figure>
+      <h4>Karakter inlezen zonder weergave</h4>
+      <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet weergegeven in console
 Console.WriteLine("\nJe koos: " + keuze);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-readkey2.gif" alt="" width="250">
-      <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
-   </figure>
-   <h3>Console kleuren</h3>
-   <h4>Tekstkleur en/of achtergrondkleur instellen</h4>
-   <p>Met de properties <code>ForegroundColor</code> en <code>BackgroundColor</code> kan je de tekstkleur, respectievelijk de achtergrondkleur van de uitvoer in de console instellen.</p>
-   <pre><code>Console.ForegroundColor = ConsoleColor.Red; // rode tekstkleur
+      <figure>
+         <img src="img/02_dotnetclasses/console-readkey2.gif" alt="" width="250">
+         <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
+      </figure>
+      <p>Soms wordt dit ook gebruikt om met het vervolg van het programma te wachten tot de gebruiker een toets indrukt:</p>
+      <pre><code>Console.WriteLine("druk een toets om verder te gaan...");
+Console.ReadKey(true); </code></pre>
+      <h3>Console kleuren</h3>
+      <h4>Tekstkleur en/of achtergrondkleur instellen</h4>
+      <p>Met de properties <code>ForegroundColor</code> en <code>BackgroundColor</code> kan je de tekstkleur, respectievelijk de achtergrondkleur van de uitvoer in de console instellen.</p>
+      <pre><code>Console.ForegroundColor = ConsoleColor.Red; // rode tekstkleur
 Console.BackgroundColor = ConsoleColor.White; // witte achtergrond
 
 Console.WriteLine("Hello, World!");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/console-kleuren.png" alt="uitvoer console kleuren" width="250">
-      <figcaption>resultaat console kleuren</figcaption>
-   </figure>
-   <h4>Tekst- en achtergrondkleur herstellen</h4>
-   <p>Om opnieuw de oorspronkelijke tekst- en achtergrondkleur in te stellen, maak je gebruik van de methode <code>ResetColor()</code>:</p>
-   <pre><code>Console.ResetColor();</code></pre>
-   <h3>Console wissen</h3>
-   <p>Om het console-venster leeg te maken, maak je gebruik van de <code>Clear()</code>-methode:</p>
-   <pre><code>Console.Clear(); // wis de inhoud van het console-venster</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/console-kleuren.png" alt="uitvoer console kleuren" width="250">
+         <figcaption>resultaat console kleuren</figcaption>
+      </figure>
+      <p>Om opnieuw de oorspronkelijke tekst- en achtergrondkleur in te stellen, maak je gebruik van de methode <code>ResetColor()</code>:</p>
+      <pre><code>Console.ResetColor();</code></pre>
+      <h3>Console wissen</h3>
+      <p>Om het console-venster leeg te maken, maak je gebruik van de <code>Clear()</code>-methode:</p>
+      <pre><code>Console.Clear(); // wis de inhoud van het console-venster</code></pre>
+      <h3>Console karaktersets</h3>
+      <p>Standaard kan je in de console alleen de eerste 127 ASCII karakters gebruiken (zie b.v. <a href="https://www.asciitable.com/">asciitable.com</a> ). Andere karakters worden fout weergegeven:</p>
+      <pre><code>Console.WriteLine("A 1 +"); // gewone ASCII karakters worden correct weergegeven
+Console.WriteLine("∑ → ◈"); // andere karakters worden fout weergegeven</code></pre>
+      <figure class="console">
+         <pre>
+A 1 +         
+S ⸮ ?</pre>
+         <figcaption>speciale karakters worden fout weergegeven</figcaption>
+      </figure>
+      <p>Om speciale karakters correct weer te geven, moet je <code>Console.OutputEncoding</code> instellen:</p>
+      <pre><code>Console.OutputEncoding = Encoding.UTF8; // stel utf-8 karakterset in
+Console.WriteLine("A 1 +"); 
+Console.WriteLine("∑ → ◈"); // andere karakters worden nu ook correct weergegeven</code></pre>
+      <figure class="console">
+         <pre>
+A 1 +         
+∑ → ◈</pre>
+         <figcaption>speciale karakters worden nu correct weergegeven</figcaption>
+      </figure>
+      <p>Merk op: zelfs dan kunnen karakters soms verkeerd of anders weergegeven worden, afhankelijk van de beschikbare lettertypes, en zeker bij emoji's. </p>
+      <pre><code>Console.OutputEncoding = Encoding.UTF8; 
+Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
+      <figure class="console">
+         <img src="img/02_dotnetclasses/console-emojis.png" alt="" width="350">
+         <figcaption>emoji's worden soms anders of verkeerd weergegeven</figcaption>
+      </figure>
 
-   <!-- CONVERT -->   
-   <h2>Convert</h2>
-   <p>De klasse <code>Convert</code> wordt gebruikt om waarden van verschillende types om te zetten naar een ander data-type (bv.: van <code>string</code> naar <code>int</code>).</p>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>ToChar()</code></td>
-            <td>Zet een waarde om naar een waarde van het type <code>char</code></td>
-         </tr>
-         <tr>
-            <td><code>ToDouble()</code></td>
-            <td>Zet een waarde om naar een waarde van het type <code>double</code></td>
-         </tr>
-         <tr>
-            <td><code>ToInt32()</code></td>
-            <td>Zet een waarde om naar een waarde van het type <code>int</code> (32 bits)</td>
-         </tr>
-         <tr>
-            <td><code>ToString()</code></td>
-            <td>Zet een waarde om naar een <code>string</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Code voorbeelden</h3>
-   <h4>ToChar</h4>
-   <pre><code>char letter = Convert.ToChar("a"); // string naar char
+      <!-- CONVERT -->
+      <h2>Convert</h2>
+      <p>De klasse <code>Convert</code> wordt gebruikt om waarden van verschillende types om te zetten naar een ander data-type (bv.: van <code>string</code> naar <code>int</code>).</p>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>ToChar()</code></td>
+               <td>Zet een waarde om naar een waarde van het type <code>char</code></td>
+            </tr>
+            <tr>
+               <td><code>ToDouble()</code></td>
+               <td>Zet een waarde om naar een waarde van het type <code>double</code></td>
+            </tr>
+            <tr>
+               <td><code>ToInt32()</code></td>
+               <td>Zet een waarde om naar een waarde van het type <code>int</code> (32 bits)</td>
+            </tr>
+            <tr>
+               <td><code>ToString()</code></td>
+               <td>Zet een waarde om naar een <code>string</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Code voorbeelden</h3>
+      <h4>ToChar</h4>
+      <pre><code>char letter = Convert.ToChar("a"); // string naar char
 char letter2 = Convert.ToChar(65); // int naar char (ASCII-waarde &rarr; 'A')</code></pre>
-   <h4>ToDouble</h4>
-   <pre><code>double kommagetal = Convert.ToDouble("3.14"); // string naar double</code></pre>
-   <h4>ToInt32</h4>
-   <pre><code>int a = Convert.ToInt32("15"); // string naar int
+      <h4>ToDouble</h4>
+      <pre><code>double kommagetal = Convert.ToDouble("3.14"); // string naar double</code></pre>
+      <h4>ToInt32</h4>
+      <pre><code>int a = Convert.ToInt32("15"); // string naar int
 int b = Convert.ToInt32(3.14); // double naar int &rarr; afronding (b = 3)
 int c = Convert.ToInt32(3.91); // double naar int &rarr; afronding (c = 4)</code></pre>
-   <p>Opmerking: wanneer je een kommagetal (double) omzet naar een geheel getal (int), wordt het getal wiskundig afgerond (d.w.z. &lt; 0.5 naar beneden, &gt;= 0.5 naar boven)</p>
-   <h4>ToString</h4>
-   <pre><code>string str1 = Convert.ToString('a');        // char &rarr; string "a"
+      <p>Opmerking: wanneer je een kommagetal (double) omzet naar een geheel getal (int), wordt het getal wiskundig afgerond (d.w.z. &lt; 0.5 naar beneden, &gt;= 0.5 naar boven)</p>
+      <h4>ToString</h4>
+      <pre><code>string str1 = Convert.ToString('a');        // char &rarr; string "a"
 string str2 = Convert.ToString(32);         // int &rarr; string "32"
 string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</code></pre>
 
-   <!-- ENVIRONMENT-->   
-   <h2>Environment</h2>
-   <p>De klasse <code>Environment</code> biedt een aantal properties en methodes aan om informatie te verkrijgen over de omgeving waarin de applicatie wordt uitgevoerd (locale, besturingssysteem, ...).</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>NewLine</code></td>
-            <td>Newline-karakter voor het besturingssysteem waarop de applicatie wordt uitgevoerd</td>
-         </tr>
-         <tr>
-            <td><code>SpecialFolder.Desktop</code></td>
-            <td>Pad naar de desktop op de huidige computer</td>
-         </tr>
-         <tr>
-            <td><code>SpecialFolder.MyDocuments</code></td>
-            <td>Pad naar de documentenmap op de huidige computer</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Exit</code></td>
-            <td>Wordt gebruikt om de applicatie (voortijdig) af te sluiten</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Code voorbeelden</h3>
-   <h4>Platform-onafhankelijke NewLine (Windows/Linux/Mac OSX/...)</h4>
-   <pre><code>Console.Write("Regel 1" + Environment.NewLine + "Regel 2");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/enviroment-newline.png" alt="" width="250">
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h4>Pad naar Desktop opvragen</h4>
-   <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // op mijn PC is dit C:\Users\rogie\Pictures</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/environment-specialfolder.png" alt="" width="250">
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h4>Programma afsluiten</h4>
-   <pre><code>Environment.Exit(0);</code></pre>
-   <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
+      <!-- ENVIRONMENT-->
+      <h2>Environment</h2>
+      <p>De klasse <code>Environment</code> biedt een aantal properties en methodes aan om informatie te verkrijgen over de omgeving waarin de applicatie wordt uitgevoerd (locale, besturingssysteem, ...).</p>
+      <h3>Properties en methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>NewLine</code></td>
+               <td>Newline-karakter voor het besturingssysteem waarop de applicatie wordt uitgevoerd</td>
+            </tr>
+            <tr>
+               <td><code>SpecialFolder.Desktop</code></td>
+               <td>Pad naar de desktop op de huidige computer</td>
+            </tr>
+            <tr>
+               <td><code>SpecialFolder.MyDocuments</code></td>
+               <td>Pad naar de documentenmap op de huidige computer</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Exit</code></td>
+               <td>Wordt gebruikt om de applicatie (voortijdig) af te sluiten</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Code voorbeelden</h3>
+      <h4>Platform-onafhankelijke NewLine (Windows/Linux/Mac OSX/...)</h4>
+      <pre><code>Console.Write("Regel 1" + Environment.NewLine + "Regel 2");</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/enviroment-newline.png" alt="" width="250">
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Pad naar Desktop opvragen</h4>
+      <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // op mijn PC is dit C:\Users\rogie\Pictures</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/environment-specialfolder.png" alt="" width="250">
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Programma afsluiten</h4>
+      <pre><code>Environment.Exit(0);</code></pre>
+      <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
 
-   <!-- MATH -->   
-   <h2>Math</h2>
-   <p>De klasse <code>Math</code> bevat tal van wiskundige methodes en properties.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>PI</code></td>
-            <td>Benadering van het getal <em>pi</em></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Beschrijving</th>
-            <th scope="col">Voorbeeld</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Ceiling()</code></td>
-            <td>getal naar boven afronden</td>
-            <td><code>Math.Ceiling(3.14); // resultaat: 4.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Floor()</code></td>
-            <td>getal naar beneden afronden</td>
-            <td><code>Math.Floor(3.14); // resultaat: 3.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Pow()</code></td>
-            <td>machtsverheffing</td>
-            <td><code>Math.Pow(5, 2); // resultaat: 5² = 25</code></td>
-         </tr>
-         <tr>
-            <td><code>Round()</code></td>
-            <td>getal afronden tot aantal decimalen</td>
-            <td><code>Math.Round(3.1415, 2); // resultaat: 3.14</code></td>
-         </tr>
-         <tr>
-            <td><code>Sqrt()</code></td>
-            <td>vierkantswortel (square root)</td>
-            <td><code>Math.Sqrt(25); // resultaat: 5.0</code></td>
-         </tr>
-         <tr>
-            <td><code>Max()</code></td>
-            <td>grootste van twee getallen</td>
-            <td><code>Math.Max(10, 20); // resultaat: 20.0</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Berekening oppervlakte cirkel (m.b.v. PI)</h4>
-   <pre><code>int straal = 5;
+      <!-- MATH -->
+      <h2>Math</h2>
+      <p>De klasse <code>Math</code> bevat tal van wiskundige methodes en properties.</p>
+      <h3>Properties en methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>PI</code></td>
+               <td>Benadering van het getal <em>pi</em></td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Beschrijving</th>
+               <th scope="col">Voorbeeld</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Ceiling()</code></td>
+               <td>getal naar boven afronden</td>
+               <td><code>Math.Ceiling(3.14); // resultaat: 4.0</code></td>
+            </tr>
+            <tr>
+               <td><code>Floor()</code></td>
+               <td>getal naar beneden afronden</td>
+               <td><code>Math.Floor(3.14); // resultaat: 3.0</code></td>
+            </tr>
+            <tr>
+               <td><code>Pow()</code></td>
+               <td>machtsverheffing</td>
+               <td><code>Math.Pow(5, 2); // resultaat: 5² = 25</code></td>
+            </tr>
+            <tr>
+               <td><code>Round()</code></td>
+               <td>getal afronden tot aantal decimalen</td>
+               <td><code>Math.Round(3.1415, 2); // resultaat: 3.14</code></td>
+            </tr>
+            <tr>
+               <td><code>Sqrt()</code></td>
+               <td>vierkantswortel (square root)</td>
+               <td><code>Math.Sqrt(25); // resultaat: 5.0</code></td>
+            </tr>
+            <tr>
+               <td><code>Max()</code></td>
+               <td>grootste van twee getallen</td>
+               <td><code>Math.Max(10, 20); // resultaat: 20.0</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Berekening oppervlakte cirkel (m.b.v. PI)</h4>
+      <pre><code>int straal = 5;
 double oppervlakte = straal * straal * Math.PI;
 
 Console.WriteLine("De oppervlakte bedraagt: " + oppervlakte);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/math-PI.png" alt="" width="280">
-      <figcaption>gebruik van de Math PI constante</figcaption>
-   </figure>
-   <h4>Wiskundige methodes</h4>
-   <pre><code>double a = Math.Ceiling(3.14); // resultaat: 4.0
+      <figure>
+         <img src="img/02_dotnetclasses/math-PI.png" alt="" width="280">
+         <figcaption>gebruik van de Math PI constante</figcaption>
+      </figure>
+      <h4>Wiskundige methodes</h4>
+      <pre><code>double a = Math.Ceiling(3.14); // resultaat: 4.0
 double b = Math.Floor(3.14);   // resultaat: 3.0
 double c = Math.Pow(5, 2);     // resultaat: 5² = 25
 double d = Math.Round(3.1415, 2); // resultaat: 3.14 (afgerond tot op 2 cijfers na de komma)
@@ -473,101 +524,101 @@ Console.WriteLine("d: " + d);
 Console.WriteLine("e: " + e);
 Console.WriteLine("grootste: " + grootste);
 Console.WriteLine("kleinste: " + kleinste);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/math-berekeningen.png" alt="" width="250">
-      <figcaption>gebruik van de Math functies</figcaption>
-   </figure>
+      <figure>
+         <img src="img/02_dotnetclasses/math-berekeningen.png" alt="" width="250">
+         <figcaption>gebruik van de Math functies</figcaption>
+      </figure>
 
-   <!-- MESSAGEBOX -->   
-   <h2>MessageBox</h2>
-   <p>Een MessageBox is een dialoogvenster dat een boodschap voor de gebruiker bevat (bv.: een foutmelding, een bevestiging van een actie, ...).</p>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Show()</code></td>
-            <td>Toon het dialoogvenster op het scherm</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Code voorbeelden</h3>
-   <h4>Dialoogvenster met enkel een boodschap</h4>
-   <pre><code>MessageBox.Show("Hello, World!");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/messagebox_example1.png" alt="">
-      <figcaption>MessageBox met enkel boodschap</figcaption>
-   </figure>
-   <h4>Dialoogvenster met boodschap en titel</h4>
-   <pre><code>MessageBox.Show("Hello, World!", "Voorbeeld MessageBox");</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/messagebox_example2.png" alt="" width="150">
-      <figcaption>MessageBox met boodschap en titel</figcaption>
-   </figure>
+      <!-- MESSAGEBOX -->
+      <h2>MessageBox</h2>
+      <p>Een MessageBox is een dialoogvenster dat een boodschap voor de gebruiker bevat (bv.: een foutmelding, een bevestiging van een actie, ...).</p>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Show()</code></td>
+               <td>Toon het dialoogvenster op het scherm</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Code voorbeelden</h3>
+      <h4>Dialoogvenster met enkel een boodschap</h4>
+      <pre><code>MessageBox.Show("Hello, World!");</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/messagebox_example1.png" alt="">
+         <figcaption>MessageBox met enkel boodschap</figcaption>
+      </figure>
+      <h4>Dialoogvenster met boodschap en titel</h4>
+      <pre><code>MessageBox.Show("Hello, World!", "Voorbeeld MessageBox");</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/messagebox_example2.png" alt="" width="150">
+         <figcaption>MessageBox met boodschap en titel</figcaption>
+      </figure>
 
-   <!-- RANDOM -->   
-   <h2>Random</h2>
-   <p>Met de klasse <code>Random</code> kan je een willekeurige waarde (getal) genereren.</p>
-   <h3>Constructie</h3>
-   <pre><code>Random rnd = new Random();</code></pre>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td>Next()</td>
-            <td>Genereert een willekeurig getal tussen de meegegeven boven- en ondergrens</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Code voorbeeld</h3>
-   <h4>Willekeurig getal van 1 tot en met 20</h4>
-   <pre><code>Random rnd = new Random();
+      <!-- RANDOM -->
+      <h2>Random</h2>
+      <p>Met de klasse <code>Random</code> kan je een willekeurige waarde (getal) genereren.</p>
+      <h3>Constructie</h3>
+      <pre><code>Random rnd = new Random();</code></pre>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Next()</td>
+               <td>Genereert een willekeurig getal tussen de meegegeven boven- en ondergrens</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Code voorbeeld</h3>
+      <h4>Willekeurig getal van 1 tot en met 20</h4>
+      <pre><code>Random rnd = new Random();
 int getal1 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 int getal2 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 
 Console.WriteLine("Random getal 1: " + getal1);
 Console.WriteLine("Random getal 2: " + getal2);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/random-voorbeeld1.png" alt="" width="250">
-      <figcaption>twee random getallen tussen 1 en 20</figcaption>
-   </figure>
-   <p>Opmerking: de bovengrens is <strong>exclusief</strong>. Dat betekent dat het gegenereerde getal steeds strikt kleiner zal zijn dan de opgegeven bovengrens. Wil je bv. een willekeurig getal berekenen van 1 t.e.m. 5, gebruik je de parameters <code>Next(1, 6)</code>.</p>
+      <figure>
+         <img src="img/02_dotnetclasses/random-voorbeeld1.png" alt="" width="250">
+         <figcaption>twee random getallen tussen 1 en 20</figcaption>
+      </figure>
+      <p>Opmerking: de bovengrens is <strong>exclusief</strong>. Dat betekent dat het gegenereerde getal steeds strikt kleiner zal zijn dan de opgegeven bovengrens. Wil je bv. een willekeurig getal berekenen van 1 t.e.m. 5, gebruik je de parameters <code>Next(1, 6)</code>.</p>
 
-   <!-- STRING -->   
-   <h2>String</h2>
-   <h3>Methodes</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>IsNullOrEmpty()</code></td>
-            <td>Gaat na of de meegegeven string gelijk is aan <code>null</code> of een lege string (<code>&quot;&quot;</code>) is</td>
-         </tr>
-         <tr>
-            <td><code>Join()</code></td>
-            <td>Concateneert een collectie met waarden tot één string met daartussen een separator</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Code voorbeelden</h3>
-   <h4>Nagaan of een string leeg is</h4>
-   <pre><code>string str1 = "test";
+      <!-- STRING -->
+      <h2>String</h2>
+      <h3>Methodes</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>IsNullOrEmpty()</code></td>
+               <td>Gaat na of de meegegeven string gelijk is aan <code>null</code> of een lege string (<code>&quot;&quot;</code>) is</td>
+            </tr>
+            <tr>
+               <td><code>Join()</code></td>
+               <td>Concateneert een collectie met waarden tot één string met daartussen een separator</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Code voorbeelden</h3>
+      <h4>Nagaan of een string leeg is</h4>
+      <pre><code>string str1 = "test";
 Console.WriteLine("str1: " + string.IsNullOrEmpty(str1));
 
 string str2 = null;
@@ -578,13 +629,13 @@ Console.WriteLine("str3: " + string.IsNullOrEmpty(str3));
 
 string str4 = " ";
 Console.WriteLine("str4: " + string.IsNullOrEmpty(str4));</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/string-isnullorempty.png" alt="" width="250">
-      <figcaption>IsNullOrEmpty voorbeeld</figcaption>
-   </figure>
-   <p>Opmerking: een spatie (<code>&quot; &quot;</code>) wordt <strong>niet</strong> al een lege string gezien!</p>
-   <h4>Nagaan of de gebruiker een TextBox heeft ingevuld</h4>
-   <pre><code>if (string.IsNullOrEmpty(txtNaam))
+      <figure>
+         <img src="img/02_dotnetclasses/string-isnullorempty.png" alt="" width="250">
+         <figcaption>IsNullOrEmpty voorbeeld</figcaption>
+      </figure>
+      <p>Opmerking: een spatie (<code>&quot; &quot;</code>) wordt <strong>niet</strong> al een lege string gezien!</p>
+      <h4>Nagaan of de gebruiker een TextBox heeft ingevuld</h4>
+      <pre><code>if (string.IsNullOrEmpty(txtNaam))
 {
    lblFoutboodschap.Content = "Het 'naam'-veld is niet ingevuld";
 } 
@@ -592,8 +643,8 @@ else
 {
    lblFoutboodschap.Content = "";
 }</code></pre>
-   <h4>Een lijst met string's samenvoegen tot één string, gescheiden d.m.v. een streepje</h4>
-   <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
+      <h4>Een lijst met string's samenvoegen tot één string, gescheiden d.m.v. een streepje</h4>
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
 fruit.Add("appel");
 fruit.Add("banaan");
 fruit.Add("citroen");
@@ -602,17 +653,19 @@ fruit.Add("peer");
 string reeks = string.Join(" - ", fruit);
 
 Console.WriteLine(reeks);</code></pre>
-   <figure>
-      <img src="img/02_dotnetclasses/string-join1.png" alt="" width="250">
-      <figcaption>Join() voorbeeld</figcaption>
-   </figure>
-   <h4>Een array met getallen samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
-   <pre><code>int[] getallen = {5, 7, 12, 8, 3};
+      <figure>
+         <img src="img/02_dotnetclasses/string-join1.png" alt="" width="250">
+         <figcaption>Join() voorbeeld</figcaption>
+      </figure>
+      <h4>Een array met getallen samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
+      <pre><code>int[] getallen = {5, 7, 12, 8, 3};
 string reeks = string.Join(", ", getallen);
 
 Console.WriteLine(reeks);</code></pre>
-   <pre><code>5, 7, 12, 8, 3
+      <pre><code>5, 7, 12, 8, 3
 </code></pre>
+   </main>
+
 
    <script src="vendor/prism.js"></script>
    <script src="js/scripts.js"></script>

@@ -1,18 +1,34 @@
 /* ELEMENTS */
 
 body {
+   counter-reset: chapter;
    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
    margin-bottom: 50px;
-   max-width: 1200px;
    padding: 0 25px;
 }
 
 a {
+   color: #00c;
    text-decoration: none;
+}
+
+main a::after {
+   content: "🔗";
+   font-size: smaller;
+   position: relative;
+   top: -5px;
+}
+
+#toc a::after {
+   display: none;   
 }
 
 a:hover {
    text-decoration: underline;
+}
+
+code, pre {
+   width: fit-content;
 }
 
 figure {
@@ -26,13 +42,17 @@ figcaption {
 }
 
 h1,
-h2,
-h3 {
+h2, 
+h3, 
+h4 {
    font-weight: normal;
+   margin-bottom: 1em;
+   margin-top: 1em;
+   padding-bottom: 0.3em;
+   width: fit-content;
 }
 
 h1 {
-   padding-bottom: 0.3em;
    line-height: 1.2;
    border-bottom-width: 1px;
    border-bottom-style: solid;
@@ -40,9 +60,34 @@ h1 {
 
 h2 {
    border-bottom: 4px double #ccc;
-   display: inline-block;
-   margin-top: 1em;
+   counter-reset: subchapter;
    padding-bottom: 5px;
+}
+
+h2::before {
+   counter-increment: chapter;
+   content: counter(chapter) ". ";
+}
+
+h3 {
+   border-bottom: 2px solid #ccc;
+   counter-reset: subsubchapter;
+}
+
+h3::before {
+   counter-increment: subchapter;
+   content: counter(chapter) ". " counter(subchapter) " ";
+}
+
+h4 {
+   border-bottom: 1px dotted #ccc;
+   font-size: 14px;
+   text-transform: uppercase;
+}
+
+h4::before {
+   counter-increment: subsubchapter;
+   content: counter(chapter) ". " counter(subchapter)  ". " counter(subsubchapter) " ";
 }
 
 img {
@@ -54,6 +99,14 @@ figure {
    margin-top: 0;
 }
 
+p, table {
+   max-width: 1200px;
+}
+
+table {
+   margin-bottom: 1em;
+}
+
 /* CLASSES */
 
 .bordered {
@@ -62,6 +115,76 @@ figure {
 
 .centered {
    text-align: center;
+}
+
+.tips {
+   background-color: #eee;
+   border: 2px dashed #999;
+   padding: 40px 50px 10px 20px;
+   position: relative;
+}
+
+.tips::before {
+   content: "💡TIP";
+   font-size: 20px;
+   left: 5px;
+   position: absolute;
+   top: 5px;
+}
+
+/* NAV */
+
+.site__nav {
+   column-gap: 2.5%;
+   display: flex;
+   justify-content: center;
+   padding: 1.875em 0;
+   row-gap: 1.875em;
+}
+
+.main__thumb {
+   align-items: center;
+   background-color: #e1d9c0;
+   border: 0.25em solid #eee;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+   color: #333;
+   display: flex;
+   flex-direction: column;
+   font-size: 10px;
+   font-family: 'League Gothic', sans-serif;
+   justify-content: flex-start;
+   padding: 1em 0.5em;
+   text-decoration: none;
+   text-shadow: 0px 5px 2px rgba(150, 150, 150, 0.71);
+   text-transform: uppercase;
+   transition: all .2s linear;
+   width: 16em;
+}
+
+.main__thumb:hover,
+.main__thumb.active {
+   border-color: #c0a86e;
+   text-decoration: none;
+}
+
+.thumb__title {
+   font-size: 1.8em;
+   font-weight: normal;
+   margin-bottom: 0.75em;
+   margin-top: 0;
+   white-space: nowrap;
+}
+
+.thumb__visual {
+   display: block;
+   margin-bottom: 1em;
+   width: 50%;
+}
+
+.thumb__small {
+   font-size: 0.5em;
+   margin-bottom: 0;
+   margin-top: auto;
 }
 
 /* TABLE OF CONTENTS */
@@ -94,7 +217,14 @@ table > thead > tr > th,
 table > thead > tr > td,
 table > tbody > tr > th,
 table > tbody > tr > td {
-   padding: 5px 10px;
+   padding: 5px 20px 5px 0;
+}
+
+table > thead > tr > th:first-child,
+table > thead > tr > td:first-child,
+table > tbody > tr > th:first-child,
+table > tbody > tr > td:first-child {
+   min-width: 150px;
 }
 
 table > tbody > tr + tr > td {
@@ -127,13 +257,17 @@ pre {
 
 figure.console pre {
    background-color: black;
+   background-image: url(../img/consoleheader.png);
+   background-repeat: no-repeat;
+   background-size: 100% auto;
    color: #ddd;
    display: inline-block;
-   font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-   font-size: 0.9em;
+   font-family: Consolas,"Liberation Mono","Courier New",monospace;
+   font-size: 0.8em;
    line-height: 1.357em;
    margin: 0;
-   min-width: 300px;
+   width: 400px;
+   padding-top: 35px;
 }
 
 pre[class*="language-"] {

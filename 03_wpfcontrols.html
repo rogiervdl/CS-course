@@ -6,267 +6,329 @@
    <title>WPF controls | C# cheat sheets</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="vendor/prism-vs-light.css">
+   <link rel="stylesheet" href="fonts/leaguegothic/webfont.css">
    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="language-cs">
-   <h1>WPF-Controls</h1>
+   <nav class="site__nav">
+      <a href="01_csharpsyntax.html" class="main__thumb">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb active">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>03. WPF-Controls</h1>
    <div id="toc"></div>
+   <main>
 
-   <h2>Overzicht</h2>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Control</th>
-            <th scope="col">Omschrijving</th>
-            <th scope="col" class="centered">Voorbeeld</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><a href="#button">Button</a></td>
-            <td>Knop waar gebruiker op kan klikken</td>
-            <td><img src="img/03_wpfcontrols/button_control.png" alt="button"></td>
-         </tr>
-         <tr>
-            <td><a href="#checkbox">CheckBox</a></td>
-            <td>Keuzevakje (aanvinken), <strong>meerdere keuzes</strong></td>
-            <td><img src="img/03_wpfcontrols/checkbox_control.png" alt="checkbox"></td>
-         </tr>
-         <tr>
-            <td><a href="#combobox">ComboBox</a></td>
-            <td>Drop-down menu om keuze te maken</td>
-            <td><img src="img/03_wpfcontrols/combobox_control.png" alt="combobox"></td>
-         </tr>
-         <tr>
-            <td><a href="#datepicker">DatePicker</a></td>
-            <td>Datum laten selecteren (via kalender)</td>
-            <td><img src="img/03_wpfcontrols/datepicker_control.png" alt="datepicker"></td>
-         </tr>
-         <tr>
-            <td><a href="#image">Image</a></td>
-            <td>Weergeven van afbeeldingen</td>
-            <td><img src="img/03_wpfcontrols/image_control.png" alt="image"></td>
-         </tr>
-         <tr>
-            <td><a href="#label">Label</a></td>
-            <td>Korte tekst weergeven (<strong>één</strong> regel)</td>
-            <td><img src="img/03_wpfcontrols/label_control.png" alt="label"></td>
-         </tr>
-         <tr>
-            <td><a href="#listbox">ListBox</a></td>
-            <td>Lijst met items weergeven (mogelijkheid tot selecteren)</td>
-            <td><img src="img/03_wpfcontrols/listbox_control.png" alt="listbox"></td>
-         </tr>
-         <tr>
-            <td><a href="#radiobutton">RadioButton</a></td>
-            <td>Keuzerondje (één <strong>exclusieve keuze</strong>)</td>
-            <td><img src="img/03_wpfcontrols/radiobutton_control.png" alt="radiobutton"></td>
-         </tr>
-         <tr>
-            <td><a href="#slider">Slider</a></td>
-            <td>Waarde (getal) selecteren in een bereik d.m.v. schuiven</td>
-            <td><img src="img/03_wpfcontrols/slider_control.png" alt="slider"></td>
-         </tr>
-         <tr>
-            <td><a href="#textblock">TextBlock</a></td>
-            <td>Weergeven van lange blokken tekst (één of <strong>meerdere</strong> regels)</td>
-            <td><img src="img/03_wpfcontrols/textblock_control.png" alt="textblock"></td>
-         </tr>
-         <tr>
-            <td><a href="#textbox">TextBox</a></td>
-            <td>Invoer van vrije tekst (tekstveld, één of meerdere regels)</td>
-            <td><img src="img/03_wpfcontrols/textbox_control.png" alt="textbox"></td>
-         </tr>
-         <tr>
-            <td><a href="#window">Window</a></td>
-            <td>Het volledige scherm dat de controls bevat</td>
-            <td></td>
-         </tr>
-      </tbody>
-   </table>
+      <h2>Overzicht WPF controls</h2>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Control</th>
+               <th scope="col">Omschrijving</th>
+               <th scope="col" class="centered">Voorbeeld</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><a href="#button">Button</a></td>
+               <td>Knop waar gebruiker op kan klikken</td>
+               <td><img src="img/03_wpfcontrols/button_control.png" alt="button"></td>
+            </tr>
+            <tr>
+               <td><a href="#checkbox">CheckBox</a></td>
+               <td>Keuzevakje (aanvinken), <strong>meerdere keuzes</strong></td>
+               <td><img src="img/03_wpfcontrols/checkbox_control.png" alt="checkbox"></td>
+            </tr>
+            <tr>
+               <td><a href="#combobox">ComboBox</a></td>
+               <td>Drop-down menu om keuze te maken</td>
+               <td><img src="img/03_wpfcontrols/combobox_control.png" alt="combobox"></td>
+            </tr>
+            <tr>
+               <td><a href="#datepicker">DatePicker</a></td>
+               <td>Datum laten selecteren (via kalender)</td>
+               <td><img src="img/03_wpfcontrols/datepicker_control.png" alt="datepicker" width="200"></td>
+            </tr>
+            <tr>
+               <td><a href="#image">Image</a></td>
+               <td>Weergeven van afbeeldingen</td>
+               <td><img src="img/03_wpfcontrols/image_control.png" alt="image"></td>
+            </tr>
+            <tr>
+               <td><a href="#label">Label</a></td>
+               <td>Korte tekst weergeven (<strong>één</strong> regel)</td>
+               <td><img src="img/03_wpfcontrols/label_control.png" alt="label"></td>
+            </tr>
+            <tr>
+               <td><a href="#listbox">ListBox</a></td>
+               <td>Lijst met items weergeven (mogelijkheid tot selecteren)</td>
+               <td><img src="img/03_wpfcontrols/listbox_control.png" alt="listbox"></td>
+            </tr>
+            <tr>
+               <td><a href="#radiobutton">RadioButton</a></td>
+               <td>Keuzerondje (één <strong>exclusieve keuze</strong>)</td>
+               <td><img src="img/03_wpfcontrols/radiobutton_control.png" alt="radiobutton"></td>
+            </tr>
+            <tr>
+               <td><a href="#slider">Slider</a></td>
+               <td>Waarde (getal) selecteren in een bereik d.m.v. schuiven</td>
+               <td><img src="img/03_wpfcontrols/slider_control.png" alt="slider" width="500"></td>
+            </tr>
+            <tr>
+               <td><a href="#textblock">TextBlock</a></td>
+               <td>Weergeven van lange blokken tekst (één of <strong>meerdere</strong> regels)</td>
+               <td><img src="img/03_wpfcontrols/textblock_control.png" alt="textblock"></td>
+            </tr>
+            <tr>
+               <td><a href="#textbox">TextBox</a></td>
+               <td>Invoer van vrije tekst (tekstveld, één of meerdere regels)</td>
+               <td><img src="img/03_wpfcontrols/textbox_control.png" alt="textbox"></td>
+            </tr>
+         </tbody>
+      </table>
 
-   <h2>Button</h2>
-   <p>Een <em>Button</em> is een knop waarop de gebruiker kan klikken (bijvoorbeeld om een berekening uit te voeren).</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>Bepaalt de tekst van de knop</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><strong><em>Click</em></strong></td>
-            <td>Wordt afgevuurd wanneer de gebruiker op de knop heeft geklikt</td>
-         </tr>
-         <tr>
-            <td><em>MouseEnter</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker met de cursor over de knop beweegt</td>
-         </tr>
-         <tr>
-            <td><em>MouseLeave</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker met de cursor buiten de knop beweegt</td>
-         </tr>
-      </tbody>
-   </table>
+      <h2>Button</h2>
+      <p>Een <em>Button</em> is een knop waarop de gebruiker kan klikken. De basis XAML:</p>
+      <pre><code class="language-html">&lt;Button x:Name="btnTest" Content="Klik mij" Click="BtnTest_Click" .../&gt;
+</code></pre>
 
-   <h2>CheckBox</h2>
-   <p>Een <em>CheckBox</em> is een keuzevakje dat de gebruiker kan aan/uit-vinken. Gebruik CheckBox indien je meerdere keuzes wilt aanbieden waarvan de gebruiker er <strong>één of meerdere</strong> van kan aanduiden.</p>
-   <p><img src="img/03_wpfcontrols/checkbox_example_multiple.png" alt="voorbeeld checkbox"></p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>Bepaalt de tekst naast het vakje</td>
-         </tr>
-         <tr>
-            <td><code>IsChecked</code></td>
-            <td><code>true</code> indien het vakje aangevinkt is, anders <code>false</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>Checked</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker het vakje aanvinkt</td>
-         </tr>
-         <tr>
-            <td><em>Unchecked</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker het vakje afvinkt</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Controleren of CheckBox is aangevinkt</h4>
-   <pre><code>if (chkThuisbezorgen.IsChecked == true) 
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>tekst op de knop</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Click</code></td>
+               <td>afgevuurd wanneer de gebruiker op de knop heeft geklikt</td>
+            </tr>
+            <tr>
+               <td><code>MouseEnter</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor over de knop beweegt</td>
+            </tr>
+            <tr>
+               <td><code>MouseLeave</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor de knop verlaat</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeeld</h3>
+      <h4>Tekst tonen bij klik op button</h4>
+      <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+&lt;Button x:Name="btnSpeak" Content="Zeg Iets" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Width="100" Height="23" Click="BtnSpeak_Click"/&gt;
+</code></pre>
+      <pre><code>private void BtnSpeak_Click(object sender, RoutedEventArgs e) 
+{
+   lblMessage.Content = "Hi there";
+}</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/button_demo.gif" alt="" width="350">
+         <figcaption>button demo</figcaption>
+      </figure>
+
+      <h2>CheckBox</h2>
+      <p>Een <em>CheckBox</em> is een keuzevakje dat de gebruiker kan aan/uit-vinken. De basis XAML:</p>
+      <pre><code class="language-html">&lt;CheckBox x:Name="chbAutoSave" Content="Automatisch opslaan" IsChecked="True" Checked="chbAutoSave_Checked" Unchecked="chbAutoSave_Checked" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/checkbox_control.png" alt="voorbeeld checkbox"></p>
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>tekst naast het vakje</td>
+            </tr>
+            <tr>
+               <td><code>IsChecked</code></td>
+               <td><code>true</code> indien het vakje aangevinkt is, anders <code>false</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Checked</code></td>
+               <td>afgevuurd wanneer de gebruiker het vakje aanvinkt</td>
+            </tr>
+            <tr>
+               <td><code>Unchecked</code></td>
+               <td>afgevuurd wanneer de gebruiker het vakje afvinkt</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Controleren of CheckBox is aangevinkt</h4>
+      <pre><code>if (chkThuisbezorgen.IsChecked == true) 
 {
    // checkbox is aangevinkt
 }</code></pre>
-   <h4>CheckBox via code aanvinken</h4>
-   <pre><code>chkThuisbezorgen.IsChecked = true; // false om af te vinken</code></pre>
+      <h4>CheckBox via code aanvinken</h4>
+      <pre><code>chkThuisbezorgen.IsChecked = true; // false om af te vinken</code></pre>
+      <h4>Checked / Unchecked events</h4>
+      <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+&lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Checked="chbYesNo_Checked" Unchecked="chbYesNo_Unchecked"/&gt;
+</code></pre>
+      <pre><code>private void chbYesNo_Checked(object sender, RoutedEventArgs e) 
+{
+    lblMessage.Content = "ja, mee eens";
+}
 
-   <h2>ComboBox</h2>
-   <p>Een ComboBox is een drop-down lijst met opties (<code>ComboBoxItem</code>'s) waarin de gebruiker één item kan selecteren.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Items</code></td>
-            <td>Collection van alle <code>ComboBoxItem</code>'s in de ComboBox</td>
-         </tr>
-         <tr>
-            <td><code>SelectedIndex</code></td>
-            <td>De index (positie) van het geselecteerde item <em><strong>(opgelet: begint bij 0!)</strong></em>. Indien er geen optie geselecteerd werd, heeft deze property de waarde -1.</td>
-         </tr>
-         <tr>
-            <td><code>SelectedItem</code></td>
-            <td>Het <code>ComboBoxItem</code>-element dat op dat moment geselecteerd is. Indien er geen item geselecteerd werd, is de waarde van deze property <code>null</code>.</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em><strong>SelectionChanged</strong></em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker een optie in de ComboBox selecteert</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>ComboBoxItem</h3>
-   <p>Elke optie in een ComboBox wordt voorgesteld door een instantie van de klasse <code>ComboBoxItem</code>:
-      <img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items">
-   </p>
-   <h4>Properties</h4>
-   <p>Hieronder vind je een overzicht van enkele handige property's die elk <code>ComboBoxItem</code> heeft:</p>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>De inhoud van het item (dit is de tekst die voor deze optie zal weergegeven worden in de ComboBox)</td>
-         </tr>
-         <tr>
-            <td><code>IsSelected</code></td>
-            <td><code>bool</code> die aangeeft of het item geselecteerd werd in de ComboBox (<code>true</code>) of niet (<code>false</code>)</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Dynamisch items toevoegen (in code-behind)</h4>
-   <pre><code>ComboBoxItem item = new ComboBoxItem(); // maak een nieuw ComboBoxItem
+private void chbYesNo_Unchecked(object sender, RoutedEventArgs e) 
+{
+    lblMessage.Content = "nee, niet mee eens";
+}
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/checkbox_demo.gif" alt="" width="350">
+         <figcaption>checkbox demo</figcaption>
+      </figure>
+      <div class="tips">
+         <p>Je kan de code nog vereenvoudigen door de twee event handlers <code>chbYesNo_Checked()</code> en <code>chbYesNo_Unchecked()</code> samen te nemen in één methode <code>chbYesNo_Click()</code>:</p>
+         <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+&lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,71,0,0" VerticalAlignment="Top"  Click="chbYesNo_Click"/&gt;
+</code></pre>
+         <pre><code>private void chbYesNo_Click(object sender, RoutedEventArgs e) 
+{
+    if (chbYesNo.IsChecked == true) 
+    {
+        lblMessage.Content = "ja, mee eens";
+    } 
+    else 
+    { 
+        lblMessage.Content = "nee, niet mee eens";
+    }
+}
+</code></pre>
+         <p>Of nog korter, met de <a href="01_csharpsyntax.html#ternaire-operator">ternaire operator</a>:</p>
+         <pre><code>private void chbYesNo_Click(object sender, RoutedEventArgs e) 
+{
+   lblMessage.Content = chbYesNo.IsChecked == true ? "ja, mee eens" : "nee, niet mee eens";
+}
+</code></pre>
+      </div>
+
+      <h2>ComboBox</h2>
+      <p>Een ComboBox is een drop-down lijst met opties (<code>ComboBoxItem</code>'s) waarin de gebruiker één item kan selecteren. De basis XAML:</p>
+      <pre><code class="language-html">&lt;ComboBox x:Name="cbxColors" Width="120" SelectionChanged="cbxColors_SelectionChanged" ...&gt;
+   &lt;ComboBoxItem Content="Rood"/&gt;
+   &lt;ComboBoxItem Content="Groen"/&gt;
+   &lt;ComboBoxItem Content="Blauw"/&gt;
+&lt;/ComboBox&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items"></p>
+      <h3>Properties en events</h3>
+      <p>Properties en events van <code>ComboBox</code>:</p>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Items</code></td>
+               <td>collection van alle <code>ComboBoxItem</code>'s in de ComboBox</td>
+            </tr>
+            <tr>
+               <td><code>SelectedIndex</code></td>
+               <td>index (positie) van het geselecteerde item <strong>(begint bij 0!)</strong>, of -1 indien geen optie geselecteerd</td>
+            </tr>
+            <tr>
+               <td><code>SelectedItem</code></td>
+               <td>geselecteerde <code>ComboBoxItem</code>-element, of <code>null</code> indien geen geselecteerd</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectionChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een optie in de ComboBox selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Properties van <code>ComboBoxItem</code>:</p>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>inhoud van het item (dit is de tekst die voor deze optie zal weergegeven worden in de ComboBox)</td>
+            </tr>
+            <tr>
+               <td><code>IsSelected</code></td>
+               <td><code>bool</code> die aangeeft of het item geselecteerd werd in de ComboBox (<code>true</code>) of niet (<code>false</code>)</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Dynamisch items toevoegen</h4>
+      <pre><code>ComboBoxItem item = new ComboBoxItem(); // maak een nieuw ComboBoxItem
 item.Content = "Oranje"; // stel de inhoud (tekst) van het item in
             
 cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ComboBox</code></pre>
-   <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
-   <pre><code>if (cboKleuren.SelectedIndex != -1) 
+      <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
+      <pre><code>if (cboKleuren.SelectedIndex != -1) 
 {
     // gebruiker heeft een item geselecteerd
 } 
-else 
-{
-    // geselecteerde index is -1 &rarr; gebruiker heeft géén item geselecteerd
-}</code></pre>
-   <p><strong>OF</strong></p>
-   <pre><code>if (cboKleuren.SelectedItem != null) 
+</code></pre>
+      <p>of ook:</p>
+      <pre><code>if (cboKleuren.SelectedItem != null) 
 {
    // gebruiker heeft een item geselecteerd
-} 
-else 
-{
-   // gebruiker heeft géén item geselecteerd
-}</code></pre>
-   <h4>Inhoud van het geselecteerde item opvragen</h4>
-   <pre><code>// controleer eerst of er een selectie gemaakt werd!
+} </code></pre>
+      <h4>Inhoud van het geselecteerde item opvragen</h4>
+      <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (cboKleuren.SelectedItem != null) 
 {
     ComboBoxItem selectie = (ComboBoxItem)cboKleuren.SelectedItem; // cast naar ComboBoxItem
@@ -274,213 +336,285 @@ if (cboKleuren.SelectedItem != null)
                 
     // doe iets met variabele 'inhoud'
 }</code></pre>
-   <h4>Itereren over items in een ComboBox</h4>
-   <pre><code>foreach (ComboBoxItem item in cboKleuren.Items) 
+      <h4>Itereren over items in een ComboBox</h4>
+      <pre><code>foreach (ComboBoxItem item in cboKleuren.Items) 
 {
     // doe iets met item, bv.: item.Content
 }</code></pre>
+      <h4>Samenvattend voorbeeld</h4>
+      <p>Voorbeeld voor selecteren van tweede optie en toevoegen item in C#, en tonen geselecteerde optie in een <code>Label</code>:</p>
+      <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+&lt;ComboBox x:Name="cbxCountries" HorizontalAlignment="Left" Margin="27,66,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxCountries_SelectionChanged"&gt;
+    &lt;ComboBoxItem Content="België" HorizontalAlignment="Left" Width="118"/&gt;
+    &lt;ComboBoxItem Content="Frankrijk" HorizontalAlignment="Left" Width="118"/&gt;
+    &lt;ComboBoxItem Content="Nederland" HorizontalAlignment="Left" Width="118"/&gt;
+&lt;/ComboBox&gt;
+</code></pre>
+      <pre><code>public MainWindow() 
+{
+    InitializeComponent();
+    // selecteer tweede optie 
+    cbxCountries.SelectedIndex = 1; 
+    // voeg nog een item "Spanje" toe
+    ComboBoxItem newItem = new ComboBoxItem();
+    newItem.Content = "Spanje";
+    cbxCountries.Items.Add(newItem);
+}
 
-   <h2>DatePicker</h2>
-   <p>Een <em>DatePicker</em> is een control waarmee je een gebruiker een datum kunt laten invoeren door deze te selecteren via een kalender.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>SelectedDate</code></td>
-            <td>De datum die de gebruiker geselecteerd heeft (type <code>DateTime</code>). Indien de gebruiker géén datum geselecteerd heeft, is de waarde van deze property <code>null</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>SelectedDateChanged</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker een datum selecteert</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Geselecteerde datum opvragen</h4>
-   <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
+private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    ComboBoxItem selectedItem = (ComboBoxItem)cbxCountries.SelectedItem;
+    lblMessage.Content = $"geselecteerd: {selectedItem.Content}";
+}
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/combobox_demo.gif" alt="" width="350">
+         <figcaption>checkbox demo</figcaption>
+      </figure>
+
+      <h2>DatePicker</h2>
+      <p>Een <em>DatePicker</em> is een control waarmee je een gebruiker een datum kunt laten invoeren door deze te selecteren via een kalender.</p>
+      <pre><code class="language-html">&lt;DatePicker x:Name="datBirthday" SelectedDate="01/08/1970" SelectedDateChanged="DatBirthday_SelectedDateChanged" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/datepicker_control.png" alt="" width="250"></p>
+
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectedDate</code></td>
+               <td>De datum die de gebruiker geselecteerd heeft (type <code>DateTime</code>). Indien de gebruiker géén datum geselecteerd heeft, is de waarde van deze property <code>null</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectedDateChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een datum selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Geselecteerde datum opvragen</h4>
+      <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
 if (dpcGeboortedatum.SelectedDate != null) 
 {
     DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
     // doe iets met variabele 'datum'
 }</code></pre>
 
-   <h2>Image</h2>
-   <p>Je kunt een Image-control gebruiken om een afbeeling weer te geven op het scherm.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Source</code></td>
-            <td>Bepaalt welke afbeelding getoond moet worden (locatie, Bitmap, ...)</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>MouseEnter</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker met de cursor over de afbeelding beweegt</td>
-         </tr>
-         <tr>
-            <td><em>MouseLeave</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker met de cursor buiten de afbeelding beweegt</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Dynamisch afbeelding instellen (in code-behind)</h4>
-   <pre><code>imgPizza.Source = new BitmapImage(new Uri(@"afbeeldingen/pizza.png", UriKind.RelativeOrAbsolute)); // afbeelding: afbeeldingen/pizza.png</code></pre>
+      <h2>Image</h2>
+      <p>Je kunt een Image-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
+      <pre><code class="language-html">&lt;Image x:Name="img1" Source="Images/photo1.jpg" Height="100" Width="100" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/image_photo.jpg" alt="" width="100"></p>
+      <p>Voeg de afbeeldingen toe aan je project door een submap te maken, b.v. <em>Images</em>, en daarin je afbeeldingen te slepen:</p>
+      <figure>
+         <img src="img/03_wpfcontrols/image_drag.png" alt="" class="bordered" width="250">
+         <figcaption>sleep afbeeldingen in je project</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Source</code></td>
+               <td>Bepaalt welke afbeelding getoond moet worden (locatie, Bitmap, ...)</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>MouseEnter</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor over de afbeelding beweegt</td>
+            </tr>
+            <tr>
+               <td><code>MouseLeave</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor buiten de afbeelding beweegt</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Dynamisch afbeelding instellen</h4>
+      <pre><code>imgPizza.Source = new BitmapImage(new Uri(@"afbeeldingen/pizza.png", UriKind.RelativeOrAbsolute)); // afbeelding: afbeeldingen/pizza.png</code></pre>
+      <h4>Voorbeeld met drie buttons</h4>
+      <pre><code class="language-html">&lt;Image x:Name="imgPhoto" Source="Images/photo1.jpg" HorizontalAlignment="Left" Height="100" Margin="27,35,0,0" VerticalAlignment="Top" Width="100"/&gt;
+&lt;Button x:Name="btnShow1" Content="toon foto 1" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow1_Click" /&gt;
+&lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow2_Click"/&gt;
+&lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow3_Click"/&gt;
+</code></pre>
+      <pre><code>private void btnShow1_Click(object sender, RoutedEventArgs e) 
+{
+    imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
+}
+private void btnShow2_Click(object sender, RoutedEventArgs e) 
+{
+    imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
+}
+private void btnShow3_Click(object sender, RoutedEventArgs e) 
+{
+    imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
+}
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/image_demo.gif" alt="" width="350">
+         <figcaption>image demo</figcaption>
+      </figure>
 
-   <h2>Label</h2>
-   <p>Gebruik een Label om korte tekst (één regel) weer te geven, bv.: resultaat van een berekening, titel van een invulveld, ...</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>De inhoud (tekst) van het label)</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeeld</h3>
-   <h4>Dynamisch inhoud van Label instellen (in code-behind)</h4>
-   <pre><code>double prijs = 9.95;
-lblPrijs.Content = "€" + prijs;</code></pre>
+      <h2>Label</h2>
+      <p>Gebruik een Label om korte tekst (één regel) weer te geven, bv.: resultaat van een berekening, titel van een invulveld, ... De basis XAML:</p>
+      <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="Dit is een bericht" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/label.png" alt="" class="bordered" width="150"></p>
+      <h3>Properties</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>De inhoud (tekst) van het label)</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeeld</h3>
+      <h4>Dynamisch inhoud van Label instellen</h4>
+      <pre><code>double prijs = 9.95;
+lblPrijs.Content = $"€ {prijs}";</code></pre>
 
-   <h2>ListBox</h2>
-   <p>Een ListBox is een lijst die verschillende items (<code>ListBoxItems</code> bevat). De gebruiker kan één of meerdere items selecteren. In tegenstelling tot bij een ComboBox, zijn de opties in een ListBox altijd zichtbaar.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Items</code></td>
-            <td>Collectie die alle items (<code>ListBoxItem</code>'s) in de ListBox bevat</td>
-         </tr>
-         <tr>
-            <td><code>SelectedIndex</code></td>
-            <td>De index (positie) van het geselecteerde item <strong><em>(opgelet: begint bij 0!)</em></strong>. Indien er geen optie geselecteerd werd, heeft deze property de waarde -1. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
-         </tr>
-         <tr>
-            <td><code>SelectedItem</code></td>
-            <td>Het <code>ListBoxItem</code>-element dat op dat moment geselecteerd is. Indien er geen item geselecteerd werd, is de waarde van deze property null. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
-         </tr>
-         <tr>
-            <td><code>SelectedItems</code></td>
-            <td>Een collection van de <code>ListBoxItem</code>-elementen die op dat moment geselecteerd zijn. Gebruik deze property indien de gebruiker <strong>meerdere items tegelijkertijd</strong> kan selecteren.</td>
-         </tr>
-         <tr>
-            <td><code>SelectionMode</code></td>
-            <td>Geeft aan hoeveel items de gebruiker gelijktijdig kan selecteren (<code>Single</code>: één item (single selection), <code>Multiple</code>: meerdere items tegelijkertijd (multi-select)).</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>SelectionChanged</code></td>
-            <td>Wordt afgevuurd wanneer de gebruiker een item in de ListBox (de-)selecteert</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>ListBoxItem</h3>
-   <p>Elke optie in een ListBox wordt voorgesteld door een instantie van de klasse <code>ListBoxItem</code>:
-      <img src="img/03_wpfcontrols/listbox_listboxitems.png" alt="listbox items">
-   </p>
-   <h4>Properties</h4>
-   <p>Hieronder vind je een overzicht van enkele handige property's die elk <code>ListBoxItem</code> heeft:</p>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>De inhoud van het item (dit is de tekst die voor deze optie zal weergegeven worden in de ListBox)</td>
-         </tr>
-         <tr>
-            <td><code>IsSelected</code></td>
-            <td><code>bool</code> die aangeeft of het item geselecteerd werd in de ListBox (<code>true</code>) of niet (<code>false</code>)</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Dynamisch items toevoegen (in code-behind)</h4>
-   <pre><code>ListBoxItem item = new ListBoxItem(); // maak een nieuw ListBoxItem
+      <h2>ListBox</h2>
+      <p>Een ListBox lijkt sterk op een <a href="#combobox">ComboBox</a> &mdash; het is ook een lijst van items waaruit je kan kiezen. De voornaamste verschillen:</p>
+      <ul>
+         <li>de items worden in een vak (eventueel met scrollbar) weergegeven in plaats van in een dropdown</li>
+         <li>door <code>SelectionMode</code> in te stellen op <code>true</code>, kunnen meerdere items tegelijk geselecteerd worden</li>
+         <li>de items zijn van het type <code>ListBoxItem</code> in plaats van <code>ComboBoxItem</code></li>
+      </ul>
+      <p>De basis XAML:</p>
+      <pre><code class="language-html">&lt;ListBox x:Name="lbxShopping" Height="100" Width="250" SelectionChanged="lbxShopping_SelectionChanged" ...&gt;
+   &lt;ListBoxItem Content="Brood"/&gt;
+   &lt;ListBoxItem Content="Eieren"/&gt;
+   &lt;ListBoxItem Content="Kaas"/&gt;
+   &lt;ListBoxItem Content="Houmous"/&gt;
+   &lt;ListBoxItem Content="Avocado"/&gt;
+&lt;/ListBox&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/listbox.png" alt="" width="350">
+         <figcaption>ListBox voorbeeld</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <p>Properties en events van <code>ListBox</code>:</p>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Items</code></td>
+               <td>collection van alle ListBoxItem's in de ListBox</td>
+            </tr>
+            <tr>
+               <td><code>SelectedIndex</code></td>
+               <td>De index (positie) van het geselecteerde item <strong><em>(opgelet: begint bij 0!)</em></strong>. Indien er geen optie geselecteerd werd, heeft deze property de waarde -1. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
+            </tr>
+            <tr>
+               <td><code>SelectedItem</code></td>
+               <td>Het <code>ListBoxItem</code>-element dat op dat moment geselecteerd is. Indien er geen item geselecteerd werd, is de waarde van deze property null. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
+            </tr>
+            <tr>
+               <td><code>SelectedItems</code></td>
+               <td>Een collection van de <code>ListBoxItem</code>-elementen die op dat moment geselecteerd zijn. Gebruik deze property indien de gebruiker <strong>meerdere items tegelijkertijd</strong> kan selecteren.</td>
+            </tr>
+            <tr>
+               <td><code>SelectionMode</code></td>
+               <td>Geeft aan hoeveel items de gebruiker gelijktijdig kan selecteren (<code>Single</code>: één item (single selection), <code>Multiple</code>: meerdere items tegelijkertijd (multi-select)).</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectionChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een item in de ListBox (de-)selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Properties en events van <code>ListBoxItem</code>:</p>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Naam</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>De inhoud van het item (dit is de tekst die voor deze optie zal weergegeven worden in de ListBox)</td>
+            </tr>
+            <tr>
+               <td><code>IsSelected</code></td>
+               <td><code>bool</code> die aangeeft of het item geselecteerd werd in de ListBox (<code>true</code>) of niet (<code>false</code>)</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Dynamisch items toevoegen</h4>
+      <pre><code>ListBoxItem item = new ListBoxItem(); // maak een nieuw ListBoxItem
 item.Content = "Brood"; // stel de inhoud (tekst) van het item in
             
 lstBoodschappen.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ListBox</code></pre>
-   <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
-   <pre><code>if (lstBoodschappen.SelectedIndex != -1) 
+      <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
+      <pre><code>if (lstBoodschappen.SelectedIndex != -1) 
 {
     // er werd (minimum) één item geselecteerd
-} 
-else 
-{
-    // er werd geen item geselecteerd
 }</code></pre>
-   <p><strong>OF</strong></p>
-   <pre><code>if (lstBoodschappen.SelectedItem != null) 
+      <p>of ook:</p>
+      <pre><code>if (lstBoodschappen.SelectedItem != null) 
 {
    // gebruiker heeft (minimum) één item geselecteerd
-} 
-else 
-{
-   // gebruiker heeft géén item geselecteerd
 }</code></pre>
-   <h4>Inhoud van het geselecteerde item opvragen (single selection)</h4>
-   <pre><code>// controleer eerst of er een selectie gemaakt werd!
+      <p>of ook:</p>
+      <pre><code>if (lstBoodschappen.SelectedItems.Count &gt; 0) 
+{
+   // gebruiker heeft (minimum) één item geselecteerd
+}</code></pre>
+      <h4>Inhoud van het geselecteerde item opvragen (single selection)</h4>
+      <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (lstBoodschappen.SelectedItem != null) 
 {
     ListBoxItem selectie = (ListBoxItem)lstBoodschappen.SelectedItem; // cast naar ListBoxItem
@@ -488,255 +622,400 @@ if (lstBoodschappen.SelectedItem != null)
                 
     // doe iets met variabele 'inhoud'
 }</code></pre>
-   <h4>Inhoud van het geselecteerde items opvragen (multi-select)</h4>
-   <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems) 
+      <h4>Inhoud van het geselecteerde items opvragen (multi-select)</h4>
+      <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems) 
 {
     // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
-   <h4>Itereren over items in een ListBox</h4>
-   <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items) 
+      <h4>Itereren over items in een ListBox</h4>
+      <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items) 
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
 
-   <h2>RadioButton</h2>
-   <p>Een RadioButton is een keuzerondje dat de gebruiker kan aanduiden. Gebruik RadioButton's indien je de gebruiker verschillend opties wilt geven waarvan de gebruiker er <strong>slecht één</strong> van kan aanduiden.</p>
-   <p><strong>Opmerking:</strong> indien je verschillende keuze-opties wilt aanbieden waarvan de gebruiker er meerdere tegelijkertijd moet kunnen aanduiden, maak je beter gebruik van CheckBox-controls.</p>
-   <p>RadioButton's die bij elkaar horen, kan je groeperen door deze dezelfde <code>GroupName</code>-property te geven. Binnen een groep van RadioButton's met dezelfde <code>GroupName</code>, kan telkens slechts één RadioButton tegelijkertijd aangeduid zijn.</p>
-   <p><img src="img/03_wpfcontrols/radiobutton_groupname.png" alt="radiobuttons groupname"></p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Content</code></td>
-            <td>De tekst die naast het keuzerondje wordt weergegeven</td>
-         </tr>
-         <tr>
-            <td><code>GroupName</code></td>
-            <td>Property om bij elkaar horende RadioButtons te groeperen (zie uitleg hierboven)</td>
-         </tr>
-         <tr>
-            <td><code>IsChecked</code></td>
-            <td><code>true</code> indien het keuzerondje aangevinkt is, anders <code>false</code></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>Checked</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker het keuzerondje aanvinkt</td>
-         </tr>
-         <tr>
-            <td><em>Unchecked</em></td>
-            <td>Wordt afgevuurd wanneer het keuzerondje wordt afgevinkt</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Nagaan welke RadioButton aangevinkt is</h4>
-   <pre><code>if (radKlein.IsChecked == true) 
+      <h2>RadioButton</h2>
+      <p>Een <code>RadioButton</code> lijkt op <code>CheckBox</code> &mdash; het is ook een keuze die de gebruiker kan aanduiden. De verschillen zijn:</p>
+      <ul>
+         <li><code>RadioButton</code>'s worden als rondje weergegeven, <code>CheckBox</code> als vierkant</li>
+         <li><code>RadioButton</code>'s kan je groeperen met <code>GroupName</code>; je kan er dan maar één tegelijk aanduiden</li>
+      </ul>
+      <p>De basis XAML:</p>
+      <pre><code class="language-html">&lt;RadioButton x:Name="rbn1_1" Content="optie 1" GroupName="group1" Checked="rbn1_1_Checked" IsChecked="True" .../&gt;
+&lt;RadioButton x:Name="rbn1_2" Content="optie 2" GroupName="group1" Checked="rbn1_2_Checked" .../&gt;
+&lt;RadioButton x:Name="rbn1_3" Content="optie 3" GroupName="group1" Checked="rbn1_3_Checked" .../&gt;
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/radiobutton_demo.gif" alt="" width="250" class="bordered">
+         <figcaption>bij een groep radiobuttons kan je er maar één selecteren</figcaption>
+      </figure>
+
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Naam</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>De tekst die naast het keuzerondje wordt weergegeven</td>
+            </tr>
+            <tr>
+               <td><code>GroupName</code></td>
+               <td>Property om bij elkaar horende RadioButtons te groeperen (zie uitleg hierboven)</td>
+            </tr>
+            <tr>
+               <td><code>IsChecked</code></td>
+               <td><code>true</code> indien het keuzerondje aangevinkt is, anders <code>false</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Naam</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Checked</code></td>
+               <td>afgevuurd wanneer de gebruiker het keuzerondje aanvinkt</td>
+            </tr>
+            <tr>
+               <td><code>Unchecked</code></td>
+               <td>afgevuurd wanneer het keuzerondje wordt afgevinkt</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Nagaan welke RadioButton aangevinkt is</h4>
+      <pre><code>if (radKlein.IsChecked == true) 
 {
    // optie 'klein' is aangevinkt
 }
 else if (radMedium.IsChecked == true) 
 {
    // optie 'medium' is aangevinkt
-} else if(radGroot.IsChecked == true) 
+} 
+else if(radGroot.IsChecked == true) 
 {
    // optie 'groot' is aangevinkt
 }</code></pre>
-   <h4>Programmatorisch een RadioButton aan-/afvinken</h4>
-   <pre><code>radAfhalen.IsChecked = true; // false om af te vinken</code></pre>
+      <h4>Programmatorisch een RadioButton aan-/afvinken</h4>
+      <pre><code>radAfhalen.IsChecked = true; // false om af te vinken</code></pre>
 
-   <h2>Slider</h2>
-   <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Minimum</code></td>
-            <td>De kleinste waarde die de gebruiker kan selecteren</td>
-         </tr>
-         <tr>
-            <td><code>Maximum</code></td>
-            <td>De grootste waarde die de gebruiker kan selecteren</td>
-         </tr>
-         <tr>
-            <td><code>Value</code></td>
-            <td>De waarde die op dat moment geselecteerd is</td>
-         </tr>
-         <tr>
-            <td><code>IsSnapToTickEnabled</code></td>
-            <td>Indien <code>true</code>, moet de schuifbalk steeds op een streepje gezet worden</td>
-         </tr>
-         <tr>
-            <td><code>TickFrequency</code></td>
-            <td>De afstand tussen twee opeenvolgende streepjes <em>(= 'ticks')</em></td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>ValueChanged</em></td>
-            <td>Wordt afgevuurd wanneer de gebruiker een waarde selecteert</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Een geselecteerde waarde opvragen</h4>
-   <pre><code>double waarde = sldVolume.Value;
+      <h2>Slider</h2>
+      <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
+      <pre><code class="language-html">&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True" TickFrequency="10" Width="500" ValueChanged="sld1_ValueChanged" .../&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/slider_control.png" alt="" width="500" class="bordered">
+         <figcaption>Slider control</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Minimum</code></td>
+               <td>kleinste waarde die de gebruiker kan selecteren</td>
+            </tr>
+            <tr>
+               <td><code>Maximum</code></td>
+               <td>grootste waarde die de gebruiker kan selecteren</td>
+            </tr>
+            <tr>
+               <td><code>Value</code></td>
+               <td>geselecteerde waarde</td>
+            </tr>
+            <tr>
+               <td><code>IsSnapToTickEnabled</code></td>
+               <td>indien <code>true</code>, moet de schuifbalk steeds op een streepje gezet worden</td>
+            </tr>
+            <tr>
+               <td><code>TickFrequency</code></td>
+               <td>afstand tussen twee opeenvolgende streepjes <em>(= 'ticks')</em></td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>ValueChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een waarde selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Een geselecteerde waarde opvragen</h4>
+      <pre><code>double waarde = sldVolume.Value;
 // doe iets met variabele 'waarde' (bv.: weergeven in een Label)</code></pre>
-   <h2>TextBlock</h2>
-   <p>Een TextBlock is een control die gebruikt wordt om tekst weer te geven. In tegenstelling tot een Label, is het bij een TextBlock mogelijk om de tekst over meerdere regels te spreiden (multi-line strings). Daarnaast biedt een TextBlock uitgebreidere formatteringsmogelijkheden dan een Label.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Inlines</code></td>
-            <td>Een lijst met tekstfragmenten. Kan gebruikt worden om verschillende delen van de tekst een andere opmaak te geven</td>
-         </tr>
-         <tr>
-            <td><code>Text</code></td>
-            <td>De inhoud (tekst) die weergegeven wordt in het TextBlock</td>
-         </tr>
-         <tr>
-            <td style="vertical-align: top;"><code>TextWrapping</code></td>
-            <td>
-               Bepaalt de tekstterugloop indien de tekst te lang is om op één regel te passen. Mogelijke waarden zijn:
-               <ul style="padding-left: 15px;">
-                  <li><code>NoWrap</code>: tekst wordt niet op een andere regel gezet</li>
-                  <li><code>Wrap</code>: tekst wordt gesplits op meerdere regels, zelfs indien er geen afbreekpunt is (spatie)</li>
-                  <li><code>WrapWithOverflow</code>: tekst wordt enkel gesplits indien er een afbreekpunt is. Anders is de tekst onzichtbaar</li>
-               </ul>
-            </td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>Eenvoudige tekst instellen</h4>
-   <pre><code>txtMyTextBlock.Text = "Hello, World!";</code></pre>
-   <h4>Tekst over meerdere regels verspreiden</h4>
-   <p><strong>Versie 1: met <code>Environment.NewLine</code>:</strong></p>
-   <pre><code>txtMyTextBlock.Text = "Eerste regel" + Environment.NewLine + "Tweede regel";</code></pre>
-   <p><strong>Versie 2: met multi-line strings:</strong></p>
-   <pre><code>txtMyTextBlock.Text = @"Eerste regel
+      <h4>Geselecteerde waarde weergeven in een Label</h4>
+      <pre><code class="language-html">&lt;Label x:Name="lblValue" Content="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10" HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="sld1_ValueChanged"/&gt;
+</code></pre>
+      <pre><code>private void sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+{
+    int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
+    lblValue.Content = sliderVal;
+}
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/slider_demo.gif" alt="" width="500" class="bordered">
+         <figcaption>slider demo</figcaption>
+      </figure>
+
+      <h2>TextBlock</h2>
+      <p>Een <code>TextBlock</code> is net zoals <a href="#label">Label</a> een control die gebruikt wordt om tekst weer te geven. Er zijn echter meer mogelijkheden:</p>
+      <ul>
+         <li>een tekst met meerdere regels is mogelijk (multi-line)</li>
+         <li>er zijn uitgebreidere formatteringsmogelijkheden</li>
+      </ul>
+      <p>De basis XAML:</p>
+      <pre><code class="language-html">&lt;TextBlock Width="200" Margin="39,41,0,0" TextWrapping="Wrap" Text="bacon ham hock, doner fatback pastrami landjaeger pork short ribs jerky corned beef" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/textblock.png" alt="" width="300" class="bordered"></p>
+      <h3>Properties</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Inlines</code></td>
+               <td>Een lijst met tekstfragmenten. Kan gebruikt worden om verschillende delen van de tekst een andere opmaak te geven</td>
+            </tr>
+            <tr>
+               <td><code>Text</code></td>
+               <td>De inhoud (tekst) die weergegeven wordt in het TextBlock</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><code>TextWrapping</code></td>
+               <td>
+                  Bepaalt de tekstterugloop indien de tekst te lang is om op één regel te passen. Mogelijke waarden zijn:
+                  <ul style="padding-left: 15px;">
+                     <li><code>NoWrap</code>: tekst wordt niet op een andere regel gezet</li>
+                     <li><code>Wrap</code>: tekst wordt gesplits op meerdere regels, zelfs indien er geen afbreekpunt is (spatie)</li>
+                     <li><code>WrapWithOverflow</code>: tekst wordt enkel gesplits indien er een afbreekpunt is. Anders is de tekst onzichtbaar</li>
+                  </ul>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Eenvoudige tekst instellen</h4>
+      <pre><code>txtMyTextBlock.Text = "Hello, World!";</code></pre>
+      <h4>Tekst over meerdere regels verspreiden</h4>
+      <p><strong>Versie 1: met <code>Environment.NewLine</code>:</strong></p>
+      <pre><code>txtMyTextBlock.Text = $"Eerste regel{Environment.NewLine}Tweede regel";</code></pre>
+      <p><strong>Versie 2: met multi-line strings:</strong></p>
+      <pre><code>txtMyTextBlock.Text = @"Eerste regel
 tweede regel";</code></pre>
-   <h4>Tekst met afwijkende opmaak (Inlines)</h4>
-   <pre><code>txtMyTextBlock.Inlines.Add("Voorbeeld tekst met ");
+      <h4>Tekst met afwijkende opmaak (Inlines)</h4>
+      <pre><code>txtMyTextBlock.Inlines.Add("Voorbeeld tekst met ");
 txtMyTextBlock.Inlines.Add(new Bold(new Run("vette (bold)"))); // tekst in het vet (bold)
 txtMyTextBlock.Inlines.Add(", ");
 txtMyTextBlock.Inlines.Add(new Italic(new Run("cursieve (italic)"))); // tekst in het cursief (italic)
 txtMyTextBlock.Inlines.Add(" en ");
 txtMyTextBlock.Inlines.Add(new Underline(new Run("onderlijnde"))); // onderlijnde tekst (underline)
 txtMyTextBlock.Inlines.Add(" woorden.");</code></pre>
-   <p><strong><em>Resultaat:</em></strong>
-      <img src="img/03_wpfcontrols/textblock_inlines.png" alt="resultaat textblock inlines">
-   </p>
-   <h2>TextBox</h2>
-   <p>Een TextBox is een control waarmee de gebruiker vrije tekst kan invoeren (= tekstveld), zowel single line (op één regel) als op meerdere regels (multi-line).</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>AcceptsReturn</code></td>
-            <td>Indien <code>true</code>, kan de gebruiker de invoer spreiden over meerdere regels</td>
-         </tr>
-         <tr>
-            <td><code>Text</code></td>
-            <td>Inhoud van het tekstveld</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Events</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><em>TextChanged</em></td>
-            <td>Wordt afgevuurd wanneer de inhoud van het tekstveld verandert</td>
-         </tr>
-      </tbody>
-   </table>
-   <h3>Voorbeelden</h3>
-   <h4>De inhoud van een tekstveld opvragen</h4>
-   <pre><code>string naam = txtNaam.Text;</code></pre>
-   <h4>De inhoud van een numerieke tekst opvragen</h4>
-   <pre><code>int lengte = Convert.ToInt32(txtLengte.Text);</code></pre>
-   <h4>De inhoud van een tekstveld leegmaken</h4>
-   <pre><code>txtNaam.Text = "";</code></pre>
-   <p><strong><em>OF</em></strong></p>
-   <pre><code>txtNaam.Clear();</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/textblock_inlines.png" alt="resultaat textblock inlines" class="bordered" style="padding: 5px">
+         <figcaption>resultaat</figcaption>
+      </figure>
 
-   <h2>Window</h2>
-   <p>De Window-klasse omvat het volledige scherm waarop de verschillende controls staan.</p>
-   <h3>Properties</h3>
-   <table>
-      <thead>
-         <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Omschrijving</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td><code>Title</code></td>
-            <td>De titel van het scherm die bovenaan in de balk wordt weergegeven</td>
-         </tr>
-         <tr>
-            <td><code>Width</code></td>
-            <td>De breedte van het scherm (uitgedrukt in pixels)</td>
-         </tr>
-         <tr>
-            <td><code>Height</code></td>
-            <td>De hoogte van het scherm (uitgedrukt in pixels)</td>
-         </tr>
-      </tbody>
-   </table>
+      <h2>TextBox</h2>
+      <p>Een TextBox is een control waarmee de gebruiker vrije tekst kan invoeren (= tekstveld), zowel single line (op één regel) als op meerdere regels (multi-line).</p>
+      <p>De basis XAML, één invoerregel:</p>
+      <pre><code class="language-html">&lt;TextBox x:Name="txt1" Height="25" Width="200" .../&gt;</code></pre>
+      <p>Stel <code>TextWrapping="Wrap"</code> en <code>AcceptsReturn="True"</code> in voor meerdere invoerregels:</p>
+      <pre><code class="language-html">&lt;TextBox x:Name="txt2" Height="100" Width="200" TextWrapping="Wrap" .../&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/textbox_demo.gif" alt="" width="250" class="bordered">
+         <figcaption>gebruik TextWrapping en AcceptsReturn</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>AcceptsReturn</code></td>
+               <td>indien <code>true</code>, kan de gebruiker de invoer spreiden over meerdere regels</td>
+            </tr>
+            <tr>
+               <td><code>Text</code></td>
+               <td>inhoud van het tekstveld</td>
+            </tr>
+            <tr>
+               <td><code>TextWrapping</code></td>
+               <td>automatische tekstomloop (<code>Wrap</code>) of niet (<code>NoWrap</code>)</td>
+            </tr>
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>TextChanged</code></td>
+               <td>afgevuurd wanneer de inhoud van het tekstveld verandert</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>De inhoud van een tekstveld opvragen</h4>
+      <pre><code>string naam = txtNaam.Text;</code></pre>
+      <h4>De inhoud van een numerieke tekst opvragen</h4>
+      <pre><code>int lengte = Convert.ToInt32(txtLengte.Text);</code></pre>
+      <h4>De inhoud van een tekstveld leegmaken</h4>
+      <pre><code>txtNaam.Text = "";</code></pre>
+      <p>of ook:</p>
+      <pre><code>txtNaam.Clear();</code></pre>
+
+      <h2>WPF controls opmaken</h2>
+      <h3>Opmaken in XAML</h3>
+      <p>Veel gebruikte properties die je op de meeste controls kan instellen als attributen:</p>
+      <table>
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Background</code></td>
+               <td>achtergrondkleur, b.v. <code>"LightGreen"</code></td>
+            </tr>
+            <tr>
+               <td><code>FontFamily</code></td>
+               <td>een lettertype, b.v. <code>"Verdana"</code></td>
+            </tr>
+            <tr>
+               <td><code>FontSize</code></td>
+               <td>een lettergrootte, b.v. <code>"12"</code></td>
+            </tr>
+            <tr>
+               <td><code>FontWeight</code></td>
+               <td>een lettergewicht, b.v. <code>"Bold"</code></td>
+            </tr>
+            <tr>
+               <td><code>Foreground</code></td>
+               <td>tekstkleur, b.v. <code>"Navy"</code></td>
+            </tr>
+            <tr>
+               <td><code>Opacity</code></td>
+               <td>transparantie, b.v. <code>"0.7"</code> (0 = doorzichtig, 1 = normaal)</td>
+            </tr>
+            <tr>
+               <td><code>Padding</code></td>
+               <td>binnenafstand, b.v. <code>"20,10,20,30"</code> (links-boven-rechts-onder)</td>
+            </tr>
+            <tr>
+               <td><code>TextAlignment</code></td>
+               <td>horizontale tekstuitlijning, waarde <code>"Center"</code>, <code>"Justify"</code>, <code>"Left"</code> of <code>"Right"</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <pre><code class="language-html">&lt;TextBox 
+   x:Name="txt1"      
+   Background="BlanchedAlmond" 
+   FontFamily="Verdana" 
+   FontSize="12" 
+   FontWeight="SemiBold" 
+   Foreground="DarkBlue" 
+   Opacity="0.7" 
+   Padding="20,10,20,30" 
+   TextAlignment="Right" 
+   Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" .../&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/opmaak.png" alt="" width="250">
+         <figcaption>resultaat van de opmaak</figcaption>
+      </figure>
+      <h3>Opmaken in C#</h3>
+      <p>Je kan deze properties ook instellen in C#:</p>
+      <pre><code>txt1.Background = Brushes.BlanchedAlmond;
+txt1.FontFamily = new FontFamily("Verdana");
+txt1.FontSize = 12;
+txt1.FontWeight = FontWeights.SemiBold;
+txt1.Foreground = Brushes.DarkBlue;
+txt1.Opacity = 0.7;
+txt1.Padding = new Thickness(20, 10, 20, 30);
+txt1.TextAlignment = TextAlignment.Right;
+</code></pre>
+      <p>Je hebt dan vaak meer mogelijkheden, zoals kleuren instellen met RGB waarden (zie klasse <a href="02_dotnetclasses.html#color">Color</a>):</p>
+      <pre><code>txt1.Background = new SolidColorBrush(Color.FromRgb(11, 212, 21));
+</code></pre>
+      <h3>Randen</h3>
+      <p>Randen instellen doe je &mdash; misschien wat vreemd &mdash; niet met een property, maar met een <code>Border</code> control:</p>
+      <ol>
+         <li>wrap de control in een <code>&lt;Border&gt; ... &lt;/Border&gt;</code></li>
+         <li>stel properties <code>BorderThickness</code> en <code>BorderBrush</code> in</li>
+         <li>verhuis de layout properties <code>Height</code>, <code>HorizontalAlignment</code>, <code>Margin</code>, <code>VerticalAlignment</code> en <code>Width</code> van de control naar de <code>Border</code></li>
+      </ol>
+      <p>Een <code>TextBox</code> zonder <code>Border</code>:</p>
+      <pre><code class="language-html">&lt;TextBox 
+   x:Name="txt1" 
+   AcceptsReturn="True"
+   Height="125" 
+   HorizontalAlignment="Left" 
+   Margin="10,10,0,0" 
+   Padding="20,10,20,30" 
+   Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" 
+   TextWrapping="Wrap" 
+   VerticalAlignment="Top" 
+   Width="200"/&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/border-zonder.png" alt="" width="250">
+         <figcaption>standaardweergave zonder Border</figcaption>
+      </figure>
+      <p>Dezelfde <code>TextBox</code> met <code>Border</code>:</p>
+      <pre><code class="language-html">&lt;Border 
+   BorderBrush="DarkGreen" 
+   BorderThickness="4" 
+   Height="125" 
+   HorizontalAlignment="Left" 
+   Margin="10,10,0,0" 
+   VerticalAlignment="Top" 
+   Width="200"&gt;
+      &lt;TextBox 
+      x:Name="txt1" 
+      AcceptsReturn="True"
+      Padding="20,10,20,30" 
+      Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" 
+      TextWrapping="Wrap" /&gt;
+&lt;/Border&gt;
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/border-met.png" alt="" width="250">
+         <figcaption>weergave met custom Border</figcaption>
+      </figure>
+   </main>
+
    <script src="vendor/prism.js"></script>
    <script src="js/scripts.js"></script>
 

@@ -89,9 +89,9 @@ a:hover {
    width: 100%;
 }
  
-/* main */
+/* nav */
 
-.site__main {
+.site__nav {
    justify-content: center;
    padding: 1.875em 0;
 }
@@ -187,7 +187,7 @@ aside a:hover {
    .header__tagline {
       font-size: 60px;
    }
-   .site__main {
+   .site__nav {
       column-gap: 4%;
       display: flex;
       flex-wrap: wrap;
@@ -199,7 +199,7 @@ aside a:hover {
 }
 
 @media (min-width: 640px) {
-   .site__main {
+   .site__nav {
       column-gap: 3.5%;
       row-gap: 1.2em;
    }
@@ -212,7 +212,7 @@ aside a:hover {
    .thumb__title {
       font-size: 1.8em;
    }
-   .site__main {
+   .site__nav {
       column-gap: calc(8% / 3);
       row-gap: 1.5em;
    }
@@ -236,7 +236,7 @@ aside a:hover {
 }
 
 @media (min-width: 1200px) {
-   .site__main {
+   .site__nav {
       column-gap: 2.5%;
       row-gap: 1.875em;
    }
