@@ -10,6 +10,7 @@ body {
    margin: 0;
    margin-bottom: 50px;
    padding: 0;
+   padding-top: 210px;
 }
 
 a {
@@ -56,9 +57,17 @@ h3,
 h4 {
    font-weight: normal;
    margin-bottom: 1em;
-   margin-top: 1em;
+   margin-top: 1.3em;
    padding-bottom: 0.3em;
    width: fit-content;
+}
+
+h1 span,
+h2 span, 
+h3 span, 
+h4 span {
+   position: relative;
+   top: -50px;
 }
 
 h1 {
@@ -110,6 +119,12 @@ figure {
 
 nav {
    background-color: #faf5e6;   
+   box-shadow: 0 5px 10px #ccc7;
+   left: 0;
+   position: fixed;
+   right: 0;
+   top: 0;
+   transition: all 0.1s;
 }
 
 p, table {
@@ -130,6 +145,12 @@ table {
    text-align: center;
 }
 
+html body .em {
+   background-color: #ddd;
+   color: #564826;
+   padding: 1px 2px;
+}
+
 .tips {
    background-color: #eee;
    border: 2px dashed #999;
@@ -147,9 +168,15 @@ table {
 
 #up {
    bottom: 10px;
+   color: #666;
    font-size: 30px;
    position: fixed;
    right: 10px;
+   transition: color 0.3s;
+}
+
+#up:hover {
+   color: #333;
 }
 
 /* NAV */
@@ -170,7 +197,7 @@ table {
    color: #333;
    display: flex;
    flex-direction: column;
-   font-size: 10px;
+   font-size: 0.7em;
    font-family: 'League Gothic', sans-serif;
    justify-content: flex-start;
    padding: 1em 0.5em;

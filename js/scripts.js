@@ -3,6 +3,7 @@
 // DOM shortcuts
 const DOM = {
 	codeBlocks: [...document.querySelectorAll('pre code')],
+   nav: document.querySelector('nav'),
 	titles: [...document.querySelectorAll('h2,h3,h4,h5')],
 	toc: document.querySelector('#toc')
 };
@@ -10,7 +11,10 @@ const DOM = {
 function startApp() {
    // part 1: assign id's to titles
 	DOM.titles.forEach((title) => {
-		if (!title.id) title.id = createIdFrom(title.textContent);
+      const id = createIdFrom(title.textContent);
+      title.dataset.id = id;
+      title.dataset.text = title.innerHTML;
+      title.innerHTML = `<span id="${id}"></span>` + title.innerHTML;
 	});
 
    // part 2: build TOC
@@ -22,7 +26,7 @@ function startApp() {
 	DOM.titles.filter(t => !t.dataset.dontlist).forEach((title) => {
       // get title number and create link
       const titleNr = title.nodeName.substring(1);
-      const lnk = `<a href="#${title.id}">${title.innerHTML}</a>`;
+      const lnk = `<a href="#${title.dataset.id}">${title.dataset.text}</a>`;
 
       // increment title count
       titleNrs[titleNr - 1]++;
@@ -42,6 +46,11 @@ function startApp() {
    // add to dom
    DOM.toc.innerHTML = toc;
 
+   // part 3: nav scroll effect
+   window.addEventListener('scroll', () => {
+      DOM.nav.style.fontSize = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50
+         ? "4px" : "16px";
+   });
 }
 
 /**
