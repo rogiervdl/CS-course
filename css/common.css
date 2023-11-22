@@ -145,6 +145,13 @@ table {
    top: 5px;
 }
 
+#up {
+   bottom: 10px;
+   font-size: 30px;
+   position: fixed;
+   right: 10px;
+}
+
 /* NAV */
 
 .site__nav {
