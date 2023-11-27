@@ -34,7 +34,7 @@
 
       <!-- OVERZICHT -->
       <h2>Overzicht</h2>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Klasse</th>
@@ -120,7 +120,7 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <h2>Clipboard</h2>
       <p>De klasse <code>Clipboard</code> geeft je toegang tot het klembord van Windows (wordt gebruik bij copy-paste van gegevens).</p>
       <h3>Methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -148,7 +148,7 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <h2>Color</h2>
       <p>Deze klasse wordt gebruikt voor het werken met (RGB-)kleuren.</p>
       <h3>Methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -178,7 +178,7 @@ btnKlikHier.Background = new SolidColorBrush(achtergrondkleur);</code></pre>
       <h2>Console</h2>
       <p>Met de klasse <code>Console</code> is het mogelijk om tekst naar de console te schrijven en invoer van de gebruiker uit de console uit te lezen (basis I/O).</p>
       <h3>Properties en methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Property</th>
@@ -200,7 +200,7 @@ btnKlikHier.Background = new SolidColorBrush(achtergrondkleur);</code></pre>
             </tr>
          </tbody>
       </table>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -342,7 +342,7 @@ Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
       <h2>Convert</h2>
       <p>De klasse <code>Convert</code> wordt gebruikt om waarden van verschillende types om te zetten naar een ander data-type (bv.: van <code>string</code> naar <code>int</code>).</p>
       <h3>Methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -366,6 +366,10 @@ Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
                <td><code>ToString()</code></td>
                <td>Zet een waarde om naar een <code>string</code></td>
             </tr>
+            <tr>
+               <td><code>ToBoolean()</code></td>
+               <td>Zet een waarde om naar een waarde van het type <code>bool</code></td>
+            </tr>
          </tbody>
       </table>
       <h3>Code voorbeelden</h3>
@@ -388,7 +392,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       <h2>Environment</h2>
       <p>De klasse <code>Environment</code> biedt een aantal properties en methodes aan om informatie te verkrijgen over de omgeving waarin de applicatie wordt uitgevoerd (locale, besturingssysteem, ...).</p>
       <h3>Properties en methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Property</th>
@@ -410,7 +414,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
             </tr>
          </tbody>
       </table>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -445,7 +449,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       <h2>Math</h2>
       <p>De klasse <code>Math</code> bevat tal van wiskundige methodes en properties.</p>
       <h3>Properties en methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Property</th>
@@ -459,7 +463,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
             </tr>
          </tbody>
       </table>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -535,7 +539,7 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
       <h2>MessageBox</h2>
       <p>Een MessageBox is een dialoogvenster dat een boodschap voor de gebruiker bevat (bv.: een foutmelding, een bevestiging van een actie, ...).</p>
       <h3>Methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -569,7 +573,7 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
       <h3>Constructie</h3>
       <pre><code>Random rnd = new Random();</code></pre>
       <h3>Methodes</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -599,8 +603,35 @@ Console.WriteLine("Random getal 2: " + getal2);</code></pre>
 
       <!-- STRING -->
       <h2>String</h2>
-      <h3>Methodes</h3>
-      <table>
+      <p>De <code>String</code> klasse is een zogenaamde <em>wrapper class</em>, of uitbreiding van het <code>string</code> type. Beiden zijn uitwisselbaar; deze fragmenten zijn dus gelijkwaardig:</p>
+      <pre><code>// de "string" notatie krijgt de voorkeur
+string[] arr1 = new string[] { "blauw", "rood", "groen" };
+string samengevoegd = string.Join(", ", arr1); 
+
+// de "String" notatie is technisch gelijkwaardig
+String[] arr1 = new String[] { "blauw", "rood", "groen" };
+String samengevoegd = String.Join(", ", arr1);</code></pre>
+      <p class="small">&rarr; de eerste notatie is gebruikelijker; kwestie van gewoonte</p>
+      <h3>Properties en methodes</h3>
+      <table class="light top">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Length</code></td>
+               <td>aantal karakters</td>
+            </tr>
+            <tr>
+               <td><code>Empty</code></td>
+               <td>lege string constante</td>
+            </tr>
+         </tbody>
+      </table>      
+      <table class="light top">
          <thead>
             <tr>
                <th scope="col">Methode</th>
@@ -609,43 +640,98 @@ Console.WriteLine("Random getal 2: " + getal2);</code></pre>
          </thead>
          <tbody>
             <tr>
+               <td><code>CompareTo()</code></td>
+               <td>twee strings alfabetisch vergelijken</td>
+            </tr>
+            <tr>
                <td><code>IsNullOrEmpty()</code></td>
-               <td>Gaat na of de meegegeven string gelijk is aan <code>null</code> of een lege string (<code>&quot;&quot;</code>) is</td>
+               <td>gaat na of de string gelijk is aan <code>null</code> of de lege string (<code>&quot;&quot;</code>)</td>
             </tr>
             <tr>
                <td><code>Join()</code></td>
-               <td>Concateneert een collectie met waarden tot één string met daartussen een separator</td>
+               <td>voegt een reeks waarden samen tot één string met daartussen een separator</td>
+            </tr>
+            <tr>
+               <td><code>IndexOf(), LastIndexOf()</code></td>
+               <td>eerste/laatste positie zoeken van een karakter of tekst in de string (-1 indien niet gevonden)</td>
+            </tr>
+            <tr>
+               <td><code>Replace()</code></td>
+               <td>voegt een reeks waarden samen tot één string met daartussen een separator</td>
+            </tr>
+            <tr>
+               <td><code>Split()</code></td>
+               <td>een string rond een bepaald karakter opsplitsen in een reeks waarden</td>
+            </tr>
+            <tr>
+               <td><code>StartsWith(), EndsWith()</code></td>
+               <td>controleert of de string met een bepaalde tekst begint of eindigt</td>
+            </tr>
+            <tr>
+               <td><code>Substring()</code></td>
+               <td>deel van een string nemen</td>
+            </tr>
+            <tr>
+               <td><code>ToLower(), ToUpper()</code></td>
+               <td>omzetten naar kleine letters / hoofdletters</td>
+            </tr>
+            <tr>
+               <td><code>Trim()</code></td>
+               <td>karakters wegnemen (<em>trimmen</em>) aan het begin en het einde</td>
             </tr>
          </tbody>
-      </table>
+      </table>      
+
       <h3>Code voorbeelden</h3>
+      <h4>Lengte bepalen</h4>
+      <p>De lengte bepaal je met de <code>Length property</code></p>
+<pre><code>string str1 = "Now have that tasty morning burger.";
+int len = str1.Length; // 35, dus inclusief spaties, leestekens enz...</code></pre>
+      <h4>Trimmen</h4>
+      <p>Trimmen betekent karakters links en/of rechts wegsnijden:</p>
+      <pre><code>// karakters trimmen aan het begin en einde
+string str1 = "  ,Guitar, drum, Bass,. ";
+str1 = str1.Trim(); // ",Guitar, drum, Bass,."
+str1 = str1.Trim(new char[] { ',', '.' }); // "Guitar, drum, Bass"</code></pre>
+<h4>Positie van deelstrings</h4>
+<pre><code>string str2 = "Now have that tasty morning burger.";
+int len = str1.Length; // 35
+int int1 = str1.IndexOf("at"); // 11
+int int2 = str1.IndexOf('z'); // -1; not found
+int int3 = str1.LastIndexOf('e'); // 32
+bool bool1 = str1.StartsWith("No"); // true</code></pre>
+      <h4>Tekst omzetten</h4>
+<pre><code>string str1 = "Hey hey hey, please DO NOT touch that!";
+string str2 = str1.Substring(0, 21); // "Hey hey hey, please DO"
+string str3 = str1.ToLower(); // "hey hey hey, please do not touch that!"
+string str4 = str1.ToUpper(); // "HEY HEY HEY, PLEASE DO NOT TOUCH THAT!"
+string str4 = str1.Replace("hey", "yo"); // "Hey yo yo, please DO NOT touch that!!" &rarr; hoofdlettergevoelig, vervangt alle
+</code></pre>
+         
       <h4>Nagaan of een string leeg is</h4>
       <pre><code>string str1 = "test";
-Console.WriteLine("str1: " + string.IsNullOrEmpty(str1));
+bool bool1 = string.IsNullOrEmpty(str1); // False
 
 string str2 = null;
-Console.WriteLine("str2: " + string.IsNullOrEmpty(str2));
+bool bool2 = string.IsNullOrEmpty(str2); // True
 
 string str3 = "";
-Console.WriteLine("str3: " + string.IsNullOrEmpty(str3));
+bool bool3 = string.IsNullOrEmpty(str3); // True
 
 string str4 = " ";
-Console.WriteLine("str4: " + string.IsNullOrEmpty(str4));</code></pre>
-      <figure>
-         <img src="img/02_dotnetclasses/string-isnullorempty.png" alt="" width="250">
-         <figcaption>IsNullOrEmpty voorbeeld</figcaption>
-      </figure>
-      <p>Opmerking: een spatie (<code>&quot; &quot;</code>) wordt <strong>niet</strong> al een lege string gezien!</p>
+bool bool4 = string.IsNullOrEmpty(str4); // False - een spatie is geen lege string!</code></pre>
       <h4>Nagaan of de gebruiker een TextBox heeft ingevuld</h4>
       <pre><code>if (string.IsNullOrEmpty(txtNaam))
 {
-   lblFoutboodschap.Content = "Het 'naam'-veld is niet ingevuld";
+   lblFoutboodschap.Content = "Dit veld is verplicht";
 } 
 else 
 {
    lblFoutboodschap.Content = "";
 }</code></pre>
-      <h4>Een lijst met string's samenvoegen tot één string, gescheiden d.m.v. een streepje</h4>
+      <p>Of korter met de ternaire operator:</p>
+      <pre><code>lblFoutboodschap.Content = string.IsNullOrEmpty(txtNaam) ? "Dit veld is verplicht" : "";</code></pre>
+      <h4>Een lijst samenvoegen tot een string, gescheiden door streepjes</h4>
       <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
 fruit.Add("appel");
 fruit.Add("banaan");
@@ -659,12 +745,13 @@ Console.WriteLine(reeks);</code></pre>
          <img src="img/02_dotnetclasses/string-join1.png" alt="" width="250">
          <figcaption>Join() voorbeeld</figcaption>
       </figure>
-      <h4>Een array met getallen samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
-      <pre><code>int[] getallen = {5, 7, 12, 8, 3};
-string reeks = string.Join(", ", getallen);
-
-Console.WriteLine(reeks);</code></pre>
-      <pre><code>5, 7, 12, 8, 3
+      <h4>Een reeks samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
+      <pre><code>int[] getallen = { 5, 7, 12, 8, 3 }; // &rarr; int[] array
+string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; één string</code></pre>
+      <h4>Een string splitsen rond karakters</h4>
+      <pre><code>string txt = "0477/234.56.78"; // &rarr; één string
+string[] parts1 = txt.Split('/'); // { "0477", "234.56.78" } &rarr; string[] array
+string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>

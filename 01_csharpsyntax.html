@@ -45,8 +45,35 @@
       <pre><code>/* Eerste regel
    Tweede regel */
 </code></pre>
+      <h3>Vuistregels voor goede commentaar</h3>
+      <p>Enkele tips/vuistregels voor een zo leesbare commentaar:</p>
+      <ul>
+         <li>voeg commentaar pas toe als je programma zo goed als af is, zo vermijd je nodeloos werk</li>
+         <li>grote blokken als methodes voorzie je bovenaan van een commentaarblok</li>
+         <li>verdeel de coderegels in stukken van telkens een paar regels, en zet bovenaan <em>elk stuk</em> commentaar in één regel (sla niks over)</li>
+         <li>scheid stukken telkens met één blanco regel</li>
+      </ul>
 
-      <h2>Variabelen</h2>
+      <pre><code>/// &lt;summary&gt;
+/// Theorie hoofdstuk 03 – commentaar voorbeeld
+/// Auteur: Rogier van der Linde
+/// &lt;/summary&gt;
+static void Main(string[] args)
+{
+   // waarde inlezen
+   Console.Write("Geef een geheel getal: ");
+   string antwoord = Console.ReadLine();
+
+   // ingelezen waarde is een string; converteer het naar een double
+   double getal1 = Convert.ToInt32(antwoord);
+
+   // resultaat teruggeven
+   Console.WriteLine($"Het kwadraat is: {getal1 * getal1}");
+   Console.ReadLine();
+}
+</code></pre>
+         
+      <h2>Variabelen en constanten</h2>
       <p>Een variabele is een <strong>naam</strong> die een <strong>waarde</strong> van een bepaald <strong>type</strong> kan bevatten. Het vermelden van het bestaan van een variabele met type en naam noemt men <em>declaratie</em>, het geven van een eerste waarde <em>initialisatie</em>.</p>
       <h3>Declaratie</h3>
       <pre><code>string halloTekst; // tekst
@@ -55,6 +82,7 @@ float leeftijd; // kommagetal
 char teken; // karakter
 bool isCorrectAntwoord; // ja of nee
 </code></pre>
+      <p>&rarr; stijlregel: we noteren de naam in <em>camelCaseNotatie</em></p>
       <h3>Initialisatie</h3>
       <pre><code>string halloTekst;
 halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
@@ -64,7 +92,7 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
 </code></pre>
       <h3>Overzicht datatypes</h3>
       <p>Het <em>datatype</em> beperkt welke waarden de variabele kan bevatten. Types gebruikt in deze cursus:</p>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Datatype</th>
@@ -75,12 +103,12 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
          <tbody>
             <tr>
                <td><code>int</code></td>
-               <td>gehele getallen (pos/neg)</td>
+               <td>gehele getallen (32 bits, pos/neg, max. 2.147.483.647)</td>
                <td><code>int age = 25;</code></td>
             </tr>
             <tr>
                <td><code>long</code></td>
-               <td>gehele getallen (pos/neg)</td>
+               <td>gehele getallen (64 bits, pos/neg, max. 9.223.372.036.854.775.807)</td>
                <td><code>long wait = 42L;</code></td>
             </tr>
             <tr>
@@ -110,63 +138,118 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
             </tr>
          </tbody>
       </table>
+      <h3>Constanten</h3>
+      <p>Een constante is als een variabele, maar het moet een <strong>vaste waarde</strong> hebben en die waarde kan <strong>niet meer veranderen</strong>. Een constante duid je aan met <code>const</code>:</p>
+      <pre><code>const int MaxAantalPogingen = 3; 
+const string Prefix = "ABC_"; 
+</code></pre>
+      <p>&rarr; stijlregel: de meest gangbare notatie voor constanten in C# is <em>PascalCaseNotatie</em></p>
+      <p>Constanten kunnen na initialisatie niet meer toegewezen worden. Dit is dus fout:</p>
+      <pre><code class="redcomments">MaxAantalPogingen = 4; // FOUT! waarde kan niet meer veranderen
+const string Suffix; // FOUT! constante moet een waarde hebben
+const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde hebben
+</code></pre>
+      <p>De regels zijn niet altijd duidelijk. Maar geen nood &dash; Visual Studio zal je wel op fouten wijzen.</p>
       <h3>Naamgeving</h3>
-      <p>De naam van een variabele <strong>moet</strong> aan de volgende vereisten voldoen:</p>
+      <p>De naam van een variabele moet voldoen aan de volgende <strong>syntaxregels</strong>:</p>
       <ul>
          <li>bevat enkel letters, cijfers en underscore</li>
          <li>begint niet met een cijfer</li>
          <li>maximaal 255 tekens lang</li>
          <li>geen gereserveerde woorden, dus geen if, class, double, ... (complete lijst <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/">hier</a>)</li>
       </ul>
-      <p>Bijkomende stijlregels:</p>
+      <p>Daarnaast houden we ons aan deze bijkomende <strong>stijlregels</strong>:</p>
       <ul>
-         <li>camelCase-notatie (<code>mijnVariabele</code>, <strong>niet</strong> <code>mijn_variabele</code>)</li>
+         <li>camelCase-notatie voor variabelen (<code>mijnVariabeleWaarde</code>, niet <code>mijn_variabele_waarde</code>)</li>
+         <li>PascalCase-notatie voor constanten (<code>MijnConstanteWaarde</code>, niet <code>mijn_constante_waarde</code> of <code>mijnConstanteWaarde</code>)</li>
          <li>betekenisvolle namen</li>
          <li>één taal (Engels/Nederlands), wees consistent!</li>
       </ul>
+      <p>Er bestaan andere voorkeuren voor deze stijlregels, maar deze regels zijn de meest gangbare in C# en aanbevolen door Microsoft</p>
+
+      <h2>Parsing/casting/conversie</h2>
+      <p>De termen <em>parsing</em>, <em>casting</em> en <em>conversie</em> betekenen eigenlijk hetzelfde: het omzetten van een waarde van één type naar een ander.</p>
+      <h3>verbredend vs. vernauwend</h3>
+      <p>Er zijn twee soorten conversies:</p>
+      <ul>
+         <li><em>verbredende</em> conversie: van een kleiner naar een groter bereik, b.v. van een <code>double</code> (kommagetal) naar een <code>string</code> (tekst)</li>
+         <li><em>vernauwende</em> conversie: van een groter naar een kleiner bereik, b. van een <code>double</code> (kommagetal) naar een <code>int</code> (geheel getal)</li>
+      </ul>
+      <h3>impliciete conversie</h3>
+      <p>Verbredende conversies gebeuren vaak automatisch of <em>impliciet</em>:</p>
+      <pre><code>int int1 = 13;
+double dbl1 = int1; // OK: int impliciet geconverteerd naar double
+string str1 = "het kommagetal is " + dbl1; // OK: double impliciet geconverteerd naar een string
+string str2 = $"het geheel getal is {int1}"; // OK: impliciete conversie van int naar string tijdens interpolatie
+</code></pre>
+      <p>...maar niet altijd:</p>
+      <pre><code class="redcomments">string str1 = int1; // FOUT! hier treedt geen impliciete conversie op</code></pre>
+      <p>De logica wanneer wel en niet impliciete conversie optreedt is niet altijd even duidelijk. Maar geen nood, Visual Studio zal je er wel op wijzen als een conversie ontbreekt.</p>
+      <h3>expliciete (handmatige) conversie</h3>
+      <p>Bij expliciete conversie forceer je handmatig de omzetting naar een ander type </p>
+      <h4>ToString()</h4>
+      <p>Conversie naar een string is eenvoudig: je kan altijd overal <code>ToString()</code> gebruiken</p>
+      <pre><code>int int1 = 13;
+string str1 = int1.ToString();
+</code></pre>
+      <h4>Convert klasse</h4>
+      <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de <a href="02_dotnetclasses.html#convert">Convert klasse</a>:</p>
+      <pre><code>string str1 = "13"; string str2 = "13.45";
+int int1 = Convert.ToInt32(str1); 
+double dbl1 = Convert.ToDouble(str2);</code></pre>
+      <h4>Parse(), TryParse()...</h4>
+      <p>Er bestaan nog andere manieren om te converteren; voorbeelden:</p>
+      <pre><code>string str1 = "13"; double dbl1 = 13.45;
+int int1 = int.Parse(str1); // conversie met ...Parse() methode
+int int2; bool success = int.TryParse(str1, out int2); // conversie met de ....TryParse() methode
+int int3 = (int)dbl1; // conversie met (int)
+string str2 = int1 + ""; // geforceerde conversie
+</code></pre>
+      <p>Om het overzichtelijk te houden, raden we deze methodes af. Beperk je tot <code>ToString()</code> en <code>Convert.To...()</code></p>
+
       <h2>Rekenkundige Operatoren</h2>
       <p>
          Dit zijn de klassieke bewerkingen die je uit de wiskunde kent: optellen, aftrekken...
       </p>
       <h3>Overzicht</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
-               <th scope="col" class="centered">Operator</th>
+               <th scope="col">Operator</th>
                <th scope="col">Beschrijving</th>
                <th scope="col">Voorbeeld</th>
             </tr>
          </thead>
          <tbody>
             <tr>
-               <td class="centered"><code>+</code></td>
+               <td><code>+</code></td>
                <td>optellen</td>
                <td><code>int som = 5 + 3;</code></td>
             </tr>
             <tr>
-               <td class="centered"><code>&minus;</code></td>
+               <td><code>&minus;</code></td>
                <td>aftrekken</td>
                <td><code>int verschil = 5 &minus; 3;</code></td>
             </tr>
             <tr>
-               <td class="centered"><code>*</code></td>
+               <td><code>*</code></td>
                <td>vermenigvuldigen</td>
                <td><code>int product = 5 * 3;</code></td>
             </tr>
             <tr>
-               <td class="centered"><code>/</code></td>
+               <td><code>/</code></td>
                <td>delen</td>
                <td><code>int quotient = 5 / 3;</code></td>
             </tr>
             <tr>
-               <td class="centered"><code>%</code></td>
+               <td><code>%</code></td>
                <td>modulo (rest na deling)</td>
                <td><code>int rest = 5 % 3;</code></td>
             </tr>
          </tbody>
       </table>
       <h3>Verkorte Notaties</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Operator</th>
@@ -214,29 +297,85 @@ halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
 
       <h2>Logische Operatoren</h2>
       <p>Dit zijn operatoren op booleans (waar/niet waar), en hebben zelf ook weer een boolean als resultaat (waar/niet waar). Overzicht:</p>
-      <table>
+      <h3>Overzicht</h3>
+      <table class="light">
          <thead>
             <tr>
-               <th scope="col" class="centered">Operator</th>
+               <th scope="col">Operator</th>
                <th scope="col">Beschrijving</th>
             </tr>
          </thead>
          <tbody>
             <tr>
-               <td class="centered"><code>&amp;&amp;</code></td>
+               <td><code>&amp;&amp;</code></td>
                <td>AND (logische EN)</td>
             </tr>
             <tr>
-               <td class="centered"><code>||</code></td>
+               <td><code>||</code></td>
                <td>OR (logische OF)</td>
             </tr>
             <tr>
-               <td class="centered"><code>!</code></td>
+               <td><code>!</code></td>
                <td>NOT (logische NIET)</td>
             </tr>
          </tbody>
       </table>
-      <p>Voorbeelden:</p>
+      <h3>Waarheidstabellen</h3>
+      <p>Alle mogelijke combinaties (men noemt dit <em>waarheidstabellen</em>):</p>
+      <table class="grey">
+         <thead>
+            <tr>
+               <th scope="col"><code>A</code></th>
+               <th scope="col"><code>B</code></th>
+               <th scope="col"><code>A &amp;&amp; B</code></th>
+               <th scope="col"><code>A || B</code></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td class="grey"><code>false</code></td>
+               <td><code>false</code></td>
+               <td><code>false</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td class="grey"><code>true</code></td>
+               <td><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td class="grey"><code>false</code></td>
+               <td><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td class="grey"><code>true</code></td>
+               <td><code>true</code></td>
+               <td><code>true</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="grey">
+         <thead>
+            <tr>
+               <th scope="col"><code>A</code></th>
+               <th scope="col"><code>!A</code></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td><code>false</code></td>
+            </tr>
+         </tbody>
+      </table>      <h3>Voorbeelden</h3>
       <pre><code>bool heeftGelogen = false;
 bool heeftGestolen = true;
 
@@ -266,6 +405,7 @@ Console.WriteLine(boodschap);</code></pre>
          <pre>Hello, World!</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <h3>Karakters escapen</h3>
       <p>De volgende karakters moeten ge-escaped worden d.m.v. een backslash (<code>\</code>):</p>
       <ul>
          <li>dubbele quote (<code>&quot;</code>)</li>
@@ -278,15 +418,6 @@ Console.WriteLine("C:\\users\\john.doe\\documents");</code></pre>
 C:\users\john.doe\documents</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h3>Lengte van een string</h3>
-      <p>Met de lengte van de string, wordt het aantal karakters in de string bedoeld.
-         Je kunt het aantal karakters binnen een string opvragen met behulp van de <code>Length</code>-property:</p>
-      <pre><code>string str = "Hallo!"; // 5 letters + 1 leesteken = 6
-Console.WriteLine(str.Length);</code></pre>
-      <figure class="console">
-         <pre>6</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
       <h3>Concatenatie</h3>
       <p>Om meerdere strings samen te voegen tot één string (<em>concatenatie</em>), maak je gebruik van de <code>+</code>-operator:</p>
       <pre><code>// voorbeeld 1
@@ -297,7 +428,7 @@ string boodschap = begroeting + naam;
 Console.WriteLine(boodschap);
 
 // voorbeeld 2
-Console.WriteLine("Mijn naam is: " + naam);</code></pre>
+Console.WriteLine($"Mijn naam is: {naam}");</code></pre>
       <figure class="console">
          <pre>Hallo, John
 Mijn naam is: John</pre>
@@ -310,7 +441,7 @@ Mijn naam is: John</pre>
          <li>met de constante <code>Environment.NewLine</code></li>
       </ol>
       <pre><code>Console.WriteLine("Regel 1\nRegel 2"); // optie 1
-Console.WriteLine("Regel 1" + Environment.NewLine + "Regel 2"); // optie 2</code></pre>
+Console.WriteLine($"Regel 1{Environment.NewLine}Regel 2"); // optie 2</code></pre>
       <figure class="console">
          <pre>Regel 1
 Regel 2
@@ -343,18 +474,45 @@ C:\users\john.doe\documents</pre>
       <pre><code>string naam = "John";
 int leeftijd = 35;
 
-Console.WriteLine("Mijn naam is {0}, ik ben {1} jaar oud.", naam, leeftijd); // interpolatie met {}
+Console.WriteLine("Mijn naam is " + naam + ", ik ben " + leeftijd + " jaar oud."); // zonder interpolatie
+Console.WriteLine("Mijn naam is {0}, ik ben {1} jaar oud.", naam, leeftijd); // interpolatie met parameters
 Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud."); // interpolatie met $ &rarr; gebruik bij voorkeur deze notatie</code></pre>
       <figure class="console">
          <pre>Mijn naam is John, ik ben 35 jaar oud.
+Mijn naam is John, ik ben 35 jaar oud.            
 Mijn naam is John, ik ben 35 jaar oud.</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <p>Je kan niet alleen variabelen, maar ook expressies interpoleren, b.v.:</p>
+      <pre><code>int getal = 17;
+
+Console.WriteLine($"Het getal {getal} is {(getal % 2 == 0 ? "even" : "oneven")}."); // let op: expressie moet tussen haakjes () staan</code></pre>
+      <figure class="console">
+         <pre>Het getal 17 is oneven.</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Je kan $ interpolatie tenslotte combineren met @ multiline:</p>
+      <pre><code>string name = "Bozo";
+int year = 2024;
+string header = $@"******************************
+** {name} for president in {year}
+******************************";
+Console.WriteLine(header);
+</code></pre>
+      <figure class="console">
+         <pre>******************************
+** Bozo for president in 2024
+******************************</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+      <h3>Properties en methodes</h3>
+      <p>zie de <a href="02_dotnetclasses.html#string">String klasse</a></p>
 
       <h2>Selecties</h2>
       <h3>Relationele operatoren</h3>
       <p>Relationele operatoren worden gebruikt om twee waarden met elkaar te vergelijken. Het resultaat van een vergelijking is altijd een <strong>boolean</strong> (<code>bool</code>).</p>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col">Operator</th>
@@ -672,7 +830,8 @@ do
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <p><strong>Opmerking:</strong> increment hoeft niet altijd met één omhoog te gaan, onderstaande lus telt met sprongen van twee:</p>
-      <pre><code>for (int i = 1; i &lt;=10; i+=2) {
+      <pre><code>for (int i = 1; i &lt;=10; i+=2) 
+{
     Console.WriteLine(i);
 }</code></pre>
       <figure class="console">
@@ -684,7 +843,8 @@ do
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <p><strong>Opmerking:</strong> je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
-      <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;) {
+      <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;) 
+{
     Console.WriteLine(i);
 }</code></pre>
       <figure class="console">
@@ -884,9 +1044,9 @@ getallen[4] = 12;  // zet getal 12 op vijfde (laatste) plaats in array
       <pre><code>string[] kleuren = { "blauw", "groen", "rood" };
 
 string eerste = kleuren[0]; // item op index 0 &rarr; "blauw"
-Console.WriteLine("Het eerste element is: " + eerste);
+Console.WriteLine($"Het eerste element is: {eerste}");
 
-Console.WriteLine("Het laatste element is: " + kleuren[2]); // item op index 2 (derde en laatste element) &rarr; "rood"
+Console.WriteLine($"Het laatste element is: {kleuren[2]}"); // item op index 2 (derde en laatste element) &rarr; "rood"
 </code></pre>
       <figure class="console">
          <pre>Het eerste element is: blauw
@@ -1046,10 +1206,10 @@ kleuren.Add("groen");
 kleuren.Add("blauw");
 
 string eerste = kleuren[0]; // element op index 0 (eerste element)
-Console.WriteLine("Het eerste element is: " + eerste);
+Console.WriteLine($"Het eerste element is: {eerste}");
 
 string derde = kleuren[2]; // element op index 2b (derde en laatste element)
-Console.WriteLine("Het derde element is: " + derde);</code></pre>
+Console.WriteLine($"Het derde element is: {derde}");</code></pre>
       <figure class="console">
          <pre>Het eerste element is: rood
 Het derde element is: blauw</pre>
@@ -1219,7 +1379,7 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h3>Arrays vs List's</h3>
-      <table>
+      <table class="light">
          <thead>
             <tr>
                <th scope="col"></th>

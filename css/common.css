@@ -94,7 +94,7 @@ h3 {
 
 h3::before {
    counter-increment: subchapter;
-   content: counter(chapter) ". " counter(subchapter) " ";
+   content: counter(chapter) "." counter(subchapter) " ";
 }
 
 h4 {
@@ -105,7 +105,7 @@ h4 {
 
 h4::before {
    counter-increment: subsubchapter;
-   content: counter(chapter) ". " counter(subchapter)  ". " counter(subsubchapter) " ";
+   content: counter(chapter) "." counter(subchapter)  "." counter(subsubchapter) " ";
 }
 
 img {
@@ -145,10 +145,19 @@ table {
    text-align: center;
 }
 
+.redcomments .comment {
+   color: #900 !important;
+}
+
 html body .em {
    background-color: #ddd;
    color: #564826;
    padding: 1px 2px;
+}
+
+html body .small {
+   font-size: smaller;
+   font-style: italic;
 }
 
 .tips {
@@ -251,32 +260,50 @@ table {
    border-collapse: collapse;
 }
 
-table > tbody > tr + tr > td {
-   border-top-color: #ccc;
-}
-
-table > thead > tr > th {
-   text-align: left;
-   border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
+th, td {
    padding: 5px 20px 5px 0;
+   text-align: left;
 }
 
-table > thead > tr > th:first-child,
-table > thead > tr > td:first-child,
-table > tbody > tr > th:first-child,
-table > tbody > tr > td:first-child {
+.top td {
+   vertical-align: top;
+}
+
+table pre {
+   padding: 2px 5px;
+   width: 100%;
+}
+
+/* light */
+
+table.light tr + tr > td {
+   border-top: 1px solid#ccc;
+}
+
+table.light th {
+   border-bottom: 1px solid #000;
+}
+
+table.light th:first-child, table.light td:first-child {
    min-width: 150px;
 }
 
-table > tbody > tr + tr > td {
-   border-top: 1px solid;
+/* grey */
+
+table.grey th, table.grey td {
+   border: 1px solid #999;
+   padding: 5px 10px;
+   text-align: center;
 }
+
+table.grey th {
+   background-color: #ddd;
+}
+
+table.grey td.grey {
+   background-color: #eee;
+}
+
 
 /* CODE */
 
