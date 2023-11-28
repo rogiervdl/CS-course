@@ -264,7 +264,7 @@ c</pre>
       <pre><code>Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
 string naam = Console.ReadLine();   // lees de naam in en sla deze op in een variabele
 
-Console.WriteLine("Hallo, " + naam); // schrijf een boodschap naar de console</code></pre>
+Console.WriteLine($"Hallo, {naam}"); // schrijf een boodschap naar de console</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/console-lezen.gif" alt="regel inlezen en weergeven" width="250">
          <figcaption>resultaat in de console</figcaption>
@@ -278,7 +278,7 @@ double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar e
       <h4>Karakter inlezen met weergave</h4>
       <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey().KeyChar; 
-Console.WriteLine("\nJe koos: " + keuze);</code></pre>
+Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" width="250">
          <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
@@ -286,7 +286,7 @@ Console.WriteLine("\nJe koos: " + keuze);</code></pre>
       <h4>Karakter inlezen zonder weergave</h4>
       <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
 char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet weergegeven in console
-Console.WriteLine("\nJe koos: " + keuze);</code></pre>
+Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/console-readkey2.gif" alt="" width="250">
          <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
@@ -430,7 +430,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       </table>
       <h3>Code voorbeelden</h3>
       <h4>Platform-onafhankelijke NewLine (Windows/Linux/Mac OSX/...)</h4>
-      <pre><code>Console.Write("Regel 1" + Environment.NewLine + "Regel 2");</code></pre>
+      <pre><code>Console.Write($"Regel 1{Environment.NewLine}Regel 2");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/enviroment-newline.png" alt="" width="250">
          <figcaption>resultaat in de console</figcaption>
@@ -509,7 +509,7 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       <pre><code>int straal = 5;
 double oppervlakte = straal * straal * Math.PI;
 
-Console.WriteLine("De oppervlakte bedraagt: " + oppervlakte);</code></pre>
+Console.WriteLine($"De oppervlakte bedraagt: {oppervlakte}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/math-PI.png" alt="" width="280">
          <figcaption>gebruik van de Math PI constante</figcaption>
@@ -523,13 +523,13 @@ double e = Math.Sqrt(16); // resultaat: vierkantswortel 16 = 4
 int grootste = Math.Max(25, 12); // resultaat: grootste &rarr; 25
 int kleinste = Math.Min(30, 15); // resultaat: kleinste &rarr; 15
 
-Console.WriteLine("a: " + a);
-Console.WriteLine("b: " + b);
-Console.WriteLine("c: " + c);
-Console.WriteLine("d: " + d);
-Console.WriteLine("e: " + e);
-Console.WriteLine("grootste: " + grootste);
-Console.WriteLine("kleinste: " + kleinste);</code></pre>
+Console.WriteLine($"a: {a}");
+Console.WriteLine($"b: {b}");
+Console.WriteLine($"c: {c}");
+Console.WriteLine($"d: {d}");
+Console.WriteLine($"e: {e}");
+Console.WriteLine($"grootste: {grootste}");
+Console.WriteLine($"kleinste: {kleinste}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/math-berekeningen.png" alt="" width="250">
          <figcaption>gebruik van de Math functies</figcaption>
@@ -554,17 +554,33 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
          </tbody>
       </table>
       <h3>Code voorbeelden</h3>
-      <h4>Dialoogvenster met enkel een boodschap</h4>
+      <h4>Eenvoudig dialoogvenster</h4>
       <pre><code>MessageBox.Show("Hello, World!");</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/messagebox_example1.png" alt="">
+         <img src="img/02_dotnetclasses/messagebox_simple.png" alt="" width="150">
          <figcaption>MessageBox met enkel boodschap</figcaption>
       </figure>
-      <h4>Dialoogvenster met boodschap en titel</h4>
-      <pre><code>MessageBox.Show("Hello, World!", "Voorbeeld MessageBox");</code></pre>
+      <h4>Dialoogvenster met icoon</h4>
+      <pre><code>MessageBoxResult result = MessageBox.Show("Het bestand is opgeslagen", "", MessageBoxButton.OK, MessageBoxImage.Information);</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/messagebox_example2.png" alt="" width="150">
-         <figcaption>MessageBox met boodschap en titel</figcaption>
+         <img src="img/02_dotnetclasses/messagebox_icon.png" alt="" width="200">
+         <figcaption>MessageBox met boodschap en icoon</figcaption>
+      </figure>
+      <h4>OK/Cancel ialoogvenster</h4>
+      <pre><code>MessageBoxResult result = MessageBox.Show(
+   "Je wijzigingen gaan mogelijks verloren. Ben je zeker dat je wil afsluiten?", 
+   "WAARSCHUWING", 
+   MessageBoxButton.OKCancel, 
+   MessageBoxImage.Exclamation
+);
+if (result == MessageBoxResult.OK)
+{
+    Environment.Exit(0);    
+}
+</code></pre>
+      <figure>
+         <img src="img/02_dotnetclasses/messagebox_okcancel.png" alt="" width="300">
+         <figcaption>MessageBox met boodschap, titel, icoon en ok/cancel knoppen</figcaption>
       </figure>
 
       <!-- RANDOM -->
@@ -582,7 +598,7 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
          </thead>
          <tbody>
             <tr>
-               <td>Next()</td>
+               <td><code>Next()</code></td>
                <td>Genereert een willekeurig getal tussen de meegegeven boven- en ondergrens</td>
             </tr>
          </tbody>
@@ -593,8 +609,8 @@ Console.WriteLine("kleinste: " + kleinste);</code></pre>
 int getal1 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 int getal2 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 
-Console.WriteLine("Random getal 1: " + getal1);
-Console.WriteLine("Random getal 2: " + getal2);</code></pre>
+Console.WriteLine($"Random getal 1: {getal1}");
+Console.WriteLine($"Random getal 2: {getal2}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/random-voorbeeld1.png" alt="" width="250">
          <figcaption>twee random getallen tussen 1 en 20</figcaption>
@@ -773,6 +789,153 @@ string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; é
 string[] parts1 = txt.Split('/'); // { "0477", "234.56.78" } &rarr; string[] array
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
+      <h2>Timers</h2>
+      <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
+      <h3>Stopwatch</h3>
+      <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
+      <h4>Properties en methodes</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Elapsed</code></td>
+               <td>verstreken tijd (type <code>TimeSpan</code>)</td>
+            </tr>
+            <tr>
+               <td><code>IsRunning</code></td>
+               <td>boolean die aangeeft of de stopwatch loopt of niet</td>
+            </tr>
+         </tbody>
+      </table>      
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Reset()</code></td>
+               <td>reset de stopwatch</td>
+            </tr>
+            <tr>
+               <td><code>Start()</code></td>
+               <td>start de stopwatch</td>
+            </tr>
+            <tr>
+               <td><code>Stop()</code></td>
+               <td>stop de stopwatch</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Codevoorbeeld</h4>
+      <pre><code>Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
+Console.WriteLine("Timer is gestart. Druk een toets...");
+Console.ReadKey(true);
+TimeSpan elapsed = stopwatch.Elapsed; // verstreken tijdsspanne
+stopwatch.Stop();
+Console.WriteLine($"Timer is gestopt. De verstreken tijd is {elapsed.Seconds}.{elapsed.Milliseconds}s");
+Console.ReadKey();</code></pre>
+      <figure class="console">
+         <pre>Timer is gestart. Druk een toets...
+Timer is gestopt. De verstreken tijd is 2.47s</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>DispatcherTimer</h3>
+      <p>Hiermee kan je een teller maken die een methode uitvoert met vaste tussentijden. </p>
+      <h4>Properties, methodes en events</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Interval</code></td>
+               <td>tussentijd (type <code>TimeSpan</code>)</td>
+            </tr>
+            <tr>
+               <td><code>IsEnabled</code></td>
+               <td>boolean die aangeeft of de timer loopt of niet</td>
+            </tr>
+         </tbody>
+      </table>      
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Start()</code></td>
+               <td>start de stopwatch</td>
+            </tr>
+            <tr>
+               <td><code>Stop()</code></td>
+               <td>stop de stopwatch</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Tick</code></td>
+               <td>vuurt af met vaste intervallen (zie de <code>Interval</code> property)</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Codevoorbeeld</h4>  
+      <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>    
+      <pre><code class="language-html">&lt;Label x:Name="lblCount" Content="0" .../&gt;
+&lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
+</code></pre>
+      <p>De C# code-behind:</p>
+      <pre><code>private int ticks;
+private DispatcherTimer timer;
+
+public MainWindow() 
+{
+    InitializeComponent();
+    ticks = 0; // zet teller op 0
+    timer = new DispatcherTimer(); // maak teller aan
+    timer.Interval = TimeSpan.FromMilliseconds(200); // tijdsspanne tussen twee ticks is 200 milliseconden
+    timer.Tick += DoSomething; // voer deze methode bij elke tick uit
+}
+
+private void BtnStart_Click(object sender, RoutedEventArgs e) {
+   timer.Start(); // start de teller als op de OK-knop geklikt wordt
+}        
+
+private void DoSomething(object sender, EventArgs e) 
+{
+    // elke 200 milliseconden uitgevoerd
+    // ...
+    ticks++;
+    lblCount.Content = ticks;
+}
+</code></pre>
+<figure>
+   <img src="img/02_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered" width="250">
+   <figcaption>DispatcherTimer voorbeeld</figcaption>
+</figure>
+
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
    <script src="vendor/prism.js"></script>
