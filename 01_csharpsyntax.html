@@ -553,42 +553,6 @@ Console.WriteLine(header);
             </tr>
          </tbody>
       </table>
-      <h3>String's vergelijken</h3>
-      <p>Je kunt string's op twee verschillende maniere vergelijken:</p>
-      <ul>
-         <li>met behulp van de <code>==</code>-operator (<code>true</code> indien beide string's dezelfde zijn, anders <code>false</code>)</li>
-         <li>met de methode <code>CompareTo</code>, return-waarden:
-            <ul>
-               <li>&minus;1 indien de string kleiner is dat de gegeven string</li>
-               <li>0 indien beide string's gelijk zijn aan elkaar</li>
-               <li>1 indien de string groter is dan de gegeven string</li>
-            </ul>
-         </li>
-      </ul>
-      <pre><code>string str1 = "banaan";
-string str2 = "banaan";
-string str3 = "citroen";
-string str4 = "appel";
-
-bool test1 = str1 == str2;
-Console.WriteLine(test1); // true; "banaan" is gelijk aan "banaan"
-
-int test2 = str1.CompareTo(str2);
-Console.WriteLine(test2); // 0; "banaan" is gelijk aan "banaan"
-
-int test3 = str1.CompareTo(str3);
-Console.WriteLine(test3);  // &minus;1; "banaan" komt alfabetisch vóór "citroen"
-
-int test4 = str1.CompareTo(str4);
-Console.WriteLine(test4); // 1; "banaan" komt alfabetisch ná "appel"
-</code></pre>
-      <figure class="console">
-         <pre>True
-0
--1
-1</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
       <h3>Selectie-structuren</h3>
       <p>Met behulp van selectie-structuren kan je bepalen welk(e) statement(s) moet(en) uitgevoerd worden op basis van een voorwaarde (<em>= conditie</em>).</p>
       <h4>IF-selectie</h4>

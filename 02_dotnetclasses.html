@@ -681,7 +681,28 @@ String samengevoegd = String.Join(", ", arr1);</code></pre>
             </tr>
          </tbody>
       </table>      
+      <h3>String's vergelijken</h3>
+      <p>Je kunt string's op twee verschillende maniere vergelijken:</p>
+      <ul>
+         <li>met behulp van de <code>==</code>-operator (<code>true</code> indien beide string's dezelfde zijn, anders <code>false</code>)</li>
+         <li>met de methode <code>CompareTo</code>, return-waarden:
+            <ul>
+               <li>&minus;1 indien de string kleiner is dat de gegeven string</li>
+               <li>0 indien beide string's gelijk zijn aan elkaar</li>
+               <li>1 indien de string groter is dan de gegeven string</li>
+            </ul>
+         </li>
+      </ul>
+      <pre><code>string str1 = "banaan";
+string str2 = "banaan";
+string str3 = "citroen";
+string str4 = "appel";
 
+bool test1 = str1 == str2; // true; "banaan" is gelijk aan "banaan"
+int test2 = str1.CompareTo(str2); // 0; "banaan" is gelijk aan "banaan"
+int test3 = str1.CompareTo(str3); // &minus;1; "banaan" komt alfabetisch vóór "citroen"
+int test4 = str1.CompareTo(str4); // 1; "banaan" komt alfabetisch ná "appel"
+</code></pre>
       <h3>Code voorbeelden</h3>
       <h4>Lengte bepalen</h4>
       <p>De lengte bepaal je met de <code>Length property</code></p>
@@ -695,7 +716,6 @@ str1 = str1.Trim(); // ",Guitar, drum, Bass,."
 str1 = str1.Trim(new char[] { ',', '.' }); // "Guitar, drum, Bass"</code></pre>
 <h4>Positie van deelstrings</h4>
 <pre><code>string str2 = "Now have that tasty morning burger.";
-int len = str1.Length; // 35
 int int1 = str1.IndexOf("at"); // 11
 int int2 = str1.IndexOf('z'); // -1; not found
 int int3 = str1.LastIndexOf('e'); // 32
@@ -745,10 +765,10 @@ Console.WriteLine(reeks);</code></pre>
          <img src="img/02_dotnetclasses/string-join1.png" alt="" width="250">
          <figcaption>Join() voorbeeld</figcaption>
       </figure>
-      <h4>Een reeks samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
+      <h4>Een array samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
       <pre><code>int[] getallen = { 5, 7, 12, 8, 3 }; // &rarr; int[] array
 string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; één string</code></pre>
-      <h4>Een string splitsen rond karakters</h4>
+      <h4>Een string splitsen rond karakters naar een array</h4>
       <pre><code>string txt = "0477/234.56.78"; // &rarr; één string
 string[] parts1 = txt.Split('/'); // { "0477", "234.56.78" } &rarr; string[] array
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
