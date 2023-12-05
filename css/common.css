@@ -125,6 +125,7 @@ nav {
    right: 0;
    top: 0;
    transition: all 0.1s;
+   z-index: 5;
 }
 
 p, table {
@@ -135,7 +136,35 @@ table {
    margin-bottom: 1em;
 }
 
+/* UL's */
+
+.arrow {
+   list-style-type: none;
+   margin-top: 0;
+   margin-left: 1.25em;
+   padding: 0;
+}
+
+ul.arrow li:first-child,
+ul li.arrow {
+   margin: 0.3em 0;
+}
+
+ul.arrow li::before,
+li.arrow::before {
+   content: '→  ';
+}
+
+ul.arrow li::first-letter,
+li.arrow::first-letter {
+   margin-left: -1.25em;
+}
+
 /* CLASSES */
+
+body:not(.showpro) .pro {
+   display: none !important;
+}
 
 .bordered {
    border: 1px solid #ccc;
@@ -145,9 +174,10 @@ table {
    text-align: center;
 }
 
-.redcomments .comment {
+.redcomments .comment, .error {
    color: #900 !important;
 }
+
 
 html body .em {
    background-color: #ddd;
@@ -186,6 +216,75 @@ html body .small {
 
 #up:hover {
    color: #333;
+}
+
+/* SWITCH */
+
+/* The switch - the box around the slider */
+#mode {
+   font-size: 12px;
+   position: fixed;
+   right: 70px;
+   bottom: 18px;
+   z-index: 10;
+}
+ 
+.switch {
+   display: inline-block;
+   height: 20px;
+   position: relative;
+   width: 60px;
+}
+ 
+/* Hide default HTML checkbox */
+.switch input {
+   height: 0;
+   opacity: 0;   
+   width: 0;
+}
+ 
+/* The slider */
+.switch .slider {
+   background-color: #ccc;
+   bottom: 0;
+   cursor: pointer;
+   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
+   transition: .4s;
+}
+ 
+.switch .slider:before {
+   background-color: white;
+   bottom: 4px;
+   content: "";
+   height: 13px;
+   left: 4px;
+   position: absolute;
+   transition: .4s;
+   width: 14px;
+}
+ 
+.switch input:checked + .slider {
+   background-color: #bcac86;
+}
+ 
+.switch input:focus + .slider {
+   box-shadow: 0 0 1px #bcac86;
+}
+ 
+.switch input:checked + .slider:before {
+   transform: translateX(39px);
+}
+ 
+/* Rounded sliders */
+.switch .slider.round {
+   border-radius: 34px;
+}
+ 
+.switch .slider.round:before {
+   border-radius: 50%;
 }
 
 /* NAV */
@@ -311,6 +410,21 @@ code {
    font-family: Consolas, Menlo, Monaco, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
    font-size: 0.9em;
    line-height: 1.357em;
+   position: relative;
+}
+
+body pre.right {
+   background-image: url(../img/code_right.png);
+   background-repeat: no-repeat;
+   background-position: right top;
+   background-size: 20px 20px;
+}
+
+body pre.wrong {
+   background-image: url(../img/code_wrong.png);
+   background-repeat: no-repeat;
+   background-position: right top;
+   background-size: 20px 20px;
 }
 
 :not(pre) > code { /* inline code */
@@ -339,15 +453,18 @@ figure.console pre {
    font-family: Consolas,"Liberation Mono","Courier New",monospace;
    font-size: 0.8em;
    line-height: 1.357em;
-   margin: 0;
    width: 400px;
    padding-top: 35px;
 }
 
+figure pre {
+   margin: 0;
+}
+
 pre[class*="language-"] {
-	background: #f5f2f0;
+   background: #f5f2f0;
 }
 
 code[class*="language-"] {
-	background: none;
+   background: none;
 }

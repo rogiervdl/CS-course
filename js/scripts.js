@@ -2,6 +2,7 @@
 
 // DOM shortcuts
 const DOM = {
+   chbMode: document.querySelector("#mode [type=checkbox]"),
 	codeBlocks: [...document.querySelectorAll('pre code')],
    nav: document.querySelector('nav'),
 	titles: [...document.querySelectorAll('h2,h3,h4,h5')],
@@ -39,8 +40,8 @@ function startApp() {
          titleNrs[i] = 0;
       }
       const prefix = titleNrs.filter(t => t != 0).join('.');
-      toc += `<li>${prefix} ${lnk}</li>\n`;
-
+      const ispro = title.closest('.pro') != null;
+      toc += `<li${ispro ? ' class="pro"' : ''}>${prefix} ${lnk}</li>\n`;
    });
 
    // add to dom
@@ -51,6 +52,15 @@ function startApp() {
       DOM.nav.style.fontSize = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50
          ? "4px" : "16px";
    });
+
+   // part 4: n00b/pro mode
+   DOM.chbMode.addEventListener('change', function() {
+      document.body.classList.toggle('showpro', this.checked);
+      localStorage.setItem('showpro', this.checked ? 'true' : 'false');
+   });
+   const showPro = localStorage.getItem('showpro') != 'false';
+   document.body.classList.toggle('showpro', showPro);
+   DOM.chbMode.checked = showPro;
 }
 
 /**

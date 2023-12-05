@@ -6,9 +6,18 @@
    <title>.NET classes | C# cheat sheets</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="css/02_dotnetclasses.css">
 </head>
 
-<body class="language-cs">
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
    <nav class="site__nav">
       <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
          <p class="thumb__title">01. C# syntax</p>
@@ -22,9 +31,21 @@
          <p class="thumb__title">03. WPF controls</p>
          <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
       </a>
-      <a href="04_wpflayout.html" class="main__thumb" title="04. WPF layout">
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
          <p class="thumb__title">04. WPF layout</p>
          <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_filesfolders.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden &amp; mappen</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="06_oo_programmatie.html" class="main__thumb pro">
+         <p class="thumb__title">06. OO programmatie</p>
+         <img class="thumb__visual" src="img/06_oo_programmatie/icon.jpg" alt="">
+      </a>
+      <a href="07_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">07. SQL databanken</p>
+         <img class="thumb__visual" src="img/07_sql_databanken/icon.png" alt="">
       </a>
    </nav>
    <h1>02. .NET Classes</h1>
@@ -67,6 +88,10 @@
                <td>Omzetten (converteren) tussen verschillende datatypes</td>
             </tr>
             <tr>
+               <td><a href="#dispatchertimer">DispatcherTimer</a></td>
+               <td>een timer waarmee je op vaste momenten een methode kan uitvoeren</td>
+            </tr>
+            <tr>
                <td><a href="#environment">Environment</a></td>
                <td>Geeft toegang tot de omgeving waarin de applicatie wordt uitgevoerd</td>
             </tr>
@@ -81,6 +106,10 @@
             <tr>
                <td><a href="#random">Random</a></td>
                <td>Genereren van willekeurige waarden (getallen)</td>
+            </tr>
+            <tr>
+               <td><a href="#stopwatch">Stopwatch</a></td>
+               <td>een timer waarmee je een tijdsspanne kan meten</td>
             </tr>
             <tr>
                <td><a href="#string">String</a></td>
@@ -143,6 +172,66 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <pre><code>Clipboard.SetText("text to be copied");</code></pre>
       <h4>Tekstuele inhoud van het klembord opvragen</h4>
       <pre><code>string content = Clipboard.GetText();</code></pre>
+
+      <!-- COLLECTIES -->
+      <h2>Collectie classes</h2>
+      <p>Een collectie is een verzameling gegevens van hetzelfde type met één naam. <br><i>Opmerking</i>: er bestond vroeger ook een <code>ArrayList</code> waar je types mocht mixen, maar dat is slechte stijl en het wordt dan ook niet meer gebruikt. </p>
+      <h3>Overzicht</h3>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Beschrijving</th>
+               <th scope="col">Te vergelijken met</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><a href="#array">Array</a></td>
+               <td>vast aantal items, waarde in te stellen via hun index</td>
+               <td>vaste rij stoelen in de wachtzaal</td>
+            </tr>
+            <tr>
+               <td><a href="#dictionary">Dictionary&lt;TKey, Tvalue&gt;</a></td>
+               <td>key-value paren, met unieke keys</td>
+               <td>lockers met naambordjes</td>
+            </tr>
+            <tr>
+               <td><a href="#hashset">HashSet&lt;T&gt;</a></td>
+               <td>lijst unieke waarden</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><a href="#list">List&lt;T&gt;</a></td>
+               <td>toevoegen of verwijderen items kan overal</td>
+               <td>platenkast</td>
+            </tr>
+            <tr>
+               <td><a href="#stack">Queue&lt;T&gt;</a></td>
+               <td>FIFO (first in, first out): toevoegen aan einde, verwijderen aan begin</td>
+               <td>wachtrij aan de kassa</td>
+            </tr>
+            <tr>
+               <td>SortedDictionary&lt;TKey, Tvalue&gt;</td>
+               <td>als Dictionary, maar dan automatisch gesorteerd op TKey</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><a href="#stack">Stack&lt;T&gt;</a></td>
+               <td>LIFO (last in, first out): toevoegen en verwijderen aan einde</td>
+               <td>stapel pannenkoeken</td>
+            </tr>
+         </tbody>
+      </table>
+      <figure id="figCollections">
+         <img src="img/02_dotnetclasses/collecties_array.jpg" alt="">
+         <img src="img/02_dotnetclasses/collecties_dictionary.jpg" alt="">
+         <img src="img/02_dotnetclasses/collecties_list.jpg" alt="">
+         <img src="img/02_dotnetclasses/collecties_queue.jpg" alt="">
+         <img src="img/02_dotnetclasses/collecties_stack.jpg" alt="">
+         <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
+      </figure>
+      <h3>Array</h3>
 
       <!-- COLOR -->
       <h2>Color</h2>
@@ -660,6 +749,10 @@ String samengevoegd = String.Join(", ", arr1);</code></pre>
                <td>twee strings alfabetisch vergelijken</td>
             </tr>
             <tr>
+               <td><code>Contains()</code></td>
+               <td>controleert of de string een gegeven <code>string</code> of <code>char</code> bevat</td>
+            </tr>
+            <tr>
                <td><code>IsNullOrEmpty()</code></td>
                <td>gaat na of de string gelijk is aan <code>null</code> of de lege string (<code>&quot;&quot;</code>)</td>
             </tr>
@@ -730,12 +823,14 @@ int len = str1.Length; // 35, dus inclusief spaties, leestekens enz...</code></p
 string str1 = "  ,Guitar, drum, Bass,. ";
 str1 = str1.Trim(); // ",Guitar, drum, Bass,."
 str1 = str1.Trim(new char[] { ',', '.' }); // "Guitar, drum, Bass"</code></pre>
-<h4>Positie van deelstrings</h4>
+<h4>Controle op deelstrings</h4>
 <pre><code>string str2 = "Now have that tasty morning burger.";
 int int1 = str1.IndexOf("at"); // 11
 int int2 = str1.IndexOf('z'); // -1; not found
 int int3 = str1.LastIndexOf('e'); // 32
-bool bool1 = str1.StartsWith("No"); // true</code></pre>
+bool bool1 = str1.StartsWith("No"); // true
+bool bool2 = str1.Contains("that"); // true
+bool bool3 = str1.Contains('X'); // false</code></pre>
       <h4>Tekst vervangen, omzetten, inkorten</h4>
 <pre><code>string str1 = "Hey hey hey, please DO NOT touch that!";
 string str2 = str1.Substring(0, 21); // "Hey hey hey, please DO"
@@ -789,7 +884,7 @@ string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; é
 string[] parts1 = txt.Split('/'); // { "0477", "234.56.78" } &rarr; string[] array
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
-      <h2>Timers</h2>
+      <h2>Timer classes</h2>
       <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
       <h3>Stopwatch</h3>
       <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>

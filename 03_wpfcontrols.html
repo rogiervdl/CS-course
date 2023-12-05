@@ -8,7 +8,15 @@
    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="language-cs">
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
    <nav class="site__nav">
       <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
          <p class="thumb__title">01. C# syntax</p>
@@ -22,9 +30,21 @@
          <p class="thumb__title">03. WPF controls</p>
          <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
       </a>
-      <a href="04_wpflayout.html" class="main__thumb" title="04. WPF layout">
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
          <p class="thumb__title">04. WPF layout</p>
          <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_filesfolders.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden &amp; mappen</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="06_oo_programmatie.html" class="main__thumb pro">
+         <p class="thumb__title">06. OO programmatie</p>
+         <img class="thumb__visual" src="img/06_oo_programmatie/icon.jpg" alt="">
+      </a>
+      <a href="07_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">07. SQL databanken</p>
+         <img class="thumb__visual" src="img/07_sql_databanken/icon.png" alt="">
       </a>
    </nav>
    <h1>03. WPF Controls</h1>
@@ -254,6 +274,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
    &lt;ComboBoxItem Content="Groen"/&gt;
    &lt;ComboBoxItem Content="Blauw"/&gt;
 &lt;/ComboBox&gt;</code></pre>
+      <p>De manier van werken items is bijna identiek met de <a href="#listbox">Listbox</a>, alleen gebruiken we <code>ComboBoxItem</code> i.p.v. <code>ListBoxItem</code>, en bestaat er geen <code>SelectionMode="Multiple"</code> voor de <code>ComboBox</code>.</p>   
       <p><img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items"></p>
       <h3>Properties en events</h3>
       <p>Properties en events van <code>ComboBox</code>:</p>
@@ -316,8 +337,9 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
       <h4>Dynamisch items toevoegen</h4>
       <pre><code>ComboBoxItem item = new ComboBoxItem(); // maak een nieuw ComboBoxItem
 item.Content = "Oranje"; // stel de inhoud (tekst) van het item in
-            
 cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ComboBox</code></pre>
+      <p>of korter genoteerd:</p>
+      <pre><code>cboKleuren.Items.Add(new ComboBoxItem() { Content = "Oranje" }); // initialisatie en toevoegen in één keer</code></pre>
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
       <pre><code>if (cboKleuren.SelectedIndex != -1) 
 {
@@ -545,19 +567,19 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
             </tr>
             <tr>
                <td><code>SelectedIndex</code></td>
-               <td>De index (positie) van het geselecteerde item <strong><em>(opgelet: begint bij 0!)</em></strong>. Indien er geen optie geselecteerd werd, heeft deze property de waarde -1. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
+               <td>index (positie) van het geselecteerde item; -1 indien geen geselecteerd (enkel te gebruiken indien <code>SelectionMode</code> de waarde <code>Single</code> heeft)</td>
             </tr>
             <tr>
                <td><code>SelectedItem</code></td>
-               <td>Het <code>ListBoxItem</code>-element dat op dat moment geselecteerd is. Indien er geen item geselecteerd werd, is de waarde van deze property null. Gebruik deze property indien de gebruiker slechts <strong>één item tegelijkertijd</strong> kan selecteren.</td>
+               <td>geselecteerd item; <code>null</code> indien geen geselecteerd (enkel te gebruiken indien <code>SelectionMode</code> de waarde <code>Single</code> heeft)</td>
             </tr>
             <tr>
                <td><code>SelectedItems</code></td>
-               <td>Een collection van de <code>ListBoxItem</code>-elementen die op dat moment geselecteerd zijn. Gebruik deze property indien de gebruiker <strong>meerdere items tegelijkertijd</strong> kan selecteren.</td>
+               <td>collectie van geselecteerde items (enkel te gebruiken indien <code>SelectionMode</code> de waarde <code>Multiple</code> heeft)</td>
             </tr>
             <tr>
                <td><code>SelectionMode</code></td>
-               <td>Geeft aan hoeveel items de gebruiker gelijktijdig kan selecteren (<code>Single</code>: één item (single selection), <code>Multiple</code>: meerdere items tegelijkertijd (multi-select)).</td>
+               <td>hoeveel elementen tegelijk kunnen geselecteerd worden: <code>Single</code> (slechts één) of <code>Multiple</code> (meerdere tegelijk)</td>
             </tr>
          </tbody>
       </table>
@@ -575,11 +597,56 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
             </tr>
          </tbody>
       </table>
+      <p>Properties en methodes van <code>ListBox.Items</code>:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Count</code></td>
+               <td>aantal items in de ListBox</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Add(item)</code></td>
+               <td>voeg item toe</td>
+            </tr>
+            <tr>
+               <td><code>Clear()</code></td>
+               <td>wis alle items</td>
+            </tr>
+            <tr>
+               <td><code>Insert(index, item)</code></td>
+               <td>voeg een item toe op gegeven positie</td>
+            </tr>
+            <tr>
+               <td><code>Remove(item)</code></td>
+               <td>verwijder een item</td>
+            </tr>
+            <tr>
+               <td><code>RemoveAt(index)</code></td>
+               <td>verwijder een item op gegeven positie</td>
+            </tr>
+         </tbody>
+      </table>
       <p>Properties en events van <code>ListBoxItem</code>:</p>
       <table class="light">
          <thead>
             <tr>
-               <th scope="col">Naam</th>
+               <th scope="col">Property</th>
                <th scope="col">Omschrijving</th>
             </tr>
          </thead>
@@ -600,6 +667,20 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
 item.Content = "Brood"; // stel de inhoud (tekst) van het item in
             
 lstBoodschappen.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ListBox</code></pre>
+      <p>of korter genoteerd:</p>
+      <pre><code>lstBoodschappen.Items.Add(new ListBoxItem() { Content = "Brood" }); // initialisatie en toevoegen in één keer</code></pre>
+      <div class="tips">
+         <p>In theorie kan je ook rechtstreeks een <code>string</code> in een <code>ListBox</code> kan steken, zonder te verpakken in <code>ListBoxItem</code>:</p>
+         <pre class="wrong"><code>// string toevoegen zonder ListBoxItem
+lstBoodschappen.Items.Add("Brood");             
+lstBoodschappen.Items.Add("Kaas");             
+lstBoodschappen.Items.Add("Eieren");</code></pre>
+         <ul class="arrow">
+            <li>er zijn nu geen opmaakmogelijkheden meer als zichtbaarheid, achtergrond, lettertype...</li>
+            <li>gebruik daarom altijd <code>ListBoxItem</code> als je items wil toevoegen aan een <code>List</code></li>
+         </ul>
+      </div>
+
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
       <pre><code>if (lstBoodschappen.SelectedIndex != -1) 
 {
@@ -615,7 +696,7 @@ lstBoodschappen.Items.Add(item); // voeg het nieuwe item toe aan de collectie me
 {
    // gebruiker heeft (minimum) één item geselecteerd
 }</code></pre>
-      <h4>Inhoud van het geselecteerde item opvragen (single selection)</h4>
+      <h4>Inhoud van het geselecteerde item opvragen (single selection mode)</h4>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (lstBoodschappen.SelectedItem != null) 
 {
@@ -624,12 +705,12 @@ if (lstBoodschappen.SelectedItem != null)
                 
     // doe iets met variabele 'inhoud'
 }</code></pre>
-      <h4>Inhoud van het geselecteerde items opvragen (multi-select)</h4>
+      <h4>Geselecteerde items overlopen (multiple selection mode)</h4>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems) 
 {
     // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
-      <h4>Itereren over items in een ListBox</h4>
+      <h4>Alle items overlopen</h4>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items) 
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
@@ -1016,6 +1097,29 @@ txt1.TextAlignment = TextAlignment.Right;
          <img src="img/03_wpfcontrols/border-met.png" alt="" width="250">
          <figcaption>weergave met custom Border</figcaption>
       </figure>
+      <div class="pro">
+
+      <h2>Tag property</h2>
+      <p>Je kan gebruik maken van de <code class="em">Tag</code> property van WPF controls om een extra waarde aan een control te verbinden. <br>Voorbeeld waarbij elke knop zelf bijhoudt hoeveel keer erop geklikt is:
+      </p>
+      <pre><code class="language-html">&lt;Button x:Name="btn1" Content="KNOP 1" Tag="0" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn2" Content="KNOP 2" Tag="0" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn3" Content="KNOP 3" Tag="0" Click="Btn_Click" ... /&gt;
+&lt;Label x:Name="lblBericht" Content="" /&gt;</code></pre>
+      <pre><code>private void Btn_Click(object sender, RoutedEventArgs e) 
+{
+    Button btn = (Button)sender;
+    int timesClicked = Convert.ToInt32(btn.Tag);
+    timesClicked++;
+    btn.Tag = Convert.ToString(timesClicked);
+    lblBericht.Content = $"{btn.Content} is {timesClicked} keer geklikt";
+}
+</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/tag_demo.gif" alt="" width="350">
+         <figcaption>Tag demo: buttons onthouden zelf hoevaak erop geklikt werd</figcaption>
+      </figure>
+      </div>
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
    <script src="vendor/prism.js"></script>

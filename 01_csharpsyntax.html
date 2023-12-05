@@ -8,7 +8,15 @@
    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="language-cs">
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
    <nav class="site__nav">
       <a href="01_csharpsyntax.html" class="main__thumb active" title="01. C# syntax">
          <p class="thumb__title">01. C# syntax</p>
@@ -22,9 +30,21 @@
          <p class="thumb__title">03. WPF controls</p>
          <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
       </a>
-      <a href="04_wpflayout.html" class="main__thumb" title="04. WPF layout">
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
          <p class="thumb__title">04. WPF layout</p>
          <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_filesfolders.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden &amp; mappen</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="06_oo_programmatie.html" class="main__thumb pro">
+         <p class="thumb__title">06. OO programmatie</p>
+         <img class="thumb__visual" src="img/06_oo_programmatie/icon.jpg" alt="">
+      </a>
+      <a href="07_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">07. SQL databanken</p>
+         <img class="thumb__visual" src="img/07_sql_databanken/icon.png" alt="">
       </a>
    </nav>
    <h1>01. C# Syntax</h1>
@@ -166,6 +186,23 @@ const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde he
          <li>één taal (Engels/Nederlands), wees consistent!</li>
       </ul>
       <p>Er bestaan andere voorkeuren voor deze stijlregels, maar deze regels zijn de meest gangbare in C# en aanbevolen door Microsoft</p>
+      <div class="pro">
+         <h3>Nullable types</h3>
+         <p>Nullable types zijn primitieve types int, float, bool… uitgebreid met de <code>null</code> waarde:</p>
+      <pre><code>int getal1; // alle waarden tussen -2,147,483,648 en 2,147,483,647 
+int? getal2; // nullable int alle waarden tussen -2,147,483,648 en 2,147,483,647 of null
+
+bool test1 // true of false
+bool? test2; // nullable boolean: true, false of null
+</code></pre>
+      <p>Je kan ze ook gebruiken in structuren als arrays:</p>
+      <pre><code>int?[] getallen = new int?[5]; // array van 5 nullable ints
+</code></pre>
+      <ul class="arrow">
+         <li>nullable types zijn handig als je een bepaald primitief type wil gebruiken, maar niet zeker bent of het een waarde zal hebben (bv. antwoorden op een quiz)</li>
+      </ul>
+
+      </div>
 
       <h2>Parsing/casting/conversie</h2>
       <p>De termen <em>parsing</em>, <em>casting</em> en <em>conversie</em> betekenen eigenlijk hetzelfde: het omzetten van een waarde van één type naar een ander.</p>
@@ -710,6 +747,25 @@ Console.WriteLine($"Het grootste getal is: {grootste}");
          <pre>Het grootste getal is: 15</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <div class="pro">
+         <h4>Null conditional operator (a.k.a. Elvis operator)</h4>
+         <p>Syntax: <code class="em">a?.b</code></p>
+         <p>Betekent: <i>“als a null is, neem null, anders property b”</i>. <br>Neem volgend fragment:</p>
+         <pre><code>string userName = null;
+if (user != null) { // user may be null
+    userName = user.Name;
+}</code></pre>
+         <p>Dit kan veel korter met de Elvis operator: </p>
+         <pre><code>string userName = user?.Name; // null als user null is, anders user.Name</code></pre>
+         <p>Je kan meerdere Elvis operatoren in één statement gebruiken:</p>
+         <pre><code>string btwNumber = persons?[0].Partner?.Company?.VatNumber; // null als ergens een null voorkomt</code></pre>
+         <h4>Null coalescing operator</h4>
+         <p>Syntax: <code class="em">a ?? b</code></p>
+         <p>Betekent: <i>“als a null is, neem dan b”</i>. Is hetzelfde als <code>a == null ? b : a</code>. <br>Voorbeeldfragment:</p>  
+         <pre><code>string hello = $"welcome {name ?? " stranger"}";</code></pre>
+         <p>Het werkt prima samen met de Elvis operator:</p>
+         <pre><code>string name = user?.Name ?? " stranger";</code></pre>
+      </div>
 
       <h2>Iteraties</h2>
       <ul>
@@ -838,6 +894,7 @@ o
 !</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <p>Het wordt ook veel gebruikt in WPF, b.v. om de <a href="03_wpfcontrols.html#alle-items-overlopen">Items van een ListBox te overlopen</a></p>
       <h3>Juiste iteratie kiezen</h3>
       <ul>
          <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code>while</code></li>
@@ -863,41 +920,86 @@ o
    return waarde; // deze regel is optioneel
 }
 </code></pre>
-      <p>Code voorbeelden:</p>
-      <p>Voorbeeld zonder parameters en zonder return-waarde:</p>
+      <p><strong>Opmerking:</strong> bij console-applicaties moeten methodes steeds voorafgegaan worden door het keyword <code>static</code></p>
+      <pre><code>private static int VraagPositiefGetal() 
+{
+   // ... methode body hier
+}
+
+private static int GrootsteGemeneDeler(int get1, int get2) 
+{
+    // ... methode body hier
+}
+</code></pre>
+      <h3>Voorbeelden</h3>
+      <h4>Zonder parameters of return-waarde</h4>
+      <p>Methode die een standaardbegroeting teruggeeft:</p>
       <pre><code>private void PrintBegroeting() 
 {
     Console.WriteLine("Hello, World!");
 }
 </code></pre>
-      <p>Voorbeeld mét parameters, zonder return-waarde:</p>
+      <h4>Met parameters, zonder return-waarde</h4>
+      <p>Methode die naam en leeftijd vraagt, en een tekst teruggeeft:</p>
       <pre><code>private void PrintVoorstelling(string naam, int leeftijd) 
 {
     Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud.");
 }
 </code></pre>
-      <p>Voorbeeld zonder parameters, mét return-waarde:</p>
+      <h4>Zonder parameters, met return-waarde</h4>
+      <p>Methode die een getal inleest tot het positief is:</p>
       <pre><code>private int VraagPositiefGetal() 
 {
     int getal; // lokale variabele
-    
     Console.Write("Geef een positief getal: ");
     getal = Convert.ToInt32(Console.ReadLine());
-    
     while (getal &lt;= 0) 
     {
         Console.Write("Het getal moet positief zijn! Geef een getal: ");
         getal = Convert.ToInt32(Console.ReadLine());
     }
-    
     return getal;
 }
 </code></pre>
-      <p>Voorbeeld mét parameters en return-waarde:</p>
+      <h4>Met parameters en return-waarde</h4>
+      <p>Methode die twee gehele getallen vraagt, en de grootste gemene deler teruggeeft:</p>
       <pre><code>private int GrootsteGemeneDeler(int get1, int get2) 
 { 
     int ggd = Math.Min(get1, get2);
+    while (get1 % ggd != 0 || get2 % ggd != 0) 
+    {
+        ggd&minus;&minus;;
+    }
     
+    return ggd;
+}</code></pre>
+      <h4>Samenvattend voorbeeld</h4>
+      <p>Een voorbeeld consoletoepassing de twee getallen inleest, en de grootste gemene deler bepaalt:</p>
+      <pre><code>// methode zonder parameters, zonder return
+static private void PrintTitel() 
+{
+    Console.WriteLine("GROOTSTE GEMENE DELER");
+    Console.WriteLine("=====================");
+}
+
+// methode zonder parameters, met return
+private int VraagPositiefGetal() 
+{
+    int getal; // lokale variabele
+    Console.Write("Geef een positief getal: ");
+    getal = Convert.ToInt32(Console.ReadLine());
+    while (getal &lt;= 0) 
+    {
+        Console.Write("Het getal moet positief zijn! Geef een getal: ");
+        getal = Convert.ToInt32(Console.ReadLine());
+    }
+    return getal;
+}
+
+// methode met parameters, met return
+private int GrootsteGemeneDeler(int get1, int get2) 
+{ 
+    int ggd = Math.Min(get1, get2);
     while (get1 % ggd != 0 || get2 % ggd != 0) 
     {
         ggd&minus;&minus;;
@@ -905,72 +1007,188 @@ o
     
     return ggd;
 }
-</code></pre>
-      <p><strong>Opmerking:</strong> bij console-applicaties moeten methodes steeds voorafgegaan worden door het keyword <code>static</code></p>
-      <pre><code>static private int VraagPositiefGetal() 
-{
-    // ... lees een positief getal in
-    return getal; 
-}
-
-static private int GrootsteGemeneDeler(int get1, int get2) 
-{
-    // ... bereken grootste gemene deler van get1 en get2 in variabele "ggd"
-    return ggd;
-}
-</code></pre>
-      <h3>Methodes gebruiken</h3>
-      <pre><code>
-static private void PrintTitel() 
-{
-    Console.WriteLine("GROOTSTE GEMENE DELER");
-    Console.WriteLine("=====================");
-}
-    
-static private int VraagPositiefGetal() 
-{
-    // ... lees een positief getal in
-    return getal; 
-}
-
-static private int GrootsteGemeneDeler(int get1, int get2) 
-{
-    // ... bereken grootste gemene deler van get1 en get2 in variabele "ggd"
-    return ggd;
-}
 
 static private void Main(string[] args) 
 {
     PrintTitel(); // gebruik methode PrintTitel
-    
     int getal1 = VraagPositiefGetal(); // gebruik methode VraagPositiefGetal
     int getal2 = VraagPositiefGetal(); // gebruik opnieuw methode VraagPositiefGetal
-    
     int ggd = GrootsteGemeneDeler(getal1, getal2); // gebruik methode GrootsteGemeneDeler
-    
     Console.WriteLine($"De grootste gemene deler is: {ggd}"); 
     Console.ReadKey();
 }
 </code></pre>
+      <div class="pro">
+         <h3>Call by reference / value</h3>
+         <p>Dit gaat over de vraag: <i>wat gebeurt er als een methode de waarde van een binnenkomende parameter verandert?</i></p>
+         <ul>
+            <li><strong>Call by value</strong>: de variabele geeft enkel zijn waarde door, wijzigingen gaan verloren
+               <br>Geldt voor: alle primitieve types (<code>bool</code>, <code>char</code>, <code>int</code>, <code>double</code>...) en <code>string</code> (*)
+            </li>
+            <li>
+               <strong>Call by reference</strong>: de variabele geeft zijn referentie door; wijzigingen blijven behouden
+               <br>Geldt voor: al de rest (objecten, arrays, lijsten…) 
+            </li>
+         </ul>
+         <h4>call by value voorbeeld</h4>
+         <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
+         <pre><code>static void TryChange(int nr) 
+{
+    nr = 13; // geef een andere waarde
+}
+
+int number1 = 12;
+Console.WriteLine($"Number is {number1}"); // getal is 12
+TryChange(number1);
+Console.WriteLine($"Number is still {number1}"); // getal is nog steeds 12</code></pre>
+         <h4>call by reference voorbeeld</h4>
+         <p>Geef je daarentegen een array mee, dan blijven wijzigingen door die methode wel behouden:</p>
+         <pre><code>static void TryChange(string[] arrTxt) 
+{
+    arrTxt[1] = "Dave"; // verander de tweede waarde
+}
+
+string[] names = { "Alice", "Bob", "Clive" };
+Console.WriteLine(String.Join(", ", names)); // array is Alice, Bob, Clive
+TryChange(names);
+Console.WriteLine(String.Join(", ", names)); // array is nu Alice, Dave, Clive
+</code></pre>
+      <h4>ref en out</h4>
+      <p>
+         Wil je primitieve types of strings toch veranderen in een methode, dan kan dat met de sleutelwoorden <code>out</code> of <code>ref</code>. 
+         Een voorbeeld voor <code>ref</code>:
+      </p>
+      <pre><code>static void TryChange(ref int nr) 
+{
+    nr = 13; // geef een andere waarde
+}
+
+int number1 = 12;
+Console.WriteLine($"Number is {number1}"); // getal is 12
+tryChange(ref number1);
+Console.WriteLine($"Number is now {number1}"); // getal is nu 13
+</code></pre>
+      <ul class="arrow">
+         <li><code>int</code> is nu called by reference!</li>
+         <li>het verschil tussen <code>out</code> en <code>ref</code> is klein (bij <code>out</code> moet je de waarde veranderen in de methode, bij <code>ref</code> mag je de waarde veranderen)</li>
+      </ul>
+      </div>
       <h3>Pure methodes</h3>
-      <p>Voorwaarden:</p>
+      <p>Een <span class="em">pure methode</span> is een methode die:</p>
       <ol>
          <li>
-            <p><strong>return-waarde</strong> is <strong>altijd dezelfde</strong> voor dezelfde argumentwaarden</p>
+            <strong>onafhankelijk</strong> is van de toestand van de buitenwereld, dus in de methode:
             <ul>
-               <li>geen gebruik van globale variabelen</li>
-               <li>leest geen input van de gebruiker (<code>Console.ReadLine()</code>, <code>Console.ReadKey()</code>, ...)</li>
+               <li>gebruik geen waarden van b.v. globale variabelen</li>
+               <li>lees geen externe bronnen als bestanden, databanken, API's...</li>
+               <li>lees geen input van de gebruiker (<code>Console.ReadLine()</code>, <code>Console.ReadKey()</code>, ...)</li>
+               <li>maak geen gebruik van de <a href="02_dotnetclasses.html#random">Random</a> klasse</li>
+               <li>lees geen WPF control waarden (<a href="03_wpfcontrols.html#textbox">TextBox</a> tekst, <a href="03_wpfcontrols.html#slider">Slider</a> waarde...)</li>
+               <li class="arrow">anders gezegd: <strong>lees niks rechtstreeks</strong> van de buitenwereld, maar haal ze binnen via <strong>parameters</strong></li>
             </ul>
          </li>
          <li>
-            <p><strong>geen enkel neveneffect</strong> buiten het bepalen van de return-waarde</p>
+            <strong>geen neveneffecten</strong> heeft op de buitenwereld behalve het teruggeven van een returnwaarde, dus in de methode:
             <ul>
-               <li>verandert geen globale variabelen</li>
+               <li>verander geen globale variabelen</li>
                <li>schrijf niet naar de console (<code>Console.Write(...)</code>, <code>Console.WriteLine(...)</code>, ...)</li>
-               <li>verandert geen waarden/inhoud van WPF-controls</li>
+               <li>verandert geen waarden/inhoud van WPF-controls  (<a href="03_wpfcontrols.html#textbox">TextBox</a> tekst, <a href="03_wpfcontrols.html#label">Label</a> content...)</li>
+               <li class="arrow">anders gezegd: <strong>verander niks rechtstreeks</strong> buiten de methode, maar geef enkel een waarde terug via de <strong>return-waarde</strong></li>
             </ul>
          </li>
       </ol>
+      <p>Het voordeel van pure methodes is dat ze veel flexibeler inzetbaar zijn, omdat ze onafhankelijk opereren van de buitenwereld.</p>
+      <h4>Voorbeeld 1: puur dankzij returnwaarde</h4>
+      <p>Een methode <code>DrukKerstboom()</code>, niet puur:</p>
+      <pre><code class="redcomments">static private void DrukKerstboom(int hoogte, int breedte, char c) {
+   int i, j, aantalSterren, aantalSpaties; // lokale variabelen
+   for (i = 0; i &lt; hoogte; i++) {
+      aantalSterren = (i * breedte) / hoogte;
+      aantalSpaties = (breedte - aantalSterren) / 2;
+      for (j = 0; j &lt; aantalSpaties; j++) Console.Write(" "); // FOUT! vermijd schrijven naar de console
+      for (j = 0; j &lt; aantalSterren; j++) Console.Write(c); // FOUT! vermijd schrijven naar de console
+      Console.WriteLine();
+   }
+   return;
+}
+
+static private void Main(string[] args) {
+   DrukKerstboom(20, 15, '+');
+}
+</code></pre>
+      <figure class="console">
+         <pre>   *
+   **
+  ***
+  ****
+ *****
+ ******
+*******               
+</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Hetzelfde programma, nu wel met pure methode:</p>
+      <pre><code>sstatic private string GeefKerstboom(int hoogte, int breedte, char c) {
+   string str = "";
+   int i, j, aantalSterren, aantalSpaties; 
+   for (i = 0; i &lt; hoogte; i++) {
+         aantalSterren = (i * breedte) / hoogte;
+         aantalSpaties = (breedte - aantalSterren) / 2;
+         for (j = 0; j &lt; aantalSpaties; j++) str += " ";
+         for (j = 0; j &lt; aantalSterren; j++) str += c;
+         str += Environment.NewLine;
+   }
+   return str; // OK: geef een string terug
+}
+
+static private void Main(string[] args) {
+   string kerstboom = GeefKerstboom(20, 15, '+');
+   Console.WriteLine(kerstboom);
+}</code></pre>      
+      <h4>Voorbeeld 2: puur dankzij parameters</h4>
+      <p>De eerdere methode <code>GrootsteGemeneDeler()</code>, niet puur:</p>
+      <pre><code class="redcomments">static private int GrootsteGemeneDeler() {
+   Console.Write("Geef het eerste getal: ");
+   int get1 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd schrijven naar de Console
+   Console.Write("Geef het tweede getal: ");
+   int get2 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd schrijven naar de Console
+   int ggd = Math.Min(get1, get2);
+   while (get1 % ggd != 0 || get2 % ggd != 0) {
+      ggd--;
+   }
+   return ggd;
+}
+
+static private void Main(string[] args) {
+   int grootsteGD = GrootsteGemeneDeler();
+   Console.WriteLine($"de grootste gemene deler is {grootsteGD}");
+}
+</code></pre>
+      <figure class="console">
+         <pre>Geef het eerste getal: 18
+Geef het tweede getal: 12
+De grootste gemene deler is 6</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Hetzelfde programma, nu wel met pure methode:</p>
+      <pre><code>static private int GrootsteGemeneDeler(int get1, int get2) { // OK: gebruik parameters
+   int ggd = Math.Min(get1, get2);
+   while (get1 % ggd != 0 || get2 % ggd != 0) {
+      ggd--;
+   }
+   return ggd;
+}
+
+static private void Main(string[] args) {
+   Console.Write("Geef het eerste getal: ");
+   int getal1 = Convert.ToInt32(Console.ReadLine());
+   Console.Write("Geef het tweede getal: ");
+   int getal2 = Convert.ToInt32(Console.ReadLine());
+   int grootsteGD = GrootsteGemeneDeler(getal1, getal2);
+   Console.WriteLine($"de grootste gemene deler is {grootsteGD}");
+}
+</code></pre>
+
       <h2>Collecties</h2>
       <h3>Arrays</h3>
       <p>Een array is een naam die verwijst naar een reeks geheugenlocaties met een index genummerd beginnende bij 0:
