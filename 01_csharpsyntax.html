@@ -36,7 +36,7 @@
       </a>
       <a href="05_filesfolders.html" class="main__thumb pro">
          <p class="thumb__title">05. bestanden &amp; mappen</p>
-         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+         <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
       </a>
       <a href="06_oo_programmatie.html" class="main__thumb pro">
          <p class="thumb__title">06. OO programmatie</p>
@@ -1189,57 +1189,56 @@ static private void Main(string[] args) {
 }
 </code></pre>
 
-      <h2>Collecties</h2>
-      <h3>Arrays</h3>
-      <p>Een array is een naam die verwijst naar een reeks geheugenlocaties met een index genummerd beginnende bij 0:
-         <img src="img/01_csharpsyntax/array.png" alt="array" width="600">
-      </p>
-      <h4>Declaratie</h4>
-      <p><strong>Algemene syntax:</strong></p>
-      <pre><code>datatype[] naamVanDeArray = new datatype[aantalElementen];
+   <h2>Arrays</h2>
+   <p>Een array is een naam die verwijst naar een reeks geheugenlocaties met een index genummerd beginnende bij 0:
+      <img src="img/01_csharpsyntax/array.png" alt="array" width="600">
+   </p>
+   <h3>Declaratie</h3>
+   <p><strong>Algemene syntax:</strong></p>
+   <pre><code>datatype[] naamVanDeArray = new datatype[aantalElementen];
 </code></pre>
-      <p>Voorbeelden:</p>
-      <pre><code>int[] cijfers = new int[6]; // array van 6 ints
+   <p>Voorbeelden:</p>
+   <pre><code>int[] cijfers = new int[6]; // array van 6 ints
 string[] namen = new string[20]; // array van 20 strings
 bool[] weekdagenOpen = new bool[7]; // array van 7 bools
 </code></pre>
-      <h4>Initialisatie</h4>
-      <p>Je kunt een array initialiseren door de elementen tussen accolades te zetten, gescheiden d.m.v. komma's.</p>
-      <p>Voorbeelden</p>
-      <pre><code>int[] getallen = { 5, 8, 3, 12, 7 };
+   <h3>Initialisatie</h3>
+   <p>Je kunt een array initialiseren door de elementen tussen accolades te zetten, gescheiden d.m.v. komma's.</p>
+   <p>Voorbeelden</p>
+   <pre><code>int[] getallen = { 5, 8, 3, 12, 7 };
 double[] kommagetallen = { 1.5, 10.2, 19.85, 3.1415 };
 char[] letters = { 'a', 'b', 'c', 'd' };
 string[] fruit = { "appel", "banaan", "citroen" };
 </code></pre>
-      <h4>Waarden toekennen aan een array</h4>
-      <p><strong>Algemene syntax:</strong></p>
-      <pre><code>naamVanDeArray[index] = waarde;
+   <h3>Waarden toekennen aan een array</h3>
+   <p><strong>Algemene syntax:</strong></p>
+   <pre><code>naamVanDeArray[index] = waarde;
 </code></pre>
-      <p>Voorbeelden:</p>
-      <pre><code>int[] getallen = new int[5];
+   <p>Voorbeelden:</p>
+   <pre><code>int[] getallen = new int[5];
 getallen[0] = 10;  // zet getal 10 op eerste plaats in array
 getallen[2] = 7;   // zet getal 7 op derde plaats in array
 getallen[4] = 12;  // zet getal 12 op vijfde (laatste) plaats in array
 </code></pre>
-      <h4>Waarden uitlezen uit een array</h4>
-      <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element:</p>
-      <pre><code>string[] kleuren = { "blauw", "groen", "rood" };
+   <h3>Waarden uitlezen uit een array</h3>
+   <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element:</p>
+   <pre><code>string[] kleuren = { "blauw", "groen", "rood" };
 
 string eerste = kleuren[0]; // item op index 0 &rarr; "blauw"
 Console.WriteLine($"Het eerste element is: {eerste}");
 
 Console.WriteLine($"Het laatste element is: {kleuren[2]}"); // item op index 2 (derde en laatste element) &rarr; "rood"
 </code></pre>
-      <figure class="console">
-         <pre>Het eerste element is: blauw
+   <figure class="console">
+      <pre>Het eerste element is: blauw
 Het laatste element is: rood</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>Lengte van een array</h4>
-      <p>Onder de lengte van een array, wordt het aantal elementen van de array verstaan.
-         De lengte van een array kan je bekomen door de <code>Length</code>-property van de array op te vragen.</p>
-      <p><strong>Opgelet:</strong> dit is het totaal aantal &quot;gereserveerde&quot; plaatsen binnen de array, ook al werden deze posities nog niet geïnitialiseerd met een andere waarde</p>
-      <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h3>Lengte van een array</h3>
+   <p>Onder de lengte van een array, wordt het aantal elementen van de array verstaan.
+      De lengte van een array kan je bekomen door de <code>Length</code>-property van de array op te vragen.</p>
+   <p><strong>Opgelet:</strong> dit is het totaal aantal &quot;gereserveerde&quot; plaatsen binnen de array, ook al werden deze posities nog niet geïnitialiseerd met een andere waarde</p>
+   <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
 
 getallen[0] = 10;
 getallen[2] = 5;
@@ -1250,14 +1249,14 @@ int lengte = getallen.Length;
 
 Console.WriteLine($"De lenget van de array is: {lengte}");
 </code></pre>
-      <figure class="console">
-         <pre>De lengte van de array is: 7</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>Array's overlopen</h4>
-      <h5>Met for-iteratie</h5>
-      <p>Indien je de index van het element in de array nodig hebt.</p>
-      <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
+   <figure class="console">
+      <pre>De lengte van de array is: 7</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h3>Array's overlopen</h3>
+   <h4>Met for-iteratie</h4>
+   <p>Indien je de index van het element in de array nodig hebt.</p>
+   <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
 
 for (int i = 0; i &lt; namen.Length; i++) 
 {
@@ -1270,34 +1269,34 @@ for (int i = 0; i &lt; namen.Length; i++)
 2. Nelly
 3. Killian
 4. Chun</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Met foreach-iteratie</h5>
-      <p>Indien je de index van het element niet nodig hebt.</p>
-      <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h4>Met foreach-iteratie</h4>
+   <p>Indien je de index van het element niet nodig hebt.</p>
+   <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
 
 foreach (int num in numbers) 
 {
     Console.WriteLine(num);
 }
 </code></pre>
-      <figure class="console">
-         <pre>2
+   <figure class="console">
+      <pre>2
 5
 9
 3
 4
 6
 7</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>Methodes voor arrays</h4>
-      <h5>Een array splitsen op basis van een waarde</h5>
-      <p>
-         Om een array te splitsen op basis van een waarde, kan je gebruik maken van de methode <code>Split()</code>.
-         Aangezien je een string kunt beschouwen als een array van karakters (<code>char</code>), kan je de <code>Split()</code>-methode ook gebruiken om een string te &quot;verknippen&quot; op basis van een bepaalde waarde die in de string voorkomt.
-      </p>
-      <pre><code>string zin = "dit is een zin met meerdere woorden";
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h3>Methodes voor arrays</h3>
+   <h4>Een array splitsen op basis van een waarde</h4>
+   <p>
+      Om een array te splitsen op basis van een waarde, kan je gebruik maken van de methode <code>Split()</code>.
+      Aangezien je een string kunt beschouwen als een array van karakters (<code>char</code>), kan je de <code>Split()</code>-methode ook gebruiken om een string te &quot;verknippen&quot; op basis van een bepaalde waarde die in de string voorkomt.
+   </p>
+   <pre><code>string zin = "dit is een zin met meerdere woorden";
 string[] woorden = zin.Split(' '); // verdeel zin in woorden
 
 foreach (string woord in woorden) 
@@ -1305,19 +1304,19 @@ foreach (string woord in woorden)
     Console.WriteLine(woord);
 }
 </code></pre>
-      <figure class="console">
-         <pre>dit
+   <figure class="console">
+      <pre>dit
 is
 een
 zin
 met
 meerdere
 woorden</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Nagaan of element voorkomt in een array</h5>
-      <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een array. De methode stuurt true terug indien de meegegeven waarde zich in de array bevindt:</p>
-      <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h4>Nagaan of element voorkomt in een array</h4>
+   <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een array. De methode stuurt true terug indien de meegegeven waarde zich in de array bevindt:</p>
+   <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 bool gevonden = fruit.Contains("citroen");
 
 if (gevonden) 
@@ -1325,9 +1324,9 @@ if (gevonden)
     Console.WriteLine("De array bevat het woord \"citroen\"");
 }
 </code></pre>
-      <h5>Een array sorteren</h5>
-      <p>De methode <code>Array.Sort()</code> kan je de elementen in een array sorteren in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+   <h4>Een array sorteren</h4>
+   <p>De methode <code>Array.Sort()</code> kan je de elementen in een array sorteren in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
+   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 
 Array.Sort(getallen); // sorteer getallen van klein naar groot
 
@@ -1336,292 +1335,24 @@ foreach (int getal in getallen)
     Console.WriteLine(getal);
 }
 </code></pre>
-      <figure class="console">
-         <pre>2
+   <figure class="console">
+      <pre>2
 3
 6
 7
 9</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Elementen in een lijst samenvoegen tot één string</h5>
-      <p>Met de methode string.Join() kan je de elementen van een array samenvoegen tot één string. Als eerste argument kan je een string meegeven die tussen twee elementen in de array moet geplaatst worden.</p>
-      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
+   <h4>Elementen in een lijst samenvoegen tot één string</h4>
+   <p>Met de methode string.Join() kan je de elementen van een array samenvoegen tot één string. Als eerste argument kan je een string meegeven die tussen twee elementen in de array moet geplaatst worden.</p>
+   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 
 Console.WriteLine(string.Join(" - ", getallen));</code></pre>
-      <figure class="console">
-         <pre>7 - 3 - 9 - 2 - 6</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h3>Lijsten</h3>
-      <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
-      <h4>Declaratie</h4>
-      <p><strong>Algemene syntax:</strong></p>
-      <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
-</code></pre>
-      <p>Code voorbeelden:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;(); // een lijst van int's
-List&lt;bool&gt; myList = new List&lt;bool&gt;(); // een lijst van bool's
-List&lt;string&gt; namen = new List&lt;string&gt;(); // een lijst van string's
-</code></pre>
-      <h4>Initialisatie</h4>
-      <p>Bij de declaratie van een List, kan je de elementen meegeven die in de lijst moeten gezet worden.
-         Je kunt nadien nog elementen toevoegen/verwijderen.</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
-</code></pre>
-      <h4>Elementen toevoegen</h4>
-      <p>Je kunt elementen toevoegen met de <code>Add()</code>-methode:</p>
-      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;(); // declaratie (nieuwe lijst van string's)
+   <figure class="console">
+      <pre>7 - 3 - 9 - 2 - 6</pre>
+      <figcaption>resultaat in de console</figcaption>
+   </figure>
 
-fruit.Add("appel"); // lijst bevat 1 element
-fruit.Add("banaan"); // lijst bevat 2 elementen
-fruit.Add("citroen"); // lijst bevat 3 elementen
-</code></pre>
-      <h4>Elementen opvragen</h4>
-      <p>Je kunt een element uit een lijst opvragen op basis van de index van het element.
-         Net zoals bij arrays, beginnen indexen bij List's vanaf 0.</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;string&gt; kleuren = new List&lt;string&gt;();
-kleuren.Add("rood");
-kleuren.Add("groen");
-kleuren.Add("blauw");
-
-string eerste = kleuren[0]; // element op index 0 (eerste element)
-Console.WriteLine($"Het eerste element is: {eerste}");
-
-string derde = kleuren[2]; // element op index 2b (derde en laatste element)
-Console.WriteLine($"Het derde element is: {derde}");</code></pre>
-      <figure class="console">
-         <pre>Het eerste element is: rood
-Het derde element is: blauw</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>Elementen wijzigen</h4>
-      <p>Om een bestaand element op een bepaalde index te overschrijven met een andere waarde, maak je gebruik van de toekennings-operator (<code>=</code>).</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(4);
-getallen.Add(8);
-getallen.Add(3);  // inhoud van de lijst: 4, 8, 3
-
-getallen[1] = 5; // element op index 1 gewijzigd naar 5, inhoud van de lijst: 4, 5, 3
-</code></pre>
-      <h4>Elementen verwijderen</h4>
-      <p>Je kunt elementen op twee manieren verwijderen uit een List:</p>
-      <ul>
-         <li>Op basis van de <strong>waarde</strong> van het element (<code>Remove()</code>-methode)</li>
-         <li>Op basis van de <strong>index</strong> van het element (<code>RemoveAt()</code>-methode)</li>
-      </ul>
-      <h5>Op basis van de waarde</h5>
-      <p><strong>Opmerking:</strong> indien een waarde meermaals in de lijst voorkomt, zal enkel het <strong>eerste</strong> voorkomen van het element uit de lijst verwijderd worden.</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.Remove(5); // verwijer het element 5 uit de lijst (enkel eerste)
-// inhoud van de lijst: 2, 7, 5
-</code></pre>
-      <h5>Op basis van de positie (index) van het element</h5>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.RemoveAt(2); // verwijder element op index 2
-// inhoud van de lijst: 2, 5, 5
-</code></pre>
-      <h5>Alle elementen verwijderen</h5>
-      <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.Clear(); // de lijst is nu leeg</code></pre>
-      <h4>Aantal elementen in een lijst</h4>
-      <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen.</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(8);
-
-int aantal = getallen.Count; // vraag aantal elementen in lijst op
-
-Console.WriteLine(aantal);</code></pre>
-      <figure class="console">
-         <pre>3</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>List's overlopen</h4>
-      <h5>Met for-iteratie</h5>
-      <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
-      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Zakaria");
-namen.Add("Nelly");
-namen.Add("Killian");
-namen.Add("Chun");
-
-for (int i = 0; i &lt; namen.Count; i++) 
-{
-    int pos = i + 1; // index begint bij 0
-    string naam = namen[i];
-    Console.WriteLine($"{pos}. {naam}");
-}
-</code></pre>
-      <figure class="console">
-         <pre>1. Zakaria
-2. Nelly
-3. Killian
-4. Chun</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Met foreach-iteratie</h5>
-      <p>Indien je de index (positie) van het element niet nodig hebt.</p>
-      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Zakaria");
-namen.Add("Nelly");
-namen.Add("Killian");
-namen.Add("Chun");
-
-foreach (string naam in namen) 
-{
-    Console.WriteLine(naam);
-}
-</code></pre>
-      <figure class="console">
-         <pre>Zakaria
-Nelly
-Killian
-Chun</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h4>Methodes voor List's</h4>
-      <h5>Nagaan of element voorkomt in lijst</h5>
-      <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
-      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
-fruit.Add("appel");
-fruit.Add("banaan");
-fruit.Add("citroen");
-
-bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
-
-if (gevonden) 
-{
-    Console.WriteLine("Het element komt in de lijst voor");
-} 
-else 
-{
-    Console.WriteLine("Het element komt niet in de lijst voor.");
-}
-</code></pre>
-      <figure class="console">
-         <pre>Het element komt in de lijst voor</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Een lijst sorteren</h5>
-      <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(7);
-getallen.Add(3);
-getallen.Add(9);
-getallen.Add(5);
-
-getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
-
-foreach (int getal in getallen) 
-{
-    Console.WriteLine(getal);
-}
-</code></pre>
-      <figure class="console">
-         <pre>3
-5
-7
-9</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h5>Elementen in een lijst samenvoegen tot één string</h5>
-      <p>Met de methode <code>string.Join()</code> kan je de elementen van een list samenvoegen tot één string.
-         Als eerste argument kan je een string meegeven die tussen twee elementen in de lijst moet geplaatst worden.</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(7);
-getallen.Add(3);
-getallen.Add(9);
-getallen.Add(5);
-
-Console.WriteLine(string.Join(" - ", getallen));</code></pre>
-      <figure class="console">
-         <pre>7 - 3 - 9 - 5</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h3>Arrays vs Lijsten</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col"></th>
-               <th scope="col">Array</th>
-               <th scope="col">List</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td>lengte</td>
-               <td>vast</td>
-               <td>flexibel</td>
-            </tr>
-            <tr>
-               <td>declaratie</td>
-               <td><code>int[] cijfers = new int[3];</code></td>
-               <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;();</code></td>
-            </tr>
-            <tr>
-               <td>initialisatie</td>
-               <td><code>int[] cijfers = { 4, 1, 11 };</code></td>
-               <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;() { 4, 1, 11 };</code></td>
-            </tr>
-            <tr>
-               <td>elementen toevoegen/verwijderen</td>
-               <td>niet mogelijk</td>
-               <td><code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code>, <code>Clear()</code></td>
-            </tr>
-            <tr>
-               <td>elementen lezen/schrijven</td>
-               <td><code>cijfers[i]</code></td>
-               <td><code>cijfers[i]</code></td>
-            </tr>
-            <tr>
-               <td>aantal elementen</td>
-               <td><code>cijfers.Length</code></td>
-               <td><code>cijfers.Count</code></td>
-            </tr>
-            <tr>
-               <td>sorteren</td>
-               <td><code>Array.Sort(cijfers)</code></td>
-               <td><code>cijfers.Sort()</code></td>
-            </tr>
-            <tr>
-               <td>bevat waarde</td>
-               <td><code>cijfers.Contains(4)</code></td>
-               <td><code>cijfers.Contains(4)</code></td>
-            </tr>
-            <tr>
-               <td>splitten</td>
-               <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
-               <td>niet mogelijk</td>
-            </tr>
-            <tr>
-               <td>samenvoegen</td>
-               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
-               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
-            </tr>
-         </tbody>
-      </table>
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
    <script src="vendor/prism.js"></script>

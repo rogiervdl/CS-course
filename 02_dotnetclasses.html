@@ -37,7 +37,7 @@
       </a>
       <a href="05_filesfolders.html" class="main__thumb pro">
          <p class="thumb__title">05. bestanden &amp; mappen</p>
-         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+         <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
       </a>
       <a href="06_oo_programmatie.html" class="main__thumb pro">
          <p class="thumb__title">06. OO programmatie</p>
@@ -176,6 +176,7 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <!-- COLLECTIES -->
       <h2>Collectie classes</h2>
       <p>Een collectie is een verzameling gegevens van hetzelfde type met één naam. <br><i>Opmerking</i>: er bestond vroeger ook een <code>ArrayList</code> waar je types mocht mixen, maar dat is slechte stijl en het wordt dan ook niet meer gebruikt. </p>
+      <p>Zie ook <a href="01_csharpsyntax.html#arrays">arrays</a></p>
       <h3>Overzicht</h3>
       <table class="light">
          <thead>
@@ -188,37 +189,37 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
          <tbody>
             <tr>
                <td><a href="#array">Array</a></td>
-               <td>vast aantal items, waarde in te stellen via hun index</td>
-               <td>vaste rij stoelen in de wachtzaal</td>
+               <td>vaste lengte; wrapper class rond native C# arrays</td>
+               <td>vaste stoelen in een wachtzaal</td>
             </tr>
             <tr>
                <td><a href="#dictionary">Dictionary&lt;TKey, Tvalue&gt;</a></td>
-               <td>key-value paren, met unieke keys</td>
+               <td>variabele lengte; key-value paren, met unieke keys</td>
                <td>lockers met naambordjes</td>
             </tr>
             <tr>
                <td><a href="#hashset">HashSet&lt;T&gt;</a></td>
-               <td>lijst unieke waarden</td>
+               <td>variabele lengte; lijst unieke waarden</td>
                <td></td>
             </tr>
             <tr>
                <td><a href="#list">List&lt;T&gt;</a></td>
-               <td>toevoegen of verwijderen items kan overal</td>
+               <td>variabele lengte; toevoegen of verwijderen items kan overal</td>
                <td>platenkast</td>
             </tr>
             <tr>
                <td><a href="#stack">Queue&lt;T&gt;</a></td>
-               <td>FIFO (first in, first out): toevoegen aan einde, verwijderen aan begin</td>
+               <td>variabele lengte; FIFO (first in, first out): toevoegen aan einde, verwijderen aan begin</td>
                <td>wachtrij aan de kassa</td>
             </tr>
             <tr>
                <td>SortedDictionary&lt;TKey, Tvalue&gt;</td>
-               <td>als Dictionary, maar dan automatisch gesorteerd op TKey</td>
+               <td>variabele lengte; als Dictionary, maar dan automatisch gesorteerd op TKey</td>
                <td></td>
             </tr>
             <tr>
                <td><a href="#stack">Stack&lt;T&gt;</a></td>
-               <td>LIFO (last in, first out): toevoegen en verwijderen aan einde</td>
+               <td>variabele lengte, LIFO (last in, first out): toevoegen en verwijderen aan einde</td>
                <td>stapel pannenkoeken</td>
             </tr>
          </tbody>
@@ -232,6 +233,277 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
          <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
       </figure>
       <h3>Array</h3>
+      <h3>List&lt;T&gt;</h3>
+      <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
+      <h4>Declaratie</h4>
+      <p><strong>Algemene syntax:</strong></p>
+      <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
+</code></pre>
+      <p>Code voorbeelden:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;(); // een lijst van int's
+List&lt;bool&gt; myList = new List&lt;bool&gt;(); // een lijst van bool's
+List&lt;string&gt; namen = new List&lt;string&gt;(); // een lijst van string's
+</code></pre>
+      <h4>Initialisatie</h4>
+      <p>Bij de declaratie van een List, kan je de elementen meegeven die in de lijst moeten gezet worden.
+         Je kunt nadien nog elementen toevoegen/verwijderen.</p>
+      <p>Code voorbeeld:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
+</code></pre>
+      <h4>Elementen toevoegen</h4>
+      <p>Je kunt elementen toevoegen met de <code>Add()</code>-methode:</p>
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;(); // declaratie (nieuwe lijst van string's)
+
+fruit.Add("appel"); // lijst bevat 1 element
+fruit.Add("banaan"); // lijst bevat 2 elementen
+fruit.Add("citroen"); // lijst bevat 3 elementen
+</code></pre>
+      <h4>Elementen opvragen</h4>
+      <p>Je kunt een element uit een lijst opvragen op basis van de index van het element.
+         Net zoals bij arrays, beginnen indexen bij List's vanaf 0.</p>
+      <p>Code voorbeeld:</p>
+      <pre><code>List&lt;string&gt; kleuren = new List&lt;string&gt;();
+kleuren.Add("rood");
+kleuren.Add("groen");
+kleuren.Add("blauw");
+
+string eerste = kleuren[0]; // element op index 0 (eerste element)
+Console.WriteLine($"Het eerste element is: {eerste}");
+
+string derde = kleuren[2]; // element op index 2b (derde en laatste element)
+Console.WriteLine($"Het derde element is: {derde}");</code></pre>
+      <figure class="console">
+         <pre>Het eerste element is: rood
+Het derde element is: blauw</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Elementen wijzigen</h4>
+      <p>Om een bestaand element op een bepaalde index te overschrijven met een andere waarde, maak je gebruik van de toekennings-operator (<code>=</code>).</p>
+      <p>Code voorbeeld:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(4);
+getallen.Add(8);
+getallen.Add(3);  // inhoud van de lijst: 4, 8, 3
+
+getallen[1] = 5; // element op index 1 gewijzigd naar 5, inhoud van de lijst: 4, 5, 3
+</code></pre>
+      <h4>Elementen verwijderen</h4>
+      <p>Je kunt elementen op twee manieren verwijderen uit een List:</p>
+      <ul>
+         <li>Op basis van de <strong>waarde</strong> van het element (<code>Remove()</code>-methode)</li>
+         <li>Op basis van de <strong>index</strong> van het element (<code>RemoveAt()</code>-methode)</li>
+      </ul>
+      <h5>Op basis van de waarde</h5>
+      <p><strong>Opmerking:</strong> indien een waarde meermaals in de lijst voorkomt, zal enkel het <strong>eerste</strong> voorkomen van het element uit de lijst verwijderd worden.</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(2);
+getallen.Add(5);
+getallen.Add(7);
+getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
+
+getallen.Remove(5); // verwijer het element 5 uit de lijst (enkel eerste)
+// inhoud van de lijst: 2, 7, 5
+</code></pre>
+      <h5>Op basis van de positie (index) van het element</h5>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(2);
+getallen.Add(5);
+getallen.Add(7);
+getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
+
+getallen.RemoveAt(2); // verwijder element op index 2
+// inhoud van de lijst: 2, 5, 5
+</code></pre>
+      <h5>Alle elementen verwijderen</h5>
+      <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(2);
+getallen.Add(5);
+getallen.Add(7);
+getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
+
+getallen.Clear(); // de lijst is nu leeg</code></pre>
+      <h4>Aantal elementen in een lijst</h4>
+      <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen.</p>
+      <p>Code voorbeeld:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(2);
+getallen.Add(5);
+getallen.Add(8);
+
+int aantal = getallen.Count; // vraag aantal elementen in lijst op
+
+Console.WriteLine(aantal);</code></pre>
+      <figure class="console">
+         <pre>3</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>List's overlopen</h4>
+      <h5>Met for-iteratie</h5>
+      <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
+      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
+namen.Add("Zakaria");
+namen.Add("Nelly");
+namen.Add("Killian");
+namen.Add("Chun");
+
+for (int i = 0; i &lt; namen.Count; i++) 
+{
+    int pos = i + 1; // index begint bij 0
+    string naam = namen[i];
+    Console.WriteLine($"{pos}. {naam}");
+}
+</code></pre>
+      <figure class="console">
+         <pre>1. Zakaria
+2. Nelly
+3. Killian
+4. Chun</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h5>Met foreach-iteratie</h5>
+      <p>Indien je de index (positie) van het element niet nodig hebt.</p>
+      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
+namen.Add("Zakaria");
+namen.Add("Nelly");
+namen.Add("Killian");
+namen.Add("Chun");
+
+foreach (string naam in namen) 
+{
+    Console.WriteLine(naam);
+}
+</code></pre>
+      <figure class="console">
+         <pre>Zakaria
+Nelly
+Killian
+Chun</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Methodes voor List's</h4>
+      <h5>Nagaan of element voorkomt in lijst</h5>
+      <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
+fruit.Add("appel");
+fruit.Add("banaan");
+fruit.Add("citroen");
+
+bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
+
+if (gevonden) 
+{
+    Console.WriteLine("Het element komt in de lijst voor");
+} 
+else 
+{
+    Console.WriteLine("Het element komt niet in de lijst voor.");
+}
+</code></pre>
+      <figure class="console">
+         <pre>Het element komt in de lijst voor</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h5>Een lijst sorteren</h5>
+      <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(7);
+getallen.Add(3);
+getallen.Add(9);
+getallen.Add(5);
+
+getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
+
+foreach (int getal in getallen) 
+{
+    Console.WriteLine(getal);
+}
+</code></pre>
+      <figure class="console">
+         <pre>3
+5
+7
+9</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h5>Elementen in een lijst samenvoegen tot één string</h5>
+      <p>Met de methode <code>string.Join()</code> kan je de elementen van een list samenvoegen tot één string.
+         Als eerste argument kan je een string meegeven die tussen twee elementen in de lijst moet geplaatst worden.</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
+getallen.Add(7);
+getallen.Add(3);
+getallen.Add(9);
+getallen.Add(5);
+
+Console.WriteLine(string.Join(" - ", getallen));</code></pre>
+      <figure class="console">
+         <pre>7 - 3 - 9 - 5</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Arrays vs Lijsten</h3>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col"></th>
+               <th scope="col">Array</th>
+               <th scope="col">List</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>lengte</td>
+               <td>vast</td>
+               <td>flexibel</td>
+            </tr>
+            <tr>
+               <td>declaratie</td>
+               <td><code>int[] cijfers = new int[3];</code></td>
+               <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;();</code></td>
+            </tr>
+            <tr>
+               <td>initialisatie</td>
+               <td><code>int[] cijfers = { 4, 1, 11 };</code></td>
+               <td><code>List&lt;int&gt; cijfers = new List&lt;int&gt;() { 4, 1, 11 };</code></td>
+            </tr>
+            <tr>
+               <td>elementen toevoegen/verwijderen</td>
+               <td>niet mogelijk</td>
+               <td><code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code>, <code>Clear()</code></td>
+            </tr>
+            <tr>
+               <td>elementen lezen/schrijven</td>
+               <td><code>cijfers[i]</code></td>
+               <td><code>cijfers[i]</code></td>
+            </tr>
+            <tr>
+               <td>aantal elementen</td>
+               <td><code>cijfers.Length</code></td>
+               <td><code>cijfers.Count</code></td>
+            </tr>
+            <tr>
+               <td>sorteren</td>
+               <td><code>Array.Sort(cijfers)</code></td>
+               <td><code>cijfers.Sort()</code></td>
+            </tr>
+            <tr>
+               <td>bevat waarde</td>
+               <td><code>cijfers.Contains(4)</code></td>
+               <td><code>cijfers.Contains(4)</code></td>
+            </tr>
+            <tr>
+               <td>splitten</td>
+               <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
+               <td>niet mogelijk</td>
+            </tr>
+            <tr>
+               <td>samenvoegen</td>
+               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
+               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
+            </tr>
+         </tbody>
+      </table>
+
+
 
       <!-- COLOR -->
       <h2>Color</h2>
