@@ -51,21 +51,178 @@
    <div id="toc"></div>
    <main>
 
-      <h2>Vensters</h2>
-      <p>Een nieuw WPF project heeft standaard een 800x450 Window (met daarin een Grid control):</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.MainWindow"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:local="clr-namespace:WpfTest"
-      mc:Ignorable="d"
-      Title="MainWindow" Height="450" Width="800"&gt;
-   &lt;Grid&gt;
-   &lt;/Grid&gt;
-&lt;/Window&gt;
+      <h2>Namespaces en klassen</h2>
+      <p>In .NET zit de functionaliteit voor het werken met bestanden en mappen verspreid over heel wat namespaces en klassen.</p>
+      <h3>Voor paden</h3>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>System.IO.Path</code></td>
+               <td>werken met paden; methodes <code>Combine()</code>, <code>GetFileNameWithoutExtension()</code>, <code>GetDirectoryName()</code>...</td>
+            </tr>
+            <tr>
+               <td><code>System.Environment</code></td>
+               <td>omgevingsspecifieke paden; methodes <code>GetFolderPath()</code>, properties <code>SpecialFolder.Desktop</code>, <code>SpecialFolder.MyDocuments</code>...</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voor bestanden en mappen</h3>
+      <p>De meeste klassen voor het werken met bestanden en mappen vind je in de <code>System.IO</code> namespace:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Directory</code></td>
+               <td>werken met mappen; methodes <code>GetDirectories()</code>, <code>GetFiles()</code>, <code>Delete()</code>, <code>CreateDirectory()</code>...</td>
+            </tr>
+            <tr>
+               <td><code>DirectoryInfo</code></td>
+               <td>map informatie opvragen; properties <code>FullName</code>, <code>Name</code>, <code>Parent</code>, <code>Exists</code>...</td>
+            </tr>
+            <tr>
+               <td><code>File</code></td>
+               <td>werken met bestanden; methodes <code>ReadAllText()</code>, <code>WriteAllText()</code>, <code>Copy()</code>, <code>Delete()</code>...</td>
+            </tr>
+            <tr>
+               <td><code>FileInfo</code></td>
+               <td>bestand informatie opvragen; properties <code>Name</code>, <code>Extension</code>, <code>Directory</code>, <code>Exists</code>, <code>Length</code>...</td>
+            </tr>
+            <tr>
+               <td><code>StreamReader</code></td>
+               <td>bestanden streamend lezen (geheugenvriendelijk, enkel nodig bij zeer grote bestanden)</td>
+            </tr>
+            <tr>
+               <td><code>StreamWriter</code></td>
+               <td>bestanden streamend schrijven (geheugenvriendelijk, enkel nodig bij zeer grote bestanden)</td>
+            </tr>
+            <tr>
+               <td><code>System.IO.Path</code></td>
+               <td>werken met paden; methodes <code>Combine()</code>, <code>GetFileNameWithoutExtension()</code>, <code>GetDirectoryName()</code>...</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voor dialoogvensters</h3>
+      <p>Allerhande dialoogvensters vind je in <code>Microsoft.Win32</code>, <code>System.Windows</code> en <code>System.Windows.Forms</code>:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Namespace</th>
+               <th scope="col">Klasse</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Microsoft.Win32</td>
+               <td><code>OpenFileDialog</code></td>
+               <td>dialoogvenster om bestanden te openen</td>
+            </tr>
+            <tr>
+               <td>Microsoft.Win32</td>
+               <td><code>OpenFolderDialog</code></td>
+               <td>dialoogvenster om mappen te openen</td>
+            </tr>
+            <tr>
+               <td>Microsoft.Win32</td>
+               <td><code>SaveFileDialog</code></td>
+               <td>dialoogvenster om bestanden op te slaan &mdash; pas beschikbaar vanaf .NET8!</td>
+            </tr>
+            <tr>
+               <td>System.Windows</td>
+               <td><code>MessageBox</code></td>
+               <td>foutmeldings-, waarschuwings- en berichtvensters</td>
+            </tr>
+            <tr>
+               <td>System.Windows.Forms</td>
+               <td><code>FolderBrowserDialog</code></td>
+               <td>ouderwets dialoogvenster om een map te kiezen</td>
+            </tr>
+         </tbody>
+      </table>
+
+      <h2>Paden</h2>
+      <h3>Systeemmappen vinden</h3>
+      <p>Op elke computer is de fysieke locatie voor systeemmappen als Desktop, My Documents... verschillend. Gebruik daarom altijd de <code>Environment.SpecialFolder</code> enumeratie:</p>
+      <pre><code>string desktopFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);</code></pre>
+      <p>Andere typische voorbeelden zijn My Documents, My Pictures enz...:</p>
+      <p><img src="img/05_filesfolders/specialfolders.png" alt="" width="600"></p>
+
+      <h3>Paden combineren</h3>
+      <p>Gebruik best altijd <code>System.IO.Path.Combine()</code> om paden te combineren:</p>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "textfiles\\myfile.txt");
+Console.WriteLine(filePath);
 </code></pre>
-      <h3>Properties en methodes</h3>
+<figure class="console">
+   <pre>C:\Users\rogie\Documents\textfiles\myfile.txt</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
+
+      <h2>Bestanden</h2>
+      <h3>Overzicht</h3>
+      <p>Alle methodes om bestanden te lezen, schrijven, bewerken enz... vind je in de <code>File</code> klasse:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>AppendAllLines()</code></td>
+               <td>array of lijst toevoegen aan een bestand</td>
+            </tr>
+            <tr>
+               <td><code>AppendAllText()</code></td>
+               <td>tekst toevoegen aan een bestand</td>
+            </tr>
+            <tr>
+               <td><code>Copy()</code></td>
+               <td>kopieer een bestand</td>
+            </tr>
+            <tr>
+               <td><code>Delete()</code></td>
+               <td>verwijder een bestand</td>
+            </tr>
+            <tr>
+               <td><code>Exists()</code></td>
+               <td>controleert of een bestand bestaat</td>
+            </tr>
+            <tr>
+               <td><code>Move()</code></td>
+               <td>verplaats een bestand</td>
+            </tr>
+            <tr>
+               <td><code>ReadAllLines()</code></td>
+               <td>bestand inlezen in een <code>string[]</code> array</td>
+            </tr>
+            <tr>
+               <td><code>ReadAllText()</code></td>
+               <td>bestand inlezen in een <code>string</code></td>
+            </tr>
+            <tr>
+               <td><code>WriteAllLines()</code></td>
+               <td>array of lijst keer schrijven naar een bestand</td>
+            </tr>
+            <tr>
+               <td><code>WriteAllText()</code></td>
+               <td>tekst schrijven naar een bestand</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Properties om bestandsinformatie op te vragen vind je in de <code>FileInfo</code> klasse:</p>
       <table class="light">
          <thead>
             <tr>
@@ -75,43 +232,156 @@
          </thead>
          <tbody>
             <tr>
-               <td><code>Height</code></td>
-               <td>hoogte van het venster</td>
+               <td><code>Directory</code></td>
+               <td>map van het bestand (volledig pad)</td>
             </tr>
             <tr>
-               <td><code>MaxHeight</code></td>
-               <td>maximumhoogte van het venster (indien herschaalbaar)</td>
+               <td><code>DirectoryName</code></td>
+               <td>mapnaam van het bestand</td>
             </tr>
             <tr>
-               <td><code>MaxWidth</code></td>
-               <td>maximumbreedte van het venster (indien herschaalbaar)</td>
+               <td><code>Exists</code></td>
+               <td>bestaat het of niet (<code>true</code> of <code>false</code>)</td>
             </tr>
             <tr>
-               <td><code>MinHeight</code></td>
-               <td>minimumhoogte van het venster (indien herschaalbaar)</td>
+               <td><code>Extension</code></td>
+               <td>extensie (met punt)</td>
             </tr>
             <tr>
-               <td><code>MinWidth</code></td>
-               <td>minimumbreedte van het venster (indien herschaalbaar)</td>
+               <td><code>FullName</code></td>
+               <td>volledig pad</td>
             </tr>
             <tr>
-               <td><code>ResizeMode</code></td>
-               <td>hoe kan het venster herschalen, b.v. niet herschaalbaar: <code>NoResize</code>, <code>CanResize</code>...</td>
+               <td><code>Length</code></td>
+               <td>bestandsgrootte in bytes</td>
             </tr>
             <tr>
-               <td><code>Title</code></td>
-               <td>titel in de titelbalk bovenaan</td>
-            </tr>
-            <tr>
-               <td><code>Width</code></td>
-               <td>breedte van het venster</td>
-            </tr>
-            <tr>
-               <td><code>WindowStyle</code></td>
-               <td>stijl van het venster, b.v. vereenvoudigd venster: <code>ToolWindow</code></td>
+               <td><code>Name</code></td>
+               <td>bestandsnaam</td>
             </tr>
          </tbody>
       </table>
+
+      <h3>Code voorbeelden</h3>
+      <h4>Bestand inlezen in een string</h4>
+   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+
+string inhoud = File.ReadAllText(filePath); // lees tekstinhoud bestand in
+</code></pre>
+      <h4>Bestand inlezen in een array</h4>
+   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+
+string[] regels = File.ReadAllLines(filePath); // lees regels bestand in
+</code></pre>
+      <h4>String schrijven naar een bestand</h4>
+   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+string inhoud = @"Dit is regel 1
+Dit is regel 2";
+
+File.WriteAllText(filePath, inhoud); // nieuw bestand als het nog niet bestaat
+</code></pre>
+      <h4>Array of lijst schrijven naar een bestand</h4>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+string[] regels = new string[] { "Dit is lijn 1", "Dit is lijn 2" };
+
+File.WriteAllLines(filePath, regels); // nieuw bestand als het nog niet bestaat
+</code></pre>
+      <h4>Tekst toevoegen aan een bestaand bestand</h4>
+      <p>Naast <code>File.WriteAllText()</code> en <code>File.WriteAllLines()</code> bestaan er ook methodes <code>File.AppendAllText()</code> en <code>File.AppendAllLines()</code>:</p>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+
+File.AppendAllText(filePath, $"Am no an listening depending up believing{Environment.NewLine}");</code></pre>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+string[] regels = new string[] { "Dit is lijn 3", "Dit is lijn 4" };
+
+File.AppendAllLines(filePath, regels); 
+</code></pre>
+      <h4>Controleren of een bestand bestaat</h4>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "mycontacts.txt");
+
+if (!File.Exists(filePath)) 
+{
+   // ...
+}</code></pre>
+
+      <h4>Informatie opvragen</h4>
+      <p>Schematisch codevoorbeeld:</p>
+      <pre><code>FileInfo fi = new FileInfo(someFilePath);
+Console.WriteLine($@"
+    bestandsnaam: {fi.Name}
+    extensie: {fi.Extension}
+    gemaakt op: {fi.CreationTime.ToString()}
+    mapnaam: {fi.Directory.Name}
+");</code></pre>
+      <h4>Streamend lezen en schrijven</h4>
+      <p>Alle vorige methodes laden de hele bestandsinhoud in één keer in het geheugen in. Voor heel grote bestanden is dat niet efficiënt. In die (uitzonderlijke) gevallen kan je gebruik maken van <code>StreamReader</code> en <code>StreamWriter</code>. </p>
+      <p><code>StreamReader</code> voorbeeld (zoeken naar een tekst):</p>
+      <pre><code>List&lt;string&gt; foundLines = new List&lt;string&gt;();
+string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "mycontacts.txt");
+
+// open stream and start reading
+using (StreamReader reader = File.OpenText(filePath)) {
+    string line;
+    while ((line = reader.ReadLine()) != null) {
+        if (line.Contains("jennifer")) foundLines.Add(line);
+    }
+} // stream closes automatically
+</code></pre>
+      <p><code>StreamWriter</code> voorbeeld:</p>
+      <pre><code>// prepare
+string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+
+// open stream and start writing
+using (StreamWriter writer = File.CreateText(filePath)) {
+    writer.WriteLine("Dit is lijn 1");
+    writer.WriteLine("Dit is lijn 2");
+} // stream closes automatically
+</code></pre>
+      <p>In praktijk zul je streamend lezen of schrijven in deze cursus nooit nodig hebben.</p>
+
+      <h2>Mappen</h2>
+      <h3>Overzicht</h3>
+      <p>Alle methodes om te werken met mappen vind je in de <code>Directory</code> klasse:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>CreateDirectory()</code></td>
+               <td>maak een map aan</td>
+            </tr>
+            <tr>
+               <td><code>Delete()</code></td>
+               <td>verwijder een map</td>
+            </tr>
+            <tr>
+               <td><code>Exists()</code></td>
+               <td>controleert of een map bestaat</td>
+            </tr>
+            <tr>
+               <td><code>GetDirectories()</code></td>
+               <td>vraag een lijst submappen in de map op</td>
+            </tr>
+            <tr>
+               <td><code>GetFiles()</code></td>
+               <td>vraag een lijst bestanden in de map op</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Properties om mapinformatie op te vragen vind je in de <code>DirectoryInfo</code> klasse:</p>
       <table class="light">
          <thead>
             <tr>
@@ -121,464 +391,99 @@
          </thead>
          <tbody>
             <tr>
-               <td><code>Open()</code></td>
-               <td>open een venster</td>
+               <td><code>Exists</code></td>
+               <td>bestaat het of niet (<code>true</code> of <code>false</code>)</td>
             </tr>
             <tr>
-               <td><code>Close()</code></td>
-               <td>sluit een venster</td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Voorbeelden</h3>
-      <h4>Minimum en maximum afmetingen</h4>
-      <p>Beperk de afmetingen met <code>Width</code>, <code>Height</code>, <code>MinWidth</code>, <code>MinHeight</code>, <code>MaxWidth</code> en <code>MaxHeight</code>:</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.MainWindow"
-   ...
-   Title="Test Window" Height="250" Width="400" MinHeight="250" MinWidth="400" MaxHeight="450" MaxWidth="800"&gt;
-   &lt;Grid&gt;
-   &lt;/Grid&gt;
-&lt;/Window&gt;
-</code></pre>
-   <figure>
-      <img src="img/04_wpflayout/window-rescale.gif" alt="" width="300" class="bordered">
-      <figcaption>venster is nu maar beperkt aanpasbaar in breedte/hoogte</figcaption>
-   </figure>
-      <h4>Niet herschaalbaar maken</h4>
-      <p>Niet herschaalbaar venster met <code>ResizeMode="NoResize"</code>:</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.MainWindow"
-   ...
-   Title="Test Window" Height="250" Width="400" ResizeMode="NoResize"&gt;
-   &lt;Grid&gt;
-   &lt;/Grid&gt;
-&lt;/Window&gt;
-</code></pre>
-      <h4>Vereenvoudigd</h4>
-      <p>Maak een vereenvoudigd venster zonder icoon linksboven of minimize knoppen rechtsboven  met <code>WindowStyle="ToolWindow"</code>:</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.MainWindow"
-   ...
-   Title="Test Window" Height="250" Width="400" Height="250" Width="400" WindowStyle="ToolWindow"&gt;
-   &lt;Grid&gt;
-   &lt;/Grid&gt;
-&lt;/Window&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/window-toolwindow.png" alt="" width="250">
-         <figcaption>vereenvoudigd venster</figcaption>
-      </figure>
-      <h4>Nieuw openen</h4>
-      <p>Een nieuw venster openen kan met de <code>Open()</code> methode. Nemen we als voorbeeld een PopupWindow; voeg het toe aan je project via rechtermuisknop add, Window...:</p>
-      <p><img src="img/04_wpflayout/window-project.png" alt="" width="250" class="bordered"></p>
-      <p>Voeg dan b.v. een <code>Button</code> toe aan MainWindow, waaromee je de PopupWindow opent:</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.MainWindow" ...&gt;
-   &lt;Grid&gt;
-      &lt;Button Padding="10,5" Content="open popup" Click="BtnOpenPopup_Click" .../&gt;
-   &lt;/Grid&gt;
-&lt;/Window&gt;
-</code></pre>
-      <p>De event handler in code-behind:</p>
-      <pre><code>private void BtnOpenPopup_Click(object sender, RoutedEventArgs e) 
-{
-   new MyPopupWindow().Show();
-}
-</code></pre>
-      <p>Voor de popup window is een <a href="#niet-herschaalbaar">niet herschaalbaar</a> <a href="#vereenvoudigd-venster">vereenvoudigd</a> venster ideaal:</p>
-      <pre><code class="language-html">&lt;Window x:Class="WpfTest.PopupWindow" Height="150" Width="300" WindowStyle="ToolWindow" ResizeMode="NoResize" ...&gt;
-    &lt;Grid&gt;
-    &lt;/Grid&gt;
-&lt;/Window&gt;
-</code></pre>
-      <div class="tips">
-         <p>Je kan bij het openen gegevens als b.v. gebruikersnaam meegeven van <code>MainWindow</code> naar <code>PopupWindow</code> door de constructor van die laatste uit te breiden met een parameter.</p>
-         <p>In PopupWindow.xaml.cs:</p>
-         <pre><code>public MyPopupWindow(string name) // breid uit met "name" parameter
-{
-   InitializeComponent();
-   lblWelcome.Content = $"hello {name}";
-}
-</code></pre>
-         <p>In MainWindow.xaml.cs:</p>
-         <pre><code>private void BtnOpenPopup_Click(object sender, RoutedEventArgs e) {
-    new MyPopupWindow("Rogier").Show(); // geef waarde voor "name" mee
-}
-</code></pre>
-      </div>
-      <h4>Sluiten</h4>
-      <p>Maak b.v. een button om het venster te sluiten</p>
-      <pre><code class="language-html">&lt;Button Content="sluiten" Click="BtnClose_Click" .../&gt;
-</code></pre>
-<p>De event handler in code-behind:</p>
-<pre><code>private void BtnClose_Click(object sender, RoutedEventArgs e) 
-{
-   this.Close();
-}
-</code></pre>
-
-
-      <h2>Positionering van controls</h2>
-      <h3>Margin en Padding</h3>
-      <p>Slepen we in designer een <code>Button</code> control op de grid, en voegen we wat <code>Padding</code> toe:</p>
-      <pre><code class="language-html">&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5,10,5" HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;    
-&lt;/Grid&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/marginpadding-default.png" alt="" width="300" class="bordered">
-         <figcaption>volgorde van margins en paddings in WPF: links, boven, rechts, onder</figcaption>
-      </figure>
-      <ul>
-         <li>de <code class="em">Padding</code> bepaalt de ruimte binnen de control, dus tussen tekst en rand</li>
-         <li>de <code class="em">Margin</code> bepaalt de ruimte buiten de control, hier links en boven tot de <code>&lt;Grid&gt;</code></li>
-      </ul>
-
-
-      <h3>VerticalAlignment en HorizontalAlignment</h3>
-      <p>De attributen <code class="em">VerticalAlignment</code> en <code class="em">HorizontalAlignment</code> bepalen hoe de control gepositioneerd wordt t.o.v. de parent. Als afstanden worden de marges genomen. Stel je ze b.v. in op <code>Right</code> resp. <code>Bottom</code>, dan worden de rechter- en onderwaarden van Margin genomen:</p>
-      <pre><code class="language-html">&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" /&gt;    
-&lt;/Grid&gt;</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/marginpadding-bottomright.png" alt="" width="300" class="bordered">
-         <figcaption>rechstonder gepositioneerd</figcaption>
-      </figure>
-      <p>De standaardwaarden voor <code>VerticalAlignment</code> en <code>HorizontalAlignment</code> zijn <code>Stretch</code>, dus als je het weglaat wordt de control uitgerokken, b.v. <code>VerticalAlignment</code> weglaten rekt verticaal uit:</p>
-      <pre><code class="language-html">&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Left" /&gt;    
-&lt;/Grid&gt;</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/marginpadding-stretch.png" alt="" width="300" class="bordered">
-         <figcaption>zonder VerticalAlignment: uitgerokken</figcaption>
-      </figure>
-      <em>&rarr; speficieer dus altijd waarden voor <code>VerticalAlignment</code> en <code>HorizontalAlignment</code> voor elke control!</em>
-      
-      <h3>VerticalContentAlignment en HorizontalContentAlignment</h3>
-      <p>De attributen <code class="em">VerticalContentAlignment</code> en <code class="em">HorizontalContentAlignment</code> bepalen de alignering van de <em>content</em> van de control. De XAML voor twee tekstvakken, verticaal gecentreerd en horizontaal links resp. rechts:</p>
-      <pre><code class="language-html">&lt;TextBox Text="tekst links..." HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ... /&gt;
-&lt;TextBox Text="tekst rechts..." HorizontalContentAlignment="Right" VerticalContentAlignment="Center"... /&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/contentalignment.png" alt="" width="300" class="bordered">
-         <figcaption>verticaal gecentreerd, horizontaal links resp. rechts</figcaption>
-      </figure>
-
-      
-
-      <h2>WPF panels</h2>
-      <h3>overzicht</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Control</th>
-               <th scope="col">Omschrijving</th>
-               <th scope="col" class="centered">Voorbeeld</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><a href="#canvas">Canvas</a></td>
-               <td>positionering met coördinaten, al dan niet overlappend</td>
-               <td><img src="img/04_wpflayout/canvas.png" alt="" width="200"></td>
+               <td><code>FullName</code></td>
+               <td>volledig pad</td>
             </tr>
             <tr>
-               <td><a href="#dockpanel">DockPanel</a></td>
-               <td>control waarbinnen panels aan de vier zijden gedocked ("gekleefd") kunnen worden</td>
-               <td><img src="img/04_wpflayout/dockpanel.png" alt="" width="300"></td>
+               <td><code>Name</code></td>
+               <td>bestandsnaam</td>
             </tr>
             <tr>
-               <td><a href="#grid">Grid</a></td>
-               <td>definiëren rijen en kolommen waarbinnen controls geplaatst worden</td>
-               <td><img src="img/04_wpflayout/grid.png" alt="" width="250"></td>
-            </tr>
-            <tr>
-               <td><a href="#stackpanel">StackPanel</a></td>
-               <td>stapeling per rij of kolom zonder wrapping</td>
-               <td><img src="img/04_wpflayout/stackpanel.png" alt="" width="250"></td>
-            </tr>
-            <tr>
-               <td><a href="#wrappanel">WrapPanel</a></td>
-               <td>stapeling per rij of kolom met wrapping</td>
-               <td><img src="img/04_wpflayout/wrappanel.png" alt="" width="250"></td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Canvas</h3>
-      <p>
-         <code class="em">Canvas</code> wordt hoofdzakelijk gebruikt om (vooral grafische) elementen een vaste plaats te geven. De positie bepaal je met de properties <code>Canvas.Left</code>, <code>Canvas.Top</code> enz...; voor de stapelvolgorde gebruik je <code>Canvas.ZIndex</code>. Een voorbeeld:
-      </p>
-      <pre><code class="language-html">&lt;Canvas Name="cvCanvas"&gt;
-   &lt;Ellipse Fill="Gainsboro" Canvas.Left="25" Canvas.Top="25" Width="200" Height="200" Panel.ZIndex="1" /&gt;
-   &lt;Rectangle Fill="LightBlue" Canvas.Left="87" Canvas.Top="40" Width="50" Height="50"  Panel.ZIndex="3" /&gt;
-   &lt;Rectangle Fill="LightCoral" Canvas.Left="50" Canvas.Top="50" Width="50" Height="50" Panel.ZIndex="4" /&gt;
-   &lt;Rectangle Fill="LightCyan" Canvas.Left="74" Canvas.Top="75" Width="100" Height="100" Panel.ZIndex="2" /&gt;
-&lt;/Canvas&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/canvas.png" alt="" width="200">
-         <figcaption>canvas voorbeeld</figcaption>
-      </figure>
-      <h3>DockPanel</h3>
-      <p>
-         <em>Docking</em> is een term gebruikt voor waar en hoe child elements “plakken” in een venster dat van grootte kan veranderen. Een <code class="em">DockPanel</code> wordt typisch gebruikt voor de globale layout van een Windows venster. Een voorbeeld:
-      </p>
-      <pre><code class="language-html">&lt;DockPanel LastChildFill="True"&gt; &lt;!-- LastChildFill: laatste element vult resterende middenruimte --&gt;
-   &lt;TextBox DockPanel.Dock="Top" Text="Top" /&gt;
-   &lt;TextBox DockPanel.Dock="Bottom" Text="Bottom" /&gt;
-   &lt;TextBox DockPanel.Dock="Left" Text="Left1" /&gt;
-   &lt;TextBox DockPanel.Dock="Left" Text="Left2" /&gt;
-   &lt;TextBox DockPanel.Dock="Right" Text="Right" /&gt;
-   &lt;TextBox Text="Center" AcceptsReturn="True" TextWrapping="Wrap" /&gt;
-&lt;/DockPanel&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/dockpanel.png" alt="" width="350">
-         <figcaption>dockpanel voorbeeld</figcaption>
-      </figure>
-
-      <h3>Grid</h3>
-      <p>
-         Bij <code class="em">Grid</code> kan je een grid van rijen en kolommen definiëren met <code>Grid.ColumnDefintions</code> en <code>Grid.RowDefinitions</code>. Daarna plaats je elementen in de juiste rij/kolom met <code>Grid.Row</code> en <code>Grid.Column</code>.
-      </p>
-      <pre><code class="language-html">&lt;Grid Margin="10"&gt;
-   &lt;Grid.ColumnDefinitions&gt;
-      &lt;ColumnDefinition Width="80" /&gt;
-      &lt;ColumnDefinition Width="*" /&gt;
-   &lt;/Grid.ColumnDefinitions&gt;
-   &lt;Grid.RowDefinitions&gt;
-      &lt;RowDefinition Height="Auto" /&gt;
-      &lt;RowDefinition Height="Auto" /&gt;
-      &lt;RowDefinition Height="*" /&gt;
-   &lt;/Grid.RowDefinitions&gt;
-   &lt;Label&gt;Name:&lt;/Label&gt;
-   &lt;TextBox Grid.Column="1" Margin="0,5,0,10" /&gt;
-   &lt;Label Grid.Row="1"&gt;E-mail:&lt;/Label&gt;
-   &lt;TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,10" /&gt;
-   &lt;Label Grid.Row="2"&gt;Comment:&lt;/Label&gt;
-   &lt;TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,10" AcceptsReturn="True" /&gt;
-&lt;/Grid&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/grid2.png" alt="" width="400" class="bordered">
-         <figcaption>grid voorbeeld</figcaption>
-      </figure>
-      <h3>StackPanel</h3>
-      <p>
-         Bij <code class="em">StackPanel</code> stapel je controls in één rij of kolom:
-      </p>
-      <pre><code class="language-html">&lt;StackPanel Orientation="Horizontal"&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/Label&gt;
-&lt;/StackPanel&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/stackpanel.png" alt="" width="350" class="bordered">
-         <figcaption>stackpanel voorbeeld</figcaption>
-      </figure>      
-      <p>
-         Om verticaal te stapelen gebruik je <code>Orientation="Vertical"</code>:
-      </p>
-      <pre><code class="language-html">&lt;StackPanel Orientation="Vertical"&gt;
-   ...         
-&lt;/StackPanel&gt;
-      </code></pre>
-      <figure>
-         <img src="img/04_wpflayout/stackpanel-vert.png" alt="" width="350">
-         <figcaption>StackPanel verticaal voorbeeld</figcaption>
-      </figure>      
-      
-      <h3>WrapPanel</h3>
-      <p>
-         Bij <code class="em">WrapPanel</code> stapel je elementen in meerdere rijen of kolommen:
-      </p>
-      <pre><code class="language-html">&lt;WrapPanel&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/Label&gt;
-&lt;/WrapPanel&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/wrappanel.png" alt="" width="350">
-         <figcaption>stackpanel voorbeeld</figcaption>
-      </figure>      
-      <p>
-         Om verticaal te stapelen gebruik je <code>Orientation="Vertical"</code>:
-      </p>
-      <pre><code class="language-html">&lt;WrapPanel Orientation="Vertical"&gt;
-   ...         
-&lt;/WrapPanel&gt;
-      </code></pre>
-      <figure>
-         <img src="img/04_wpflayout/wrappanel2.png" alt="" width="350">
-         <figcaption>WrapPanel verticaal voorbeeld</figcaption>
-      </figure>      
-      
-      <h2>UI componenten</h2>
-      <h3>overzicht</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Control</th>
-               <th scope="col">Omschrijving</th>
-               <th scope="col" class="centered">Voorbeeld</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><a href="#menu">Menu</a></td>
-               <td>een klassiek Windows menu</td>
-               <td><img src="img/04_wpflayout/menu.png" alt="" width="300"></td>
-            </tr>
-            <tr>
-               <td><a href="#scrollviewer">ScrollViewer</a></td>
-               <td>voeg scrollbars toe aan panels en andere controls</td>
-               <td><img src="img/04_wpflayout/scrollviewer.png" alt="" width="150"></td>
-            </tr>
-            <tr>
-               <td><a href="#statusbar">StatusBar</a></td>
-               <td>een statusbar onderaan het venster</td>
-               <td><img src="img/04_wpflayout/statusbar.png" alt="" width="300"></td>
-            </tr>
-            <tr>
-               <td><a href="#tabcontrol">Tabcontrol</a></td>
-               <td>een control met tabs</td>
-               <td><img src="img/04_wpflayout/tabcontrol.png" alt="" width="300"></td>
+               <td><code>Parent</code></td>
+               <td>basismap (volledig pad)</td>
             </tr>
          </tbody>
       </table>
 
-      <h3>Menu</h3>
-      <p>Een menu bouw je met <code>Menu</code> en <code>MenuItem</code> controls, typisch in combinatie met een <a href="#dockpanel">DockPanel</a>:</p>
-      <pre><code class="language-html">&lt;DockPanel LastChildFill="True"&gt;
-   &lt;Menu DockPanel.Dock="Top"&gt;
-       &lt;MenuItem Header="_File"&gt;
-           &lt;MenuItem Header="_Open..." /&gt;
-           &lt;MenuItem Header="_Save" /&gt;
-           &lt;MenuItem Header="Save _As..." /&gt;
-           &lt;Separator /&gt;
-           &lt;MenuItem Header="E_xit" Click="exitItem_Click" /&gt;
-       &lt;/MenuItem&gt;
-       &lt;MenuItem Header="_Help"&gt;
-           &lt;MenuItem Header="_About" /&gt;
-       &lt;/MenuItem&gt;
-   &lt;/Menu&gt;
-   &lt;Grid&gt;&lt;/Grid&gt;
-&lt;/DockPanel&gt;
-</code></pre>
-      <p><em>&rarr; de underscore in de XAML duidt aan welke letter als shortcut gebruikt wordt</em></p>
-      <p>Voorbeeld van een event handler voor het exit menu item:</p>
-      <pre><code>private void exitMenuItem_Click(object sender, RoutedEventArgs e) 
+      <h3>Code voorbeelden</h3>
+      <h4>Map inhoud lezen</h4>
+      <p>Gebruik de methodes <code>GetDirectories</code> en <code>GetFiles</code>. Voorbeeld voor het lezen van de bestanden op de desktop:</p>
+      <pre><code>string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+string[] files = Directory.GetFiles(desktop); // lijst van bestanden (volledig pad)
+foreach (string file in files)
 {
-    // 0 wilt zeggen dat er niets is fout gelopen
-    Environment.Exit(0);
+    Console.WriteLine(new FileInfo(file).Name); // geef enkel de namen weer
+}</code></pre>
+      <h4>Controleren of een map bestaat</h4>
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string startfolder = System.IO.Path.Combine(folderPath, "myfolder");
+
+if (!Directory.Exists(startfolder)) 
+{
+   // ...
+}</code></pre>
+      <h4>Informatie opvragen</h4>
+      <p>Schematisch codevoorbeeld:</p>
+      <pre><code>DirectoryInfo di = new DirectoryInfo(someDirectoryPath);
+Console.WriteLine($@"
+    mapnaam: {di.Name}
+    basismap: {di.Parent.Name}
+    gemaakt op: {di.CreationTime.ToString()}
+");</code></pre>
+
+      <h2>Dialoogvensters</h2>
+      <h3>OpenFileDialog</h3>
+      <p>Schematisch:</p>
+      <pre><code>OpenFileDialog dialog = new OpenFileDialog();
+dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+dialog.Filter = "Tekstbestanden|*.TXT;*.TEXT";
+string chosenFileName;
+bool? dialogResult = dialog.ShowDialog();
+if (dialogResult == true) { 
+   // user picked a file and pressed OK
+   chosenFileName = dialog.FileName; 
+} else {
+    // user cancelled or escaped dialog window
 }
 </code></pre>
-      <figure>
-         <img src="img/04_wpflayout/menu.png" alt="" width="350">
-         <figcaption>Menu voorbeeld</figcaption>
-      </figure>
-
-      <h3>ScrollViewer</h3>
-      <p>Sommige controls als <code>ListBox</code> hebben van zichzelf scrollbars, sommige controls als <code>TextBox</code> of panels niet. Ze scrollbars geven doe je &mdash; misschien wat vreemd &mdash; niet met een property, maar met een <code>ScrollViewer</code> control:</p>
-      <ol>
-         <li>wrap de control in een <code>&lt;ScrollViewer&gt; ... &lt;/ScrollViewer&gt;</code></li>
-         <li>verhuis layout properties als <code>Height</code>, <code>HorizontalAlignment</code>, <code>Margin</code>, <code>VerticalAlignment</code>, <code>Width</code> enz... van de control naar de <code>ScrollViewer</code></li>
-      </ol>
-      <p>Een <code>TextBox</code> zonder scrollbars:</p>
-      <pre><code class="language-html">&lt;TextBox 
-   x:Name="txt1" 
-   AcceptsReturn="True"
-   Height="150" 
-   HorizontalAlignment="Left" 
-   Margin="35,39,0,0" 
-   Padding="20,10,20,30" 
-   Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..." 
-   TextWrapping="Wrap" 
-   VerticalAlignment="Top" 
-   Width="200"
-/&gt;
-      </code></pre>
-      <figure>
-         <img src="img/04_wpflayout/scrollviewer-without.png" alt="" width="250">
-         <figcaption>TextBox zonder ScrollViewer</figcaption>
-      </figure>
-      <p>Dezelfde <code>TextBox</code> met scrollbars:</p>
-      <pre><code class="language-html">&lt;ScrollViewer 
-   Height="150" 
-   HorizontalAlignment="Left" 
-   Margin="35,39,0,0"
-   VerticalAlignment="Top" 
-   Width="200"&gt;
-   &lt;TextBox 
-      x:Name="txt1" 
-      AcceptsReturn="True"
-      Padding="20,10,20,30" 
-      Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..." 
-      TextWrapping="Wrap"
-   /&gt;
-&lt;/ScrollViewer&gt;
+      <p><img src="img/05_filesfolders/openfiledialog.png" alt=""></p>
+      <h3>OpenFolderDialog</h3>
+      <p><strong>Let op!</strong> Tot voor kort bestond (zeer vreemd genoeg) dit dialoogvenster niet. Het is pas toegevoegd sinds .NET8, dus werkt niet in oudere projecttypes als WPF .NET Framework! Daar werd je verondersteld third party oplossingen te gebruiken. Schematisch:</p>
+      <pre><code>OpenFolderDialog dialog = new OpenFolderDialog();
+dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string chosenFolderName;
+bool? dialogResult = dialog.ShowDialog();
+if (dialogResult == true)
+{
+    // user picked a folder and pressed OK
+    chosenFolderName = dialog.FolderName;
+}
+else
+{
+    // user cancelled or escaped dialog window
+}</code></pre>
+      <p><img src="img/05_filesfolders/openfolderdialog.png" alt=""></p>
+      <h3>SaveFileDialog</h3>
+      <p>Schematisch:</p>
+      <pre><code>SaveFileDialog dialog = new SaveFileDialog();
+dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+dialog.Filter = "Tekstbestanden|*.TXT;*.TEXT";
+dialog.FileName = "savedfile.txt";
+if (dialog.ShowDialog() == true) {
+    File.WriteAllText(dialog.FileName, "tekstinhoud hier");
+} else {
+    // user pressed Cancel or escaped dialog window
+}
 </code></pre>
-      <figure>
-         <img src="img/04_wpflayout/scrollviewer-met.png" alt="" width="250" class="bordered">
-         <figcaption>TextBox met ScrollViewer</figcaption>
-      </figure>
+      <p><img src="img/05_filesfolders/savefiledialog.png" alt=""></p>
+      <h3>MessageBox</h3>
+      <p>Zie <a href="02_dotnetclasses.html#messagebox">.NET classes - MessageBox</a></p>
 
-      <h3>StatusBar</h3>
-      <p>Een <code class="em">StatusBar</code> gebruik je typisch in combinatie met een <a href="#dockpanel">DockPanel</a>, onderaan gedocked:</p>
-      <pre><code class="language-html">&lt;DockPanel LastChildFill="True"&gt;
-   ...
-   &lt;StatusBar DockPanel.Dock="Bottom"&gt;
-       &lt;Label Content="all ready" Padding="10,2" FontSize="10" /&gt;
-   &lt;/StatusBar&gt;    
-   &lt;Grid&gt;&lt;/Grid&gt;
-&lt;/DockPanel&gt;
-</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/statusbar.png" alt="" width="350">
-         <figcaption>StatusBar voorbeeld</figcaption>
-      </figure>
-
-      <h3>TabControl</h3>
-      <p>Een <code class="em">TabControl</code> voorbeeld:</p>
-      <pre><code class="language-html">&lt;TabControl SelectedIndex="2" &gt;
-   &lt;TabItem Header="Tab 1" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 1 content here...&lt;/TextBox&gt;                
-   &lt;/TabItem&gt;
-   &lt;TabItem  Header="Tab 2" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 2 content here...&lt;/TextBox&gt;
-   &lt;/TabItem&gt;
-   &lt;TabItem Header="Tab 3" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 3 content here...&lt;/TextBox&gt;
-   &lt;/TabItem&gt;
-   &lt;TabItem Header="Tab 4" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 4 content here...&lt;/TextBox&gt;
-   &lt;/TabItem&gt;
-&lt;/TabControl&gt;</code></pre>
-      <figure>
-         <img src="img/04_wpflayout/tabcontrol.png" alt="" width="400">
-         <figcaption>TabControl voorbeeld</figcaption>
-      </figure>
 
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>

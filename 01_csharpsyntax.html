@@ -1190,79 +1190,59 @@ static private void Main(string[] args) {
 </code></pre>
 
    <h2>Arrays</h2>
-   <p>Een array is een naam die verwijst naar een reeks geheugenlocaties met een index genummerd beginnende bij 0:
+   <p>
+      Een array is een naam die verwijst naar een genummerde reeks geheugenlocaties, startend bij index 0:
+   </p>
+   <p>
       <img src="img/01_csharpsyntax/array.png" alt="array" width="600">
    </p>
-   <h3>Declaratie</h3>
-   <p><strong>Algemene syntax:</strong></p>
-   <pre><code>datatype[] naamVanDeArray = new datatype[aantalElementen];
-</code></pre>
+   <h3>Declaratie en initialisatie</h3>
    <p>Voorbeelden:</p>
    <pre><code>int[] cijfers = new int[6]; // array van 6 ints
 string[] namen = new string[20]; // array van 20 strings
 bool[] weekdagenOpen = new bool[7]; // array van 7 bools
 </code></pre>
-   <h3>Initialisatie</h3>
-   <p>Je kunt een array initialiseren door de elementen tussen accolades te zetten, gescheiden d.m.v. komma's.</p>
-   <p>Voorbeelden</p>
+   <p>Je kunt meteen beginwaarden opgeven tussen accolades, gescheiden met komma's:</p>
    <pre><code>int[] getallen = { 5, 8, 3, 12, 7 };
 double[] kommagetallen = { 1.5, 10.2, 19.85, 3.1415 };
 char[] letters = { 'a', 'b', 'c', 'd' };
 string[] fruit = { "appel", "banaan", "citroen" };
 </code></pre>
-   <h3>Waarden toekennen aan een array</h3>
-   <p><strong>Algemene syntax:</strong></p>
-   <pre><code>naamVanDeArray[index] = waarde;
-</code></pre>
-   <p>Voorbeelden:</p>
+   <h3>Arrays aanpassen</h3>
+   <h4>element wijzigen</h4>
+   <p>Je kan geen elementen toevoegen of verwijderen in een array; het aantal elementen is vast. Je kan wel de waarde van een element veranderen:</p>
    <pre><code>int[] getallen = new int[5];
 getallen[0] = 10;  // zet getal 10 op eerste plaats in array
 getallen[2] = 7;   // zet getal 7 op derde plaats in array
 getallen[4] = 12;  // zet getal 12 op vijfde (laatste) plaats in array
 </code></pre>
-   <h3>Waarden uitlezen uit een array</h3>
-   <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element:</p>
-   <pre><code>string[] kleuren = { "blauw", "groen", "rood" };
-
-string eerste = kleuren[0]; // item op index 0 &rarr; "blauw"
-Console.WriteLine($"Het eerste element is: {eerste}");
-
-Console.WriteLine($"Het laatste element is: {kleuren[2]}"); // item op index 2 (derde en laatste element) &rarr; "rood"
-</code></pre>
-   <figure class="console">
-      <pre>Het eerste element is: blauw
-Het laatste element is: rood</pre>
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h3>Lengte van een array</h3>
-   <p>Onder de lengte van een array, wordt het aantal elementen van de array verstaan.
-      De lengte van een array kan je bekomen door de <code>Length</code>-property van de array op te vragen.</p>
-   <p><strong>Opgelet:</strong> dit is het totaal aantal &quot;gereserveerde&quot; plaatsen binnen de array, ook al werden deze posities nog niet geïnitialiseerd met een andere waarde</p>
+   <h3>Arrays gebruiken</h3>
+   <h4>Elementwaarde opvragen</h4>
+   <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element (eerste = index 0):</p>
+   <pre><code>string[] kleuren = { "blauw", "groen", "rood", "geel" };
+string eerste = kleuren[0]; // blauw; eerste element heeft index 0
+string tweede = kleuren[1]; // groen; tweede element heeft index 1
+string laatste = kleuren[kleuren.Count - 1]; // geel; manier om laatste element op te vragen</code></pre>
+   <h4>Lengte van de array opvragen</h4>
+   <p>Met de lengte wordt het aantal beschikbare plaatsen bedoeld, niet het aantal plaatsen dat effectief een waarde gekregen heeft. Gebruik de <code>Length</code> property:</p>
    <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
-
 getallen[0] = 10;
 getallen[2] = 5;
 getallen[5] = 7;
-
-// hoewel er slechts 3 posities expliciet een waarde toegekend kregen, is de totale lengte van de array 7
 int lengte = getallen.Length;
-
 Console.WriteLine($"De lenget van de array is: {lengte}");
 </code></pre>
    <figure class="console">
       <pre>De lengte van de array is: 7</pre>
       <figcaption>resultaat in de console</figcaption>
    </figure>
-   <h3>Array's overlopen</h3>
-   <h4>Met for-iteratie</h4>
-   <p>Indien je de index van het element in de array nodig hebt.</p>
+   <h4>Alle elementen overlopen met for-loop</h4>
+   <p>Gebruik de <code>for</code>-lus als je de index van elk element in de array nodig hebt:</p>
    <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
-
 for (int i = 0; i &lt; namen.Length; i++) 
 {
-    int positie = i + 1; // index begint op 0, positie op 1
     string naam = namen[i]; // element op index i
-    Console.WriteLine($"{positie}. {naam}");
+    Console.WriteLine($"{i + 1}. {naam}");
 }</code></pre>
       <figure class="console">
          <pre>1. Zakaria
@@ -1271,8 +1251,8 @@ for (int i = 0; i &lt; namen.Length; i++)
 4. Chun</pre>
       <figcaption>resultaat in de console</figcaption>
    </figure>
-   <h4>Met foreach-iteratie</h4>
-   <p>Indien je de index van het element niet nodig hebt.</p>
+   <h4>Alle elementen overlopen met foreach-loop</h4>
+   <p>Gebruik <code>foreach</code> als je de index van de elementen niet nodig hebt:</p>
    <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
 
 foreach (int num in numbers) 
@@ -1290,68 +1270,9 @@ foreach (int num in numbers)
 7</pre>
       <figcaption>resultaat in de console</figcaption>
    </figure>
-   <h3>Methodes voor arrays</h3>
-   <h4>Een array splitsen op basis van een waarde</h4>
-   <p>
-      Om een array te splitsen op basis van een waarde, kan je gebruik maken van de methode <code>Split()</code>.
-      Aangezien je een string kunt beschouwen als een array van karakters (<code>char</code>), kan je de <code>Split()</code>-methode ook gebruiken om een string te &quot;verknippen&quot; op basis van een bepaalde waarde die in de string voorkomt.
-   </p>
-   <pre><code>string zin = "dit is een zin met meerdere woorden";
-string[] woorden = zin.Split(' '); // verdeel zin in woorden
+   <h3>Properties en methodes</h3>
+   <p>zie de <a href="02_dotnetclasses.html#array">Array klasse</a></p>
 
-foreach (string woord in woorden) 
-{
-    Console.WriteLine(woord);
-}
-</code></pre>
-   <figure class="console">
-      <pre>dit
-is
-een
-zin
-met
-meerdere
-woorden</pre>
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h4>Nagaan of element voorkomt in een array</h4>
-   <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een array. De methode stuurt true terug indien de meegegeven waarde zich in de array bevindt:</p>
-   <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
-bool gevonden = fruit.Contains("citroen");
-
-if (gevonden) 
-{
-    Console.WriteLine("De array bevat het woord \"citroen\"");
-}
-</code></pre>
-   <h4>Een array sorteren</h4>
-   <p>De methode <code>Array.Sort()</code> kan je de elementen in een array sorteren in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
-
-Array.Sort(getallen); // sorteer getallen van klein naar groot
-
-foreach (int getal in getallen) 
-{
-    Console.WriteLine(getal);
-}
-</code></pre>
-   <figure class="console">
-      <pre>2
-3
-6
-7
-9</pre>
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
-   <h4>Elementen in een lijst samenvoegen tot één string</h4>
-   <p>Met de methode string.Join() kan je de elementen van een array samenvoegen tot één string. Als eerste argument kan je een string meegeven die tussen twee elementen in de array moet geplaatst worden.</p>
-   <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
-
-Console.WriteLine(string.Join(" - ", getallen));</code></pre>
-   <figure class="console">
-      <pre>7 - 3 - 9 - 2 - 6</pre>
-      <figcaption>resultaat in de console</figcaption>
-   </figure>
 
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>

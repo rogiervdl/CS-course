@@ -1,0 +1,15 @@
+body {
+   padding-top: 0 !important;
+}
+
+#mode, .site__nav {
+   display: none !important;
+}
+
+h2 {
+   page-break-before: always;
+}
+
+pre {
+   break-inside: avoid;
+}

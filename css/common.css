@@ -99,6 +99,7 @@ h3::before {
 
 h4 {
    border-bottom: 1px dotted #ccc;
+   counter-reset: subsubsubchapter;
    font-size: 14px;
    text-transform: uppercase;
 }
@@ -106,6 +107,11 @@ h4 {
 h4::before {
    counter-increment: subsubchapter;
    content: counter(chapter) "." counter(subchapter)  "." counter(subsubchapter) " ";
+}
+
+h5::before {
+   counter-increment: subsubsubchapter;
+   content: counter(chapter) "." counter(subchapter)  "." counter(subsubchapter) "." counter(subsubsubchapter) " ";
 }
 
 img {

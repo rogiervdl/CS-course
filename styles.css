@@ -9,3 +9,4 @@
 
 /* local */
 @import url(css/common.css);
+@import url(css/print.css) print;

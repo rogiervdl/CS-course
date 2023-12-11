@@ -112,6 +112,10 @@
                <td>een timer waarmee je een tijdsspanne kan meten</td>
             </tr>
             <tr>
+               <td><a href="#systemsounds">SystemSounds</a></td>
+               <td>windows geluiden afspelen</td>
+            </tr>
+            <tr>
                <td><a href="#string">String</a></td>
                <td>Werken met tekstuele data</td>
             </tr>
@@ -176,7 +180,10 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <!-- COLLECTIES -->
       <h2>Collectie classes</h2>
       <p>Een collectie is een verzameling gegevens van hetzelfde type met één naam. <br><i>Opmerking</i>: er bestond vroeger ook een <code>ArrayList</code> waar je types mocht mixen, maar dat is slechte stijl en het wordt dan ook niet meer gebruikt. </p>
-      <p>Zie ook <a href="01_csharpsyntax.html#arrays">arrays</a></p>
+      <p>Alle klassen (behalve <code>Array</code>) zitten in de <code>System.Collections.Generic</code> namespace. Om ze te kunnen gebruiken, moet je dus een <code>using</code> toevoegen: </p>
+      <pre><code>using System;
+using System.Collections.Generic;
+...</code></pre>
       <h3>Overzicht</h3>
       <table class="light">
          <thead>
@@ -193,32 +200,32 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
                <td>vaste stoelen in een wachtzaal</td>
             </tr>
             <tr>
-               <td><a href="#dictionary">Dictionary&lt;TKey, Tvalue&gt;</a></td>
+               <td><a href="#dictionarytkeytvalue">Dictionary&lt;TKey, Tvalue&gt;</a></td>
                <td>variabele lengte; key-value paren, met unieke keys</td>
                <td>lockers met naambordjes</td>
             </tr>
             <tr>
-               <td><a href="#hashset">HashSet&lt;T&gt;</a></td>
+               <td><a href="#hashsett">HashSet&lt;T&gt;</a></td>
                <td>variabele lengte; lijst unieke waarden</td>
                <td></td>
             </tr>
             <tr>
-               <td><a href="#list">List&lt;T&gt;</a></td>
+               <td><a href="#listt">List&lt;T&gt;</a></td>
                <td>variabele lengte; toevoegen of verwijderen items kan overal</td>
                <td>platenkast</td>
             </tr>
             <tr>
-               <td><a href="#stack">Queue&lt;T&gt;</a></td>
+               <td><a href="#stackt">Queue&lt;T&gt;</a></td>
                <td>variabele lengte; FIFO (first in, first out): toevoegen aan einde, verwijderen aan begin</td>
                <td>wachtrij aan de kassa</td>
             </tr>
             <tr>
-               <td>SortedDictionary&lt;TKey, Tvalue&gt;</td>
+               <td>SortedDictionarytt&lt;TKey, Tvalue&gt;</td>
                <td>variabele lengte; als Dictionary, maar dan automatisch gesorteerd op TKey</td>
                <td></td>
             </tr>
             <tr>
-               <td><a href="#stack">Stack&lt;T&gt;</a></td>
+               <td><a href="#stackt">Stack&lt;T&gt;</a></td>
                <td>variabele lengte, LIFO (last in, first out): toevoegen en verwijderen aan einde</td>
                <td>stapel pannenkoeken</td>
             </tr>
@@ -232,11 +239,122 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
          <img src="img/02_dotnetclasses/collecties_stack.jpg" alt="">
          <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
       </figure>
+
+      <!-- ARRAY -->
       <h3>Array</h3>
+      <p>Dit is een uitbreiding of zgn. <i>wrapper class</i> rond <a href="01_csharpsyntax.html#arrays">C# arrays</a>; voor declaratie, initialisatie, wijzigen elementwaarde, overlopen elementen enz... zie <a href="01_csharpsyntax.html#arrays">aldaar</a>.</p>
+      <h4>Properties en methodes</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Length</code></td>
+               <td>het aantal beschikbare plaatsen in de array</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Clear()</code></td>
+               <td>reset alle elementen naar de defaultwaarde (0 voor ints, null voor strings enz...)</td>
+            </tr>
+            <tr>
+               <td><code>Contains()</code></td>
+               <td>controleert of de array een gegeven waarde bevat</td>
+            </tr>
+            <tr>
+               <td><code>IndexOf()</code></td>
+               <td>zoekt de positie (index) van een gegeven waarde; -1 indien niet gevonden</td>
+            </tr>
+            <tr>
+               <td><code>Array.Reverse()</code></td>
+               <td>keert de volgorde van de elementen om</td>
+            </tr>
+            <tr>
+               <td><code>Array.sort()</code></td>
+               <td>sorteert een gegeven array</td>
+            </tr>
+         </tbody>
+      </table>   
+      <h4>Code voorbeelden</h4>
+      <h5>nagaan of waarde voorkomt in een array</h5>
+      <p>Gebruik <code>Contains()</code> (returnwaarde <code>true</code> of <code>false</code>):</p>
+      <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
+bool gevonden = fruit.Contains("citroen");
+if (gevonden) 
+{
+   Console.WriteLine("De array bevat het woord \"citroen\"");
+}</code></pre>
+      <h5>positie van een waarde in een array</h5>
+      <p>Gebruik <code>IndexOf()</code> om de positie te vinden (-1 indien niet gevonden):</p>
+      <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
+int pos = fruit.IndexOf("citroen");
+if (pos &gt; -1) 
+{
+   Console.WriteLine($"Het woord \"citroen\" is gevonden op positie {pos}");
+}</code></pre>
+      <h5>array sorteren</h5>
+      <p>Gebruik <code>Array.Sort()</code> om een array <i>oplopend</i> te sorteren:</p>
+      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+Array.Sort(getallen); // sorteer getallen van klein naar groot
+   
+foreach (int getal in getallen) 
+{
+   Console.WriteLine(getal);
+}
+   </code></pre>
+      <figure class="console">
+         <pre>2
+3
+6
+7
+9</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Gebruik in combinatie met <code>Array.Reverse()</code> om een array <i>aflopend</i> te sorteren:</p>
+      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+Array.Sort(getallen); // sorteer getallen van klein naar groot
+Array.Reverse(getallen); // keer volgorde om
+   
+foreach (int getal in getallen) 
+{
+   Console.WriteLine(getal);
+}
+   </code></pre>
+      <figure class="console">
+         <pre>2
+3
+6
+7
+9</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h5>string splitsen naar array</h5>
+      <p>
+         gebruik de <code>Split()</code> methode uit de <a href="#string-splitsen-naar-een-array">String klasse</a>
+      </p>
+      <h5>array samenvoegen tot een string</h5>
+      <p>
+         gebruik <code>string.Join()</code>, zie de <a href="#lijst-of-array-samenvoegen-tot-een-string-gescheiden-door-een-tekst">String klasse</a>
+      </p>
+
+      <!-- LIST -->
       <h3>List&lt;T&gt;</h3>
       <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
-      <h4>Declaratie</h4>
-      <p><strong>Algemene syntax:</strong></p>
+      <h4>Declaratie en initialisatie</h4>
+      <p>Algemene syntax:</p>
       <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
 </code></pre>
       <p>Code voorbeelden:</p>
@@ -244,114 +362,72 @@ lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
 List&lt;bool&gt; myList = new List&lt;bool&gt;(); // een lijst van bool's
 List&lt;string&gt; namen = new List&lt;string&gt;(); // een lijst van string's
 </code></pre>
-      <h4>Initialisatie</h4>
-      <p>Bij de declaratie van een List, kan je de elementen meegeven die in de lijst moeten gezet worden.
-         Je kunt nadien nog elementen toevoegen/verwijderen.</p>
-      <p>Code voorbeeld:</p>
+      <p>Je kan meteen een aantal beginwaarden meegeven:</p>
       <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
 </code></pre>
-      <h4>Elementen toevoegen</h4>
-      <p>Je kunt elementen toevoegen met de <code>Add()</code>-methode:</p>
+      <h4>Lijsten aanpassen</h4>
+      <h5>één element toevoegen</h5>
+      <p>Je kunt individuele elementen toevoegen met de <code>Add()</code>:</p>
       <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;(); // declaratie (nieuwe lijst van string's)
-
 fruit.Add("appel"); // lijst bevat 1 element
 fruit.Add("banaan"); // lijst bevat 2 elementen
 fruit.Add("citroen"); // lijst bevat 3 elementen
 </code></pre>
-      <h4>Elementen opvragen</h4>
-      <p>Je kunt een element uit een lijst opvragen op basis van de index van het element.
-         Net zoals bij arrays, beginnen indexen bij List's vanaf 0.</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;string&gt; kleuren = new List&lt;string&gt;();
-kleuren.Add("rood");
-kleuren.Add("groen");
-kleuren.Add("blauw");
-
-string eerste = kleuren[0]; // element op index 0 (eerste element)
+      <h5>lijsten samenvoegen</h5>
+      <p>Je kan de elementen van een tweede lijst toevoegen met <code>AddRange()</code>:</p>
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;() { "appel", "banaan", "citroen" }; // eerste lijst
+List&lt;string&gt; nogmeerfruit = new List&lt;string&gt;() { "peer", "kiwi" }; // tweede lijst         
+fruit.AddRange(nogmeerfruit); // fruit is nu "appel", "banaan", "citroen", "peer", "kiwi"
+</code></pre>
+      <h5>element wijzigen</h5>
+      <p>Elementen wijzigen doe je eenvoudig met een toewijzing (<code>=</code>). Code voorbeeld:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 4, 8, 3 }; // lijst is 4, 8, 3 
+getallen[1] = 5; // tweede element wijzigen naar 5, lijst is nu: 4, 5, 3
+</code></pre>
+      <h5>één element verwijderen</h5>
+      <p>Je kan een element verwijderen op basis van de waarde met <code>Remove()</code> (enkel de <i>eerst gevonden waarde</i> zal verwijderd worden):</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.Remove(5); // verwijder element met waarde 5 (enkel eerste); inhoud van de lijst: 2, 7, 5
+</code></pre>
+      <p>Je kan een element ook verwijderen op basis van de index met <code>RemoveAt()</code>:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.RemoveAt(2); // verwijder het derde element; de lijst is nu 2, 5, 5
+</code></pre>
+      <h5>alle elementen verwijderen</h5>
+      <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.Clear(); // de lijst is nu leeg</code></pre>
+      <h4>Lijsten gebruiken</h4>
+      <h5>elementwaarde opvragen</h5>
+      <p>Je kunt een element uit een lijst opvragen op basis van de index van het element, startend vanaf 0. Code voorbeeld:</p>
+      <pre><code>List&lt;string&gt; kleuren = new List&lt;string&gt;() { "rood", "groen", "blauw" };
+string eerste = kleuren[0]; // eerste element heeft index 0
 Console.WriteLine($"Het eerste element is: {eerste}");
-
-string derde = kleuren[2]; // element op index 2b (derde en laatste element)
-Console.WriteLine($"Het derde element is: {derde}");</code></pre>
+Console.WriteLine($"Het tweede element is: {kleuren[1]}");
+string laatste = kleuren[kleuren.Count - 1]; // manier om laatste element op te vragen
+Console.WriteLine($"Het laatste element is: {laatste}");</code></pre>
       <figure class="console">
          <pre>Het eerste element is: rood
-Het derde element is: blauw</pre>
+Het tweede element is: groen            
+Het laatste element is: blauw</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>Elementen wijzigen</h4>
-      <p>Om een bestaand element op een bepaalde index te overschrijven met een andere waarde, maak je gebruik van de toekennings-operator (<code>=</code>).</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(4);
-getallen.Add(8);
-getallen.Add(3);  // inhoud van de lijst: 4, 8, 3
-
-getallen[1] = 5; // element op index 1 gewijzigd naar 5, inhoud van de lijst: 4, 5, 3
-</code></pre>
-      <h4>Elementen verwijderen</h4>
-      <p>Je kunt elementen op twee manieren verwijderen uit een List:</p>
-      <ul>
-         <li>Op basis van de <strong>waarde</strong> van het element (<code>Remove()</code>-methode)</li>
-         <li>Op basis van de <strong>index</strong> van het element (<code>RemoveAt()</code>-methode)</li>
-      </ul>
-      <h5>Op basis van de waarde</h5>
-      <p><strong>Opmerking:</strong> indien een waarde meermaals in de lijst voorkomt, zal enkel het <strong>eerste</strong> voorkomen van het element uit de lijst verwijderd worden.</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.Remove(5); // verwijer het element 5 uit de lijst (enkel eerste)
-// inhoud van de lijst: 2, 7, 5
-</code></pre>
-      <h5>Op basis van de positie (index) van het element</h5>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.RemoveAt(2); // verwijder element op index 2
-// inhoud van de lijst: 2, 5, 5
-</code></pre>
-      <h5>Alle elementen verwijderen</h5>
-      <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(7);
-getallen.Add(5); // inhoud van de lijst: 2, 5, 7, 5
-
-getallen.Clear(); // de lijst is nu leeg</code></pre>
-      <h4>Aantal elementen in een lijst</h4>
-      <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen.</p>
-      <p>Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(2);
-getallen.Add(5);
-getallen.Add(8);
-
-int aantal = getallen.Count; // vraag aantal elementen in lijst op
-
-Console.WriteLine(aantal);</code></pre>
+      <h5>aantal elementen opvragen</h5>
+      <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 2, 5, 8 };
+Console.WriteLine(getallen.Count); // Count property</code></pre>
       <figure class="console">
          <pre>3</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>List's overlopen</h4>
-      <h5>Met for-iteratie</h5>
+      <h5>alle elementen overlopen met for-loop</h5>
       <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
-      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Zakaria");
-namen.Add("Nelly");
-namen.Add("Killian");
-namen.Add("Chun");
+      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;() { "Zakaria", "Nelly", "Killian", "Chun" };
 
 for (int i = 0; i &lt; namen.Count; i++) 
 {
-    int pos = i + 1; // index begint bij 0
     string naam = namen[i];
-    Console.WriteLine($"{pos}. {naam}");
+    Console.WriteLine($"{i + 1}. {naam}");
 }
 </code></pre>
       <figure class="console">
@@ -361,13 +437,9 @@ for (int i = 0; i &lt; namen.Count; i++)
 4. Chun</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h5>Met foreach-iteratie</h5>
-      <p>Indien je de index (positie) van het element niet nodig hebt.</p>
-      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;();
-namen.Add("Zakaria");
-namen.Add("Nelly");
-namen.Add("Killian");
-namen.Add("Chun");
+      <h5>alle elementen overlopen met foreach-loop</h5>
+      <p>Indien je de index (positie) van het element niet nodig hebt kan je <code>foreach</code> gebruiken:</p>
+      <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;() { "Zakaria", "Nelly", "Killian", "Chun" };
 
 foreach (string naam in namen) 
 {
@@ -381,19 +453,14 @@ Killian
 Chun</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>Methodes voor List's</h4>
-      <h5>Nagaan of element voorkomt in lijst</h5>
+      <h5>nagaan of element voorkomt in lijst</h5>
       <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
-      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
-fruit.Add("appel");
-fruit.Add("banaan");
-fruit.Add("citroen");
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;() { "appel", "banaan", "citroen" };
 
 bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
-
 if (gevonden) 
 {
-    Console.WriteLine("Het element komt in de lijst voor");
+    Console.WriteLine("Het element komt wel in de lijst voor");
 } 
 else 
 {
@@ -404,16 +471,11 @@ else
          <pre>Het element komt in de lijst voor</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h5>Een lijst sorteren</h5>
+      <h5>lijst sorteren</h5>
       <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(7);
-getallen.Add(3);
-getallen.Add(9);
-getallen.Add(5);
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 7, 3, 9, 5 };
 
 getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
-
 foreach (int getal in getallen) 
 {
     Console.WriteLine(getal);
@@ -426,21 +488,17 @@ foreach (int getal in getallen)
 9</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h5>Elementen in een lijst samenvoegen tot één string</h5>
-      <p>Met de methode <code>string.Join()</code> kan je de elementen van een list samenvoegen tot één string.
-         Als eerste argument kan je een string meegeven die tussen twee elementen in de lijst moet geplaatst worden.</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;();
-getallen.Add(7);
-getallen.Add(3);
-getallen.Add(9);
-getallen.Add(5);
+      <h5>elementen in een lijst samenvoegen tot één string</h5>
+      <p>Gebruik <code>string.Join()</code> om elementen van een list samen te voegen tot één string. Het eerste argument is de "lijm" tussen elementen:</p>
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 7, 3, 9, 5 };
 
 Console.WriteLine(string.Join(" - ", getallen));</code></pre>
       <figure class="console">
          <pre>7 - 3 - 9 - 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h3>Arrays vs Lijsten</h3>
+      <h4>Lijsten vs arrays</h4>
+      <p>Er zijn nogal wat syntactische verschillen. Een overzichtstabel:</p>
       <table class="light">
          <thead>
             <tr>
@@ -491,7 +549,7 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
                <td><code>cijfers.Contains(4)</code></td>
             </tr>
             <tr>
-               <td>splitten</td>
+               <td>string splitten naar...</td>
                <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
                <td>niet mogelijk</td>
             </tr>
@@ -502,8 +560,71 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
             </tr>
          </tbody>
       </table>
+      <div class="pro">
+      <!-- STACK -->
+      <h3>Stack&lt;T&gt;</h3>
+      <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
+      <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = stack.Pop(); // 11
+int val2 = stack.Pop(); // 8
+stack.Push(23);
+int val3 = stack.Pop(); // 23
+int val4 = stack.Pop(); // 4
+int val5 = stack.Pop(); // FOUT! stack is leeg
+</code></pre>
 
+      <!-- QUEUE -->
+      <h3>Queue&lt;T&gt;</h3>
+      <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
+      <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = queue.Dequeue(); // 4
+int val2 = queue.Dequeue(); // 8
+queue.Enqueue(23);
+int val3 = queue.Dequeue(); // 11
+int val4 = queue.Dequeue(); // 23
+int val5 = queue.Dequeue(); // FOUT! queue is leeg
+</code></pre>
 
+      <!-- HASHSET -->
+      <h3>HashSet&lt;T&gt;</h3>
+      <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
+      <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
+set.Add("banaan");
+set.Add("citroen");
+set.Add("banaan");
+set.Add("banaan");
+set.Add("appel");
+set.Add("appel");
+set.Add("peer");
+Console.WriteLine(string.Join(", ", set));</code></pre>
+      <figure class="console">
+         <pre>banaan, appel, citroen, peer</pre>
+         <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
+      </figure>
+
+      <!-- DICTIONARY -->
+      <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
+      <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
+      <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
+dict1["tuin"] = 11; // voeg een nieuw key-value paar toe
+dict1.Remove("mies"); // verwijder een key-value paar
+dict1["noot"] = 4; // verander de waarde van ene key-value paar
+Console.WriteLine($"Dictionary 1 bevat key \"noot\": {(dict1.Keys.Contains("noot") ? "ja" : "nee")}"); // controleer of key bestaat
+Console.WriteLine($"Dictionary 1 bevat waarde 3: {(dict1.Values.Contains(3) ? "ja" : "nee")}"); // controleer of value bestaat
+foreach (KeyValuePair&lt;string, int&gt; item in dict1)
+{
+    Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+}
+</code></pre>
+      <figure class="console">
+         <pre>Dictionary 1 bevat key "noot": ja
+Dictionary 1 bevat waarde 3: ja            
+Key: aap, Value: 6
+Key: noot, Value: 4
+Key: tuin, Value: 11</pre>
+         <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
+      </figure>
+      </div>
 
       <!-- COLOR -->
       <h2>Color</h2>
@@ -792,12 +913,19 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       <h3>Code voorbeelden</h3>
       <h4>Platform-onafhankelijke NewLine (Windows/Linux/Mac OSX/...)</h4>
       <pre><code>Console.Write($"Regel 1{Environment.NewLine}Regel 2");</code></pre>
-      <figure>
-         <img src="img/02_dotnetclasses/enviroment-newline.png" alt="" width="250">
+      <figure class="console">
+         <pre>Regel 1
+Regel 2</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Pad naar Desktop opvragen</h4>
-      <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // op mijn PC is dit C:\Users\rogie\Pictures</code></pre>
+      <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); 
+Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
+      <figure class="console">
+         <pre>Pad naar mijn desktop: C:\Users\rogie\Desktop</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      
       <figure>
          <img src="img/02_dotnetclasses/environment-specialfolder.png" alt="" width="250">
          <figcaption>resultaat in de console</figcaption>
@@ -805,6 +933,100 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
       <h4>Programma afsluiten</h4>
       <pre><code>Environment.Exit(0);</code></pre>
       <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
+
+      <!-- GELUID -->
+      <h2>Geluiden in .NET</h2>
+      <p>Er zijn drie verschillende manieren om geluiden te gebruiken in .NET.</p>
+      <ul>
+         <li>ingebouwde Windows-sounds gebruiken</li>
+         <li>.wav files afspelen</li>
+         <li>.mp3 muziekjes afspelen</li>
+      </ul>
+      <h3>Ingebouwde Windows-sounds</h3>
+      <p>
+         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten. 
+         De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
+      </p>
+      <pre><code>...
+using System.Media;
+
+namespace ConsoleSoundTest
+{
+   class Program
+   {
+      static void Main(string[] args)
+      {
+         // play the Asterisk Windows sound effet
+         SystemSounds.Asterisk.play();
+      }
+   }
+}</code></pre>
+      <p>
+         <strong>Opgelet</strong>: de enige voorwaarde is dat de bewuste sound effect effectief ingeschakeld is en een geluid voor gekozen is. Hoe je dat moet doen vind je op <a href="https://www.windowscentral.com/how-customize-sound-effects-windows-10">https://www.windowscentral.com/how-customize-sound-effects-windows-10</a>
+      </p>
+      <h3>.wav files afspelen</h3>
+      <p>
+         Om een .wav geluidsbestand af te spelen, steek je het in je project (bv. in een submap sounds). 
+         Om het af te spelen gebruik je de <code>SoundPlayer</code> klasse in <code>System.Media</code>:
+      </p>
+      <pre><code>...
+using System.Media;
+
+namespace ConsoleTest
+{
+   class Program
+   {
+      static void Main(string[] args)
+      {
+         string path = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/test.wav");
+         SoundPlayer player = new SoundPlayer(path);
+         player.Load();
+         player.PlaySync(); // sync: wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
+         Console.ReadKey();
+      }
+   }
+}</code></pre>
+      <p>
+         <strong>Opgelet</strong>: het enige waar je aan moet denken, is dat je in het properties panel voor elk geluid expliciet moet aanduiden dat het Content is en mee gekopieerd moet worden naar de build map. 
+      </p>
+      <p>
+         <img src="img/02_dotnetclasses/wav-properties.png" alt="" width="200">
+      </p>
+      <h3>mp3 muziekjes</h3>
+      <p>
+         Om mp3’s af te spelen, heb je de <strong>Windows Media Player</strong>-library nodig. Deze library bevat de code om liedjes af te spelen, te pauzeren, het volume te regelen, etc. Om de library te kunnen gebruiken in jouw eigen code, moet je eerst een referentie toevoegen. Kies in de Solution Explorer onder “References” onder jouw project met de rechtermuisknop “Add Reference...”:</p>
+      <p>
+         <img src="img/02_dotnetclasses/mp3-a.png" alt="" width="250">
+      </p>
+      <p>
+         In de Reference Manager selecteer je links “COM” en in de lijst “Windows Media Player”, en klik OK:
+      </p>
+      <p>
+         <img src="img/02_dotnetclasses/mp3-b.png" alt="" width="500">
+      </p>
+      <p>Een codefragment dat het gebruik illustreert (let op de <code>using WPMLib</code> bovenaan):</p>
+      <pre><code>...
+using WMPLib;
+
+namespace ConsoleMusicPlayer
+{
+   class Program
+   {
+      static void Main(string[] args)
+      {
+         WMPLib.WindowsMediaPlayer player = new WMPLib.WindowsMediaPlayer();
+         player.URL = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/music.mp3");
+         //rest van de code
+      }
+   }
+}</code></pre>
+      <p>Methodes die je kan gebruiken:</p>
+      <pre><code>player.controls.play(); // speel af / hervat
+player.controls.pause(); // pauzeer
+player.controls.stop(); // stop
+player.settings.volume = 50; // zet volume op 50%
+player.settings.mute = true; // muten
+</code></pre>
 
       <!-- MATH -->
       <h2>Math</h2>
@@ -871,9 +1093,9 @@ string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</co
 double oppervlakte = straal * straal * Math.PI;
 
 Console.WriteLine($"De oppervlakte bedraagt: {oppervlakte}");</code></pre>
-      <figure>
-         <img src="img/02_dotnetclasses/math-PI.png" alt="" width="280">
-         <figcaption>gebruik van de Math PI constante</figcaption>
+      <figure class="console">
+         <pre>De oppervlakte bedraagt: 78,5398163397448</pre>
+         <figcaption>gebruik van de PI constante</figcaption>
       </figure>
       <h4>Wiskundige methodes</h4>
       <pre><code>double a = Math.Ceiling(3.14); // resultaat: 4.0
@@ -891,7 +1113,21 @@ Console.WriteLine($"d: {d}");
 Console.WriteLine($"e: {e}");
 Console.WriteLine($"grootste: {grootste}");
 Console.WriteLine($"kleinste: {kleinste}");</code></pre>
-      <figure>
+      <figure class="console">
+         <pre>a: 4
+b: 3
+c: 25
+d: 3,14
+e: 4
+grootste: 25
+kleinste: 15</pre>
+         <figcaption>twee random getallen tussen 1 en 20</figcaption>
+      </figure>
+
+
+
+
+<figure>
          <img src="img/02_dotnetclasses/math-berekeningen.png" alt="" width="250">
          <figcaption>gebruik van de Math functies</figcaption>
       </figure>
@@ -972,10 +1208,12 @@ int getal2 = rnd.Next(1, 21); // de bovengrens (21) is exclusief!!!
 
 Console.WriteLine($"Random getal 1: {getal1}");
 Console.WriteLine($"Random getal 2: {getal2}");</code></pre>
-      <figure>
-         <img src="img/02_dotnetclasses/random-voorbeeld1.png" alt="" width="250">
+      <figure class="console">
+         <pre>Random getal 1: 15
+Random getal 2: 6</pre>
          <figcaption>twee random getallen tussen 1 en 20</figcaption>
       </figure>
+
       <p>Opmerking: de bovengrens is <strong>exclusief</strong>. Dat betekent dat het gegenereerde getal steeds strikt kleiner zal zijn dan de opgegeven bovengrens. Wil je bv. een willekeurig getal berekenen van 1 t.e.m. 5, gebruik je de parameters <code>Next(1, 6)</code>.</p>
 
       <!-- STRING -->
@@ -1112,6 +1350,7 @@ string str4 = str1.Replace("hey", "yo"); // "Hey yo yo, please DO NOT touch that
 </code></pre>
          
       <h4>Nagaan of een string leeg is</h4>
+      <p>Gebruik <code>string.IsNullOrEmpty()</code>:</p>
       <pre><code>string str1 = "test";
 bool bool1 = string.IsNullOrEmpty(str1); // False
 
@@ -1123,7 +1362,7 @@ bool bool3 = string.IsNullOrEmpty(str3); // True
 
 string str4 = " ";
 bool bool4 = string.IsNullOrEmpty(str4); // False - een spatie is geen lege string!</code></pre>
-      <h4>Nagaan of de gebruiker een TextBox heeft ingevuld</h4>
+      <p>Je kan dit gebruiken om na te gaan of de gebruiker een TextBox heeft ingevuld</p>
       <pre><code>if (string.IsNullOrEmpty(txtNaam))
 {
    lblFoutboodschap.Content = "Dit veld is verplicht";
@@ -1132,32 +1371,53 @@ else
 {
    lblFoutboodschap.Content = "";
 }</code></pre>
-      <p>Of korter met de ternaire operator:</p>
+      <p>of korter met de ternaire operator:</p>
       <pre><code>lblFoutboodschap.Content = string.IsNullOrEmpty(txtNaam) ? "Dit veld is verplicht" : "";</code></pre>
-      <h4>Een lijst samenvoegen tot een string, gescheiden door streepjes</h4>
-      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;();
-fruit.Add("appel");
-fruit.Add("banaan");
-fruit.Add("citroen");
-fruit.Add("peer");
-
+      <h4>Lijst of array samenvoegen tot een string, gescheiden door een tekst</h4>
+      <p>Gebruik <code>string.Join()</code>. Voorbeeld voor een lijst:</p>
+      <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;() { "appel", "banaan", "citroen", "peer" };
 string reeks = string.Join(" - ", fruit);
-
 Console.WriteLine(reeks);</code></pre>
-      <figure>
-         <img src="img/02_dotnetclasses/string-join1.png" alt="" width="250">
-         <figcaption>Join() voorbeeld</figcaption>
+      <figure class="console">
+         <pre>appel - banaan - citroen - peer</pre>
+         <figcaption>Join() voorbeeld met List&lt;string&gt;</figcaption>
       </figure>
-      <h4>Een array samenvoegen tot één string, gescheiden d.m.v. een komma</h4>
+      <p>Voorbeeld voor een array:</p>
       <pre><code>int[] getallen = { 5, 7, 12, 8, 3 }; // &rarr; int[] array
-string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; één string</code></pre>
-      <h4>Een string splitsen rond karakters naar een array</h4>
+string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; één string
+Console.WriteLine(samengevoegd);</code></pre>
+      <figure class="console">
+         <pre>5, 7, 12, 8, 3</pre>
+         <figcaption>Join() voorbeeld met array</figcaption>
+      </figure>
+      <h4>String splitsen naar een array</h4>
+      <h5>rond spaties</h5>
+      <pre><code>string zin = "dit is een zin met meerdere woorden";
+string[] woorden = zin.Split(' '); // verdeel zin in woorden
+foreach (string woord in woorden) 
+{
+   Console.WriteLine(woord);
+}</code></pre>
+      <figure class="console">
+         <pre>dit
+is
+een
+zin
+met
+meerdere
+woorden</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h5>rond een karakterlijst</h5>
+      <p>Je kan als parameter van <code>Split()</code> een array van karakters opgeven waarrond gesplitst moet worden:</p>
       <pre><code>string txt = "0477/234.56.78"; // &rarr; één string
-string[] parts1 = txt.Split('/'); // { "0477", "234.56.78" } &rarr; string[] array
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
+
       <h2>Timer classes</h2>
       <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
+
+
       <h3>Stopwatch</h3>
       <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
       <h4>Properties en methodes</h4>
