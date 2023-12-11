@@ -98,11 +98,11 @@
                <td><code>FileInfo</code></td>
                <td>bestand informatie opvragen; properties <code>Name</code>, <code>Extension</code>, <code>Directory</code>, <code>Exists</code>, <code>Length</code>...</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td><code>StreamReader</code></td>
                <td>bestanden streamend lezen (geheugenvriendelijk, enkel nodig bij zeer grote bestanden)</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td><code>StreamWriter</code></td>
                <td>bestanden streamend schrijven (geheugenvriendelijk, enkel nodig bij zeer grote bestanden)</td>
             </tr>
@@ -320,6 +320,8 @@ Console.WriteLine($@"
     gemaakt op: {fi.CreationTime.ToString()}
     mapnaam: {fi.Directory.Name}
 ");</code></pre>
+      <div class="pro">
+
       <h4>Streamend lezen en schrijven</h4>
       <p>Alle vorige methodes laden de hele bestandsinhoud in één keer in het geheugen in. Voor heel grote bestanden is dat niet efficiënt. In die (uitzonderlijke) gevallen kan je gebruik maken van <code>StreamReader</code> en <code>StreamWriter</code>. </p>
       <p><code>StreamReader</code> voorbeeld (zoeken naar een tekst):</p>
@@ -347,6 +349,7 @@ using (StreamWriter writer = File.CreateText(filePath)) {
 } // stream closes automatically
 </code></pre>
       <p>In praktijk zul je streamend lezen of schrijven in deze cursus nooit nodig hebben.</p>
+      </div>
 
       <h2>Mappen</h2>
       <h3>Overzicht</h3>
