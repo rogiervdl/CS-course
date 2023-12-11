@@ -2,8 +2,7 @@
 
 // DOM shortcuts
 const DOM = {
-   chbMode: document.querySelector("#mode [type=checkbox]"),
-	codeBlocks: [...document.querySelectorAll('pre code')],
+ 	codeBlocks: [...document.querySelectorAll('pre code')],
    nav: document.querySelector('nav'),
 	titles: [...document.querySelectorAll('h2,h3,h4,h5')],
 	toc: document.querySelector('#toc')
@@ -51,15 +50,6 @@ function startApp() {
    window.addEventListener('scroll', () => {
       DOM.nav.classList.toggle('condensed', document.body.scrollTop > 50 || document.documentElement.scrollTop > 50);
    });
-
-   // part 4: n00b/pro mode
-   DOM.chbMode.addEventListener('change', function() {
-      document.body.classList.toggle('showpro', this.checked);
-      localStorage.setItem('showpro', this.checked ? 'true' : 'false');
-   });
-   const showPro = localStorage.getItem('showpro') != 'false';
-   document.body.classList.toggle('showpro', showPro);
-   DOM.chbMode.checked = showPro;
 }
 
 /**

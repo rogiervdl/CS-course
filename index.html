@@ -9,10 +9,19 @@
    <link rel="stylesheet" href="fonts/droidsans/webfont.css">
    <link rel="stylesheet" href="fonts/lato/webfont.css">
    <link rel="stylesheet" href="fonts/leaguegothic/webfont.css">
+   <link rel="stylesheet" href="css/switch.css">
    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
    <header class="site__header">
       <a class="header__logo" href="http://www.odisee.be/" title="odisee.be" id="odisee"><img src="img/odisee.png" alt="Odisee logo"></a>
       <h1 class="header__title">C#, .NET &amp; WPF</h1>
@@ -39,24 +48,26 @@
          <h3 class="thumb__title">05. bestanden &amp; mappen</h3>
          <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
       </a>
-      <a href="06_oo_programmatie.html" class="main__thumb">
+      <a href="06_oo_programmatie.html" class="main__thumb pro">
          <h3 class="thumb__title">06. OO programmatie</h3>
          <img class="thumb__visual" src="img/06_oo_programmatie/icon.jpg" alt="">
       </a>
-      <a href="07_sql_databanken.html" class="main__thumb">
+      <a href="07_sql_databanken.html" class="main__thumb pro">
          <h3 class="thumb__title">07. SQL databanken</h3>
          <img class="thumb__visual" src="img/07_sql_databanken/icon.png" alt="">
       </a>
    </nav>
    <footer class="site__footer">
       <p>Rogier van der Linde</p>
-   </footer>   <aside>
+   </footer>
+      <aside>
       <p>Dit materiaal werd ontwikkeld door Rogier van der Linde, docent Toegepaste Informatica op Odisee.</p>
       <p>Het mag vrij gebruikt worden, zolang een credit aan Rogier van der Linde vermeld is en de link rechtsboven naar <a href="http://www.odisee.be/">odisee.be</a> behouden blijft.</p>
       <p>Suggesties en opmerkingen zijn welkom per mail naar <a href="mailto:rogier.vanderlinde@odisee.be">Rogier</a>, of via een <a href="https://github.com/rogiervdl/HTML-course">a pull request op GitHub</a>.</p>
       <img src="img/me.jpg" alt="foto Rogier van der Linde">
    </aside>
-   </body>
-   
-   </html>
+   <script src="js/mode.js"></script>
+</body>
+
+</html>
 

@@ -9,4 +9,5 @@
 
 /* local */
 @import url(css/common.css);
+@import url(css/switch.css);
 @import url(css/print.css) print;
