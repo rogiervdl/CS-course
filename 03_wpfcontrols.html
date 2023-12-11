@@ -38,13 +38,13 @@
          <p class="thumb__title">05. bestanden &amp; mappen</p>
          <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
       </a>
-      <a href="06_oo_programmatie.html" class="main__thumb pro">
-         <p class="thumb__title">06. OO programmatie</p>
-         <img class="thumb__visual" src="img/06_oo_programmatie/icon.jpg" alt="">
+      <a href="06_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">06. SQL databanken</p>
+         <img class="thumb__visual" src="img/06_sql_databanken/icon.png" alt="">
       </a>
-      <a href="07_sql_databanken.html" class="main__thumb pro">
-         <p class="thumb__title">07. SQL databanken</p>
-         <img class="thumb__visual" src="img/07_sql_databanken/icon.png" alt="">
+      <a href="07_oo_programmatie.html" class="main__thumb pro">
+         <p class="thumb__title">07. OO programmatie</p>
+         <img class="thumb__visual" src="img/07_oo_programmatie/icon.jpg" alt="">
       </a>
    </nav>
    <h1>03. WPF Controls</h1>
@@ -257,6 +257,85 @@ txt1.TextAlignment = TextAlignment.Right;
       <figure>
          <img src="img/03_wpfcontrols/tag_demo.gif" alt="" class="w-350">
          <figcaption>Tag demo: buttons onthouden zelf hoevaak erop geklikt werd</figcaption>
+      </figure>
+
+      <h3>System.Windows.Shapes</h3>
+      <p>Dit zijn niet echte controls in de zin dat ze interactief zijn, maar desondanks worden ze "WPF controls" genoemd. We bekijken er twee.</p>
+      <h4>Rectangle</h4>
+      <p>Belangrijkste properties:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>XAML voorbeeld:</p>
+      <pre><code class="language-html">&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/rectangle.png" alt="" class="w-500 bordered">
+         <figcaption>Rectangle voorbeeld</figcaption>
+      </figure>
+      <h4>Ellipse</h4>
+      <p>Belangrijkste properties:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>XAML voorbeeld:</p>
+      <pre><code class="language-html">&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/03_wpfcontrols/ellipse.png" alt="" class="w-500 bordered">
+         <figcaption>Rectangle voorbeeld</figcaption>
       </figure>
 
       <div class="pro">

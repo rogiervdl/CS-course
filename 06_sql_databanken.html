@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>WPF layout | C# cheat sheets</title>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb" title="02. .NET classes">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb" title="03. WPF controls">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
+         <p class="thumb__title">04. WPF layout</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_filesfolders.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden &amp; mappen</p>
+         <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
+      </a>
+      <a href="06_sql_databanken.html" class="main__thumb pro active">
+         <p class="thumb__title">06. SQL databanken</p>
+         <img class="thumb__visual" src="img/06_sql_databanken/icon.png" alt="">
+      </a>
+      <a href="07_oo_programmatie.html" class="main__thumb pro">
+         <p class="thumb__title">07. OO programmatie</p>
+         <img class="thumb__visual" src="img/07_oo_programmatie/icon.jpg" alt="">
+      </a>
+   </nav>
+   <h1>06. SQL databanken</h1>
+   <div id="toc"></div>
+   <main>
+
+      <h2>Stappenplan</h2>
+      <h3>Employee voorbeeldtabel</h3>
+      <p>
+         Voor je met de WPF toepassing begint, moet je het schema (de structuur) en relaties van de gebruikte databank grondig begrijpen. 
+         In dit hoofdstuk nemen we een databank bestaande uit één enkele tabel Employee. Het schema:
+      </p>
+      <figure>
+         <img src="img/06_sql_databanken/db_schema.png" alt="" class="w-500 bordered">
+         <figcaption>schema van de tabel Employee</figcaption>
+      </figure>
+      <figure>
+         <img src="img/06_sql_databanken/db_data.png" alt="" class="w-600 bordered">
+         <figcaption>voorbeelddata van de tabel Employee</figcaption>
+      </figure>
+      <h3>Stap 1: connection string genereren</h3>
+      <p>Een <em>connection string</em> bevat de gegevens nodig om een connectie te maken: database host, tabelnaam, authenticatiegegevens... Maak het aan via <i>Server Explorer, Add Connection</i>...:</p>
+      <figure>
+         <img src="img/06_sql_databanken/db_connstring.png" alt="" class="w-600 bordered">
+         <figcaption>aanmaken connection string</figcaption>
+      </figure>
+      <p>In het volgende dialoogvenster kies je de server, authenticatiemethode, en dan de databank:</p>
+      <figure>
+         <img src="img/06_sql_databanken/db_connstring_dialog.png" alt="" class="w-300 bordered">
+         <figcaption>aanmaken connection string</figcaption>
+      </figure>
+      <p>De gegenereerde conneciestring vind je tenslotte bij de connection properties:</p>
+      <figure>
+         <img src="img/06_sql_databanken/db_conn_properties.png" alt="" class="w-300 bordered">
+         <figcaption>aanmaken connection string</figcaption>
+      </figure>
+      <h3>Stap 2: conneciestring toevoegen aan App.config</h3>
+      <p>
+         Hoewel je de connectie string ook overal letterlijk in je C# code kan gebruiken, is het beter het één keer globaal te bewaren in App.config, te vinden in je project: 
+      </p>
+      <pre><code class="language-html">&lt;configuration&gt;
+   &lt;connectionStrings&gt;
+      &lt;add name="connStr" connectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=EmployeesDB;Integrated Security=True" /&gt;
+   &lt;/connectionStrings&gt;
+   ...
+&lt;/configuration&gt;
+</code></pre>
+      <h3>Stap 3: referentie naar System.Configuration</h3>
+      <p>Om deze configuratie te kunnen aanspreken, moet een referentie naar <strong>System.Configuration</strong> toegevoegd worden aan het project:</p>
+      <figure>
+         <img src="img/06_sql_databanken/reference.png" alt="" class="w-700 bordered">
+         <figcaption>toevoegen referentie naar System.Configuration</figcaption>
+      </figure>
+      <h3>Stap 4: C# connectie openen en SQL uitvoeren</h3>
+      <p>Basisschema voor het uitvoeren van SQL queries: </p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+    conn.Open();
+    // voer je SQL query hier uit
+    // ...
+}</code></pre>
+      <p>Dankzij de <code>using</code> wordt de connectie automatisch gesloten. Dit is belangrijk, want aangezien een server maar een beperkt aantal gelijktijdige connecties toelaat, kunnen bij teveel openstaande connecties nieuwe connecties geweigerd worden en de databank onbereikbaar worden.</p>
+      <p>Versie met try-catch:</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+try {
+    using (SqlConnection conn = new SqlConnection(connString)) {
+        conn.Open();
+        // execute your SQL query here
+        // ...
+    }
+} catch (SqlException ex) {
+    MessageBox.Show("Fout! SQL zegt: " + ex.Message);
+}
+</code></pre>
+
+      <h2>Connection pooling</h2>
+      <p>Als je meerdere SQL instructies wil uitvoeren in de loop van je programma's, zijn er twee strategieën:</p>
+      <ul>
+         <li class="wrong">één enkele connectie bij het begin van de eerste SQL instructie, en open houden tot na de laatste SQL instructie</li>
+         <li class="right">telkens bij elke SQL instructie een nieuwe connectie openen en zo snel mogelijk weer sluiten</li>
+      </ul>
+      <p>De tweede optie is de juiste: in praktijk zal de server om tijd te winnen een aantal connecties permanent open houden zodat die snel kunnen toegewezen worden aan een programma dat die op dat moment nodig heeft. Door deze connectie zo snel mogelijk weer vrij te geven, kunnen andere databank gebruikers sneller weer aan de beurt komen. Dit heet <span class="em">connection pooling</span>.</p>
+      <p>Eén connectie vroeg openen en laat sluiten is dus fout:</p>
+      <pre class="wrong"><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) { // open in het begin
+   conn.Open();
+   // doe andere taken
+   // ...
+   // voer eerste SQL query uit
+   // ...
+   // doe andere taken
+   // ...
+   // voer tweede SQL query uit
+   // ...
+   // doe andere taken
+   // ...
+}  // sluit op het einde</code></pre>
+      <p>Open beter meerdere connecties zo laat mogelijk en sluit ze zo vroeg mogelijk:</p>
+<pre class="right"><code>string connString = ConfigurationManager.AppSettings["connString"];
+// doe andere taken
+// ...
+using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mogelijk
+   conn.Open();
+   // voer eerste SQL query uit
+   // ...
+} // sluit zo vroeg mogelijk 
+// doe andere taken
+// ...
+using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mogelijk
+   conn.Open();
+   // voer tweede SQL query uit
+   // ...
+} // sluit zo vroeg mogelijk 
+// doe andere taken
+// ...</code></pre>
+
+      <h2>Queries uitvoeren</h2>
+      <h3>SELECT query</h3>
+      <p>Voor SELECT queries gebruik je <span class="em">ExecuteReader()</span> (voorbeeld voor ophalen employees):</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand("SELECT * FROM Employees", conn); // vergeet connectie niet mee te geven
+   SqlDataReader reader = comm.ExecuteReader();
+   while (reader.Read()) { // reader.Read() geeft één voor één de records terug, null indien geen meer over
+      int id = Convert.ToInt32(reader["id"]);
+      string name = $"{reader["firstname"]} {Convertreader["lastname"]}";
+      string email = Convert.ToString(reader["email"]);
+      int gender = Convert.ToInt32(reader["gender"]);
+      DateTime birthdate = Convert.ToDateTime(reader["birthdate"]);
+      int accesscode = Convert.ToInt32(reader["accesscode"]);
+      // ... doe iets met deze gegevens, b.v. toevoegen aan een ListBox
+   }
+}</code></pre>
+      <h3>INSERT query</h3>
+      <p>Voor INSERT queries gebruik je <span class="em">ExecuteNonQuery()</span> (voorbeeld voor toevoegen employee):</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand("INSERT INTO Employee(firstname,lastname,telephone) VALUES(@par1,@par2,@par3)", conn);
+   comm.Parameters.AddWithValue("@par1", txtFirst.Text);
+   comm.Parameters.AddWithValue("@par2", txtLast.Text);
+   comm.Parameters.AddWithValue("@par3", txtTel.Text);
+   comm.ExecuteNonQuery();
+}</code></pre>
+      <p><strong>Let op</strong>: voeg altijd parameters toe via <code>comm.Parameters</code>, waarbij automatisch een aantal veiligheidscontroles uitgevoerd worden. Doe het dus NOOIT rechtstreeks zoals hier:</p>
+      <pre class="wrong"><code>SqlCommand comm = new SqlCommand($"INSERT INTO Employee(firstname,lastname,telephone) VALUES({txtFirst.Text},{txtLast.Text},{txtTel.Text})", conn);</code></pre>
+      <h3>DELETE query</h3>
+      <p>Voor DELETE queries gebruik je eveneens <span class="em">ExecuteNonQuery()</span> (voorbeeld voor verwijderen van een employee met een id <code>employeeId</code>):</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+int employeeId = ...; // id van de employee
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand("DELETE FROM Employee WHERE id=@parId", conn);
+   comm.Parameters.AddWithValue("@parId", employeeId);
+   comm.ExecuteNonQuery();
+   lbxResults.Items.Remove(lbxResults.SelectedItem);
+}
+</code></pre>
+      <p><strong>Let op</strong>: voeg altijd parameters toe via <code>comm.Parameters</code>, waarbij automatisch een aantal veiligheidscontroles uitgevoerd worden. Doe het dus NOOIT rechtstreeks zoals hier:</p>
+      <pre class="wrong"><code>SqlCommand comm = new SqlCommand($"DELETE FROM Employee WHERE id={id})", conn);</code></pre>
+      <h3>UDPATE query</h3>
+      <p>Voor UPDATE queries gebruik je eveneens <span class="em">ExecuteNonQuery()</span> (voorbeeld voor aanpassen van een employee met id <code>employeeId</code>):</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+int employeeId = ...; // id van de employee
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand(@"UPDATE Employee SET firstname=@par1, lastname=@par2, telephone=@par3 WHERE id=@parId", conn);
+   comm.Parameters.AddWithValue("@par1", txtFirst.Text);
+   comm.Parameters.AddWithValue("@par2", txtLast.Text);
+   comm.Parameters.AddWithValue("@par3", txtTel.Text); 
+   comm.Parameters.AddWithValue("@parId", employeeId); 
+   comm.ExecuteNonQuery();
+}</code></pre>
+      <h3>Views</h3>
+      <p>De code voor het ophalen van gegevens uit een view is bijna identiek aan een normale SELECT query. Veronderstel een view <code>vwEmployeesSimple</code>:</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+    conn.Open();
+    SqlCommand comm = new SqlCommand("SELECT * FROM vwEmployeesSimple", conn); // view in plaats van tabel
+    SqlDataReader reader = comm.ExecuteReader();
+    lbxResults.Items.Clear();
+    while (reader.Read()) {
+        int id = Convert.ToInt32(reader["ID"]);
+        string name = Convert.ToString(reader["name"]); 
+        string tel = Convert.ToString(reader["telephone"]);
+        lbxResults.Items.Add($"{id}: {name} ({tel})");
+    }
+}
+</code></pre>
+      <h3>Stored procedures</h3>
+      <h4>Zonder return</h4>
+      <p>Veronderstel een stored procedure <code>spAddEmployee</code> met parameters <code>@fn</code>, <code>@ln</code> en <code>@email</code>:</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand("spAddEmployee", conn);
+   comm.CommandType = CommandType.StoredProcedure;
+   SqlParameter param1 = new SqlParameter("@fn", SqlDbType.VarChar);
+   SqlParameter param2 = new SqlParameter("@ln", SqlDbType.VarChar);
+   SqlParameter param3 = new SqlParameter("@email", SqlDbType.VarChar);
+   param1.Value = txtFirst.Text;
+   param2.Value = txtLast.Text;
+   param3.Value = txtEmail.Text;
+   comm.Parameters.Add(param1);
+   comm.Parameters.Add(param2);
+   comm.Parameters.Add(param3);
+   comm.ExecuteNonQuery();
+}</code></pre>
+      <h4>Met return</h4>
+      <p>Veronderstel een stored procedure <code>spSearchEmployee</code>, die een lijst employees teruggeeft op basis van parameters <code>@parSearch</code> en <code>@parLimit</code>:</p>
+      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+    conn.Open();
+    SqlCommand comm = new SqlCommand("spSearchEmployee", conn);
+    comm.CommandType = CommandType.StoredProcedure;
+    SqlParameter parSearch = new SqlParameter("@parSearch", SqlDbType.NVarChar);
+    SqlParameter parLimit = new SqlParameter("@parLimit", SqlDbType.Int);
+    parSearch.Value = "An";
+    parLimit.Value = 3;
+    comm.Parameters.Add(parSearch);
+    comm.Parameters.Add(parLimit);
+    SqlDataReader reader = comm.ExecuteReader();
+    while (reader.Read()) {
+        // do something with the found employees
+    }
+}
+</code></pre>
+            
+
+
+
+   </main>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <script src="vendor/prism.js"></script>
+   <script src="js/mode.js"></script>
+   <script src="js/scripts.js"></script>
+
+</body>
+
+</html>

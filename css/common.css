@@ -196,6 +196,14 @@ img.w-600 {
    width: 60rem;
 }
 
+img.w-700 {
+   width: 70rem;
+}
+
+img.w-800 {
+   width: 80rem;
+}
+
 /* UL's */
 
 .arrow {
