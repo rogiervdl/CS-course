@@ -156,7 +156,7 @@
       <p>Op elke computer is de fysieke locatie voor systeemmappen als Desktop, My Documents... verschillend. Gebruik daarom altijd de <code>Environment.SpecialFolder</code> enumeratie:</p>
       <pre><code>string desktopFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);</code></pre>
       <p>Andere typische voorbeelden zijn My Documents, My Pictures enz...:</p>
-      <p><img src="img/05_filesfolders/specialfolders.png" alt="" width="600"></p>
+      <p><img src="img/05_filesfolders/specialfolders.png" alt="" class="w-600"></p>
 
       <h3>Paden combineren</h3>
       <p>Gebruik best altijd <code>System.IO.Path.Combine()</code> om paden te combineren:</p>
@@ -454,7 +454,7 @@ if (dialogResult == true) {
     // user cancelled or escaped dialog window
 }
 </code></pre>
-      <p><img src="img/05_filesfolders/openfiledialog.png" alt=""></p>
+      <p><img src="img/05_filesfolders/openfiledialog.png" alt="" class="w-550"></p>
       <h3>OpenFolderDialog</h3>
       <p><strong>Let op!</strong> Tot voor kort bestond (zeer vreemd genoeg) dit dialoogvenster niet. Het is pas toegevoegd sinds .NET8, dus werkt niet in oudere projecttypes als WPF .NET Framework! Daar werd je verondersteld third party oplossingen te gebruiken. Schematisch:</p>
       <pre><code>OpenFolderDialog dialog = new OpenFolderDialog();
@@ -470,7 +470,7 @@ else
 {
     // user cancelled or escaped dialog window
 }</code></pre>
-      <p><img src="img/05_filesfolders/openfolderdialog.png" alt=""></p>
+      <p><img src="img/05_filesfolders/openfolderdialog.png" alt="" class="w-550"></p>
       <h3>SaveFileDialog</h3>
       <p>Schematisch:</p>
       <pre><code>SaveFileDialog dialog = new SaveFileDialog();
@@ -483,7 +483,7 @@ if (dialog.ShowDialog() == true) {
     // user pressed Cancel or escaped dialog window
 }
 </code></pre>
-      <p><img src="img/05_filesfolders/savefiledialog.png" alt=""></p>
+      <p><img src="img/05_filesfolders/savefiledialog.png" alt="" class="w-550"></p>
       <h3>MessageBox</h3>
       <p>Zie <a href="02_dotnetclasses.html#messagebox">.NET classes - MessageBox</a></p>
 

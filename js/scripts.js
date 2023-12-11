@@ -49,8 +49,7 @@ function startApp() {
 
    // part 3: nav scroll effect
    window.addEventListener('scroll', () => {
-      DOM.nav.style.fontSize = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50
-         ? "4px" : "16px";
+      DOM.nav.classList.toggle('condensed', document.body.scrollTop > 50 || document.documentElement.scrollTop > 50);
    });
 
    // part 4: n00b/pro mode
