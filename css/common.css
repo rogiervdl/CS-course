@@ -1,16 +1,18 @@
 /* ELEMENTS */
 
 html {
+   font-size: 62.5%;
    scroll-behavior: smooth;   
 }
 
 body {
    counter-reset: chapter;
    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+   font-size: 1.6rem;
    margin: 0;
-   margin-bottom: 50px;
+   margin-bottom: 5rem;
    padding: 0;
-   padding-top: 210px;
+   padding-top: 21rem;
 }
 
 a {
@@ -19,14 +21,14 @@ a {
 }
 
 h1, #toc, main {
-   margin: 0 25px;
+   margin: 0 2.5rem;
 }
 
 main a::after {
    content: "🔗";
    font-size: smaller;
    position: relative;
-   top: -5px;
+   top: -0.5rem;
 }
 
 #toc a::after {
@@ -67,7 +69,7 @@ h2 span,
 h3 span, 
 h4 span {
    position: relative;
-   top: -50px;
+   top: -5rem;
 }
 
 h1 {
@@ -77,9 +79,9 @@ h1 {
 }
 
 h2 {
-   border-bottom: 4px double #ccc;
+   border-bottom: 0.4rem double #ccc;
    counter-reset: subchapter;
-   padding-bottom: 5px;
+   padding-bottom: 0.5rem;
 }
 
 h2::before {
@@ -88,7 +90,7 @@ h2::before {
 }
 
 h3 {
-   border-bottom: 2px solid #ccc;
+   border-bottom: 0.2rem solid #ccc;
    counter-reset: subsubchapter;
 }
 
@@ -100,7 +102,7 @@ h3::before {
 h4 {
    border-bottom: 1px dotted #ccc;
    counter-reset: subsubsubchapter;
-   font-size: 14px;
+   font-size: 1.4rem;
    text-transform: uppercase;
 }
 
@@ -119,13 +121,13 @@ img {
 }
 
 figure {
-   margin-bottom: 1.5em;
+   margin-bottom: 2rem;
    margin-top: 0;
 }
 
 nav {
    background-color: #faf5e6;   
-   box-shadow: 0 5px 10px #ccc7;
+   box-shadow: 0 0.5rem 1rem #ccc7;
    left: 0;
    position: fixed;
    right: 0;
@@ -135,11 +137,63 @@ nav {
 }
 
 p, table {
-   max-width: 1200px;
+   max-width: 120rem;
 }
 
 table {
-   margin-bottom: 1em;
+   margin-bottom: 2rem;
+}
+
+/* paddings */
+
+.p-5 {
+   padding: 0.5rem;
+}
+
+/* IMG's */
+
+img.w-50 {
+   width: 5rem;
+}
+
+img.w-100 {
+   width: 10rem;
+}
+
+img.w-150 {
+   width: 15rem;
+}
+
+img.w-200 {
+   width: 20rem;
+}
+
+img.w-250 {
+   width: 25rem;
+}
+
+img.w-300 {
+   width: 30rem;
+}
+
+img.w-350 {
+   width: 35rem;
+}
+
+img.w-400 {
+   width: 40rem;
+}
+
+img.w-500 {
+   width: 50rem;
+}
+
+img.w-550 {
+   width: 55rem;
+}
+
+img.w-600 {
+   width: 60rem;
 }
 
 /* UL's */
@@ -147,13 +201,13 @@ table {
 .arrow {
    list-style-type: none;
    margin-top: 0;
-   margin-left: 1.25em;
+   margin-left: 2rem;
    padding: 0;
 }
 
 ul.arrow li:first-child,
 ul li.arrow {
-   margin: 0.3em 0;
+   margin: 0.5rem 0;
 }
 
 ul.arrow li::before,
@@ -163,7 +217,7 @@ li.arrow::before {
 
 ul.arrow li::first-letter,
 li.arrow::first-letter {
-   margin-left: -1.25em;
+   margin-left: -2rem;
 }
 
 /* CLASSES */
@@ -188,7 +242,7 @@ body:not(.showpro) .pro {
 html body .em {
    background-color: #ddd;
    color: #564826;
-   padding: 1px 2px;
+   padding: 1px 0.2rem;
 }
 
 html body .small {
@@ -198,25 +252,25 @@ html body .small {
 
 .tips {
    background-color: #eee;
-   border: 2px dashed #999;
-   padding: 40px 50px 10px 20px;
+   border: 0.2rem dashed #999;
+   padding: 4rem 5rem 1rem 2rem;
    position: relative;
 }
 
 .tips::before {
    content: "💡TIP";
-   font-size: 20px;
-   left: 5px;
+   font-size: 2rem;
+   left: 0.5rem;
    position: absolute;
-   top: 5px;
+   top: 0.5rem;
 }
 
 #up {
-   bottom: 10px;
+   bottom: 1rem;
    color: #666;
-   font-size: 30px;
+   font-size: 3rem;
    position: fixed;
-   right: 10px;
+   right: 1rem;
    transition: color 0.3s;
 }
 
@@ -228,18 +282,18 @@ html body .small {
 
 /* The switch - the box around the slider */
 #mode {
-   font-size: 12px;
+   font-size: 1.2rem;
    position: fixed;
-   right: 70px;
-   bottom: 18px;
+   right: 7rem;
+   bottom: 1.8rem;
    z-index: 10;
 }
  
 .switch {
    display: inline-block;
-   height: 20px;
+   height: 2rem;
    position: relative;
-   width: 60px;
+   width: 6rem;
 }
  
 /* Hide default HTML checkbox */
@@ -263,13 +317,13 @@ html body .small {
  
 .switch .slider:before {
    background-color: white;
-   bottom: 4px;
+   bottom: 0.4rem;
    content: "";
-   height: 13px;
-   left: 4px;
+   height: 1.3rem;
+   left: 0.4rem;
    position: absolute;
    transition: .4s;
-   width: 14px;
+   width: 1.4rem;
 }
  
 .switch input:checked + .slider {
@@ -281,12 +335,12 @@ html body .small {
 }
  
 .switch input:checked + .slider:before {
-   transform: translateX(39px);
+   transform: translateX(3.9rem);
 }
  
 /* Rounded sliders */
 .switch .slider.round {
-   border-radius: 34px;
+   border-radius: 3.4rem;
 }
  
 .switch .slider.round:before {
@@ -299,27 +353,27 @@ html body .small {
    column-gap: 2.5%;
    display: flex;
    justify-content: center;
-   padding: 1.875em 0;
-   row-gap: 1.875em;
+   padding: 3rem 0;
+   row-gap: 3rem;
 }
 
 .main__thumb {
    align-items: center;
    background-color: #e1d9c0;
-   border: 0.25em solid #eee;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+   border: 0.4rem solid #eee;
+   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
    color: #333;
    display: flex;
    flex-direction: column;
-   font-size: 0.7em;
+   font-size: 1rem;
    font-family: 'League Gothic', sans-serif;
    justify-content: flex-start;
-   padding: 1em 0.5em;
+   padding: 1.65rem 0.8rem;
    text-decoration: none;
-   text-shadow: 0px 5px 2px rgba(150, 150, 150, 0.71);
+   text-shadow: 0 0.5rem 0.2rem rgba(150, 150, 150, 0.71);
    text-transform: uppercase;
    transition: all .2s linear;
-   width: 16em;
+   width: 16rem;
 }
 
 .main__thumb:hover,
@@ -329,23 +383,41 @@ html body .small {
 }
 
 .thumb__title {
-   font-size: 1.8em;
+   font-size: 2rem;
    font-weight: normal;
-   margin-bottom: 0.75em;
+   margin-bottom: 1.3rem;
    margin-top: 0;
    white-space: nowrap;
 }
 
 .thumb__visual {
    display: block;
-   margin-bottom: 1em;
+   margin-bottom: 1rem;
    width: 50%;
 }
 
-.thumb__small {
-   font-size: 0.5em;
+/* condensed version */
+
+.site__nav.condensed:not(:hover) {
+   padding: 0.4rem 0;
+   row-gap: 0.4rem;
+}
+
+.condensed:not(:hover)  .main__thumb {
+   border: 0.2rem solid #eee;
+   font-size: 0.5rem;
    margin-bottom: 0;
    margin-top: auto;
+   padding: 0.8rem 0.4rem;
+   width: 4rem;
+}
+
+.condensed:not(:hover) .thumb__title {
+   font-size: 0.45rem;
+   font-weight: normal;
+   margin-bottom: 0.3rem;
+   margin-top: 0;
+   white-space: nowrap;
 }
 
 /* TABLE OF CONTENTS */
@@ -356,7 +428,7 @@ html body .small {
 }
 
 #toc ul ul {
-   padding-left: 25px;
+   padding-left: 2.5rem;
 }
 
 /* TABLES */
@@ -366,7 +438,7 @@ table {
 }
 
 th, td {
-   padding: 5px 20px 5px 0;
+   padding: 0.5rem 2rem 0.5rem 0;
    text-align: left;
 }
 
@@ -375,7 +447,7 @@ th, td {
 }
 
 table pre {
-   padding: 2px 5px;
+   padding: 0.2rem 0.5rem;
    width: 100%;
 }
 
@@ -390,14 +462,14 @@ table.light th {
 }
 
 table.light th:first-child, table.light td:first-child {
-   min-width: 150px;
+   min-width: 15rem;
 }
 
 /* grey */
 
 table.grey th, table.grey td {
    border: 1px solid #999;
-   padding: 5px 10px;
+   padding: 0.5rem 1rem;
    text-align: center;
 }
 
@@ -423,14 +495,14 @@ body pre.right {
    background-image: url(../img/code_right.png);
    background-repeat: no-repeat;
    background-position: right top;
-   background-size: 20px 20px;
+   background-size: 2rem 2rem;
 }
 
 body pre.wrong {
    background-image: url(../img/code_wrong.png);
    background-repeat: no-repeat;
    background-position: right top;
-   background-size: 20px 20px;
+   background-size: 2rem 2rem;
 }
 
 :not(pre) > code { /* inline code */
@@ -439,9 +511,9 @@ body pre.wrong {
 
 pre {
    border: 1px solid #ccc;
-   border-radius: 3px;
+   border-radius: 0.3rem;
    font-weight: 100;
-   line-height: 19px;
+   line-height: 1.9rem;
    margin-bottom: 1.5em;
    margin-top: 0;
    overflow-wrap: break-word;
@@ -459,8 +531,8 @@ figure.console pre {
    font-family: Consolas,"Liberation Mono","Courier New",monospace;
    font-size: 0.8em;
    line-height: 1.357em;
-   width: 400px;
-   padding-top: 35px;
+   width: 40rem;
+   padding-top: 3.5rem;
 }
 
 figure pre {

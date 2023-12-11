@@ -144,7 +144,7 @@ wpfImage.Source = new BitmapImage(bitmapSource);</code></pre>
       <pre><code>lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
 lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered">
+         <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered w-100">
          <figcaption>resultaat van instellen Foreground en Background</figcaption>
       </figure>
       <p>Opmerking: voor algemenere manieren om kleuren te definiëren zie de <a href="#color"><code>Color</code></a> klasse</p>
@@ -232,11 +232,13 @@ using System.Collections.Generic;
          </tbody>
       </table>
       <figure id="figCollections">
-         <img src="img/02_dotnetclasses/collecties_array.jpg" alt="">
-         <img src="img/02_dotnetclasses/collecties_dictionary.jpg" alt="">
-         <img src="img/02_dotnetclasses/collecties_list.jpg" alt="">
-         <img src="img/02_dotnetclasses/collecties_queue.jpg" alt="">
-         <img src="img/02_dotnetclasses/collecties_stack.jpg" alt="">
+         <div>
+            <img src="img/02_dotnetclasses/collecties_array.jpg" alt="">
+            <img src="img/02_dotnetclasses/collecties_dictionary.jpg" alt="">
+            <img src="img/02_dotnetclasses/collecties_list.jpg" alt="">
+            <img src="img/02_dotnetclasses/collecties_queue.jpg" alt="">
+            <img src="img/02_dotnetclasses/collecties_stack.jpg" alt="">
+         </div>
          <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
       </figure>
 
@@ -652,7 +654,7 @@ btnKlikHier.Foreground = new SolidColorBrush(tekstkleur);
 Color achtergrondkleur = Color.FromRgb(11, 212, 21);
 btnKlikHier.Background = new SolidColorBrush(achtergrondkleur);</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/color_example1.png" alt="color button">
+         <img src="img/02_dotnetclasses/color_example1.png" alt="color button" class="w-150">
          <figcaption>button met tekst- en achtergrondkleur</figcaption>
       </figure>
 
@@ -748,7 +750,7 @@ string naam = Console.ReadLine();   // lees de naam in en sla deze op in een var
 
 Console.WriteLine($"Hallo, {naam}"); // schrijf een boodschap naar de console</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/console-lezen.gif" alt="regel inlezen en weergeven" width="250">
+         <img src="img/02_dotnetclasses/console-lezen.gif" alt="regel inlezen en weergeven" class="w-250">
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Getal inlezen</h4>
@@ -762,7 +764,7 @@ double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar e
 char keuze = Console.ReadKey().KeyChar; 
 Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" width="250">
+         <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" class="w-250">
          <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
       </figure>
       <h4>Karakter inlezen zonder weergave</h4>
@@ -770,7 +772,7 @@ Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
 char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet weergegeven in console
 Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/console-readkey2.gif" alt="" width="250">
+         <img src="img/02_dotnetclasses/console-readkey2.gif" alt="" class="w-250">
          <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
       </figure>
       <p>Soms wordt dit ook gebruikt om met het vervolg van het programma te wachten tot de gebruiker een toets indrukt:</p>
@@ -784,7 +786,7 @@ Console.BackgroundColor = ConsoleColor.White; // witte achtergrond
 
 Console.WriteLine("Hello, World!");</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/console-kleuren.png" alt="uitvoer console kleuren" width="250">
+         <img src="img/02_dotnetclasses/console-kleuren.png" alt="uitvoer console kleuren" class="w-250">
          <figcaption>resultaat console kleuren</figcaption>
       </figure>
       <p>Om opnieuw de oorspronkelijke tekst- en achtergrondkleur in te stellen, maak je gebruik van de methode <code>ResetColor()</code>:</p>
@@ -816,7 +818,7 @@ A 1 +
       <pre><code>Console.OutputEncoding = Encoding.UTF8; 
 Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
       <figure class="console">
-         <img src="img/02_dotnetclasses/console-emojis.png" alt="" width="350">
+         <img src="img/02_dotnetclasses/console-emojis.png" alt="" class="w-350">
          <figcaption>emoji's worden soms anders of verkeerd weergegeven</figcaption>
       </figure>
 
@@ -925,11 +927,6 @@ Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
          <pre>Pad naar mijn desktop: C:\Users\rogie\Desktop</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      
-      <figure>
-         <img src="img/02_dotnetclasses/environment-specialfolder.png" alt="" width="250">
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
       <h4>Programma afsluiten</h4>
       <pre><code>Environment.Exit(0);</code></pre>
       <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
@@ -990,19 +987,19 @@ namespace ConsoleTest
          <strong>Opgelet</strong>: het enige waar je aan moet denken, is dat je in het properties panel voor elk geluid expliciet moet aanduiden dat het Content is en mee gekopieerd moet worden naar de build map. 
       </p>
       <p>
-         <img src="img/02_dotnetclasses/wav-properties.png" alt="" width="200">
+         <img src="img/02_dotnetclasses/wav-properties.png" alt="" class="w-200">
       </p>
       <h3>mp3 muziekjes</h3>
       <p>
          Om mp3’s af te spelen, heb je de <strong>Windows Media Player</strong>-library nodig. Deze library bevat de code om liedjes af te spelen, te pauzeren, het volume te regelen, etc. Om de library te kunnen gebruiken in jouw eigen code, moet je eerst een referentie toevoegen. Kies in de Solution Explorer onder “References” onder jouw project met de rechtermuisknop “Add Reference...”:</p>
       <p>
-         <img src="img/02_dotnetclasses/mp3-a.png" alt="" width="250">
+         <img src="img/02_dotnetclasses/mp3-a.png" alt="" class="w-250">
       </p>
       <p>
          In de Reference Manager selecteer je links “COM” en in de lijst “Windows Media Player”, en klik OK:
       </p>
       <p>
-         <img src="img/02_dotnetclasses/mp3-b.png" alt="" width="500">
+         <img src="img/02_dotnetclasses/mp3-b.png" alt="" class="w-500">
       </p>
       <p>Een codefragment dat het gebruik illustreert (let op de <code>using WPMLib</code> bovenaan):</p>
       <pre><code>...
@@ -1124,14 +1121,6 @@ kleinste: 15</pre>
          <figcaption>twee random getallen tussen 1 en 20</figcaption>
       </figure>
 
-
-
-
-<figure>
-         <img src="img/02_dotnetclasses/math-berekeningen.png" alt="" width="250">
-         <figcaption>gebruik van de Math functies</figcaption>
-      </figure>
-
       <!-- MESSAGEBOX -->
       <h2>MessageBox</h2>
       <p>Een MessageBox is een dialoogvenster dat een boodschap voor de gebruiker bevat (bv.: een foutmelding, een bevestiging van een actie, ...).</p>
@@ -1154,13 +1143,13 @@ kleinste: 15</pre>
       <h4>Eenvoudig dialoogvenster</h4>
       <pre><code>MessageBox.Show("Hello, World!");</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/messagebox_simple.png" alt="" width="150">
+         <img src="img/02_dotnetclasses/messagebox_simple.png" alt="" class="w-150">
          <figcaption>MessageBox met enkel boodschap</figcaption>
       </figure>
       <h4>Dialoogvenster met icoon</h4>
       <pre><code>MessageBoxResult result = MessageBox.Show("Het bestand is opgeslagen", "", MessageBoxButton.OK, MessageBoxImage.Information);</code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/messagebox_icon.png" alt="" width="200">
+         <img src="img/02_dotnetclasses/messagebox_icon.png" alt="" class="w-200">
          <figcaption>MessageBox met boodschap en icoon</figcaption>
       </figure>
       <h4>OK/Cancel ialoogvenster</h4>
@@ -1176,7 +1165,7 @@ if (result == MessageBoxResult.OK)
 }
 </code></pre>
       <figure>
-         <img src="img/02_dotnetclasses/messagebox_okcancel.png" alt="" width="300">
+         <img src="img/02_dotnetclasses/messagebox_okcancel.png" alt="" class="w-300">
          <figcaption>MessageBox met boodschap, titel, icoon en ok/cancel knoppen</figcaption>
       </figure>
 
@@ -1559,7 +1548,7 @@ private void DoSomething(object sender, EventArgs e)
 }
 </code></pre>
 <figure>
-   <img src="img/02_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered" width="250">
+   <img src="img/02_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
    <figcaption>DispatcherTimer voorbeeld</figcaption>
 </figure>
 

@@ -64,57 +64,57 @@
             <tr>
                <td><a href="#button">Button</a></td>
                <td>Knop waar gebruiker op kan klikken</td>
-               <td><img src="img/03_wpfcontrols/button_control.png" alt="button"></td>
+               <td><img src="img/03_wpfcontrols/button_control.png" alt="button" class="w-100"></td>
             </tr>
             <tr>
                <td><a href="#checkbox">CheckBox</a></td>
                <td>Keuzevakje (aanvinken), <strong>meerdere keuzes</strong></td>
-               <td><img src="img/03_wpfcontrols/checkbox_control.png" alt="checkbox"></td>
+               <td><img src="img/03_wpfcontrols/checkbox_control.png" alt="checkbox" class="w-150"></td>
             </tr>
             <tr>
                <td><a href="#combobox">ComboBox</a></td>
                <td>Drop-down menu om keuze te maken</td>
-               <td><img src="img/03_wpfcontrols/combobox_control.png" alt="combobox"></td>
+               <td><img src="img/03_wpfcontrols/combobox_control.png" alt="combobox" class="w-150"></td>
             </tr>
             <tr>
                <td><a href="#datepicker">DatePicker</a></td>
                <td>Datum laten selecteren (via kalender)</td>
-               <td><img src="img/03_wpfcontrols/datepicker_control.png" alt="datepicker" width="200"></td>
+               <td><img src="img/03_wpfcontrols/datepicker_control.png" alt="datepicker" class="w-200"></td>
             </tr>
             <tr>
                <td><a href="#image">Image</a></td>
                <td>Weergeven van afbeeldingen</td>
-               <td><img src="img/03_wpfcontrols/image_control.png" alt="image"></td>
+               <td><img src="img/03_wpfcontrols/image_photo.jpg" alt="image" class="w-100"></td>
             </tr>
             <tr>
                <td><a href="#label">Label</a></td>
                <td>Korte tekst weergeven (<strong>één</strong> regel)</td>
-               <td><img src="img/03_wpfcontrols/label_control.png" alt="label"></td>
+               <td><img src="img/03_wpfcontrols/label_control.png" alt="label" class="w-100"></td>
             </tr>
             <tr>
                <td><a href="#listbox">ListBox</a></td>
                <td>Lijst met items weergeven (mogelijkheid tot selecteren)</td>
-               <td><img src="img/03_wpfcontrols/listbox_control.png" alt="listbox"></td>
+               <td><img src="img/03_wpfcontrols/listbox_control.png" alt="listbox" class="w-150"></td>
             </tr>
             <tr>
                <td><a href="#radiobutton">RadioButton</a></td>
                <td>Keuzerondje (één <strong>exclusieve keuze</strong>)</td>
-               <td><img src="img/03_wpfcontrols/radiobutton_control.png" alt="radiobutton"></td>
+               <td><img src="img/03_wpfcontrols/radiobutton_control.png" alt="radiobutton" class="w-150"></td>
             </tr>
             <tr>
                <td><a href="#slider">Slider</a></td>
                <td>Waarde (getal) selecteren in een bereik d.m.v. schuiven</td>
-               <td><img src="img/03_wpfcontrols/slider_control.png" alt="slider" width="500"></td>
+               <td><img src="img/03_wpfcontrols/slider_control.png" alt="slider" class="w-500"></td>
             </tr>
             <tr>
                <td><a href="#textblock">TextBlock</a></td>
                <td>Weergeven van lange blokken tekst (één of <strong>meerdere</strong> regels)</td>
-               <td><img src="img/03_wpfcontrols/textblock_control.png" alt="textblock"></td>
+               <td><img src="img/03_wpfcontrols/textblock_control.png" alt="textblock" class="w-200"></td>
             </tr>
             <tr>
                <td><a href="#textbox">TextBox</a></td>
                <td>Invoer van vrije tekst (tekstveld, één of meerdere regels)</td>
-               <td><img src="img/03_wpfcontrols/textbox_control.png" alt="textbox"></td>
+               <td><img src="img/03_wpfcontrols/textbox_control.png" alt="textbox" class="w-200"></td>
             </tr>
          </tbody>
       </table>
@@ -171,14 +171,14 @@
    lblMessage.Content = "Hi there";
 }</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/button_demo.gif" alt="" width="350">
+         <img src="img/03_wpfcontrols/button_demo.gif" alt="" class="w-350">
          <figcaption>button demo</figcaption>
       </figure>
 
       <h2>CheckBox</h2>
       <p>Een <em>CheckBox</em> is een keuzevakje dat de gebruiker kan aan/uit-vinken. De basis XAML:</p>
       <pre><code class="language-html">&lt;CheckBox x:Name="chbAutoSave" Content="Automatisch opslaan" IsChecked="True" Checked="chbAutoSave_Checked" Unchecked="chbAutoSave_Checked" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/checkbox_control.png" alt="voorbeeld checkbox"></p>
+      <p><img src="img/03_wpfcontrols/checkbox_control.png" alt="voorbeeld checkbox" class="w-150"></p>
       <h3>Properties en events</h3>
       <table class="light">
          <thead>
@@ -239,7 +239,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/checkbox_demo.gif" alt="" width="350">
+         <img src="img/03_wpfcontrols/checkbox_demo.gif" alt="" class="w-350">
          <figcaption>checkbox demo</figcaption>
       </figure>
       <div class="tips">
@@ -275,7 +275,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
    &lt;ComboBoxItem Content="Blauw"/&gt;
 &lt;/ComboBox&gt;</code></pre>
       <p>De manier van werken items is bijna identiek met de <a href="#listbox">Listbox</a>, alleen gebruiken we <code>ComboBoxItem</code> i.p.v. <code>ListBoxItem</code>, en bestaat er geen <code>SelectionMode="Multiple"</code> voor de <code>ComboBox</code>.</p>   
-      <p><img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items"></p>
+      <p><img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items" class="w-350"></p>
       <h3>Properties en events</h3>
       <p>Properties en events van <code>ComboBox</code>:</p>
       <table class="light">
@@ -392,14 +392,14 @@ private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventA
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/combobox_demo.gif" alt="" width="350">
-         <figcaption>checkbox demo</figcaption>
+         <img src="img/03_wpfcontrols/combobox_demo.gif" alt="" class="w-350">
+         <figcaption>ComboBox demo</figcaption>
       </figure>
 
       <h2>DatePicker</h2>
       <p>Een <em>DatePicker</em> is een control waarmee je een gebruiker een datum kunt laten invoeren door deze te selecteren via een kalender.</p>
       <pre><code class="language-html">&lt;DatePicker x:Name="datBirthday" SelectedDate="01/08/1970" SelectedDateChanged="DatBirthday_SelectedDateChanged" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/datepicker_control.png" alt="" width="250"></p>
+      <p><img src="img/03_wpfcontrols/datepicker_control.png" alt="" class="w-250"></p>
 
       <h3>Properties en events</h3>
       <table class="light">
@@ -442,10 +442,10 @@ if (dpcGeboortedatum.SelectedDate != null)
       <h2>Image</h2>
       <p>Je kunt een Image-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
       <pre><code class="language-html">&lt;Image x:Name="img1" Source="Images/photo1.jpg" Height="100" Width="100" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/image_photo.jpg" alt="" width="100"></p>
+      <p><img src="img/03_wpfcontrols/image_photo.jpg" alt="" class="w-100"></p>
       <p>Voeg de afbeeldingen toe aan je project door een submap te maken, b.v. <em>Images</em>, en daarin je afbeeldingen te slepen:</p>
       <figure>
-         <img src="img/03_wpfcontrols/image_drag.png" alt="" class="bordered" width="250">
+         <img src="img/03_wpfcontrols/image_drag.png" alt="" class="bordered w-250">
          <figcaption>sleep afbeeldingen in je project</figcaption>
       </figure>
       <h3>Properties en events</h3>
@@ -504,14 +504,14 @@ private void btnShow3_Click(object sender, RoutedEventArgs e)
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/image_demo.gif" alt="" width="350">
+         <img src="img/03_wpfcontrols/image_demo.gif" alt="" class="w-350">
          <figcaption>image demo</figcaption>
       </figure>
 
       <h2>Label</h2>
       <p>Gebruik een Label om korte tekst (één regel) weer te geven, bv.: resultaat van een berekening, titel van een invulveld, ... De basis XAML:</p>
       <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="Dit is een bericht" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/label.png" alt="" class="bordered" width="150"></p>
+      <p><img src="img/03_wpfcontrols/label.png" alt="" class="bordered w-150"></p>
       <h3>Properties</h3>
       <table class="light">
          <thead>
@@ -548,7 +548,7 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
    &lt;ListBoxItem Content="Avocado"/&gt;
 &lt;/ListBox&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/listbox.png" alt="" width="350">
+         <img src="img/03_wpfcontrols/listbox.png" alt="" class="w-350">
          <figcaption>ListBox voorbeeld</figcaption>
       </figure>
       <h3>Properties en events</h3>
@@ -728,7 +728,7 @@ if (lstBoodschappen.SelectedItem != null)
 &lt;RadioButton x:Name="rbn1_3" Content="optie 3" GroupName="group1" Checked="rbn1_3_Checked" .../&gt;
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/radiobutton_demo.gif" alt="" width="250" class="bordered">
+         <img src="img/03_wpfcontrols/radiobutton_demo.gif" alt="" class="w-250 bordered">
          <figcaption>bij een groep radiobuttons kan je er maar één selecteren</figcaption>
       </figure>
 
@@ -794,7 +794,7 @@ else if(radGroot.IsChecked == true)
       <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
       <pre><code class="language-html">&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True" TickFrequency="10" Width="500" ValueChanged="sld1_ValueChanged" .../&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/slider_control.png" alt="" width="500" class="bordered">
+         <img src="img/03_wpfcontrols/slider_control.png" alt="" class="w-500 bordered">
          <figcaption>Slider control</figcaption>
       </figure>
       <h3>Properties en events</h3>
@@ -857,7 +857,7 @@ else if(radGroot.IsChecked == true)
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/slider_demo.gif" alt="" width="500" class="bordered">
+         <img src="img/03_wpfcontrols/slider_demo.gif" alt="" class="w-500 bordered">
          <figcaption>slider demo</figcaption>
       </figure>
 
@@ -869,7 +869,7 @@ else if(radGroot.IsChecked == true)
       </ul>
       <p>De basis XAML:</p>
       <pre><code class="language-html">&lt;TextBlock Width="200" Margin="39,41,0,0" TextWrapping="Wrap" Text="bacon ham hock, doner fatback pastrami landjaeger pork short ribs jerky corned beef" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/textblock.png" alt="" width="300" class="bordered"></p>
+      <p><img src="img/03_wpfcontrols/textblock.png" alt="" class="w-300 bordered"></p>
       <h3>Properties</h3>
       <table class="light">
          <thead>
@@ -918,7 +918,7 @@ txtMyTextBlock.Inlines.Add(" en ");
 txtMyTextBlock.Inlines.Add(new Underline(new Run("onderlijnde"))); // onderlijnde tekst (underline)
 txtMyTextBlock.Inlines.Add(" woorden.");</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/textblock_inlines.png" alt="resultaat textblock inlines" class="bordered" style="padding: 5px">
+         <img src="img/03_wpfcontrols/textblock_inlines.png" alt="resultaat textblock inlines" class="bordered p-5 w-200">
          <figcaption>resultaat</figcaption>
       </figure>
 
@@ -929,7 +929,7 @@ txtMyTextBlock.Inlines.Add(" woorden.");</code></pre>
       <p>Stel <code>TextWrapping="Wrap"</code> en <code>AcceptsReturn="True"</code> in voor meerdere invoerregels:</p>
       <pre><code class="language-html">&lt;TextBox x:Name="txt2" Height="100" Width="200" TextWrapping="Wrap" .../&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/textbox_demo.gif" alt="" width="250" class="bordered">
+         <img src="img/03_wpfcontrols/textbox_demo.gif" alt="" class="w-250 bordered">
          <figcaption>gebruik TextWrapping en AcceptsReturn</figcaption>
       </figure>
       <h3>Properties en events</h3>
@@ -1036,7 +1036,7 @@ txtMyTextBlock.Inlines.Add(" woorden.");</code></pre>
    TextAlignment="Right" 
    Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" .../&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/opmaak.png" alt="" width="250">
+         <img src="img/03_wpfcontrols/opmaak.png" alt="" class="w-250">
          <figcaption>resultaat van de opmaak</figcaption>
       </figure>
       <h3>Opmaken in C#</h3>
@@ -1073,7 +1073,7 @@ txt1.TextAlignment = TextAlignment.Right;
    VerticalAlignment="Top" 
    Width="200"/&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/border-zonder.png" alt="" width="250">
+         <img src="img/03_wpfcontrols/border-zonder.png" alt="" class="w-250">
          <figcaption>standaardweergave zonder Border</figcaption>
       </figure>
       <p>Dezelfde <code>TextBox</code> met <code>Border</code>:</p>
@@ -1094,7 +1094,7 @@ txt1.TextAlignment = TextAlignment.Right;
 &lt;/Border&gt;
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/border-met.png" alt="" width="250">
+         <img src="img/03_wpfcontrols/border-met.png" alt="" class="w-250">
          <figcaption>weergave met custom Border</figcaption>
       </figure>
 
@@ -1115,7 +1115,7 @@ txt1.TextAlignment = TextAlignment.Right;
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/tag_demo.gif" alt="" width="350">
+         <img src="img/03_wpfcontrols/tag_demo.gif" alt="" class="w-350">
          <figcaption>Tag demo: buttons onthouden zelf hoevaak erop geklikt werd</figcaption>
       </figure>
    </main>
