@@ -1030,7 +1030,7 @@ static private void Main(string[] args)
                <br>Geldt voor: al de rest (objecten, arrays, lijsten…) 
             </li>
          </ul>
-         <h4>call by value voorbeeld</h4>
+         <h4>Call by value voorbeeld</h4>
          <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
          <pre><code>static void TryChange(int nr) 
 {
@@ -1041,7 +1041,7 @@ int number1 = 12;
 Console.WriteLine($"Number is {number1}"); // getal is 12
 TryChange(number1);
 Console.WriteLine($"Number is still {number1}"); // getal is nog steeds 12</code></pre>
-         <h4>call by reference voorbeeld</h4>
+         <h4>Call by reference voorbeeld</h4>
          <p>Geef je daarentegen een array mee, dan blijven wijzigingen door die methode wel behouden:</p>
          <pre><code>static void TryChange(string[] arrTxt) 
 {
@@ -1209,7 +1209,7 @@ char[] letters = { 'a', 'b', 'c', 'd' };
 string[] fruit = { "appel", "banaan", "citroen" };
 </code></pre>
    <h3>Arrays aanpassen</h3>
-   <h4>element wijzigen</h4>
+   <h4>Element wijzigen</h4>
    <p>Je kan geen elementen toevoegen of verwijderen in een array; het aantal elementen is vast. Je kan wel de waarde van een element veranderen:</p>
    <pre><code>int[] getallen = new int[5];
 getallen[0] = 10;  // zet getal 10 op eerste plaats in array
@@ -1273,6 +1273,82 @@ foreach (int num in numbers)
    <h3>Properties en methodes</h3>
    <p>zie <a href="02_dotnetclasses.html#array">02. NET classes - Array klasse</a></p>
 
+   <div class="pro">
+   <h2>Exception handling</h2>
+   <h3>Wanneer gebruiken</h3>
+   <p>Exception handling <i>moet</i> je gebruiken in alle gevallen waar je geen controle hebt over input:</p>
+   <ul class="right">
+      <li><strong>keyboard input</strong> van de gebruiker (klopt het formaat? heeft de gebruiker niet geannuleerd?)</li>
+      <li>lezen / schrijven van <strong>bestanden</strong> (bestaat het bestand? is het niet in gebruik?...)</li>
+      <li>werken met <strong>databanken</strong> (ligt de databank niet plat? kan een connectie gemaakt worden?...)</li>
+      <li>lezen van bronnen over een <strong>netwerk</strong> (is er reactie? ligt het netwerk niet plat?)</li>
+   </ul>
+   <p>Gebruik het <i>niet</i> in alle andere gevallen, dus niet om bugs in jouw code onder de mat te vegen:</p>
+   <ul class="wrong">
+      <li>niet elk codeblok waar je niet zeker van bent</li>
+      <li>niet rond methodes van externe bibliotheken waar je geen excepties verwacht</li>
+      <li>in code waarvan je de uitvoering volledig zelf onder controle hebt</li>
+   </ul>
+   <h3>Code voorbeelden</h3>
+   <p>Regels voor correct gebruik:</p>
+   <ul class="right">
+      <li>gebruik meerdere catch-blokken bij verschillende mogelijke exception types</li>
+      <li class="wrong">steek niet meer code in het catch-blok dan strikt noodzakelijk</li>
+   </ul>
+   <h4>Inlezen van een getal</h4>
+   <pre><code>Console.Write("Geef een getal: ");
+string answer = Console.ReadLine();
+try 
+{
+   int number = Convert.ToInt32(answer);
+} 
+catch (FormatException e) 
+{
+   Console.WriteLine("het getal heeft niet het juiste formaat");
+} 
+finally 
+{
+   Console.WriteLine("druk een toets om verder te gaan...");
+}</code></pre>
+   <h4>Lezen van een bestand</h4>
+   <p>Merk het gebruik van meerdere catch-blokken en verschillende exceptie types op, van specifiek naar algemeen:</p>
+   <pre class="right"><code>string content;
+string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+
+try {
+    content = File.ReadAllText(filePath);
+} 
+catch (FileNotFoundException e) 
+{ 
+   // bestand niet gevonden
+   lblMessage.Content = $"File {filePath} not found";
+} 
+catch (IOException e) 
+{ 
+   // kan bestand niet lezen
+   lblMessage.Content = $"Unable to open {filePath}";
+} 
+catch (Exception e) 
+{ 
+   // overweeg algemene Exception als fallback
+   lblMessage.Content = $"Unknown error reading {filePath}";
+}</code></pre>
+   <p>Let erop dat je niet meer code in het try-block steekt dan nodig. Dit is niet correct:</p>
+   <pre class="wrong"><code>try {
+    string content; // genereert geen excepties; hoort niet in het try-block
+    string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // genereert geen excepties; hoort niet in het try-block
+    string filePath = System.IO.Path.Combine(folderPath, "myfile.txt"); // genereert geen excepties; hoort niet in het try-block
+    content = File.ReadAllText(filePath);
+} catch (FileNotFoundException e) { // file not found
+    lblMessage.Content = $"File {filePath} not found";
+} catch (IOException e) { // unable to open for reading
+    lblMessage.Content = $"Unable to open {filePath}";
+} catch (Exception e) { // use general Exception as fallback
+    lblMessage.Content = $"Unknown error reading {filePath}";
+}</code></pre>
+
+   </div>
 
    </main>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>

@@ -220,6 +220,41 @@ li.arrow::first-letter {
    margin-left: -2rem;
 }
 
+ul .right, 
+ul .wrong {
+   list-style-type: none;
+   margin-top: 0;
+   margin-left: 2rem;
+   padding: 0;
+}
+
+ul.right li:first-child,
+ul.wrong li:first-child,
+ul li.right,
+ul li.wrong {
+   margin: 0.5rem 0;
+}
+
+ul.right li::before,
+ul.wrong li::before,
+ul li.right::before,
+ul li.wrong::before {
+   font-weight: bold;
+   margin-right: 1rem;
+}
+
+ul.right li::before,
+ul li.right::before {
+   color: #0c0;
+   content: "✓";
+}
+
+ul.wrong li::before,
+ul li.wrong::before {
+   color: #c00;
+   content: "✗";
+}
+
 /* CLASSES */
 
 body:not(.showpro) .pro {
