@@ -296,11 +296,11 @@ txt1.TextAlignment = TextAlignment.Right;
       <p>XAML voorbeeld:</p>
       <pre><code class="language-html">&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/rectangle.png" alt="" class="w-500 bordered">
+         <img src="img/03_wpfcontrols/rectangle.png" alt="" class="w-300 bordered">
          <figcaption>Rectangle voorbeeld</figcaption>
       </figure>
       <h4>Ellipse</h4>
-      <p>Belangrijkste properties:</p>
+      <p>De belangrijkste properties van de <code>Ellipse</code> zijn dezelfde als die van <code>Rectangle</code>:</p>
       <table class="light">
          <thead>
             <tr>
@@ -334,15 +334,15 @@ txt1.TextAlignment = TextAlignment.Right;
       <p>XAML voorbeeld:</p>
       <pre><code class="language-html">&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/ellipse.png" alt="" class="w-500 bordered">
-         <figcaption>Rectangle voorbeeld</figcaption>
+         <img src="img/03_wpfcontrols/ellipse.png" alt="" class="w-300 bordered">
+         <figcaption>Ellipse voorbeeld</figcaption>
       </figure>
 
       <div class="pro">
       <h3>Controls dynamisch toevoegen in C#</h3>
       <h4>Voorbeeld 1: ellips dynamisch toevoegen aan een Canvas</h4>
-      <pre><code class="language-html">&lt;Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="255" Margin="10,94,0,-78.6" VerticalAlignment="Top" Width="711"/&gt;
-&lt;Button x:Name="btnTekenen" Content="TEKENEN" HorizontalAlignment="Left" Margin="541,46,0,0" VerticalAlignment="Top" Width="138" Height="30" FontWeight="Bold" Click="BtnTekenen_Click"/&gt;</code></pre>
+      <pre><code class="language-html">&lt;Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="255" Margin="10,95,0,0" VerticalAlignment="Top" Width="750"/&gt;
+&lt;Button x:Name="btnTekenen" Content="TEKENEN" HorizontalAlignment="Left" Margin="540,45,0,0" VerticalAlignment="Top" Padding="10,5" Click="BtnTekenen_Click"/&gt;</code></pre>
       <pre><code>private void BtnTekenen_Click(object sender, RoutedEventArgs e)
 {
    // maak de ellips
@@ -350,7 +350,7 @@ txt1.TextAlignment = TextAlignment.Right;
       Width = 150,
       Height = 60,
       Fill = new SolidColorBrush(Color.FromRgb(122, 78, 200))
-   }
+   };
 
    // stel positie in
    double xPos = 50;
@@ -363,7 +363,7 @@ txt1.TextAlignment = TextAlignment.Right;
 }
 </code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/dynamisch-ellips.png" alt="" class="bordered w-300">
+         <img src="img/03_wpfcontrols/dynamisch-ellips.png" alt="" class="bordered w-500">
          <figcaption>ellips wordt dynamisch toegevoegd bij klikken op de knop</figcaption>
       </figure>
       <h4>Voorbeeld 2: foto's uit een map weergeven in een browser met klikbare buttons</h4>
