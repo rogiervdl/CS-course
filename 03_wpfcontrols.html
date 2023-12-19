@@ -1203,16 +1203,25 @@ else if(radGroot.IsChecked == true)
       <p><strong>Versie 2: met multi-line strings:</strong></p>
       <pre><code>txtMyTextBlock.Text = @"Eerste regel
 tweede regel";</code></pre>
-      <h4>Tekst met afwijkende opmaak (Inlines)</h4>
+      <h4>Tekst met opmaak (Inlines)</h4>
       <pre><code>txtMyTextBlock.Inlines.Add("Voorbeeld tekst met ");
-txtMyTextBlock.Inlines.Add(new Bold(new Run("vette (bold)"))); // tekst in het vet (bold)
+txtMyTextBlock.Inlines.Add(new Run("vet") { FontWeight = FontWeights.Bold });
 txtMyTextBlock.Inlines.Add(", ");
-txtMyTextBlock.Inlines.Add(new Italic(new Run("cursieve (italic)"))); // tekst in het cursief (italic)
-txtMyTextBlock.Inlines.Add(" en ");
-txtMyTextBlock.Inlines.Add(new Underline(new Run("onderlijnde"))); // onderlijnde tekst (underline)
-txtMyTextBlock.Inlines.Add(" woorden.");</code></pre>
+txtMyTextBlock.Inlines.Add(new Run("cursief") { FontStyle = FontStyles.Italic });
+txtMyTextBlock.Inlines.Add(", ");
+txtMyTextBlock.Inlines.Add(new Run("onderlijnd") { TextDecorations = TextDecorations.Underline });
+txtMyTextBlock.Inlines.Add(", ");
+txtMyTextBlock.Inlines.Add(new Run("groen") { Foreground = Brushes.Green });
+txtMyTextBlock.Inlines.Add(" of ");
+txtMyTextBlock.Inlines.Add(new Run("alles tegelijk") 
+{
+    FontWeight = FontWeights.Bold,
+    FontStyle = FontStyles.Italic,
+    TextDecorations = TextDecorations.Underline,
+    Foreground = Brushes.Green 
+});</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/textblock_inlines.png" alt="resultaat textblock inlines" class="bordered p-5 w-200">
+         <img src="img/03_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="bordered p-5 w-300">
          <figcaption>resultaat</figcaption>
       </figure>
 
