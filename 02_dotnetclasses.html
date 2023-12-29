@@ -64,7 +64,7 @@
          </thead>
          <tbody>
             <tr>
-               <td><a href="#bitmap">Bitmap</a></td>
+               <td><a href="#bitmapimage">BitmapImage</a></td>
                <td>In-memory afbeelding</td>
             </tr>
             <tr>
@@ -122,17 +122,183 @@
          </tbody>
       </table>
 
+      <!-- MEDIA -->
+      <h2>Audio en video</h2>
+      <h3>Overzicht</h3>
+      <p>Er zijn verschillende klassen waarmee je media kan afspelen in .NET:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Te gebruiken voor</th>
+               <th scope="col">Console?</th>
+               <th scope="col">WPF?</th>
+               <th scope="col">Opmerking</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>System.Media.SystemSounds</code></td>
+               <td>Windows-sounds</td>
+               <td>enkel .NET Framework</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>System.Media.SoundPlayer</code></td>
+               <td>audio (enkel .wav)</td>
+               <td>enkel .NET Framework</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>System.Media.MediaPlayer</code></td>
+               <td>audio (meeste formaten)</td>
+               <td>nee</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>WMPLib.WindowsMediaPlayer</code></td>
+               <td>audio (meeste formaten)</td>
+               <td>ja</td>
+               <td>ja</td>
+               <td>referentie naar WMP library nodig</td>
+            </tr>
+            <tr>
+               <td><code>System.Windows.Controls.MediaElement</code></td>
+               <td>video (meeste formaten)</td>
+               <td>nee</td>
+               <td>ja</td>
+               <td>dit is een WPF control, dus makkelijk te integreren in WPF toepassingen</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>De meest flexibele oplossing is dus gebruik maken van een externe bibliotheek als WMPLib.</p>
+
+      <h3>Media toevoegen aan je project</h3>
+      <p>
+         Om media toe te voegen, volg deze stappen:
+      </p>
+      <ol>
+         <li>maak een map aan in je project voor de media bestanden via <strong>Add, New Folder...</strong></li>
+         <li><strong>drag drop</strong> de media bestanden in deze map uit verkenner</li>
+         <li>selecteer bij de properties voor elk media bestand bij <i>Build Action</i> <strong>Content</strong> en bij <i>Copy to Output Directory</i> <strong>Copy always</strong>:</li>
+      </ol>
+      <p>
+         <img src="img/02_dotnetclasses/wav-properties.png" alt="" class="w-200 bordered">
+      </p>
+
+      <h3>Code voorbeelden</h3>
+      <h4>Windows sound afspelen</h4>
+      <p>
+         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten. 
+         De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
+      </p>
+      <pre><code>...
+using System.Media;
+
+...
+// play the Asterisk Windows sound effet
+SystemSounds.Asterisk.Play();
+</code></pre>
+      <ul class="arrow">
+         <li>de bewuste sound moet effect effectief ingeschakeld zijn in Windows en er moet een geluid voor gekozen zijn; hoe je dat moet doen vind je op <a href="https://www.windowscentral.com/how-customize-sound-effects-windows-10">https://www.windowscentral.com/how-customize-sound-effects-windows-10</a></li>
+         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps, zie <a href="#audio-en-video">overzicht</a></li>
+      </ul>
+      <h4>.wav file afspelen met SoundPlayer</h4>
+      <p>Behalve starten en stoppen van geluiden biedt <code>SoundPlayer</code> weinig functionaliteit; volume regelen of pauzeren b.v. kan niet. <br>Schematisch codefragment:</p>
+      <pre><code>...
+using System.Media;
+
+...
+string path = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/test.wav");
+SoundPlayer player = new SoundPlayer(path);
+player.Load(); // wacht tot het geluid ingeladen is
+player.PlaySync(); // PlaySync(): wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
+                   // Play(): speel het geluid af en ga ondertussen verder met de rest van de code
+...  
+player.Stop(); // stop het geluid voortijdig                 
+</code></pre>
+      <ul class="arrow">
+         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps</li>
+      </ul>
+      <h4>Geluid afspelen met MediaPlayer</h4>
+      <p>
+         Dit is een prima klasse om geluiden af te spelen in WPF toepassingen, met veel functionaliteit als starten, pauzeren, stoppen, volume, balans, detecteren wanneer het geluid gestopt is enz... In Console toepassingen werkt het evenwel niet; daar gebruik je best de Windows Media Player library (zie volgend onderdeel).
+         Schematisch codefragment:
+      </p>
+      <pre><code>...
+using using System.Windows.Media;
+
+...
+MediaPlayer mediaPlayer = new MediaPlayer();
+mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+mediaPlayer.Open(new Uri("Music/some-song.mp3", UriKind.Relative));
+mediaPlayer.Play();
+
+// callback method when media has finished playing
+private void MediaPlayer_MediaEnded(object? sender, EventArgs e)
+{
+   MessageBox.Show("song has finished");
+}</code></pre>
+      <p>Andere methodes en properties die je kan gebruiken:</p>
+      <pre><code>mediaPlayer.Pause(); // pauzeer
+mediaPlayer.Stop(); // stop
+mediaPlayer.Balance = -1; // enkel linkerspeaker
+mediaPlayer.Position = new TimeSpan(0, 0, 0, 30); // stel speelpositie in op 30s
+mediaPlayer.SpeedRatio = 1.5; // speel 50% sneller
+mediaPlayer.Volume = 0.5; // zet volume op 50%
+</code></pre>
+
+
+      <h4>Geluid afspelen met Windows Media Player library</h4>
+      <p>
+         Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps. 
+         Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc. 
+      </p>
+      <p>
+         Eerst moet je een referentie naar de library toevoegen aan je project. Dit kan in de Solution Explorer met de rechtermuisknop, “Add Reference...”:
+      </p>
+      <p>
+         <img src="img/02_dotnetclasses/mp3-a.png" alt="" class="w-250 bordered">
+      </p>
+      <p>
+         Selecteer onder “COM” in de lijst “Windows Media Player”, en klik OK:
+      </p>
+      <p>
+         <img src="img/02_dotnetclasses/mp3-b.png" alt="" class="w-500 bordered">
+      </p>
+      <p>Codefragment (let op de <code>using WPMLib</code> bovenaan):</p>
+      <pre><code>...
+using WMPLib;
+
+...
+WMPLib.WindowsMediaPlayer wmPlayer = new WMPLib.WindowsMediaPlayer();
+wmPlayer.URL = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/music.mp3");
+wmPlayer.controls.play();</code></pre>
+      <p>Andere methodes en properties die je kan gebruiken:</p>
+      <pre><code>wmPlayer.controls.pause(); // pauzeer
+wmPlayer.controls.stop(); // stop
+wmPlayer.settings.volume = 50; // zet volume op 50%
+wmPlayer.settings.mute = true; // muten
+</code></pre>
+      <ul class="arrow">
+         <li>hoewel deze library als wat verouderd gezien wordt, werkt het nog steeds in een brede waaier van toepassingen</li>
+      </ul>
+      <h4>Video afspelen met MediaElement WPF control</h4>
+      <p>zie <a href="03_wpfcontrols.html#mediaelement">MediaElement WPF control</a></p>
+
       <!-- BITMAP -->
-      <h2>Bitmap</h2>
-      <p>Een Bitmap is een klasse die een in-memory afbeelding voorstelt. Je kunt de <code>BitmapImage</code>-klasse gebruiken om een afbeeldingsbestand in te laden en vervolgens weer te geven in een WPF Image-control (zie voorbeeld-code hieronder).</p>
-      <h3>Using toevoegen</h3>
-      <p>Opmerking: de klasse <code>BitmapImage</code> bevindt zich in de namespace <code>System.Windows.Media.Imaging</code>. Je dient deze namespace dus eerst te importeren (m.b.v. een <code>using</code>-statement), alvorens je deze klasse kunt gebruiken in je code:</p>
+      <h2>BitmapImage</h2>
+      <p>Een BitmapImage is een klasse die een in-memory afbeelding voorstelt. Je kunt het gebruiken om een afbeeldingsbestand in te laden en vervolgens weer te geven in een WPF Image-control (zie voorbeeld-code hieronder).</p>
+      <p>De klasse <code>BitmapImage</code> bevindt zich in de namespace <code>System.Windows.Media.Imaging</code>. Je dient deze namespace dus eerst te importeren (m.b.v. een <code>using</code>-statement), alvorens je deze klasse kunt gebruiken in je code:</p>
       <pre><code>using System.Windows.Media.Imaging;
 
 //... rest van je code</code></pre>
       <h3>Constructie</h3>
       <pre><code>new BitmapImage(Uri resource);</code></pre>
-      <h3>Voorbeeld</h3>
+      <h3>Code voorbeeld</h3>
       <h4>Afbeelding inladen en weergeven in WPF Image-control:</h4>
       <pre><code>Uri bitmapSource = new Uri("img/02_dotnetclasses/photo1.jpg", UriKind.Relative); // bestand: img/02_dotnetclasses/photo1.jpg
 wpfImage.Source = new BitmapImage(bitmapSource);</code></pre>
@@ -929,99 +1095,33 @@ Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
       <pre><code>Environment.Exit(0);</code></pre>
       <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
 
-      <!-- GELUID -->
-      <h2>Geluiden in .NET</h2>
-      <p>Er zijn drie verschillende manieren om geluiden te gebruiken in .NET.</p>
-      <ul>
-         <li>ingebouwde Windows-sounds gebruiken</li>
-         <li>.wav files afspelen</li>
-         <li>.mp3 muziekjes afspelen</li>
-      </ul>
-      <h3>Ingebouwde Windows-sounds</h3>
-      <p>
-         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten. 
-         De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
-      </p>
-      <pre><code>...
-using System.Media;
+      <div class="pro">
+      <!-- LINQ -->
+      <h2>LINQ</h2>
+      <p>De .NET namespace <code>System.Linq</code> biedt een uitbreiding van C# waarmee je met SQL-achtige queries allerlei databronnen kan bevragen. Een voorbeeld voor een array:</p>
+      <pre><code>int[] scores = new int[] { 97, 54, 92, 81, 60 };
 
-namespace ConsoleSoundTest
-{
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         // play the Asterisk Windows sound effet
-         SystemSounds.Asterisk.Play();
-      }
-   }
-}</code></pre>
-      <p>
-         <strong>Opgelet</strong>: de enige voorwaarde is dat de bewuste sound effect effectief ingeschakeld is en een geluid voor gekozen is. Hoe je dat moet doen vind je op <a href="https://www.windowscentral.com/how-customize-sound-effects-windows-10">https://www.windowscentral.com/how-customize-sound-effects-windows-10</a>
-      </p>
-      <h3>.wav files afspelen</h3>
-      <p>
-         Om een .wav geluidsbestand af te spelen, steek je het in je project (bv. in een submap sounds). 
-         Om het af te spelen gebruik je de <code>SoundPlayer</code> klasse in <code>System.Media</code>:
-      </p>
-      <pre><code>...
-using System.Media;
+// Define the query expression.
+int[] scoresAbove80 = 
+    (from score in scores
+    where score &gt; 80
+    select score).ToArray();
 
-namespace ConsoleTest
-{
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         string path = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/test.wav");
-         SoundPlayer player = new SoundPlayer(path);
-         player.Load();
-         player.PlaySync(); // sync: wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
-         Console.ReadKey();
-      }
-   }
-}</code></pre>
-      <p>
-         <strong>Opgelet</strong>: het enige waar je aan moet denken, is dat je in het properties panel voor elk geluid expliciet moet aanduiden dat het Content is en mee gekopieerd moet worden naar de build map. 
-      </p>
-      <p>
-         <img src="img/02_dotnetclasses/wav-properties.png" alt="" class="w-200 bordered">
-      </p>
-      <h3>mp3 muziekjes</h3>
-      <p>
-         Om mp3’s af te spelen, heb je de <strong>Windows Media Player</strong>-library nodig. Deze library bevat de code om liedjes af te spelen, te pauzeren, het volume te regelen, etc. Om de library te kunnen gebruiken in jouw eigen code, moet je eerst een referentie toevoegen. Kies in de Solution Explorer onder “References” onder jouw project met de rechtermuisknop “Add Reference...”:</p>
-      <p>
-         <img src="img/02_dotnetclasses/mp3-a.png" alt="" class="w-250 bordered">
-      </p>
-      <p>
-         In de Reference Manager selecteer je links “COM” en in de lijst “Windows Media Player”, en klik OK:
-      </p>
-      <p>
-         <img src="img/02_dotnetclasses/mp3-b.png" alt="" class="w-500 bordered">
-      </p>
-      <p>Een codefragment dat het gebruik illustreert (let op de <code>using WPMLib</code> bovenaan):</p>
-      <pre><code>...
-using WMPLib;
-
-namespace ConsoleMusicPlayer
-{
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         WMPLib.WindowsMediaPlayer player = new WMPLib.WindowsMediaPlayer();
-         player.URL = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/music.mp3");
-         //rest van de code
-      }
-   }
-}</code></pre>
-      <p>Methodes die je kan gebruiken:</p>
-      <pre><code>player.controls.play(); // speel af / hervat
-player.controls.pause(); // pauzeer
-player.controls.stop(); // stop
-player.settings.volume = 50; // zet volume op 50%
-player.settings.mute = true; // muten
+// Execute the query.
+Console.Write(string.Join(", ", scoresAbove80));
 </code></pre>
+<figure class="console">
+   <pre>97, 92, 81</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
+      <h3>LINQ extensie methodes voor collecties</h3>
+      <p>Linq biedt ook een aantal <a href="01_csharpsyntax.html#extensie-methodes">extensie methodes</a> met de <a href="01_csharpsyntax.html#lambda-expressies">lambda expressie syntax</a>, b.v. voor collecties:</p>
+      <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
+string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // apple, grape
+int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // 5, 4, 5, 6, 9
+bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
+string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null</code></pre>
+   </div>
 
       <!-- MATH -->
       <h2>Math</h2>

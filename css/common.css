@@ -278,7 +278,8 @@ body:not(.showpro) .pro {
 }
 
 .redcomments .comment, .error {
-   color: #900 !important;
+   color: #C00 !important;
+   font-weight: bold !important;
 }
 
 
@@ -433,6 +434,10 @@ table.light tr + tr > td {
 
 table.light th {
    border-bottom: 1px solid #000;
+}
+
+table.light td {
+   vertical-align: top;
 }
 
 table.light th:first-child, table.light td:first-child {

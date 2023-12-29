@@ -932,7 +932,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
 }
 </code></pre>
       <h3>Voorbeelden</h3>
-      <h4>Zonder parameters of return-waarde</h4>
+      <h4>Zonder parameters, zonder return-waarde</h4>
       <p>Methode die een standaardbegroeting teruggeeft:</p>
       <pre><code>private void PrintBegroeting() 
 {
@@ -973,7 +973,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
     
     return ggd;
 }</code></pre>
-      <h4>Samenvattend voorbeeld</h4>
+      <h4>Voorbeeld met meerdere methodetypes</h4>
       <p>Een voorbeeld consoletoepassing de twee getallen inleest, en de grootste gemene deler bepaalt:</p>
       <pre><code>// methode zonder parameters, zonder return
 static private void PrintTitel() 
@@ -1188,6 +1188,89 @@ static private void Main(string[] args) {
    Console.WriteLine($"de grootste gemene deler is {grootsteGD}");
 }
 </code></pre>
+   <div class="pro">
+      <h3>Optionele parameters</h3>
+      <p>Voorbeeld met achteraan drie <em class="em">optionele parameters</em> (merk op: optionele parameters moeten <i>achteraan</i> de parameterlijst staan):</p>
+      <pre><code>private static string OrderDetails(string verkoper, string product, decimal prijs, string klant = null, int aantal = 1, int kortingPerc = 0) 
+{
+   return $@"
+Verkoper: {verkoper}
+Klant: {(klant == null ? "(onbekend)" : klant)}
+Verkoop: {aantal} x {product}
+Korting: {(kortingPerc == 0 ? "geen" : kortingPerc + "%")}
+Te betalen: {Math.Round(prijs * aantal * (100 - kortingPerc) / 100, 2)} euro";
+}</code></pre>      
+      <p>Als je geen waarde meegeeft bij de method call, wordt de opgegeven standaardwaarde genomen. Volgende method oproep is dus geldig:</p>
+      <pre><code>Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m)); // noot: 12.5m is hoe je een decimal literal noteert</code></pre>    
+      <figure class="console">
+         <pre>Verkoper: Gift shop
+Klant: (onbekend)
+Verkoop: 1 x Red Mug
+Korting: geen
+Te betalen: 12,5 euro</pre>
+         <figcaption>resultaat in de console, klant, aantal en korting niet opgegeven</figcaption>
+      </figure>
+      <p>Andere voorbeelden van geldige calls:</p>
+      <pre><code>Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m, "Sara Kazani"));
+Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m, "Sara Kazani", 3));
+Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m, "Sara Kazani", 3, 20));
+</code></pre>    
+      <h3>Named parameters</h3>
+      <p>Je kan bij een methode oproep met optionele parameters alleen argumenten achteraan weglaten, niet middenin. Dit is dus niet geldig (klant en aantal weggelaten):</p>
+      <pre><code class="redcomments">Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m, , , 20)); // FOUT!</code></pre>    
+      <p>Je kan dit oplossen met <em class="em">named parameters</em>:</p>
+      <pre><code>Console.WriteLine(OrderDetails(verkoper: "Gift shop", product: "Red Mug", prijs: 12.5m, kortingPerc: 20));</code></pre>      
+      <figure class="console">
+         <pre>Verkoper: Gift shop
+Klant: (onbekend)
+Verkoop: 1 x Red Mug
+Korting: 15%
+Te betalen: 10,62 euro</pre>
+         <figcaption>resultaat in de console, klant en aantal niet opgegeven</figcaption>
+      </figure>
+      <ul>
+         <li class="arrow">named parameters maken je code ook leesbaarder</li>
+      </ul>
+      <h3>Lambda expressies</h3>
+      <p>
+         <em class="em">Lambda expressies</em> zijn verkorte notaties met <code>=&gt;</code> voor methodes. Volgende notaties zijn gelijkwaardig:
+      </p>
+      <pre><code>int Som(int a, int b) =&gt; a + b;
+
+int Som(int a, int b) 
+{ 
+   return a + b; 
+}
+</code></pre>
+      <h3>Extensie methodes</h3>
+      <p><em class="em">Extensie methodes</em> zijn methodes waarmee je basisklassen als <code>string</code> en <code>Array</code> kan uitbreiden. Definieer ze in een aparte statische klasse (voorbeeld voor <code>string</code> input type):</p>
+      <pre><code>public static class MyStringExtensions
+{
+    // Extension method to count vowels in a string
+    public static int MyCountVowels(this string input)
+    {
+        string[] words = input.ToLower().Split(new char[] { 'a', 'e', 'i', 'o', 'u' }, StringSplitOptions.RemoveEmptyEntries);
+        return words.Length - 1;
+    }
+        
+    // Extension method to encode a string by shifting each character
+    public static string MyEncode(this string input)
+    {
+        string encoded = "";
+        foreach (char c in input) 
+        {
+            encoded += Convert.ToChar((int)c + 1);
+        }
+        return encoded;
+    }
+}</code></pre>
+      <p>Voorbeelden van gebruik:</p>
+      <pre><code>string sentence = "This is an example sentence.";
+
+int numVowels = sentence.MyCountVowels();
+string encoded = sentence.MyEncode();
+int encodedNumVowels = sentence.MyEncode().MyCountVowels(); // chaining example</code></pre>
+   </div>
 
    <h2>Arrays</h2>
    <p>
@@ -1271,7 +1354,10 @@ foreach (int num in numbers)
       <figcaption>resultaat in de console</figcaption>
    </figure>
    <h3>Properties en methodes</h3>
-   <p>zie <a href="02_dotnetclasses.html#array">02. NET classes - Array klasse</a></p>
+   <p>
+      zie <a href="02_dotnetclasses.html#array">02. NET classes - Array klasse</a>
+      <span class="pro"><br>zie <a href="02_dotnetclasses.html#linq-extensie-methodes-voor-collecties">02. NET classes - LINQ extensie methodes voor collecties</a></span>
+   </p>
 
    <div class="pro">
    <h2>Exception handling</h2>
