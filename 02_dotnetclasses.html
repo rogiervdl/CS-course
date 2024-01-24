@@ -790,6 +790,107 @@ Key: noot, Value: 4
 Key: tuin, Value: 11</pre>
          <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
       </figure>
+      <h3>LINQ extensie methodes</h3>
+      <p>Linq biedt een aantal <a href="01_csharpsyntax.html#extensie-methodes">extensie methodes</a> met de <a href="01_csharpsyntax.html#lambda-expressies">lambda expressie syntax</a> voor collecties. Een greep uit het aanbod:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+               <th scope="col">Returntype</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>All()</code></td>
+               <td>controleer of alle items aan een voorwaarde voldoen</td>
+               <td><code>bool</code></td>
+            </tr>
+            <tr>
+               <td><code>Any()</code></td>
+               <td>controleer of minstens één item aan een voorwaarde voldoet</td>
+               <td><code>bool</code></td>
+            </tr>
+            <tr>
+               <td><code>Average()</code></td>
+               <td>bepaal het gemiddelde van de items</td>
+               <td><code>double</code></td>
+            </tr>
+            <tr>
+               <td><code>Count()</code></td>
+               <td>tel het aantal items</td>
+               <td><code>int</code></td>
+            </tr>
+            <tr>
+               <td><code>Distinct()</code></td>
+               <td>verwijder alle dubbels</td>
+               <td><code>IEnumerable</code></td>
+            </tr>
+            <tr>
+               <td><code>First()</code></td>
+               <td>geef het eerste item; fout indien niet gevonden</td>
+               <td><code>object</code></td>
+            </tr>
+            <tr>
+               <td><code>FirstOrDefault()</code></td>
+               <td>geef het eerste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+               <td><code>object</code></td>
+            </tr>
+            <tr>
+               <td><code>Last()</code></td>
+               <td>geef het laatste item; fout indien niet gevonden</td>
+               <td><code>object</code></td>
+            </tr>
+            <tr>
+               <td><code>LastOrDefault()</code></td>
+               <td>geef het laatste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+               <td><code>object</code></td>
+            </tr>
+            <tr>
+               <td><code>OrderBy()</code></td>
+               <td>sorteer items op basis van een item waarde</td>
+               <td><code>IEnumerable</code></td>
+            </tr>
+            <tr>
+               <td><code>Select()</code></td>
+               <td>selecteer van elk item een waarde</td>
+               <td><code>IEnumerable</code></td>
+            </tr>
+            <tr>
+               <td><code>Sum()</code></td>
+               <td>bepaal de som van de items</td>
+               <td><code>int/double</code></td>
+            </tr>
+            <tr>
+               <td><code>Take()</code></td>
+               <td>neem de eerste n items</td>
+               <td><code>IEnumerable</code></td>
+            </tr>
+            <tr>
+               <td><code>Where()</code></td>
+               <td>filter items op basis van een voorwaarde</td>
+               <td><code>IEnumerable</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Voorbeelden:</p>
+      <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
+string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // { "apple", "grape" }
+int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // { 5, 4, 5, 6, 9 }
+bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
+int numBananas = fruits.Count(f =&gt; f == "banana"); // 3
+string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null
+string[] fruitsUnique = fruits.Distinct().ToArray(); // { "apple", "pear", "grape", "banana", "jackfruit" }
+string[] fruitsFirst5 = fruits.Take(3).ToArray(); // { "apple", "pear", "grape" }
+string[] fruitsByLength = fruits.Distinct().OrderBy(f =&gt; f.Length).ToArray(); // { "pear", "apple", "grape", "banana", "jackfruit" }
+
+int[] numbers = { 3, 8, 1, 5, 10 };
+double avg = numbers.Average(); // 5.4
+int sum = numbers.Sum(); // 27
+int lowest = numbers.Min() // 1
+int first = numbers.First() // 3
+int last = numbers.Last() // 10
+</code></pre>
       </div>
 
       <!-- COLOR -->
@@ -1114,13 +1215,7 @@ Console.Write(string.Join(", ", scoresAbove80));
    <figcaption>resultaat in de console</figcaption>
 </figure>
       <h3>LINQ extensie methodes voor collecties</h3>
-      <p>Linq biedt ook een aantal <a href="01_csharpsyntax.html#extensie-methodes">extensie methodes</a> met de <a href="01_csharpsyntax.html#lambda-expressies">lambda expressie syntax</a>, b.v. voor collecties:</p>
-      <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
-string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // apple, grape
-int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // 5, 4, 5, 6, 9
-bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
-in numBananas = fruits.Count(f =&gt; f == "banana"); // 3
-string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null</code></pre>
+      <p>Linq biedt ook een aantal <a href="02_dotnetclasses.html#linq-extensie-methodes">extensie methodes voor collecties</a></p>
    </div>
 
       <!-- MATH -->
