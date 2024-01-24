@@ -873,7 +873,7 @@ Key: tuin, Value: 11</pre>
             </tr>
          </tbody>
       </table>
-      <p>Voorbeelden:</p>
+      <p>Voorbeelden met arrays:</p>
       <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
 string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // { "apple", "grape" }
 int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // { 5, 4, 5, 6, 9 }
@@ -881,7 +881,7 @@ bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
 int numBananas = fruits.Count(f =&gt; f == "banana"); // 3
 string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null
 string[] fruitsUnique = fruits.Distinct().ToArray(); // { "apple", "pear", "grape", "banana", "jackfruit" }
-string[] fruitsFirst5 = fruits.Take(3).ToArray(); // { "apple", "pear", "grape" }
+string[] fruitsFirst3 = fruits.Take(3).ToArray(); // { "apple", "pear", "grape" }
 string[] fruitsByLength = fruits.Distinct().OrderBy(f =&gt; f.Length).ToArray(); // { "pear", "apple", "grape", "banana", "jackfruit" }
 
 int[] numbers = { 3, 8, 1, 5, 10 };
@@ -891,6 +891,10 @@ int lowest = numbers.Min() // 1
 int first = numbers.First() // 3
 int last = numbers.Last() // 10
 </code></pre>
+      <ul class="arrow">
+         <li>dit werkt even goed met <code>List&lt;&gt;</code>; gebruik dan waar nodig <code>ToList()</code> in plaats van <code>ToArray()</code> om een <code>IEnumerable</code> om te zetten</li>
+      </ul>
+
       </div>
 
       <!-- COLOR -->
