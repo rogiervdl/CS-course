@@ -1119,6 +1119,7 @@ Console.Write(string.Join(", ", scoresAbove80));
 string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // apple, grape
 int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // 5, 4, 5, 6, 9
 bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
+in numBananas = fruits.Count(f =&gt; f == "banana"); // 3
 string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null</code></pre>
    </div>
 
