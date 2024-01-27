@@ -212,7 +212,7 @@ SystemSounds.Asterisk.Play();
 using System.Media;
 
 ...
-string path = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/test.wav");
+string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/test.wav");
 SoundPlayer player = new SoundPlayer(path);
 player.Load(); // wacht tot het geluid ingeladen is
 player.PlaySync(); // PlaySync(): wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
@@ -274,7 +274,7 @@ using WMPLib;
 
 ...
 WMPLib.WindowsMediaPlayer wmPlayer = new WMPLib.WindowsMediaPlayer();
-wmPlayer.URL = System.IO.Path.Combine(Environment.CurrentDirectory, "sounds/music.mp3");
+wmPlayer.URL = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/music.mp3");
 wmPlayer.controls.play();</code></pre>
       <p>Andere methodes en properties die je kan gebruiken:</p>
       <pre><code>wmPlayer.controls.pause(); // pauzeer
