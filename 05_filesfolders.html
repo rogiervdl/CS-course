@@ -312,14 +312,38 @@ if (!File.Exists(filePath))
 }</code></pre>
 
       <h4>Informatie opvragen</h4>
-      <p>Schematisch codevoorbeeld:</p>
-      <pre><code>FileInfo fi = new FileInfo(someFilePath);
+      <p>Twee klassen bieden gedeeltelijk overlappende functionaliteit voor het opvragen van informatie: <code>FileInfo</code> en <code>Path</code>.</p>
+      <p>Codevoorbeeld met <code>FileInfo</code> (bestand &ldquo;test.txt&rdquo; op de Desktop):</p>
+      <pre><code>string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.txt");
+FileInfo fi = new FileInfo(filePath);
 Console.WriteLine($@"
-    bestandsnaam: {fi.Name}
-    extensie: {fi.Extension}
-    gemaakt op: {fi.CreationTime.ToString()}
-    mapnaam: {fi.Directory.Name}
+bestandsnaam: {fi.Name} 
+extensie: {fi.Extension} 
+gemaakt op: {fi.CreationTime.ToString()} 
+mapnaam: {fi.Directory.Name} 
 ");</code></pre>
+<figure class="console">
+   <pre>bestandsnaam: test.txt
+extensie: .txt
+gemaakt op: 24/10/2023 19:45:16
+mapnaam: Desktop</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
+      <p>Codevoorbeeld met <code>Path:</code> (bestand &ldquo;test.txt&rdquo; op de Desktop):</p>
+      <pre><code>string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.txt");
+Console.WriteLine($@"
+bestandsnaam: {Path.GetFileName(filePath)} 
+bestandsnaam zonder extensie: {Path.GetFileNameWithoutExtension(filePath)} 
+extensie: {Path.GetExtension(filePath)} 
+map: {Path.GetDirectoryName(filePath)} 
+");</code></pre>
+<figure class="console">
+   <pre>bestandsnaam: test.txt
+bestandsnaam zonder extensie: test
+extensie: .txt
+map: C:\Users\rogier\Desktop</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
       <div class="pro">
 
       <h4>Streamend lezen en schrijven</h4>
@@ -431,13 +455,20 @@ if (!Directory.Exists(startfolder))
    // ...
 }</code></pre>
       <h4>Informatie opvragen</h4>
-      <p>Schematisch codevoorbeeld:</p>
-      <pre><code>DirectoryInfo di = new DirectoryInfo(someDirectoryPath);
+      <p>Gebruik de <code>DirectoryInfo</code> klasse om informatie op te vragen. Schematisch codevoorbeeld (map &ldquo;Odisee&rdquo; op de desktop):</p>
+      <pre><code>string folderPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Odisee");
+DirectoryInfo di = new DirectoryInfo(folderPath);
 Console.WriteLine($@"
-    mapnaam: {di.Name}
-    basismap: {di.Parent.Name}
-    gemaakt op: {di.CreationTime.ToString()}
+mapnaam: {di.Name}
+basismap: {di.Parent.Name}
+gemaakt op: {di.CreationTime}
 ");</code></pre>
+<figure class="console">
+   <pre>mapnaam: Odisee
+basismap: Desktop
+gemaakt op: 29/01/2023 15:46:31</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
 
       <h2>Dialoogvensters</h2>
       <h3>OpenFileDialog</h3>
