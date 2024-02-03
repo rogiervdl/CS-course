@@ -286,17 +286,24 @@
             </tr>
             <tr>
                <td><a href="#grid">Grid</a></td>
-               <td>definiëren rijen en kolommen waarbinnen controls geplaatst worden</td>
+               <td>
+                  rijen en kolommen waarbinnen controls geplaatst worden<br>
+                  goede controle over breedtes/hoogtes rijen en kolommen<br>
+                  goede controle over positionering items binnen de cellen
+               </td>
                <td><img src="img/04_wpflayout/grid.png" alt="" class="bordered w-250"></td>
             </tr>
             <tr>
                <td><a href="#stackpanel">StackPanel</a></td>
-               <td>stapeling per rij of kolom zonder wrapping</td>
+               <td>
+                  eenvoudige stapeling per rij of kolom zonder wrapping<br>
+                  alle items worden tegen elkaar gestapeld, dus "spreiden" is niet mogelijk
+               </td>
                <td><img src="img/04_wpflayout/stackpanel.png" alt="" class="bordered w-250"></td>
             </tr>
             <tr>
                <td><a href="#wrappanel">WrapPanel</a></td>
-               <td>stapeling per rij of kolom met wrapping</td>
+               <td>als <code>StackPanel</code>, maar met wrapping</td>
                <td><img src="img/04_wpflayout/wrappanel.png" alt="" class="bordered w-250"></td>
             </tr>
          </tbody>
@@ -356,6 +363,43 @@
    &lt;TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,10" AcceptsReturn="True" /&gt;
 &lt;/Grid&gt;
 </code></pre>
+      <p>De <code>Width</code> waarden van kolommen worden als volgt verwerkt (hetzelfde principe geldt voor <code>Height</code> waarden van rijen):</p>
+      <ol>
+         <li>teken eerst kolommen met vaste breedtes</li>
+         <li>teken dan kolommen met breedte <code>Auto</code>, waarbij ze niet meer ruimte innemen dan hun content nodig heeft</li>
+         <li>verdeel de resterende waarden proportioneel; als er b.v. twee kolommen <code>2*</code> en <code>3*</code> zijn, krijgt de eerste kolom 2/5 en de tweede 3/5</li>
+      </ol>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Voorbeeld</th>
+               <th scope="col">Betekenis</th>
+               <th scope="col">Anders gezegd...</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Width="80"</code></td>
+               <td>exact 80 px breed</td>
+               <td>vaste waarde</td>
+            </tr>
+            <tr>
+               <td><code>Width="Auto"</code></td>
+               <td>neem niet meer ruimte dan nodig</td>
+               <td>fit content</td>
+            </tr>
+            <tr>
+               <td><code>Width="3*"</code></td>
+               <td>neemt een gewicht 3</td>
+               <td>resterende ruimte</td>
+            </tr>
+            <tr>
+               <td><code>Width="*"</code> <small>(standaardwaarde)</small></td>
+               <td>is hetzelfde als <code>Width="1*"</code></td>
+               <td>resterende ruimte</td>
+            </tr>
+         </tbody>
+      </table>      
       <figure>
          <img src="img/04_wpflayout/grid2.png" alt="" class="w-400 bordered">
          <figcaption>grid voorbeeld</figcaption>
@@ -422,6 +466,9 @@
          <img src="img/04_wpflayout/wrappanel.png" alt="" class="bordered w-350">
          <figcaption>stackpanel voorbeeld</figcaption>
       </figure>      
+      <div class="tips">
+         <p>Je kan ook stapelen van rechts naar links met <code>FlowDirection="RightToLeft"</code>, maar dat zijn de enige aligneermogelijkheden. Items centraal plaatsen of ver uit elkaar zetten kan bijvoorbeeld niet, zoals met CSS FlexBox wel kan. Voor complexere layouts gebruik je best altijd <code>Grid</code>.</p>
+      </div>
       <p>
          Om verticaal te stapelen gebruik je <code>Orientation="Vertical"</code>:
       </p>
