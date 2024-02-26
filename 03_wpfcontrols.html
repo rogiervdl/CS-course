@@ -265,6 +265,45 @@ txt1.TextAlignment = TextAlignment.Right;
          <figcaption>weergave met custom Border</figcaption>
       </figure>
 
+      <h3>Event sender</h3>
+      <p>Neem volgend voorbeeld met 6 buttons:</p>
+      <pre><code class="language-html">&lt;Button x:Name="btn1" Content="KNOP 1" Click="Btn1_Click" ... /&gt;
+&lt;Button x:Name="btn2" Content="KNOP 2" Click="Btn2_Click" ... /&gt;
+&lt;Button x:Name="btn3" Content="KNOP 3" Click="Btn3_Click" ... /&gt;
+&lt;Button x:Name="btn4" Content="KNOP 4" Click="Btn4_Click" ... /&gt;
+&lt;Button x:Name="btn5" Content="KNOP 5" Click="Btn5_Click" ... /&gt;
+&lt;Button x:Name="btn6" Content="KNOP 6" Click="Btn6_Click" ... /&gt;
+&lt;Label x:Name="lblBericht" Content="" /&gt;
+</code></pre>
+      <pre><code>private void Btn1_Click(object sender, RoutedEventArgs e) {
+    lblBericht.Content = "KNOP 1 geklikt";
+}
+private void Btn2_Click(object sender, RoutedEventArgs e) {
+    lblBericht.Content = "KNOP 2 geklikt";
+}
+private void Btn3_Click(object sender, RoutedEventArgs e) {
+    lblBericht.Content = "KNOP 3 geklikt";
+}
+...
+</code></pre>
+      <img src="img/03_wpfcontrols/sender.png" alt="" class="w-300">
+      <p>In plaats van aparte event handlers te maken voor elke button apart, kan je ook één event handler koppelen aan alle buttons:</p>
+      <pre><code class="language-html">&lt;Button x:Name="btn1" Content="KNOP 1" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn2" Content="KNOP 2" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn3" Content="KNOP 3" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn4" Content="KNOP 4" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn5" Content="KNOP 5" Click="Btn_Click" ... /&gt;
+&lt;Button x:Name="btn6" Content="KNOP 6" Click="Btn_Click" ... /&gt;
+&lt;Label x:Name="lblBericht" Content="" /&gt;
+</code></pre>
+      <p>Je vindt dan terug op welke button geklikt werd via de <code>sender</code> parameter:</p>
+      <pre><code>// 'sender' is het object dat het event veroorzaakt heeft
+private void Btn_Click(object sender, RoutedEventArgs e) {
+   Button btn = (Button)sender; // zet om naar Button
+   lblBericht.Content = $"{btn.Content} geklikt"; 
+}
+</code></pre>
+
       <h3>Tag property</h3>
       <p>Je kan gebruik maken van de <code class="em">Tag</code> property van WPF controls om een extra waarde aan een control te verbinden. <br>Voorbeeld waarbij elke knop zelf bijhoudt hoeveel keer erop geklikt is:
       </p>

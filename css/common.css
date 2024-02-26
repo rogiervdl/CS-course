@@ -270,6 +270,10 @@ iframe.youtube {
 	box-shadow: 0 0 10px #0009;
 }
 
+.youtube_toc ul {
+   margin: 0;
+}
+
 /* flex containers */
 
 .flexcontainer {
