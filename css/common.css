@@ -263,6 +263,25 @@ ul li.wrong::before {
    content: "✗";
 }
 
+/* youtube video's */
+
+iframe.youtube {
+	border: 1px solid #ccc;
+	box-shadow: 0 0 10px #0009;
+}
+
+/* flex containers */
+
+.flexcontainer {
+   column-gap: 30px;
+   display: flex;
+   row-gap: 10px;
+}
+
+.flexcontainer.wrap {
+   flex-wrap: wrap;
+}
+
 /* CLASSES */
 
 body:not(.showpro) .pro {
@@ -275,6 +294,10 @@ body:not(.showpro) .pro {
 
 .centered {
    text-align: center;
+}
+
+.print {
+	display: none;
 }
 
 .redcomments .comment, .error {

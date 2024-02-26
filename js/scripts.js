@@ -1,5 +1,3 @@
-/* global hljs*/
-
 // DOM shortcuts
 const DOM = {
  	codeBlocks: [...document.querySelectorAll('pre code')],
