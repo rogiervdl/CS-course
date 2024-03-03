@@ -53,16 +53,43 @@
 
       <!-- VIDEO -->
       <h2>On Youtube</h2>
-      <div class="flexcontainer wrap">
-         <div class="flexitem">
-            <h3>Video 1: bestanden en excepties</h3>
-            <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/j-ECPszC8x8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <figure class="print">
-               <a href="https://www.youtube.com/watch?v=j-ECPszC8x8"><img src="img//05_filesfolders/youtube-ooad-bestanden.png" alt="" class="w-500"></a>
-               <figcaption><a href="https://www.youtube.com/watch?v=j-ECPszC8x8">https://www.youtube.com/watch?v=j-ECPszC8x8</a></figcaption>
-            </figure>
+      <h3>Video 1: bestanden en excepties</h3>
+      <div class="flexcontainer youtubecontainer">
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/j-ECPszC8x8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <figure class="print">
+            <a href="https://www.youtube.com/watch?v=j-ECPszC8x8"><img src="img//05_filesfolders/youtube-ooad-bestanden.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=j-ECPszC8x8">https://www.youtube.com/watch?v=j-ECPszC8x8</a></figcaption>
+         </figure>
+         <div class="youtube_toc">
+            <p>spring naar...</p>
+            <ul>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8">00:00 intro</a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=30">0:30 gebruikte namespaces</a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=187">3:07 demo: inlezen tekstbestand en regels weergeven in ListBox</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=197">3:17 random tekst genereren, lines.txt maken</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=244">4:04 XAML aanmaken</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=273">4:34 tekstbestand inlezen met StreamReader</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=359">5:59 tekstbestand openen met OpenFileDialog</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=448">7:28 tekstbestand inlezen ReadAllLines()</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=549">9:09 tekstbestand inlezen ReadAllText()</a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=660">11:00 demo uitbreiding</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=660">11:00 regel kunnen toevoegen</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=761">12:41 opslaan met SaveFileDialog en WriteAllLines()</a></li>
+                  </ul>
+               </li>
+            </ul>
          </div>
-      </div>      
+      </div>
 
       <h2>Namespaces en klassen</h2>
       <p>In .NET zit de functionaliteit voor het werken met bestanden en mappen verspreid over heel wat namespaces en klassen.</p>
@@ -177,10 +204,10 @@
 string filePath = System.IO.Path.Combine(folderPath, "textfiles\\myfile.txt");
 Console.WriteLine(filePath);
 </code></pre>
-<figure class="console">
-   <pre>C:\Users\rogie\Documents\textfiles\myfile.txt</pre>
-   <figcaption>resultaat in de console</figcaption>
-</figure>
+      <figure class="console">
+         <pre>C:\Users\rogie\Documents\textfiles\myfile.txt</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
 
       <h2>Bestanden</h2>
       <h3>Overzicht</h3>
@@ -277,19 +304,19 @@ Console.WriteLine(filePath);
 
       <h3>Code voorbeelden</h3>
       <h4>Bestand inlezen in een string</h4>
-   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 
 string inhoud = File.ReadAllText(filePath); // lees tekstinhoud bestand in
 </code></pre>
       <h4>Bestand inlezen in een array</h4>
-   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 
 string[] regels = File.ReadAllLines(filePath); // lees regels bestand in
 </code></pre>
       <h4>String schrijven naar een bestand</h4>
-   <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+      <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 string inhoud = @"Dit is regel 1
 Dit is regel 2";
@@ -335,13 +362,13 @@ extensie: {fi.Extension}
 gemaakt op: {fi.CreationTime.ToString()} 
 mapnaam: {fi.Directory.Name} 
 ");</code></pre>
-<figure class="console">
-   <pre>bestandsnaam: test.txt
+      <figure class="console">
+         <pre>bestandsnaam: test.txt
 extensie: .txt
 gemaakt op: 24/10/2023 19:45:16
 mapnaam: Desktop</pre>
-   <figcaption>resultaat in de console</figcaption>
-</figure>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
       <p>Codevoorbeeld met <code>Path:</code> (bestand &ldquo;test.txt&rdquo; op de Desktop):</p>
       <pre><code>string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.txt");
 Console.WriteLine($@"
@@ -350,19 +377,19 @@ bestandsnaam zonder extensie: {Path.GetFileNameWithoutExtension(filePath)}
 extensie: {Path.GetExtension(filePath)} 
 map: {Path.GetDirectoryName(filePath)} 
 ");</code></pre>
-<figure class="console">
-   <pre>bestandsnaam: test.txt
+      <figure class="console">
+         <pre>bestandsnaam: test.txt
 bestandsnaam zonder extensie: test
 extensie: .txt
 map: C:\Users\rogier\Desktop</pre>
-   <figcaption>resultaat in de console</figcaption>
-</figure>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
       <div class="pro">
 
-      <h4>Streamend lezen en schrijven</h4>
-      <p>Alle vorige methodes laden de hele bestandsinhoud in één keer in het geheugen in. Voor heel grote bestanden is dat niet efficiënt. In die (uitzonderlijke) gevallen kan je gebruik maken van <code>StreamReader</code> en <code>StreamWriter</code>. </p>
-      <p><code>StreamReader</code> voorbeeld (zoeken naar een tekst):</p>
-      <pre><code>List&lt;string&gt; foundLines = new List&lt;string&gt;();
+         <h4>Streamend lezen en schrijven</h4>
+         <p>Alle vorige methodes laden de hele bestandsinhoud in één keer in het geheugen in. Voor heel grote bestanden is dat niet efficiënt. In die (uitzonderlijke) gevallen kan je gebruik maken van <code>StreamReader</code> en <code>StreamWriter</code>. </p>
+         <p><code>StreamReader</code> voorbeeld (zoeken naar een tekst):</p>
+         <pre><code>List&lt;string&gt; foundLines = new List&lt;string&gt;();
 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "mycontacts.txt");
 
@@ -374,8 +401,8 @@ using (StreamReader reader = File.OpenText(filePath)) {
     }
 } // stream closes automatically
 </code></pre>
-      <p><code>StreamWriter</code> voorbeeld:</p>
-      <pre><code>// prepare
+         <p><code>StreamWriter</code> voorbeeld:</p>
+         <pre><code>// prepare
 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 
@@ -385,7 +412,7 @@ using (StreamWriter writer = File.CreateText(filePath)) {
     writer.WriteLine("Dit is lijn 2");
 } // stream closes automatically
 </code></pre>
-      <p>In praktijk zul je streamend lezen of schrijven in deze cursus nooit nodig hebben.</p>
+         <p>In praktijk zul je streamend lezen of schrijven in deze cursus nooit nodig hebben.</p>
       </div>
 
       <h2>Mappen</h2>
@@ -476,12 +503,12 @@ mapnaam: {di.Name}
 basismap: {di.Parent.Name}
 gemaakt op: {di.CreationTime}
 ");</code></pre>
-<figure class="console">
-   <pre>mapnaam: Odisee
+      <figure class="console">
+         <pre>mapnaam: Odisee
 basismap: Desktop
 gemaakt op: 29/01/2023 15:46:31</pre>
-   <figcaption>resultaat in de console</figcaption>
-</figure>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
 
       <h2>Dialoogvensters</h2>
       <h3>OpenFileDialog</h3>

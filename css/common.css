@@ -24,7 +24,7 @@ h1, #toc, main {
    margin: 0 2.5rem;
 }
 
-main a::after {
+main a:not([href*=http])::after {
    content: "🔗";
    font-size: smaller;
    position: relative;
@@ -271,7 +271,19 @@ iframe.youtube {
 }
 
 .youtube_toc ul {
+	font-size: 14px;
+	list-style: square;
    margin: 0;
+	padding-left: 2em;
+}
+
+.youtube_toc ul ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.youtube_toc ul ul li::before {
+	content: '— ';
 }
 
 /* flex containers */
