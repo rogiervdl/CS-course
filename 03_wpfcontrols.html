@@ -848,9 +848,59 @@ if (dpcGeboortedatum.SelectedDate != null)
 }</code></pre>
 
       <h2>Image</h2>
-      <p>Je kunt een Image-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
+      <h3>Basisvoorbeeld</h3>
+      <p>Je kunt een <code>Image</code>-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
       <pre><code class="language-html">&lt;Image x:Name="img1" Source="Images/photo1.jpg" Height="100" Width="100" .../&gt;</code></pre>
       <p><img src="img/03_wpfcontrols/image_photo.jpg" alt="" class="w-100"></p>
+      <h3><code>Stretch</code> property</h3>
+      <p>Met <code>Stretch</code> kan je instellen wat moet gebeuren als de afmetingen van de afbeelding afwijken van de <code>Image</code>:</p>
+      <pre><code class="language-html">&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="None"  /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Fill" /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="UniformToFill" /&gt;
+</code></pre>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Stretch waarde</th>
+               <th scope="col">Vervorming?</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>None</code></td>
+               <td>nee</td>
+               <td>afbeelding wordt geplaatst in de werkelijke afmetingen</td>
+            </tr>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>ja</td>
+               <td>afbeelding horizontaal en verticaal uitgerokken</td>
+            </tr>
+            <tr>
+               <td><code>Uniform</code></td>
+               <td>nee</td>
+               <td>afbeelding past in de <code>Image</code></td>
+            </tr>
+            <tr>
+               <td><code>UniformToFill</code></td>
+               <td>nee</td>
+               <td>afbeelding bedekt de <code>Image</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <figure>
+         <img src="img/03_wpfcontrols/image-stretch.png" alt="" class="w-350">
+         <figcaption>in volgorde: <code>None</code> &mdash; <code>Fill</code> &mdash; <code>Uniform</code> &mdash; <code>UniformToFill</code></figcaption>
+      </figure>
+      <h3>Rand en achtergrondkleur</h3>
+      <p>Gebruik een <code>Border</code> control rond de <code>Image</code> voor rand en achtergrondkleur:</p>
+      <pre><code class="language-html">&lt;Border BorderBrush="DarkGreen" BorderThickness="2" Background="Beige"&gt;
+   &lt;Image Height="100" Width="100" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
+&lt;/Border&gt;
+</code></pre>
+      <img src="img/03_wpfcontrols/image-border.png" alt="" class="w-100">
 
       <h3>Afbeeldingen toevoegen aan je project</h3>
       <p>
