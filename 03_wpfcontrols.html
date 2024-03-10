@@ -1393,6 +1393,12 @@ else if(radGroot.IsChecked == true)
 tweede regel";</code></pre>
       <h4>Tekst met opmaak (Inlines)</h4>
       <p>XAML versie:</p>
+      <pre><code class="language-html">&lt;TextBlock&gt;
+   Voorbeeld tekst met &lt;Bold&gt;vet&lt;/Bold&gt;, &lt;Italic&gt;cursief&lt;/Italic&gt;, &lt;Underline&gt;onderlijnd&lt;/Underline&gt;&lt;LineBreak/&gt;
+   &lt;Run Foreground="Green"&gt;groen&lt;/Run&gt; of &lt;Run FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" Foreground="Green"&gt;alles tegelijk&lt;/Run&gt;
+&lt;/TextBlock&gt;
+</code></pre>
+
       <p>C# versie:</p>
       <pre><code>txtMyTextBlock.Inlines.Add("Voorbeeld tekst met ");
 txtMyTextBlock.Inlines.Add(new Run("vet") { FontWeight = FontWeights.Bold });
