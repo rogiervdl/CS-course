@@ -650,7 +650,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
          <img src="img/03_wpfcontrols/checkbox_demo.gif" alt="" class="w-350">
          <figcaption>checkbox demo</figcaption>
       </figure>
-      <div class="tips">
+      <div class="tips" data-caption="💡TIP">
          <p>Je kan de code nog vereenvoudigen door de twee event handlers <code>chbYesNo_Checked()</code> en <code>chbYesNo_Unchecked()</code> samen te nemen in één methode <code>chbYesNo_Click()</code>:</p>
          <pre><code class="language-html">&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,71,0,0" VerticalAlignment="Top"  Click="chbYesNo_Click"/&gt;
@@ -1151,7 +1151,7 @@ item.Content = "Brood"; // stel de inhoud (tekst) van het item in
 lstBoodschappen.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ListBox</code></pre>
       <p>of korter genoteerd:</p>
       <pre><code>lstBoodschappen.Items.Add(new ListBoxItem() { Content = "Brood" }); // initialisatie en toevoegen in één keer</code></pre>
-      <div class="tips">
+      <div class="tips" data-caption="💡TIP">
          <p>In theorie kan je ook rechtstreeks een <code>string</code> in een <code>ListBox</code> kan steken, zonder te verpakken in <code>ListBoxItem</code>:</p>
          <pre class="wrong"><code>// string toevoegen zonder ListBoxItem
 lstBoodschappen.Items.Add("Brood");             
@@ -1457,7 +1457,7 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
     Foreground = Brushes.Green 
 });</code></pre>
       <figure>
-         <img src="img/03_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="bordered p-5 w-300">
+         <img src="img/03_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="w-300">
          <figcaption>resultaat</figcaption>
       </figure>
 
