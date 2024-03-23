@@ -34,30 +34,38 @@
          <p class="thumb__title">04. WPF layout</p>
          <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
       </a>
-      <a href="05_filesfolders.html" class="main__thumb pro">
-         <p class="thumb__title">05. bestanden &amp; mappen</p>
-         <img class="thumb__visual" src="img/05_filesfolders/icon.png" alt="">
+      <a href="05_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden</p>
+         <img class="thumb__visual" src="img/05_bestanden/icon.png" alt="">
       </a>
-      <a href="06_sql_databanken.html" class="main__thumb pro active">
-         <p class="thumb__title">06. SQL databanken</p>
-         <img class="thumb__visual" src="img/06_sql_databanken/icon.png" alt="">
+      <a href="06_classes_properties.html" class="main__thumb pro">
+         <p class="thumb__title">06. classes &amp; properties</p>
+         <img class="thumb__visual" src="img/06_classes_properties/icon.jpg" alt="">
       </a>
-      <a href="07_oo_programmatie.html" class="main__thumb pro">
-         <p class="thumb__title">07. OO programmatie</p>
-         <img class="thumb__visual" src="img/07_oo_programmatie/icon.jpg" alt="">
+      <a href="07_static_enum.html" class="main__thumb pro">
+         <p class="thumb__title">07. static en enum</p>
+         <img class="thumb__visual" src="img/07_static_enum/icon.jpg" alt="">
       </a>
+      <a href="08_overerving.html" class="main__thumb pro">
+         <p class="thumb__title">08. overerving</p>
+         <img class="thumb__visual" src="img/08_overerving/icon.jpg" alt="">
+      </a>
+      <a href="09_sql_databanken.html" class="main__thumb pro active">
+         <p class="thumb__title">09. SQL databanken</p>
+         <img class="thumb__visual" src="img/09_sql_databanken/icon.png" alt="">
+      </a>   
    </nav>
-   <h1>06. SQL databanken</h1>
+   <h1>09. SQL databanken</h1>
    <div id="toc"></div>
    <main>
 
       <!-- VIDEO -->
       <h2>On Youtube</h2>
-      <h3>OOAD &mdash; SQL in WPF apps</h3>
+      <h3>SQL in WPF apps</h3>
       <div class="flexcontainer youtubecontainer">
          <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/b2ikv9KtAKY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            
          <figure class="print">
-            <a href="https://www.youtube.com/watch?v=b2ikv9KtAKY"><img src="img/06_sql_databanken/youtube-ooad-sql.png" alt="" class="w-500"></a>
+            <a href="https://www.youtube.com/watch?v=b2ikv9KtAKY"><img src="img/09_sql_databanken/youtube-ooad-sql.png" alt="" class="w-500"></a>
             <figcaption><a href="https://www.youtube.com/watch?v=b2ikv9KtAKY">https://www.youtube.com/watch?v=b2ikv9KtAKY</a></figcaption>
          </figure>
          <div class="youtube_toc">
@@ -119,27 +127,27 @@
          In dit hoofdstuk nemen we een databank bestaande uit één enkele tabel Employee. Het schema:
       </p>
       <figure>
-         <img src="img/06_sql_databanken/db_schema.png" alt="" class="w-500 bordered">
+         <img src="img/09_sql_databanken/db_schema.png" alt="" class="w-500 bordered">
          <figcaption>schema van de tabel Employee</figcaption>
       </figure>
       <figure>
-         <img src="img/06_sql_databanken/db_data.png" alt="" class="w-600 bordered">
+         <img src="img/09_sql_databanken/db_data.png" alt="" class="w-600 bordered">
          <figcaption>voorbeelddata van de tabel Employee</figcaption>
       </figure>
       <h3>Stap 1: connection string genereren</h3>
       <p>Een <em>connection string</em> bevat de gegevens nodig om een connectie te maken: database host, tabelnaam, authenticatiegegevens... Maak het aan via <i>Server Explorer, Add Connection</i>...:</p>
       <figure>
-         <img src="img/06_sql_databanken/db_connstring.png" alt="" class="w-600 bordered">
+         <img src="img/09_sql_databanken/db_connstring.png" alt="" class="w-600 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
       <p>In het volgende dialoogvenster kies je de server, authenticatiemethode, en dan de databank:</p>
       <figure>
-         <img src="img/06_sql_databanken/db_connstring_dialog.png" alt="" class="w-300 bordered">
+         <img src="img/09_sql_databanken/db_connstring_dialog.png" alt="" class="w-300 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
       <p>De gegenereerde connectiestring vind je tenslotte bij de connection properties:</p>
       <figure>
-         <img src="img/06_sql_databanken/db_conn_properties.png" alt="" class="w-300 bordered">
+         <img src="img/09_sql_databanken/db_conn_properties.png" alt="" class="w-300 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
       <h3>Stap 2: conneciestring toevoegen aan App.config</h3>
@@ -156,7 +164,7 @@
       <h3>Stap 3: referentie naar System.Configuration</h3>
       <p>Om deze configuratie te kunnen aanspreken, moet een referentie naar <strong>System.Configuration</strong> toegevoegd worden aan het project:</p>
       <figure>
-         <img src="img/06_sql_databanken/reference.png" alt="" class="w-700 bordered">
+         <img src="img/09_sql_databanken/reference.png" alt="" class="w-700 bordered">
          <figcaption>toevoegen referentie naar System.Configuration</figcaption>
       </figure>
       <h3>Stap 4: C# connectie openen en SQL uitvoeren</h3>

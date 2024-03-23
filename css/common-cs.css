@@ -6,4 +6,7 @@ code[class*="language-"] {
    background: none;
 }
 
+.classcolor {
+   color: #3D808C !important;
+}
 

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>WPF layout | C# cheat sheets</title>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb" title="02. .NET classes">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb" title="03. WPF controls">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
+         <p class="thumb__title">04. WPF layout</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden</p>
+         <img class="thumb__visual" src="img/05_bestanden/icon.png" alt="">
+      </a>
+      <a href="06_classes_properties.html" class="main__thumb pro">
+         <p class="thumb__title">06. classes &amp; properties</p>
+         <img class="thumb__visual" src="img/06_classes_properties/icon.jpg" alt="">
+      </a>
+      <a href="07_static_enum.html" class="main__thumb pro active">
+         <p class="thumb__title">07. static en enum</p>
+         <img class="thumb__visual" src="img/07_static_enum/icon.jpg" alt="">
+      </a>
+      <a href="08_overerving.html" class="main__thumb pro">
+         <p class="thumb__title">08. overerving</p>
+         <img class="thumb__visual" src="img/08_overerving/icon.jpg" alt="">
+      </a>
+      <a href="09_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">09. SQL databanken</p>
+         <img class="thumb__visual" src="img/09_sql_databanken/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>07. Static en enum</h1>
+   <div id="toc"></div>
+   <main>
+
+      <!-- VIDEO -->
+      <h2>On Youtube</h2>
+
+      <h3>static en enum</h3>
+      <div class="flexcontainer youtubecontainer">
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/E41fnuHngt4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <figure class="print">
+            <a href="https://www.youtube.com/watch?v=E41fnuHngt4"><img src="img/06_classes_properties/youtube-ooad-static.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=E41fnuHngt4">https://www.youtube.com/watch?v=E41fnuHngt4</a></figcaption>
+         </figure>
+         <div class="youtube_toc">
+            <ul>
+               <li><a href="https://www.youtube.com/watch?v=E41fnuHngt4">0:00 Intro</a></li>
+               <li><a href="https://www.youtube.com/watch?v=E41fnuHngt4?t=106">1:46 herhaling klassen schrijven - Dobbelsteen</a></li>
+               <li><a href="https://www.youtube.com/watch?v=E41fnuHngt4?t=1188">19:48 static members</a></li>
+               <li><a href="https://www.youtube.com/watch?v=E41fnuHngt4?t=1882">31:22 enum</a></li>
+               <li><a href="https://www.youtube.com/watch?v=E41fnuHngt4?t=2126">35:26 escape game startcode</a></li>
+            </ul>
+         </div>
+      </div>
+
+      <h2>Static</h2>
+      <h3>Static members</h3>
+      <p>
+         Een <mark>static</mark> member of <strong>class member</strong> (variabele, property of methode) behoort toe aan de <strong>hele klasse</strong>,
+         niet aan één specifiek object. Je kan ze zien als <strong>gemeenschappelijk</strong> voor alle objecten.
+         Je hebt er al heel wat gebruikt. Je herkent ze doordat ze opgeroepen worden vanop de class naam:
+      </p>
+      <pre class="prism-vslight"><code>int int1 = Convert.ToInt32(str1); // statische methode ToInt32() van de klasse Convert
+
+Console.WriteLine("hello"); // statische methode WriteLine() van de klasse Console
+
+timer.Interval = TimeSpan.FromMilliseconds(200); // statische methode FromMilliseconds() van de klasse TimeSpan
+
+string[] files = Directory.GetFiles(startfolder, "*.txt"); // statische methode GetFiles() van de klasse Directory
+
+string tekst = String.Join(Environment.NewLine, lines); // statische methode Join() van de klasse String en statische property NewLine van de klasse Environment
+</code></pre>
+      <div class="tips" data-caption="💡TIP">
+         <p>tip: class namen herken je in Visual Studio aan de <span class="classcolor">blauwgroene kleur</span>, zoals <code class="classcolor">Console</code>, <code class="classcolor">Directory</code>, <code class="classcolor">Button</code> enz...</p>
+      </div>
+      <h4>static property</h4>
+      <p>Een voorbeeld van een statische property in <code class="classcolor">Customer</code>:</p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>class Customer {
+      ...
+      // voeg static property toe (houdt aantal gecreëerde Customers bij)
+      public static int NumCustomersCreated { get; set; } = 0;
+
+      public Customer() {
+         ...
+         NumCustomersCreated++;
+      }
+   }
+         </code></pre>
+         <div class="codemarker" data-text="public static int NumCustomersCreated { get; set; } = 0;"></div>
+      </div>
+      <h4>static variabele, static methode</h4>
+      <p>Een voorbeeld van een statische methode en private static variabele in <code class="classcolor">Account</code>:</p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>class Account {
+   ...
+   // voeg statische variabele toe
+   private static string rexAccount = @"^\d\d\d-\d\d\d\d\d\d\d-\d\d$";
+
+   // voeg statische methode toe
+   public static bool IsValidAccountNumber(string nr) {
+      return Regex.Match(nr, rexAccount).Success;
+   }
+}
+</code></pre>
+         <div class="codemarker" data-text="private static string rexAccount = @&quot;^\d\d\d-\d\d\d\d\d\d\d-\d\d$&quot;;"></div>
+         <div class="codemarker" data-text="public static bool IsValidAccountNumber(string nr) {" data-height="65"></div>
+      </div>
+      <p>Ze worden opgeroepen vanop de class <code class="classcolor">Customer</code> en <code class="classcolor">Account</code>:</p>
+      <img src="img/07_static_enum/staticmembers.png" alt="" class="w-600">
+      <h4>static constante</h4>
+      <p>
+         Aangezien <strong>constanten</strong> overal dezelfde waarde hebben, zijn ze <strong>per definitie static</strong> en moeten ze opgeroepen worden vanaf de klasse:
+      </p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>public class Koffer {
+   public const int MaxGewichtKg = 25;
+   public const decimal PrijsPerExtraKg = 20;
+   public int Gewicht { get; set; }
+   public decimal Overgewicht { 
+      get { return Math.Max(Gewicht - MaxGewichtKg, 0); }
+   }   
+   public decimal Bijbetalen { 
+      get { return PrijsPerExtraKg * Overgewicht; }
+   }
+   public Koffer(int gew) { Gewicht = gew; }
+}
+</code></pre>
+         <div class="codemarker" data-text="public const int MaxGewichtKg = 25;"></div>
+         <div class="codemarker" data-text="public const decimal PrijsPerExtraKg = 20;"></div>
+      </div>
+      <div class="tips" data-caption="☝ LET OP">
+         <p>let op de conventie: voor constanten gebruik je net zoals bij properties <strong>PascalCase</strong> notatie, dus <code>MaxGewichtKg</code> en niet <code>maxGewichtKg</code>
+         </p>
+      </div>
+      <p>
+         Aangezien constanten altijd static zijn, worden ze dus opgeroepen vanop de klasse:
+      </p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>Console.WriteLine($"Een koffer mag maximaal {Koffer.MaxGewichtKg}kg wegen.");
+Console.WriteLine($"Per extra kg betaal je €{Koffer.PrijsPerExtraKg}.");
+Koffer koffer1 = new Koffer(27);
+if (koffer1.Overgewicht &gt; 0) Console.WriteLine($"Te betalen: {koffer1.Bijbetalen}");
+</code></pre>
+         <div class="codemarker" data-text="Koffer.MaxGewichtKg"></div>
+         <div class="codemarker" data-text="Koffer.PrijsPerExtraKg"></div>
+      </div>
+      <h3>Static classes</h3>
+      <p>
+         Je kan ook een <mark>static class</mark> declareren. Het mag dan <strong>alleen static members</strong> bevatten. Gekende voorbeelden zijn de <code class="classcolor">Math</code> of <code class="classcolor">Environment</code> klassen. Je zou bv. een eigen klasse kunnen maken met validatie methoden:
+      </p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>// static class: bevat alleen static members
+static class Validator {
+   private static string rexAccount = @"^\d{3}-\d{7}-\d{2}$";
+   private static string rexEmail = @"^.+\@.+\..+$";
+   public static bool IsValidAccountNumber(string nr) {
+      return Regex.Match(nr, rexAccount).Success;
+   }
+   public static bool IsValidEmail(string email) {
+      return Regex.Match(email, rexEmail).Success;
+   }
+   public static bool IsValidName(string name) {
+      return name.Length &lt; 50;
+   }
+}
+</code></pre>
+      </div>
+      <img src="img/07_static_enum/validatieklasse.png" alt="" class="w-500 bordered">
+      <h3>Static of niet?</h3>
+      <p>
+         Je zou vorig voorbeeld ook kunnen implementeren als een <strong>instance property</strong> i.p.v. met een <strong>statische methode</strong>:
+      </p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>class Customer {
+   ...
+   public bool HasValidEmail {
+      get {
+        return Regex.Match(email, @"^.+\@.+\..+$").Success;
+      }
+   }
+}
+</code></pre>
+      </div>
+      <img src="img/07_static_enum/validatieproperty.png" alt="" class="w-500 bordered">
+      <ul class="arrow">
+         <li><em>over het algemeen krijgen object methodes &amp; properties de voorkeur: je gebruikt best <strong>zo weinig mogelijk static members</strong>!</em></li>
+      </ul>
+
+      <h2>Enum</h2>
+      <p>
+         Een <mark>enum</mark> is een <strong>nieuw gegevenstype</strong> bestaande uit een vaste set waarden. Omdat je het type vaak op verschillende plaatsen in je project wil gebruiken, definieer je enums best buiten de class, rechtstreeks in de namespace:
+      </p>
+      <img src="img/07_static_enum/enum.png" alt="" class="w-900">
+      <p>
+         Enums worden intern opgeslagen als <strong>gehele getallen</strong>, dus je kan makkelijk omzetten naar <code>int</code> en omgekeerd:
+      </p>
+      <div class="precontainer">
+         <pre class="prism-vslight"><code>namespace EnumDemoConsole {
+   // Maandag=0, Dinsdag=1, ..., Zondag=6
+   public enum Weekdag { Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag }
+   class Program {
+      static void Main(string[] args) {
+         Weekdag dag1 = Weekdag.Dinsdag;
+         Console.WriteLine(dag1);
+         Weekdag dag2 = dag1 + 4; // geheel getal bijtellen
+         Console.WriteLine(dag2);
+         int dagnr = (int)dag2; // omzetten Weekdag naar int
+         Console.WriteLine(dagnr); 
+         Weekdag dag3 = (Weekdag)2; // omzetten int naar Weekdag
+         Console.WriteLine(dag3);
+         Console.ReadKey();
+      }
+   }
+}
+</code></pre>
+      </div>
+      <figure class="console">
+         <pre>
+Dinsdag
+Zaterdag
+5
+Woensdag</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+
+
+
+
+
+
+
+   </main>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <script src="vendor/prism.js"></script>
+   <script src="js/mode.js"></script>
+   <script src="js/scripts.js"></script>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7JWZ9HHW0');
+   </script>
+</body>
+
+</html>

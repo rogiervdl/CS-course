@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>WPF layout | C# cheat sheets</title>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb" title="02. .NET classes">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb" title="03. WPF controls">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
+         <p class="thumb__title">04. WPF layout</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden</p>
+         <img class="thumb__visual" src="img/05_bestanden/icon.png" alt="">
+      </a>
+      <a href="06_classes_properties.html" class="main__thumb pro">
+         <p class="thumb__title">06. classes &amp; properties</p>
+         <img class="thumb__visual" src="img/06_classes_properties/icon.jpg" alt="">
+      </a>
+      <a href="07_static_enum.html" class="main__thumb pro">
+         <p class="thumb__title">07. static en enum</p>
+         <img class="thumb__visual" src="img/07_static_enum/icon.jpg" alt="">
+      </a>
+      <a href="08_overerving.html" class="main__thumb pro active">
+         <p class="thumb__title">08. overerving</p>
+         <img class="thumb__visual" src="img/08_overerving/icon.jpg" alt="">
+      </a>
+      <a href="09_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">09. SQL databanken</p>
+         <img class="thumb__visual" src="img/09_sql_databanken/icon.png" alt="">
+      </a>   
+   </nav>
+   <h1>08. Overerving</h1>
+   <div id="toc"></div>
+   <main>
+      <!-- VIDEO -->
+      <h2>On Youtube</h2>
+
+      <h3>overerving</h3>
+      <div class="flexcontainer youtubecontainer">
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/Wg-ivDaiIeU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <figure class="print">
+            <a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU"><img src="img/06_classes_properties/youtube-ooad-overerving.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU">https://www.youtube.com/watch?v=Wg-ivDaiIeU</a></figcaption>
+         </figure>
+         <div class="youtube_toc">
+            <ul>
+               <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU">0:00 intro</a></li>
+               <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU?t=124">2:04 UML klassediagrammen</a></li>
+               <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU?t=240">4:00 escape game klasse diagram</a></li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=347">5:47 Huisdier/Kip-Kat-Konijn demo</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=359">5:59 Kat, Konijn en Kip klassen</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=607">10:07 overeenkomsten en verschillen</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=651">10:51 KipKaNijn klasse</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=951">15:51 Huisdier superklasse</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1103">18:23 overerven naar Kat, Konijn en Kip, : base()</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1230">20:30 virtual / override</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1286">21:26 gebruik in hoofdprogramma</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1389">23:09 abstract</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1466">24:26 is en as; concept polymorfisme</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU&t=1808">30:08 samenvatting</a></li>
+                  </ul>
+               </li>
+               <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU?t=1922">32:02 klassen hiërarchie</a></li>
+               <li><a href="https://www.youtube.com/watch?v=Wg-ivDaiIeU?t=1960">32:40 overzicht van alle modifiers</a></li>
+            </ul>
+         </div>
+      </div>
+
+
+
+      
+      
+      
+
+
+
+
+
+
+
+
+
+   </main>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <script src="vendor/prism.js"></script>
+   <script src="js/mode.js"></script>
+   <script src="js/scripts.js"></script>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7JWZ9HHW0');
+   </script>
+</body>
+
+</html>
