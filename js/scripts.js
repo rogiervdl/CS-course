@@ -167,7 +167,12 @@ function startApp() {
 
 	// part 5: code markers
 	window.addEventListener('resize', repaint);
-	window.addEventListener('load', repaint);
+
+   // part 6: error comment markers
+   document.querySelectorAll('code .token.comment').forEach(t => {
+      console.log(t)
+      if (t.innerText.toLowerCase().includes('// fout')) t.classList.add('error');
+   });
 }
 
 /**
@@ -187,4 +192,7 @@ function createIdFrom(str) {
 }
 
 // start your engines!
-startApp();
+window.addEventListener('load', function() {
+   repaint();
+   startApp();
+});

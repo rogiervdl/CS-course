@@ -53,7 +53,7 @@
       <a href="09_sql_databanken.html" class="main__thumb pro">
          <p class="thumb__title">09. SQL databanken</p>
          <img class="thumb__visual" src="img/09_sql_databanken/icon.png" alt="">
-      </a>   
+      </a>
    </nav>
    <h1>08. Overerving</h1>
    <div id="toc"></div>
@@ -94,11 +94,396 @@
          </div>
       </div>
 
+      <h2>UML klassediagrammen</h2>
+      <h3>Visuele voorstelling</h3>
+      <p>
+         Een <mark>UML klassediagram</mark> is een <strong>visuele voorstelling</strong> van de klassen in je programma (naam klasse, variabelen, methodes en properties):
+      </p>
+      <img src="img/08_overerving/uml.png" alt="" class="w-900">
+      <ul class="arrow">
+         <li><em>opmerking: voor dit vak moet je de UML klassen <strong>enkel kunnen lezen</strong>, niet zelf opstellen (dat komt aan bod in andere vakken)</em></li>
+      </ul>
+      <h3>Escape room voorbeeld</h3>
+      <p>
+         In een escape room spel zou je bijvoorbeeld drie klassen <code class="classcolor">Room</code>, <code class="classcolor">Item</code> en <code class="classcolor">Door</code> kunnen aanmaken:
+      </p>
+      <img src="img/08_overerving/escape_klassen.png" alt="" class="w-800">
+      <p>
+         Ook een statische klasse <code class="classcolor">RandomMessageGenerator</code> voor het genereren van random berichten van een bepaald type <code class="classcolor">Messagetype</code> (enum) kan van pas komen:
+      </p>
+      <img src="img/08_overerving/escape_klassen_static.png" alt="" class="w-500">
+
+      <h2>DRY, refactoring</h2>
+      <h3>Voorbeeld:  klassen <code class="classcolor">Kat</code>, <code class="classcolor">Konijn</code> en <code class="classcolor">Kip</code></h3>
+      <p>We vertrekken van een klasse <code class="classcolor">Kat</code>:</p>
+      <div class="codecompare top">
+         <pre><code>class Kat {
+   // constructor            
+   public Kat(string nm, int lf) {
+      Naam = nm;
+      Leeftijd = lf;
+   }
+
+   // methodes
+   public string GeefBeschrijving() {
+      return $"Naam: {Naam}, leeftijd: {Leeftijd}";
+   }
+   public void Spreek() {
+      Console.WriteLine(Leeftijd &lt; 1 ? "miep" : "mauw");
+   }
+
+   // properties
+   public int Leeftijd { get; set; }
+   public string Naam { get; set }
+}
+</code></pre>
+         <img src="img/08_overerving/kat.png" alt="" class="w-300">
+      </div>
+      <p>Vervolgens maken we een klasse Konijn (veronderstel een bestaande klasse <code class="classcolor">Recept</code>):</p>
+      <div class="codecompare top">
+         <pre><code>class Konijn {
+   // constructor            
+   public Konijn(string nm, int lf) {
+      Naam = nm;
+      Leeftijd = lf;
+   }
+
+   // methodes
+   public string GeefBeschrijving() {
+      return $"Naam: {Naam}, leeftijd: {Leeftijd}";
+   }
+   // konijnen maken geen geluid, dus geen methode Spreek()
+
+   // properties
+   public int Leeftijd { get; set; }
+   public string Naam { get; set; }
+
+   // eetbaar, dus recepten
+   public static List&lt;Recept&gt; Recepten { get; set; } = new List&lt;Recept&gt;(); 
+}</code></pre>
+         <img src="img/08_overerving/konijn.png" alt="" class="w-300">
+      </div>
+
+      <p>En tenslotte ook een klasse <code class="classcolor">Kip</code>:</p>
+      <div class="codecompare top">
+         <pre><code>class Kip {
+   // constructor            
+   public Kip(int lf){
+      Leeftijd = lf;
+   }
+
+   // methodes
+   public string GeefBeschrijving() {
+      return $"Dier: kip, leeftijd: {Leeftijd}";
+   }
+   public void Spreek() {
+      Console.WriteLine(Leeftijd &lt; 1 ? "piep" : "kot kot kedei");
+   }
+
+   // properties
+   public int Leeftijd { get; set; }
+   // geen Naam - kippen hebben geen naam
+ 
+   // eetbaar, dus recepten
+   public static List&lt;Recept&gt; Recepten { get; set; } = new List&lt;Recept&gt;();
+}</code></pre>
+         <img src="img/08_overerving/konijn.png" alt="" class="w-300">
+      </div>
+      <h3>DRY principe: don't repeat yourself</h3>
+      <p>Als we de drie klassen naast elkaar bekijken, zijn er nogal wat overeenkomsten: </p>
+      <img src="img/08_overerving/drie_apart.png" alt="" class="w-900">
+      <p><strong>Herhaling</strong> van code is <strong>altijd slecht</strong> en wijst altijd op een zwakke programma structuur:</p>
+      <div class="codecompare top">
+         <div>
+            <ul class="wrong">
+               <li>foutgevoeliger (vgl. databank redundantie)</li>
+               <li>onoverzichtelijk</li>
+               <li>moeilijker te onderhouden</li>
+            </ul>
+            <p><mark>DRY principe</mark>: <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself. Er zijn verschillende manieren om herhaling op te lossen:</p>
+            <ul class="right">
+               <li>een nieuwe methode schrijven</li>
+               <li>een nieuwe klasse maken</li>
+               <li>gebruik maken van overerving</li>
+               <li>...</li>
+            </ul>
+         </div>
+         <img src="img/08_overerving/bart.png" alt="" class="w-400">
+      </div>
+
+      <h3>Slechte oplossing: één enkele klasse</h3>
+      <p>Een (slechte) oplossing om dubbele code te vermijden is alles in één klasse <code class="classcolor">KipKaNijn</code> samenpersen:</p>
+      <div class="codecompare top">
+         <pre class="h-500"><code>// extra enumeratie nodig!            
+enum DierType { Kat, Konijn, Kip }            
+
+class KipKaNijn {
+   // meer constructoren!            
+   public KipKaNijn(string ds, int lf) {
+      Diersoort = ds;
+      Leeftijd = lf;
+   }
+   public KipKaNijn(string ds, int lf, string nm) : this(ds, lf) {
+      Naam = nm;       
+   }   
+
+   // dubbelzinnige properties!            
+   public string Naam { get; set; } // niet relevant voor kippen
+   public int Leeftijd { get; set; }   
+   public static List&lt;Recept&gt; Recepten  { get; set; } = new List&lt;Recept&gt;();  // niet relevant voor katten 
+   public DierType Diersoort { get; set; } // extra property nodig voor soort 
+   
+   // methodes worden complexer
+   public string GeefBeschrijving() {
+      if (Diersoort == "kip") return $"Dier: kip, leeftijd: {Leeftijd}";
+      else return $"Naam: {Naam}, leeftijd: {Leeftijd}";
+   }
+   public void Spreek() {
+      switch (Diersoort) {
+         case "kip":
+            Console.WriteLine(Leeftijd &lt; 1 ? "piep" : "kot kot kedei"); break;
+         case "kat":
+            Console.WriteLine(Leeftijd &lt; 1 ? "miep" : "mauw"); break;
+         default:
+            break; // or throw Exception?
+      }
+   }    
+}</code></pre>
+         <img src="img/08_overerving/konijn.png" alt="" class="w-300">
+      </div>
+      <p>Er duiken allerlei nieuwe problemen op:</p>
+      <ul class="wrong">
+         <li>extra enumeratie(s) nodig</li>
+         <li>meer constructoren nodig</li>
+         <li>niet alle properties zijn altijd relevant voor elk subtype</li>
+         <li>methodes worden complexer</li>
+         <li>wat stelt <code class="classcolor">KipKaNijn</code> eigenlijk voor?</li>
+      </ul>
+      <p>Alles in aparte klassen is geen goed idee, alles in één klasse is geen goed idee...</p>
+      <p>Wat we nodig hebben is <strong>gemeenschappelijke code in superklassen</strong>, en aparte code in afgeleide subklassen. Dit principe heet <mark>overerving</mark>.</p>
+
+      <h2>Overerving</h2>
+      <p>Bekijken we nog eens de drie aparte klassen:</p>
+      <img src="img/08_overerving/drie_apart.png" alt="" class="w-900">
+      <h3>Superklasse <code class="classcolor">Huisdier</code></h3>
+      <p>We groeperen die gemeenschappelijke delen in een nieuwe superklasse <code class="classcolor">Huisdier</code>:</p>
+      <img src="img/08_overerving/huisdier_overerving.png" alt="" class="w-900">
+      <p>Implementatie van de superklasse <code class="classcolor">Huisdier</code>:</p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>class Huisdier {
+   public Huisdier(string nm, int lft) {
+      Naam = nm;
+      Leeftijd = lft;
+   }
+
+   // virtual: subklassen mogen dit overschrijven met eigen implementatie
+   public virtual string GeefBeschrijving() {
+      return $"Naam: {Naam}, leeftijd: {Leeftijd}";
+   }
+   public int Leeftijd { get; set; }
+   public string Naam { get; set; }
+}
+</code></pre>
+            <div class="codemarker" data-text="virtual" data-nth="2"></div>
+         </div>
+         <img src="img/08_overerving/huisdier.png" alt="" class="w-300">
+      </div>
+      <h3>Overgeërfde klassen <code class="classcolor">Kat:Huisdier</code>, <code class="classcolor">Kip:Huisdier</code> en <code class="classcolor">Konijn:Huisdier</code></h3>
+      <p>De implementatie van de subklasse <code class="classcolor">Kat</code>, overgeërfd van <code class="classcolor">Huisdier</code></p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>class Kat : Huisdier {
+   public Kat(string nm, int lf) : base(nm, lf) { }
+   public void Spreek() {
+      Console.WriteLine(Leeftijd &lt; 1 ? "miep" : "mauw");
+   }
+}
+</code></pre>
+            <div class="codemarker" data-text="virtual" data-nth="2"></div>
+         </div>
+         <img src="img/08_overerving/kat_overerving.png" alt="" class="w-300">
+      </div>
+      <p>De implementatie van de subklasse <code class="classcolor">Kip</code>, overgeërfd van <code class="classcolor">Huisdier</code></p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>class Kip : Huisdier {
+   public Kip(int lf) : base(null, lf) { }
+   public override string GeefBeschrijving() {
+      return $"Dier: kip, leeftijd: {Leeftijd}";
+   }
+   public void Spreek() {
+      Console.WriteLine(Leeftijd &lt; 1 ? "piep" : "kot kot kedei");
+   }
+   public static List&lt;Recept&gt; Recepten  { get; set; } = new List&lt;Recept&gt;();
+}</code></pre>
+            <div class="codemarker" data-text="virtual" data-nth="2"></div>
+         </div>
+         <img src="img/08_overerving/kip.png" alt="" class="w-300">
+      </div>
+      <p>De implementatie van de subklasse <code class="classcolor">Konijn</code>, overgeërfd van <code class="classcolor">Huisdier</code></p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>class Konijn : Huisdier {
+   public Konijn(string nm, int lf) : base(nm, lf) { }
+   public static List&lt;Recept&gt; Recepten  { get; set; } = new List&lt;Recept&gt;();
+}   
+</code></pre>
+            <div class="codemarker" data-text="virtual" data-nth="2"></div>
+         </div>
+         <p><img src="img/08_overerving/konijn_overerving.png" alt="" class="w-300"></p>
+      </div>
+      <div class="tips" data-caption="👍TOP!">
+         <p>
+            We hebben nu een <strong>superklasse</strong> <code class="classcolor">Huisdier</code> met alle <strong>gemeenschappelijke</strong> kenmerken, en drie <strong>overgeërfde</strong> klassen die <strong>aanvullen/aanpassen</strong> waar nodig.
+         </p>
+      </div>
+
+      <h2>Abstracte klassen</h2>
+      <p>
+         Je zou kunnen argumenteren dat een <code class="classcolor">Huisdier</code> op zichzelf geen betekenis heeft, 
+         maar dat het enkel dient als basisklasse voor <code class="classcolor">Kat</code>, <code class="classcolor">Kip</code> of <code class="classcolor">Konijn</code>. 
+         In dat geval kan je overwegen de klasse als <mark>abstract</mark> te markeren: 
+      </p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>abstract class Huisdier {
+   ...
+}
+</code></pre>
+            <div class="codemarker" data-text="abstract" data-nth="2"></div>
+         </div>
+         <p><img src="img/08_overerving/huisdier_abstract.png" alt="" class="w-300"></p>
+      </div>
+      <p>
+         Je <strong>moet</strong> het eerst overerven om te kunnen gebruiken: 
+      </p>
+      <pre><code>Huisdier h = new Huisdier(); // fout: Huisdier kan niet rechstreeks gebruikt worden
+Kat minnie = new Kat(); // ok; afgeleide klasse Kat kan wel gebruikt worden
+Konijn flappie = new Konijn(); // ok; afgeleide klasse Konijn kan wel gebruikt worden
+</code></pre>
+      <ul class="arrow">
+         <li><em>het creëren van een superklasse waar andere klassen van overerven noemt men <mark>abstractie</mark></em></li>
+      </ul>
+      <h2><code>is</code> en <code>as</code></h2>
+      <p>Maken we een lijst met verschillende huisdieren:</p>
+      <pre><code>List&lt;Huisdier&gt; mijnHuisdieren = new List&lt;Huisdier&gt;();
+mijnHuisdieren.Add(new Kat("minou", 12));
+mijnHuisdieren.Add(new Kip(2));
+mijnHuisdieren.Add(new Kip(4));
+mijnHuisdieren.Add(new Kip(5));
+mijnHuisdieren.Add(new Konijn("flappie", 7));
+mijnHuisdieren.Add(new Konijn("spluisje", 2));
+</code></pre>
+      <ul>
+         <li>de lijst is van het type Huisdier</li>
+         <li>het bevat objecten van de subtypes Kat, Kip en Konijn</li>
+      </ul>
+      <p>Het subtype van een object kun je controleren met <code>is</code>, naar een subtype casten kan met <code>as</code>:</p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>foreach (Huisdier dier in mijnHuisdieren) {
+   Console.WriteLine(dier.GeefBeschrijving());
+   if (dier is Kat) {
+      Kat kat = dier as Kat;
+      Console.WriteLine("het is een kat");
+      kat.Spreek();
+   }
+   if (dier is Konijn) {
+      Konijn konijn = dier as Konijn;
+      Console.WriteLine("het is een konijn");
+   }
+   if (dier is Kip) {
+      Kip kip = dier as Kip;
+      Console.WriteLine("het is een kip");
+      kip.Spreek();
+   }
+   Console.WriteLine("-----------");
+}
+</code></pre>
+            <div class="codemarker" data-text="dier is Kat"></div>
+            <div class="codemarker" data-text="dier is Konijn"></div>
+            <div class="codemarker" data-text="dier is Kip"></div>
+            <div class="codemarker" data-text="dier as Kat"></div>
+            <div class="codemarker" data-text="dier as Konijn"></div>
+            <div class="codemarker" data-text="dier as Kip"></div>
+         </div>
+         <figure>
+            <img src="img/08_overerving/is-as-console.png" alt="" class="w-200 bordered">
+            <figcaption>resultaat in de console</figcaption>
+         </figure>
+      </div>
+      <p>In plaats van met <code>as</code> kan je ook gewoon casten op de klassieke manier:</p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>foreach (Huisdier dier in mijnHuisdieren) {
+    Console.WriteLine(dier.GeefBeschrijving());
+    if (dier is Kat) {
+        Kat kat = (Kat)dier;
+        Console.WriteLine("het is een kat");
+        kat.Spreek();
+    }
+    if (dier is Konijn) {
+        Konijn konijn = (Konijn)dier;
+        Console.WriteLine("het is een konijn");
+    }
+    if (dier is Kip) {
+        Kip kip = (Kip)dier;
+        Console.WriteLine("het is een kip");
+        kip.Spreek();
+    }
+    Console.WriteLine("-----------");
+}
+</code></pre>
+            <div class="codemarker" data-text="(Kat)dier"></div>
+            <div class="codemarker" data-text="(Konijn)dier"></div>
+            <div class="codemarker" data-text="(Kip)dier"></div>
+         </div>
+      </div>
+      <ul class="arrow">
+         <li>gebruik liever <code>as</code>, dan is het duidelijker dat het over overerving gaat</li>
+      </ul>
+      <h2>Polymorfisme</h2>
+      <p>
+         Ter herinnering, er zijn twee implementaties van <code>GeefBeschrijving()</code>:  één algemene in de klasse <code class="classcolor">Huisdier</code> en één specifieke in de klasse <code class="classcolor">Kip</code>
+      </p>
+      <p>
+         Naar de buitenwereld toe is er echter slechts één methode <code>GeefBeschrijving()</code>; de compiler zal automatisch de juiste versie oproepen naargelang de situatie (in dit geval het subtype)
+      </p>
+            <pre><code>foreach (Huisdier dier in mijnHuisdieren) {
+   Console.WriteLine(dier.GeefBeschrijving()); // één uitwendige methode, twee inwendige implementaties
+   ...
+}
+</code></pre>
+      <ul class="arrow">
+         <li>
+            Dit doet denken aan bv. method overloading: ook daar kan dezelfde methode dankzij meerdere inwendige implementaties gebruikt worden in verschillende versies (in dit geval naargelang de gebruikte parameters)
+         </li>
+         <li>
+            Dit concept waarbij <strong>eenzelfde uitwendige vorm</strong> toch <strong>intern verschillende implementaties</strong> kan hebben, heet in de programmeerwereld <mark>polymorfisme</mark> (letterlijk: “meerdere vormen”)
+         </li>
+      </ul>
+      <h2>Klassen hiërarchie</h2>
+      <p>Je kan overerving verder doordrijven en ook <strong>sub-subclasses</strong> maken:</p>
+      <p><img src="img/08_overerving/meer1.png" alt="" class="w-600"></p>
+      <p>De volledige boomstructuur noemt men de <mark>klassen hiërarchie</mark>.</p>
+      <p>Er zijn meerdere hiërarchieën te bedenken. Deze kan bijvoorbeeld ook:</p>
+      <p><img src="img/08_overerving/meer2.png" alt="" class="w-600"></p>
+      <div class="tips" data-caption="💡TE VEEL OF TE WEINIG KLASSEN">
+         <p>
+            De mogelijkheden zijn eindeloos; het ontwerp van de klassen hiërarchie is één van de belangrijkste taken van software engineering (samen met keuzes over properties, methoden, static of non-static, enums…). Over het algemeen geldt: hoe groter het project, hoe complexer de structuur. 
+         </p>
+         <p>
+            Welke keuzes je uiteindelijk maakt is kwestie van persoonlijke stijl en een kunst, maar over het algemeen geldt: <strong>te weinig structuur is niet goed, en teveel ook niet; het optimum ligt ergens “in het midden”</strong>. 
+            Aan jou om door ervaring je eigen stijl te ontwikkelen.
+         </p>
+      </div>
 
 
-      
-      
-      
+
+
+
+
 
 
 

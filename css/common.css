@@ -325,7 +325,6 @@ body main .w-1200 {
 
 ul {
 	list-style: square;
-   padding-left: 10px;
 }
 
 ul.arrow,
@@ -687,6 +686,7 @@ figure pre {
 }
 
 .codecompare > * {
+   margin-top: 0;
 	max-width: 100%;
 	width: fit-content;
 }
