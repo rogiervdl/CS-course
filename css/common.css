@@ -26,8 +26,17 @@ a {
 
 h1,
 #toc,
+#downloads,
 main {
 	margin: 0 2.5rem;
+}
+
+#downloads p {
+   margin: 0;
+}
+
+#downloads ul {
+   margin-top: 0.3em;
 }
 
 main a:not([href*=http])::after {
@@ -152,6 +161,11 @@ table {
 	border: 2px solid #999;
 }
 
+.endvisual {
+   display: block;
+   margin: 50px auto
+}
+
 .centered {
 	text-align: center;
 }
@@ -160,13 +174,22 @@ table {
 	display: none;
 }
 
-.redcomments .comment, .error {
+.shadow {
+   box-shadow: 0px 0px 15px #bbb;
+}
+
+.redcomments .comment, 
+.error {
 	color: #C00 !important;
 	font-weight: bold !important;
 }
 
 .warning {
-	color: #C00 !important;
+	color: #DD6600 !important;
+}
+
+.notice {
+	color: #009900 !important;
 }
 
 .x-scroll {
@@ -174,12 +197,29 @@ table {
 	overflow-x: auto;
 }
 
-.purple {
-   color: #7030A0;
+body .purple {
+   border-color: #9966FF;
+   color: #9966FF;
 }
 
-.navy {
-   color: #2C618B;
+body .navy {
+   border-color: #3399FF;
+   color: #3399FF;
+}
+
+body .orange {
+   border-color: #FF6600;
+   color: #FF6600;
+}
+
+body .green {
+   border-color: #339933;
+   color: #339933;
+}
+
+body .brown {
+   border-color: #996633;
+   color: #996633;
 }
 
 /* widths */
@@ -321,15 +361,16 @@ body main .w-1200 {
 /* markers */
 
 .marker {
-	border: 3px solid #688031BB;
+	border: 3px solid #688031;
+	opacity: 0.8;
 	position: absolute;
 }
 
-.prism-okaida .marker {
-	opacity: 0.8;
-}
-
 /* lists */
+
+main ul {
+   margin-bottom: 1.2em;
+}
 
 ul {
 	list-style: square;
@@ -339,7 +380,7 @@ ul.arrow,
 li.arrow {
 	list-style-type: none;
 	margin-top: 0.5em;
-	margin-left: 2rem;
+	margin-left: 4rem;
 	padding: 0;
 }
 
@@ -460,7 +501,7 @@ html body .small {
 
 .tips::before {
 	content: attr(data-caption);
-	font-size: 2rem;
+	font-size: 1.8rem;
 	left: 0.5rem;
 	position: absolute;
 	top: 0.5rem;
@@ -768,7 +809,7 @@ pre {
 	border-radius: 0.3rem;
 	font-weight: 100;
 	line-height: 1.9rem;
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 	margin-top: 0;
 	max-width: 100%;
 	overflow-wrap: break-word;
@@ -791,6 +832,25 @@ figure.console pre {
 	width: 40rem;
 }
 
+/* FOOTER */
+
+footer {
+   margin-top: 100px;
+   text-align: center;
+}
+
+footer img {
+   max-width: 300px;
+}
+
+footer p {
+   border-top: 3px dotted #ccc;
+   margin: 20px 10%;
+   max-width: none;
+   padding: 20px;
+   width: auto;
+}
+
 /* MEDIA QUERIES */
 /* ============= */
 
@@ -805,7 +865,7 @@ figure.console pre {
 	code,
 	pre {
 		min-width: 550px;
-		max-width: 1000px;
+		max-width: 1200px;
 		width: fit-content;
 	}
 }

@@ -57,9 +57,16 @@
       <a href="10_sql_databanken.html" class="main__thumb pro active">
          <p class="thumb__title">10. SQL databanken</p>
          <img class="thumb__visual" src="img/10_sql_databanken/icon.png" alt="">
-      </a>   
+      </a>
    </nav>
    <h1>10. SQL databanken</h1>
+   <div id="downloads">
+      <p>Downloads voor dit hoofdstuk</p>
+      <ul>
+         <li><a href="files/10_sql_databanken/CompanyDB.sql">CompanyDB.sql</a>: SQL van de databank gebruikt in dit hoofdstuk</li>
+         <li><a href="files/10_sql_databanken/SlnCompany.zip">SlnCompany.zip</a>: volledige solution</li>
+      </ul>
+   </div>
    <div id="toc"></div>
    <main>
 
@@ -67,7 +74,7 @@
       <h2>On Youtube</h2>
       <h3>SQL in WPF apps</h3>
       <div class="flexcontainer youtubecontainer">
-         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/b2ikv9KtAKY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/b2ikv9KtAKY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
          <figure class="print">
             <a href="https://www.youtube.com/watch?v=b2ikv9KtAKY"><img src="img/10_sql_databanken/youtube-ooad-sql.png" alt="" class="w-500"></a>
             <figcaption><a href="https://www.youtube.com/watch?v=b2ikv9KtAKY">https://www.youtube.com/watch?v=b2ikv9KtAKY</a></figcaption>
@@ -120,26 +127,286 @@
                   </ul>
                </li>
             </ul>
-         </div>         
+         </div>
 
-      </div>      
+      </div>
 
-      <h2>Stappenplan</h2>
-      <h3>Employee voorbeeldtabel</h3>
+      <h2>Wat we willen bouwen</h2>
+      <p>Voor dit hoofdstuk bouwen we een complete databankgestuurde applicatie, waarin we werknemers (tabel <code>Employee</code>) en hun jobhistoriek (tabel <code>Job</code>) willen bijhouden.</p>
+      <img src="img/10_sql_databanken/demo.gif" alt="" class="w-800">
+
+      <h2>Databank opzetten</h2>
+      <h3>stap 1: nodige software installeren</h3>
       <p>
-         Voor je met de WPF toepassing begint, moet je het schema (de structuur) en relaties van de gebruikte databank grondig begrijpen. 
-         In dit hoofdstuk nemen we een databank bestaande uit één enkele tabel Employee. Het schema:
+         Voor dit vak heb je deze software nodig:
+      </p>
+      <ul class="arrow">
+         <li><strong>SQL Server Express</strong>: de databank server, <a href="https://go.microsoft.com/fwlink/p/?linkid=2216019&clcid=0x409">download hier</a> </li>
+         <li><strong>SQL Server Management Studio (SSMS)</strong>: een tool om databanken te beheren, <a href="https://aka.ms/ssmsfullsetup">download hier</a></li>
+      </ul>
+      <h3>stap 2: SQL importeren in SSMS</h3>
+      <p>
+         In dit vak zul je altijd een databank aangeleverd krijgen als een SQL bestand, dat je moet importeren met SSMS via <em>New Query</em> &rarr; kopieer de SQL code &rarr; <em>Execute</em>. Importeer <a href="files/10_sql_databanken/EmployeesDB.sql">EmployeesDB.sql</a>:
       </p>
       <figure>
-         <img src="img/10_sql_databanken/db_schema.png" alt="" class="w-500 bordered">
-         <figcaption>schema van de tabel Employee</figcaption>
+         <img src="img/10_sql_databanken/import.png" alt="" class="w-800 bordered">
+         <figcaption>importeer SQL in SSMS</figcaption>
       </figure>
-      <figure>
-         <img src="img/10_sql_databanken/db_data.png" alt="" class="w-600 bordered">
-         <figcaption>voorbeelddata van de tabel Employee</figcaption>
-      </figure>
+      <h3>stap 3: database bestuderen</h3>
+      <p>
+         Voor je met de WPF toepassing begint, moet je het schema (de structuur) en relaties van de gebruikte databank grondig begrijpen.
+         In dit hoofdstuk nemen we een databank bestaande uit één enkele tabel Employee. Het schema:
+      </p>
+      <h4>schema en data</h4>
+      <p>
+         Met <span class="em">schema</span> wordt het design bedoeld van de databank, zonder data.
+      </p>
+      <p>
+         Schema en data van de tabel <code>Employee</code>:
+      </p>
+      <div class="codecompare">
+         <figure>
+            <img src="img/10_sql_databanken/db-schema-employee.png" alt="" class="w-500 bordered">
+            <figcaption>schema van de tabel Employee</figcaption>
+         </figure>
+         <figure>
+            <img src="img/10_sql_databanken/db-data-emp.png" alt="" class="w-600 bordered">
+            <figcaption>voorbeelddata van de tabel Employee</figcaption>
+         </figure>
+      </div>
+      <p>
+         Schema en data van de tabel <code>Job</code>:
+      </p>
+      <div class="codecompare">
+         <figure>
+            <img src="img/10_sql_databanken/db-schema-job.png" alt="" class="w-500 bordered">
+            <figcaption>schema van de tabel Job</figcaption>
+         </figure>
+         <figure>
+            <img src="img/10_sql_databanken/db-data-job.png" alt="" class="w-500 bordered">
+            <figcaption>voorbeelddata van de tabel Job</figcaption>
+         </figure>
+      </div>
+      <h4>veldeigenschappen</h4>
+      <p>
+         Nadat je de databank geïnstalleerd hebt, bestudeer je best de eigenschappen van de kolommen (ook <span class="em">velden</span> genoemd).
+         Zo zul je opmerken dat het <strong>id</strong> veld zoals het hoort aangeduid is als Primary Key, en eveneens als Identity Column (auto increment).
+         Voor meer uitleg hierover verwijzen we naar de cursus databanken.
+      </p>
+      <p>
+         Voor bepaalde kolommen zul je nog een verduidelijkende beschrijving vinden onder <em>Properties</em> &rarr; <em>Description</em>, zoals voor de getalcodes gebruikt bij <strong>gender</strong>.
+      </p>
+      <div class="flexcontainer wrap">
+         <figure>
+            <img src="img/10_sql_databanken/db-pk.png" alt="" class="w-600 bordered">
+            <figcaption>id is aangeduid als primary key met auto increment</figcaption>
+         </figure>
+         <figure>
+            <img src="img/10_sql_databanken/db-description.png" alt="" class="w-600 bordered">
+            <figcaption>lees ook de beschrijvingen, zoals hier wat de gender getallen betekenen</figcaption>
+         </figure>
+      </div>
+      <h4>check constraints</h4>
+      <p>
+         Regels die data moet volgen noemt men <span class="em">check constraints</span>. Dit kan vanalles zijn: postcode moet uit 4 cijfers bestaan, een verkoop moet een geldig klantnummer bevatten enz...
+         De constraints van de tabel Employee:
+      </p>
+      <ul>
+         <li>accesscode moet tussen 1000 en 9999 liggen</li>
+         <li>gender moet 0, 1, 2 of 9 zijn</li>
+      </ul>
+      <div class="flexcontainer wrap">
+         <figure>
+            <img src="img/10_sql_databanken/check-view.png" alt="" class="w-400 bordered">
+            <figcaption>check constraints van een tabel bekijken</figcaption>
+         </figure>
+         <figure>
+            <img src="img/10_sql_databanken/check-accesscode.png" alt="" class="w-400 bordered">
+            <figcaption>check constraint op access code</figcaption>
+         </figure>
+      </div>
+
+
+      <h2>WpfCompany aanmaken</h2>
+      <h3>Nieuw project</h3>
+      <p>Kies als projecttype Wpf Application (dit is .NET8):</p>
+      <p><img src="img/10_sql_databanken/app-create.png" alt="" class="bordered w-600"></p>
+      <h3>MainWindow </h3>
+      <h4>XAML</h4>
+      <p>
+         De XAML code van MainWindow:
+      </p>
+      <pre class="h-400"><code class="language-html">&lt;DockPanel LastChildFill="True"&gt;
+   &lt;StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0"&gt;
+      &lt;Button x:Name="btnEdit" Content="bewerk" Margin="10,0,10,10" IsEnabled="False" Padding="10,5" Click="BtnEdit_Click"/&gt;
+      &lt;Button x:Name="btnRemove" Content="verwijder" Margin="10,0,10,10" IsEnabled="False" Padding="10,5" Click="BtnRemove_Click"/&gt;
+      &lt;Button x:Name="btnNew" Content="nieuw..." Margin="10,0,10,10" Padding="10,5" Click="BtnNew_Click"/&gt;
+   &lt;/StackPanel&gt;
+   &lt;Grid DockPanel.Dock="Right" Width="250" Margin="20,10" Background="#FFFCFAFA"&gt;
+      &lt;Grid.ColumnDefinitions&gt;
+         &lt;ColumnDefinition Width="auto" /&gt;
+         &lt;ColumnDefinition Width="*" /&gt;
+      &lt;/Grid.ColumnDefinitions&gt;
+      &lt;Grid.RowDefinitions&gt;
+         &lt;RowDefinition Height="30"/&gt;
+         &lt;RowDefinition Height="30"/&gt;
+         &lt;RowDefinition Height="30"/&gt;
+         &lt;RowDefinition Height="30"/&gt;
+         &lt;RowDefinition Height="30"/&gt;
+         &lt;RowDefinition Height="*"/&gt;
+      &lt;/Grid.RowDefinitions&gt;
+      &lt;Label Content="Email" FontWeight="Bold" /&gt;
+      &lt;Label Grid.Column="1" x:Name="lblEmail" /&gt;
+      &lt;Label Grid.Row="1" Content="Geslacht" FontWeight="Bold" /&gt;
+      &lt;Label Grid.Row="1" Grid.Column="1" x:Name="lblGender" /&gt;
+      &lt;Label Grid.Row="2" Content="Geb.datum" FontWeight="Bold" /&gt;
+      &lt;Label Grid.Row="2" Grid.Column="1" x:Name="lblBirthdate" /&gt;
+      &lt;Label Grid.Row="3" Content="Toeg.code" FontWeight="Bold" /&gt;
+      &lt;Label Grid.Row="3" Grid.Column="1" x:Name="lblCode" /&gt;
+      &lt;Label Grid.Row="4" Content="Baas:" FontWeight="Bold" /&gt;
+      &lt;Label Grid.Row="4" Grid.Column="1" x:Name="lblBoss" /&gt;
+      &lt;Label Grid.Row="5" Content="Jobs:" FontWeight="Bold" /&gt;
+      &lt;TextBlock Grid.Row="5" Grid.Column="1" x:Name="txtJobs"  TextWrapping="Wrap" Margin="5" /&gt;
+   &lt;/Grid&gt;
+   &lt;ListBox x:Name="lbxResults" Margin="20,10,0,10" SelectionChanged="LbxResults_SelectionChanged"/&gt;
+&lt;/DockPanel&gt;</code></pre>
+      <img src="img/10_sql_databanken/xaml-main.png" alt="" class="w-300 bordered">
+      <h4>code-behind</h4>
+      <p>
+         Het skelet van MainWindow.xaml.cs:
+      </p>
+      <div class="precontainer">
+         <pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace WpfCompany {
+   public partial class MainWindow : Window {
+      // methode voor weergave employees
+      private void ShowEmployees(int? selectedId = null) { /* TODO */ }        
+
+      // button events
+      private void BtnEdit_Click(object sender, RoutedEventArgs e) { /* TODO */ }
+      private void BtnNew_Click(object sender, RoutedEventArgs e) { /* TODO */ }
+      private void BtnRemove_Click(object sender, RoutedEventArgs e) { /* TODO */ }
+
+      // selectie employee uit de lijst
+      private void LbxResults_SelectionChanged(object sender, SelectionChangedEventArgs e) { /* TODO */ }
+
+      // MainWindow() constructor; start met tonen alle employees
+      public MainWindow() {
+         InitializeComponent();
+         ShowEmployees();
+      }
+   }
+}
+</code></pre>
+      </div>
+
+      <h3>EmployeeEditWindow en EmployeeNewWindow XAML</h3>
+      <p>
+         We voegen nieuwe WPF windows toe aan WpfCompany voor toevoegen en bewerken van een Employee via <em>Add</em>, <em>Window (WP)</em>...
+      </p>
+      <p><img src="img/10_sql_databanken/addwindows.png" alt="" class="w-600 bordered"></p>
+      <h4>XAML</h4>
+      <p>De XAML code voor EmployeeEditWindow en EmployeeNewWindow is bijna identiek. De XAML van EmployeeNewWindow:</p>
+      <pre class="h-400"><code class="language-html">&lt;Grid Margin="20,20"&gt;
+   &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width="120" /&gt;
+      &lt;ColumnDefinition /&gt;
+   &lt;/Grid.ColumnDefinitions&gt;
+   &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="auto" /&gt;
+      &lt;RowDefinition Height="*" /&gt;
+   &lt;/Grid.RowDefinitions&gt;
+   &lt;Label Content="Voornaam *: "/&gt;
+   &lt;TextBox Grid.Column="1" x:Name="txtFirst" Margin="0,0,0,10" Padding="5" /&gt;
+   &lt;Label Grid.Row="1" Content="Achternaam *: "/&gt;
+   &lt;TextBox Grid.Column="1" Grid.Row="1" x:Name="txtLast" Margin="0,0,0,10" Padding="5" /&gt;
+   &lt;Label Grid.Row="2" Content="Email *: "/&gt;
+   &lt;TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtEmail" Margin="0,0,0,10" Padding="5" /&gt;
+   &lt;Label Grid.Row="3" Content="Geslacht *: "/&gt;
+   &lt;StackPanel Grid.Column="1" Grid.Row="3"&gt;
+      &lt;RadioButton GroupName="grpGender" x:Name="rbnMale" Content="man" /&gt;
+      &lt;RadioButton GroupName="grpGender" x:Name="rbnFemale" Content="vrouw" /&gt;
+      &lt;RadioButton GroupName="grpGender" x:Name="rbnUnknown" Content="onbekend" /&gt;
+   &lt;/StackPanel&gt;
+   &lt;Label Grid.Row="4" Content="Geb.datum: *"/&gt;
+   &lt;DatePicker x:Name="datBirth" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top"/&gt;
+   &lt;Label Grid.Row="5" Content="Toegangscode: *"/&gt;
+   &lt;TextBox Grid.Column="1" Grid.Row="5"  x:Name="txtCode" Margin="0,0,0,10" Padding="5"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Width="50" /&gt;
+   &lt;Label Grid.Row="6" Content="Baas: "/&gt;
+   &lt;ComboBox Grid.Column="1" Grid.Row="6"  x:Name="cmbBoss" Margin="0,0,0,10" Padding="5"  HorizontalContentAlignment="Left"&gt;
+      &lt;ComboBoxItem Content="selecteer..." Tag="-1" IsSelected="True"&gt;&lt;/ComboBoxItem&gt;
+   &lt;/ComboBox&gt;
+   &lt;StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right"&gt;
+      &lt;Button x:Name="btnSave" Content="opslaan" Padding="10,5" VerticalAlignment="Bottom" Click="btnSave_Click" /&gt;
+      &lt;Button x:Name="btnCancel" Content="annuleren" Margin="10,0,0,0" Padding="10,5" VerticalAlignment="Bottom" Click="btnCancel_Click" /&gt;
+   &lt;/StackPanel&gt;
+&lt;/Grid&gt;</code></pre>
+      <img src="img/10_sql_databanken/xaml-new.png" alt="" class="w-300 bordered">
+      <h4>code-behind</h4>
+      <p>
+         Het skelet van EmployeeEditWindow.xaml.cs en EmployeeNewWindow.xaml.cs lijkt ook sterk op elkaar:
+      </p>
+      <div class="codecompare">
+         <pre><code>using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace WpfCompany {
+   public partial class EmployeeEditWindow : Window {
+      // EmployeeEditWindow() constructor
+      public EmployeeEditWindow(int id) {
+         InitializeComponent();
+         // TODO: haal employee op en vul alle velden in
+         // ...
+      }
+
+      // button events
+      private void btnCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
+      private void btnSave_Click(object sender, RoutedEventArgs e) { /* TODO */ }
+   }
+}
+</code></pre>
+         <pre><code>using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace WpfCompany {
+   public partial class EmployeeNewWindow : Window {
+      // EmployeeNewWindow() constructor
+      public EmployeeNewWindow() {
+         InitializeComponent();
+         // TODO: genereer de lijst van bazen
+         // ...
+      }
+
+      // button events
+      private void btnCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
+      private void btnSave_Click(object sender, RoutedEventArgs e) { /* TODO */ }
+   }
+}
+</code></pre>
+      </div>
+
+
+
+      <h2>Connectiestring en eerste SQL query</h2>
+
       <h3>Stap 1: connection string genereren</h3>
-      <p>Een <em>connection string</em> bevat de gegevens nodig om een connectie te maken: database host, tabelnaam, authenticatiegegevens... Maak het aan via <i>Server Explorer, Add Connection</i>...:</p>
+      <p>Een <em>connection string</em> bevat de gegevens nodig om een connectie te maken: database host, tabelnaam, authenticatiegegevens...</p>
+      <p>Maak het aan via <i>Server Explorer, Add Connection</i>...:</p>
       <figure>
          <img src="img/10_sql_databanken/db_connstring.png" alt="" class="w-600 bordered">
          <figcaption>aanmaken connection string</figcaption>
@@ -149,29 +416,55 @@
          <img src="img/10_sql_databanken/db_connstring_dialog.png" alt="" class="w-300 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
-      <p>De gegenereerde connectiestring vind je tenslotte bij de connection properties:</p>
+      <p>De gegenereerde connectiestring vind je tenslotte terug bij de connection properties:</p>
       <figure>
-         <img src="img/10_sql_databanken/db_conn_properties.png" alt="" class="w-300 bordered">
+         <img src="img/10_sql_databanken/db_conn_properties.png" alt="" class="w-800 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
-      <h3>Stap 2: conneciestring toevoegen aan App.config</h3>
+
+      <h3>Stap 2: connectiestring toevoegen aan App.config</h3>
       <p>
-         Hoewel je de connectie string ook overal letterlijk in je C# code kan gebruiken, is het beter het één keer globaal te bewaren in App.config, te vinden in je project: 
+         Hoewel je de connectie string ook overal letterlijk in je C# code kan gebruiken, is het beter het één keer globaal te bewaren in App.config, te vinden in je project:
       </p>
       <pre><code class="language-html">&lt;configuration&gt;
    &lt;connectionStrings&gt;
-      &lt;add name="connStr" connectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=EmployeesDB;Integrated Security=True" /&gt;
+      &lt;add name="connStr" connectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=CompanyDB;Integrated Security=True" /&gt;
    &lt;/connectionStrings&gt;
    ...
 &lt;/configuration&gt;
 </code></pre>
-      <h3>Stap 3: referentie naar System.Configuration</h3>
-      <p>Om deze configuratie te kunnen aanspreken, moet een referentie naar <strong>System.Configuration</strong> toegevoegd worden aan het project:</p>
+      <ul class="arrow">
+         <li><code>name="..."</code>: kies hier een naam, b.v. <code>connStr</code></li>
+         <li><code>connectionString="..."</code>: kopieer hier jouw gegenereerde connectiestring</li>
+      </ul>
+      <div class="tips" data-caption="💡TIP">
+         <p>
+            Als App.config ontbreekt in je project, voeg het toe via <strong>Add</strong>, <strong>new Item...</strong>, <strong>Application Configuration File</strong>
+         </p>
+      </div>
+      <h3>Stap 3: NuGet packages toevoegen</h3>
+      <p>Om deze configuratie te kunnen aanspreken en om SQL te kunnen uitvoeren, hebben we twee NuGet packages nodig: <strong>System.Configuration.ConfigurationManager</strong> en <strong>System.Data.SqlClient</strong>:</p>
       <figure>
-         <img src="img/10_sql_databanken/reference.png" alt="" class="w-700 bordered">
-         <figcaption>toevoegen referentie naar System.Configuration</figcaption>
+         <img src="img/10_sql_databanken/nuget.png" alt="" class="w-700 bordered">
+         <figcaption>installeren nodige NuGet packages</figcaption>
       </figure>
-      <h3>Stap 4: C# connectie openen en SQL uitvoeren</h3>
+      <h3>Stap 4: namespaces toevoegen</h3>
+      <p>
+         Voeg vervolgens referenties toe naar de <code>System.Configuration</code> en <code>System.Data.SqlClient</code> namespaces bovenaan elke C# pagina waar je SQL wil gebruiken, en je bent klaar om te starten:
+      </p>
+      <pre><code>using System;
+using System.Configuration; // voeg deze toe
+using System.Data.SqlClient; // voeg deze toe
+using System.Windows;
+using System.Windows.Controls;
+
+namespace WpfAdmin
+{
+   ...
+}</code></pre>
+
+      <h3>Stap 5: SQL query uitvoeren</h3>
+      <h4>connectie openen met <code>using</code></h4>
       <p>Basisschema voor het uitvoeren van SQL queries: </p>
       <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
 using (SqlConnection conn = new SqlConnection(connString)) {
@@ -180,20 +473,52 @@ using (SqlConnection conn = new SqlConnection(connString)) {
     // ...
 }</code></pre>
       <p>Dankzij de <code>using</code> wordt de connectie automatisch gesloten. Dit is belangrijk, want aangezien een server maar een beperkt aantal gelijktijdige connecties toelaat, kunnen bij teveel openstaande connecties nieuwe connecties geweigerd worden en de databank onbereikbaar worden.</p>
-      <p>Versie met try-catch:</p>
+      <h4>query uitvoeren</h4>
+      <p>De exacte code voor het uitvoeren hangt af van het soort query (SELECT, UPDATE, DELETE, INSERT, stored procedure...). Hier alvast een voorbeeld voor een select query:</p>
+      <div class="precontainer">
+         <pre><code>using (SqlConnection conn = new SqlConnection(connString)) {
+   // open connectie
+   conn.Open();
+
+   // voer SQL commando uit
+   SqlCommand comm = new SqlCommand("SELECT * FROM Employee", conn);
+   SqlDataReader reader = comm.ExecuteReader(); 
+
+   // lees en verwerk resultaten
+   while (reader.Read()) {
+      // lees record velden 
+      int id = Convert.ToInt32(reader["id"]);
+      string firstname = Convert.ToString(reader["firstname"]);
+      string lastname = Convert.ToString(reader["lastname"]);
+
+      // verwerk
+      // ...
+   }
+}</code></pre>
+      </div>
+
+      <h4>exception handling toevoegen</h4>
+      <p>
+         Net zoals bij bestanden kunnen bij databanken onverwachte fouten optreden: de connectie kan geweigerd worden, de databank kan offline zijn…
+         Daarom moet je bij <strong><em>elke</em> databank operatie een try-catch blok</strong> gebruiken. Het vorige fragment mét try-catch:
+      </p>
       <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
 try {
-    using (SqlConnection conn = new SqlConnection(connString)) {
-        conn.Open();
-        // execute your SQL query here
-        // ...
-    }
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      conn.Open();
+      // execute your SQL query here
+      // ...
+   }
 } catch (SqlException ex) {
-    MessageBox.Show("Fout! SQL zegt: " + ex.Message);
+    MessageBox.Show($"Fout! SQL zegt: {ex.Message}");
 }
 </code></pre>
+      <ul class="arrow">
+         <li>een goed moment om <strong>exception handling</strong> toe te voegen, is <strong>in één keer op het einde</strong>, als je code bijna af is</li>
+         <li>om de codefragmenten niet te zwaar te maken, laten we het in deze presentatie verder achterwege</li>
+      </ul>
 
-      <h2>Connection pooling</h2>
+      <h4>connection pooling</h4>
       <p>Als je meerdere SQL instructies wil uitvoeren in de loop van je programma's, zijn er twee strategieën:</p>
       <ul>
          <li class="wrong">één enkele connectie bij het begin van de eerste SQL instructie, en open houden tot na de laatste SQL instructie</li>
@@ -216,7 +541,7 @@ using (SqlConnection conn = new SqlConnection(connString)) { // open in het begi
    // ...
 }  // sluit op het einde</code></pre>
       <p>Open beter meerdere connecties zo laat mogelijk en sluit ze zo vroeg mogelijk:</p>
-<pre class="right"><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre class="right"><code>string connString = ConfigurationManager.AppSettings["connString"];
 // doe andere taken
 // ...
 using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mogelijk
@@ -233,90 +558,423 @@ using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mog
 } // sluit zo vroeg mogelijk 
 // doe andere taken
 // ...</code></pre>
+      <p>Dus het advies voor connecties: <strong class="notice">open late, close early!</strong></p>
 
-      <h2>Queries uitvoeren</h2>
-      <h3>SELECT query</h3>
-      <p>Voor SELECT queries gebruik je <span class="em">ExecuteReader()</span> (voorbeeld voor ophalen employees):</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
-using (SqlConnection conn = new SqlConnection(connString)) {
-   conn.Open();
-   SqlCommand comm = new SqlCommand("SELECT * FROM Employees", conn); // vergeet connectie niet mee te geven
-   SqlDataReader reader = comm.ExecuteReader();
-   while (reader.Read()) { // reader.Read() geeft één voor één de records terug, null indien geen meer over
-      int id = Convert.ToInt32(reader["id"]);
-      string name = $"{reader["firstname"]} {Convertreader["lastname"]}";
-      string email = Convert.ToString(reader["email"]);
-      int gender = Convert.ToInt32(reader["gender"]);
-      DateTime birthdate = Convert.ToDateTime(reader["birthdate"]);
-      int accesscode = Convert.ToInt32(reader["accesscode"]);
-      // ... doe iets met deze gegevens, b.v. toevoegen aan een ListBox
+      <h2>Class Library aanmaken</h2>
+      <h3>Waarom een class library</h3>
+      <p>
+         Een <mark>class library</mark> is een speciaal projecttype waar je klassen kan aanmaken. Die klassen kan je dan gebruiken in één of meerdere andere projecten (b.v. een app voor gebruikers en een app voor admins).
+         De voordelen van het gebruik van classes en een class library in het bijzonder zijn groot:</p>
+      <ol>
+         <li><strong>Minder herhaling</strong>: bv. de SQL code voor het opvragen van employee gegevens wordt zowel in MainWindow als in WinEditEmployee gebruikt; die code zou beter op één centrale plek bewaard blijven</li>
+         <li><strong>Lichtere code-behind</strong>: door verplaatsen van alle SQL code en andere logica van het project naar een class library maakt de overblijvende code-behind veel lichter</li>
+         <li><strong>Intuïtieve code</strong>: een algemeen voordeel van classes is dat de code meer aansluit bij onze leefwereld en dus leesbaarder wordt</li>
+      </ol>
+      <p>
+         Je kan classes uiteraard ook nog steeds in het project zelf aanmaken, maar om hergebruik bij meerdere apps mogelijk te maken zullen we ze onderbrengen een class library.
+      </p>
+      <h3>Stap 1: class library project maken</h3>
+      <p>
+         Voeg een nieuw project type <strong>Class Library</strong> toe en noem het <strong>CLCompany</strong>:
+      </p>
+      <p><img src="img/10_sql_databanken/cl-add.png" alt="" class="w-600 bordered"></p>
+      <h3>Stap 2: NuGet packages toevoegen</h3>
+      <p>Vergeet niet weer de NuGet packages <strong>System.Configuration.ConfigurationManager</strong> en <strong>System.Data.SqlClient</strong> toe te voegen aan dit nieuw project:</p>
+      <figure>
+         <img src="img/10_sql_databanken/nuget.png" alt="" class="w-700 bordered">
+         <figcaption>installeren nodige NuGet packages</figcaption>
+      </figure>
+      <h3>Stap 3: klassen <code>Employee</code> en <code>Job</code> in class library maken</h3>
+      <p>
+         Vervolgens voegen we de classes <code class="classcolor">Employee</code> en <code class="classcolor">Job</code> toe:
+      </p>
+      <p><img src="img/10_sql_databanken/cl-employee.png" alt="" class="w-700 bordered"></p>
+      <ul class="arrow">
+         <li>voor het gemak kiezen we voor de class <strong>dezelfde naam als de tabelnaam</strong> in de databank</li>
+         <li>kies class-namen altijd <strong>enkelvoud</strong>, dus niet Employees maar Employee; ze beschrijven een object, geen verzameling</li>
+         <li>verander de zichtbaarheid van internal (enkel beschikbaar in de library) naar <strong>public</strong> (overal beschikbaar)</li>
+      </ul>
+
+      <h2>Klassen uitwerken</h2>
+      <p>De volgende stap is onze klassen uitwerken.</p>
+      <h3>basisstructuren klassen Employee en Job</h3>
+      <div class="codecompare">
+         <div class="precontainer">
+
+            <pre><code>public enum GenderType { Onbekend, Man, Vrouw, Nvt = 9 } // enumeratie voor gender types
+public class Employee
+{
+   // variabelen
+   private static string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
+   // properties
+   public int Id { get; set; }
+   public string FirstName { get; set; }
+   public string LastName { get; set; }
+   public string Email { get; set; }
+   public GenderType Gender { get; set; }
+   public DateTime BirthDate { get; set; }
+   public int? AccessCode { get; set; } // nullable field &rarr; nullable property
+   public int? BossId { get; set; } // nullable field &rarr; nullable property
+
+   // constructors
+   public Employee() { }
+
+   // database methoden
+   public static List&lt;Employee&gt; GetAll() { /* TODO */}
+   public static Employee GetById(int empId) { /* TODO */}
+   public void DeleteFromDb() { /* TODO */}
+   public int InsertInDb() { /* TODO */}
+   public void UpdateInDb() { /* TODO */}
+
+   // override ToString
+   public override string ToString() { return $"{FirstName} {LastName}"; }
+}</code></pre>
+         </div>
+         <div class="precontainer">
+            <pre><code>public class Job
+{
+   // variabelen
+   private static string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
+   // properties
+   public int Id { get; set; }
+   public DateTime StartDate { get; set; }
+   public DateTime? EndDate { get; set; } // nullable field &rarr; nullable property
+   public string JobTitle { get; set; }
+   public int EmployeeId { get; set; }
+
+   // constructors
+   public Job() { }
+
+   // database methoden
+   public void DeleteFromDb() { /* TODO */}
+   public int InsertToDb() { /* TODO */}
+   public void UpdateInDb() { /* TODO */}
+
+   // override ToString
+   public override string ToString() { return JobTitle; }
+}
+</code></pre>
+         </div>
+      </div>
+      <p>Opmerkingen:</p>
+      <ul class="arrow">
+         <li>de <strong>properties</strong> komen overeen met de <strong>tabelvelden</strong>; let op dat <strong>nullable</strong> velden ook nullable properties hebben</li>
+         <li>
+            let bij de database methoden heel goed op het onderscheid tussen <strong>static</strong> en <strong>non-static</strong>:
+            <br><span class="em">static</span>: gebeurt op de klasse, b.v. alle oplijsten, zoeken op basis van een id...
+            <br><span class="em">non-static</span>: gebeurt op een specifiek object, b.v. toevoegen, verwijderen...
+         </li>
+         <li>voorzie best altijd een eigen <code>ToString()</code> override</li>
+      </ul>
+      <h3>Aggregaties</h3>
+      <p>
+         We hebben het in een eerder hoofdstuk reeds over <a href="06_classes_properties.html#associatie-aggregatie-compositie">aggregatie</a> gehad: het gebruik van classes in classes.
+         Als we naar de tabellen <code class="classcolor">Employee</code> en <code class="classcolor">Job</code> kijken, zijn er twee aggregaties:
+      </p>
+      <ol>
+         <li>elke <code class="classcolor">Employee</code> kan 0 of meer <code class="classcolor">Job</code>s hebben</li>
+         <li>elke <code class="classcolor">Employee</code> kan hooguit 1 <code class="classcolor">Employee</code> als baas hebben</li>
+      </ol>
+      <p>
+         Schematisch (diagram gegenereer in SSMS):
+      </p>
+      <p><img src="img/10_sql_databanken/diagram.png" alt="" class="w-250"></p>
+      <p>In de toepassing zijn deze koppelingen op verschillende plaatsen zichtbaar:</p>
+      <div class="flexcontainer">
+         <p><img src="img/10_sql_databanken/diagram-overview.png" alt="" class="w-400 bordered"></p>
+         <p><img src="img/10_sql_databanken/diagram-edit.png" alt="" class="w-300 bordered"></p>
+      </div>
+      <p>
+         In code implementeer je deze aggregaties best als <strong>read-only properties</strong> <code>Employee.Boss</code> en <code>Employee.Jobs</code>:
+      </p>
+      <div class="precontainer">
+         <pre><code>public class Employee {
+   ...            
+   public Employee Boss {
+      get {
+         return BossId == null ? null : Employee.GetById((int)BossId);
+      }
    }
-}</code></pre>
-      <h3>INSERT query</h3>
-      <p>Voor INSERT queries gebruik je <span class="em">ExecuteNonQuery()</span> (voorbeeld voor toevoegen employee):</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
-using (SqlConnection conn = new SqlConnection(connString)) {
-   conn.Open();
-   SqlCommand comm = new SqlCommand("INSERT INTO Employee(firstname,lastname,telephone) VALUES(@par1,@par2,@par3)", conn);
-   comm.Parameters.AddWithValue("@par1", txtFirst.Text);
-   comm.Parameters.AddWithValue("@par2", txtLast.Text);
-   comm.Parameters.AddWithValue("@par3", txtTel.Text);
-   comm.ExecuteNonQuery();
-}</code></pre>
-      <p><strong>Let op</strong>: voeg altijd parameters toe via <code>comm.Parameters</code>, waarbij automatisch een aantal veiligheidscontroles uitgevoerd worden. Doe het dus NOOIT rechtstreeks zoals hier:</p>
-      <pre class="wrong"><code>SqlCommand comm = new SqlCommand($"INSERT INTO Employee(firstname,lastname,telephone) VALUES({txtFirst.Text},{txtLast.Text},{txtTel.Text})", conn);</code></pre>
+   public List&lt;Job&gt; Jobs {
+      get {
+         List&lt;Job&gt; jobs = new List&lt;Job&gt;();
+         // voer een SELECT query uit om alle jobs van deze employee op te vragen
+         // ...
+         return jobs;
+      }
+   }
+   ...
+}   
+</code></pre>
+         <div class="codemarker" data-text="employee.InsertToDb()" data-color="purple"></div>
+      </div>
+
+      <h3>SELECT queries</h3>
+      <h4>voorbeeld 1: ophalen employees</h4>
+      <p>We beginnen met de SELECT queries. Code voor de <code>Employee.GetAll()</code> methode:</p>
+      <div class="precontainer">
+         <pre><code>public static List&lt;Employee&gt; GetAll() {
+   List&lt;Employee&gt; emps = new List&lt;Employee&gt;();
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      // open connectie
+      conn.Open();
+
+      // voer SQL commando uit
+      SqlCommand comm = new SqlCommand("SELECT * FROM Employee", conn);
+      SqlDataReader reader = comm.ExecuteReader();
+
+      // lees en verwerk resultaten
+      while (reader.Read()) emps.Add(new Employee() {
+         Id = Convert.ToInt32(reader["id"]),
+         FirstName = Convert.ToString(reader["firstname"]),
+         LastName = Convert.ToString(reader["lastname"]),
+         Email = Convert.ToString(reader["email"]),
+         Gender = (GenderType)Convert.ToInt32(reader["gender"]),
+         BirthDate = Convert.ToDateTime(reader["birthdate"]),
+         AccessCode = reader["accesscode"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["accesscode"]),
+         BossId = reader["boss_id"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["boss_id"])
+
+      });
+   }
+   return emps;
+}
+</code></pre>
+         <div class="codemarker" data-text="ExecuteReader()"></div>
+         <div class="codemarker" data-text="while (reader.Read())"></div>
+      </div>
+      <ul class="arrow">
+         <li><span class="em">ExecuteReader()</span>: geeft een <code class="classcolor">SqlDataReader</code> instantie terug waarmee je over de resultaten kan itereren</li>
+         <li><span class="em">Read()</span>: leest het volgende resultaat uit de reader (<code>null</code> indien geen meer beschikbaar)</li>
+         <li>merk op dat nullable velden een <strong>DBNull.Value</strong> teruggeven, geen <code>null</code>, waardoor de ternaire operator nodig is</li>
+         <li>merk ook op dat de reader typeloze waarden teruggeeft; je moet ze dus nog <strong>converteren</strong> met <code>Convert.To...()</code></li>
+      </ul>
+      <h4>voorbeeld 2: employee details opvragen</h4>
+      <p>Code voor de <code>Employee.GetById(int empId)</code> methode:</p>
+      <div class="precontainer">
+         <pre><code>public static Employee GetById(int empId) {
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      // open connectie
+      conn.Open();
+
+      // voer SQL commando uit
+      SqlCommand comm = new SqlCommand("SELECT * FROM Employee WHERE ID = @parID", conn);
+      comm.Parameters.AddWithValue("@parID", empId);
+      SqlDataReader reader = comm.ExecuteReader();
+
+      // lees en verwerk resultaten
+      if (!reader.Read()) return null;
+      return new Employee() {
+         Id = Convert.ToInt32(reader["id"]),
+         FirstName = Convert.ToString(reader["firstname"]),
+         LastName = Convert.ToString(reader["lastname"]),
+         Email = Convert.ToString(reader["email"]),
+         Gender = (GenderType)Convert.ToInt32(reader["gender"]),
+         BirthDate = Convert.ToDateTime(reader["birthdate"]),
+         AccessCode = reader["accesscode"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["accesscode"]),
+         BossId = reader["boss_id"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["boss_id"])
+      };
+   }
+}
+</code></pre>
+         <div class="codemarker" data-text=".ExecuteReader();"></div>
+         <div class="codemarker" data-text="reader.Read()"></div>
+      </div>
+      <ul class="arrow">
+         <li>merk op: we lezen maar één record (de employee)</li>
+      </ul>
+
+      <h4>data reader</h4>
+      <p>
+         <code>ExecuteReader()</code> is geen lijst of array, maar een <em>data reader</em>, i.e. een <strong>pointer</strong>, waarvan met <code>Read()</code> telkens het volgende record ingelezen wordt. Als er geen (meer) zijn krijg je een null terug.
+      </p>
+      <pre><code>SqlDataReader reader = comm.ExecuteReader(); 
+while (reader.Read() != null) { // of gewoon while (reader.Read()) {
+   ...
+}
+</code></pre>
+      <p>Je hoeft overigens geen lus te gebruiken: als je maar één record verwacht, kan het ook als volgt:</p>
+      <pre><code>SqlDataReader reader = comm.ExecuteReader();
+reader.Read();
+if (reader != null) ... 
+</code></pre>
+
+      <p>De databank geeft typeloze waarden terug; je moet ze dus nog converteren:</p>
+      <pre><code>SqlDataReader reader = comm.ExecuteReader();
+reader.Read();
+string email = Convert.ToString(reader["email"]); // converteer naar string
+int gender = Convert.ToInt32(reader["gender"]); // converteer naar int
+DateTime birthdate = Convert.ToDateTime(reader["birthdate"]);  // converteer naar DateTime
+...
+</code></pre>
+
+      <h4><code>DBNull.Value</code></h4>
+      <p>
+         Bij velden die NULL's kunnen bevatten, moet je in C# nullable types gebruiken:
+      </p>
+      <pre><code>// int? is int + null
+int? accesscode = reader["accesscode"] == DBNull.Value ? null : (int?) Convert.ToInt32(reader["accesscode"]);
+</code></pre>
+      <p>
+         Let op dat de reader geen <code>null</code> gebruikt, maar <code>DBNull.Value</code>. Je moet dus expliciet nulls omzetten van en naar <code>DBNull.Value</code>.
+         <br>Voor het schrijven naar de databank krijg je dan typisch zoiets:
+      </p>
+      <pre><code>comm.Parameters.AddWithValue("@par6", AccessCode == null ? DBNull.Value : AccessCode);</code></pre>
+
+      <h4>named parameters</h4>
+      <p>
+         In theorie had je de tweede query ook als volgt kunnen samenstellen:
+      </p>
+      <pre class="wrong"><code>SqlCommand comm = new SqlCommand($"SELECT * FROM Employee WHERE ID = {employeeId}", conn);
+</code></pre>
+      <p>
+         Dit is zeer onveilig en vatbaar voor SQL injectie (<a href="https://www.w3schools.com/sql/sql_injection.asp">lees meer hier</a>)!
+         Maak daarom <em>altijd</em> gebruik van named parameters:
+      </p>
+      <pre class="right"><code>SqlCommand comm = new SqlCommand("SELECT * FROM Employee WHERE ID = @parID", conn);
+comm.Parameters.AddWithValue("@parID", employeeId); // named parameter @parID
+</code></pre>
+
       <h3>DELETE query</h3>
-      <p>Voor DELETE queries gebruik je eveneens <span class="em">ExecuteNonQuery()</span> (voorbeeld voor verwijderen van een employee met een id <code>employeeId</code>):</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
-int employeeId = ...; // id van de employee
-using (SqlConnection conn = new SqlConnection(connString)) {
-   conn.Open();
-   SqlCommand comm = new SqlCommand("DELETE FROM Employee WHERE id=@parId", conn);
-   comm.Parameters.AddWithValue("@parId", employeeId);
-   comm.ExecuteNonQuery();
-   lbxResults.Items.Remove(lbxResults.SelectedItem);
+      <h4>voorbeeld 3: verwijderen employee</h4>
+      <p>
+         De DELETE syntax is eenvoudig. Code voor <code>Employee.DeleteFromDb()</code>. Het enige waar je op moet letten bij het verwijderen van data,
+         is dat je eerst ook alle gekoppede gegevens verwijdert, zodat je in praktijk hier drie DELETE queries nodig hebt:
+      </p>
+      <div class="precontainer">
+         <pre><code>public void DeleteFromDb() {
+   // verwijder gerelateerde jobs
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      conn.Open();
+      SqlCommand comm = new SqlCommand("DELETE FROM Job WHERE employee_id = @parID", conn);
+      comm.Parameters.AddWithValue("@parID", Id);
+      comm.ExecuteNonQuery();
+   }
+
+   // zet eventuele ondergeschikten zonder baas    
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      conn.Open();
+      SqlCommand comm = new SqlCommand("UPDATE Employee SET boss_id = @par1 WHERE boss_id=@parID", conn);
+      comm.Parameters.AddWithValue("@par1", DBNull.Value);
+      comm.Parameters.AddWithValue("@parID", Id);
+      comm.ExecuteNonQuery();
+   }
+
+   // verwijder tenslotte de werknemer zelf
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      conn.Open();
+      SqlCommand comm = new SqlCommand("DELETE FROM Employee WHERE ID = @parID", conn);
+      comm.Parameters.AddWithValue("@parID", Id);
+      comm.ExecuteNonQuery();
+   }
 }
 </code></pre>
-      <p><strong>Let op</strong>: voeg altijd parameters toe via <code>comm.Parameters</code>, waarbij automatisch een aantal veiligheidscontroles uitgevoerd worden. Doe het dus NOOIT rechtstreeks zoals hier:</p>
-      <pre class="wrong"><code>SqlCommand comm = new SqlCommand($"DELETE FROM Employee WHERE id={id})", conn);</code></pre>
-      <h3>UDPATE query</h3>
-      <p>Voor UPDATE queries gebruik je eveneens <span class="em">ExecuteNonQuery()</span> (voorbeeld voor aanpassen van een employee met id <code>employeeId</code>):</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
-int employeeId = ...; // id van de employee
-using (SqlConnection conn = new SqlConnection(connString)) {
-   conn.Open();
-   SqlCommand comm = new SqlCommand(@"UPDATE Employee SET firstname=@par1, lastname=@par2, telephone=@par3 WHERE id=@parId", conn);
-   comm.Parameters.AddWithValue("@par1", txtFirst.Text);
-   comm.Parameters.AddWithValue("@par2", txtLast.Text);
-   comm.Parameters.AddWithValue("@par3", txtTel.Text); 
-   comm.Parameters.AddWithValue("@parId", employeeId); 
-   comm.ExecuteNonQuery();
-}</code></pre>
-      <h3>Views</h3>
-      <p>De code voor het ophalen van gegevens uit een view is bijna identiek aan een normale SELECT query. Veronderstel een view <code>vwEmployeesSimple</code>:</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
-using (SqlConnection conn = new SqlConnection(connString)) {
-    conn.Open();
-    SqlCommand comm = new SqlCommand("SELECT * FROM vwEmployeesSimple", conn); // view in plaats van tabel
-    SqlDataReader reader = comm.ExecuteReader();
-    lbxResults.Items.Clear();
-    while (reader.Read()) {
-        int id = Convert.ToInt32(reader["ID"]);
-        string name = Convert.ToString(reader["name"]); 
-        string tel = Convert.ToString(reader["telephone"]);
-        lbxResults.Items.Add($"{id}: {name} ({tel})");
-    }
+         <div class="codemarker" data-text="SqlCommand comm = new SqlCommand(&quot;DELETE FROM Employee WHERE ID = @parID&quot;, conn);" data-height="65"></div>
+         <div class="codemarker" data-text="int employeeId = Convert.ToInt32(item.Tag);"></div>
+         <div class="codemarker" data-text="ExecuteNonQuery()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li><span class="em">ExecuteNonQuery()</span>: voer de query uit zonder iets terug te geven</li>
+      </ul>
+
+      <h3>INSERT query</h3>
+      <h4>voorbeeld 4: toevoegen employee</h4>
+      <p>
+         Code voor <code>Employee.InsertInDb()</code>:
+      </p>
+      <div class="precontainer">
+         <pre><code>public int InsertInDb() {
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      // open connectie
+      conn.Open();
+
+      // voer SQL commando uit
+      SqlCommand comm = new SqlCommand(@"
+         INSERT INTO Employee(firstname,lastname,email,gender,birthdate,accesscode,boss_id) 
+         output INSERTED.ID VALUES(@par1,@par2,@par3,@par4,@par5,@par6,@par7)", conn);
+      comm.Parameters.AddWithValue("@par1", FirstName);
+      comm.Parameters.AddWithValue("@par2", LastName);
+      comm.Parameters.AddWithValue("@par3", Email);
+      comm.Parameters.AddWithValue("@par4", Gender);
+      comm.Parameters.AddWithValue("@par5", BirthDate);
+      comm.Parameters.AddWithValue("@par6", AccessCode == null ? DBNull.Value: AccessCode);
+      comm.Parameters.AddWithValue("@par7", BossId == null ? DBNull.Value : BossId);
+
+      // return de id van het nieuwe record
+      Id = (int)comm.ExecuteScalar();
+      return Id;
+   }
 }
 </code></pre>
-      <h3>Stored procedures</h3>
-      <h4>Zonder return</h4>
-      <p>Veronderstel een stored procedure <code>spAddEmployee</code> met parameters <code>@fn</code>, <code>@ln</code> en <code>@email</code>:</p>
+         <div class="codemarker" data-text="ExecuteScalar()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li><span class="em">ExecuteScalar()</span>: voer een query uit en geef een getal terug (i.e. id van ingevoegde record)</li>
+      </ul>
+
+      <h3>UPDATE query</h3>
+      <h4>voorbeeld 5: bewerken employee</h4>
+      <p>
+         Code voor <code>Employee.UPdateInDb()</code>:
+      </p>
+      <div class="precontainer">
+         <pre><code>public void UpdateInDb() {
+   using (SqlConnection conn = new SqlConnection(connString)) {
+      // open connectie
+      conn.Open();
+
+      // voer SQL commando uit
+      SqlCommand comm = new SqlCommand(
+         @"UPDATE Employee
+               SET firstname=@par1,lastname=@par2,email=@par3,gender=@par4,birthdate=@par5,accesscode=@par6,boss_id=@par7 
+               WHERE ID = @parID" , conn);
+      comm.Parameters.AddWithValue("@par1", FirstName);
+      comm.Parameters.AddWithValue("@par2", LastName);
+      comm.Parameters.AddWithValue("@par3", Email);
+      comm.Parameters.AddWithValue("@par4", Gender);
+      comm.Parameters.AddWithValue("@par5", BirthDate);
+      comm.Parameters.AddWithValue("@par6", AccessCode == null ? DBNull.Value : AccessCode);
+      comm.Parameters.AddWithValue("@par7", BossId == null ? DBNull.Value : BossId);
+      comm.Parameters.AddWithValue("@parID", Id);
+      comm.ExecuteNonQuery();
+   }
+}
+</code></pre>
+         <div class="codemarker" data-text="ExecuteNonQuery()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li>gebruik <span class="em">ExecuteNonQuery()</span> (enkel uitvoeren, niks teruggeven)</li>
+      </ul>
+
+      <h3>Optioneel: views en stored procedures</h3>
+      <p>Voor wie vertrouwd is met database views en stored procedures en daar gebruik van wil maken in WPF, hier een paar codevoorbeelden.</p>
+      <h4>Views</h4>
+      <p>De code voor het ophalen van gegevens uit een view is identiek aan een normale SELECT query. Veronderstel een view <code>vwEmployeesSimple</code>:</p>
       <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+using (SqlConnection conn = new SqlConnection(connString)) {
+   conn.Open();
+   SqlCommand comm = new SqlCommand("SELECT * FROM vwEmployeesSimple", conn); // view in plaats van tabel
+   SqlDataReader reader = comm.ExecuteReader();
+   lbxResults.Items.Clear();
+   while (reader.Read()) {
+      int id = Convert.ToInt32(reader["ID"]);
+      string name = Convert.ToString(reader["name"]); 
+      string tel = Convert.ToString(reader["telephone"]);
+      lbxResults.Items.Add($"{id}: {name} ({tel})");
+   }
+}
+</code></pre>
+      <h4>Stored procedures</h4>
+      <p>De code verschilt lichtjes naargelang de stored procedure een returnwaarde heeft of niet.</p>
+      <p>Voorbeeld zonder return, stored procedure <code>spAddEmployee</code> met parameters <code>@fn</code>, <code>@ln</code> en <code>@email</code>:</p>
+      <div class="precontainer">
+         <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
 using (SqlConnection conn = new SqlConnection(connString)) {
    conn.Open();
    SqlCommand comm = new SqlCommand("spAddEmployee", conn);
    comm.CommandType = CommandType.StoredProcedure;
-   SqlParameter param1 = new SqlParameter("@fn", SqlDbType.VarChar);
+   SqlParameter param1 = new SqlParameter("@fn", SqlDbType.VarChar);   
    SqlParameter param2 = new SqlParameter("@ln", SqlDbType.VarChar);
    SqlParameter param3 = new SqlParameter("@email", SqlDbType.VarChar);
    param1.Value = txtFirst.Text;
@@ -325,32 +983,308 @@ using (SqlConnection conn = new SqlConnection(connString)) {
    comm.Parameters.Add(param1);
    comm.Parameters.Add(param2);
    comm.Parameters.Add(param3);
-   comm.ExecuteNonQuery();
+   comm.ExecuteNonQuery(); // zonder return: gebruik ExecuteNonQuery()
 }</code></pre>
-      <h4>Met return</h4>
-      <p>Veronderstel een stored procedure <code>spSearchEmployee</code>, die een lijst employees teruggeeft op basis van parameters <code>@parSearch</code> en <code>@parLimit</code>:</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+         <div class="codemarker" data-text="comm.CommandType = CommandType.StoredProcedure" data-color="brown"></div>
+         <div class="codemarker" data-text="SqlParameter param1 = new SqlParameter(&quot;@fn&quot;, SqlDbType.VarChar);   " data-color="navy" data-height="65"></div>
+         <div class="codemarker" data-text="ExecuteNonQuery()" data-color="purple"></div>
+      </div>
+
+      <ul class="arrow">
+         <li>duid aan dat het om een stored procedure gaat met <span class="em">comm.CommandType</span></li>
+         <li>vul waarden voor de parameters van de stored procedure in met <span class="em">SqlParameter</span></li>
+         <li>gebruik <span class="em">ExecuteNonQuery()</span> als de stored procedure geen return heeft</li>
+      </ul>
+
+      <p>Voorbeeld met return, stored procedure <code>spSearchEmployee</code>, die een lijst employees teruggeeft op basis van parameters <code>@parSearch</code> en <code>@parLimit</code>:</p>
+      <div class="precontainer">
+         <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
 using (SqlConnection conn = new SqlConnection(connString)) {
-    conn.Open();
-    SqlCommand comm = new SqlCommand("spSearchEmployee", conn);
-    comm.CommandType = CommandType.StoredProcedure;
-    SqlParameter parSearch = new SqlParameter("@parSearch", SqlDbType.NVarChar);
-    SqlParameter parLimit = new SqlParameter("@parLimit", SqlDbType.Int);
-    parSearch.Value = "An";
-    parLimit.Value = 3;
-    comm.Parameters.Add(parSearch);
-    comm.Parameters.Add(parLimit);
-    SqlDataReader reader = comm.ExecuteReader();
-    while (reader.Read()) {
-        // do something with the found employees
-    }
+   conn.Open();
+   SqlCommand comm = new SqlCommand("spSearchEmployee", conn);
+   comm.CommandType = CommandType.StoredProcedure;
+   SqlParameter parSearch = new SqlParameter("@parSearch", SqlDbType.NVarChar);
+   SqlParameter parLimit = new SqlParameter("@parLimit", SqlDbType.Int);
+   parSearch.Value = "An";
+   parLimit.Value = 3;
+   comm.Parameters.Add(parSearch);
+   comm.Parameters.Add(parLimit);
+   SqlDataReader reader = comm.ExecuteReader(); // met return: gebruik ExecuteReader()
+   while (reader.Read()) {
+      // do something with the found employees
+   }
 }
 </code></pre>
-            
+         <div class="codemarker" data-text="comm.CommandType = CommandType.StoredProcedure" data-color="brown"></div>
+         <div class="codemarker" data-text="SqlParameter parSearch = new SqlParameter(&quot;@parSearch&quot;, SqlDbType.NVarChar);" data-color="navy" data-height="45"></div>
+         <div class="codemarker" data-text="ExecuteReader()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li>gebruik <span class="em">ExecuteReader()</span> als de stored procedure een return heeft</li>
+      </ul>
+
+      <h2>Gegevens persisteren</h2>
+      <h3>bewaren in de <code>Tag</code> property</h3>
+      <p>
+         De <code>Tag</code> property van WPF controls is ideaal om de <code>id</code> van de gerelateerde records te onthouden:
+      </p>
+      <div class="precontainer">
+         <pre><code>ListBoxItem item = new ListBoxItem();
+...
+item.Tag = id; // onthoud de id in de ListBoxItem
+lbxResults.Items.Add(item);
+</code></pre>
+         <div class="codemarker" data-text="item.Tag = id"></div>
+      </div>
+      <p>
+         Bij selectie van een control kan je de <code>id</code> dan weer opvragen uit de <code>Tag</code> property:
+      </p>
+      <div class="precontainer">
+         <pre><code>ListBoxItem item = (ListBoxItem)lbxResults.SelectedItem;
+int employeeId = Convert.ToInt32(item.Tag); // vraag de id weer op
+...
+</code></pre>
+         <div class="codemarker" data-text="item.Tag"></div>
+      </div>
+
+      <h3>doorgeven via de <code>Window</code> constructor</h3>
+      <p>Bij het openen van <code>EmployeeEditWindow</code> geven we de <code>id</code> van de employee mee aan de constructor:</p>
+      <div class="precontainer">
+         <pre><code>private void BtnEdit_Click(object sender, RoutedEventArgs e) {
+   ...
+   EmployeeEditWindow editWin = new EmployeeEditWindow(employeeId);
+   editWin.Show();
+}
+</code></pre>
+         <div class="codemarker" data-text="employeeId"></div>
+      </div>
+      <p>In <code>EmployeeEditWindow.xaml.cs</code> vangen we dit weer op in de constructor, en bewaren we het in een globale variabele <code>employeeId</code>: </p>
+      <div class="precontainer">
+         <pre><code>public partial class EmployeeEditWindow : Window {
+   int employeeId;
+
+   public EmployeeEditWindow(int id) {
+      InitializeComponent();
+      employeeId = id;
+   }
+   ...
+}
+</code></pre>
+         <div class="codemarker" data-text="int id"></div>
+      </div>
+      <p>
+         Je kan via de Window constructor vanalles meegeven, zelfs een referentie naar het hoofdvenster zelf, en bijvoorbeeld een methode van het hoofdvenster uitvoeren vanuit een popup. Codevoorbeeld:
+      </p>
+      <div class="precontainer">
+         <pre><code>public partial class MainWindow : Window {
+   public void Test() { }
+   public MainWindow() {
+      InitializeComponent();
+      SomeWindow win = new SomeWindow(this); // geef referentie naar dit venster mee
+   }
+}
+</code></pre>
+         <div class="codemarker" data-text="Test()"></div>
+         <div class="codemarker" data-text="this"></div>
+      </div>
+      <div class="precontainer">
+         <pre><code>public partial class SomeWindow : Window {
+   public SomeWindow(MainWindow mainWin, int nr) {
+      InitializeComponent();
+      mainWin.Test(); // roep een methode op van MainWindow()
+   }
+}
+</code></pre>
+         <div class="codemarker" data-text="mainWin.Test()"></div>
+      </div>
+      <h3>Via App.config</h3>
+      <p>
+         Er zijn veel manieren om te communiceren tussen vensters. Algemene configuratieparameters voor je project kan je definiëren in <strong>App.config</strong>:
+      </p>
+      <pre><code class="language-html">&lt;configuration&gt;
+  &lt;appSettings&gt;
+    &lt;add key="someKey" value="ABC123" /&gt;
+  &lt;/appSettings&gt;
+  ...
+&lt;/configuration&gt;
+</code></pre>
+      <p>Oproepen vanuit je C# code:</p>
+      <pre><code>string someKey = ConfigurationManager.AppSettings["someKey"];</code></pre>
+      <h3>Via Application.Current.Properties</h3>
+      <p>Je kan ook gegevens over alle vensters heen onthouden in de <code>Application.Current.Properties</code> dictionary (een soort cookies maar dan voor WPF zeg maar):</p>
+      <pre><code>Application.Current.Properties["someKey"] = "ABC123";</code></pre>
+      <pre><code> string someKey = Application.Current.Properties["someKey"].ToString();</code></pre>
+      <p>
+         &rarr; wees hier zuinig mee; voor gegevens die voor één enkel ander venster bedoeld zijn gebruik je beter de constructor parameters (<a href="#doorgeven-via-de-window-constructor">zie eerder</a>)
+      </p>
+      <h3>Via Application.Current.MainWindow</h3>
+      <p>
+         Via <code>Application.Current.MainWindow</code> kan je aan het hoofdvenster en alle publieke properties en methodes, zoals we in de Edit- en New windows gedaan hebben:
+      </p>
+      <pre><code>((MainWindow)Application.Current.MainWindow).ShowEmployees(employeeId);</code></pre>
+      <p>
+         Met "hoofdvenster" wordt het venster bedoeld waarmee de app opgestart is, zoals vastgelegd in App.xaml:
+      </p>
+      <pre><code class="language-html">&lt;Application x:Class="WpfAdmin.App" ... StartupUri="MainWindow.xaml"&gt;
+   ...
+&lt;/Application&gt;</code></pre>
+
+
+      <h2>Gebruik class library in WpfCompany</h2>
+      <h3>Stap 1: referentie naar class library toevoegen in project</h3>
+      <p>
+         Om je class library te kunnen gebruiken in WpfCompany, voeg je een een referentie toe naar <strong>CLCompany</strong>:
+      </p>
+      <div class="flexcontainer wrap">
+         <p><img src="img/10_sql_databanken/cl-ref.png" alt="" class="w-600 bordered"></p>
+         <p><img src="img/10_sql_databanken/cl-ref2.png" alt="" class="w-600 bordered"></p>
+      </div>
+      <h3>Stap 2: using toevoegen</h3>
+      <p>
+         Voeg tenslotte in elke C# file waar je de class library wil gebruiken een <code>using</code> directive toe:
+      </p>
+      <p><img src="img/10_sql_databanken/cl-using.png" alt="" class="w-700 bordered"></p>
+      <div class="tips" data-caption="☝ LET OP">
+         <p>Het projecttype van de WPF application en de class library moet gelijk zijn (.NET8); je kan niet b.v. een .NET8 class library gebruiken in een .NET Framework project</p>
+      </div>
+      <h3>Stap 3: code uitwerken</h3>
+      <p>Je kan nu de klassen <code class="classcolor">Employee</code> en <code class="classcolor">Job</code> gebruiken in je hoofdproject.</p>
+      <h4>voorbeeld 1: vullen lijst employees (MainWindow)</h4>
+      <p>We schrijven een methode ShowEmployees(), die we oproepen in MainWindow():</p>
+      <p><img src="img/10_sql_databanken/main-list.png" alt="" class="bordered w-400"></p>
+      <div class="precontainer">
+         <pre><code>public MainWindow() {
+    InitializeComponent();
+    ShowEmployees();
+}
+
+public void ShowEmployees(int? selectedId = null) {
+    // wis lijst en labels
+    lbxResults.Items.Clear();
+    lblEmail.Content = lblGender.Content = lblBirthdate.Content = lblCode.Content = lblBoss.Content = "";
+
+    // laad alle werknemers in
+    List&lt;Employee&gt; allEmployees = Employee.GetAll();
+    foreach (Employee emp in allEmployees) {
+        lbxResults.Items.Add(new ListBoxItem() {
+            Content = $"{emp.Id}: {emp.FirstName} {emp.LastName}",
+            Tag = emp.Id, // onthoud de id in de Tag attribuut voor later
+            IsSelected = selectedId == emp.Id
+        });
+    }
+}</code></pre>
+         <div class="codemarker" data-text="Employee.GetAll()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li>merk op hoe <code>eenvoudig en kort</code> onze code is dankzij de class library!</li>
+      </ul>
+      <h4>voorbeeld 2: ophalend details employee (MainWindow)</h4>
+      <p>We schrijven een methode ShowEmployees(), die we oproepen in MainWindow():</p>
+      <p><img src="img/10_sql_databanken/main-details.png" alt="" class="bordered w-400"></p>
+      <div class="precontainer">
+         <pre><code>private void LbxResults_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+   // vraag employee op en stel button states in
+   ListBoxItem item = (ListBoxItem)lbxResults.SelectedItem;
+   btnEdit.IsEnabled = item != null;
+   btnRemove.IsEnabled = item != null;
+   if (item == null) return;
+   Employee employee = Employee.GetById(Convert.ToInt32(item.Tag)); // haal de id weer op uit de tag
+
+   // toon details 
+   lblEmail.Content = employee.Email;
+   lblGender.Content = employee.Gender == GenderType.Man ? "man" : employee.Gender == GenderType.Vrouw ? "vrouw" : "onbekend";
+   lblBirthdate.Content = employee.BirthDate.ToShortDateString();
+   lblCode.Content = employee.AccessCode == null ? "-" : employee.AccessCode.ToString();
+   lblBoss.Content = employee.Boss == null ? "-" : employee.Boss.ToString();
+   List&lt;string&gt; jobTitles = employee.Jobs.Select(j =&gt; j.JobTitle).ToList&lt;string&gt;();
+   txtJobs.Text = jobTitles.Count == 0 
+      ? "geen opgegeven" 
+      : (string.Join(Environment.NewLine, jobTitles) + (employee.Jobs.LastOrDefault().EndDate == null ? "(huidig)" : " (gestopt)"));
+}
+</code></pre>
+         <div class="codemarker" data-text="Employee.GetById(" data-color="purple"></div>
+         <div class="codemarker" data-text="employee.GetJobs()" data-color="purple"></div>
+      </div>
+      <ul class="arrow">
+         <li>merk op dat <strong>nergens SQL code in je hoofdprogramma</strong> voorkomt, alles zit verborgen in de class library</li>
+      </ul>
+      <h4>voorbeeld 3: lijst bazen vullen (EmployeeNewWindow)</h4>
+      <p>De code voor het vullen van de lijst bazen:</p>
+      <div class="flexcontainer">
+         <div class="precontainer">
+            <pre><code>List&lt;Employee&gt; allEmployees = Employee.GetAll();
+   allEmployees.Sort((x, y) =&gt; x.LastName.CompareTo(y.LastName));
+   foreach (Employee emp in allEmployees) {
+      cmbBoss.Items.Add(new ComboBoxItem() {
+         Content = emp,
+         Tag = emp.Id // onthoud weer de id in een Tag attribuut
+      });
+   }
+   </code></pre>
+            <div class="codemarker" data-text="employee.GetAll()" data-color="purple"></div>
+         </div>
+         <img src="img/10_sql_databanken/bosslist.png" alt="" class="w-300">
+      </div>
+      <h4>voorbeeld 4: nieuwe employee opslaan (EmployeeNewWindow)</h4>
+      <p>De code voor het opslaan van de employee:</p>
+      <p><img src="img/10_sql_databanken/main-save.png" alt="" class="bordered w-400"></p>
+      <div class="precontainer">
+         <pre><code>private void btnSave_Click(object sender, RoutedEventArgs e) {
+   // werknemer opslaan
+   int bossId = Convert.ToInt32(((ComboBoxItem)cmbBoss.SelectedItem).Tag); // haal boss id op uit Tag attribuut
+   Employee employee = new Employee() {
+      FirstName = txtFirst.Text,
+      LastName = txtLast.Text,
+      Email = txtEmail.Text,
+      Gender = rbnMale.IsChecked == true ? GenderType.Man : rbnFemale.IsChecked == true ? GenderType.Vrouw : GenderType.Onbekend,
+      BirthDate = (DateTime)datBirth.SelectedDate,
+      AccessCode = txtCode.Text == String.Empty ? null : (int?)Convert.ToInt32(txtCode.Text),
+      BossId = bossId == -1 ? null : (int?)bossId
+   };
+   employee.InsertToDb();
+
+   // herlaad hoofdvenster, en sluit dit venster
+   ((MainWindow)Application.Current.MainWindow).ShowEmployees(employee.Id);
+   this.Close();
+}
+</code></pre>
+         <div class="codemarker" data-text="employee.InsertToDb()" data-color="purple"></div>
+      </div>
+
+      <h2>Code verbeteringen</h2>
+
+      <h2>Tot slot: multi-tier architectuur</h2>
+      <p>
+         Dankzij de class library is de toepassing verder opgesplitst in verschillende lagen met elk een eigen taak. Dit is de zgn. meerlagen- of <mark>multi-tier architectuur</mark>:
+      </p>
+      <img src="img/10_sql_databanken/multitier.png" alt="" class="w-800">
+      <p>
+         Elke laag communiceert enkel met de laag erboven of eronder. Bijgevolg:
+      </p>
+      <ol>
+         <li>
+            <strong>Geen SQL code buiten de class library</strong>
+            <br>Alle communicatie met de databank moet via de class library gebeuren, en enkel daar mag SQL code voorkomen. De WPF windows bv. mogen nooit rechtstreeks de databank aanspreken.
+         </li>
+         <li>
+            <strong>Geen WPF controls in de class library</strong>
+            <br>Omgekeerd mag de class library, dus de businesslaag, niet rechtstreeks de XAML code, dus de presentatielaag, aanspreken. Daarom: geen WPF controls in de class library (zelfs niet als parameter!).
+         </li>
+      </ol>
+
+
+
+
+
+
 
 
 
    </main>
+   <footer>
+      <img src="img/thats-all.jpg" alt="">
+      <p>@2014, Rogier van der Linde</p>
+   </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
    <script src="vendor/prism.js"></script>
    <script src="js/mode.js"></script>

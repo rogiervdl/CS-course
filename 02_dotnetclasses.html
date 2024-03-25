@@ -57,7 +57,7 @@
       <a href="10_sql_databanken.html" class="main__thumb pro">
          <p class="thumb__title">10. SQL databanken</p>
          <img class="thumb__visual" src="img/10_sql_databanken/icon.png" alt="">
-      </a>   
+      </a>
    </nav>
    <h1>02. .NET Classes</h1>
    <div id="toc"></div>
@@ -69,7 +69,7 @@
          <h2>On Youtube</h2>
          <h3>objecten &amp; strings</h3>
          <div class="flexcontainer youtubecontainer">
-            <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/4Z5WYtVE0sU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            
+            <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/4Z5WYtVE0sU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <figure class="print">
                <a href="https://www.youtube.com/watch?v=4Z5WYtVE0sU"><img src="img/02_dotnetclasses/youtube-ooad-objecten.png" alt="" class="w-500"></a>
                <figcaption><a href="https://www.youtube.com/watch?v=4Z5WYtVE0sU">https://www.youtube.com/watch?v=4Z5WYtVE0sU</a></figcaption>
@@ -83,7 +83,7 @@
                   <li><a href="https://www.youtube.com/watch?v=4Z5WYtVE0sU?t=562">9:22 Canvas / Ellipse / Slider voorbeeld</a></li>
                   <li><a href="https://www.youtube.com/watch?v=4Z5WYtVE0sU?t=932">15:32 strings</a></li>
                </ul>
-            </div>         
+            </div>
          </div>
       </div>
       <!-- OVERZICHT -->
@@ -225,7 +225,7 @@
       <h3>Code voorbeelden</h3>
       <h4>Windows sound afspelen</h4>
       <p>
-         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten. 
+         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten.
          De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
       </p>
       <pre><code>...
@@ -286,8 +286,8 @@ mediaPlayer.Volume = 0.5; // zet volume op 50%
 
       <h4>Geluid afspelen met Windows Media Player library</h4>
       <p>
-         Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps. 
-         Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc. 
+         Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps.
+         Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc.
       </p>
       <p>
          Eerst moet je een referentie naar de library toevoegen aan je project. Dit kan in de Solution Explorer met de rechtermuisknop, “Add Reference...”:
@@ -487,7 +487,7 @@ using System.Collections.Generic;
                <td>sorteert een gegeven array</td>
             </tr>
          </tbody>
-      </table>   
+      </table>
       <h4>Code voorbeelden</h4>
       <h5>nagaan of waarde voorkomt in een array</h5>
       <p>Gebruik <code>Contains()</code> (returnwaarde <code>true</code> of <code>false</code>):</p>
@@ -736,7 +736,8 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
             <tr>
                <td>aantal elementen</td>
                <td><code>cijfers.Length</code></td>
-               <td><code>cijfers.Count</code></td></tr>
+               <td><code>cijfers.Count</code></td>
+            </tr>
             <tr>
                <td>sorteren</td>
                <td><code>Array.Sort(cijfers)</code></td>
@@ -760,10 +761,10 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
          </tbody>
       </table>
       <div class="pro">
-      <!-- STACK -->
-      <h3>Stack&lt;T&gt;</h3>
-      <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
-      <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
+         <!-- STACK -->
+         <h3>Stack&lt;T&gt;</h3>
+         <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
+         <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
 int val1 = stack.Pop(); // 11
 int val2 = stack.Pop(); // 8
 stack.Push(23);
@@ -772,10 +773,10 @@ int val4 = stack.Pop(); // 4
 int val5 = stack.Pop(); // FOUT! stack is leeg
 </code></pre>
 
-      <!-- QUEUE -->
-      <h3>Queue&lt;T&gt;</h3>
-      <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
-      <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
+         <!-- QUEUE -->
+         <h3>Queue&lt;T&gt;</h3>
+         <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
+         <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
 int val1 = queue.Dequeue(); // 4
 int val2 = queue.Dequeue(); // 8
 queue.Enqueue(23);
@@ -784,10 +785,10 @@ int val4 = queue.Dequeue(); // 23
 int val5 = queue.Dequeue(); // FOUT! queue is leeg
 </code></pre>
 
-      <!-- HASHSET -->
-      <h3>HashSet&lt;T&gt;</h3>
-      <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
-      <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
+         <!-- HASHSET -->
+         <h3>HashSet&lt;T&gt;</h3>
+         <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
+         <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
 set.Add("banaan");
 set.Add("citroen");
 set.Add("banaan");
@@ -796,15 +797,15 @@ set.Add("appel");
 set.Add("appel");
 set.Add("peer");
 Console.WriteLine(string.Join(", ", set));</code></pre>
-      <figure class="console">
-         <pre>banaan, appel, citroen, peer</pre>
-         <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
-      </figure>
+         <figure class="console">
+            <pre>banaan, appel, citroen, peer</pre>
+            <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
+         </figure>
 
-      <!-- DICTIONARY -->
-      <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
-      <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
-      <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
+         <!-- DICTIONARY -->
+         <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
+         <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
+         <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
 dict1["tuin"] = 11; // voeg een nieuw key-value paar toe
 dict1.Remove("mies"); // verwijder een key-value paar
 dict1["noot"] = 4; // verander de waarde van ene key-value paar
@@ -815,99 +816,99 @@ foreach (KeyValuePair&lt;string, int&gt; item in dict1)
     Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
 }
 </code></pre>
-      <figure class="console">
-         <pre>Dictionary 1 bevat key "noot": ja
+         <figure class="console">
+            <pre>Dictionary 1 bevat key "noot": ja
 Dictionary 1 bevat waarde 3: ja            
 Key: aap, Value: 6
 Key: noot, Value: 4
 Key: tuin, Value: 11</pre>
-         <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
-      </figure>
-      <h3>LINQ extensie methodes</h3>
-      <p>Linq biedt een aantal <a href="01_csharpsyntax.html#extensie-methodes">extensie methodes</a> met de <a href="01_csharpsyntax.html#lambda-expressies">lambda expressie syntax</a> voor collecties. Een greep uit het aanbod:</p>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Methode</th>
-               <th scope="col">Omschrijving</th>
-               <th scope="col">Returntype</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>All()</code></td>
-               <td>controleer of alle items aan een voorwaarde voldoen</td>
-               <td><code>bool</code></td>
-            </tr>
-            <tr>
-               <td><code>Any()</code></td>
-               <td>controleer of minstens één item aan een voorwaarde voldoet</td>
-               <td><code>bool</code></td>
-            </tr>
-            <tr>
-               <td><code>Average()</code></td>
-               <td>bepaal het gemiddelde van de items</td>
-               <td><code>double</code></td>
-            </tr>
-            <tr>
-               <td><code>Count()</code></td>
-               <td>tel het aantal items</td>
-               <td><code>int</code></td>
-            </tr>
-            <tr>
-               <td><code>Distinct()</code></td>
-               <td>verwijder alle dubbels</td>
-               <td><code>IEnumerable</code></td>
-            </tr>
-            <tr>
-               <td><code>First()</code></td>
-               <td>geef het eerste item; fout indien niet gevonden</td>
-               <td><code>object</code></td>
-            </tr>
-            <tr>
-               <td><code>FirstOrDefault()</code></td>
-               <td>geef het eerste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
-               <td><code>object</code></td>
-            </tr>
-            <tr>
-               <td><code>Last()</code></td>
-               <td>geef het laatste item; fout indien niet gevonden</td>
-               <td><code>object</code></td>
-            </tr>
-            <tr>
-               <td><code>LastOrDefault()</code></td>
-               <td>geef het laatste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
-               <td><code>object</code></td>
-            </tr>
-            <tr>
-               <td><code>OrderBy()</code></td>
-               <td>sorteer items op basis van een item waarde</td>
-               <td><code>IEnumerable</code></td>
-            </tr>
-            <tr>
-               <td><code>Select()</code></td>
-               <td>selecteer van elk item een waarde</td>
-               <td><code>IEnumerable</code></td>
-            </tr>
-            <tr>
-               <td><code>Sum()</code></td>
-               <td>bepaal de som van de items</td>
-               <td><code>int/double</code></td>
-            </tr>
-            <tr>
-               <td><code>Take()</code></td>
-               <td>neem de eerste n items</td>
-               <td><code>IEnumerable</code></td>
-            </tr>
-            <tr>
-               <td><code>Where()</code></td>
-               <td>filter items op basis van een voorwaarde</td>
-               <td><code>IEnumerable</code></td>
-            </tr>
-         </tbody>
-      </table>
-      <p>Voorbeelden met arrays:</p>
-      <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
+            <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
+         </figure>
+         <h3>LINQ extensie methodes</h3>
+         <p>Linq biedt een aantal <a href="01_csharpsyntax.html#extensie-methodes">extensie methodes</a> met de <a href="01_csharpsyntax.html#lambda-expressies">lambda expressie syntax</a> voor collecties. Een greep uit het aanbod:</p>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+                  <th scope="col">Returntype</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>All()</code></td>
+                  <td>controleer of alle items aan een voorwaarde voldoen</td>
+                  <td><code>bool</code></td>
+               </tr>
+               <tr>
+                  <td><code>Any()</code></td>
+                  <td>controleer of minstens één item aan een voorwaarde voldoet</td>
+                  <td><code>bool</code></td>
+               </tr>
+               <tr>
+                  <td><code>Average()</code></td>
+                  <td>bepaal het gemiddelde van de items</td>
+                  <td><code>double</code></td>
+               </tr>
+               <tr>
+                  <td><code>Count()</code></td>
+                  <td>tel het aantal items</td>
+                  <td><code>int</code></td>
+               </tr>
+               <tr>
+                  <td><code>Distinct()</code></td>
+                  <td>verwijder alle dubbels</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>First()</code></td>
+                  <td>geef het eerste item; fout indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>FirstOrDefault()</code></td>
+                  <td>geef het eerste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>Last()</code></td>
+                  <td>geef het laatste item; fout indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>LastOrDefault()</code></td>
+                  <td>geef het laatste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>OrderBy()</code></td>
+                  <td>sorteer items op basis van een item waarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Select()</code></td>
+                  <td>selecteer van elk item een waarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Sum()</code></td>
+                  <td>bepaal de som van de items</td>
+                  <td><code>int/double</code></td>
+               </tr>
+               <tr>
+                  <td><code>Take()</code></td>
+                  <td>neem de eerste n items</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Where()</code></td>
+                  <td>filter items op basis van een voorwaarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+            </tbody>
+         </table>
+         <p>Voorbeelden met arrays:</p>
+         <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
 string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // { "apple", "grape" }
 int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // { 5, 4, 5, 6, 9 }
 bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
@@ -924,9 +925,9 @@ int lowest = numbers.Min() // 1
 int first = numbers.First() // 3
 int last = numbers.Last() // 10
 </code></pre>
-      <ul class="arrow">
-         <li>dit werkt even goed met <code>List&lt;&gt;</code>; gebruik dan waar nodig <code>ToList()</code> in plaats van <code>ToArray()</code> om een <code>IEnumerable</code> om te zetten</li>
-      </ul>
+         <ul class="arrow">
+            <li>dit werkt even goed met <code>List&lt;&gt;</code>; gebruik dan waar nodig <code>ToList()</code> in plaats van <code>ToArray()</code> om een <code>IEnumerable</code> om te zetten</li>
+         </ul>
 
       </div>
 
@@ -1233,10 +1234,10 @@ Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
       <p>Opmerking: het argument (0) wordt een <em>exit-code</em> genoemd. Een exit-code van 0 geeft aan dat het programma succesvol (zonder errors) beëindigd is. Een exit-code verschillend van 0, wordt gebruikt om aan te geven dat er tijdens de uitvoer van het programma iets foutgelopen is. De waarde duidt dan het type fout aan (zelfgekozen).</p>
 
       <div class="pro">
-      <!-- LINQ -->
-      <h2>LINQ</h2>
-      <p>De .NET namespace <code>System.Linq</code> biedt een uitbreiding van C# waarmee je met SQL-achtige queries allerlei databronnen kan bevragen. Een voorbeeld voor een array:</p>
-      <pre><code>int[] scores = new int[] { 97, 54, 92, 81, 60 };
+         <!-- LINQ -->
+         <h2>LINQ</h2>
+         <p>De .NET namespace <code>System.Linq</code> biedt een uitbreiding van C# waarmee je met SQL-achtige queries allerlei databronnen kan bevragen. Een voorbeeld voor een array:</p>
+         <pre><code>int[] scores = new int[] { 97, 54, 92, 81, 60 };
 
 // Define the query expression.
 int[] scoresAbove80 = 
@@ -1247,13 +1248,13 @@ int[] scoresAbove80 =
 // Execute the query.
 Console.Write(string.Join(", ", scoresAbove80));
 </code></pre>
-<figure class="console">
-   <pre>97, 92, 81</pre>
-   <figcaption>resultaat in de console</figcaption>
-</figure>
-      <h3>LINQ extensie methodes voor collecties</h3>
-      <p>Linq biedt ook een aantal <a href="02_dotnetclasses.html#linq-extensie-methodes">extensie methodes voor collecties</a></p>
-   </div>
+         <figure class="console">
+            <pre>97, 92, 81</pre>
+            <figcaption>resultaat in de console</figcaption>
+         </figure>
+         <h3>LINQ extensie methodes voor collecties</h3>
+         <p>Linq biedt ook een aantal <a href="02_dotnetclasses.html#linq-extensie-methodes">extensie methodes voor collecties</a></p>
+      </div>
 
       <!-- MATH -->
       <h2>Math</h2>
@@ -1464,7 +1465,7 @@ String samengevoegd = String.Join(", ", arr1);</code></pre>
                <td>lege string constante</td>
             </tr>
          </tbody>
-      </table>      
+      </table>
       <table class="light top">
          <thead>
             <tr>
@@ -1518,7 +1519,7 @@ String samengevoegd = String.Join(", ", arr1);</code></pre>
                <td>karakters wegnemen (<em>trimmen</em>) aan het begin en het einde</td>
             </tr>
          </tbody>
-      </table>      
+      </table>
       <h3>String's vergelijken</h3>
       <p>Je kunt string's op twee verschillende maniere vergelijken:</p>
       <ul>
@@ -1544,7 +1545,7 @@ int test4 = str1.CompareTo(str4); // 1; "banaan" komt alfabetisch ná "appel"
       <h3>Code voorbeelden</h3>
       <h4>Lengte bepalen</h4>
       <p>De lengte bepaal je met de <code>Length property</code></p>
-<pre><code>string str1 = "Now have that tasty morning burger.";
+      <pre><code>string str1 = "Now have that tasty morning burger.";
 int len = str1.Length; // 35, dus inclusief spaties, leestekens enz...</code></pre>
       <h4>Trimmen</h4>
       <p>Trimmen betekent karakters links en/of rechts wegsnijden:</p>
@@ -1552,8 +1553,8 @@ int len = str1.Length; // 35, dus inclusief spaties, leestekens enz...</code></p
 string str1 = "  ,Guitar, drum, Bass,. ";
 str1 = str1.Trim(); // ",Guitar, drum, Bass,."
 str1 = str1.Trim(new char[] { ',', '.' }); // "Guitar, drum, Bass"</code></pre>
-<h4>Controle op deelstrings</h4>
-<pre><code>string str2 = "Now have that tasty morning burger.";
+      <h4>Controle op deelstrings</h4>
+      <pre><code>string str2 = "Now have that tasty morning burger.";
 int int1 = str1.IndexOf("at"); // 11
 int int2 = str1.IndexOf('z'); // -1; not found
 int int3 = str1.LastIndexOf('e'); // 32
@@ -1561,13 +1562,13 @@ bool bool1 = str1.StartsWith("No"); // true
 bool bool2 = str1.Contains("that"); // true
 bool bool3 = str1.Contains('X'); // false</code></pre>
       <h4>Tekst vervangen, omzetten, inkorten</h4>
-<pre><code>string str1 = "Hey hey hey, please DO NOT touch that!";
+      <pre><code>string str1 = "Hey hey hey, please DO NOT touch that!";
 string str2 = str1.Substring(0, 21); // "Hey hey hey, please DO"
 string str3 = str1.ToLower(); // "hey hey hey, please do not touch that!"
 string str4 = str1.ToUpper(); // "HEY HEY HEY, PLEASE DO NOT TOUCH THAT!"
 string str4 = str1.Replace("hey", "yo"); // "Hey yo yo, please DO NOT touch that!!" &rarr; hoofdlettergevoelig, vervangt alle
 </code></pre>
-         
+
       <h4>Nagaan of een string leeg is</h4>
       <p>Gebruik <code>string.IsNullOrEmpty()</code>:</p>
       <pre><code>string str1 = "test";
@@ -1657,7 +1658,7 @@ string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", 
                <td>boolean die aangeeft of de stopwatch loopt of niet</td>
             </tr>
          </tbody>
-      </table>      
+      </table>
       <table class="light">
          <thead>
             <tr>
@@ -1714,7 +1715,7 @@ Timer is gestopt. De verstreken tijd is 2.47s</pre>
                <td>boolean die aangeeft of de timer loopt of niet</td>
             </tr>
          </tbody>
-      </table>      
+      </table>
       <table class="light">
          <thead>
             <tr>
@@ -1747,8 +1748,8 @@ Timer is gestopt. De verstreken tijd is 2.47s</pre>
             </tr>
          </tbody>
       </table>
-      <h4>Codevoorbeeld</h4>  
-      <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>    
+      <h4>Codevoorbeeld</h4>
+      <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
       <pre><code class="language-html">&lt;Label x:Name="lblCount" Content="0" .../&gt;
 &lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
 </code></pre>
@@ -1777,12 +1778,16 @@ private void DoSomething(object sender, EventArgs e)
     lblCount.Content = ticks;
 }
 </code></pre>
-<figure>
-   <img src="img/02_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
-   <figcaption>DispatcherTimer voorbeeld</figcaption>
-</figure>
+      <figure>
+         <img src="img/02_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
+         <figcaption>DispatcherTimer voorbeeld</figcaption>
+      </figure>
 
    </main>
+   <footer>
+      <img src="img/thats-all.jpg" alt="">
+      <p>@2014, Rogier van der Linde</p>
+   </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
    <script src="vendor/prism.js"></script>
    <script src="js/mode.js"></script>
