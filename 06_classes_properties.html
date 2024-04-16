@@ -409,6 +409,7 @@ Customer cust3 = new Customer() {
 </code></pre>
       </div>
       <h2>Methodes</h2>
+      <h3>eigen methodes</h3>
       <p>Laat we onze klasse uitbreiden met methodes. Voegen we eerst nog een klasse <code class="classcolor">Account</code> toe...</p>
       <pre class="prism-vslight"><code>namespace WpfBanking {
    class Account {
@@ -464,6 +465,62 @@ Customer cust3 = new Customer() {
       </ul>
       <p>De nieuwe methodes (of toch de publieke) verschijnen eveneens in de intellisense: </p>
       <img src="img/06_classes_properties/methodes.png" alt="" class="bordered w-600">
+      <h3><code>override ToString()</code></h3>
+      <p>Elk object heeft een standaard <code>ToString()</code> implementatie, d.w.z. de weergave in een <code>string</code> context. Voegen we b.v. een paar <code>Customer</code> instanties toe aan een <code>ListBox</code>:</p>
+      <pre class="prism-vslight"><code>Customer cust1 = new Customer() {
+    FirstName = "Miles",
+    LastName = "Davis",
+    Rating = 5
+};
+Customer cust2 = new Customer() {
+    FirstName = "Pharoah",
+    LastName = "Sanders",
+    Rating = 3
+};
+Customer cust3 = new Customer() {
+    FirstName = "John",
+    LastName = "Coltrane",
+    Rating = 4
+};
+lbxCustomers.Items.Add(new ListBoxItem() {
+    Content = cust1
+});
+lbxCustomers.Items.Add(new ListBoxItem() {
+    Content = cust2
+});
+lbxCustomers.Items.Add(new ListBoxItem() {
+    Content = cust3
+});
+</code></pre>
+      <p>De weergave van de customers in de <code>ListBox</code> is nogal nietszeggend:</p>
+      <img src="img/06_classes_properties/tostring1.png" alt="" class="w-300 bordered">
+      <p>Je kan dit oplossen door een eigen implementatie te voorzien van de <code>ToString()</code> methode (<code>override</code> betekent "overschrijven"):</p>
+      <pre class="prism-vslight"><code>class Customer
+{
+   ...
+
+   public override string ToString()
+   {
+      return $"{FirstName} {LastName} - rating: {Rating}";
+   }
+}
+</code></pre>
+      <p>Deze methode wordt dan gebruikt in elke <code>string</code> context:</p>
+      <img src="img/06_classes_properties/tostring2.png" alt="" class="w-300 bordered">
+      <p>Nog een ander voorbeeld van zo'n <code>string</code> context, in een Console toepassing:</p>
+      <pre class="prism-vslight"><code>Customer cust1 = new Customer() {
+    FirstName = "Miles",
+    LastName = "Davis",
+    Rating = 5
+};
+Console.WriteLine($"customer 1: {cust1}");
+</code></pre>
+<figure class="console">
+   <pre>
+customer 1: Miles Davis - rating: 5
+</pre>
+   <figcaption>resultaat in de console</figcaption>
+</figure>
 
       <h2>Best practices</h2>
       <h3>afspraken</h3>
