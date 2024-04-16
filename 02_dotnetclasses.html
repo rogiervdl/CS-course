@@ -259,6 +259,10 @@ player.Stop(); // stop het geluid voortijdig
       <h4>Geluid afspelen met MediaPlayer</h4>
       <p>
          Dit is een prima klasse om geluiden af te spelen in WPF toepassingen, met veel functionaliteit als starten, pauzeren, stoppen, volume, balans, detecteren wanneer het geluid gestopt is enz... In Console toepassingen werkt het evenwel niet; daar gebruik je best de Windows Media Player library (zie volgend onderdeel).
+         Let er op dat Windows Media Player ingeschakeld is in Windows:
+      </p>
+      <img src="img/02_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
+      <p>
          Schematisch codefragment:
       </p>
       <pre><code>...
@@ -288,7 +292,9 @@ mediaPlayer.Volume = 0.5; // zet volume op 50%
       <p>
          Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps.
          Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc.
+         Let er weer op dat Windows Media Player ingeschakeld is in Windows:
       </p>
+      <img src="img/02_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
       <p>
          Eerst moet je een referentie naar de library toevoegen aan je project. Dit kan in de Solution Explorer met de rechtermuisknop, “Add Reference...”:
       </p>
