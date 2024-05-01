@@ -25,7 +25,7 @@ function drawCodeMarkers() {
 		const markers = pc.querySelectorAll('.codemarker');
 		const code = pc.querySelector('code');
 
-      // backup innerHTML, and replace with innerText
+		// backup innerHTML, and replace with innerText
 		const innerHTML = code.innerHTML;
 		code.innerHTML = code.innerText.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 
@@ -53,10 +53,10 @@ function drawCodeMarkers() {
 			div.style.height = `${m.dataset.height ?? coords.height + 8}px`;
 			div.style.width = `${m.dataset.width ?? coords.width + 8}px`;
 			if (m.dataset.color) {
-            if (m.dataset.color.startsWith('#')) div.style.borderColor = m.dataset.color;
-            else div.classList.add(m.dataset.color);
-         }
-         code.parentNode.appendChild(div);
+				if (m.dataset.color.startsWith('#')) div.style.borderColor = m.dataset.color;
+				else div.classList.add(m.dataset.color);
+			}
+			code.parentNode.appendChild(div);
 		});
 
 		// restore innerHTML
@@ -69,7 +69,7 @@ function drawCodeMarkers() {
  */
 function repaint() {
 	drawCodeMarkers();
-   document.body.style.paddingTop = `${document.querySelector('nav').offsetHeight}px`;
+	document.body.style.paddingTop = `${document.querySelector('nav').offsetHeight}px`;
 }
 
 /**
@@ -85,6 +85,11 @@ function startApp() {
 		title.dataset.text = title.innerHTML;
 		title.innerHTML = title.innerHTML + `<span class="title__anchor" id="${id}"></span>`;
 	});
+	const anchor = location.hash.substring(1);
+	if (anchor.length) {
+		const elem = document.getElementById(anchor);
+		if (elem) elem.scrollIntoView();
+	}
 
 	// part 2: build TOC
 	if (!DOM.titles.length) return;
@@ -99,12 +104,12 @@ function startApp() {
 
 		// increment title count
 		titleNrs[titleNr - 1]++;
-		if (titleNrs[titleNr - 1] == 1) toc += `${toc.includes('<li>')? '<li>' : ''}<ul>`;
+		if (titleNrs[titleNr - 1] == 1) toc += `${toc.includes('<li>') ? '<li>' : ''}<ul>`;
 
 		// reset all subtitle counts
 		for (let i = titleNr; i < titleNrs.length; i++) {
 			if (titleNrs[i] == 0) continue;
-			toc += `</ul>${toc.includes('</li>')? '</li>' : ''}`;
+			toc += `</ul>${toc.includes('</li>') ? '</li>' : ''}`;
 			titleNrs[i] = 0;
 		}
 		const prefix = titleNrs.filter(t => t != 0).join('.');
@@ -120,13 +125,13 @@ function startApp() {
 		// if (document.body.scrollTop < 200) {
 		// 	document.body.style.paddingTop = `${parseInt(document.querySelector('.site__nav').clientHeight) + 50}px`;
 		// }
-      if (DOM.nav.classList.contains('condensed') && !(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
-         DOM.nav.classList.remove('condensed');
-         setTimeout(function() { document.body.style.paddingTop = `${document.querySelector('nav').offsetHeight}px`; }, 500);
-      }
-      if (!DOM.nav.classList.contains('condensed') && (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
-         DOM.nav.classList.add('condensed');
-      }
+		if (DOM.nav.classList.contains('condensed') && !(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
+			DOM.nav.classList.remove('condensed');
+			setTimeout(function () { document.body.style.paddingTop = `${document.querySelector('nav').offsetHeight}px`; }, 500);
+		}
+		if (!DOM.nav.classList.contains('condensed') && (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
+			DOM.nav.classList.add('condensed');
+		}
 		DOM.nav.classList.toggle('condensed', document.body.scrollTop > 50 || document.documentElement.scrollTop > 50);
 	});
 
@@ -137,7 +142,7 @@ function startApp() {
 			if (pre.dataset.demo == undefined) return;
 			const button = document.createElement('button');
 			button.textContent = 'Demo';
-			button.onclick = function() {
+			button.onclick = function () {
 				DOM.diaDemoWindow.innerHTML = '<iframe title="demo"></iframe>';
 				const src = env.element.parentNode.dataset.demo;
 				if (src === undefined) return;
@@ -171,10 +176,10 @@ function startApp() {
 	// part 5: code markers
 	window.addEventListener('resize', repaint);
 
-   // part 6: error comment markers
-   document.querySelectorAll('code .token.comment').forEach(t => {
-      if (t.innerText.toLowerCase().includes('// fout')) t.classList.add('error');
-   });
+	// part 6: error comment markers
+	document.querySelectorAll('code .token.comment').forEach(t => {
+		if (t.innerText.toLowerCase().includes('// fout')) t.classList.add('error');
+	});
 }
 
 /**
@@ -194,7 +199,7 @@ function createIdFrom(str) {
 }
 
 // start your engines!
-window.addEventListener('load', function() {
-   repaint();
-   startApp();
+window.addEventListener('load', function () {
+	repaint();
+	startApp();
 });
