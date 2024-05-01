@@ -399,6 +399,12 @@ namespace WpfCompany {
 }
 </code></pre>
       </div>
+      <h4>openen vanuit MainWindow()</h4>
+      <p>Een nieuw venster openen vanuit het hoofdvenster kan via de <strong>constructor</strong>, b.v. de code om <code>EmployeeNewWindow</code> te openen met <code>BtnNew_Click</code> wordt dan:</p>  
+      <p><img src="img/10_sql_databanken/new-open.png" alt="" class="w-800 bordered"></p>
+      <p>
+         <strong>Let op</strong>: voor <code>EmployeeEditWindow</code> is het iets moeilijker, omdat we op één of andere manier ook de id van de te bewerken gebruiker moeten meegeven. Hoe dit gebeurt wordt beschreven in het deel <a href="#gegevens-persisteren-en-doorgeven">Gegevens persisteren en doorgeven</a>
+      </p>
 
 
 
@@ -1023,7 +1029,7 @@ using (SqlConnection conn = new SqlConnection(connString)) {
          <li>gebruik <span class="em">ExecuteReader()</span> als de stored procedure een return heeft</li>
       </ul>
 
-      <h2>Gegevens persisteren</h2>
+      <h2>Gegevens persisteren en doorgeven</h2>
       <h3>bewaren in de <code>Tag</code> property</h3>
       <p>
          De <code>Tag</code> property van WPF controls is ideaal om de <code>id</code> van de gerelateerde records te onthouden:
