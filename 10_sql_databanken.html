@@ -472,7 +472,7 @@ namespace WpfAdmin
       <h3>Stap 5: SQL query uitvoeren</h3>
       <h4>connectie openen met <code>using</code></h4>
       <p>Basisschema voor het uitvoeren van SQL queries: </p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) {
     conn.Open();
     // voer je SQL query hier uit
@@ -508,7 +508,7 @@ using (SqlConnection conn = new SqlConnection(connString)) {
          Net zoals bij bestanden kunnen bij databanken onverwachte fouten optreden: de connectie kan geweigerd worden, de databank kan offline zijn…
          Daarom moet je bij <strong><em>elke</em> databank operatie een try-catch blok</strong> gebruiken. Het vorige fragment mét try-catch:
       </p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 try {
    using (SqlConnection conn = new SqlConnection(connString)) {
       conn.Open();
@@ -532,7 +532,7 @@ try {
       </ul>
       <p>De tweede optie is de juiste: in praktijk zal de server om tijd te winnen een aantal connecties permanent open houden zodat die snel kunnen toegewezen worden aan een programma dat die op dat moment nodig heeft. Door deze connectie zo snel mogelijk weer vrij te geven, kunnen andere databank gebruikers sneller weer aan de beurt komen. Dit heet <span class="em">connection pooling</span>.</p>
       <p>Eén connectie vroeg openen en laat sluiten is dus fout:</p>
-      <pre class="wrong"><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre class="wrong"><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) { // open in het begin
    conn.Open();
    // doe andere taken
@@ -547,7 +547,7 @@ using (SqlConnection conn = new SqlConnection(connString)) { // open in het begi
    // ...
 }  // sluit op het einde</code></pre>
       <p>Open beter meerdere connecties zo laat mogelijk en sluit ze zo vroeg mogelijk:</p>
-      <pre class="right"><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre class="right"><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 // doe andere taken
 // ...
 using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mogelijk
@@ -957,7 +957,7 @@ comm.Parameters.AddWithValue("@parID", employeeId); // named parameter @parID
       <p>Voor wie vertrouwd is met database views en stored procedures en daar gebruik van wil maken in WPF, hier een paar codevoorbeelden.</p>
       <h4>Views</h4>
       <p>De code voor het ophalen van gegevens uit een view is identiek aan een normale SELECT query. Veronderstel een view <code>vwEmployeesSimple</code>:</p>
-      <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+      <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) {
    conn.Open();
    SqlCommand comm = new SqlCommand("SELECT * FROM vwEmployeesSimple", conn); // view in plaats van tabel
@@ -975,7 +975,7 @@ using (SqlConnection conn = new SqlConnection(connString)) {
       <p>De code verschilt lichtjes naargelang de stored procedure een returnwaarde heeft of niet.</p>
       <p>Voorbeeld zonder return, stored procedure <code>spAddEmployee</code> met parameters <code>@fn</code>, <code>@ln</code> en <code>@email</code>:</p>
       <div class="precontainer">
-         <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+         <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) {
    conn.Open();
    SqlCommand comm = new SqlCommand("spAddEmployee", conn);
@@ -1004,7 +1004,7 @@ using (SqlConnection conn = new SqlConnection(connString)) {
 
       <p>Voorbeeld met return, stored procedure <code>spSearchEmployee</code>, die een lijst employees teruggeeft op basis van parameters <code>@parSearch</code> en <code>@parLimit</code>:</p>
       <div class="precontainer">
-         <pre><code>string connString = ConfigurationManager.AppSettings["connString"];
+         <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) {
    conn.Open();
    SqlCommand comm = new SqlCommand("spSearchEmployee", conn);
