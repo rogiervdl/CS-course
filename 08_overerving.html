@@ -153,7 +153,7 @@
 }</code></pre>
          <img src="img/08_overerving/kat.png" alt="" class="w-300">
       </div>
-      <p>Vervolgens maken we een klasse Konijn (veronderstel een bestaande klasse <code class="classcolor">Recept</code>):</p>
+      <p>Vervolgens maken we een klasse <code class="classcolor">Konijn</code> (veronderstel een bestaande klasse <code class="classcolor">Recept</code>):</p>
       <div class="codecompare top">
          <pre class="w-750"><code>class Konijn {
    // properties
@@ -694,6 +694,55 @@ Konijn flappie = new Konijn(); // ok; afgeleide klasse Konijn kan wel gebruikt w
             Aan jou om door ervaring je eigen stijl te ontwikkelen.
          </p>
       </div>
+      <h2>Pure klassen</h2>
+      <p>
+         Je zult misschien gemerkt hebben dat onze klassen <code class="classcolor">Huisdier</code>, <code class="classcolor">Kip</code>, <code class="classcolor">Kat</code> en <code class="classcolor">Konijn</code> puur zijn: nergens komt b.v. <code>Console.WriteLine()</code> voor. Dat betekent dat we onze klassen naadloos en onveranderd kunnen gebruiken in een heel andere omgeving, b.v. in een WPF toepassing:
+      </p>
+      <div class="codecompare top">
+         <pre class="w-800 h-500" data-caption="test"><code>public partial class MainWindow : Window {
+    public MainWindow() {
+      InitializeComponent();
+      // voorbeelden gebruik lege constructor met object initializer syntax 
+      lbxDieren.Items.Add(new Kip() { Leeftijd = 0 });
+      lbxDieren.Items.Add(new Kip() { Leeftijd = 5 });
+      lbxDieren.Items.Add(new Kat() { Leeftijd = 12, Naam = "Minou" });
+      lbxDieren.Items.Add(new Konijn() { Leeftijd = 7, Naam = "Flappie" });
+
+      // voorbeelden gebruik niet-lege constructor
+      lbxDieren.Items.Add(new Kip(4, "Deze haan is erg schuw en duidelijk..."));
+      lbxDieren.Items.Add(new Kat(1, "Ik heb groene ogen, daarom...", "Pistache"));
+      lbxDieren.Items.Add(new Konijn(2, "Hoi ik ben Caramel en...", "Caramel"));
+    }
+
+    private void BtnTelDieren_Click(object sender, RoutedEventArgs e) {
+      int aantalKatten = 0;
+      int aantalKonijnen = 0;
+      int aantalKippen = 0;
+      foreach (Huisdier dier in lbxDieren.Items) {
+         if (dier is Kat) aantalKatten++;
+         else if (dier is Konijn) aantalKonijnen++;
+         else if (dier is Kip) aantalKippen++; 
+         txtAantalDieren.Text = $"er zijn {aantalKatten} katten, {aantalKonijnen} konijnen en {aantalKippen} kippen";
+      }   
+    }
+
+    private void LbxDieren_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+      Huisdier dier = lbxDieren.SelectedItem as Huisdier;
+      if (dier == null) return;
+      txtDetails.Text = dier.Info();
+      if (dier is Kat) {
+         Kat kat = dier as Kat;
+         txtDetails.Text += $"{Environment.NewLine}{kat.Naam} zegt: {kat.Spreek()}!";
+      }
+      if (dier is Kip) {
+         Kip kip = dier as Kip;
+         txtDetails.Text += $"{Environment.NewLine}De kip zegt: {kip.Spreek()}!";
+      }
+   }
+}</code></pre>
+         <img src="img/08_overerving/wpf.png" alt="" class="w-500">
+      </div>   
+      <p>De gebruikte klassen zijn exact dezelfde gebleven.</p>
    </main>
    <footer>
       <img src="img/thats-all.jpg" alt="">
