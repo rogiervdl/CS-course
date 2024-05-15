@@ -5,6 +5,7 @@
 <head>
    <title>Classes en properties | C# cursus</title>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -523,7 +524,25 @@ customer 1: Miles Davis - rating: 5
 </figure>
 
       <h2>Best practices</h2>
-      <h3>afspraken</h3>
+      <h3>(min of meer) pure klassen</h3>
+      <p>
+         Goed geschreven klassen staan <strong>los van de applicatie waarin ze gebruikt worden</strong> (WPF applicatie, Console toepassing, Class Library...) <br>Daarom hou je ze best zo puur mogelijk:
+      </p>
+      <ul class="wrong">
+         <li>gebruik <strong>geen Console methodes</strong> als <code>Console.WriteLine()</code>, <code>Console.ReadKey()</code>... (werkt niet in WPF)</li>
+         <li>gebruik <strong>geen WPF controls</strong> als <code>Button</code>, <code>TextBox</code>... (werkt niet in Console)</li>
+         <li>gebruik <strong>geen klassen voor afbeeldingen</strong> als <code>BitmapImage</code>, <code>Image</code>... (werkt niet in Console) &mdash; <code>byte[]</code> array voor image data kan dan weer wel</li>
+      </ul>
+      <p>
+         Aan de andere kant kunnen de <strong>meeste applicaties wel overweg</strong> met volgende niet-pure technieken, die dan ook in klassen mogen gebruikt worden:
+      </p>
+      <ul class="right">
+         <li>werken met <strong>databanken</strong></li>
+         <li>lezen en schrijven van <strong>bestanden</strong></li>
+         <li>lezen en schrijven over <strong>netwerken</strong></li>
+         <li>gebruik van <strong>Random()</strong></li>
+      </ul>
+      <h3>property vs. variabele</h3>
       <p>
          Nog eens alle afspraken samengevat:
       </p>

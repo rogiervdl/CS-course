@@ -135,48 +135,10 @@ function startApp() {
 		DOM.nav.classList.toggle('condensed', document.body.scrollTop > 50 || document.documentElement.scrollTop > 50);
 	});
 
-	// part 4: prism
-	if (Prism.plugins.toolbar) {
-		Prism.plugins.toolbar.registerButton('Demo', (env) => {
-			const pre = env.element.parentNode;
-			if (pre.dataset.demo == undefined) return;
-			const button = document.createElement('button');
-			button.textContent = 'Demo';
-			button.onclick = function () {
-				DOM.diaDemoWindow.innerHTML = '<iframe title="demo"></iframe>';
-				const src = env.element.parentNode.dataset.demo;
-				if (src === undefined) return;
-				myHistModal.open('#diaDemo');
-				const diaDemoIframe = document.querySelector('#diaDemo iframe');
-				if (src == '') {
-					let oDoc = (diaDemoIframe.contentWindow || diaDemoIframe.contentDocument);
-					if (oDoc.document) oDoc = oDoc.document;
-					let html = env.element.innerText;
-					if (env.language == 'javascript' && !html.includes('<html')) html = `<html><body><p><em>open chrome inspector en bekijk de output in de console!</em></p><script>${html}</script></body></html>`;
-					if (env.language == 'html' && !html.includes('<html')) html = `<html><body>${html}</body></html>`;
-					oDoc.write(html);
-				} else {
-					diaDemoIframe.src = src;
-				}
-			};
-			return button;
-		});
-		Prism.plugins.toolbar.registerButton('show-language', (env) => {
-			const pre = env.element.parentNode;
-			if (!pre || !/pre/i.test(pre.nodeName)) return;
-			if (pre.dataset.notoolbar != undefined) return;
-			const caption = pre.getAttribute('data-caption') || pre.getAttribute('data-language') || env.language;
-			if (!caption) return;
-			const element = document.createElement('span');
-			element.textContent = caption;
-			return element;
-		});
-	}
-
-	// part 5: code markers
+	// part 4: code markers
 	window.addEventListener('resize', repaint);
 
-	// part 6: error comment markers
+	// part 5: error comment markers
 	document.querySelectorAll('code .token.comment').forEach(t => {
 		if (t.innerText.toLowerCase().includes('// fout')) t.classList.add('error');
 	});
@@ -203,3 +165,74 @@ window.addEventListener('load', function () {
 	repaint();
 	startApp();
 });
+
+// toolbar buttons
+(function () {
+	if (typeof Prism === 'undefined' || typeof document === 'undefined' || !document.querySelector) return;
+
+	// demo button
+	Prism.plugins.toolbar.registerButton('Demo', (env) => {
+		const pre = env.element.parentNode;
+		console.log(pre);
+		if (pre.dataset.demo == undefined) return;
+		const button = document.createElement('button');
+		button.textContent = 'Demo';
+		button.onclick = function () {
+			DOM.diaDemoWindow.innerHTML = '<iframe title="demo"></iframe>';
+			const src = env.element.parentNode.dataset.demo;
+			if (src === undefined) return;
+			myHistModal.open('#diaDemo');
+			const diaDemoIframe = document.querySelector('#diaDemo iframe');
+			if (src == '') {
+				let oDoc = (diaDemoIframe.contentWindow || diaDemoIframe.contentDocument);
+				if (oDoc.document) oDoc = oDoc.document;
+				let html = env.element.innerText;
+				if (env.language == 'javascript' && !html.includes('<html')) html = `<html><body><p><em>open chrome inspector en bekijk de output in de console!</em></p><script>${html}</script></body></html>`;
+				if (env.language == 'html' && !html.includes('<html')) html = `<html><body>${html}</body></html>`;
+				oDoc.write(html);
+			} else {
+				diaDemoIframe.src = src;
+			}
+		};
+		return button;
+	});
+
+	// show caption
+	if (Prism.plugins.toolbar) {
+		Prism.plugins.toolbar.registerButton('show-caption', (env) => {
+			const pre = env.element.parentNode;
+			if (!pre || !/pre/i.test(pre.nodeName)) return;
+			if (pre.dataset.notoolbar != undefined) return;
+			const caption = pre.getAttribute('data-caption') || pre.getAttribute('data-language');
+			if (!caption) return;
+			const element = document.createElement('span');
+			element.textContent = caption == 'cs' ? 'c#' : caption;
+			return element;
+		});
+	}
+
+	// select code button
+	Prism.plugins.toolbar.registerButton('select-code', function (env) {
+      return; // disable select code button
+		var button = document.createElement('button');
+		button.innerHTML = 'Select Code';
+
+		button.addEventListener('click', function () {
+			// Source: http://stackoverflow.com/a/11128179/2757940
+			if (document.body.createTextRange) { // ms
+				var range = document.body.createTextRange();
+				range.moveToElementText(env.element);
+				range.select();
+			} else if (window.getSelection) { // moz, opera, webkit
+				var selection = window.getSelection();
+				var range = document.createRange();
+				range.selectNodeContents(env.element);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		});
+
+		return button;
+	});
+}());
+

@@ -2,11 +2,6 @@ pre[class*="language-"] {
    background: #f5f2f0;
 }
 
-code[class*="language-"] {
-   background: none;
-}
-
 .classcolor {
    color: #3D808C !important;
 }
-

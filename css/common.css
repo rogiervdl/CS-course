@@ -366,6 +366,13 @@ body main .w-1200 {
 	position: absolute;
 }
 
+code mark {
+	background: none;
+	border: 3px solid #688031;
+	opacity: 0.8;
+	padding: 2px 5px;
+}
+
 /* lists */
 
 main ul {
