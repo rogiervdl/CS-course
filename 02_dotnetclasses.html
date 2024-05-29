@@ -6,10 +6,11 @@
    <title>.NET classes | C# cursus</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="common/styles.css">
+   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="language-cs showpro">
+<body class="prism-vslight language-cs showpro">
    <div id="mode">
       <span>n00b</span>
       <label class="switch">
@@ -67,8 +68,7 @@
 
       <!-- VIDEO -->
       <div class="pro">
-         <h2>On Youtube</h2>
-         <h3>objecten &amp; strings</h3>
+         <h2>Youtube: objecten &amp; strings</h2>
          <div class="flexcontainer youtubecontainer">
             <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/4Z5WYtVE0sU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <figure class="print">
@@ -1757,7 +1757,7 @@ Timer is gestopt. De verstreken tijd is 2.47s</pre>
       </table>
       <h4>Codevoorbeeld</h4>
       <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
-      <pre><code class="language-html">&lt;Label x:Name="lblCount" Content="0" .../&gt;
+      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblCount" Content="0" .../&gt;
 &lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
 </code></pre>
       <p>De C# code-behind:</p>
@@ -1792,13 +1792,13 @@ private void DoSomething(object sender, EventArgs e)
 
    </main>
    <footer>
-      <img src="img/thats-all.jpg" alt="">
+      <img src="common/img/thats-all.jpg" alt="">
       <p>@2014, Rogier van der Linde</p>
    </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
-   <script src="vendor/prism.js"></script>
-   <script src="js/mode.js"></script>
-   <script src="js/scripts.js"></script>
+   <script src="common/vendor/prism/prism.js"></script>
+   <script src="common/js/mode.js"></script>
+   <script src="common/js/scripts.js"></script>
    <!-- Google tag (gtag.js) -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
    <script>

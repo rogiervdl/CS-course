@@ -69,6 +69,14 @@ div.code-toolbar>.toolbar>.toolbar-item>button:focus {
 	opacity: 1;
 }
 
+pre.notoolbar {
+   padding: 0.5em 1em;
+}
+
+pre.notoolbar + .toolbar .toolbar-item {
+   display: none !important;
+}
+
 /* hystmodal mods */
 
 .hystmodal iframe {
@@ -78,6 +86,12 @@ div.code-toolbar>.toolbar>.toolbar-item>button:focus {
 
 .hystmodal__window {
 	width: 800px;
+}
+
+/* fancybox mods */
+
+[data-fancybox] {
+	cursor: pointer;
 }
 
 /* MEDIA QUERIES */

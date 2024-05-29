@@ -6,10 +6,11 @@
    <title>SQL in WPF | C# cursus</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="common/styles.css">
+   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="language-cs showpro">
+<body class="prism-vslight language-cs showpro">
    <div id="mode">
       <span>n00b</span>
       <label class="switch">
@@ -72,8 +73,7 @@
    <main>
 
       <!-- VIDEO -->
-      <h2>On Youtube</h2>
-      <h3>SQL in WPF apps</h3>
+      <h2>Youtube: SQL in WPF apps</h2>
       <div class="flexcontainer youtubecontainer">
          <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/b2ikv9KtAKY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
          <figure class="print">
@@ -147,7 +147,7 @@
       </ul>
       <h3>stap 2: SQL importeren in SSMS</h3>
       <p>
-         In dit vak zul je altijd een databank aangeleverd krijgen als een SQL bestand, dat je moet importeren met SSMS via <em>New Query</em> &rarr; kopieer de SQL code &rarr; <em>Execute</em>. Importeer <a href="files/10_sql_databanken/EmployeesDB.sql">EmployeesDB.sql</a>:
+         In dit vak zul je altijd een databank aangeleverd krijgen als een SQL bestand, dat je moet importeren met SSMS via <em>New Query</em> &rarr; kopieer de SQL code &rarr; <em>Execute</em>. Importeer <a href="files/10_sql_databanken/CompanyDB.sql">CompanyDB.sql</a>:
       </p>
       <figure>
          <img src="img/10_sql_databanken/import.png" alt="" class="w-800 bordered">
@@ -433,7 +433,7 @@ namespace WpfCompany {
       <p>
          Hoewel je de connectie string ook overal letterlijk in je C# code kan gebruiken, is het beter het één keer globaal te bewaren in App.config, te vinden in je project:
       </p>
-      <pre><code class="language-html">&lt;configuration&gt;
+      <pre class="language-html language-xaml"><code>&lt;configuration&gt;
    &lt;connectionStrings&gt;
       &lt;add name="connStr" connectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=CompanyDB;Integrated Security=True" /&gt;
    &lt;/connectionStrings&gt;
@@ -1108,7 +1108,7 @@ int employeeId = Convert.ToInt32(item.Tag); // vraag de id weer op
       <p>
          Er zijn veel manieren om te communiceren tussen vensters. Algemene configuratieparameters voor je project kan je definiëren in <strong>App.config</strong>:
       </p>
-      <pre><code class="language-html">&lt;configuration&gt;
+      <pre class="language-html language-xaml"><code>&lt;configuration&gt;
   &lt;appSettings&gt;
     &lt;add key="someKey" value="ABC123" /&gt;
   &lt;/appSettings&gt;
@@ -1132,7 +1132,7 @@ int employeeId = Convert.ToInt32(item.Tag); // vraag de id weer op
       <p>
          Met "hoofdvenster" wordt het venster bedoeld waarmee de app opgestart is, zoals vastgelegd in App.xaml:
       </p>
-      <pre><code class="language-html">&lt;Application x:Class="WpfAdmin.App" ... StartupUri="MainWindow.xaml"&gt;
+      <pre class="language-html language-xaml"><code>&lt;Application x:Class="WpfAdmin.App" ... StartupUri="MainWindow.xaml"&gt;
    ...
 &lt;/Application&gt;</code></pre>
 
@@ -1289,13 +1289,13 @@ public void ShowEmployees(int? selectedId = null) {
 
    </main>
    <footer>
-      <img src="img/thats-all.jpg" alt="">
+      <img src="common/img/thats-all.jpg" alt="">
       <p>@2014, Rogier van der Linde</p>
    </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
-   <script src="vendor/prism.js"></script>
-   <script src="js/mode.js"></script>
-   <script src="js/scripts.js"></script>
+   <script src="common/vendor/prism/prism.js"></script>
+   <script src="common/js/mode.js"></script>
+   <script src="common/js/scripts.js"></script>
    <!-- Google tag (gtag.js) -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
    <script>
