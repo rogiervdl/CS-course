@@ -394,22 +394,29 @@ Customer cust3 = new Customer("Johnny", "Miles", 4); // gebruik derde constructo
 </code></pre>
       <h3>alternatief: object initialisatie</h3>
       <p>In plaats van alle mogelijke constructoren te definiëren voor alle mogelijke gevallen, kan je ook gewoon de lege constructor gebruiken met de <mark>object initialisatie</mark> syntax. Beide fragmenten zijn gelijkwaardig (al vind ik de tweede leesbaarder):</p>
-      <div class="codecompare">
-         <pre><code>// klassieke notatie
+      <div class="flexcontainer wrap">
+         <pre class="w-400"><code>// klassieke notatie
 Customer cust = new Customer(); 
 cust.FirstName = "Johnny";
 cust.LastName = "Miles";
 cust.Rating = 4;
 
 </code></pre>
-         <pre class="right"><code>// object initializer syntax
+<pre class="right w-400"><code>// object initializer syntax
 Customer cust3 = new Customer() { 
    FirstName = "Johnny",
    LastName = "Miles",
    Rating = 4
 }; 
 </code></pre>
-      </div>
+   <pre class="right w-400"><code>// object initializer syntax zonder ()
+Customer cust3 = new Customer { 
+   FirstName = "Johnny",
+   LastName = "Miles",
+   Rating = 4
+}; 
+</code></pre>
+               </div>
       <h2>Methodes</h2>
       <h3>eigen methodes</h3>
       <p>Laat we onze klasse uitbreiden met methodes. Voegen we eerst nog een klasse <code class="classcolor">Account</code> toe...</p>
