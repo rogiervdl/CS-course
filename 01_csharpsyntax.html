@@ -288,6 +288,7 @@ static void Main(string[] args)
          <em>declaratie</em>, het geven van een eerste waarde <em>initialisatie</em>.
       </p>
       <h3>Declaratie</h3>
+      <p>Een <em>declaratie</em> is een nieuwe variabele aanmaken met een naam.</p>
       <pre><code>string halloTekst; // tekst
 int leeftijd; // geheel getal
 float leeftijd; // kommagetal
@@ -296,12 +297,19 @@ bool isCorrectAntwoord; // ja of nee
 </code></pre>
       <p>&rarr; stijlregel: we noteren de naam in <em>camelCaseNotatie</em></p>
       <h3>Initialisatie</h3>
+      <p>De <em>initialisatie</em> betekent een variabele zijn initiële (eerste) waarde geven:</p>
       <pre><code>string halloTekst;
 halloTekst = "Hallo Wereld!"; // variabele later geïnitialiseerd
 </code></pre>
       <p>Of declaratie en initialisatie in één keer:</p>
       <pre><code>string halloTekst = "Hallo Wereld!"; // variabele meteen geïnitialiseerd
 </code></pre>
+      <h3>Toewijzing</h3>
+      <p>
+         Je mag een variabele altijd een andere, nieuwe waarde geven – het is tenslotte "variabel". Het toekennen van een waarde heet een <em>toekenning</em> of <em>toewijzing</em>
+      </p>
+      <pre><code>string halloTekst = "Hallo Wereld!"; // declaratie en initialisatie
+halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde</code></pre>
       <h3>Overzicht datatypes</h3>
       <p>Het <em>datatype</em> beperkt welke waarden de variabele kan bevatten. Types gebruikt in deze cursus:</p>
       <table class="light">
@@ -370,8 +378,7 @@ const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde he
          <li>bevat enkel letters, cijfers en underscore</li>
          <li>begint niet met een cijfer</li>
          <li>maximaal 255 tekens lang</li>
-         <li>geen gereserveerde woorden, dus geen if, class, double, ... (complete lijst <a
-               href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/">https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/</a>)
+         <li>geen gereserveerde woorden, dus geen if, class, double, ... (complete lijst <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/">https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/</a>)
          </li>
       </ul>
       <p>Daarnaast houden we ons aan deze bijkomende <strong>stijlregels</strong>:</p>
@@ -385,8 +392,7 @@ const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde he
          <li>betekenisvolle namen</li>
          <li>één taal (Engels/Nederlands), wees consistent!</li>
       </ul>
-      <p>Er bestaan andere voorkeuren voor deze stijlregels, maar deze regels zijn de meest gangbare in C# en aanbevolen
-         door Microsoft</p>
+      <p>Er bestaan andere voorkeuren voor deze stijlregels, maar deze regels zijn de meest gangbare in C# en aanbevolen door Microsoft</p>
       <div class="pro">
          <h3>Nullable types</h3>
          <p>Nullable types zijn primitieve types int, float, bool… uitgebreid met de <code>null</code> waarde:</p>
@@ -400,11 +406,62 @@ bool? test2; // nullable boolean: true, false of null
          <pre><code>int?[] getallen = new int?[5]; // array van 5 nullable ints
 </code></pre>
          <ul class="arrow">
-            <li>nullable types zijn handig als je een bepaald primitief type wil gebruiken, maar niet zeker bent of het
-               een waarde zal hebben (bv. antwoorden op een quiz)</li>
+            <li>nullable types zijn handig als je een bepaald primitief type wil gebruiken, maar niet zeker bent of het een waarde zal hebben (bv. antwoorden op een quiz)</li>
          </ul>
-
       </div>
+      <h3>Scope</h3>
+      <p>De <em>scope</em> is het bereik waarbinnen een variabele beschikbaar is. Het is heel eenvoudig: een variabele bestaat enkel <strong>binnen de accolades waar het gedeclareerd is</strong>.</p>
+      <h4>Console voorbeeld</h4>
+      <p>
+         In volgend voorbeeld is <code>x</code> gedefinieerd in <code>Main()</code> en in dat hele blok beschibaar, terwijl <code>y</code> gedefinieerd is in de <code>if()</code> en dus enkel daar beschikbaar, waardoor de laatste regel een foutmelding zou geven:
+
+      </p>
+      <p><img src="img/01_csharpsyntax/scope-console.png" alt="scope console" class="w-650"></p>
+      <h4>WPF voorbeeld</h4>
+      <p>Nemen we als voorbeeld een eenvoudige paardenrace:</p>
+      <p><img src="img/01_csharpsyntax/horserace.gif" alt="" class="w-250"></p>
+      <p>De XAML code:</p>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtStandings" Padding="5" Background="#FFF9F7EC" TextWrapping="Wrap".../&gt;
+&lt;Button x:Name="btnRun" Content="RUN!" Click="btnRun_Click" .../&gt;</code></pre>
+      <p>Code behind:</p>
+      <p><img src="img/01_csharpsyntax/scope-wpf.png" alt="scope wpf" class="w-600"></p>
+      <p>Merk op hoe geen verwarring kan bestaan tussen de twee variabelen met dezelfde naam &ldquo;<code>txt</code>&rdquo;, aangezien hun scopes niet overlappen.</p>
+      <h4>Scope zo klein mogelijk, declaratie zo laat mogelijk</h4>
+      <p>Zoals de titel zegt: hou je <strong>scope zo klein mogelijk</strong>, en doe de <strong>declaratie zo laat mogelijk</strong>, zodat ze zo dicht mogelijk staan waar ze gebruikt worden. Dit maakt je code leesbaarder en minder foutgevoelig. Twee fragmenten vergeleken:</p>
+      <div class="codecompare">
+         <pre class="wrong"><code>// variabelen bovenaan
+string answer;
+const int MaxGetal = 10;
+Random rnd = new Random();
+int number, guess; 
+Console.Write("Wil je een raadspel spelen (j/n)? ");
+answer = Console.ReadLine();
+if (answer == "j")
+{
+    number = rnd.Next(1, MaxGetal + 1);
+    Console.Write($"Kies een getal tussen 1 en {MaxGetal}: ");
+    guess = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(guess == number ? "geraden!" : "jammer");
+}
+</code></pre>
+         <pre class="right"><code>// variabelen lokaal
+Console.Write("Wil je een raadspel spelen (j/n)? ");
+string answer = Console.ReadLine();
+if (answer == "j")
+{
+    const int MaxGetal = 10;
+    Random rnd = new Random();
+    int number = rnd.Next(1, MaxGetal + 1);
+    Console.Write($"Kies een getal tussen 1 en {MaxGetal}: ");
+    int guess = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(guess == number ? "geraden!" : "jammer");
+}
+
+
+</code></pre>
+      </div>
+      
+
 
       <h2>Parsing/casting/conversie</h2>
       <p>De termen <em>parsing</em>, <em>casting</em> en <em>conversie</em> betekenen eigenlijk hetzelfde: het omzetten
@@ -412,10 +469,8 @@ bool? test2; // nullable boolean: true, false of null
       <h3>verbredend vs. vernauwend</h3>
       <p>Er zijn twee soorten conversies:</p>
       <ul>
-         <li><em>verbredende</em> conversie: van een kleiner naar een groter bereik, b.v. van een <code>double</code>
-            (kommagetal) naar een <code>string</code> (tekst)</li>
-         <li><em>vernauwende</em> conversie: van een groter naar een kleiner bereik, b. van een <code>double</code>
-            (kommagetal) naar een <code>int</code> (geheel getal)</li>
+         <li><em>verbredende</em> conversie: van een kleiner naar een groter bereik, b.v. van een <code>double</code> (kommagetal) naar een <code>string</code> (tekst)</li>
+         <li><em>vernauwende</em> conversie: van een groter naar een kleiner bereik, b. van een <code>double</code> (kommagetal) naar een <code>int</code> (geheel getal)</li>
       </ul>
       <h3>impliciete conversie</h3>
       <p>Verbredende conversies gebeuren vaak automatisch of <em>impliciet</em>:</p>
@@ -426,8 +481,7 @@ string str2 = $"het geheel getal is {int1}"; // OK: impliciete conversie van int
 </code></pre>
       <p>...maar niet altijd:</p>
       <pre><code class="redcomments">string str1 = int1; // FOUT! hier treedt geen impliciete conversie op</code></pre>
-      <p>De logica wanneer wel en niet impliciete conversie optreedt is niet altijd even duidelijk. Maar geen nood,
-         Visual Studio zal je er wel op wijzen als een conversie ontbreekt.</p>
+      <p>De logica wanneer wel en niet impliciete conversie optreedt is niet altijd even duidelijk. Maar geen nood, Visual Studio zal je er wel op wijzen als een conversie ontbreekt.</p>
       <h3>expliciete (handmatige) conversie</h3>
       <p>Bij expliciete conversie forceer je handmatig de omzetting naar een ander type </p>
       <h4>ToString()</h4>
@@ -436,8 +490,7 @@ string str2 = $"het geheel getal is {int1}"; // OK: impliciete conversie van int
 string str1 = int1.ToString();
 </code></pre>
       <h4>Convert klasse</h4>
-      <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de Convert klasse
-         (zie <a href="02_dotnetclasses.html#convert">02. NET classes - Convert</a>):</p>
+      <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de Convert klasse (zie <a href="02_dotnetclasses.html#convert">02. NET classes - Convert</a>):</p>
       <pre><code>string str1 = "13"; string str2 = "13.45";
 int int1 = Convert.ToInt32(str1); 
 double dbl1 = Convert.ToDouble(str2);</code></pre>
@@ -449,8 +502,7 @@ int int2; bool success = int.TryParse(str1, out int2); // conversie met de ....T
 int int3 = (int)dbl1; // conversie met (int)
 string str2 = int1 + ""; // geforceerde conversie
 </code></pre>
-      <p>Om het overzichtelijk te houden, raden we deze methodes af. Beperk je tot <code>ToString()</code> en
-         <code>Convert.To...()</code>
+      <p>Om het overzichtelijk te houden, raden we deze methodes af. Beperk je tot <code>ToString()</code> en <code>Convert.To...()</code>
       </p>
 
       <h2>Rekenkundige Operatoren</h2>
@@ -1662,8 +1714,7 @@ finally
    Console.WriteLine("druk een toets om verder te gaan...");
 }</code></pre>
          <h4>Lezen van een bestand</h4>
-         <p>Merk het gebruik van meerdere catch-blokken en verschillende exceptie types op, van specifiek naar algemeen:
-         </p>
+         <p>Merk het gebruik van meerdere catch-blokken en verschillende exceptie types op, van specifiek naar algemeen:</p>
          <pre class="right"><code>string content;
 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
