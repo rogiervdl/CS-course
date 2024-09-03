@@ -432,6 +432,10 @@ ul {
 	list-style: square;
 }
 
+ul:has(.arrow, .right, .wrong) {
+	padding: 0;
+} 
+
 ul.arrow,
 li.arrow {
 	list-style-type: none;

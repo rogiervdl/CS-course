@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>Visual Studio | C# cursus</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="common/styles.css">
+   <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="prism-vslight language-cs showpro">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="00_visualstudio.html" class="main__thumb active" title="00. Visual Studio">
+         <p class="thumb__title">00. Visual Studio</p>
+         <img class="thumb__visual" src="img/00_visualstudio/icon.jpg" alt="">
+      </a>
+      <a href="01_csharpsyntax.html" class="main__thumb" title="01. C# syntax">
+         <p class="thumb__title">01. C# syntax</p>
+         <img class="thumb__visual" src="img/01_csharpsyntax/icon.jpg" alt="">
+      </a>
+      <a href="02_dotnetclasses.html" class="main__thumb" title="02. .NET classes">
+         <p class="thumb__title">02. .NET classes</p>
+         <img class="thumb__visual" src="img/02_dotnetclasses/icon.png" alt="">
+      </a>
+      <a href="03_wpfcontrols.html" class="main__thumb" title="03. WPF controls">
+         <p class="thumb__title">03. WPF controls</p>
+         <img class="thumb__visual" src="img/03_wpfcontrols/icon.png" alt="">
+      </a>
+      <a href="04_wpflayout.html" class="main__thumb pro" title="04. WPF layout">
+         <p class="thumb__title">04. WPF layout</p>
+         <img class="thumb__visual" src="img/04_wpflayout/icon2.png" alt="">
+      </a>
+      <a href="05_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">05. bestanden</p>
+         <img class="thumb__visual" src="img/05_bestanden/icon.png" alt="">
+      </a>
+      <a href="06_classes_properties.html" class="main__thumb pro">
+         <p class="thumb__title">06. classes &amp; properties</p>
+         <img class="thumb__visual" src="img/06_classes_properties/icon.png" alt="">
+      </a>
+      <a href="07_static_enum.html" class="main__thumb pro">
+         <p class="thumb__title">07. static en enum</p>
+         <img class="thumb__visual" src="img/07_static_enum/icon.png" alt="">
+      </a>
+      <a href="08_overerving.html" class="main__thumb pro">
+         <p class="thumb__title">08. overerving</p>
+         <img class="thumb__visual" src="img/08_overerving/icon.jpg" alt="">
+      </a>
+      <a href="09_oo_samenvatting.html" class="main__thumb pro">
+         <p class="thumb__title">09. OO samenvatting</p>
+         <img class="thumb__visual" src="img/09_oo_samenvatting/icon.png" alt="">
+      </a>
+      <a href="10_sql_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">10. SQL databanken</p>
+         <img class="thumb__visual" src="img/10_sql_databanken/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>00. Visual Studio</h1>
+   <div id="toc"></div>
+   <main>
+
+      <!-- VIDEO -->
+      <!-- <h2>Youtube</h2>
+      <h3>IIP &mdash; Visual Studio &amp; WPF</h3>
+      <div class="flexcontainer youtubecontainer">
+         <iframe class="youtube" width="600" height="378"
+            src="https://www.youtube.com/embed/d8eND5KaB1c?si=E-pocp4_tyDvW2IV" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+         <figure class="print">
+            <a href="https://www.youtube.com/watch?v=d8eND5KaB1c"><img src="img/00_visualstudio/youtube-visualstudio-wpf.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=d8eND5KaB1c">https://www.youtube.com/watch?v=d8eND5KaB1c</a>
+            </figcaption>
+         </figure>
+         <div class="youtube_toc">
+            <ul>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=d8eND5KaB1c?t=120">2:10 Visual Studio</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c?t=144">2:24 solution aanmaken</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=164">2:44 WPF project aanmaken</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=201">3:21 overzicht Visual Studio panelen; WPFHelloWorld dem</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=965">16:05 console project; ConsoleHelloWorld demo</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1160">19:20 bestaande projecten toevoegen, verwijderen en verplaatsen </a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1226">20:26 WPF controls overzicht</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1255">20:55 Label</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1285">21:25 Button</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1369">22:49 Checkbox</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1539">25:39 ComboBox</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=1860">31:00 Image</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=2197">36:37 ListBox</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=2354">39:14 RadioButton</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=2686">44:46 TextBox</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=2804">46:44 Slider en Rectangle</a></li>
+                  </ul>
+               </li>
+               <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c&t=3123">52:03 Shortcuts</a></li>
+            </ul>
+         </div>
+      </div> -->
+
+
+      <h2>Wat is programmeren</h2>
+      <h3>.NET Framework</h3>
+      <p>Als je programmeert, maak je altijd gebruik van bundel vooraf geschreven code waarop je kan voortbouwen. Het zou niet handig zijn als je bij elk programma opnieuw knoppen, dialoogvensters, scrollbars enz... vanaf nul moet programmeren! Een dergelijke bundel noemt men een <strong>framework</strong>.</p>
+      <p>Frameworks bestaan in veel gebieden: </p>
+      <ul>
+         <li><strong>game programming</strong>: Unity3D, Unreal, ...</li>
+         <li><strong>web &amp; mobile apps</strong>: Ionic, Phonegap, React, Angular, ...</li>
+         <li><strong>3D programming</strong>: ThreeJS, Babylon, ...</li>
+         <li>…</li>
+      </ul>
+      <p>In deze cursus gebruiken we het <strong>.NET Framework</strong>: het is weliswaar voornamelijk gericht op Windows apps, maar ook op mobiele (Android bv) of cloud toepassingen. Het werkt bovendien naadloos samen met C#.</p>
+      <p><img src="img/00_visualstudio/logo dotnet.jpg" alt="" class="w-150"></p>
+      <h3>Fasen van een programma</h3>
+      <p>
+         Een <strong>programma</strong> is een opeenvolging van instructies die in een bepaalde volgorde worden uitgevoerd. De verschillende fasen van een programma:
+      </p>
+      <ol>
+         <li>programma <strong>schrijven</strong>, bv. in C#</li>
+         <li>code <strong>compileren</strong>: code wordt omgezet naar platform-onafhankelijke Common Intermediate Language (CIL) bytecode, wat resulteert in een PE-file (Portable Executable)</li>
+         <li>code <strong>uitvoeren</strong>: de .NET Common Language Runtime (CLR) vertaalt tijdens de uitvoering de bytecode in platform-specifieke machine-instructies</li>
+      </ol>
+      <p><img src="img/00_visualstudio/stappen programma.png" alt="" class="w-300"></p>
+      <h3>Soorten fouten</h3>
+      <p>In elke fase van het programma kunnen fouten optreden:</p>
+      <ol>
+         <li><strong>syntax error</strong>: je code bevat een fout tegen de vormregels van de programmeertaal, bv. puntkomma of haakje vergeten</li>
+         <li><strong>build error</strong>: je code is correct geschreven, maar tijdens het builden loopt iets fout, bv. een bibliotheek wordt niet gevonden</li>
+         <li><strong>runtime error</strong>: je code compileert netjes, maar tijdens het uitvoeren loopt je programma vast, bv. een onverwachte deling door nul, geheugenfout, bestand wordt niet gevonden enz...</li>
+         <li><strong>logical error</strong>: je programma loopt niet vast, maar doet niet wat je verwacht, bv. de output is verkeerd of een knop werkt niet</li>
+      </ol>
+
+      <h2>Integrated Development Environment (IDE)</h2>
+
+      <p>
+         De ontwikkelomgeving of <mark>Integrated Development Environment</mark> is de omgeving waarin je programma's ontwikkelt. Typische features van IDE's: 
+      </p>
+      <ul>
+         <li>werken met <strong>solutions &amp; projecten</strong></li>
+         <li><strong>code schrijven</strong>: code editor, code hints, automatische layout, object browser...</li>
+         <li><strong>interfaces bouwen</strong> (vensters, knoppen, menu's...) met de designer</li>
+         <li>programma's <strong>builden en runnen</strong>, eventueel simulators (bv. mobiele devices)</li>
+         <li>tools om te <strong>debuggen</strong> (foutopsporing),&nbsp;</li>
+         <li><strong>testen</strong>: unit tests, performantie metingen, analyse geheugengebruik...</li>
+         <li><strong>samenwerking</strong>: versiebeheer, code review, live sharing...</li>
+         <li><strong>distributie</strong>: cloud integratie, publicatie op het web...</li>
+         <li>...</li>
+      </ul>
+      <p>
+         De meest gebruikte omgeving voor C# Visual Studio (versie 2022 op moment van schrijven).
+      </p>
+
+      <h2>Installatie installeren VS2022</h2>
+      <h3>Downloaden</h3>
+      <p>Download en installeer Visual Studio gratis vanop <a href="https://visualstudio.microsoft.com/free-developer-offers/">https://visualstudio.microsoft.com/free-developer-offers/</a> (Visual Studio Community)</p>
+      <p><img src="img/00_visualstudio/vs-download.png" alt="" class="w-500"></p>
+
+      <h3>Keuze workload</h3>
+      <p>In Visual Studio kan je programmeren in <strong>verschillende talen</strong> (en zelfs meerdere tegelijk in één project): Javascript, Python, C++, Visual Basic, R, F#, C#... en voor <strong>verschillende platforms</strong> (Windows, Azure, Android, Web…).&nbsp;Daarom biedt Visual Studio een heel aantal verschillende standaardomgevingen, <strong>workload</strong> genoemd, met tools, omgeving enz... aangepast aan jouw specifieke ontwikkelingsbehoeften. Wij gebruiken de <strong>.NET desktop environment</strong>; let er dus op dat je de juiste omgeving kiest tijdens installatie.</p>
+      <figure>
+         <img src="img/00_visualstudio/workload.png" alt="" class="w-800">
+         <figcaption>kies voor .NET desktop development</figcaption>
+      </figure>
+
+      <h3>Selecteren individuele componenten</h3>
+      <p>Je kan tijdens installatie (of achteraf) individuele componenten kiezen, b.v. support voor oudere versies van .NET. Je kan dit deel voorlopig overslaan; individuele componenten kan je achteraf nog altijd selecteren via de <strong>Visual Studio installer</strong>.</p>
+      <figure>
+         <img src="img/00_visualstudio/components.png" alt="" class="w-800">
+         <figcaption>selectie componenten (kan ook achteraf nog via Visual Studio installer)</figcaption>
+      </figure>
+
+      <h2>Solutions en projecten</h2>
+
+      <h3>Solution vs. project</h3>
+      <ul>
+         <li>een <mark>project</mark> groepeert alle <strong>bestanden</strong> die bij één programma horen: codebestanden, afbeeldingen, configuratiebestanden...</li>
+         <li>een <mark>solution</mark> groepeert een aantal <strong>projecten</strong> die om één of andere reden logisch bij elkaar horen</li>
+      </ul>
+      <p>Hoe code georganiseerd wordt in solutions en projecten hangt af van vak tot vak. Voor <strong>Introductie in Programmeren</strong> (ORP42a, graduaat) en <strong>OO Application Development</strong> (OBI25a, bachelors) wordt gekozen voor <strong>één solution per les, één project per oefening</strong>. Hieronder een screenshot van een typische les geopend in Visual Studio.</p>
+      <figure>
+         <img src="img/00_visualstudio/projects-solutions.png" alt="" class="w-1000">
+      </figure>
+      <p>Je herkent:</p>
+      <ul>
+         <li>de solution <em>SlnBasis</em>; dit is de les waamee we bezig zijn</li>
+         <li>de projecten <em>ConsoleAsciiArt</em>, <em>ConsoleGedicht</em>, <em>ConsoleHalloWereld</em>...; dit zijn de oefeningen behorende bij die les</li>
+         <li>de bronnen <em>Properties, References, App.config, Program.cs</em> onder <em>ConsoleHalloWereld</em>: dit zijn de bestanden/mappen behorende bij die oefening</li>
+         <li>het codevenster links: hierin schrijf je je code</li>
+      </ul>
+
+      <h3>Les (=solution) openen</h3>
+      <p>In Visual Studio open je <strong>nooit een folder</strong>, maar een <strong>solution</strong>. Dit doe je door te dubbelklikken op het <strong>.sln</strong> solutionbestand van die les in verkenner:</p>
+      <figure>
+         <img src="img/00_visualstudio/solution-openen.png" alt="" class="w-1200">
+      </figure>
+
+      <h3>Oefening (=project) toevoegen</h3>
+      <p>
+         Voor elke oefening voegen we een nieuw project toe aan de solution van die les. De eenvoudigste manier is met de rechtermuisknop op de solution, <strong>Add, New Project...</strong>:
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/project-toevoegen2.png" alt="" class="w-600 bordered">
+      </figure>
+      <p>
+         In het volgende venster kan je kiezen uit heel veel projecttypes. In het volgende dialoogvenster je filtert best alvast op <strong>taal</strong> (C#) en <strong>platform</strong> (Windows):
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/filteren.png" alt="" class="w-800">
+      </figure>
+
+      <h3>Project types</h3>
+      <p>In eerstejaarsvakken komen hoofdzakelijk deze twee types aan bod: </p>
+      <ul>
+         <li><mark>Console application</mark>: programma uitgevoerd in een simpel commandprompt-achtig venster</li>
+         <li><mark>WPF application</mark>: een typisch Windows programma in een venster met menu’s, knoppen, dialoogvensters, scrollbars…</li>
+      </ul>
+      <p>Op het einde van OO Application Development komt ook nog de <mark>class library</mark> aan bod, maar dat is voor <a href="10_sql_databanken.html#class-library-aanmaken">dit hoofdstuk</a>.</p>
+      <figure>
+         <img src="img/00_visualstudio/console.png" alt="" class="w-500">
+         <figcaption>typische console app</figcaption>
+      </figure>
+      <figure>
+         <img src="img/00_visualstudio/wpf.png" alt="" class="w-500">
+         <figcaption>typische WPF app</figcaption>
+      </figure>
+      <p>
+         Console toepassingen hebben beperktere mogelijkheden dan WPF; daar staat tegenover dat je kan focussen op de essentie van leren programmeren. 
+         WPF toepassingen aan de andere kant laten toe snel een interface te bouwen met knoppen, menu's, sliders, date pickers enz... wat het dan weer makkelijker maakt complexere toepassingen te bouwen, al vraagt het meer kennis van Visual Studio.
+         Sommigen studenten schrijven liever console toepassingen, anderen geven de voorkeur aan WPF, maar bij de meesten is er geen duidelijke voorkeur. 
+      </p>
+      <p>
+         Wij zijn ervan overtuigd dat <strong>beide projecttypes elkaar aanvullen</strong> als manier om te leren programmeren.
+      </p>
+
+      <h2>Console Application</h2>
+      <p>Een console applicatie draait dus in de console, i.e. een soort commandprompt-achtig venster. De mogelijkheden zijn beperkter dan bij WPF toepassingen, vooral grafische en UI componenten ontbreken. Enkele voorbeelden van wat wel/niet kan:</p>
+      <ul>
+         <li class="right">tekst in- en output</li>
+         <li class="right">voor- en achtergrondkleur</li>
+         <li class="right">muziek en andere geluiden</li>
+         <li class="right">bestanden lezen en schrijven</li>
+         <li class="right">werken met databanken</li>
+         <li class="wrong">grafische vormen als ellipsen, rechthoeken...</li>
+         <li class="wrong">form controls</li>
+         <li class="wrong">video</li>
+         <li class="wrong">UI componenten als menu's, scrollbars...</li>
+         <li class="wrong">dialoogvensters (bestanden openen e.d.)</li>
+      </ul>
+      <h3>Aanmaken</h3>
+
+      <p>Om een console toepassing te maken, open je eerst de solution van de les. Dan voeg je zoals steeds een project toe met <strong>Add, New Project...</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/project-toevoegen2.png" alt="" class="w-600 bordered">
+      </figure>
+      <p>In het volgende venster kies je voor Console App:</p>
+      <figure>
+         <img src="img/00_visualstudio/console-app.png" alt="" class="w-600 bordered">
+      </figure>
+      <div class="tips" data-caption="💣 PAS OP">
+         <p>
+            Je vindt mogelijks nog andere versies zoals <strong>Console App (.NET Core)</strong> of <strong>Console App (.NET Framework)</strong>. Dit zijn (sterk) verouderde types, die mag je niet gebruiken! Let er dus op dat het type exact is als op de screenshot.
+         </p>
+      </div>
+      <p>Kies de naam van het project <strong>exact hetzelfde als de naam van de oefening</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/console-add.png" alt="" class="w-800">
+      </figure>
+      <p>In het laatste venster kies je voor de laatste versie, en duid aan dat je <strong>geen top-level statements</strong> wil:</p>
+      <figure>
+         <img src="img/00_visualstudio/console-additional.png" alt="" class="w-700 bordered">
+      </figure>
+      <h3>Voorbeeld: ConsoleHalloWereld</h3>
+      <p>Tenslotte kan je de code van het programma intypen:</p>
+      <figure>
+         <img src="img/00_visualstudio/console-code.png" alt="" class="w-900 bordered">
+      </figure>
+      <p>Run het programma via F5 of deze knop:</p>
+      <figure>
+         <img src="img/00_visualstudio/console-run.png" alt="" class="w-600 bordered">
+      </figure>
+      <p>Het programma in actie:</p>
+      <figure>
+         <img src="img/00_visualstudio/ConsoleHalloWereld.gif" alt="" class="w-500 bordered">
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      
+      <h2>WPF Application</h2>
+      <p>
+         WPF staat voor <mark>Windows Presentation Foundation</mark>, een technologie van Microsoft om Windows toepassingen te bouwen. 
+         Ze hebben een grafische interface met knoppen, menu's, sliders, tekstvakken, afbeeldingen... en zijn daardoor visueel aantrekkelijker dan console applicaties. De mogelijkheden zijn dus uitgebreider dan Console toepassingen, maar de leercurve is ook steiler.
+      </p>
+      <h3>Aanmaken</h3>
+      <p>Om een WPF toepassing te maken, open je weer eerst de solution van de les. Dan voeg je zoals steeds een project toe met <strong>Add, New Project...</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/project-toevoegen2.png" alt="" class="w-600 bordered">
+      </figure>
+      <p>In het volgende venster kies je voor WPF Application:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-app.png" alt="" class="w-600 bordered">
+      </figure>
+      <div class="tips" data-caption="💣 PAS OP">
+         <p>
+            Je vindt mogelijks nog andere versies zoals <strong>Windows Forms Application</strong> of <strong>WPF App (.NET Framework)</strong>. Dit zijn (sterk) verouderde types, die mag je niet gebruiken! Let er dus op dat het type exact is als op de screenshot.
+         </p>
+      </div>
+      <p>Kies de naam van het project <strong>exact hetzelfde als de naam van de oefening</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-add.png" alt="" class="w-800">
+      </figure>
+      <p>In het laatste venster kies je voor de laatste versie:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-additional.png" alt="" class="w-700 bordered">
+      </figure>
+
+
+
+      
+
+
+
+
+
+
+   </main>
+   <footer>
+      <img src="common/img/thats-all.jpg" alt="">
+      <p>@2014, Rogier van der Linde</p>
+   </footer>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <!-- scripts -->
+   <script src="common/vendor/prism/prism.js"></script>
+   <script src="common/vendor/hystmodal/hystmodal.min.js"></script>
+   <script src="common/js/mode.js"></script>
+   <script src="common/js/scripts.js"></script>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7JWZ9HHW0');
+   </script>
+</body>
+
+</html>
