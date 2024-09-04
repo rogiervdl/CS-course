@@ -594,7 +594,7 @@
            &lt;MenuItem Header="_Save" /&gt;
            &lt;MenuItem Header="Save _As..." /&gt;
            &lt;Separator /&gt;
-           &lt;MenuItem Header="E_xit" Click="exitItem_Click" /&gt;
+           &lt;MenuItem Header="E_xit" Click="ExitItem_Click" /&gt;
        &lt;/MenuItem&gt;
        &lt;MenuItem Header="_Help"&gt;
            &lt;MenuItem Header="_About" /&gt;
@@ -605,7 +605,7 @@
 </code></pre>
       <p><em>&rarr; de underscore in de XAML duidt aan welke letter als shortcut gebruikt wordt</em></p>
       <p>Voorbeeld van een event handler voor het exit menu item:</p>
-      <pre><code>private void exitMenuItem_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void ExitItem_Click(object sender, RoutedEventArgs e) 
 {
     // 0 wilt zeggen dat er niets is fout gelopen
     Environment.Exit(0);

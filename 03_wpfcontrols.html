@@ -177,7 +177,7 @@
             </tr>
             <tr>
                <td><a href="#label">Label</a></td>
-               <td>Korte tekst weergeven (<strong>één</strong> regel)</td>
+               <td>Enkel bedoeld voor <strong>form control labels</strong></td>
                <td><img src="img/03_wpfcontrols/label_control.png" alt="label" class="w-100"></td>
             </tr>
             <tr>
@@ -202,7 +202,7 @@
             </tr>
             <tr>
                <td><a href="#textblock">TextBlock</a></td>
-               <td>Weergeven van lange blokken tekst (één of <strong>meerdere</strong> regels)</td>
+               <td>Weergeven van <strong>tekst</strong> (één of meerdere regels)</td>
                <td><img src="img/03_wpfcontrols/textblock_control.png" alt="textblock" class="w-200"></td>
             </tr>
             <tr>
@@ -603,7 +603,7 @@ private void BtnClick(object sender, RoutedEventArgs e)
 
       <h2>CheckBox</h2>
       <p>Een <em>CheckBox</em> is een keuzevakje dat de gebruiker kan aan/uit-vinken. De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;CheckBox x:Name="chbAutoSave" Content="Automatisch opslaan" IsChecked="True" Checked="chbAutoSave_Checked" Unchecked="chbAutoSave_Checked" .../&gt;</code></pre>
+      <pre class="language-html language-xaml"><code>&lt;CheckBox x:Name="chbAutoSave" Content="Automatisch opslaan" IsChecked="True" Checked="ChbAutoSave_Checked" Unchecked="ChbAutoSave_Checked" .../&gt;</code></pre>
       <p><img src="img/03_wpfcontrols/checkbox_control.png" alt="voorbeeld checkbox" class="w-150"></p>
       <h3>Properties en events</h3>
       <table class="light">
@@ -669,11 +669,11 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
          <figcaption>checkbox demo</figcaption>
       </figure>
       <div class="tips" data-caption="💡TIP">
-         <p>Je kan de code nog vereenvoudigen door de twee event handlers <code>chbYesNo_Checked()</code> en <code>chbYesNo_Unchecked()</code> samen te nemen in één methode <code>chbYesNo_Click()</code>:</p>
+         <p>Je kan de code nog vereenvoudigen door de twee event handlers <code>chbYesNo_Checked()</code> en <code>chbYesNo_Unchecked()</code> samen te nemen in één methode <code>ChbYesNo_Click()</code>:</p>
          <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
-&lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,71,0,0" VerticalAlignment="Top"  Click="chbYesNo_Click"/&gt;
+&lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,71,0,0" VerticalAlignment="Top"  Click="ChbYesNo_Click"/&gt;
 </code></pre>
-         <pre><code>private void chbYesNo_Click(object sender, RoutedEventArgs e) 
+         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e) 
 {
     if (chbYesNo.IsChecked == true) 
     {
@@ -686,7 +686,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 }
 </code></pre>
          <p>Of nog korter, met de <a href="01_csharpsyntax.html#ternaire-operator">ternaire operator</a>:</p>
-         <pre><code>private void chbYesNo_Click(object sender, RoutedEventArgs e) 
+         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e) 
 {
    lblMessage.Content = chbYesNo.IsChecked == true ? "ja, mee eens" : "nee, niet mee eens";
 }
@@ -922,16 +922,9 @@ if (dpcGeboortedatum.SelectedDate != null)
 
       <h3>Afbeeldingen toevoegen aan je project</h3>
       <p>
-         Om afbeeldingen toe te voegen, volg deze stappen:
+         Zie <a href="00_visualstudio.html#media-en-andere-bestanden-toevoegen">00. Visual Studio &ndash; media en andere bestanden toevoegen</a>
       </p>
-      <ol>
-         <li>maak een map aan in je project voor de media bestanden via <strong>Add, New Folder...</strong></li>
-         <li><strong>drag drop</strong> de afbeeldingen in deze map uit verkenner</li>
-         <li>selecteer bij de properties voor elke afbeelding bij <i>Build Action</i> <strong>Content</strong> en bij <i>Copy to Output Directory</i> <strong>Copy always</strong>:</li>
-      </ol>
-      <p>
-         <img src="img/03_wpfcontrols/image-toevoegen.png" alt="" class="w-200 bordered">
-      </p>
+
       <h3>Properties en events</h3>
       <table class="light">
          <thead>
@@ -970,19 +963,19 @@ if (dpcGeboortedatum.SelectedDate != null)
       <pre><code>imgPizza.Source = new BitmapImage(new Uri(@"afbeeldingen/pizza.png", UriKind.RelativeOrAbsolute)); // afbeelding: afbeeldingen/pizza.png</code></pre>
       <h4>Voorbeeld met drie buttons</h4>
       <pre class="language-html language-xaml"><code>&lt;Image x:Name="imgPhoto" Source="Images/photo1.jpg" HorizontalAlignment="Left" Height="100" Margin="27,35,0,0" VerticalAlignment="Top" Width="100"/&gt;
-&lt;Button x:Name="btnShow1" Content="toon foto 1" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow1_Click" /&gt;
-&lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow2_Click"/&gt;
-&lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="btnShow3_Click"/&gt;
+&lt;Button x:Name="btnShow1" Content="toon foto 1" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow1_Click" /&gt;
+&lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow2_Click"/&gt;
+&lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow3_Click"/&gt;
 </code></pre>
-      <pre><code>private void btnShow1_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e) 
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
 }
-private void btnShow2_Click(object sender, RoutedEventArgs e) 
+private void BtnShow2_Click(object sender, RoutedEventArgs e) 
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
 }
-private void btnShow3_Click(object sender, RoutedEventArgs e) 
+private void BtnShow3_Click(object sender, RoutedEventArgs e) 
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
 }
@@ -1040,7 +1033,7 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
          <li>de items zijn van het type <code>ListBoxItem</code> in plaats van <code>ComboBoxItem</code></li>
       </ul>
       <p>De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;ListBox x:Name="lbxShopping" Height="100" Width="250" SelectionChanged="lbxShopping_SelectionChanged" ...&gt;
+      <pre class="language-html language-xaml"><code>&lt;ListBox x:Name="lbxShopping" Height="100" Width="250" SelectionChanged="LbxShopping_SelectionChanged" ...&gt;
    &lt;ListBoxItem Content="Brood"/&gt;
    &lt;ListBoxItem Content="Eieren"/&gt;
    &lt;ListBoxItem Content="Kaas"/&gt;
@@ -1308,7 +1301,7 @@ else if(radGroot.IsChecked == true)
 
       <h2>Slider</h2>
       <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True" TickFrequency="10" Width="500" ValueChanged="sld1_ValueChanged" .../&gt;</code></pre>
+      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True" TickFrequency="10" Width="500" ValueChanged="Sld1_ValueChanged" .../&gt;</code></pre>
       <figure>
          <img src="img/03_wpfcontrols/slider_control.png" alt="" class="w-500 bordered">
          <figcaption>Slider control</figcaption>
@@ -1364,9 +1357,9 @@ else if(radGroot.IsChecked == true)
 // doe iets met variabele 'waarde' (bv.: weergeven in een Label)</code></pre>
       <h4>Geselecteerde waarde weergeven in een Label</h4>
       <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblValue" Content="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
-&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10" HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="sld1_ValueChanged"/&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10" HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
 </code></pre>
-      <pre><code>private void sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
     int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
     lblValue.Content = sliderVal;

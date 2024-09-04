@@ -145,7 +145,7 @@
          <li><strong>logical error</strong>: je programma loopt niet vast, maar doet niet wat je verwacht, bv. de output is verkeerd of een knop werkt niet</li>
       </ol>
 
-      <h2>Integrated Development Environment (IDE)</h2>
+      <h3>Integrated Development Environment (IDE)</h3>
 
       <p>
          De ontwikkelomgeving of <mark>Integrated Development Environment</mark> is de omgeving waarin je programma's ontwikkelt. Typische features van IDE's: 
@@ -165,7 +165,7 @@
          De meest gebruikte omgeving voor C# Visual Studio (versie 2022 op moment van schrijven).
       </p>
 
-      <h2>Installatie installeren VS2022</h2>
+      <h2>Installatie Visual Studio</h2>
       <h3>Downloaden</h3>
       <p>Download en installeer Visual Studio gratis vanop <a href="https://visualstudio.microsoft.com/free-developer-offers/">https://visualstudio.microsoft.com/free-developer-offers/</a> (Visual Studio Community)</p>
       <p><img src="img/00_visualstudio/vs-download.png" alt="" class="w-500"></p>
@@ -183,6 +183,41 @@
          <img src="img/00_visualstudio/components.png" alt="" class="w-800">
          <figcaption>selectie componenten (kan ook achteraf nog via Visual Studio installer)</figcaption>
       </figure>
+
+      <h3>Taalkeuze</h3>
+      <p>Het is sterk aangeraden de taal van Visual Studio op <strong>Engels</strong> in te stellen. Dit maakt het b.v. makkelijker foutmeldingen op te zoeken, en de interface sluit dan aan bij de screenshots in deze cursus. Standaard wordt de taal van Windows gekozen; bij veel studenten zal dat Frans of Nederlands zijn. Verander dit naar Engels via <strong>Tools, Options, Environment, International Settings</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/language.png" alt="" class="w-500 bordered">
+         <figcaption>kies voor Engels</figcaption>
+      </figure>
+      <p>Staat Engels er niet tussen? Voeg het dan toe via de Visual Studio Installer.</p>
+
+      <h2>Personaliseren</h2>
+      <h3>Thema veranderen</h3>
+      <p>Pas het kleurschema aan via <strong>Tools, Theme</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/ui-theme.png" alt="" class="w-700">
+         <figcaption>pas kleurschema aan</figcaption>
+      </figure>
+
+      <h3>Panels toevoegen</h3>
+      <p>Voeg panels toe via <strong>View</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/ui-window.png" alt="" class="w-1000">
+      </figure>
+
+      <h3>Panels pinnen</h3>
+      <p>Pin/unpin panels zodat ze altijd zichtbaar/ingeklapt weergegeven worden:</p>
+      <figure>
+         <img src="img/00_visualstudio/ui-pin.gif" alt="" class="w-600 bordered">
+      </figure>
+
+      <h3>Panels docken</h3>
+      <p>Kiezen waar je een panel plaatst heet <mark>docken</mark>. Opties zijn links, boven, rechts, onder en centraal. Versleep eenvoudigweg het panel aan de bovenbalk naar een nieuwe plaats:</p>
+      <figure>
+         <img src="img/00_visualstudio/ui-docking.png" alt="" class="w-1000">
+      </figure>
+
 
       <h2>Solutions en projecten</h2>
 
@@ -203,13 +238,13 @@
          <li>het codevenster links: hierin schrijf je je code</li>
       </ul>
 
-      <h3>Les (=solution) openen</h3>
+      <h3>Solution (=les) openen</h3>
       <p>In Visual Studio open je <strong>nooit een folder</strong>, maar een <strong>solution</strong>. Dit doe je door te dubbelklikken op het <strong>.sln</strong> solutionbestand van die les in verkenner:</p>
       <figure>
          <img src="img/00_visualstudio/solution-openen.png" alt="" class="w-1200">
       </figure>
 
-      <h3>Oefening (=project) toevoegen</h3>
+      <h3>Project (=oefening) toevoegen</h3>
       <p>
          Voor elke oefening voegen we een nieuw project toe aan de solution van die les. De eenvoudigste manier is met de rechtermuisknop op de solution, <strong>Add, New Project...</strong>:
       </p>
@@ -222,6 +257,7 @@
       <figure>
          <img src="img/00_visualstudio/filteren.png" alt="" class="w-800">
       </figure>
+
 
       <h3>Project types</h3>
       <p>In eerstejaarsvakken komen hoofdzakelijk deze twee types aan bod: </p>
@@ -325,6 +361,329 @@
       <p>In het laatste venster kies je voor de laatste versie:</p>
       <figure>
          <img src="img/00_visualstudio/wpf-additional.png" alt="" class="w-700 bordered">
+      </figure>
+      <h3>Designer</h3>
+      <p>WPF toepassingen hebben twee aparte delen:</p>
+      <ul>
+         <li><mark>designer</mark>: drag-drop interface (versleep controls uit de toolbox links) &rarr; XAML code in <strong>MainWindow.xaml</strong></li>
+         <li><mark>code-behind</mark>, de &ldquo;code achter het design&rdquo;: geschreven in <strong>C#</strong> code &rarr; C# code in <strong>MainWindow.xaml.cs</strong></li>
+      </ul> 
+      <p>In de designer kan je controls toevoegen en properties instellen; de gegenereerde <mark>XAML</mark> (spreek uit: &ldquo;zammel&rdquo;) middenonder kan je ook rechtstreeks met de hand aanpassen of aanvullen.</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-designer.png" alt="" class="w-800 bordered">
+      </figure>
+      <h4>Controls toevoegen</h4>
+      <p>Een WPF component als Button, TextBox enz... toevoegen heet een <mark>WPF control</mark>. In het <a href="03_wpfcontrols.html">hoofdstuk WPF Controls</a> komen we uitgebreid op terug op alle controls en hun gebruik. Voeg ze toe door verslepen uit de Toolbox:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-addcontrol1.png" alt="" class="w-500 bordered">
+         <img src="img/00_visualstudio/wpf-addcontrol2.png" alt="" class="w-500 bordered">
+      </figure>
+      <h4>Eigenschappen instellen</h4>
+      <p>De volgende stap is het instellen van alle eigenschappen:</p>
+      <ul>
+         <li><strong>naam</strong> van de control</li>
+         <li><strong>opmaak</strong>: tekst, kleur, lettertype, grootte...</li>
+         <li><strong>layout</strong>: positie, grootte, marges...</li>
+         <li><strong>events</strong> (wat gebeurt er als je op de knop klikt?)</li>
+         <li>...</li>
+      </ul>
+      <h5>naam</h5>
+      <p>Controls die je later nodig hebt, geef je best onmiddellijk een naam:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-control-name.png" alt="" class="w-800 bordered">
+      </figure>
+      <div class="tips" data-caption="💡TIP">
+         <p>
+            Controls als titels of vaste afbeeldingen die je niet nodig hebt in je programmeercode later, hoef je <em>geen</em> naam te geven.
+         </p>
+      </div>
+      <div class="tips" data-caption="⚖️ REGEL">
+         <p>
+            We gebruiken de <mark>Hongaarse notatie</mark>: een drieletter prefix plus een omschrijving in PascalCase. <br>Voorbeelden: <strong>btnOk</strong>, <strong>inpNaam</strong>, <strong>txtError</strong>...
+         </p>
+      </div>
+      <h5>opmaak</h5>
+      <p>Opmaakeigenschappen kan je via het properties panel instellen, of rechtstreeks in de XAML:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-control-properties.png" alt="" class="w-800 bordered">
+      </figure>
+      <h5>layout</h5>
+      <p>Een correcte flexibele layout maken vraagt best wel wat kennis en werk; dit komt in een apart hoofdstuk <a href="04_wpflayout.html">04. WPF layout</a> aan bod. Maar voorlopig kunnen we perfect uit de voeten met slepen, en handmatig aanpassen van <code>Padding</code> en <code>Margin</code>. De makkelijkste plaats is rechtstreeks in de XAML. Gebruik zoveel mogelijk <strong>afgeronde waarden</strong> voor een mooie layout:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-controls-layout.png" alt="" class="w-800 bordered">
+      </figure>
+      <h4>Events toevoegen</h4>
+      <p>We willen uiteraard ook kunnen reageren op interacties met onze controls. Denk aan:</p>
+      <ul>
+         <li>klikken op een knop</li>
+         <li>veranderen van een sliderwaarde</li>
+         <li>selecteren van een item in een lijst</li>
+         <li>tekst intikken in een tekstvak</li>
+         <li>...</li>
+      </ul>
+      <p>
+         Er zijn meerdere soorten events mogelijk op controls, b.v. een <code>Button</code> kent zowel <code>Click</code>, <code>MouseEnter</code> als MouseLeave events. Het &ldquo;meest logische&rdquo; event is het <strong>standaardevent</strong>; bij de <code>Button</code> is dat <code>Click</code>.
+         Voeg een standaardevent toe door dubbelklikken op de control, of kies een willekeurig ander event via de⚡knop van het properties panel:
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-event1.png" alt="" class="w-800 bordered">
+         <figcaption>event handler in XAML code in MainWindow.xaml</figcaption>
+      </figure>
+      <p>Het toevoegen van een event heeft twee effecten:</p>
+      <ul>
+         <li>in de XAML code (bestand <em>MainWindow.xaml</em>) wordt een event handler methode gekoppeld aan een event</li>
+         <li>in de code-behind (bestand <em>MainWindow.xaml.cs</em>) wordt een lege event handler methode aangemaakt</li>
+      </ul>
+      <figure>
+         <img src="img/00_visualstudio/wpf-codebehind.png" alt="" class="w-800 bordered">
+         <figcaption>event handler implementatie in code-behind in MainWindow.xaml.cs</figcaption>
+      </figure>
+      <h5>naam event handler aanpassen</h5>
+      <p>De stijlregels (zie verder) vereisen dat alle namen van methodes met een hoofdletter beginnen. Pas daarom de naam aan zodat het begint met een hoofdletter:</p>
+      <figure>
+         <img src="img/00_visualstudio/rename1.png" alt="" class="w-500 bordered">
+         <img src="img/00_visualstudio/rename2.png" alt="" class="w-500 bordered">
+      </figure>
+      <div class="tips" data-caption="💡 TIP">
+         <p>
+            Pas namen van variabelen, methodes e.d. nooit manueel aan maar altijd aan via <strong>Rename</strong> &mdash; zo ben je zeker dat de naam overal in je code (C#, XAML) correct aangepast wordt.
+         </p>
+      </div>
+
+      <h3>Code-behind</h3>
+      <p>De <mark>code-behind</mark>, dus de &ldquo;code achter het design&rdquo;, is het eigenlijke programma. Je vindt het terug in <strong>MainWindow.xaml.cs</strong>:</p>
+      <figure>
+         <img src="img/00_visualstudio/wpf-hello-cs.png" alt="" class="w-800 bordered">
+      </figure>
+
+      <h3>Voorbeeld: WpfHalloWereld</h3>
+      <p>Je zou nu in staat moeten zijn volgend WPF programma in elkaar te steken:</p>
+      <figure>
+         <img src="img/00_visualstudio/WpfHelloWorld XAML.png" alt="" class="w-800 bordered">
+         <figcaption>WpfHalloWorld design</figcaption>
+      </figure>
+      <figure>
+         <img src="img/00_visualstudio/WpfHelloWorld CS.png" alt="" class="w-800 bordered">
+         <figcaption>WpfHalloWorld code-behind</figcaption>
+      </figure>
+      <figure>
+         <img src="img/00_visualstudio/WpfHalloWereld.gif" alt="" class="w-500">
+         <figcaption>resultaat</figcaption>
+      </figure>
+
+
+      <h2>Media en andere bestanden toevoegen</h2>
+      <p>
+         Om bestanden als afbeeldingen of geluidsfragmenten toe te voegen aan je project, volg je deze stappen:
+      </p>
+      <ol>
+         <li>maak een map aan in je project voor de media bestanden via <strong>Add, New Folder...</strong></li>
+         <li><strong>drag drop</strong> de afbeeldingen in deze map uit verkenner</li>
+         <li>selecteer bij de properties voor elke afbeelding bij <i>Build Action</i> <strong>Content</strong> en bij <i>Copy to Output Directory</i> <strong>Copy always</strong>:</li>
+      </ol>
+      <figure>
+         <img src="img/00_visualstudio/image-toevoegen.png" alt="" class="w-250 bordered">
+      </figure>
+      <div class="tips" data-caption="🥸 NIET VERGETEN!">
+         <p>Deze laatste stap mag je niet vergeten! Anders zullen je bestanden niet gevonden worden bij de uitvoering van je programma.</p>
+      </div>
+
+      <h2>Solutions en projecten aanpassen</h2>
+      <h3>Bestaand project toevoegen of verplaatsen uit andere solution</h3>
+      <p>Stappen:</p>
+      <ol>
+         <li>kopieer de projectmap naar de doelsolutionmap (als die er niet al in zit)</li>
+         <li>voeg het project toe via rechtermuisknop, Add, Existing project... en selecteer het .csproj bestand van het project</li>
+      </ol>
+      <figure>
+         <img src="img/00_visualstudio/project-add1.png" alt="" class="w-500 bordered">
+      </figure>
+      <div class="noprint">
+         <p>Een video voor wie het graag eens gedemonstreerd ziet:</p>
+         <video src="img/00_visualstudio/project-copy.mp4" width="800" controls></video>
+      </div>
+      <h3>Project verwijderen</h3>
+      <p>Als je een project wil verwijderen, moet je twee stappen ondernemen:</p>
+      <ol>
+         <li>verwijder het project uit de solution</li>
+         <li>verwijder het project van de harde schijf</li>
+      </ol>
+      <figure>
+         <img src="img/00_visualstudio/project-delete1.png" alt="" class="w-500 bordered">
+         <img src="img/00_visualstudio/project-delete2.png" alt="" class="w-250 bordered">
+      </figure>
+      <div class="noprint">
+         <p>Een video voor wie het graag eens gedemonstreerd ziet:</p>
+         <video src="img/00_visualstudio/project-remove.mp4" width="800" controls></video>
+      </div>
+      <h3>Naam solution wijzigen</h3>
+      <p>Volg deze stappen om de naam van een solution te wijzigen, b.v. van SlnOld naar SlnNew:</p>
+      <ol>
+         <li>sluit de solution</li>
+         <li>hernoem de solution folder naar SlnNew</li>
+         <li>hernoem het .sln bestand naar SlnNew.sln</li>
+         <li>(voor de zekerheid) open de solution folder eens in VS Code (dus <em>niet</em> Visual Studio) en vervang met search/replace overal SlnOld door SlnNew</li>
+         <li>heropen de solution, en rebuild het</li>
+      </ol>
+      <div class="noprint">
+         <p>Een video voor wie het graag eens gedemonstreerd ziet:</p>
+         <video src="img/00_visualstudio/solution-rename.mp4" width="800" controls></video>
+      </div>
+      <h3>Naam project wijzigen</h3>
+      <p>De naam van een project wijzigen vraagt best wel wat stappen. Een voorbeeld van WpfOld naar WpfNew:</p>
+      <ol>
+         <li>sluit de solution</li>
+         <li>hernoem de project folder naar WpfNew</li>
+         <li>hernoem het .csproj bestand naar SlnNew.csproj</li>
+         <li>(voor de zekerheid) open de project folder eens in VS Code (dus <em>niet</em> Visual Studio) en vervang met search/replace overal WpfOld door WpfNew</li>
+         <li>open de solution; het oude project WpfOld zal niet meer gevonden worden, verwijder die dus uit de solution</li>
+         <li>voeg het nieuwe project WpfNew toe aan de solution</li>
+         <li>hernoem in een willekeurig codebestand uit het project de namespace van WpfOld naar WpfNew</li>
+         <li>rebuild het project</li>
+      </ol>
+      <div class="noprint">
+         <p>Een video voor wie het graag eens gedemonstreerd ziet (eerst voor een Console toepassing, dan nog eens voor een WPF toepassng):</p>
+         <video src="img/00_visualstudio/project-rename.mp4" width="800" controls></video>
+      </div>
+
+
+      <h2>StyleCop.Analyzers</h2>
+      <p>
+         Als programmeeur kan je eigenlijk niet zonder <strong>code analyse tools</strong>, denk maar aan b.v. <em>html-validate</em> voor HTML of <em>StyleLint</em> voor CSS. Features:
+      </p>
+      <ul>
+         <li><strong>codingstijl</strong>: controle op consistente toepassing van hoofdletters, layout, commentaar, accolades...</li>
+         <li><strong>optimalisatie</strong>: suggesties voor kortere, efficiëntere en beter leesbare code</li>
+         <li><strong>foutopsporing</strong>: veel fouten komen voort uit slordigheden, die deze tools helpen vermijden</li>
+         <li><strong>configuratie</strong>: via een configuratiebestand kun je de regels en de manier waarop ze afgedwongen worden personaliseren</li>
+      </ul>
+      <h3>Installatie</h3>
+      <p>
+         Voor C# gebruiken we de <mark>StyleCop.Analyzers</mark> NuGet package. Voeg het toe aan je project via de NuGet package manager:
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/StyleCop1.png" alt="" class="w-600 bordered">
+         <figcaption>NuGet package manager</figcaption>
+      </figure>
+      <p>
+         Zoek op &ldquo;StyleCop.Analyzers&rdquo; en vink alle projecten aan:
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/StyleCop2.png" alt="" class="w-600 bordered">
+         <figcaption>Installatie in alle projecten</figcaption>
+      </figure>
+      <div class="tips" data-caption="💣 PAS OP">
+         <p>
+            Als je een nieuw project toevoegt, moet je <strong>opnieuw</strong> naar dit scherm om ook bij dit project StyleCop aan te vinken!
+         </p>
+      </div>
+      <h3>Configuratie</h3>
+      <p>
+         StyleCop.Analyzers heeft heel veel regels &mdash; teveel eigenlijk, zodat je massa's foutmeldingen krijgt. Gelukkig kan je de regels configureren met een <mark>.editorconfig</mark> in de solution map: 
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/editorConfig.png" alt="" class="w-500 bordered">
+         <figcaption>.editorConfig configuratiebestand in de solution</figcaption>
+      </figure>
+      <p>
+         Dit bestand bevat alle configureerbare regels:
+      </p>
+      <figure>
+         <img src="img/00_visualstudio/editorConfig2.png" alt="" class="w-500 bordered">
+         <figcaption>.editorConfig regels</figcaption>
+      </figure>
+      <div class="tips" data-caption="🛑 STOP">
+         <p>
+            Het is niet de bedoeling dat je zelf de regels gaat opstellen of veranderen. Voor elk vak zul je het configuratiebestand aangeleverd krijgen, zodat de regels voor alle studenten identiek zijn. Controleer gewoon of bestand aanwezig is, en zoniet, download het van Toledo en steek het in de solution.
+         </p>
+      </div>
+      <h3>Problemen oplossen</h3>
+      <p>Je moet uiteraard niet alleen StyleCop installeren, maar ook effectief alle fouten en waarschuwingen oplossen:</p>
+      <figure>
+         <img src="img/00_visualstudio/stylecop errors.png" alt="" class="w-800 bordered">
+         <figcaption>StyleCop meldingen lezen</figcaption>
+      </figure>
+
+      <h2>Debugging</h2>
+      <p>Het stap voor stap doorlopen van je code, en ondertussen de waarden van properties en variabele in het oog houden, heet <mark>debugging</mark>.</p>
+      <h3>Breekpunt(en) plaatsen</h3>
+      <p>Plaats overal waar je de uitvoering van het programma wil pauzeren een breekpunt in de grijze balk links:</p>
+      <figure>
+         <img src="img/00_visualstudio/debugging1.png" alt="" class="w-500 bordered">
+         <figcaption>breekpunt plaatsen</figcaption>
+      </figure>
+      <h3>Programma doorlopen</h3>
+      <p>Doorloop dan stap voor stap je programma:</p>
+      <ul>
+         <li><strong>continue</strong>: ga door tot het volgende breekpunt</li>
+         <li><strong>step over</strong>: voer de volgende regel uit</li>
+         <li><strong>step into</strong>: stap in een methode</li>
+         <li><strong>step out</strong>: stap uit een methode</li>
+      </ul>
+      <figure>
+         <img src="img/00_visualstudio/debugging2.png" alt="" class="w-300 bordered">
+         <figcaption>programma doorlopen</figcaption>
+      </figure>
+      <h3>Variabelen inspecteren</h3>
+      <p>Via de rechtermuisknop kan je een zgn. <mark>watch</mark> toevoegen aan een variabele:</p>
+      <figure>
+         <img src="img/00_visualstudio/debugging3.png" alt="" class="w-300 bordered">
+         <figcaption>watch toevoegen</figcaption>
+      </figure>
+      <p>Je kan dan de waarde van variabelen observeren tijdens het debuggen:</p>
+      <figure>
+         <img src="img/00_visualstudio/debugging4.png" alt="" class="w-500 bordered">
+         <figcaption>variabelen inspecteren</figcaption>
+      </figure>
+      <div class="noprint">
+         <p>Een video voor wie het graag eens gedemonstreerd ziet:</p>
+         <video src="img/00_visualstudio/debugging.mp4" width="800" controls></video>
+      </div>
+            
+
+
+
+
+
+      <h2>Shortcuts</h2>
+      <p>Typische Visual Studio shortcuts die je zou moeten kennen:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Shortcut</th>
+               <th scope="col">Betekenis</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Ctrl-K+D</code></td>
+               <td><strong>D</strong>ocument format</td>
+            </tr>
+            <tr>
+               <td><code>Ctrl-K+C, Ctrl-K+U</code></td>
+               <td><strong>C</strong>omment, <strong>U</strong>ncomment geselecteerd blok</td>
+            </tr>
+            <tr>
+               <td><code>F5</code></td>
+               <td>programma starten</td>
+            </tr>
+            <tr>
+               <td><code>Ctrl+F5</code></td>
+               <td>programma starten zonder debugging</td>
+            </tr>
+            <tr>
+               <td><code>F7</code></td>
+               <td>open code behind</td>
+            </tr>
+            <tr>
+               <td><code>Ctrl-Alt-=, Ctrl-Alt--</code></td>
+               <td>zoom design view in / uit</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Nog enkele algemene shortcuts van elke tekst editor:</p>
+      <figure>
+         <img src="img/00_visualstudio/shortcuts general.png" alt="" class="w-600">
       </figure>
 
 
