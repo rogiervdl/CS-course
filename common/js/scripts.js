@@ -119,7 +119,10 @@ function startApp() {
 
 	// add to dom
 	if (DOM.toc) DOM.toc.innerHTML = toc;
-	DOM.nav.classList.add('condensed');
+	document.querySelector('#h1__anchor').scrollIntoView({
+		behavior: 'smooth', // Optional: makes the scroll smooth
+		block: 'start'      // Scrolls to the top of the element
+	});
 
 	// part 3: nav scroll effect
 	window.addEventListener('scroll', () => {
