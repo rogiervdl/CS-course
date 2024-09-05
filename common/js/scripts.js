@@ -119,6 +119,7 @@ function startApp() {
 
 	// add to dom
 	if (DOM.toc) DOM.toc.innerHTML = toc;
+	DOM.nav.classList.add('condensed');
 
 	// part 3: nav scroll effect
 	window.addEventListener('scroll', () => {
