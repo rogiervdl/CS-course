@@ -165,7 +165,7 @@ function createIdFrom(str) {
 }
 
 // start your engines!
-window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', () => {
 	repaint();
 	startApp();
 });
