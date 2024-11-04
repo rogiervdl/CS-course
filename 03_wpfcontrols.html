@@ -59,7 +59,7 @@
       <a href="10_sql_databanken.html" class="main__thumb pro">
          <p class="thumb__title">10. SQL databanken</p>
          <img class="thumb__visual" src="img/10_sql_databanken/icon.png" alt="">
-      </a>   
+      </a>
    </nav>
    <h1>03. WPF Controls</h1>
    <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
@@ -104,7 +104,7 @@
                </li>
                <li><a href="https://www.youtube.com/watch?v=d8eND5KaB1c?t=3123">52:03 Shortcuts</a></li>
             </ul>
-         </div>         
+         </div>
       </div>
 
       <h3>IIP &mdash; events</h3>
@@ -133,11 +133,11 @@
                   </ul>
                </li>
             </ul>
-         </div>         
+         </div>
       </div>
 
       <h2>Algemeen</h2>
-      <h3>WPF controls overzicht</h3> 
+      <h3>WPF controls overzicht</h3>
       <table class="light">
          <thead>
             <tr>
@@ -254,16 +254,16 @@
             </tr>
          </tbody>
       </table>
-      <pre class="language-html language-xaml"><code>&lt;TextBox 
-   x:Name="txt1"      
-   Background="BlanchedAlmond" 
-   FontFamily="Verdana" 
-   FontSize="12" 
-   FontWeight="SemiBold" 
-   Foreground="DarkBlue" 
-   Opacity="0.7" 
-   Padding="20,10,20,30" 
-   TextAlignment="Right" 
+      <pre class="language-html language-xaml"><code>&lt;TextBox
+   x:Name="txt1"
+   Background="BlanchedAlmond"
+   FontFamily="Verdana"
+   FontSize="12"
+   FontWeight="SemiBold"
+   Foreground="DarkBlue"
+   Opacity="0.7"
+   Padding="20,10,20,30"
+   TextAlignment="Right"
    Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" .../&gt;</code></pre>
       <figure>
          <img src="img/03_wpfcontrols/opmaak.png" alt="" class="w-250">
@@ -291,35 +291,35 @@ txt1.TextAlignment = TextAlignment.Right;
          <li>verhuis de layout properties <code>Height</code>, <code>HorizontalAlignment</code>, <code>Margin</code>, <code>VerticalAlignment</code> en <code>Width</code> van de control naar de <code>Border</code></li>
       </ol>
       <p>Een <code>TextBox</code> zonder <code>Border</code>:</p>
-      <pre class="language-html language-xaml"><code>&lt;TextBox 
-   x:Name="txt1" 
+      <pre class="language-html language-xaml"><code>&lt;TextBox
+   x:Name="txt1"
    AcceptsReturn="True"
-   Height="125" 
-   HorizontalAlignment="Left" 
-   Margin="10,10,0,0" 
-   Padding="20,10,20,30" 
-   Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" 
-   TextWrapping="Wrap" 
-   VerticalAlignment="Top" 
+   Height="125"
+   HorizontalAlignment="Left"
+   Margin="10,10,0,0"
+   Padding="20,10,20,30"
+   Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck"
+   TextWrapping="Wrap"
+   VerticalAlignment="Top"
    Width="200"/&gt;</code></pre>
       <figure>
          <img src="img/03_wpfcontrols/border-zonder.png" alt="" class="w-250">
          <figcaption>standaardweergave zonder Border</figcaption>
       </figure>
       <p>Dezelfde <code>TextBox</code> met <code>Border</code>:</p>
-      <pre class="language-html language-xaml"><code>&lt;Border 
-   BorderBrush="DarkGreen" 
-   BorderThickness="4" 
-   Height="125" 
-   HorizontalAlignment="Left" 
-   Margin="10,10,0,0" 
-   VerticalAlignment="Top" 
+      <pre class="language-html language-xaml"><code>&lt;Border
+   BorderBrush="DarkGreen"
+   BorderThickness="4"
+   Height="125"
+   HorizontalAlignment="Left"
+   Margin="10,10,0,0"
+   VerticalAlignment="Top"
    Width="200"&gt;
-      &lt;TextBox 
-      x:Name="txt1" 
+      &lt;TextBox
+      x:Name="txt1"
       AcceptsReturn="True"
-      Padding="20,10,20,30" 
-      Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck" 
+      Padding="20,10,20,30"
+      Text="short loin chicken chislic boudin, fatback shank strip steak pancetta pig hamburger jerky shankle chuck"
       TextWrapping="Wrap" /&gt;
 &lt;/Border&gt;
 </code></pre>
@@ -336,16 +336,16 @@ txt1.TextAlignment = TextAlignment.Right;
 &lt;Button x:Name="btn4" Content="KNOP 4" Click="Btn4_Click" ... /&gt;
 &lt;Button x:Name="btn5" Content="KNOP 5" Click="Btn5_Click" ... /&gt;
 &lt;Button x:Name="btn6" Content="KNOP 6" Click="Btn6_Click" ... /&gt;
-&lt;Label x:Name="lblBericht" Content="" /&gt;
+&lt;TextBlock x:Name="txtBericht" Text="" /&gt;
 </code></pre>
       <pre><code>private void Btn1_Click(object sender, RoutedEventArgs e) {
-    lblBericht.Content = "KNOP 1 geklikt";
+    txtBericht.Content = "KNOP 1 geklikt";
 }
 private void Btn2_Click(object sender, RoutedEventArgs e) {
-    lblBericht.Content = "KNOP 2 geklikt";
+    txtBericht.Content = "KNOP 2 geklikt";
 }
 private void Btn3_Click(object sender, RoutedEventArgs e) {
-    lblBericht.Content = "KNOP 3 geklikt";
+    txtBericht.Content = "KNOP 3 geklikt";
 }
 ...
 </code></pre>
@@ -357,13 +357,13 @@ private void Btn3_Click(object sender, RoutedEventArgs e) {
 &lt;Button x:Name="btn4" Content="KNOP 4" Click="Btn_Click" ... /&gt;
 &lt;Button x:Name="btn5" Content="KNOP 5" Click="Btn_Click" ... /&gt;
 &lt;Button x:Name="btn6" Content="KNOP 6" Click="Btn_Click" ... /&gt;
-&lt;Label x:Name="lblBericht" Content="" /&gt;
+&lt;TextBlock x:Name="txtBericht" Text="" /&gt;
 </code></pre>
       <p>Je vindt dan terug op welke button geklikt werd via de <code>sender</code> parameter:</p>
       <pre><code>// 'sender' is het object dat het event veroorzaakt heeft
 private void Btn_Click(object sender, RoutedEventArgs e) {
    Button btn = (Button)sender; // zet om naar Button
-   lblBericht.Content = $"{btn.Content} geklikt"; 
+   txtBericht.Content = $"{btn.Content} geklikt";
 }
 </code></pre>
 
@@ -373,14 +373,14 @@ private void Btn_Click(object sender, RoutedEventArgs e) {
       <pre class="language-html language-xaml"><code>&lt;Button x:Name="btn1" Content="KNOP 1" Tag="0" Click="Btn_Click" ... /&gt;
 &lt;Button x:Name="btn2" Content="KNOP 2" Tag="0" Click="Btn_Click" ... /&gt;
 &lt;Button x:Name="btn3" Content="KNOP 3" Tag="0" Click="Btn_Click" ... /&gt;
-&lt;Label x:Name="lblBericht" Content="" /&gt;</code></pre>
-      <pre><code>private void Btn_Click(object sender, RoutedEventArgs e) 
+&lt;TextBlock x:Name="lblBericht" Text="" /&gt;</code></pre>
+      <pre><code>private void Btn_Click(object sender, RoutedEventArgs e)
 {
     Button btn = (Button)sender;
     int timesClicked = Convert.ToInt32(btn.Tag);
     timesClicked++;
     btn.Tag = Convert.ToString(timesClicked);
-    lblBericht.Content = $"{btn.Content} is {timesClicked} keer geklikt";
+    lblBericht.Text = $"{btn.Content} is {timesClicked} keer geklikt";
 }
 </code></pre>
       <figure>
@@ -586,12 +586,12 @@ private void BtnClick(object sender, RoutedEventArgs e)
       </table>
       <h3>Voorbeeld</h3>
       <h4>Tekst tonen bij klik op button</h4>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;Button x:Name="btnSpeak" Content="Zeg Iets" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Width="100" Height="23" Click="BtnSpeak_Click"/&gt;
 </code></pre>
-      <pre><code>private void BtnSpeak_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void BtnSpeak_Click(object sender, RoutedEventArgs e)
 {
-   lblMessage.Content = "Hi there";
+   txtMessage.Text = "Hi there";
 }</code></pre>
       <figure>
          <img src="img/03_wpfcontrols/button_demo.gif" alt="" class="w-350">
@@ -641,24 +641,24 @@ private void BtnClick(object sender, RoutedEventArgs e)
       </table>
       <h3>Voorbeelden</h3>
       <h4>Controleren of CheckBox is aangevinkt</h4>
-      <pre><code>if (chkThuisbezorgen.IsChecked == true) 
+      <pre><code>if (chkThuisbezorgen.IsChecked == true)
 {
    // checkbox is aangevinkt
 }</code></pre>
       <h4>CheckBox via code aanvinken</h4>
       <pre><code>chkThuisbezorgen.IsChecked = true; // false om af te vinken</code></pre>
       <h4>Checked / Unchecked events</h4>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Checked="chbYesNo_Checked" Unchecked="chbYesNo_Unchecked"/&gt;
 </code></pre>
-      <pre><code>private void chbYesNo_Checked(object sender, RoutedEventArgs e) 
+      <pre><code>private void chbYesNo_Checked(object sender, RoutedEventArgs e)
 {
-    lblMessage.Content = "ja, mee eens";
+    txtMessage.Content = "ja, mee eens";
 }
 
-private void chbYesNo_Unchecked(object sender, RoutedEventArgs e) 
+private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 {
-    lblMessage.Content = "nee, niet mee eens";
+    txtMessage.Content = "nee, niet mee eens";
 }
 </code></pre>
       <figure>
@@ -667,25 +667,25 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
       </figure>
       <div class="tips" data-caption="💡TIP">
          <p>Je kan de code nog vereenvoudigen door de twee event handlers <code>chbYesNo_Checked()</code> en <code>chbYesNo_Unchecked()</code> samen te nemen in één methode <code>ChbYesNo_Click()</code>:</p>
-         <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+         <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,71,0,0" VerticalAlignment="Top"  Click="ChbYesNo_Click"/&gt;
 </code></pre>
-         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e) 
+         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e)
 {
-    if (chbYesNo.IsChecked == true) 
+    if (chbYesNo.IsChecked == true)
     {
-        lblMessage.Content = "ja, mee eens";
-    } 
-    else 
-    { 
-        lblMessage.Content = "nee, niet mee eens";
+        txtMessage.Text = "ja, mee eens";
+    }
+    else
+    {
+        txtMessage.Text = "nee, niet mee eens";
     }
 }
 </code></pre>
          <p>Of nog korter, met de <a href="01_csharpsyntax.html#ternaire-operator">ternaire operator</a>:</p>
-         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e) 
+         <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e)
 {
-   lblMessage.Content = chbYesNo.IsChecked == true ? "ja, mee eens" : "nee, niet mee eens";
+   txtMessage.Text = chbYesNo.IsChecked == true ? "ja, mee eens" : "nee, niet mee eens";
 }
 </code></pre>
       </div>
@@ -697,7 +697,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
    &lt;ComboBoxItem Content="Groen"/&gt;
    &lt;ComboBoxItem Content="Blauw"/&gt;
 &lt;/ComboBox&gt;</code></pre>
-      <p>De manier van werken items is bijna identiek met de <a href="#listbox">Listbox</a>, alleen gebruiken we <code>ComboBoxItem</code> i.p.v. <code>ListBoxItem</code>, en bestaat er geen <code>SelectionMode="Multiple"</code> voor de <code>ComboBox</code>.</p>   
+      <p>De manier van werken items is bijna identiek met de <a href="#listbox">Listbox</a>, alleen gebruiken we <code>ComboBoxItem</code> i.p.v. <code>ListBoxItem</code>, en bestaat er geen <code>SelectionMode="Multiple"</code> voor de <code>ComboBox</code>.</p>
       <p><img src="img/03_wpfcontrols/combobox_comboboxitems.png" alt="combobox items" class="w-350"></p>
       <h3>Properties en events</h3>
       <p>Properties en events van <code>ComboBox</code>:</p>
@@ -764,44 +764,44 @@ cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met ite
       <p>of korter genoteerd:</p>
       <pre><code>cboKleuren.Items.Add(new ComboBoxItem() { Content = "Oranje" }); // initialisatie en toevoegen in één keer</code></pre>
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
-      <pre><code>if (cboKleuren.SelectedIndex != -1) 
+      <pre><code>if (cboKleuren.SelectedIndex != -1)
 {
     // gebruiker heeft een item geselecteerd
-} 
+}
 </code></pre>
       <p>of ook:</p>
-      <pre><code>if (cboKleuren.SelectedItem != null) 
+      <pre><code>if (cboKleuren.SelectedItem != null)
 {
    // gebruiker heeft een item geselecteerd
 } </code></pre>
       <h4>Inhoud van het geselecteerde item opvragen</h4>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
-if (cboKleuren.SelectedItem != null) 
+if (cboKleuren.SelectedItem != null)
 {
     ComboBoxItem selectie = (ComboBoxItem)cboKleuren.SelectedItem; // cast naar ComboBoxItem
     string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
-                
+
     // doe iets met variabele 'inhoud'
 }</code></pre>
       <h4>Itereren over items in een ComboBox</h4>
-      <pre><code>foreach (ComboBoxItem item in cboKleuren.Items) 
+      <pre><code>foreach (ComboBoxItem item in cboKleuren.Items)
 {
     // doe iets met item, bv.: item.Content
 }</code></pre>
       <h4>Samenvattend voorbeeld</h4>
-      <p>Voorbeeld voor selecteren van tweede optie en toevoegen item in C#, en tonen geselecteerde optie in een <code>Label</code>:</p>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
+      <p>Voorbeeld voor selecteren van tweede optie en toevoegen item in C#, en tonen geselecteerde optie in een <code>TextBlock</code>:</p>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;ComboBox x:Name="cbxCountries" HorizontalAlignment="Left" Margin="27,66,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxCountries_SelectionChanged"&gt;
     &lt;ComboBoxItem Content="België" HorizontalAlignment="Left" Width="118"/&gt;
     &lt;ComboBoxItem Content="Frankrijk" HorizontalAlignment="Left" Width="118"/&gt;
     &lt;ComboBoxItem Content="Nederland" HorizontalAlignment="Left" Width="118"/&gt;
 &lt;/ComboBox&gt;
 </code></pre>
-      <pre><code>public MainWindow() 
+      <pre><code>public MainWindow()
 {
     InitializeComponent();
-    // selecteer tweede optie 
-    cbxCountries.SelectedIndex = 1; 
+    // selecteer tweede optie
+    cbxCountries.SelectedIndex = 1;
     // voeg nog een item "Spanje" toe
     ComboBoxItem newItem = new ComboBoxItem();
     newItem.Content = "Spanje";
@@ -811,7 +811,7 @@ if (cboKleuren.SelectedItem != null)
 private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
 {
     ComboBoxItem selectedItem = (ComboBoxItem)cbxCountries.SelectedItem;
-    lblMessage.Content = $"geselecteerd: {selectedItem.Content}";
+    txtMessage.Text = $"geselecteerd: {selectedItem.Content}";
 }
 </code></pre>
       <figure>
@@ -856,7 +856,7 @@ private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventA
       <h3>Voorbeelden</h3>
       <h4>Geselecteerde datum opvragen</h4>
       <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
-if (dpcGeboortedatum.SelectedDate != null) 
+if (dpcGeboortedatum.SelectedDate != null)
 {
     DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
     // doe iets met variabele 'datum'
@@ -964,15 +964,15 @@ if (dpcGeboortedatum.SelectedDate != null)
 &lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow2_Click"/&gt;
 &lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow3_Click"/&gt;
 </code></pre>
-      <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e)
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
 }
-private void BtnShow2_Click(object sender, RoutedEventArgs e) 
+private void BtnShow2_Click(object sender, RoutedEventArgs e)
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
 }
-private void BtnShow3_Click(object sender, RoutedEventArgs e) 
+private void BtnShow3_Click(object sender, RoutedEventArgs e)
 {
     imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
 }
@@ -983,9 +983,10 @@ private void BtnShow3_Click(object sender, RoutedEventArgs e)
       </figure>
 
       <h2>Label</h2>
-      <p>Gebruik een Label om korte tekst (één regel) weer te geven, bv.: resultaat van een berekening, titel van een invulveld, ... De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblMessage" Content="Dit is een bericht" .../&gt;</code></pre>
-      <p><img src="img/03_wpfcontrols/label.png" alt="" class="bordered w-150"></p>
+      <p>De functie is hetzelfde als <code>&lt;label&gt;</code> in HTML: een beschrijvende tekst naast een form control. Voorbeeld:</p>
+      <pre class="language-html language-xaml"><code>&lt;Label x:Name="txtNaam" Content="Je naam:" .../&gt;
+&lt;TextBox x:Name="inpNaam" .../&gt;</code></pre>
+      <p><img src="img/03_wpfcontrols/label.png" alt="" class="bordered w-200"></p>
       <h3>Properties</h3>
       <table class="light">
          <thead>
@@ -1017,10 +1018,6 @@ private void BtnShow3_Click(object sender, RoutedEventArgs e)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeeld</h3>
-      <h4>Dynamisch inhoud van Label instellen</h4>
-      <pre><code>double prijs = 9.95;
-lblPrijs.Content = $"€ {prijs}";</code></pre>
 
       <h2>ListBox</h2>
       <p>Een ListBox lijkt sterk op een <a href="#combobox">ComboBox</a> &mdash; het is ook een lijst van items waaruit je kan kiezen. De voornaamste verschillen:</p>
@@ -1155,15 +1152,15 @@ lblPrijs.Content = $"€ {prijs}";</code></pre>
       <h4>Dynamisch items toevoegen</h4>
       <pre><code>ListBoxItem item = new ListBoxItem(); // maak een nieuw ListBoxItem
 item.Content = "Brood"; // stel de inhoud (tekst) van het item in
-            
+
 lstBoodschappen.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ListBox</code></pre>
       <p>of korter genoteerd:</p>
       <pre><code>lstBoodschappen.Items.Add(new ListBoxItem() { Content = "Brood" }); // initialisatie en toevoegen in één keer</code></pre>
       <div class="tips" data-caption="💡TIP">
          <p>In theorie kan je ook rechtstreeks een <code>string</code> in een <code>ListBox</code> kan steken, zonder te verpakken in <code>ListBoxItem</code>:</p>
          <pre class="wrong"><code>// string toevoegen zonder ListBoxItem
-lstBoodschappen.Items.Add("Brood");             
-lstBoodschappen.Items.Add("Kaas");             
+lstBoodschappen.Items.Add("Brood");
+lstBoodschappen.Items.Add("Kaas");
 lstBoodschappen.Items.Add("Eieren");</code></pre>
          <ul class="arrow">
             <li>er zijn nu geen opmaakmogelijkheden meer als zichtbaarheid, achtergrond, lettertype...</li>
@@ -1172,36 +1169,36 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
       </div>
 
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
-      <pre><code>if (lstBoodschappen.SelectedIndex != -1) 
+      <pre><code>if (lstBoodschappen.SelectedIndex != -1)
 {
     // er werd (minimum) één item geselecteerd
 }</code></pre>
       <p>of ook:</p>
-      <pre><code>if (lstBoodschappen.SelectedItem != null) 
+      <pre><code>if (lstBoodschappen.SelectedItem != null)
 {
    // gebruiker heeft (minimum) één item geselecteerd
 }</code></pre>
       <p>of ook:</p>
-      <pre><code>if (lstBoodschappen.SelectedItems.Count &gt; 0) 
+      <pre><code>if (lstBoodschappen.SelectedItems.Count &gt; 0)
 {
    // gebruiker heeft (minimum) één item geselecteerd
 }</code></pre>
       <h4>Inhoud van het geselecteerde item opvragen (single selection mode)</h4>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
-if (lstBoodschappen.SelectedItem != null) 
+if (lstBoodschappen.SelectedItem != null)
 {
     ListBoxItem selectie = (ListBoxItem)lstBoodschappen.SelectedItem; // cast naar ListBoxItem
     string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
-                
+
     // doe iets met variabele 'inhoud'
 }</code></pre>
       <h4>Geselecteerde items overlopen (multiple selection mode)</h4>
-      <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems) 
+      <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems)
 {
     // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
       <h4>Alle items overlopen</h4>
-      <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items) 
+      <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items)
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
@@ -1281,15 +1278,15 @@ melMyVideo.Play();</code></pre>
       </table>
       <h3>Voorbeelden</h3>
       <h4>Nagaan welke RadioButton aangevinkt is</h4>
-      <pre><code>if (radKlein.IsChecked == true) 
+      <pre><code>if (radKlein.IsChecked == true)
 {
    // optie 'klein' is aangevinkt
 }
-else if (radMedium.IsChecked == true) 
+else if (radMedium.IsChecked == true)
 {
    // optie 'medium' is aangevinkt
-} 
-else if(radGroot.IsChecked == true) 
+}
+else if(radGroot.IsChecked == true)
 {
    // optie 'groot' is aangevinkt
 }</code></pre>
@@ -1351,15 +1348,15 @@ else if(radGroot.IsChecked == true)
       <h3>Voorbeelden</h3>
       <h4>Een geselecteerde waarde opvragen</h4>
       <pre><code>double waarde = sldVolume.Value;
-// doe iets met variabele 'waarde' (bv.: weergeven in een Label)</code></pre>
-      <h4>Geselecteerde waarde weergeven in een Label</h4>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblValue" Content="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
+// doe iets met variabele 'waarde' (bv.: weergeven in een TextBlock)</code></pre>
+      <h4>Geselecteerde waarde weergeven in een TextBlock</h4>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
 &lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10" HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
 </code></pre>
       <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
     int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
-    lblValue.Content = sliderVal;
+    txtValue.Text = sliderVal;
 }
 </code></pre>
       <figure>
@@ -1368,10 +1365,11 @@ else if(radGroot.IsChecked == true)
       </figure>
 
       <h2>TextBlock</h2>
-      <p>Een <code>TextBlock</code> is net zoals <a href="#label">Label</a> een control die gebruikt wordt om tekst weer te geven. Er zijn echter meer mogelijkheden:</p>
+      <p>Gebruik een <code>TextBlock</code> om tekst weer te geven:</p>
       <ul>
-         <li>een tekst met meerdere regels is mogelijk (multi-line)</li>
-         <li>er zijn uitgebreidere formatteringsmogelijkheden</li>
+         <li>eenvoudige tekst (een woord, zin, titel, resultaat berekening...)</li>
+         <li>tekst over meerdere regels (een paragraaf)</li>
+         <li>opgemaakte tekst (vet, schuin, met een link...)</li>
       </ul>
       <p>De basis XAML:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBlock Width="200" Margin="39,41,0,0" TextWrapping="Wrap" Text="bacon ham hock, doner fatback pastrami landjaeger pork short ribs jerky corned beef" .../&gt;</code></pre>
@@ -1457,12 +1455,12 @@ txtMyTextBlock.Inlines.Add(new Run("onderlijnd") { TextDecorations = TextDecorat
 txtMyTextBlock.Inlines.Add(", ");
 txtMyTextBlock.Inlines.Add(new Run("groen") { Foreground = Brushes.Green });
 txtMyTextBlock.Inlines.Add(" of ");
-txtMyTextBlock.Inlines.Add(new Run("alles tegelijk") 
+txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
 {
     FontWeight = FontWeights.Bold,
     FontStyle = FontStyles.Italic,
     TextDecorations = TextDecorations.Underline,
-    Foreground = Brushes.Green 
+    Foreground = Brushes.Green
 });</code></pre>
       <figure>
          <img src="img/03_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="w-300">

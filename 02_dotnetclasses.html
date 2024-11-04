@@ -252,8 +252,8 @@ SoundPlayer player = new SoundPlayer(path);
 player.Load(); // wacht tot het geluid ingeladen is
 player.PlaySync(); // PlaySync(): wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
                    // Play(): speel het geluid af en ga ondertussen verder met de rest van de code
-...  
-player.Stop(); // stop het geluid voortijdig                 
+...
+player.Stop(); // stop het geluid voortijdig
 </code></pre>
       <ul class="arrow">
          <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps</li>
@@ -346,9 +346,9 @@ wpfImage.Source = new BitmapImage(bitmapSource);</code></pre>
       <h2>Brushes</h2>
       <p>Een klasse die een aantal <code>Brush</code>-properties bevat die standaardkleuren voorstellen (bv.: <code>Aqua</code>, <code>Blue</code>, <code>Green</code>, ...). Voor een volledig overzicht van alle beschikbare kleuren, zie de <a href="https://docs.microsoft.com/en-us/dotnet/api/system.drawing.brushes?view=dotnet-plat-ext-3.1#properties">documentatie</a>.</p>
       <h3>Voorbeeld</h3>
-      <h4>Instellen van voor- en achtergrondkleur Label-control:</h4>
-      <pre><code>lblHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
-lblHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code></pre>
+      <h4>Instellen van voor- en achtergrondkleur TextBlock-control:</h4>
+      <pre><code>txtHello.Foreground = Brushes.DarkBlue; // donker blauwe tekstkleur
+txtHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/brushes_example1.png" alt="voorbeeld brushes" class="bordered w-100">
          <figcaption>resultaat van instellen Foreground en Background</figcaption>
@@ -501,7 +501,7 @@ using System.Collections.Generic;
       <p>Gebruik <code>Contains()</code> (returnwaarde <code>true</code> of <code>false</code>):</p>
       <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 bool gevonden = fruit.Contains("citroen");
-if (gevonden) 
+if (gevonden)
 {
    Console.WriteLine("De array bevat het woord \"citroen\"");
 }</code></pre>
@@ -509,7 +509,7 @@ if (gevonden)
       <p>Gebruik <code>IndexOf()</code> om de positie te vinden (-1 indien niet gevonden):</p>
       <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 int pos = fruit.IndexOf("citroen");
-if (pos &gt; -1) 
+if (pos &gt; -1)
 {
    Console.WriteLine($"Het woord \"citroen\" is gevonden op positie {pos}");
 }</code></pre>
@@ -517,8 +517,8 @@ if (pos &gt; -1)
       <p>Gebruik <code>Array.Sort()</code> om een array <i>oplopend</i> te sorteren:</p>
       <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 Array.Sort(getallen); // sorteer getallen van klein naar groot
-   
-foreach (int getal in getallen) 
+
+foreach (int getal in getallen)
 {
    Console.WriteLine(getal);
 }
@@ -535,8 +535,8 @@ foreach (int getal in getallen)
       <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 Array.Sort(getallen); // sorteer getallen van klein naar groot
 Array.Reverse(getallen); // keer volgorde om
-   
-foreach (int getal in getallen) 
+
+foreach (int getal in getallen)
 {
    Console.WriteLine(getal);
 }
@@ -584,12 +584,12 @@ fruit.Add("citroen"); // lijst bevat 3 elementen
       <h5>lijsten samenvoegen</h5>
       <p>Je kan de elementen van een tweede lijst toevoegen met <code>AddRange()</code>:</p>
       <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;() { "appel", "banaan", "citroen" }; // eerste lijst
-List&lt;string&gt; nogmeerfruit = new List&lt;string&gt;() { "peer", "kiwi" }; // tweede lijst         
+List&lt;string&gt; nogmeerfruit = new List&lt;string&gt;() { "peer", "kiwi" }; // tweede lijst
 fruit.AddRange(nogmeerfruit); // fruit is nu "appel", "banaan", "citroen", "peer", "kiwi"
 </code></pre>
       <h5>element wijzigen</h5>
       <p>Elementen wijzigen doe je eenvoudig met een toewijzing (<code>=</code>). Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 4, 8, 3 }; // lijst is 4, 8, 3 
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 4, 8, 3 }; // lijst is 4, 8, 3
 getallen[1] = 5; // tweede element wijzigen naar 5, lijst is nu: 4, 5, 3
 </code></pre>
       <h5>één element verwijderen</h5>
@@ -616,7 +616,7 @@ string laatste = kleuren[kleuren.Count - 1]; // manier om laatste element op te 
 Console.WriteLine($"Het laatste element is: {laatste}");</code></pre>
       <figure class="console">
          <pre>Het eerste element is: rood
-Het tweede element is: groen            
+Het tweede element is: groen
 Het laatste element is: blauw</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
@@ -632,7 +632,7 @@ Console.WriteLine(getallen.Count); // Count property</code></pre>
       <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
       <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;() { "Zakaria", "Nelly", "Killian", "Chun" };
 
-for (int i = 0; i &lt; namen.Count; i++) 
+for (int i = 0; i &lt; namen.Count; i++)
 {
     string naam = namen[i];
     Console.WriteLine($"{i + 1}. {naam}");
@@ -649,7 +649,7 @@ for (int i = 0; i &lt; namen.Count; i++)
       <p>Indien je de index (positie) van het element niet nodig hebt kan je <code>foreach</code> gebruiken:</p>
       <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;() { "Zakaria", "Nelly", "Killian", "Chun" };
 
-foreach (string naam in namen) 
+foreach (string naam in namen)
 {
     Console.WriteLine(naam);
 }
@@ -666,11 +666,11 @@ Chun</pre>
       <pre><code>List&lt;string&gt; fruit = new List&lt;string&gt;() { "appel", "banaan", "citroen" };
 
 bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
-if (gevonden) 
+if (gevonden)
 {
     Console.WriteLine("Het element komt wel in de lijst voor");
-} 
-else 
+}
+else
 {
     Console.WriteLine("Het element komt niet in de lijst voor.");
 }
@@ -684,7 +684,7 @@ else
       <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 7, 3, 9, 5 };
 
 getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
-foreach (int getal in getallen) 
+foreach (int getal in getallen)
 {
     Console.WriteLine(getal);
 }
@@ -826,7 +826,7 @@ foreach (KeyValuePair&lt;string, int&gt; item in dict1)
 </code></pre>
          <figure class="console">
             <pre>Dictionary 1 bevat key "noot": ja
-Dictionary 1 bevat waarde 3: ja            
+Dictionary 1 bevat waarde 3: ja
 Key: aap, Value: 6
 Key: noot, Value: 4
 Key: tuin, Value: 11</pre>
@@ -1066,13 +1066,13 @@ Console.WriteLine($"Hallo, {naam}"); // schrijf een boodschap naar de console</c
       </figure>
       <h4>Getal inlezen</h4>
       <p>Console.ReadLine() geeft altijd een tekst terug; als je een getal wil, moet je het converteren met <code>Convert.ToInt32()</code> (gehele getallen) of <code>Convert.ToDouble()</code> (kommagetallen):</p>
-      <pre><code>Console.Write("Geef een aantal in: "); 
+      <pre><code>Console.Write("Geef een aantal in: ");
 int aantal = Convert.ToInt32(Console.ReadLine());   // zet de tekst om naar een geheel getal met Convert.ToInt32()
-Console.Write("Geef een prijs in: "); 
+Console.Write("Geef een prijs in: ");
 double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToInt32()</code></pre>
       <h4>Karakter inlezen met weergave</h4>
       <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
-char keuze = Console.ReadKey().KeyChar; 
+char keuze = Console.ReadKey().KeyChar;
 Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
          <img src="img/02_dotnetclasses/console-readkey1.gif" alt="" class="w-250">
@@ -1110,22 +1110,22 @@ Console.WriteLine("Hello, World!");</code></pre>
 Console.WriteLine("∑ → ◈"); // andere karakters worden fout weergegeven</code></pre>
       <figure class="console">
          <pre>
-A 1 +         
+A 1 +
 S ⸮ ?</pre>
          <figcaption>speciale karakters worden fout weergegeven</figcaption>
       </figure>
       <p>Om speciale karakters correct weer te geven, moet je <code>Console.OutputEncoding</code> instellen:</p>
       <pre><code>Console.OutputEncoding = Encoding.UTF8; // stel utf-8 karakterset in
-Console.WriteLine("A 1 +"); 
+Console.WriteLine("A 1 +");
 Console.WriteLine("∑ → ◈"); // andere karakters worden nu ook correct weergegeven</code></pre>
       <figure class="console">
          <pre>
-A 1 +         
+A 1 +
 ∑ → ◈</pre>
          <figcaption>speciale karakters worden nu correct weergegeven</figcaption>
       </figure>
       <p>Merk op: zelfs dan kunnen karakters soms verkeerd of anders weergegeven worden, afhankelijk van de beschikbare lettertypes, en zeker bij emoji's. </p>
-      <pre><code>Console.OutputEncoding = Encoding.UTF8; 
+      <pre><code>Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
       <figure class="console">
          <img src="img/02_dotnetclasses/console-emojis.png" alt="" class="w-350">
@@ -1231,7 +1231,7 @@ Regel 2</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Pad naar Desktop opvragen</h4>
-      <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); 
+      <pre><code>string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
       <figure class="console">
          <pre>Pad naar mijn desktop: C:\Users\rogie\Desktop</pre>
@@ -1248,7 +1248,7 @@ Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
          <pre><code>int[] scores = new int[] { 97, 54, 92, 81, 60 };
 
 // Define the query expression.
-int[] scoresAbove80 = 
+int[] scoresAbove80 =
     (from score in scores
     where score &gt; 80
     select score).ToArray();
@@ -1393,14 +1393,14 @@ kleinste: 15</pre>
       </figure>
       <h4>OK/Cancel ialoogvenster</h4>
       <pre><code>MessageBoxResult result = MessageBox.Show(
-   "Je wijzigingen gaan mogelijks verloren. Ben je zeker dat je wil afsluiten?", 
-   "WAARSCHUWING", 
-   MessageBoxButton.OKCancel, 
+   "Je wijzigingen gaan mogelijks verloren. Ben je zeker dat je wil afsluiten?",
+   "WAARSCHUWING",
+   MessageBoxButton.OKCancel,
    MessageBoxImage.Exclamation
 );
 if (result == MessageBoxResult.OK)
 {
-    Environment.Exit(0);    
+    Environment.Exit(0);
 }
 </code></pre>
       <figure>
@@ -1449,7 +1449,7 @@ Random getal 2: 6</pre>
       <p>De <code>String</code> klasse is een zogenaamde <em>wrapper class</em>, of uitbreiding van het <code>string</code> type. Beiden zijn uitwisselbaar; deze fragmenten zijn dus gelijkwaardig:</p>
       <pre><code>// de "string" notatie krijgt de voorkeur
 string[] arr1 = new string[] { "blauw", "rood", "groen" };
-string samengevoegd = string.Join(", ", arr1); 
+string samengevoegd = string.Join(", ", arr1);
 
 // de "String" notatie is technisch gelijkwaardig
 String[] arr1 = new String[] { "blauw", "rood", "groen" };
@@ -1594,8 +1594,8 @@ bool bool4 = string.IsNullOrEmpty(str4); // False - een spatie is geen lege stri
       <pre><code>if (string.IsNullOrEmpty(txtNaam))
 {
    lblFoutboodschap.Content = "Dit veld is verplicht";
-} 
-else 
+}
+else
 {
    lblFoutboodschap.Content = "";
 }</code></pre>
@@ -1622,7 +1622,7 @@ Console.WriteLine(samengevoegd);</code></pre>
       <h5>rond spaties</h5>
       <pre><code>string zin = "dit is een zin met meerdere woorden";
 string[] woorden = zin.Split(' '); // verdeel zin in woorden
-foreach (string woord in woorden) 
+foreach (string woord in woorden)
 {
    Console.WriteLine(woord);
 }</code></pre>
@@ -1758,14 +1758,14 @@ Timer is gestopt. De verstreken tijd is 2.47s</pre>
       </table>
       <h4>Codevoorbeeld</h4>
       <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="lblCount" Content="0" .../&gt;
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtCount" Text="0" .../&gt;
 &lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
 </code></pre>
       <p>De C# code-behind:</p>
       <pre><code>private int ticks;
 private DispatcherTimer timer;
 
-public MainWindow() 
+public MainWindow()
 {
     InitializeComponent();
     ticks = 0; // zet teller op 0
@@ -1776,14 +1776,14 @@ public MainWindow()
 
 private void BtnStart_Click(object sender, RoutedEventArgs e) {
    timer.Start(); // start de teller als op de OK-knop geklikt wordt
-}        
+}
 
-private void DoSomething(object sender, EventArgs e) 
+private void DoSomething(object sender, EventArgs e)
 {
     // elke 200 milliseconden uitgevoerd
     // ...
     ticks++;
-    lblCount.Content = ticks;
+    txtCount.Content = ticks;
 }
 </code></pre>
       <figure>

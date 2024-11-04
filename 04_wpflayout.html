@@ -59,7 +59,7 @@
       <a href="10_sql_databanken.html" class="main__thumb pro">
          <p class="thumb__title">10. SQL databanken</p>
          <img class="thumb__visual" src="img/10_sql_databanken/icon.png" alt="">
-      </a>   
+      </a>
    </nav>
    <h1>04. WPF layout</h1>
    <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
@@ -69,7 +69,7 @@
       <!-- VIDEO -->
       <h2>Youtube: WPF layout</h2>
       <div class="flexcontainer youtubecontainer">
-         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/B6VQzjlFd70" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/B6VQzjlFd70" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
          <figure class="print">
             <a href="https://www.youtube.com/watch?v=B6VQzjlFd70"><img src="img/04_wpflayout/youtube-ooad-layout.png" alt="" class="w-500"></a>
             <figcaption><a href="https://www.youtube.com/watch?v=B6VQzjlFd70">https://www.youtube.com/watch?v=B6VQzjlFd70</a></figcaption>
@@ -116,7 +116,7 @@
                </li>
             </ul>
          </div>
-      </div>      
+      </div>
 
       <h2>Vensters</h2>
       <p>Een nieuw WPF project heeft standaard een 800x450 Window (met daarin een Grid control):</p>
@@ -244,7 +244,7 @@
 &lt;/Window&gt;
 </code></pre>
       <p>De event handler in code-behind:</p>
-      <pre><code>private void BtnOpenPopup_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void BtnOpenPopup_Click(object sender, RoutedEventArgs e)
 {
    new MyPopupWindow().Show();
 }
@@ -275,7 +275,7 @@
       <pre class="language-html language-xaml"><code>&lt;Button Content="sluiten" Click="BtnClose_Click" .../&gt;
 </code></pre>
 <p>De event handler in code-behind:</p>
-<pre><code>private void BtnClose_Click(object sender, RoutedEventArgs e) 
+<pre><code>private void BtnClose_Click(object sender, RoutedEventArgs e)
 {
    this.Close();
 }
@@ -286,7 +286,7 @@
       <h3>Margin en Padding</h3>
       <p>Slepen we in designer een <code>Button</code> control op de grid, en voegen we wat <code>Padding</code> toe:</p>
       <pre class="language-html language-xaml"><code>&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5,10,5" HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;    
+   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5,10,5" HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;
 &lt;/Grid&gt;
 </code></pre>
       <figure>
@@ -302,7 +302,7 @@
       <h3>VerticalAlignment en HorizontalAlignment</h3>
       <p>De attributen <code class="em">VerticalAlignment</code> en <code class="em">HorizontalAlignment</code> bepalen hoe de control gepositioneerd wordt t.o.v. de parent. Als afstanden worden de marges genomen. Stel je ze b.v. in op <code>Right</code> resp. <code>Bottom</code>, dan worden de rechter- en onderwaarden van Margin genomen:</p>
       <pre class="language-html language-xaml"><code>&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" /&gt;    
+   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" /&gt;
 &lt;/Grid&gt;</code></pre>
       <figure>
          <img src="img/04_wpflayout/marginpadding-bottomright.png" alt="" class="bordered w-300">
@@ -310,14 +310,14 @@
       </figure>
       <p>De standaardwaarden voor <code>VerticalAlignment</code> en <code>HorizontalAlignment</code> zijn <code>Stretch</code>, dus als je het weglaat wordt de control uitgerokken, b.v. <code>VerticalAlignment</code> weglaten rekt verticaal uit:</p>
       <pre class="language-html language-xaml"><code>&lt;Grid&gt;
-   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Left" /&gt;    
+   &lt;Button Content="Button" Margin="35,48,10,20" Padding="10,5" HorizontalAlignment="Left" /&gt;
 &lt;/Grid&gt;</code></pre>
       <figure>
          <img src="img/04_wpflayout/marginpadding-stretch.png" alt="" class="bordered w-300">
          <figcaption>zonder VerticalAlignment: uitgerokken</figcaption>
       </figure>
       <em>&rarr; speficieer dus altijd waarden voor <code>VerticalAlignment</code> en <code>HorizontalAlignment</code> voor elke control!</em>
-      
+
       <h3>VerticalContentAlignment en HorizontalContentAlignment</h3>
       <p>De attributen <code class="em">VerticalContentAlignment</code> en <code class="em">HorizontalContentAlignment</code> bepalen de alignering van de <em>content</em> van de control. De XAML voor twee tekstvakken, verticaal gecentreerd en horizontaal links resp. rechts:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBox Text="tekst links..." HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ... /&gt;
@@ -328,7 +328,7 @@
          <figcaption>verticaal gecentreerd, horizontaal links resp. rechts</figcaption>
       </figure>
 
-      
+
 
       <h2>WPF panels</h2>
       <h3>overzicht</h3>
@@ -466,7 +466,7 @@
                <td>resterende ruimte</td>
             </tr>
          </tbody>
-      </table>      
+      </table>
       <figure>
          <img src="img/04_wpflayout/grid2.png" alt="" class="w-400 bordered">
          <figcaption>grid voorbeeld</figcaption>
@@ -476,63 +476,49 @@
          Bij <code class="em">StackPanel</code> stapel je controls in één rij of kolom:
       </p>
       <pre class="language-html language-xaml"><code>&lt;StackPanel Orientation="Horizontal"&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/Label&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
 </code></pre>
       <figure>
          <img src="img/04_wpflayout/stackpanel.png" alt="" class="w-350 bordered">
          <figcaption>stackpanel voorbeeld</figcaption>
-      </figure>      
+      </figure>
       <p>
          Om verticaal te stapelen gebruik je <code>Orientation="Vertical"</code>:
       </p>
       <pre class="language-html language-xaml"><code>&lt;StackPanel Orientation="Vertical"&gt;
-   ...         
+   ...
 &lt;/StackPanel&gt;
       </code></pre>
       <figure>
          <img src="img/04_wpflayout/stackpanel-vert.png" alt="" class="bordered w-350">
          <figcaption>StackPanel verticaal voorbeeld</figcaption>
-      </figure>      
-      
+      </figure>
+
       <h3>WrapPanel</h3>
       <p>
          Bij <code class="em">WrapPanel</code> stapel je elementen in meerdere rijen of kolommen:
       </p>
       <pre class="language-html language-xaml"><code>&lt;WrapPanel&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/Label&gt;
-   &lt;Label FontSize="48" Width="100" Height="70" HorizontalContentAlignment="Center" 
-          VerticalContentAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/Label&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;1&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;2&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;3&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;4&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;5&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;6&lt;/TextBlock&gt;
+   &lt;TextBlock FontSize="48" Width="100" Height="70" TextAlignment="Center" Background="LightGray" Margin="10,10,10,10"&gt;...&lt;/TextBlock&gt;
 &lt;/WrapPanel&gt;
 </code></pre>
       <figure>
          <img src="img/04_wpflayout/wrappanel.png" alt="" class="bordered w-350">
          <figcaption>stackpanel voorbeeld</figcaption>
-      </figure>      
+      </figure>
       <div class="tips" data-caption="💡TIP">
          <p>Je kan ook stapelen van rechts naar links met <code>FlowDirection="RightToLeft"</code>, maar dat zijn de enige aligneermogelijkheden. Items centraal plaatsen of ver uit elkaar zetten kan bijvoorbeeld niet, zoals met CSS FlexBox wel kan. Voor complexere layouts gebruik je best altijd <code>Grid</code>.</p>
       </div>
@@ -540,14 +526,14 @@
          Om verticaal te stapelen gebruik je <code>Orientation="Vertical"</code>:
       </p>
       <pre class="language-html language-xaml"><code>&lt;WrapPanel Orientation="Vertical"&gt;
-   ...         
+   ...
 &lt;/WrapPanel&gt;
       </code></pre>
       <figure>
          <img src="img/04_wpflayout/wrappanel2.png" alt="" class="bordered w-350">
          <figcaption>WrapPanel verticaal voorbeeld</figcaption>
-      </figure>      
-      
+      </figure>
+
       <h2>UI componenten</h2>
       <h3>overzicht</h3>
       <table class="light">
@@ -602,7 +588,7 @@
 </code></pre>
       <p><em>&rarr; de underscore in de XAML duidt aan welke letter als shortcut gebruikt wordt</em></p>
       <p>Voorbeeld van een event handler voor het exit menu item:</p>
-      <pre><code>private void ExitItem_Click(object sender, RoutedEventArgs e) 
+      <pre><code>private void ExitItem_Click(object sender, RoutedEventArgs e)
 {
     // 0 wilt zeggen dat er niets is fout gelopen
     Environment.Exit(0);
@@ -620,16 +606,16 @@
          <li>verhuis layout properties als <code>Height</code>, <code>HorizontalAlignment</code>, <code>Margin</code>, <code>VerticalAlignment</code>, <code>Width</code> enz... van de control naar de <code>ScrollViewer</code></li>
       </ol>
       <p>Een <code>TextBox</code> zonder scrollbars:</p>
-      <pre class="language-html language-xaml"><code>&lt;TextBox 
-   x:Name="txt1" 
+      <pre class="language-html language-xaml"><code>&lt;TextBox
+   x:Name="txt1"
    AcceptsReturn="True"
-   Height="150" 
-   HorizontalAlignment="Left" 
-   Margin="35,39,0,0" 
-   Padding="20,10,20,30" 
-   Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..." 
-   TextWrapping="Wrap" 
-   VerticalAlignment="Top" 
+   Height="150"
+   HorizontalAlignment="Left"
+   Margin="35,39,0,0"
+   Padding="20,10,20,30"
+   Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..."
+   TextWrapping="Wrap"
+   VerticalAlignment="Top"
    Width="200"
 /&gt;
       </code></pre>
@@ -638,17 +624,17 @@
          <figcaption>TextBox zonder ScrollViewer</figcaption>
       </figure>
       <p>Dezelfde <code>TextBox</code> met scrollbars:</p>
-      <pre class="language-html language-xaml"><code>&lt;ScrollViewer 
-   Height="150" 
-   HorizontalAlignment="Left" 
+      <pre class="language-html language-xaml"><code>&lt;ScrollViewer
+   Height="150"
+   HorizontalAlignment="Left"
    Margin="35,39,0,0"
-   VerticalAlignment="Top" 
+   VerticalAlignment="Top"
    Width="200"&gt;
-   &lt;TextBox 
-      x:Name="txt1" 
+   &lt;TextBox
+      x:Name="txt1"
       AcceptsReturn="True"
-      Padding="20,10,20,30" 
-      Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..." 
+      Padding="20,10,20,30"
+      Text="Bacon ipsum dolor amet prosciutto tail fatback, pancetta sausage meatball swine rump salami pig alcatra ..."
       TextWrapping="Wrap"
    /&gt;
 &lt;/ScrollViewer&gt;
@@ -664,9 +650,9 @@
    ...
    &lt;StatusBar DockPanel.Dock="Bottom"&gt;
       &lt;StatusBarItem Padding="10,5"&gt;
-         &lt;Label Content="all ready" FontSize="10" /&gt;
+         &lt;TextBlock Text="all ready" FontSize="10" /&gt;
       &lt;/StatusBarItem&gt;
-   &lt;/StatusBar&gt;    
+   &lt;/StatusBar&gt;
    &lt;Grid&gt;&lt;/Grid&gt;
 &lt;/DockPanel&gt;
 </code></pre>
@@ -679,7 +665,7 @@
       <p>Een <code class="em">TabControl</code> voorbeeld:</p>
       <pre class="language-html language-xaml"><code>&lt;TabControl SelectedIndex="2" &gt;
    &lt;TabItem Header="Tab 1" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 1 content here...&lt;/TextBox&gt;                
+       &lt;TextBox Padding="10"&gt;tab 1 content here...&lt;/TextBox&gt;
    &lt;/TabItem&gt;
    &lt;TabItem  Header="Tab 2" Margin="0" Padding="10,5"&gt;
        &lt;TextBox Padding="10"&gt;tab 2 content here...&lt;/TextBox&gt;
