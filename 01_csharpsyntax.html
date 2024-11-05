@@ -363,8 +363,8 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
       <p>Een constante is als een variabele, maar het moet een <strong>vaste waarde</strong> hebben en die waarde kan
          <strong>niet meer veranderen</strong>. Een constante duid je aan met <code>const</code>:
       </p>
-      <pre><code>const int MaxAantalPogingen = 3; 
-const string Prefix = "ABC_"; 
+      <pre><code>const int MaxAantalPogingen = 3;
+const string Prefix = "ABC_";
 </code></pre>
       <p>&rarr; stijlregel: de meest gangbare notatie voor constanten in C# is <em>PascalCaseNotatie</em></p>
       <p>Constanten kunnen na initialisatie niet meer toegewezen worden. Dit is dus fout:</p>
@@ -397,7 +397,7 @@ const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde he
       <div class="pro">
          <h3>Nullable types</h3>
          <p>Nullable types zijn primitieve types int, float, bool… uitgebreid met de <code>null</code> waarde:</p>
-         <pre><code>int getal1; // alle waarden tussen -2,147,483,648 en 2,147,483,647 
+         <pre><code>int getal1; // alle waarden tussen -2,147,483,648 en 2,147,483,647
 int? getal2; // nullable int alle waarden tussen -2,147,483,648 en 2,147,483,647 of null
 
 bool test1 // true of false
@@ -434,7 +434,7 @@ bool? test2; // nullable boolean: true, false of null
 string answer;
 const int MaxGetal = 10;
 Random rnd = new Random();
-int number, guess; 
+int number, guess;
 Console.Write("Wil je een raadspel spelen (j/n)? ");
 answer = Console.ReadLine();
 if (answer == "j")
@@ -461,7 +461,7 @@ if (answer == "j")
 
 </code></pre>
       </div>
-      
+
 
 
       <h2>Parsing/casting/conversie</h2>
@@ -493,7 +493,7 @@ string str1 = int1.ToString();
       <h4>Convert klasse</h4>
       <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de Convert klasse (zie <a href="02_dotnetclasses.html#convert">02. NET classes - Convert</a>):</p>
       <pre><code>string str1 = "13"; string str2 = "13.45";
-int int1 = Convert.ToInt32(str1); 
+int int1 = Convert.ToInt32(str1);
 double dbl1 = Convert.ToDouble(str2);</code></pre>
       <h4>Parse(), TryParse()...</h4>
       <p>Er bestaan nog andere manieren om te converteren; voorbeelden:</p>
@@ -786,7 +786,7 @@ Console.WriteLine("Mijn naam is {0}, ik ben {1} jaar oud.", naam, leeftijd); // 
 Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud."); // interpolatie met $ &rarr; gebruik bij voorkeur deze notatie</code></pre>
       <figure class="console">
          <pre>Mijn naam is John, ik ben 35 jaar oud.
-Mijn naam is John, ik ben 35 jaar oud.            
+Mijn naam is John, ik ben 35 jaar oud.
 Mijn naam is John, ik ben 35 jaar oud.</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
@@ -867,14 +867,14 @@ Console.WriteLine(header);
       <h4>IF-selectie</h4>
       <p>Indien de voorwaarde <code>true</code> oplevert, worden de statements binnen de accolades uitgevoerd.</p>
       <p><img src="img/01_csharpsyntax/if_flowchart.png" alt="if-flowchart" class="w-300"></p>
-      <pre><code>if (voorwaarde) 
+      <pre><code>if (voorwaarde)
 {
     // statements indien waar
 }</code></pre>
       <p>Code voorbeeld:</p>
       <pre><code>int getal = 10;
 
-if (getal &gt; 5) 
+if (getal &gt; 5)
 {
     Console.WriteLine("Het getal is groter dan 5");
 }</code></pre>
@@ -886,22 +886,22 @@ if (getal &gt; 5)
       <p>Indien de voorwaarde <code>true</code> oplevert, worden de statements binnen het <em>if</em>-blok uitgevoerd.
          In het andere geval, worden de statements binnen het <em>else</em>-blok uitgevoerd.</p>
       <p><img src="img/01_csharpsyntax/if_else_flowchart.png" alt="if-flowchart" class="w-350"></p>
-      <pre><code>if (voorwaarde) 
+      <pre><code>if (voorwaarde)
 {
     // statements indien waar
-} 
-else 
+}
+else
 {
     // statements indien niet waar
 }</code></pre>
       <p>Code voorbeeld:</p>
       <pre><code>int leeftijd = 15;
 
-if (leeftijd &gt;= 18) 
+if (leeftijd &gt;= 18)
 {
     Console.WriteLine("Je bent oud genoeg om te stemmen");
-} 
-else 
+}
+else
 {
     Console.WriteLine("Je bent nog niet oud genoeg om te stemmen");
 }</code></pre>
@@ -912,19 +912,19 @@ else
       <h4>Multiple IF ELSE-selectie</h4>
       <p>De multiple IF – ELSE structuur is een uitbreiding op de gewone IF ELSE-structuur, waarbij je meerdere
          voorwaarden controleert:</p>
-      <pre><code>if (voorwaarde1) 
+      <pre><code>if (voorwaarde1)
 {
    // instructies indien voorwaarde1 waar
-} 
-else if (voorwaarde2) 
+}
+else if (voorwaarde2)
 {
    // instructies indien voorwaarde2 waar
-} 
-else if (voorwaarde3) 
+}
+else if (voorwaarde3)
 {
    // instructies indien voorwaarde3 waar
-} 
-else 
+}
+else
 {
    // instructies in alle andere gevallen
 }</code></pre>
@@ -932,15 +932,15 @@ else
       <p>Code voorbeeld:</p>
       <pre><code>string maand = "sep";
 
-if (maand == "feb") 
+if (maand == "feb")
 {
     Console.WriteLine("Deze maand telt 28 dagen");
-} 
-else if (maand == "apr" || maand == "jun" || maand == "sep" || maand == "nov") 
+}
+else if (maand == "apr" || maand == "jun" || maand == "sep" || maand == "nov")
 {
     Console.WriteLine("Deze maand telt 30 dagen");
-} 
-else 
+}
+else
 {
     Console.WriteLine("De maand telt 31 dagen");
 }
@@ -953,7 +953,7 @@ else
       <p>Bij een switch-case selectie wordt een variabele vergeleken met een reeks waarden, waarna de bijhorende
          instructies uitgevoerd worden.</p>
       <p><img src="img/01_csharpsyntax/switch_case_flowchart.png" alt="switch-case flowchart" class="w-300"></p>
-      <pre><code>switch (variabele) 
+      <pre><code>switch (variabele)
 {
    case (waarde 1): instructie 1; break;
    case (waarde 2): instructie 2; break;
@@ -968,7 +968,7 @@ else
       <p>Code voorbeeld:</p>
       <pre><code>int dagNummer = 4;
 
-switch (dagNummer) 
+switch (dagNummer)
 {
     case 1: Console.Write("maandag"); break;
     case 2: Console.Write("dinsdag"); break;
@@ -1009,11 +1009,11 @@ int getal2 = 15;
 
 int grootste;
 
-if (getal1 &gt; getal2) 
+if (getal1 &gt; getal2)
 {
     grootste = getal1;
-} 
-else 
+}
+else
 {
     grootste = getal2;
 }
@@ -1055,15 +1055,16 @@ if (user != null) { // user may be null
       <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Deze voorwaarde wordt
          <strong>eerst</strong> gecontroleerd (0 of meerdere keren herhaald).
       </p>
-      <p><img src="img/01_csharpsyntax/while_flowchart.png" alt="while-flowchart" class="w-250"></p>
+      <p><img src="img/01_csharpsyntax/while_flowchart.png" alt="while-flowchart" class="w-200"></p>
       <pre><code>while (voorwaarde) {
     // te herhalen instructies
 }
 </code></pre>
-      <p>Code voorbeeld:</p>
+      <h4>Voorbeeld 1</h4>
+      <p>Dit voorbeeld telt verder zolang het getal kleiner of gelijk aan 5 is:</p>
       <pre><code>int getal = 1;
 
-while (getal &lt;= 5) 
+while (getal &lt;= 5)
 {
     Console.WriteLine(getal);
     getal++;
@@ -1077,24 +1078,49 @@ while (getal &lt;= 5)
 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <h4>Voorbeeld 2</h4>
+      <p>Dit voorbeeld doet voort zolang het antwoord ja is:</p>
+      <pre><code>string voortdoen = "ja";
+while (voortdoen == "ja")
+{
+    Console.WriteLine($"We doen voort...");
+    Console.Write("Voortdoen? ja of nee: ");
+    voortdoen = Console.ReadLine();
+}
+Console.WriteLine("We doen niet meer voort.");
+</code></pre>
+<figure class="console">
+  <pre>We doen voort...
+Voortdoen? ja of nee: ja
+We doen voort...
+Voortdoen? ja of nee: ja
+We doen voort...
+Voortdoen? ja of nee: nee
+We doen niet meer voort.</pre>
+  <figcaption>resultaat in de console</figcaption>
+</figure>
+
       <h3>DO WHILE-iteratie</h3>
       <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Statements worden
          <strong>éérst</strong> uitgevoerd, nadien pas wordt voorwaarde gecontroleerd (1 of meerdere keren herhaald).
       </p>
-      <p><img src="img/01_csharpsyntax/do_while_flowchart.png" alt="while-flowchart" class="w-250"></p>
-      <pre><code>do 
+      <p><img src="img/01_csharpsyntax/do_while_flowchart.png" alt="while-flowchart" class="w-200"></p>
+      <pre><code>do
 {
     // te herhalen instructies
-} while (voorwaarde);
+}
+while (voorwaarde);
 </code></pre>
-      <p>Code voorbeeld:</p>
+      <h4>Voorbeeld 1</h4>
+      <p>Dit voorbeeld telt verder zolang het getal kleiner of gelijk aan 5 is:</p>
       <pre><code>int getal = 1;
 
-do 
+do
 {
     Console.WriteLine(getal);
     getal++;
-} while (getal &lt;= 5);
+}
+while (getal &lt;= 5);
 </code></pre>
 
       <figure class="console">
@@ -1105,6 +1131,29 @@ do
 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <h4>Voorbeeld 2</h4>
+      <p>Nog een typisch voorbeeld, een raadspelletje:</p>
+      <pre><code>int geheimGetal = 7;
+Console.WriteLine("Raad een getal tussen 1 en 10");
+int getal;
+do
+{
+    Console.Write("Jouw gok: ");
+    getal = Convert.ToInt32(Console.ReadLine());
+}
+while (getal != geheimGetal);
+Console.WriteLine("Geraden");
+</code></pre>
+      <figure class="console">
+         <pre>Raad een getal tussen 1 en 10
+Jouw gok: 3
+Jouw gok: 6
+Jouw gok: 2
+Jouw gok: 7
+Geraden</pre>
+         <figcaption>resultaat in de console</figcaption>
+        </figure>
+
       <h3>FOR-iteratie</h3>
       <p>Een for-iteratie bestaat uit drie delen:</p>
       <ul>
@@ -1113,13 +1162,13 @@ do
          <li>increment: wordt uitgevoerd ná de instructies binnen de lus</li>
       </ul>
       <p><img src="img/01_csharpsyntax/for_flowchart.png" alt="for-flowchart" class="w-250"></p>
-      <pre><code>for (begin; voorwaarde; increment) 
+      <pre><code>for (begin; voorwaarde; increment)
 {
     // te herhalen instructies
 }
 </code></pre>
-      <p>Code voorbeeld:</p>
-      <pre><code>for (int i = 1; i &lt;= 5; i++) 
+      <h4>Voorbeeld 1: oplopend tellen</h4>
+      <pre><code>for (int i = 1; i &lt;= 5; i++)
 {
     Console.WriteLine(i);
 }
@@ -1132,9 +1181,9 @@ do
 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <p><strong>Opmerking:</strong> increment hoeft niet altijd met één omhoog te gaan, onderstaande lus telt met
-         sprongen van twee:</p>
-      <pre><code>for (int i = 1; i &lt;=10; i+=2) 
+      <h4>Voorbeeld 2: tellen in sprongen van 2</h4>
+      <p>Het increment hoeft niet altijd met één omhoog te gaan, onderstaande lus telt met sprongen van twee:</p>
+      <pre><code>for (int i = 1; i &lt;=10; i+=2)
 {
     Console.WriteLine(i);
 }</code></pre>
@@ -1146,9 +1195,9 @@ do
 9</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <p><strong>Opmerking:</strong> je kunt ook aftellen door gebruik te maken van de decrement-operator
-         (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
-      <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;) 
+      <h4>Voorbeeld 3: aflopend tellen</h4>
+      <p>Je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
+      <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;)
 {
     Console.WriteLine(i);
 }</code></pre>
@@ -1161,13 +1210,12 @@ do
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h3>FOREACH-iteratie</h3>
-      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten,
-         ListBoxItem's, ...).</p>
-      <p><strong>Opmerking:</strong> een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook
-         overlopen d.m.v. een foreach-iteratie:</p>
+      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten, ListBoxItem's, ...).</p>
+      <h4>Voorbeeld 1: karakters van een string overlopen</h4>
+      <p>Een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een foreach-iteratie:</p>
       <pre><code>string str = "Hello!";
 
-foreach (char letter in str) 
+foreach (char letter in str)
 {
     Console.WriteLine(letter);
 }
@@ -1181,8 +1229,8 @@ o
 !</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <p>Het wordt ook veel gebruikt in WPF, b.v. om de <a href="03_wpfcontrols.html#alle-items-overlopen">Items van een
-            ListBox te overlopen</a></p>
+      <h4>Voorbeeld 2: items van een ListBox overlopen</h4>
+      <p>Foreach wordt ook veel gebruikt in WPF, b.v. om de <a href="03_wpfcontrols.html#alle-items-overlopen">Items van een ListBox te overlopen</a></p>
       <h3>Juiste iteratie kiezen</h3>
       <ul>
          <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code>while</code></li>
@@ -1203,7 +1251,7 @@ o
          <li>body: instructies tussen <code>{}</code>, eventueel afgesloten met een <code>return</code></li>
       </ul>
       <p>Algemene syntax:</p>
-      <pre><code>private returntype MethodeNaam(type1 parameter1, type2 parameter2…) 
+      <pre><code>private returntype MethodeNaam(type1 parameter1, type2 parameter2…)
 {
    // instructies
    // ...
@@ -1213,12 +1261,12 @@ o
       <p><strong>Opmerking:</strong> bij console-applicaties moeten methodes steeds voorafgegaan worden door het keyword
          <code>static</code>
       </p>
-      <pre><code>private static int VraagPositiefGetal() 
+      <pre><code>private static int VraagPositiefGetal()
 {
    // ... methode body hier
 }
 
-private static int GrootsteGemeneDeler(int get1, int get2) 
+private static int GrootsteGemeneDeler(int get1, int get2)
 {
     // ... methode body hier
 }
@@ -1226,26 +1274,26 @@ private static int GrootsteGemeneDeler(int get1, int get2)
       <h3>Voorbeelden</h3>
       <h4>Zonder parameters, zonder return-waarde</h4>
       <p>Methode die een standaardbegroeting teruggeeft:</p>
-      <pre><code>private void PrintBegroeting() 
+      <pre><code>private void PrintBegroeting()
 {
     Console.WriteLine("Hello, World!");
 }
 </code></pre>
       <h4>Met parameters, zonder return-waarde</h4>
       <p>Methode die naam en leeftijd vraagt, en een tekst teruggeeft:</p>
-      <pre><code>private void PrintVoorstelling(string naam, int leeftijd) 
+      <pre><code>private void PrintVoorstelling(string naam, int leeftijd)
 {
     Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud.");
 }
 </code></pre>
       <h4>Zonder parameters, met return-waarde</h4>
       <p>Methode die een getal inleest tot het positief is:</p>
-      <pre><code>private int VraagPositiefGetal() 
+      <pre><code>private int VraagPositiefGetal()
 {
     int getal; // lokale variabele
     Console.Write("Geef een positief getal: ");
     getal = Convert.ToInt32(Console.ReadLine());
-    while (getal &lt;= 0) 
+    while (getal &lt;= 0)
     {
         Console.Write("Het getal moet positief zijn! Geef een getal: ");
         getal = Convert.ToInt32(Console.ReadLine());
@@ -1255,32 +1303,32 @@ private static int GrootsteGemeneDeler(int get1, int get2)
 </code></pre>
       <h4>Met parameters en return-waarde</h4>
       <p>Methode die twee gehele getallen vraagt, en de grootste gemene deler teruggeeft:</p>
-      <pre><code>private int GrootsteGemeneDeler(int get1, int get2) 
-{ 
+      <pre><code>private int GrootsteGemeneDeler(int get1, int get2)
+{
     int ggd = Math.Min(get1, get2);
-    while (get1 % ggd != 0 || get2 % ggd != 0) 
+    while (get1 % ggd != 0 || get2 % ggd != 0)
     {
         ggd&minus;&minus;;
     }
-    
+
     return ggd;
 }</code></pre>
       <h4>Voorbeeld met meerdere methodetypes</h4>
       <p>Een voorbeeld consoletoepassing de twee getallen inleest, en de grootste gemene deler bepaalt:</p>
       <pre><code>// methode zonder parameters, zonder return
-static private void PrintTitel() 
+static private void PrintTitel()
 {
     Console.WriteLine("GROOTSTE GEMENE DELER");
     Console.WriteLine("=====================");
 }
 
 // methode zonder parameters, met return
-private int VraagPositiefGetal() 
+private int VraagPositiefGetal()
 {
     int getal; // lokale variabele
     Console.Write("Geef een positief getal: ");
     getal = Convert.ToInt32(Console.ReadLine());
-    while (getal &lt;= 0) 
+    while (getal &lt;= 0)
     {
         Console.Write("Het getal moet positief zijn! Geef een getal: ");
         getal = Convert.ToInt32(Console.ReadLine());
@@ -1289,24 +1337,24 @@ private int VraagPositiefGetal()
 }
 
 // methode met parameters, met return
-private int GrootsteGemeneDeler(int get1, int get2) 
-{ 
+private int GrootsteGemeneDeler(int get1, int get2)
+{
     int ggd = Math.Min(get1, get2);
-    while (get1 % ggd != 0 || get2 % ggd != 0) 
+    while (get1 % ggd != 0 || get2 % ggd != 0)
     {
         ggd&minus;&minus;;
     }
-    
+
     return ggd;
 }
 
-static private void Main(string[] args) 
+static private void Main(string[] args)
 {
     PrintTitel(); // gebruik methode PrintTitel
     int getal1 = VraagPositiefGetal(); // gebruik methode VraagPositiefGetal
     int getal2 = VraagPositiefGetal(); // gebruik opnieuw methode VraagPositiefGetal
     int ggd = GrootsteGemeneDeler(getal1, getal2); // gebruik methode GrootsteGemeneDeler
-    Console.WriteLine($"De grootste gemene deler is: {ggd}"); 
+    Console.WriteLine($"De grootste gemene deler is: {ggd}");
     Console.ReadKey();
 }
 </code></pre>
@@ -1326,7 +1374,7 @@ static private void Main(string[] args)
          </ul>
          <h4>Call by value voorbeeld</h4>
          <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
-         <pre><code>static void TryChange(int nr) 
+         <pre><code>static void TryChange(int nr)
 {
     nr = 13; // geef een andere waarde
 }
@@ -1337,7 +1385,7 @@ TryChange(number1);
 Console.WriteLine($"Number is still {number1}"); // getal is nog steeds 12</code></pre>
          <h4>Call by reference voorbeeld</h4>
          <p>Geef je daarentegen een array mee, dan blijven wijzigingen door die methode wel behouden:</p>
-         <pre><code>static void TryChange(string[] arrTxt) 
+         <pre><code>static void TryChange(string[] arrTxt)
 {
     arrTxt[1] = "Dave"; // verander de tweede waarde
 }
@@ -1353,7 +1401,7 @@ Console.WriteLine(String.Join(", ", names)); // array is nu Alice, Dave, Clive
             <code>out</code> of <code>ref</code>.
             Een voorbeeld voor <code>ref</code>:
          </p>
-         <pre><code>static void TryChange(ref int nr) 
+         <pre><code>static void TryChange(ref int nr)
 {
     nr = 13; // geef een andere waarde
 }
@@ -1427,14 +1475,14 @@ static private void Main(string[] args) {
   ****
  *****
  ******
-*******               
+*******
 </pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <p>Hetzelfde programma, nu wel met pure methode:</p>
       <pre><code>sstatic private string GeefKerstboom(int hoogte, int breedte, char c) {
    string str = "";
-   int i, j, aantalSterren, aantalSpaties; 
+   int i, j, aantalSterren, aantalSpaties;
    for (i = 0; i &lt; hoogte; i++) {
          aantalSterren = (i * breedte) / hoogte;
          aantalSpaties = (breedte - aantalSterren) / 2;
@@ -1496,7 +1544,7 @@ static private void Main(string[] args) {
       <p>Voorbeeld met achteraan drie <em class="em">optionele parameters</em> (merk op: optionele parameters moeten
          <i>achteraan</i> de parameterlijst staan):
       </p>
-      <pre><code>private static string OrderDetails(string verkoper, string product, decimal prijs, string klant = null, int aantal = 1, int kortingPerc = 0) 
+      <pre><code>private static string OrderDetails(string verkoper, string product, decimal prijs, string klant = null, int aantal = 1, int kortingPerc = 0)
 {
    return $@"
 Verkoper: {verkoper}
@@ -1546,9 +1594,9 @@ Te betalen: 10,62 euro</pre>
          </p>
          <pre><code>int Som(int a, int b) =&gt; a + b;
 
-int Som(int a, int b) 
-{ 
-   return a + b; 
+int Som(int a, int b)
+{
+   return a + b;
 }
 </code></pre>
          <h3>Extensie methodes</h3>
@@ -1564,12 +1612,12 @@ int Som(int a, int b)
         string[] words = input.ToLower().Split(new char[] { 'a', 'e', 'i', 'o', 'u' }, StringSplitOptions.RemoveEmptyEntries);
         return words.Length - 1;
     }
-        
+
     // Extension method to encode a string by shifting each character
     public static string MyEncode(this string input)
     {
         string encoded = "";
-        foreach (char c in input) 
+        foreach (char c in input)
         {
             encoded += Convert.ToChar((int)c + 1);
         }
@@ -1637,7 +1685,7 @@ Console.WriteLine($"De lenget van de array is: {lengte}");
       <h4>Alle elementen overlopen met for-loop</h4>
       <p>Gebruik de <code>for</code>-lus als je de index van elk element in de array nodig hebt:</p>
       <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
-for (int i = 0; i &lt; namen.Length; i++) 
+for (int i = 0; i &lt; namen.Length; i++)
 {
     string naam = namen[i]; // element op index i
     Console.WriteLine($"{i + 1}. {naam}");
@@ -1653,7 +1701,7 @@ for (int i = 0; i &lt; namen.Length; i++)
       <p>Gebruik <code>foreach</code> als je de index van de elementen niet nodig hebt:</p>
       <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
 
-foreach (int num in numbers) 
+foreach (int num in numbers)
 {
     Console.WriteLine(num);
 }
@@ -1702,15 +1750,15 @@ foreach (int num in numbers)
          <h4>Inlezen van een getal</h4>
          <pre><code>Console.Write("Geef een getal: ");
 string answer = Console.ReadLine();
-try 
+try
 {
    int number = Convert.ToInt32(answer);
-} 
-catch (FormatException e) 
+}
+catch (FormatException e)
 {
    Console.WriteLine("het getal heeft niet het juiste formaat");
-} 
-finally 
+}
+finally
 {
    Console.WriteLine("druk een toets om verder te gaan...");
 }</code></pre>
@@ -1722,19 +1770,19 @@ string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 
 try {
     content = File.ReadAllText(filePath);
-} 
-catch (FileNotFoundException e) 
-{ 
+}
+catch (FileNotFoundException e)
+{
    // bestand niet gevonden
    lblMessage.Content = $"File {filePath} not found";
-} 
-catch (IOException e) 
-{ 
+}
+catch (IOException e)
+{
    // kan bestand niet lezen
    lblMessage.Content = $"Unable to open {filePath}";
-} 
-catch (Exception e) 
-{ 
+}
+catch (Exception e)
+{
    // overweeg algemene Exception als fallback
    lblMessage.Content = $"Unknown error reading {filePath}";
 }</code></pre>

@@ -1183,6 +1183,73 @@ string str2 = Convert.ToString(32);         // int &rarr; string "32"
 string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</code></pre>
 
       <!-- ENVIRONMENT-->
+      <h2>DateTime</h2>
+      <p>Deze klasse laat toe te werken met datum en tijd. </p>
+      <h3>Aanmaken</h3>
+      <p>Codevoorbeelden:</p>
+      <pre><code>// enkel datum informatie: jaar, maand, dag
+DateTime someDay = new DateTime(2024, 09, 25);
+
+// datum &amp; tijd informatie: jaar, maand, dag, uren, minuten, seconden
+DateTime someDayAndTime = new DateTime(2024, 09, 25, 7, 45, 30);
+
+// shortcut om de huidige datum toe te kennen, b.v. 2024-11-05 00:00:00
+DateTime today = DateTime.Today;
+
+// shortcut om de huidige datum én tijd toe te kennen, b.v. 2024-11-05 15:45:30.123
+DateTime now = DateTime.Now;</code></pre>
+      <h3>Jaar, maand en andere eigenschappen</h3>
+      <p>Codevoorbeelden:</p>
+      <pre><code>DateTime now = DateTime.Now;
+int year = now.Year;
+int month = now.Month;
+int day = now.Day;
+int hour = now.Hour;
+int minute = now.Minute;
+int second = now.Second;
+int weekDay = (int)now.DayOfWeek; // 0 = zondag, 1 = maandag...
+</code></pre>
+      <h3>Datum of tijd aanpassen</h3>
+      <p>Positief argument telt bij, negatief argument trekt af:</p>
+      <pre><code>DateTime now = DateTime.Now;
+DateTime oneSecondLater = now.AddSeconds(1);
+DateTime oneMinuteLater = now.AddMinutes(1);
+DateTime oneHourLater = now.AddHours(1);
+DateTime tomorrow = now.AddDays(1);
+DateTime yesterday = now.AddDays(-1);
+DateTime oneMonthLater = now.AddMonths(1);
+DateTime oneYearLater = now.AddYears(1);
+DateTime oneYearBefore = now.AddYears(-1);</code></pre>
+      <h3>DatumTijdsverschillen: TimeSpan</h3>
+      <p>Verschillen tussen datumtijden leveren een <code>TimeSpan</code> instantie op:</p>
+      <pre><code>DateTime start = new DateTime(2024, 10, 05, 10, 0, 0);
+DateTime end = DateTime.Now;
+TimeSpan difference = end - start;
+
+// toon het verschil in dagen, uren en minuten
+Console.WriteLine($"Het verschil is {difference.Days} dagen, {difference.Hours} uren en {difference.Minutes} minuten");
+
+// toon het verschil in minuten
+Console.WriteLine($"Het verschil uitgedrukt in minuten is {difference.TotalMinutes} minuten.");
+</code></pre>
+      <h3>Geformatteerde weergave</h3>
+      <p>De omzetting naar een leesbare weergave gebeurt met <code>ToString()</code>, waaraan je een format code meegeeft:</p>
+      <pre><code>// short date format, bvb 25/09/24
+Console.WriteLine(todayAndNow.ToString("d"));
+
+// long date format, bvb woensdag 25 september 2024
+Console.WriteLine(todayAndNow.ToString("D"));
+
+// custom date format dd/MM/yyyy bvb 25/09/24
+Console.WriteLine(todayAndNow.ToString("dd/MM/yyyy"));
+
+// custom date format dd/MM/yyyy hh:mm:ss, bvb 25/09/2024 01:22:18
+Console.WriteLine(todayAndNow.ToString("dd/MM/yyyy hh:mm:ss"));
+</code></pre>
+      <p>Voor een volledige lijst codes, zie b.v. <a href="https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1">https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1</a></p>
+
+
+      <!-- ENVIRONMENT-->
       <h2>Environment</h2>
       <p>De klasse <code>Environment</code> biedt een aantal properties en methodes aan om informatie te verkrijgen over de omgeving waarin de applicatie wordt uitgevoerd (locale, besturingssysteem, ...).</p>
       <h3>Properties en methodes</h3>
