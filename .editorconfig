@@ -18,7 +18,7 @@ insert_final_newline = true
 [*.html]
 # Indentation style
 indent_style = space
-indent_size = 2
+indent_size = 3
 
 [*.css]
 # Indentation style
@@ -41,9 +41,9 @@ trim_trailing_whitespace = false
 [*.json]
 # Indentation style
 indent_style = tab
-indent_size = 2
+indent_size = 3
 
 [*.yml]
 # Indentation style
 indent_style = tab
-indent_size = 2
+indent_size = 3
