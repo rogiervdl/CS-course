@@ -385,7 +385,23 @@ txtHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
 
       <!-- COLLECTIES -->
       <h2>Collectie classes</h2>
-      <p>Een collectie is een verzameling gegevens van hetzelfde type met één naam. <br><i>Opmerking</i>: er bestond vroeger ook een <code>ArrayList</code> waar je types mocht mixen, maar dat is slechte stijl en het wordt dan ook niet meer gebruikt. </p>
+      <p>Een <mark>collectie</mark> is een verzameling gegevens van hetzelfde type met één naam.</p>
+      <p>
+         Enkele voorbeelden van collecties:
+      </p>
+      <ul>
+         <li>een <code>string</code> is een verzameling <code>char</code>s</li>
+         <li>een <code>ComboBox</code> is een verzameling <code>ComboBoxItems</code></li>
+         <li>een <code>album</code> is een verzameling <code>foto</code>’s</li>
+         <li>een <code>namenlijst</code> is een verzameling <code>namen</code></li>
+         <li>de <code>reeks van Fibonacci</code> (1, 1, 2, 3, 5, 8…) is een verzameling <code>getallen</code></li>
+         <li>…</li>
+      </ul>
+      <p>
+         Belangrijk: je kan geen verschillende types (bv. getallen en teksten) mixen in één collectie!
+         <br>Er bestond vroeger wel een <code>ArrayList</code> waar dat wel mocht, maar dat is slechte stijl en het wordt dan ook niet meer gebruikt.
+      </p>
+
       <p>Alle klassen (behalve <code>Array</code>) zitten in de <code>System.Collections.Generic</code> namespace. Om ze te kunnen gebruiken, moet je dus een <code>using</code> toevoegen: </p>
       <pre><code>using System;
 using System.Collections.Generic;
@@ -497,7 +513,7 @@ using System.Collections.Generic;
          </tbody>
       </table>
       <h4>Code voorbeelden</h4>
-      <h5>nagaan of waarde voorkomt in een array</h5>
+      <h5>nagaan of waarde voorkomt in een array met <code>Contains()</code></h5>
       <p>Gebruik <code>Contains()</code> (returnwaarde <code>true</code> of <code>false</code>):</p>
       <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 bool gevonden = fruit.Contains("citroen");
@@ -505,7 +521,7 @@ if (gevonden)
 {
    Console.WriteLine("De array bevat het woord \"citroen\"");
 }</code></pre>
-      <h5>positie van een waarde in een array</h5>
+      <h5>positie van een waarde in een array met <code>IndexOf()</code></h5>
       <p>Gebruik <code>IndexOf()</code> om de positie te vinden (-1 indien niet gevonden):</p>
       <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
 int pos = fruit.IndexOf("citroen");
@@ -513,7 +529,7 @@ if (pos &gt; -1)
 {
    Console.WriteLine($"Het woord \"citroen\" is gevonden op positie {pos}");
 }</code></pre>
-      <h5>array sorteren</h5>
+      <h5>array sorteren met <code>Sort()</code></h5>
       <p>Gebruik <code>Array.Sort()</code> om een array <i>oplopend</i> te sorteren:</p>
       <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
 Array.Sort(getallen); // sorteer getallen van klein naar groot
@@ -539,8 +555,7 @@ Array.Reverse(getallen); // keer volgorde om
 foreach (int getal in getallen)
 {
    Console.WriteLine(getal);
-}
-   </code></pre>
+}</code></pre>
       <figure class="console">
          <pre>2
 3
@@ -549,18 +564,18 @@ foreach (int getal in getallen)
 9</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h5>string splitsen naar array</h5>
+      <h5>string splitsen naar array met <code>Split()</code></h5>
       <p>
          gebruik de <code>Split()</code> methode uit de <a href="#string-splitsen-naar-een-array">String klasse</a>
       </p>
-      <h5>array samenvoegen tot een string</h5>
+      <h5>array samenvoegen tot een string met <code>Join()</code></h5>
       <p>
          gebruik <code>string.Join()</code>, zie de <a href="#lijst-of-array-samenvoegen-tot-een-string-gescheiden-door-een-tekst">String klasse</a> verderop deze pagina.
       </p>
 
       <!-- LIST -->
       <h3>List&lt;T&gt;</h3>
-      <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...), waarbij het aantal elementen onbepaald is.</p>
+      <p>Een <code>List</code> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...). Het verschil met een gewone array is dat <strong>het aantal elementen onbepaald is</strong>.</p>
       <h4>Declaratie en initialisatie</h4>
       <p>Algemene syntax:</p>
       <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
@@ -603,7 +618,7 @@ getallen.RemoveAt(2); // verwijder het derde element; de lijst is nu 2, 5, 5
 </code></pre>
       <h5>alle elementen verwijderen</h5>
       <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
 getallen.Clear(); // de lijst is nu leeg</code></pre>
       <h4>Lijsten gebruiken</h4>
       <h5>elementwaarde opvragen</h5>
@@ -622,12 +637,17 @@ Het laatste element is: blauw</pre>
       </figure>
       <h5>aantal elementen opvragen</h5>
       <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen:</p>
-      <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 2, 5, 8 };
+      <div class="precontainer">
+         <pre><code>List&lt;int&gt; getallen = new List&lt;int&gt;() { 2, 5, 8 };
 Console.WriteLine(getallen.Count); // Count property</code></pre>
+         <div class="codemarker" data-text="Count"></div>
+      </div>
       <figure class="console">
          <pre>3</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <p><em><span class="larger">⚠️</span> voor arrays gebruik je <code>Length</code>, bij lijsten gebruik je <code>Count</code></em></p>
+
       <h5>alle elementen overlopen met for-loop</h5>
       <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
       <pre><code>List&lt;string&gt; namen = new List&lt;string&gt;() { "Zakaria", "Nelly", "Killian", "Chun" };
@@ -768,6 +788,50 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
             </tr>
          </tbody>
       </table>
+      <p>Vergelijkend voorbeeld met een aantal typische methodes:</p>
+      <div class="codecompare">
+         <div>
+            <pre><code>string tekst = "aap noot mies";
+string[] woorden = tekst.Split(' ');
+Console.WriteLine($"deze tekst bevat {woorden.Length} woorden");
+if (woorden.Contains("aap")) Console.WriteLine("de woorden bevatten \"aap\"");
+Array.Sort(woorden);
+Console.WriteLine($"de woorden, alfabetisch: {string.Join(" - ", woorden)}");
+</code></pre>
+         <figure class="console">
+            <pre>deze tekst bevat 3 woorden
+de woorden bevatten "aap"
+de woorden, alfabetisch: aap - mies - noot</pre>
+            <figcaption>resultaat in de console</figcaption>
+            </figure>
+         </div>
+         <div>
+            <pre><code>List&lt;int&gt; cijfers = new List&lt;int&gt;();
+cijfers.Add(7);
+cijfers.Add(1);
+cijfers.Add(-3);
+Console.WriteLine($"deze lijst bevat {cijfers.Count} getallen");
+if (cijfers.Contains(1)) Console.WriteLine("de lijst bevat de waarde 1");
+cijfers.Sort();
+Console.WriteLine($"cijfers (van laag naar hoog): {string.Join(", ", cijfers)}");</code></pre>
+            <figure class="console">
+               <pre>deze lijst bevat 3 getallen
+de lijst bevat de waarde 1
+cijfers (van laag naar hoog): -3, 1, 7</pre>
+               <figcaption>resultaat in de console</figcaption>
+            </figure>
+         </div>
+      </div>
+      <h5>array of lijst?</h5>
+      <p>
+         Lijsten zijn zeker makkelijker in gebruik en flexibeler dan arrays. Arrays nemen dan weer een vaste geheugenruimte in, terwijl voor lijsten bij elke toevoeging nieuw geheugen moet gezocht worden, waardoor ze een stuk trager zijn. Dus:
+      </p>
+      <ul>
+         <li>gaat het om een <strong>vast aantal</strong> elementen? → gebruik een <strong>array</strong></li>
+         <li>gaat het om <strong>heel veel</strong> elementen? → gebruik een <strong>array</strong></li>
+         <li>is <strong>performantie</strong> belangrijk? → gebruik een <strong>array</strong></li>
+         <li>in alle <strong>andere gevallen</strong> → gebruik een <strong>lijst</strong></li>
+      </ul>
       <div class="pro">
          <!-- STACK -->
          <h3>Stack&lt;T&gt;</h3>

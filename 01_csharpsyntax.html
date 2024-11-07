@@ -1831,7 +1831,7 @@ int encodedNumVowels = sentence.MyEncode().MyCountVowels(); // chaining example<
          Een array is een naam die verwijst naar een genummerde reeks geheugenlocaties, startend bij index 0:
       </p>
       <p>
-         <img src="img/01_csharpsyntax/array.png" alt="array" class="w-600">
+         <img src="img/01_csharpsyntax/array.png" alt="array" class="w-500">
       </p>
       <h3>Declaratie en initialisatie</h3>
       <p>Voorbeelden:</p>
@@ -1845,24 +1845,42 @@ double[] kommagetallen = { 1.5, 10.2, 19.85, 3.1415 };
 char[] letters = { 'a', 'b', 'c', 'd' };
 string[] fruit = { "appel", "banaan", "citroen" };
 </code></pre>
+      <figure>
+         <img src="img/01_csharpsyntax/5-eggs-one-apple-thinking.jpg" class="w-400" alt="">
+         <figcaption><span class="larger">⚠️</span> alle elementen van een array hebben <strong>hetzelfde type</strong></figcaption>
+      </figure>
       <h3>Arrays aanpassen</h3>
       <h4>Element wijzigen</h4>
-      <p>Je kan geen elementen toevoegen of verwijderen in een array; het aantal elementen is vast. Je kan wel de waarde
-         van een element veranderen:</p>
-      <pre><code>int[] getallen = new int[5];
-getallen[0] = 10;  // zet getal 10 op eerste plaats in array
-getallen[2] = 7;   // zet getal 7 op derde plaats in array
-getallen[4] = 12;  // zet getal 12 op vijfde (laatste) plaats in array
-</code></pre>
+      <p>Je kan geen elementen toevoegen of verwijderen in een array; het aantal elementen is vast. Je kan wel de waarde van een element veranderen:</p>
+      <pre><code>int[] getallen = new int[6]; // array van 6 ints, van 0 tot 5
+getallen[0] = -2;  // zet getal -2 op eerste plaats
+getallen[2] = 7;   // zet getal 7 op derde plaats
+getallen[4] = 1;  // zet getal 1 op vijfde plaats
+getallen[5] = 11;  // zet getal 11 op zesde (laatste) plaats
+
+string[] namenlijst = new string[5]; // array van 5 strings, van 0 tot 4
+namenlijst[0] = "Jef";
+namenlijst[1] = "Yasmina";
+namenlijst[4] = "Long";</code></pre>
+      <figure>
+         <img src="img/01_csharpsyntax/array-default-int.jpg" class="w-500" alt="">
+         <br><img src="img/01_csharpsyntax/array-default-string.jpg" class="w-500" alt="">
+         <figcaption>
+            <span class="larger">⚠️</span> plaatsen worden <strong>genummerd vanaf 0</strong>
+            <br><span class="larger">⚠️</span> type <code>int</code> heeft <strong>standaardwaarde 0</strong>
+            <br><span class="larger">⚠️</span> type <code>string</code> heeft <strong>standaardwaarde <code>null</code></strong>
+         </figcaption>
+      </figure>
+
       <h3>Arrays gebruiken</h3>
-      <h4>Elementwaarde opvragen</h4>
+      <h4>één element opvragen</h4>
       <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element (eerste = index 0):
       </p>
       <pre><code>string[] kleuren = { "blauw", "groen", "rood", "geel" };
 string eerste = kleuren[0]; // blauw; eerste element heeft index 0
 string tweede = kleuren[1]; // groen; tweede element heeft index 1
 string laatste = kleuren[kleuren.Count - 1]; // geel; manier om laatste element op te vragen</code></pre>
-      <h4>Lengte van de array opvragen</h4>
+      <h4>lengte opvragen</h4>
       <p>Met de lengte wordt het aantal beschikbare plaatsen bedoeld, niet het aantal plaatsen dat effectief een waarde
          gekregen heeft. Gebruik de <code>Length</code> property:</p>
       <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
@@ -1876,14 +1894,17 @@ Console.WriteLine($"De lenget van de array is: {lengte}");
          <pre>De lengte van de array is: 7</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>Alle elementen overlopen met for-loop</h4>
-      <p>Gebruik de <code>for</code>-lus als je de index van elk element in de array nodig hebt:</p>
-      <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
+      <h4>overlopen met for-loop</h4>
+      <p>Gebruik de <code>for</code>-lus met de <code>Length</code> property als je de index van elk element in de array nodig hebt:</p>
+      <div class="precontainer">
+         <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
 for (int i = 0; i &lt; namen.Length; i++)
 {
     string naam = namen[i]; // element op index i
     Console.WriteLine($"{i + 1}. {naam}");
 }</code></pre>
+         <div class="codemarker" data-text="Length"></div>
+      </div>
       <figure class="console">
          <pre>1. Zakaria
 2. Nelly
@@ -1891,7 +1912,29 @@ for (int i = 0; i &lt; namen.Length; i++)
 4. Chun</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>Alle elementen overlopen met foreach-loop</h4>
+      <h4>inlezen met for-loop</h4>
+      <p>Codevoorbeeld voor het inlezen van een array:</p>
+      <div class="precontainer">
+         <pre><code>string[] namen = new string[4];
+int len = namen.Length;
+for (int i = 0; i &lt; len; i++) {
+    Console.Write($"Geef naam {i + 1} van {len}: ");
+    namen[i] = Console.ReadLine();
+}
+Console.WriteLine("Bedankt!");
+</code></pre>
+         <div class="codemarker" data-text="Length"></div>
+      </div>
+      <figure class="console">
+         <pre>Geef naam 1 van 4: Kawtar
+Geef naam 1 van 4: Arne
+Geef naam 1 van 4: Dmitri
+Geef naam 1 van 4: Yolanthe
+Bedankt!</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+      <h4>overlopen met foreach-loop</h4>
       <p>Gebruik <code>foreach</code> als je de index van de elementen niet nodig hebt:</p>
       <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
 

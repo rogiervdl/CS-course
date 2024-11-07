@@ -75,6 +75,9 @@ figure {
 figcaption {
 	font-size: smaller;
 	font-style: italic;
+}
+
+figure:not(.console) figcaption {
 	margin-top: -5px;
 }
 
@@ -204,6 +207,10 @@ table {
 	padding-bottom: 0.3em;
 	text-transform: uppercase;
 	width: fit-content;
+}
+
+.larger {
+	font-size: 150%;
 }
 
 .print {
