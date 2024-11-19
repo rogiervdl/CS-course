@@ -1183,7 +1183,7 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
 {
    // gebruiker heeft (minimum) één item geselecteerd
 }</code></pre>
-      <h4>Inhoud van het geselecteerde item opvragen (single selection mode)</h4>
+      <h4>Geselecteerde item en inhoud opvragen (single selection mode)</h4>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (lstBoodschappen.SelectedItem != null)
 {
@@ -1202,6 +1202,20 @@ if (lstBoodschappen.SelectedItem != null)
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
+      <h4>Item verplaatsen naar andere ListBox</h4>
+      <p>
+         <strong>Opgelet!</strong> Een ListBoxItem mag slechts in één ListBox tegelijkertijd zitten. Wanneer je een ListBoxItem tussen twee ListBox-controls wilt verplaatsen, moet je het item dus <strong>eerst verwijderen</strong> uit de oorspronkelijke lijst vóór je het kunt toevoegen aan de andere lijst!
+      </p>
+      <pre><code>private void Button_Click(object sender, RoutedEventArgs e)
+{
+   ListBoxItem selectie = (ListBoxItem)lstOld.SelectedItem;
+   if (selectie != null)
+   {
+      lstOld.Items.Remove(selectie); // eerst verwijderen uit oude ListBox
+      lstNew.Items.Add(selectie);    // nadien toevoegen aan nieuwe ListBox
+   }
+}
+</code></pre>
 
       <div class="pro">
 
