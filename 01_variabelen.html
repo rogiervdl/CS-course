@@ -192,6 +192,7 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
       <h3>Overzicht datatypes</h3>
       <p>Het <em>datatype</em> beperkt welke waarden de variabele kan bevatten. Types gebruikt in deze cursus:</p>
       <table class="light">
+         <caption><em><sup>*</sup> meest gebruikt in deze cursus</em></caption>
          <thead>
             <tr>
                <th scope="col">Datatype</th>
@@ -201,7 +202,7 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
          </thead>
          <tbody>
             <tr>
-               <td><code>int</code></td>
+               <td><code>int</code> *</td>
                <td>gehele getallen (32 bits, pos/neg, max. 2.147.483.647)</td>
                <td><code>int age = 25;</code></td>
             </tr>
@@ -216,22 +217,27 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
                <td><code>float price = 2.95F;</code></td>
             </tr>
             <tr>
-               <td><code>double</code></td>
+               <td><code>double</code> *</td>
                <td>kommagetallen (15-16 tekens) (pos/neg)</td>
                <td><code>double area = 12.3;</code></td>
             </tr>
             <tr>
-               <td><code>string</code></td>
+               <td><code>decimal</code></td>
+               <td>voor geldbedragen, hogere precisie (28-29 tekens)</td>
+               <td><code>decimal price = 12.99M;</code></td>
+            </tr>
+            <tr>
+               <td><code>string</code> *</td>
                <td>tekenreeks (tekst)</td>
                <td><code>string auto = &quot;Honda&quot;;</code></td>
             </tr>
             <tr>
-               <td><code>char</code></td>
+               <td><code>char</code> *</td>
                <td>één teken (letter, cijfer, leesteken, ...)</td>
                <td><code>char geslacht = 'V';</code></td>
             </tr>
             <tr>
-               <td><code>bool</code></td>
+               <td><code>bool</code> *</td>
                <td>booleaanse waarde: waar/onwaar (true/false)</td>
                <td><code>bool gevonden = false;</code></td>
             </tr>
@@ -692,6 +698,68 @@ Console.WriteLine(header);
 ******************************</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <h3>Format specifiers</h3>
+      <p>Het formaat waarin strings weergegeven worden kan ingesteld worden met zgn. <em>format specifiers</em>. De belangrijkste opties:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Specifier</th>
+               <th scope="col">Betekenis</th>
+               <th scope="col">Voorbeeld</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>-</code></td>
+               <td>standaardweergave</td>
+               <td><code>12,3456789</code></td>
+            </tr>
+            <tr>
+               <td><code>C</code></td>
+               <td>&ldquo;currency&rdquo;, weergave als bedrag</td>
+               <td><code>&euro; 12,34</code></td>
+            </tr>
+            <tr>
+               <td><code>F1</code></td>
+               <td>&ldquo;fixed&rdquo;, één cijfer na de komma</td>
+               <td><code>12,3</code></td>
+            </tr>
+            <tr>
+               <td><code>F2</code></td>
+               <td>twee cijfers na de komma</td>
+               <td><code>12,34</code></td>
+            </tr>
+            <tr>
+               <td><code>P</code></td>
+               <td>weergave als percentage met 2 cijfers na de komma</td>
+               <td><code>1.234,57%</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Je kan ze gebruiken als argument in <code>ToString()</code>:</p>
+      <pre><code>double getal = 12.3456789;
+Console.WriteLine($"één cijfer na de komma: {getal.ToString("F1")}");
+Console.WriteLine($"twee cijfers na de komma: {getal.ToString("F2")}");
+Console.WriteLine($"als percentage (x100): {getal.ToString("P")}");
+Console.WriteLine($"als bedrag: {getal.ToString("C")}");
+</code></pre>
+      <p>Ook rechtstreeks in string interpolatie kan:</p>
+      <pre><code>double getal = 12.3456789;
+Console.WriteLine($"één cijfer na de komma: {getal:F1}");
+Console.WriteLine($"twee cijfers na de komma: {getal:F2}");
+Console.WriteLine($"als percentage (x100): {getal:P}");
+Console.WriteLine($"als bedrag: {getal:C}");
+</code></pre>
+      <figure class="console">
+         <pre>één cijfer na de komma: 12,3
+twee cijfers na de komma: 12,35
+als percentage (x100): 1.234,50%
+als bedrag: € 12,35</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <div class="tips" data-caption="💡TIP">
+         <p>Format specifiers kom je ook tegen bij <a href="06_dotnetclasses.html#geformatteerde-weergave">datums en tijden</a>.</p>
+      </div>
 
       <h3>Properties en methodes</h3>
       <p>.NET biedt een aantal extra properties en methodes die je kan gebruiken op strings via de <code>String</code> wrapper class, zie <a href="06_dotnetclasses.html#string">02. .NET classes - String klasse</a></p>

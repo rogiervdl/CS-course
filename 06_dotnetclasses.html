@@ -1217,19 +1217,27 @@ Console.WriteLine($"Het verschil is {difference.Days} dagen, {difference.Hours} 
 Console.WriteLine($"Het verschil uitgedrukt in minuten is {difference.TotalMinutes} minuten.");
 </code></pre>
       <h3>Geformatteerde weergave</h3>
-      <p>De omzetting naar een leesbare weergave gebeurt met <code>ToString()</code>, waaraan je een format code meegeeft:</p>
-      <pre><code>// short date format, bvb 25/09/24
-Console.WriteLine(todayAndNow.ToString("d"));
-
-// long date format, bvb woensdag 25 september 2024
-Console.WriteLine(todayAndNow.ToString("D"));
-
-// custom date format dd/MM/yyyy bvb 25/09/24
-Console.WriteLine(todayAndNow.ToString("dd/MM/yyyy"));
-
-// custom date format dd/MM/yyyy hh:mm:ss, bvb 25/09/2024 01:22:18
-Console.WriteLine(todayAndNow.ToString("dd/MM/yyyy hh:mm:ss"));
+      <p>De omzetting naar een leesbare weergave kan met een format specifier, die je meegeeft met <code>ToString()</code>:</p>
+      <pre><code>DateTime todayAndNow = DateTime.Now;
+Console.WriteLine($"Short date format: {todayAndNow.ToString("d")}");
+Console.WriteLine($"Long date format: {todayAndNow.ToString("D")}");
+Console.WriteLine($"Custom date format 1: {todayAndNow.ToString("dd/MM/yyyy")}");
+Console.WriteLine($"Custom date format 2: {todayAndNow.ToString("dd/MM/yyyy hh:mm:ss")}");</code></pre>
+      <p>Je kan het ook rechtstreeks in string interpolatie gebruiken:</p>
+      <pre><code>Console.WriteLine($"Short date format (e.g. 25/09/24): {todayAndNow:d}");
+Console.WriteLine($"Long date format (e.g. woensdag 25 september 2024): {todayAndNow:D}");
+Console.WriteLine($"Custom date format 1 (e.g. 25/09/24): {todayAndNow:dd/MM/yyyy}");
+Console.WriteLine($"Custom date format 2 (e.g. 25/09/2024 01:22:18): {todayAndNow:dd/MM/yyyy hh:mm:ss}");
 </code></pre>
+      <figure class="console">
+         <pre>Short date format: 25/11/2024
+Long date format: maandag 25 november 2024
+Custom date format 1: 25/11/2024
+Custom date format 2: 25/11/2024 03:18:21</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+
       <p>Voor een volledige lijst codes, zie b.v. <a href="https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1">https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1</a></p>
 
 

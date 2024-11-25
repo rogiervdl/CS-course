@@ -171,7 +171,13 @@ nav {
 
 table {
 	border-collapse: collapse;
+	caption-side: bottom;
 	margin-bottom: 2rem;
+}
+
+table caption {
+	font-size: 0.8em;
+	text-align: left;
 }
 
 /* CLASSES */
