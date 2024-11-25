@@ -162,7 +162,7 @@ static void Main(string[] args)
 </code></pre>
 
       <h2>Variabelen en constanten</h2>
-      <p>Een variabele is een <strong>naam</strong> die een <strong>waarde</strong> van een bepaald
+      <p>Een <mark>variabele</mark> is een <strong>naam</strong> die een <strong>waarde</strong> van een bepaald
          <strong>type</strong> kan bevatten. Het vermelden van het bestaan van een variabele met type en naam noemt men
          <em>declaratie</em>, het geven van een eerste waarde <em>initialisatie</em>.
       </p>
@@ -238,7 +238,7 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
          </tbody>
       </table>
       <h3>Constanten</h3>
-      <p>Een constante is als een variabele, maar het moet een <strong>vaste waarde</strong> hebben en die waarde kan
+      <p>Een <mark>constante</mark> is als een variabele, maar het moet een <strong>vaste waarde</strong> hebben en die waarde kan
          <strong>niet meer veranderen</strong>. Een constante duid je aan met <code>const</code>:
       </p>
       <pre><code>const int MaxAantalPogingen = 3;
@@ -291,7 +291,7 @@ bool? test2; // nullable boolean: true, false of null
          </ul>
       </div>
       <h3>Scope</h3>
-      <p>De <em>scope</em> is het bereik waarbinnen een variabele beschikbaar is. Het is heel eenvoudig: een variabele bestaat enkel <strong>binnen de accolades waar het gedeclareerd is</strong>.</p>
+      <p>De <mark>scope</mark> is het bereik waarbinnen een variabele beschikbaar is. Het is heel eenvoudig: een variabele bestaat enkel <strong>binnen de accolades waar het gedeclareerd is</strong>.</p>
       <h4>Console voorbeeld</h4>
       <p>
          In volgend voorbeeld is <code>x</code> gedefinieerd in <code>Main()</code> en in dat hele blok beschibaar, terwijl <code>y</code> gedefinieerd is in de <code>if()</code> en dus enkel daar beschikbaar, waardoor de laatste regel een foutmelding zou geven:
@@ -344,9 +344,11 @@ if (answer == "j")
 
 
 
-      <h2>Parsing/casting/conversie</h2>
-      <p>De termen <em>parsing</em>, <em>casting</em> en <em>conversie</em> betekenen eigenlijk hetzelfde: het omzetten
-         van een waarde van één type naar een ander.</p>
+      <h2>Conversie/parsing</h2>
+      <p>
+         Het omzetten van een waarde van één type naar een ander noemt men <mark>conversie</mark>;
+         het specifieke geval waarin je een <code>string</code> omzet heet <mark>parsing</mark>.
+      </p>
       <h3>verbredend vs. vernauwend</h3>
       <p>Er zijn twee soorten conversies:</p>
       <ul>
@@ -579,7 +581,7 @@ Is Braaf: False</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h2>Strings</h2>
-      <p>Een string is een <strong>datatype</strong> dat een reeks van karakters (letters, cijfers, ...) kan bevatten.
+      <p>Een <mark>string</mark> is een <strong>datatype</strong> dat een reeks van karakters (letters, cijfers, ...) kan bevatten.
          String's worden altijd tussen <strong>dubbele quotes</strong> geplaatst.</p>
       <pre><code>string boodschap = "Hello, World!";
 Console.WriteLine(boodschap);</code></pre>
@@ -622,7 +624,7 @@ Mijn naam is: John</pre>
       <p>Je kunt op twee manieren het begin van een nieuwe regel markeren:</p>
       <ol>
          <li>met behulp van het <code>\n</code>-karakter</li>
-         <li>met de constante <code>Environment.NewLine</code></li>
+         <li>met <code>Environment.NewLine</code> (aanbevolen)</li>
       </ol>
       <pre><code>Console.WriteLine("Regel 1\nRegel 2"); // optie 1
 Console.WriteLine($"Regel 1{Environment.NewLine}Regel 2"); // optie 2</code></pre>
@@ -633,6 +635,7 @@ Regel 1
 Regel 2</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <p>De notatie met <code>Environment.NewLine</code> krijgt de voorkeur, omdat op sommige besturingssystemen <code>\r\n</code> verwacht wordt in plaats van <code>\n</code>.</p>
       <h3>Multiline strings</h3>
       <p>Om een string over meerdere regels te spreiden, kan je gebruik maken van <em>multiline strings</em>. Om een
          multiline string te maken, zet je een <code>@</code>-karakter vóór de openings-quote:</p>
@@ -646,15 +649,13 @@ Regel 2
 Regel 3</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <p><strong>Opgelet:</strong> bij multiline strings hoef je <code>\</code>-karakters <strong>niet</strong> te
-         escapen! Een dubbele quote (<code>&quot;</code>) moet je wél escapen, door deze te verdubbelen!</p>
-      <pre><code>Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
+      <div class="tips" data-caption="☝️ESCAPES IN MULTILINE STRINGS">
+         <p>Multiline strings hebben aparte regels voor escapes: <code>\</code>-karakters hoef <strong>niet</strong> te escapen, en een dubbele quote (<code>&quot;</code>) moet je <strong>verdubbelen</strong>:</p>
+         <pre><code>Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
 Console.WriteLine(@"Simon says: ""jump!"""); // quotes verdubbelen</code></pre>
-      <figure class="console">
-         <pre>Simon says: &quot;jump&quot;
-C:\users\john.doe\documents</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
+          <p>Als je dat allemaal wat veel vindt om te onthouden, vermijd dan multiline strings als je karakters moet escapen.</p>
+      </div>
+
       <h3>String interpolatie</h3>
       <p>Via string-interpolatie kan je eenvoudig strings samenstellen. Dit kan op twee verschillende manieren:</p>
       <pre><code>string naam = "John";
