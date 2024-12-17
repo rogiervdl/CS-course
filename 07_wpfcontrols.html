@@ -1386,7 +1386,7 @@ else if(radGroot.IsChecked == true)
       <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
     int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
-    txtValue.Text = sliderVal;
+    txtValue.Text = sliderVal.ToString();
 }
 </code></pre>
       <figure>

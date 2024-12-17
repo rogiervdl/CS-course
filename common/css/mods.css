@@ -6,6 +6,14 @@ pre.padtop {
 	padding-top: 2.5em;
 }
 
+[contenteditable] {
+	outline: 1px solid transparent !important;
+}
+
+body pre[class*="language-"]:has([contenteditable]:focus) {
+  border: 1px dashed #666 !important;
+}
+
 /* color scheme mods */
 
 code[class*="language-"] {
@@ -85,7 +93,8 @@ pre.notoolbar + .toolbar .toolbar-item {
 }
 
 .hystmodal__window {
-	width: 800px;
+	width: 1200px;
+	max-width: 90vw;
 }
 
 /* fancybox mods */
