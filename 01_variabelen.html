@@ -435,6 +435,17 @@ string str2 = int1 + ""; // geforceerde conversie
             </tr>
          </tbody>
       </table>
+      <h3>Gehele deling</h3>
+      <p>Als de twee getallen geheel zijn, wordt de deling geheel uitgevoerd:</p>
+      <pre><code>int a = 13;
+double b = a / 5; // resultaat is 2: gehele deling!
+double c = Convert.ToDouble(a) / 5; // resultaat is 2.6
+double d = a / Convert.ToDouble(5); // resultaat is 2.6
+double e = a / 5.0; // resultaat is 2.6
+double f = a * 2 / 5; // resultaat is 26 / 5, of 5: gehele deling!
+double g = a * 2.0 / 5; // resultaat is 26.0 / 5, of 5.2
+</code></pre>
+
       <h3>Verkorte Notaties</h3>
       <table class="light">
          <thead>
