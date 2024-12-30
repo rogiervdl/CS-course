@@ -225,8 +225,8 @@
             </tr>
          </tbody>
       </table>
-      <h3>WPF controls opmaken</h3>
-      <h4>Opmaken in XAML</h4>
+      <h3>WPF control properties</h3>
+      <h4>Instellen in XAML</h4>
       <p>Veel gebruikte properties die je op de meeste controls kan instellen als attributen:</p>
       <table class="light">
          <thead>
@@ -239,6 +239,10 @@
             <tr>
                <td><code>Background</code></td>
                <td>achtergrondkleur, b.v. <code>"LightGreen"</code></td>
+            </tr>
+            <tr>
+               <td><code>Disabled</code></td>
+               <td>uitschakelen, waarden <code>"True"</code> of  <code>"False"</code></td>
             </tr>
             <tr>
                <td><code>FontFamily</code></td>
@@ -273,6 +277,7 @@
       <pre class="language-html language-xaml"><code>&lt;TextBox
    x:Name="txt1"
    Background="BlanchedAlmond"
+   Disabled="True"
    FontFamily="Verdana"
    FontSize="12"
    FontWeight="SemiBold"
@@ -285,9 +290,10 @@
          <img src="img/07_wpfcontrols/opmaak.png" alt="" class="w-250">
          <figcaption>resultaat van de opmaak</figcaption>
       </figure>
-      <h4>Opmaken in C#</h4>
+      <h4>Instellen in C#</h4>
       <p>Je kan deze properties ook instellen in C#:</p>
       <pre><code>txt1.Background = Brushes.BlanchedAlmond;
+txt1.Disabled = true;
 txt1.FontFamily = new FontFamily("Verdana");
 txt1.FontSize = 12;
 txt1.FontWeight = FontWeights.SemiBold;
