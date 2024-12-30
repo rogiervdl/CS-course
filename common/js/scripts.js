@@ -224,7 +224,7 @@ function startApp() {
 		});
 	});
 
-	// part 7: container range slider
+	// part 8: container range slider
 	document.querySelectorAll('.range-container-width').forEach(rcw => {
 		const container = rcw.parentNode.querySelector('.container');
 		const btnReset = rcw.parentNode.querySelector('.range-reset');

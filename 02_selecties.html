@@ -109,7 +109,8 @@
          </div>
       </div>
 
-      <h2>Relationele operatoren</h2>
+      <h2>Operatoren</h2>
+      <h3>Relationeel</h3>
       <p>Relationele operatoren worden gebruikt om twee waarden met elkaar te vergelijken. Het resultaat van een vergelijking is altijd een <strong>boolean</strong> (<code>bool</code>).</p>
       <table class="light">
          <thead>
@@ -152,6 +153,107 @@
             </tr>
          </tbody>
       </table>
+
+      <h3>Logisch</h3>
+      <p>Dit zijn operatoren op booleans (waar/niet waar), en hebben zelf ook weer een boolean als resultaat (waar/niet waar). Overzicht:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Operator</th>
+               <th scope="col">Beschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>&amp;&amp;</code></td>
+               <td>AND (logische EN)</td>
+            </tr>
+            <tr>
+               <td><code>||</code></td>
+               <td>OR (logische OF)</td>
+            </tr>
+            <tr>
+               <td><code>!</code></td>
+               <td>NOT (logische NIET)</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Alle mogelijke combinaties (men noemt dit <mark>waarheidstabellen</mark>):</p>
+      <table class="grey">
+         <thead>
+            <tr>
+               <th scope="col"><code>A</code></th>
+               <th scope="col"><code>B</code></th>
+               <th scope="col"><code>A &amp;&amp; B</code></th>
+               <th scope="col"><code>A || B</code></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td class="grey"><code>false</code></td>
+               <td><code>false</code></td>
+               <td><code>false</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td class="grey"><code>true</code></td>
+               <td><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td class="grey"><code>false</code></td>
+               <td><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td class="grey"><code>true</code></td>
+               <td><code>true</code></td>
+               <td><code>true</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="grey">
+         <thead>
+            <tr>
+               <th scope="col"><code>A</code></th>
+               <th scope="col"><code>!A</code></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="grey"><code>false</code></td>
+               <td><code>true</code></td>
+            </tr>
+            <tr>
+               <td class="grey"><code>true</code></td>
+               <td><code>false</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <pre><code>int a = 10;
+int b = 5;
+bool test1 = (a &gt; b) &amp;&amp; (b &gt;= 0); // true
+bool test2 = (a &lt; b) || (b &lt; 0); // false
+bool test3 = !(a == b); // true
+bool test4 = !test1; // false
+bool test5 = test1 &amp;&amp; test3; // true
+
+string username = "User123";
+bool isValidUsername = username.Length &gt;= 6 &amp;&amp; !username.Contains(" "); // true
+bool isLowercase = username.ToLower() == username; // false
+
+char ch1 = 'B';
+bool isLowerLetter = ch1 &gt;= 'a' &amp;&amp; ch1 &lt;= 'z'; // false
+bool isUpperLetter = ch1 &gt;= 'A' &amp;&amp; ch1 &lt;= 'Z'; // true
+bool isLetter = isLowerLetter || isUpperLetter; // true
+bool isVowel = "aeiou".Contains(ch1.ToString().ToLower()); // false
+bool isConsonant = !isVowel; // true
+</code></pre>
+
       <h2>Selectie-structuren</h2>
       <p>Met behulp van selectie-structuren kan je bepalen welk(e) statement(s) moet(en) uitgevoerd worden op basis van een voorwaarde (<em>= conditie</em>).</p>
       <h3>IF-selectie</h3>

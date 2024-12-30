@@ -122,7 +122,7 @@
                <td><a href="#brushes">Brushes</a></td>
                <td>bevat een aantal voorgedefinieerde kleuren</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td><a href="#clipboard">Clipboard</a></td>
                <td>geeft toegang tot het Window-klembord</td>
             </tr>
@@ -138,7 +138,7 @@
                <td><a href="#convert">Convert</a></td>
                <td>omzetten (converteren) tussen verschillende datatypes</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td><a href="#dispatchertimer">DispatcherTimer</a></td>
                <td>een timer waarmee je op vaste momenten een methode kan uitvoeren</td>
             </tr>
@@ -162,7 +162,7 @@
                <td><a href="#random">Random</a></td>
                <td>genereren van willekeurige waarden (getallen)</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td><a href="#stopwatch">Stopwatch</a></td>
                <td>een timer waarmee je een tijdsspanne kan meten</td>
             </tr>
@@ -180,178 +180,6 @@
             </tr>
          </tbody>
       </table>
-
-      <!-- MEDIA -->
-      <h2 id="audio-en-video">Audio en video</h2>
-      <h3>Overzicht</h3>
-      <p>Er zijn verschillende klassen waarmee je media kan afspelen in .NET:</p>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Klasse</th>
-               <th scope="col">Te gebruiken voor</th>
-               <th scope="col">Console?</th>
-               <th scope="col">WPF?</th>
-               <th scope="col">Opmerking</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>System.Media.SystemSounds</code></td>
-               <td>Windows-sounds</td>
-               <td>enkel .NET Framework</td>
-               <td>ja</td>
-               <td>&nbsp;</td>
-            </tr>
-            <tr>
-               <td><code>System.Media.SoundPlayer</code></td>
-               <td>audio (enkel .wav)</td>
-               <td>enkel .NET Framework</td>
-               <td>ja</td>
-               <td>&nbsp;</td>
-            </tr>
-            <tr>
-               <td><code>System.Media.MediaPlayer</code></td>
-               <td>audio (meeste formaten)</td>
-               <td>nee</td>
-               <td>ja</td>
-               <td>&nbsp;</td>
-            </tr>
-            <tr>
-               <td><code>WMPLib.WindowsMediaPlayer</code></td>
-               <td>audio (meeste formaten)</td>
-               <td>ja</td>
-               <td>ja</td>
-               <td>referentie naar WMP library nodig</td>
-            </tr>
-            <tr>
-               <td><code>System.Windows.Controls.MediaElement</code></td>
-               <td>video (meeste formaten)</td>
-               <td>nee</td>
-               <td>ja</td>
-               <td>dit is een WPF control, dus makkelijk te integreren in WPF toepassingen</td>
-            </tr>
-         </tbody>
-      </table>
-      <p>De meest flexibele oplossing is dus gebruik maken van een externe bibliotheek als WMPLib.</p>
-
-      <h3>Media toevoegen aan je project</h3>
-      <p>
-         Om media toe te voegen, volg deze stappen:
-      </p>
-      <ol>
-         <li>maak een map aan in je project voor de media bestanden via <strong>Add, New Folder...</strong></li>
-         <li><strong>drag drop</strong> de media bestanden in deze map uit verkenner</li>
-         <li>selecteer bij de properties voor elk media bestand bij <i>Build Action</i> <strong>Content</strong> en bij <i>Copy to Output Directory</i> <strong>Copy always</strong>:</li>
-      </ol>
-      <p>
-         <img src="img/06_dotnetclasses/wav-properties.png" alt="" class="w-200 bordered">
-      </p>
-
-      <h3>Code voorbeelden</h3>
-      <h4 id="systemsounds">Windows sound afspelen</h4>
-      <p>
-         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten.
-         De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
-      </p>
-      <pre><code>...
-using System.Media;
-
-...
-// play the Asterisk Windows sound effet
-SystemSounds.Asterisk.Play();
-</code></pre>
-      <ul class="arrow">
-         <li>de bewuste sound moet effect effectief ingeschakeld zijn in Windows en er moet een geluid voor gekozen zijn; hoe je dat moet doen vind je op <a href="https://www.windowscentral.com/how-customize-sound-effects-windows-10">https://www.windowscentral.com/how-customize-sound-effects-windows-10</a></li>
-         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps, zie <a href="#audio-en-video">overzicht</a></li>
-      </ul>
-      <h4 id="soundplayer">.wav file afspelen met SoundPlayer</h4>
-      <p>Behalve starten en stoppen van geluiden biedt <code>SoundPlayer</code> weinig functionaliteit; volume regelen of pauzeren b.v. kan niet. <br>Schematisch codefragment:</p>
-      <pre><code>...
-using System.Media;
-
-...
-string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/test.wav");
-SoundPlayer player = new SoundPlayer(path);
-player.Load(); // wacht tot het geluid ingeladen is
-player.PlaySync(); // PlaySync(): wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
-                   // Play(): speel het geluid af en ga ondertussen verder met de rest van de code
-...
-player.Stop(); // stop het geluid voortijdig
-</code></pre>
-      <ul class="arrow">
-         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps</li>
-      </ul>
-      <h4 id="mediaplayer">Geluid afspelen met MediaPlayer</h4>
-      <p>
-         Dit is een prima klasse om geluiden af te spelen in WPF toepassingen, met veel functionaliteit als starten, pauzeren, stoppen, volume, balans, detecteren wanneer het geluid gestopt is enz... In Console toepassingen werkt het evenwel niet; daar gebruik je best de Windows Media Player library (zie volgend onderdeel).
-         Let er op dat Windows Media Player ingeschakeld is in Windows:
-      </p>
-      <img src="img/06_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
-      <p>
-         Schematisch codefragment:
-      </p>
-      <pre><code>...
-using using System.Windows.Media;
-
-...
-MediaPlayer mediaPlayer = new MediaPlayer();
-mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-mediaPlayer.Open(new Uri("Music/some-song.mp3", UriKind.Relative));
-mediaPlayer.Play();
-
-// callback method when media has finished playing
-private void MediaPlayer_MediaEnded(object? sender, EventArgs e)
-{
-   MessageBox.Show("song has finished");
-}</code></pre>
-      <p>Andere methodes en properties die je kan gebruiken:</p>
-      <pre><code>mediaPlayer.Pause(); // pauzeer
-mediaPlayer.Stop(); // stop
-mediaPlayer.Balance = -1; // enkel linkerspeaker
-mediaPlayer.Position = new TimeSpan(0, 0, 0, 30); // stel speelpositie in op 30s
-mediaPlayer.SpeedRatio = 1.5; // speel 50% sneller
-mediaPlayer.Volume = 0.5; // zet volume op 50%
-</code></pre>
-
-      <h4 id="wmplib">Geluid afspelen met Windows Media Player library</h4>
-      <p>
-         Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps.
-         Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc.
-         Let er weer op dat Windows Media Player ingeschakeld is in Windows:
-      </p>
-      <img src="img/06_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
-      <p>
-         Eerst moet je een referentie naar de library toevoegen aan je project. Dit kan in de Solution Explorer met de rechtermuisknop, “Add Reference...”:
-      </p>
-      <p>
-         <img src="img/06_dotnetclasses/mp3-a.png" alt="" class="w-250 bordered">
-      </p>
-      <p>
-         Selecteer onder “COM” in de lijst “Windows Media Player”, en klik OK:
-      </p>
-      <p>
-         <img src="img/06_dotnetclasses/mp3-b.png" alt="" class="w-500 bordered">
-      </p>
-      <p>Codefragment (let op de <code>using WPMLib</code> bovenaan):</p>
-      <pre><code>...
-using WMPLib;
-
-...
-WMPLib.WindowsMediaPlayer wmPlayer = new WMPLib.WindowsMediaPlayer();
-wmPlayer.URL = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/music.mp3");
-wmPlayer.controls.play();</code></pre>
-      <p>Andere methodes en properties die je kan gebruiken:</p>
-      <pre><code>wmPlayer.controls.pause(); // pauzeer
-wmPlayer.controls.stop(); // stop
-wmPlayer.settings.volume = 50; // zet volume op 50%
-wmPlayer.settings.mute = true; // muten
-</code></pre>
-      <ul class="arrow">
-         <li>hoewel deze library als wat verouderd gezien wordt, werkt het nog steeds in een brede waaier van toepassingen</li>
-      </ul>
-      <h4>Video afspelen met MediaElement WPF control</h4>
-      <p>zie <a href="07_wpfcontrols.html#mediaelement">MediaElement WPF control</a></p>
 
       <!-- BITMAP -->
       <h2 id="bitmapimage">BitmapImage</h2>
@@ -380,32 +208,34 @@ txtHello.Background = Brushes.LightYellow; // licht gele achtergrondkleur</code>
       <p>Opmerking: voor algemenere manieren om kleuren te definiëren zie de <a href="#color"><code>Color</code></a> klasse</p>
 
       <!-- CLIPBOARD -->
-      <h2 id="clipboard">Clipboard</h2>
-      <p>De klasse <code>Clipboard</code> geeft je toegang tot het klembord van Windows (wordt gebruik bij copy-paste van gegevens).</p>
-      <h3>Methodes</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Methode</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>SetText()</code></td>
-               <td>Plaatst de meegegeven tekst op het klembord van de gebruiker</td>
-            </tr>
-            <tr>
-               <td><code>GetText()</code></td>
-               <td>Vraagt de huidige (tekstuele) waarde van het klembord op</td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Voorbeelden</h3>
-      <h4>Tekst op het klembord plaatsen</h4>
-      <pre><code>Clipboard.SetText("text to be copied");</code></pre>
-      <h4>Tekstuele inhoud van het klembord opvragen</h4>
-      <pre><code>string content = Clipboard.GetText();</code></pre>
+      <div class="pro">
+         <h2 id="clipboard">Clipboard</h2>
+         <p>De klasse <code>Clipboard</code> geeft je toegang tot het klembord van Windows (wordt gebruik bij copy-paste van gegevens).</p>
+         <h3>Methodes</h3>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>SetText()</code></td>
+                  <td>Plaatst de meegegeven tekst op het klembord van de gebruiker</td>
+               </tr>
+               <tr>
+                  <td><code>GetText()</code></td>
+                  <td>Vraagt de huidige (tekstuele) waarde van het klembord op</td>
+               </tr>
+            </tbody>
+         </table>
+         <h3>Voorbeelden</h3>
+         <h4>Tekst op het klembord plaatsen</h4>
+         <pre><code>Clipboard.SetText("text to be copied");</code></pre>
+         <h4>Tekstuele inhoud van het klembord opvragen</h4>
+         <pre><code>string content = Clipboard.GetText();</code></pre>
+      </div>
 
       <!-- COLLECTIES -->
       <h2>Collectie classes</h2>
@@ -718,11 +548,11 @@ if (woorden.Contains("aap")) Console.WriteLine("de woorden bevatten \"aap\"");
 Array.Sort(woorden);
 Console.WriteLine($"de woorden, alfabetisch: {string.Join(" - ", woorden)}");
 </code></pre>
-         <figure class="console">
-            <pre>deze tekst bevat 3 woorden
+            <figure class="console">
+               <pre>deze tekst bevat 3 woorden
 de woorden bevatten "aap"
 de woorden, alfabetisch: aap - mies - noot</pre>
-            <figcaption>resultaat in de console</figcaption>
+               <figcaption>resultaat in de console</figcaption>
             </figure>
          </div>
          <div>
@@ -1424,6 +1254,178 @@ kleinste: 15</pre>
          <figcaption>twee random getallen tussen 1 en 20</figcaption>
       </figure>
 
+      <!-- MEDIA -->
+      <h2 id="audio-en-video">Media</h2>
+      <h3>Overzicht</h3>
+      <p>Er zijn verschillende klassen waarmee je media kan afspelen in .NET:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Te gebruiken voor</th>
+               <th scope="col">Console?</th>
+               <th scope="col">WPF?</th>
+               <th scope="col">Opmerking</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>System.Media.SystemSounds</code></td>
+               <td>Windows-sounds</td>
+               <td>enkel .NET Framework</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>System.Media.SoundPlayer</code></td>
+               <td>audio (enkel .wav)</td>
+               <td>enkel .NET Framework</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>System.Media.MediaPlayer</code></td>
+               <td>audio (meeste formaten)</td>
+               <td>nee</td>
+               <td>ja</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><code>WMPLib.WindowsMediaPlayer</code></td>
+               <td>audio (meeste formaten)</td>
+               <td>ja</td>
+               <td>ja</td>
+               <td>referentie naar WMP library nodig</td>
+            </tr>
+            <tr>
+               <td><code>System.Windows.Controls.MediaElement</code></td>
+               <td>video (meeste formaten)</td>
+               <td>nee</td>
+               <td>ja</td>
+               <td>dit is een WPF control, dus makkelijk te integreren in WPF toepassingen</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>De meest flexibele oplossing is dus gebruik maken van een externe bibliotheek als WMPLib.</p>
+
+      <h3>Media toevoegen aan je project</h3>
+      <p>
+         Om media toe te voegen, volg deze stappen:
+      </p>
+      <ol>
+         <li>maak een map aan in je project voor de media bestanden via <strong>Add, New Folder...</strong></li>
+         <li><strong>drag drop</strong> de media bestanden in deze map uit verkenner</li>
+         <li>selecteer bij de properties voor elk media bestand bij <i>Build Action</i> <strong>Content</strong> en bij <i>Copy to Output Directory</i> <strong>Copy always</strong>:</li>
+      </ol>
+      <p>
+         <img src="img/06_dotnetclasses/wav-properties.png" alt="" class="w-200 bordered">
+      </p>
+
+      <h3>Code voorbeelden</h3>
+      <h4 id="systemsounds">Windows sound afspelen</h4>
+      <p>
+         Windows heeft een heel aantal ingebouwde geluidseffecten, die je vrij kan gebruiken in je .NET projecten.
+         De syntax is eenvoudig (zie ook <a href="https://www.wpf-tutorial.com/audio-video/playing-audio/">https://www.wpf-tutorial.com/audio-video/playing-audio/</a>):
+      </p>
+      <pre><code>...
+using System.Media;
+
+...
+// play the Asterisk Windows sound effet
+SystemSounds.Asterisk.Play();
+</code></pre>
+      <ul class="arrow">
+         <li>de bewuste sound moet effect effectief ingeschakeld zijn in Windows en er moet een geluid voor gekozen zijn; hoe je dat moet doen vind je op <a href="https://www.windowscentral.com/how-customize-sound-effects-windows-10">https://www.windowscentral.com/how-customize-sound-effects-windows-10</a></li>
+         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps, zie <a href="#audio-en-video">overzicht</a></li>
+      </ul>
+      <h4 id="soundplayer">.wav file afspelen met SoundPlayer</h4>
+      <p>Behalve starten en stoppen van geluiden biedt <code>SoundPlayer</code> weinig functionaliteit; volume regelen of pauzeren b.v. kan niet. <br>Schematisch codefragment:</p>
+      <pre><code>...
+using System.Media;
+
+...
+string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/test.wav");
+SoundPlayer player = new SoundPlayer(path);
+player.Load(); // wacht tot het geluid ingeladen is
+player.PlaySync(); // PlaySync(): wacht met uitvoeren van de rest van de code tot het geluid afgespeeld is
+                   // Play(): speel het geluid af en ga ondertussen verder met de rest van de code
+...
+player.Stop(); // stop het geluid voortijdig
+</code></pre>
+      <ul class="arrow">
+         <li>dit werkt enkel met WPF en .NET Framework Console apps, niet met .NET8 Console apps</li>
+      </ul>
+      <h4 id="mediaplayer">Geluid afspelen met MediaPlayer</h4>
+      <p>
+         Dit is een prima klasse om geluiden af te spelen in WPF toepassingen, met veel functionaliteit als starten, pauzeren, stoppen, volume, balans, detecteren wanneer het geluid gestopt is enz... In Console toepassingen werkt het evenwel niet; daar gebruik je best de Windows Media Player library (zie volgend onderdeel).
+         Let er op dat Windows Media Player ingeschakeld is in Windows:
+      </p>
+      <img src="img/06_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
+      <p>
+         Schematisch codefragment:
+      </p>
+      <pre><code>...
+using using System.Windows.Media;
+
+...
+MediaPlayer mediaPlayer = new MediaPlayer();
+mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+mediaPlayer.Open(new Uri("Music/some-song.mp3", UriKind.Relative));
+mediaPlayer.Play();
+
+// callback method when media has finished playing
+private void MediaPlayer_MediaEnded(object? sender, EventArgs e)
+{
+   MessageBox.Show("song has finished");
+}</code></pre>
+      <p>Andere methodes en properties die je kan gebruiken:</p>
+      <pre><code>mediaPlayer.Pause(); // pauzeer
+mediaPlayer.Stop(); // stop
+mediaPlayer.Balance = -1; // enkel linkerspeaker
+mediaPlayer.Position = new TimeSpan(0, 0, 0, 30); // stel speelpositie in op 30s
+mediaPlayer.SpeedRatio = 1.5; // speel 50% sneller
+mediaPlayer.Volume = 0.5; // zet volume op 50%
+</code></pre>
+
+      <h4 id="wmplib">Geluid afspelen met Windows Media Player library</h4>
+      <p>
+         Met de <strong>Windows Media Player</strong>-library kan je een brede waaier aan audioformaten afspelen in WPF én Console apps.
+         Het bevat functionaliteit om liedjes te starten, pauzeren, het volume te regelen, etc.
+         Let er weer op dat Windows Media Player ingeschakeld is in Windows:
+      </p>
+      <img src="img/06_dotnetclasses/wmp-enabled.png" alt="" class="w-300">
+      <p>
+         Eerst moet je een referentie naar de library toevoegen aan je project. Dit kan in de Solution Explorer met de rechtermuisknop, “Add Reference...”:
+      </p>
+      <p>
+         <img src="img/06_dotnetclasses/mp3-a.png" alt="" class="w-250 bordered">
+      </p>
+      <p>
+         Selecteer onder “COM” in de lijst “Windows Media Player”, en klik OK:
+      </p>
+      <p>
+         <img src="img/06_dotnetclasses/mp3-b.png" alt="" class="w-500 bordered">
+      </p>
+      <p>Codefragment (let op de <code>using WPMLib</code> bovenaan):</p>
+      <pre><code>...
+using WMPLib;
+
+...
+WMPLib.WindowsMediaPlayer wmPlayer = new WMPLib.WindowsMediaPlayer();
+wmPlayer.URL = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds/music.mp3");
+wmPlayer.controls.play();</code></pre>
+      <p>Andere methodes en properties die je kan gebruiken:</p>
+      <pre><code>wmPlayer.controls.pause(); // pauzeer
+wmPlayer.controls.stop(); // stop
+wmPlayer.settings.volume = 50; // zet volume op 50%
+wmPlayer.settings.mute = true; // muten
+</code></pre>
+      <ul class="arrow">
+         <li>hoewel deze library als wat verouderd gezien wordt, werkt het nog steeds in een brede waaier van toepassingen</li>
+      </ul>
+      <h4>Video afspelen met MediaElement WPF control</h4>
+      <p>zie <a href="07_wpfcontrols.html#mediaelement">MediaElement WPF control</a></p>
+
       <!-- MESSAGEBOX -->
       <h2 id="messagebox">MessageBox</h2>
       <p>Een MessageBox is een dialoogvenster dat een boodschap voor de gebruiker bevat (bv.: een foutmelding, een bevestiging van een actie, ...).</p>
@@ -1706,55 +1708,57 @@ woorden</pre>
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
 
-      <h2>Timer classes</h2>
-      <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
+      <div class="pro">
+
+         <h2>Timer classes</h2>
+         <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
 
 
-      <h3 id="stopwatch">Stopwatch</h3>
-      <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
-      <h4>Properties en methodes</h4>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Elapsed</code></td>
-               <td>verstreken tijd (type <code>TimeSpan</code>)</td>
-            </tr>
-            <tr>
-               <td><code>IsRunning</code></td>
-               <td>boolean die aangeeft of de stopwatch loopt of niet</td>
-            </tr>
-         </tbody>
-      </table>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Methode</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Reset()</code></td>
-               <td>reset de stopwatch</td>
-            </tr>
-            <tr>
-               <td><code>Start()</code></td>
-               <td>start de stopwatch</td>
-            </tr>
-            <tr>
-               <td><code>Stop()</code></td>
-               <td>stop de stopwatch</td>
-            </tr>
-         </tbody>
-      </table>
-      <h4>Codevoorbeeld</h4>
-      <pre><code>Stopwatch stopwatch = new Stopwatch();
+         <h3 id="stopwatch">Stopwatch</h3>
+         <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
+         <h4>Properties en methodes</h4>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Elapsed</code></td>
+                  <td>verstreken tijd (type <code>TimeSpan</code>)</td>
+               </tr>
+               <tr>
+                  <td><code>IsRunning</code></td>
+                  <td>boolean die aangeeft of de stopwatch loopt of niet</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Reset()</code></td>
+                  <td>reset de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Start()</code></td>
+                  <td>start de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Stop()</code></td>
+                  <td>stop de stopwatch</td>
+               </tr>
+            </tbody>
+         </table>
+         <h4>Codevoorbeeld</h4>
+         <pre><code>Stopwatch stopwatch = new Stopwatch();
 stopwatch.Start();
 Console.WriteLine("Timer is gestart. Druk een toets...");
 Console.ReadKey(true);
@@ -1762,71 +1766,71 @@ TimeSpan elapsed = stopwatch.Elapsed; // verstreken tijdsspanne
 stopwatch.Stop();
 Console.WriteLine($"Timer is gestopt. De verstreken tijd is {elapsed.Seconds}.{elapsed.Milliseconds}s");
 Console.ReadKey();</code></pre>
-      <figure class="console">
-         <pre>Timer is gestart. Druk een toets...
+         <figure class="console">
+            <pre>Timer is gestart. Druk een toets...
 Timer is gestopt. De verstreken tijd is 2.47s</pre>
-         <figcaption>resultaat in de console</figcaption>
-      </figure>
-      <h3 id="dispatchertimer">DispatcherTimer</h3>
-      <p>Hiermee kan je een teller maken die een methode uitvoert met vaste tussentijden. </p>
-      <h4>Properties, methodes en events</h4>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Interval</code></td>
-               <td>tussentijd (type <code>TimeSpan</code>)</td>
-            </tr>
-            <tr>
-               <td><code>IsEnabled</code></td>
-               <td>boolean die aangeeft of de timer loopt of niet</td>
-            </tr>
-         </tbody>
-      </table>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Methode</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Start()</code></td>
-               <td>start de stopwatch</td>
-            </tr>
-            <tr>
-               <td><code>Stop()</code></td>
-               <td>stop de stopwatch</td>
-            </tr>
-         </tbody>
-      </table>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Event</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Tick</code></td>
-               <td>vuurt af met vaste intervallen (zie de <code>Interval</code> property)</td>
-            </tr>
-         </tbody>
-      </table>
-      <h4>Codevoorbeeld</h4>
-      <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtCount" Text="0" .../&gt;
+            <figcaption>resultaat in de console</figcaption>
+         </figure>
+         <h3 id="dispatchertimer">DispatcherTimer</h3>
+         <p>Hiermee kan je een teller maken die een methode uitvoert met vaste tussentijden. </p>
+         <h4>Properties, methodes en events</h4>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Interval</code></td>
+                  <td>tussentijd (type <code>TimeSpan</code>)</td>
+               </tr>
+               <tr>
+                  <td><code>IsEnabled</code></td>
+                  <td>boolean die aangeeft of de timer loopt of niet</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Start()</code></td>
+                  <td>start de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Stop()</code></td>
+                  <td>stop de stopwatch</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Tick</code></td>
+                  <td>vuurt af met vaste intervallen (zie de <code>Interval</code> property)</td>
+               </tr>
+            </tbody>
+         </table>
+         <h4>Codevoorbeeld</h4>
+         <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
+         <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtCount" Text="0" .../&gt;
 &lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
 </code></pre>
-      <p>De C# code-behind:</p>
-      <pre><code>private int ticks;
+         <p>De C# code-behind:</p>
+         <pre><code>private int ticks;
 private DispatcherTimer timer;
 
 public MainWindow()
@@ -1850,10 +1854,11 @@ private void DoSomething(object sender, EventArgs e)
     txtCount.Content = ticks;
 }
 </code></pre>
-      <figure>
-         <img src="img/06_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
-         <figcaption>DispatcherTimer voorbeeld</figcaption>
-      </figure>
+         <figure>
+            <img src="img/06_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
+            <figcaption>DispatcherTimer voorbeeld</figcaption>
+         </figure>
+      </div>
 
    </main>
    <footer>
