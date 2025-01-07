@@ -253,7 +253,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
          <pre><code>class Program
 {
     // methode om positief getal te vragen
-    static private int VraagPositiefGetal()
+    private static int VraagPositiefGetal()
     {
       Console.Write("Geef een positief getal: ");
       int getal = Convert.ToInt32(Console.ReadLine()); // lokale variabele
@@ -266,7 +266,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
     }
 
     // methode om grootste gemene deler van twee getallen te bepalen
-    static private int GrootsteGemeneDeler(int get1, int get2)
+    private static int GrootsteGemeneDeler(int get1, int get2)
     {
         int ggd = Math.Min(get1, get2);
         while (get1 % ggd != 0 || get2 % ggd != 0)
@@ -277,7 +277,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
     }
 
     // hoofdprogramma
-    static private void Main(string[] args)
+    private static void Main(string[] args)
     {
         int getal1 = VraagPositiefGetal(); // gebruik methode VraagPositiefGetal
         int getal2 = VraagPositiefGetal(); // gebruik opnieuw methode VraagPositiefGetal
@@ -305,7 +305,7 @@ De grootste gemene deler is: 6</pre>
          <pre><code>class Program
 {
     // methode om een kerstboom af te drukken met gegeven hoogte, breedte en karakter
-    static private void DrukKerstboom(int hoogte, int breedte, char c)
+    private static void DrukKerstboom(int hoogte, int breedte, char c)
     {
         int i, j, aantalSterren, aantalSpaties; // lokale variabelen
         for (i = 1; i &lt; hoogte; i++)
@@ -319,7 +319,7 @@ De grootste gemene deler is: 6</pre>
         return;
     }
 
-    static private void Main(string[] args) {
+    private static void Main(string[] args) {
         DrukKerstboom(10, 7, '+');
         DrukKerstboom(13, 10, '*');
         DrukKerstboom(7, 6, 'O');
@@ -536,7 +536,7 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
       <h4>Voorbeeld 1: puur dankzij returnwaarde</h4>
       <p>Een methode <code>DrukKerstboom()</code>, niet puur:</p>
       <div class="precontainer">
-         <pre><code class="redcomments">static private void DrukKerstboom(int hoogte, int breedte, char c)
+         <pre><code class="redcomments">private static void DrukKerstboom(int hoogte, int breedte, char c)
 {
    int i, j, aantalSterren, aantalSpaties; // lokale variabelen
    for (i = 0; i &lt; hoogte; i++)
@@ -550,7 +550,7 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
    return;
 }
 
-static private void Main(string[] args) {
+private static void Main(string[] args) {
    DrukKerstboom(20, 15, '+');
 }
 </code></pre>
@@ -561,7 +561,7 @@ static private void Main(string[] args) {
 
       <p>Hetzelfde programma, nu wel met pure methode:</p>
       <div class="precontainer">
-         <pre><code>static private string GeefKerstboom(int hoogte, int breedte, char c)
+         <pre><code>private static string GeefKerstboom(int hoogte, int breedte, char c)
 {
    string str = "";
    int i, j, aantalSterren, aantalSpaties;
@@ -576,7 +576,7 @@ static private void Main(string[] args) {
    return str; // OK: geef een string terug
 }
 
-static private void Main(string[] args)
+private static void Main(string[] args)
 {
    string kerstboom = GeefKerstboom(20, 15, '+');
    Console.WriteLine(kerstboom);
@@ -587,7 +587,7 @@ static private void Main(string[] args)
       <h4>Voorbeeld 2: puur dankzij parameters</h4>
       <p>De eerdere methode <code>GrootsteGemeneDeler()</code>, niet puur:</p>
       <div class="precontainer">
-         <pre><code class="redcomments">static private int GrootsteGemeneDeler()
+         <pre><code class="redcomments">private static int GrootsteGemeneDeler()
 {
    Console.Write("Geef het eerste getal: "); // FOUT! vermijd lezen van de Console
    int get1 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd schrijven naar de Console
@@ -601,7 +601,7 @@ static private void Main(string[] args)
    return ggd;
 }
 
-static private void Main(string[] args)
+private static void Main(string[] args)
 {
    int grootsteGD = GrootsteGemeneDeler();
    Console.WriteLine($"de grootste gemene deler is {grootsteGD}");
@@ -621,7 +621,7 @@ De grootste gemene deler is 6</pre>
       </figure>
       <p>Hetzelfde programma, nu wel met pure methode:</p>
       <div class="precontainer">
-         <pre><code>static private int GrootsteGemeneDeler(int get1, int get2) // OK: gebruik parameters
+         <pre><code>private static int GrootsteGemeneDeler(int get1, int get2) // OK: gebruik parameters
 {
    int ggd = Math.Min(get1, get2);
    while (get1 % ggd != 0 || get2 % ggd != 0)
@@ -631,7 +631,7 @@ De grootste gemene deler is 6</pre>
    return ggd;
 }
 
-static private void Main(string[] args)
+private static void Main(string[] args)
 {
    Console.Write("Geef het eerste getal: ");
    int getal1 = Convert.ToInt32(Console.ReadLine());
