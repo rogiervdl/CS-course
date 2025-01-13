@@ -282,7 +282,7 @@ foreach (int num in numbers)
                <td>controleert of de array een gegeven waarde bevat</td>
             </tr>
             <tr>
-               <td><code>IndexOf()</code></td>
+               <td><code>Array.IndexOf()</code></td>
                <td>zoekt de positie (index) van een gegeven waarde; -1 indien niet gevonden</td>
             </tr>
             <tr>
@@ -314,7 +314,7 @@ if (gevonden)
       <h4>voorbeeld: positie van een waarde in een array met <code>IndexOf()</code></h4>
       <p>Gebruik <code>IndexOf()</code> om de positie te vinden (-1 indien niet gevonden):</p>
       <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
-int pos = fruit.IndexOf("citroen");
+int pos = Array.IndexOf(fruit, "citroen");
 if (pos &gt; -1)
 {
    Console.WriteLine($"Het woord \"citroen\" is gevonden op positie {pos}");
