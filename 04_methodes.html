@@ -227,19 +227,19 @@ private static int GrootsteGemeneDeler(int get1, int get2)
     // ... methode body hier
 }
 </code></pre>
-      <h4>Type 1: geen parameters, geen return &mdash; "doen"</h4>
+      <h3>Type 1: geen parameters, geen return &mdash; "doen"</h3>
       <p>Dit zijn eerder domme methodes, die altijd hetzelfde <strong>"doen"</strong>. Voorbeeld van een methode die een keuzemenu afdrukt:</p>
       <p><img src="img/04_methodes/methode-type1.png" alt="" class="w-800"></p>
-      <h4>Type 2: met parameters, geen return &mdash; "realiseren"</h4>
+      <h3>Type 2: met parameters, geen return &mdash; "realiseren"</h3>
       <p>Deze methodes lijken op de vorige, behalve dat wat ze doen afhankelijk is van parameters, ze <strong>"realiseren"</strong>. Voorbeeld van een methode die een kerstboom afdrukt:</p>
       <p><img src="img/04_methodes/methode-type2.png" alt="" class="w-800"></p>
-      <h4>Type 3: geen parameters, met return &mdash; "genereren"</h4>
+      <h3>Type 3: geen parameters, met return &mdash; "genereren"</h3>
       <p>Dergelijke methodes <strong>"genereren"</strong>. Methode die een getal inleest tot het positief is:</p>
       <p><img src="img/04_methodes/methode-type3.png" alt="" class="w-800"></p>
-      <h4>Type 4: met parameters, met return &mdash; "berekenen"</h4>
+      <h3>Type 4: met parameters, met return &mdash; "berekenen"</h3>
       <p>Dergelijke methodes accepteren input, en geven een resultaat terug: ze "genereren". Methode die twee gehele getallen vraagt, en de grootste gemene deler teruggeeft:</p>
       <p><img src="img/04_methodes/methode-type4.png" alt="" class="w-800"></p>
-      <h4>Parameters vs. argumenten</h4>
+      <h3>Parameters vs. argumenten</h3>
       <div class="tips" data-caption="🎓 DEFINITIE">
          <p>bij <strong>definitie</strong> gebruiken we de term <strong>parameters</strong>, b.v. <code>(get1, get2)</code>
             <br>bij <strong>aanroep</strong> gebruiken we de term <strong>argumenten</strong>, b.v. <code>(12, 18)</code>
@@ -247,7 +247,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
       </div>
 
       <h2>Methodes in praktijk</h2>
-      <h4>Voorbeeld 1, console app: grootste gemene deler</h4>
+      <h3>Voorbeeld 1, console app: grootste gemene deler</h3>
       <p>Een voorbeeld consoletoepassing die twee getallen inleest, en de grootste gemene deler bepaalt:</p>
       <div class="precontainer">
          <pre><code>class Program
@@ -299,7 +299,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
 Geef een positief getal: 18
 De grootste gemene deler is: 6</pre>
       </figure>
-      <h4>Voorbeeld 2, console app: kerstboom</h4>
+      <h3>Voorbeeld 2, console app: kerstboom</h3>
       <p>Een voorbeeld consoletoepassing die twee getallen inleest, en de grootste gemene deler bepaalt:</p>
       <div class="precontainer">
          <pre><code>class Program
@@ -359,7 +359,7 @@ De grootste gemene deler is: 6</pre>
  OOOO
 OOOOO</pre>
       </figure>
-      <h4>Voorbeeld 3, WPF app: grootste gemene deler</h4>
+      <h3>Voorbeeld 3, WPF app: grootste gemene deler</h3>
       <p>Een methode in een WPF app gebruiken is niet zoveel anders dan in een Console app. Drop de methode in je code behind, en je bent klaar om ‘m te gebruiken. Maken we bij wijze van voorbeeld de grootste gemene deler app in WPF:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBox x:Name="txtGetal1" ... /&gt;
 &lt;Label Content="Getal 1: " ... /&gt;
@@ -398,66 +398,87 @@ OOOOO</pre>
          <div class="codemarker" data-text="GrootsteGemeneDeler(getal1, getal2)"></div>
       </div>
 
-      <div class="pro">
-         <h2>Call by reference / value</h2>
-         <p>Dit gaat over de vraag: <i>wat gebeurt er als een methode de waarde van een binnenkomende parameter
-               verandert?</i></p>
-         <ul>
-            <li><strong>Call by value</strong>: de variabele geeft enkel zijn waarde door, wijzigingen gaan verloren
-               <br>Geldt voor: alle primitieve types (<code>bool</code>, <code>char</code>, <code>int</code>,
-               <code>double</code>...) en <code>string</code> (*)
-            </li>
-            <li>
-               <strong>Call by reference</strong>: de variabele geeft zijn referentie door; wijzigingen blijven behouden
-               <br>Geldt voor: al de rest (objecten, arrays, lijsten…)
-            </li>
-         </ul>
-         <h4>Call by value voorbeeld</h4>
-         <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
-         <pre><code>static void TryChange(int nr)
+      <h2>Call by reference / value</h2>
+      <p>Dit gaat over de vraag: <i>wat gebeurt er als een methode de waarde van een binnenkomende parameter verandert?</i></p>
+      <ul>
+         <li><strong>Call by value</strong>: de variabele geeft enkel zijn waarde door, wijzigingen gaan verloren
+            <br>Geldt voor: alle primitieve types (<code>bool</code>, <code>char</code>, <code>int</code>,
+            <code>double</code>...) en <code>string</code> (*)
+         </li>
+         <li>
+            <strong>Call by reference</strong>: de variabele geeft zijn referentie door; wijzigingen blijven behouden
+            <br>Geldt voor: al de rest (objecten, arrays, lijsten…)
+         </li>
+      </ul>
+      <p>De voorbeelden verder maken gebruik van <a href="05_arrays.html">arrays</a> dat in het volgende deel aan bod komt, dus misschien wil je dat deel eerst bestuderen en dan naar hier terugkeren.</p>
+      <h3>Call by value voorbeeld</h3>
+      <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
+      <pre><code>static void Verdubbel(int get)
 {
-    nr = 13; // geef een andere waarde
+   get *= 2;
 }
 
-int number1 = 12;
-Console.WriteLine($"Number is {number1}"); // getal is 12
-TryChange(number1);
-Console.WriteLine($"Number is still {number1}"); // getal is nog steeds 12</code></pre>
-         <h4>Call by reference voorbeeld</h4>
-         <p>Geef je daarentegen een array mee, dan blijven wijzigingen door die methode wel behouden:</p>
-         <pre><code>static void TryChange(string[] arrTxt)
+int getal1 = 12;
+Console.WriteLine($"Getal is {getal1}"); // getal1 is 12
+Verdubbel(getal1);
+Console.WriteLine($"Getal is {getal1}"); // getal1 is nog steeds 12; wijzigingen gaan verloren!</code></pre>
+      <h3>Call by reference voorbeeld</h3>
+      <p>Geef je daarentegen een array mee, dan blijven wijzigingen door die methode wel behouden:</p>
+      <pre><code>static void Verdubbel(int[] getallenrij)
 {
-    arrTxt[1] = "Dave"; // verander de tweede waarde
+   for (int i = 0; i &lt; getallenrij.Length; i++)
+   {
+      getallenrij[i] *= 2;
+   }
 }
 
-string[] names = { "Alice", "Bob", "Clive" };
-Console.WriteLine(String.Join(", ", names)); // array is Alice, Bob, Clive
-TryChange(names);
-Console.WriteLine(String.Join(", ", names)); // array is nu Alice, Dave, Clive
+int[] getallen = { 1, 3, 7, 8 };
+Console.WriteLine($"Getallen zijn {string.Join(", ", getallen)}"); // 1, 3, 7, 8
+Verdubbel(getallen);
+Console.WriteLine($"Getallen zijn {string.Join(", ", getallen)}"); // veranderd naar 2, 6, 14, 16
 </code></pre>
-         <h4>ref en out</h4>
+      <h3><code>ref</code> en <code>out</code></h3>
+      <p>
+         Wil je primitieve types of strings toch veranderen in een methode, dan kan dat met de sleutelwoorden
+         <code>out</code> of <code>ref</code>.
+         Een voorbeeld voor <code>ref</code>:
+      </p>
+      <pre><code>static void Verdubbel(ref int get)
+{
+   get *= 2;
+}
+
+int getal1 = 12;
+Console.WriteLine($"Getal is {getal1}"); // getal1 is 12
+Verdubbel(ref getal1);
+Console.WriteLine($"Getal is {getal1}"); // getal1 is 24; wijzigingen blijven behouden!</code></pre>
+      <ul class="arrow">
+         <li><code>int</code> is nu called by reference!</li>
+         <li>het verschil tussen <code>out</code> en <code>ref</code> is klein (bij <code>out</code> <em>moet</em> je de waarde veranderen in de methode, bij <code>ref</code> <em>mag</em> je de waarde veranderen)</li>
+      </ul>
+      <p>
+      </p>
+
+      <div class="tips" data-caption="💀 TO REF OR NOT TO REF">
          <p>
-            Wil je primitieve types of strings toch veranderen in een methode, dan kan dat met de sleutelwoorden
-            <code>out</code> of <code>ref</code>.
-            Een voorbeeld voor <code>ref</code>:
+            Gevorderde programmeurs kunnen ongetwijfeld voordelen halen door value types te veranderen naar reference, maar het gebruik van <code>ref</code> of <code>out</code> is <strong>sterk afgeraden</strong> voor beginnende programmeurs.
+            Het bovenstaand voorbeeld kan je beter herschrijven met een eenvoudige return:
          </p>
-         <pre><code>static void TryChange(ref int nr)
+      <pre><code>static int Verdubbel(int get)
 {
-    nr = 13; // geef een andere waarde
+   int verdubbeld = get * 2;
+   return verdubbeld;
 }
 
-int number1 = 12;
-Console.WriteLine($"Number is {number1}"); // getal is 12
-tryChange(ref number1);
-Console.WriteLine($"Number is now {number1}"); // getal is nu 13
-</code></pre>
-         <ul class="arrow">
-            <li><code>int</code> is nu called by reference!</li>
-            <li>het verschil tussen <code>out</code> en <code>ref</code> is klein (bij <code>out</code> moet je de waarde veranderen in de methode, bij <code>ref</code> mag je de waarde veranderen)</li>
-         </ul>
+int getal1 = 12;
+Console.WriteLine($"Getal is {getal1}"); // getal1 is 12
+Verdubbel(ref getal1);
+Console.WriteLine($"Getal is {getal1}"); // getal1 is 24; wijzigingen blijven behouden!</code></pre>
       </div>
+
+
       <h2>Veelgemaakte fouten</h2>
-      <h4>Fout 1: verwarring parameters met argumenten</h4>
+      <h3>Fout 1: verwarring parameters met argumenten</h3>
       <p>
          <mark>Parameters</mark> zijn onbekenden die je gebruikt bij de definitie van de methode, <mark>argumenten</mark> zijn de waarden die je meegeeft bij het uitvoeren van de methode (letterlijke waarden of via variabelen).
       </p>
@@ -480,7 +501,7 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
          <p>geef je parameters voor de duidelijkheid andere namen dan de andere variabelen</p>
       </div>
 
-      <h4>Fout 2: parameters waarden geven</h4>
+      <h3>Fout 2: parameters waarden geven</h3>
       <p>De waarden van de parameters van een methode worden meegegeven door de code die deze methode aanroept. Het is dus <strong>NIET</strong> de bedoeling dat je deze waarden binnen de methode opnieuw instelt:</p>
       <pre><code class="redcomments"> static double BerekenBMI(double gewicht, double lengte)
  {
@@ -491,7 +512,7 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
      return gewicht / (lengte * lengte);
  }
 </code></pre>
-      <h4>Fout 3: parameters van waarde veranderen</h4>
+      <h3>Fout 3: parameters van waarde veranderen</h3>
       <p>Een andere klassieke fout is het gebruiken van parameters in een berekening:</p>
       <pre><code class="redcomments">static double CelsiusNaarFahrenheit(double celsius)
 {
@@ -533,7 +554,7 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
          <p>Pure methodes is een erg belangrijk concept in programmeren, belangrijk voor o.a. compiler optimalisatie, code libraries, herbruikbaarheid...</p>
       </div>
 
-      <h4>Voorbeeld 1: puur dankzij returnwaarde</h4>
+      <h3>Voorbeeld 1: puur dankzij returnwaarde</h3>
       <p>Een methode <code>DrukKerstboom()</code>, niet puur:</p>
       <div class="precontainer">
          <pre><code class="redcomments">private static void DrukKerstboom(int hoogte, int breedte, char c)
@@ -584,7 +605,7 @@ private static void Main(string[] args)
          <div class="codemarker" data-text="return str"></div>
       </div>
 
-      <h4>Voorbeeld 2: puur dankzij parameters</h4>
+      <h3>Voorbeeld 2: puur dankzij parameters</h3>
       <p>De eerdere methode <code>GrootsteGemeneDeler()</code>, niet puur:</p>
       <div class="precontainer">
          <pre><code class="redcomments">private static int GrootsteGemeneDeler()
