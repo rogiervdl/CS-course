@@ -593,7 +593,7 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
             <tr>
                <td>string splitten naar...</td>
                <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
-               <td>niet mogelijk</td>
+               <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ').ToList();</code></td>
             </tr>
             <tr>
                <td>samenvoegen</td>
@@ -1060,7 +1060,7 @@ int c = Convert.ToInt32(3.91); // double naar int &rarr; afronding (c = 4)</code
 string str2 = Convert.ToString(32);         // int &rarr; string "32"
 string str3 = Convert.ToString(3.1415);     // double &rarr; string "3.1415"</code></pre>
 
-      <!-- ENVIRONMENT-->
+      <!-- DATETIME-->
       <h2>DateTime</h2>
       <p>Deze klasse laat toe te werken met datum en tijd. </p>
       <h3>Aanmaken</h3>
@@ -1134,6 +1134,106 @@ Custom date format 2: 25/11/2024 03:18:21</pre>
 
       <p>Voor een volledige lijst codes, zie b.v. <a href="https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1">https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1</a></p>
 
+      <!-- DISPATCHERTIMER -->
+      <div class="pro">
+         <h2 id="dispatchertimer">DispatcherTimer</h2>
+         <p>Hiermee kan je een teller maken die een methode uitvoert met vaste tussentijden. </p>
+         <h4>Properties, methodes en events</h4>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Interval</code></td>
+                  <td>tussentijd (type <code>TimeSpan</code>)</td>
+               </tr>
+               <tr>
+                  <td><code>IsEnabled</code></td>
+                  <td>boolean die aangeeft of de timer loopt of niet</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Start()</code></td>
+                  <td>start de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Stop()</code></td>
+                  <td>stop de stopwatch</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Tick</code></td>
+                  <td>vuurt af met vaste intervallen (zie de <code>Interval</code> property)</td>
+               </tr>
+            </tbody>
+         </table>
+         <h3>Voorbeelden</h3>
+         <h4>teller met start- en stopknop</h4>
+         <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
+         <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtCount" Text="0" TextAlignment="Right" HorizontalAlignment="Left" Height="100"
+   Margin="130,25,0,0" VerticalAlignment="Top" Width="151" FontSize="48"/&gt;
+&lt;Button x:Name="btnStart" Content="start" HorizontalAlignment="Left" Padding="10,5" Margin="20,25,0,0"
+   VerticalAlignment="Top" Click="BtnStart_Click" /&gt;
+&lt;Button x:Name="btnStop" Content="stop" HorizontalAlignment="Left" Padding="10,5" Margin="20,90,0,0"
+   VerticalAlignment="Top" Click="BtnStop_Click" IsEnabled="False"/&gt;</code></pre>
+         <p>Het zit in <code>System.Windows.Threading</code>, dus voeg het boveaan toe met een <code>using</code>:</p>
+         <pre><code>using System.Windows.Threading;</code></pre>
+         <p>De C# code-behind:</p>
+         <pre><code>private DispatcherTimer timer = new DispatcherTimer();
+private int count = 0;
+public MainWindow()
+{
+    InitializeComponent();
+    timer.Interval = TimeSpan.FromMilliseconds(1000);
+    timer.Tick += Timer_Tick;
+}
+private void Timer_Tick(object sender, EventArgs e)
+{
+    count++;
+    txtCount.Text = count.ToString();
+}
+
+private void BtnStart_Click(object sender, RoutedEventArgs e)
+{
+    timer.Start();
+    btnStart.IsEnabled = false;
+    btnStop.IsEnabled = true;
+}
+
+private void BtnStop_Click(object sender, RoutedEventArgs e)
+{
+    timer.Stop();
+    btnStart.IsEnabled = true;
+    btnStop.IsEnabled = false;
+}
+</code></pre>
+         <figure>
+            <img src="img/06_dotnetclasses/dispatchertimer-demo.gif" alt="" class="bordered w-350">
+            <figcaption>DispatcherTimer voorbeeld</figcaption>
+         </figure>
+      </div>
 
       <!-- ENVIRONMENT-->
       <h2 id="environment">Environment</h2>
@@ -1574,6 +1674,111 @@ Random getal 2: 6</pre>
 
       <p>Opmerking: de bovengrens is <strong>exclusief</strong>. Dat betekent dat het gegenereerde getal steeds strikt kleiner zal zijn dan de opgegeven bovengrens. Wil je bv. een willekeurig getal berekenen van 1 t.e.m. 5, gebruik je de parameters <code>Next(1, 6)</code>.</p>
 
+      <!-- STOPWATCH -->
+      <div class="pro">
+
+         <h2 id="stopwatch">Stopwatch</h2>
+         <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
+         <h4>Properties en methodes</h4>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Elapsed</code></td>
+                  <td>verstreken tijd (type <code>TimeSpan</code>)</td>
+               </tr>
+               <tr>
+                  <td><code>IsRunning</code></td>
+                  <td>boolean die aangeeft of de stopwatch loopt of niet</td>
+               </tr>
+            </tbody>
+         </table>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>Reset()</code></td>
+                  <td>reset de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Start()</code></td>
+                  <td>start de stopwatch</td>
+               </tr>
+               <tr>
+                  <td><code>Stop()</code></td>
+                  <td>stop de stopwatch</td>
+               </tr>
+            </tbody>
+         </table>
+         <h3>Voorbeelden</h3>
+         <h4>Tijd verstreken tot toetsdruk (Console)</h4>
+         <pre><code>Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
+Console.WriteLine("Timer is gestart. Druk een toets...");
+Console.ReadKey(true);
+TimeSpan elapsed = stopwatch.Elapsed; // verstreken tijdsspanne
+stopwatch.Stop();
+Console.WriteLine($"Timer is gestopt. De verstreken tijd is {elapsed.Seconds}.{elapsed.Milliseconds}s");
+Console.ReadKey();</code></pre>
+         <figure class="console">
+            <pre>Timer is gestart. Druk een toets...
+Timer is gestopt. De verstreken tijd is 2.47s</pre>
+            <figcaption>resultaat in de console</figcaption>
+         </figure>
+         <h4>Starten, stoppen en resetten (WPF)</h4>
+      <pre class="language-html language-xaml"><code>&lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click" HorizontalAlignment="Left" Padding="5,2"
+   Width="50" Margin="20,25,0,0" VerticalAlignment="Top" /&gt;
+&lt;Button x:Name="btnLap" Content="lap" Click="BtnLap_Click" IsEnabled="False" Padding="5,2"  HorizontalAlignment="Left"
+   Width="50" Margin="20,65,0,0" VerticalAlignment="Top" /&gt;
+&lt;Button x:Name="btnStop" Content="stop" Click="BtnStop_Click" IsEnabled="False" Padding="5,2" HorizontalAlignment="Left"
+   Width="50" Margin="20,105,0,0" VerticalAlignment="Top" /&gt;
+&lt;Button x:Name="btnReset" Content="reset" Click="BtnReset_Click" IsEnabled="False" Padding="5,2" HorizontalAlignment="Left"
+   Width="50" Margin="20,145,0,0" VerticalAlignment="Top" /&gt;
+&lt;ListBox x:Name="lbxLaps" Margin="95,25,0,0" Width="200" Height="140" HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;
+</code></pre>
+      <pre><code>private Stopwatch watch = new Stopwatch();
+public MainWindow() {
+    InitializeComponent();
+}
+private void SetButtonStates() {
+    btnStart.IsEnabled = !watch.IsRunning;
+    btnLap.IsEnabled = watch.IsRunning;
+    btnStop.IsEnabled = watch.IsRunning;
+}
+private void BtnStart_Click(object sender, RoutedEventArgs e) {
+    watch.Start();
+    SetButtonStates();
+}
+private void BtnLap_Click(object sender, RoutedEventArgs e) {
+    TimeSpan elapsed = watch.Elapsed;
+    lbxLaps.Items.Add(new ListBoxItem() { Content = elapsed.ToString() });
+    SetButtonStates();
+}
+private void BtnStop_Click(object sender, RoutedEventArgs e) {
+    watch.Stop();
+    SetButtonStates();
+}
+private void BtnReset_Click(object sender, RoutedEventArgs e) {
+   lbxLaps.Items.Clear();
+   watch.Reset();
+}
+</code></pre>
+      <figure>
+         <img src="img/06_dotnetclasses/stopwatch-demo.gif" alt="" class="w-350">
+         <figcaption>Tag demo: buttons onthouden zelf hoevaak erop geklikt werd</figcaption>
+      </figure>
+      </div>
+
       <!-- STRING -->
       <h2 id="string">String</h2>
       <p>De <code>String</code> klasse is een zogenaamde <em>wrapper class</em>, of uitbreiding van het <code>string</code> type. Beiden zijn uitwisselbaar; deze fragmenten zijn dus gelijkwaardig:</p>
@@ -1771,158 +1976,6 @@ woorden</pre>
       <pre><code>string txt = "0477/234.56.78"; // &rarr; één string
 string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
 </code></pre>
-
-      <div class="pro">
-
-         <h2>Timer classes</h2>
-         <p>Timers bieden de mogelijkheid de uitvoering van statements te plannen.</p>
-
-
-         <h3 id="stopwatch">Stopwatch</h3>
-         <p>Een stopwatch is een tijdsmeter die je kan starten, stoppen en resetten.</p>
-         <h4>Properties en methodes</h4>
-         <table class="light">
-            <thead>
-               <tr>
-                  <th scope="col">Property</th>
-                  <th scope="col">Omschrijving</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><code>Elapsed</code></td>
-                  <td>verstreken tijd (type <code>TimeSpan</code>)</td>
-               </tr>
-               <tr>
-                  <td><code>IsRunning</code></td>
-                  <td>boolean die aangeeft of de stopwatch loopt of niet</td>
-               </tr>
-            </tbody>
-         </table>
-         <table class="light">
-            <thead>
-               <tr>
-                  <th scope="col">Methode</th>
-                  <th scope="col">Omschrijving</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><code>Reset()</code></td>
-                  <td>reset de stopwatch</td>
-               </tr>
-               <tr>
-                  <td><code>Start()</code></td>
-                  <td>start de stopwatch</td>
-               </tr>
-               <tr>
-                  <td><code>Stop()</code></td>
-                  <td>stop de stopwatch</td>
-               </tr>
-            </tbody>
-         </table>
-         <h4>Codevoorbeeld</h4>
-         <pre><code>Stopwatch stopwatch = new Stopwatch();
-stopwatch.Start();
-Console.WriteLine("Timer is gestart. Druk een toets...");
-Console.ReadKey(true);
-TimeSpan elapsed = stopwatch.Elapsed; // verstreken tijdsspanne
-stopwatch.Stop();
-Console.WriteLine($"Timer is gestopt. De verstreken tijd is {elapsed.Seconds}.{elapsed.Milliseconds}s");
-Console.ReadKey();</code></pre>
-         <figure class="console">
-            <pre>Timer is gestart. Druk een toets...
-Timer is gestopt. De verstreken tijd is 2.47s</pre>
-            <figcaption>resultaat in de console</figcaption>
-         </figure>
-         <h3 id="dispatchertimer">DispatcherTimer</h3>
-         <p>Hiermee kan je een teller maken die een methode uitvoert met vaste tussentijden. </p>
-         <h4>Properties, methodes en events</h4>
-         <table class="light">
-            <thead>
-               <tr>
-                  <th scope="col">Property</th>
-                  <th scope="col">Omschrijving</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><code>Interval</code></td>
-                  <td>tussentijd (type <code>TimeSpan</code>)</td>
-               </tr>
-               <tr>
-                  <td><code>IsEnabled</code></td>
-                  <td>boolean die aangeeft of de timer loopt of niet</td>
-               </tr>
-            </tbody>
-         </table>
-         <table class="light">
-            <thead>
-               <tr>
-                  <th scope="col">Methode</th>
-                  <th scope="col">Omschrijving</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><code>Start()</code></td>
-                  <td>start de stopwatch</td>
-               </tr>
-               <tr>
-                  <td><code>Stop()</code></td>
-                  <td>stop de stopwatch</td>
-               </tr>
-            </tbody>
-         </table>
-         <table class="light">
-            <thead>
-               <tr>
-                  <th scope="col">Event</th>
-                  <th scope="col">Omschrijving</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><code>Tick</code></td>
-                  <td>vuurt af met vaste intervallen (zie de <code>Interval</code> property)</td>
-               </tr>
-            </tbody>
-         </table>
-         <h4>Codevoorbeeld</h4>
-         <p>Een eenvoudige WPF teller die met een knop kan gestart worden, XAML:</p>
-         <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtCount" Text="0" .../&gt;
-&lt;Button x:Name="btnStart" Content="start" Click="BtnStart_Click"... /&gt;
-</code></pre>
-         <p>De C# code-behind:</p>
-         <pre><code>private int ticks;
-private DispatcherTimer timer;
-
-public MainWindow()
-{
-    InitializeComponent();
-    ticks = 0; // zet teller op 0
-    timer = new DispatcherTimer(); // maak teller aan
-    timer.Interval = TimeSpan.FromMilliseconds(200); // tijdsspanne tussen twee ticks is 200 milliseconden
-    timer.Tick += DoSomething; // voer deze methode bij elke tick uit
-}
-
-private void BtnStart_Click(object sender, RoutedEventArgs e) {
-   timer.Start(); // start de teller als op de OK-knop geklikt wordt
-}
-
-private void DoSomething(object sender, EventArgs e)
-{
-    // elke 200 milliseconden uitgevoerd
-    // ...
-    ticks++;
-    txtCount.Content = ticks;
-}
-</code></pre>
-         <figure>
-            <img src="img/06_dotnetclasses/timer_dispatchertimer.gif" alt="" class="bordered w-250">
-            <figcaption>DispatcherTimer voorbeeld</figcaption>
-         </figure>
-      </div>
 
    </main>
    <footer>

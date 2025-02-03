@@ -225,6 +225,32 @@
             </tr>
          </tbody>
       </table>
+      <p>
+         De volgende twee zijn strikt gezien geen controls maar <em>shapes</em> (je vindt ze dan ook in <code>System.Windows.Shapes</code> en niet in <code>System.Windows.Controls</code>). Controls kunnen met de gebruiker interageren (met een Click b.v.), shapes niet.
+         Maar omdat het een visueel WPF element is (en je vindt ze trouwens in de Toolbox onder Controls), nemen we ze toch op in dit hoofdstuk.
+      </p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Shape</th>
+               <th scope="col">Omschrijving</th>
+               <th scope="col" class="centered">Voorbeeld</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><a href="#ellipse">Ellipse</a></td>
+               <td>Een ellips</td>
+               <td><img src="img/07_wpfcontrols/ellipse.png" alt="ellipse" class="w-100"></td>
+            </tr>
+            <tr>
+               <td><a href="#rectangle">Rectangle</a></td>
+               <td>Een rechthoek</td>
+               <td><img src="img/07_wpfcontrols/rectangle.png" alt="rectangle" class="w-100"></td>
+            </tr>
+         </tbody>
+      </table>
+
       <h3>WPF control properties</h3>
       <h4>Instellen in XAML</h4>
       <p>Veel gebruikte properties die je op de meeste controls kan instellen als attributen:</p>
@@ -410,84 +436,6 @@ private void Btn_Click(object sender, RoutedEventArgs e) {
          <figcaption>Tag demo: buttons onthouden zelf hoevaak erop geklikt werd</figcaption>
       </figure>
 
-      <h3>System.Windows.Shapes</h3>
-      <p>Dit zijn niet echte controls in de zin dat ze interactief zijn, maar desondanks worden ze "WPF controls" genoemd. We bekijken er twee.</p>
-      <h4 id="rectangle">Rectangle</h4>
-      <p>Belangrijkste properties:</p>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Fill</code></td>
-               <td>vulkleur</td>
-            </tr>
-            <tr>
-               <td><code>Height</code></td>
-               <td>hoogte</td>
-            </tr>
-            <tr>
-               <td><code>Stroke</code></td>
-               <td>randkleur</td>
-            </tr>
-            <tr>
-               <td><code>StrokeThickness</code></td>
-               <td>randdikte</td>
-            </tr>
-            <tr>
-               <td><code>Width</code></td>
-               <td>breedte</td>
-            </tr>
-         </tbody>
-      </table>
-      <p>XAML voorbeeld:</p>
-      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
-      <figure>
-         <img src="img/07_wpfcontrols/rectangle.png" alt="" class="w-300 bordered">
-         <figcaption>Rectangle voorbeeld</figcaption>
-      </figure>
-      <h4 id="ellipse">Ellipse</h4>
-      <p>De belangrijkste properties van de <code>Ellipse</code> zijn dezelfde als die van <code>Rectangle</code>:</p>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Fill</code></td>
-               <td>vulkleur</td>
-            </tr>
-            <tr>
-               <td><code>Height</code></td>
-               <td>hoogte</td>
-            </tr>
-            <tr>
-               <td><code>Stroke</code></td>
-               <td>randkleur</td>
-            </tr>
-            <tr>
-               <td><code>StrokeThickness</code></td>
-               <td>randdikte</td>
-            </tr>
-            <tr>
-               <td><code>Width</code></td>
-               <td>breedte</td>
-            </tr>
-         </tbody>
-      </table>
-      <p>XAML voorbeeld:</p>
-      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
-      <figure>
-         <img src="img/07_wpfcontrols/ellipse.png" alt="" class="w-300 bordered">
-         <figcaption>Ellipse voorbeeld</figcaption>
-      </figure>
 
       <div class="pro">
       <h3>Controls dynamisch toevoegen in C#</h3>
@@ -883,6 +831,80 @@ if (dpcGeboortedatum.SelectedDate != null)
     DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
     // doe iets met variabele 'datum'
 }</code></pre>
+
+      <h2 id="ellipse">Ellipse</h2>
+      <p>XAML voorbeeldcode:</p>
+      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/07_wpfcontrols/ellipse.png" alt="" class="w-300 bordered">
+         <figcaption>Ellipse voorbeeld</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <p>De belangrijkste properties van de <code>Ellipse</code> zijn dezelfde als die van <code>Rectangle</code>:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>Ellips met twee sliders</h4>
+      <pre class="language-html language-xaml"><code>&lt;Canvas x:Name="canvas1" Width="250" Height="150" Background="#FFF1F1F1"
+         Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+     &lt;Ellipse x:Name="ellipse1" Width="100" Height="50" Stroke="Blue" Fill="LightBlue"/&gt;
+ &lt;/Canvas&gt;
+ &lt;TextBlock Text="Breedte:" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top"/&gt;
+ &lt;Slider x:Name="sldWidth" Maximum="250" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+    Margin="85,165,0,0" VerticalAlignment="Top" /&gt;
+ &lt;TextBlock x:Name="txtWidth" Text="100" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top"/&gt;
+ &lt;TextBlock Text="Hoogte:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/&gt;
+ &lt;Slider x:Name="sldHeight" Maximum="150" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+    Margin="85,190,0,0" VerticalAlignment="Top"/&gt;
+ &lt;TextBlock x:Name="txtHeight" Text="50" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top"/&gt;</code></pre>
+      <p>De C# code-behind:</p>
+      <pre><code>public MainWindow()
+{
+    InitializeComponent();
+    sldWidth.Value = 100;
+    sldHeight.Value = 50;
+}
+private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+{
+    ellipse1.Width = sldWidth.Value;
+    ellipse1.Height = sldHeight.Value;
+    txtWidth.Text = $"{sldWidth.Value:F0}";
+    txtHeight.Text = $"{sldWidth.Value:F0}";
+}
+</code></pre>
+      <figure>
+         <img src="img/07_wpfcontrols/ellipse-demo.gif" alt="" class="w-350">
+         <figcaption>Ellipse voorbeeld</figcaption>
+      </figure>
+
 
       <h2 id="image">Image</h2>
       <h3>Basisvoorbeeld</h3>
@@ -1329,9 +1351,65 @@ else if(radGroot.IsChecked == true)
       <h4>Programmatorisch een RadioButton aan-/afvinken</h4>
       <pre><code>radAfhalen.IsChecked = true; // false om af te vinken</code></pre>
 
+      <h2 id="rectangle">Rectangle</h2>
+      <p>De basis XAML:</p>
+      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/07_wpfcontrols/rectangle.png" alt="" class="w-300 bordered">
+         <figcaption>Rectangle voorbeeld</figcaption>
+      </figure>
+      <h3>Properties en events</h3>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <h3>Voorbeelden</h3>
+      <h4>breedte aanpassen met Slider</h4>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" Margin="20,170,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
+&lt;Rectangle x:Name="rct1" Fill="#FFF4F4F5" Width="100" Height="100" Stroke="Black" Margin="20,20,0,0"
+   HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300"  Width="520" IsSnapToTickEnabled="True"
+   TickFrequency="10" ValueChanged="Sld1_ValueChanged" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" /&gt;
+</code></pre>
+      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e) {
+    txtValue.Content = Math.Round(sld1.Value).ToString();
+    rct1.Width = Math.Round(sld1.Value);
+}</code></pre>
+      <figure>
+         <img src="img/07_wpfcontrols/rectangle_slider.gif" alt="" class="w-500 bordered">
+         <figcaption>slider demo</figcaption>
+      </figure>
+
       <h2 id="slider">Slider</h2>
       <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True" TickFrequency="10" Width="500" ValueChanged="Sld1_ValueChanged" .../&gt;</code></pre>
+      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True"
+   TickFrequency="10" Width="500" ValueChanged="Sld1_ValueChanged" .../&gt;</code></pre>
       <figure>
          <img src="img/07_wpfcontrols/slider_control.png" alt="" class="w-500 bordered">
          <figcaption>Slider control</figcaption>
@@ -1387,7 +1465,8 @@ else if(radGroot.IsChecked == true)
 // doe iets met variabele 'waarde' (bv.: weergeven in een TextBlock)</code></pre>
       <h4>Geselecteerde waarde weergeven in een TextBlock</h4>
       <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
-&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10" HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10"
+   HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
 </code></pre>
       <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
