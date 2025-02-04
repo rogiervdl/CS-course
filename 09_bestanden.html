@@ -551,7 +551,7 @@ if (dialogResult == true) {
    // user picked a file and pressed OK
    chosenFileName = dialog.FileName;
 } else {
-    // user cancelled or escaped dialog window
+   // user cancelled or escaped dialog window
 }
 </code></pre>
       <p><img src="img/09_bestanden/openfiledialog.png" alt="" class="w-550"></p>
@@ -563,12 +563,12 @@ string chosenFolderName;
 bool? dialogResult = dialog.ShowDialog();
 if (dialogResult == true)
 {
-    // user picked a folder and pressed OK
-    chosenFolderName = dialog.FolderName;
+   // user picked a folder and pressed OK
+   chosenFolderName = dialog.FolderName;
 }
 else
 {
-    // user cancelled or escaped dialog window
+   // user cancelled or escaped dialog window
 }</code></pre>
       <p><img src="img/09_bestanden/openfolderdialog.png" alt="" class="w-550"></p>
       <h3>SaveFileDialog</h3>
@@ -578,14 +578,317 @@ dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.My
 dialog.Filter = "Tekstbestanden|*.TXT;*.TEXT";
 dialog.FileName = "savedfile.txt";
 if (dialog.ShowDialog() == true) {
-    File.WriteAllText(dialog.FileName, "tekstinhoud hier");
+   File.WriteAllText(dialog.FileName, "tekstinhoud hier");
 } else {
-    // user pressed Cancel or escaped dialog window
+   // user pressed Cancel or escaped dialog window
 }
 </code></pre>
       <p><img src="img/09_bestanden/savefiledialog.png" alt="" class="w-550"></p>
       <h3>MessageBox</h3>
       <p>Zie <a href="06_dotnetclasses.html#messagebox">.NET classes - MessageBox</a></p>
+
+      <h2>Exception handling</h2>
+      <h3>Wanneer gebruiken</h3>
+      <p>De regel wanneer wel en wanneer niet te gebruiken is heel eenvoudig:</p>
+      <div class="tips" data-caption="✊🏻REGEL">
+         <p>Gebruik Exception handling enkel voor <strong>externe fouten</strong> waar je <strong>geen controle</strong> over hebt en die op <strong>geen andere manier</strong> op te vangen zijn, <em>niet</em> om mogelijke fouten in je eigen code weg te moffelen!</p>
+      </div>
+      <p>Gebruik het dus enkel in situaties waar je zelf <em>echt niks anders aan kan doen</em>:</p>
+      <ul class="right">
+         <li><strong>lezen/schrijven bestanden en mappen</strong>: I/O problemen, b.v. geen schrijfrechten</li>
+         <li><strong>databank operaties</strong>: kan offline zijn of niet reageren, er kan een fout optreden bij uitvoeren query...</li>
+         <li><strong>netwerk operaties</strong>: idem</li>
+         <li><strong>gebruik externe bibliotheken</strong>: kunnen fouten maken of zelf excepties genereren</li>
+         <li><strong>validatie externe data</strong>: bij parsen JSON, XML, input van de gebruiker...</li>
+         <li>...</li>
+      </ul>
+      <p>Gebruik het niet wanneer er alternatieven bestaan:</p>
+      <ul class="wrong">
+         <li>bestanden of mappen die niet gevonden worden (gebruik <code>File.Exists()</code> of <code>Directory.Exists()</code>)</li>
+         <li>situaties die evengoed met een if-else kunnen opgevangen worden</li>
+         <li>rond een codeblok waarvan je niet helemaal zeker bent dat er geen fouten in staan (schrijf gewoon betere code!)</li>
+         <li>...</li>
+      </ul>
+      <h3>Hoe gebruiken</h3>
+      <h4>Enkel indien echt nodig</h4>
+      <p>Als er een evenwaardig alternatief bestaat, mag je het niet gebruiken. Twee voorbeelden:</p>
+      <div class="codecompare">
+         <pre class="wrong"><code>try
+{
+   int[] numbers = new int[3];
+   Console.WriteLine(numbers[5]); // Index out of bounds
+}
+catch (IndexOutOfRangeException ex)
+{
+   Console.WriteLine("Handled out-of-bounds access");
+}</code></pre>
+         <pre class="right"><code>int[] numbers = new int[3];
+if (numbers.Length &gt; 5)
+{
+   Console.WriteLine(numbers[5]);
+}
+else
+{
+   Console.WriteLine("Index out of range");
+}</code></pre>
+      </div>
+      <div class="codecompare">
+         <pre class="wrong"><code>try
+{
+   string content = File.ReadAllText("somefile.txt");
+}
+catch (FileNotFoundException)
+{
+   Console.WriteLine("File not found");
+}</code></pre>
+         <pre class="right"><code>if (File.Exists("somefile.txt"))
+{
+   string content = File.ReadAllText("somefile.txt");
+}
+else
+{
+   Console.WriteLine("File not found");
+}</code></pre>
+      </div>
+      <div class="codecompare">
+         <pre class="wrong"><code>int num;
+try
+{
+   int num = int.Parse(Console.ReadLine());
+}
+catch (FormatException)
+{
+   Console.WriteLine("Invalid format");
+}</code></pre>
+         <pre class="right"><code>int num;
+if (!int.TryParse(Console.ReadLine(), out num))
+{
+   Console.WriteLine("Invalid format");
+}</code></pre>
+      </div>
+      <h4>Zinvolle <code>catch</code></h4>
+      <p>Een <code>try</code> zonder zinvolle <code>catch</code> verbergt gewoon de fout, en dat is niet de bedoeling:</p>
+      <div class="codecompare">
+         <pre class="wrong"><code>try
+{
+   File.Delete("somefile.txt");
+}
+catch
+{
+   // geen logging, geen actie ondernomen
+}
+</code></pre>
+         <pre class="right"><code>try
+{
+   File.Delete("somefile.txt");
+}
+catch (IOException e)
+{
+   Console.WriteLine($"Er is een fout opgetreden: {e.Message}")
+}</code></pre>
+      </div>
+
+      <h4>Specifieke exceptietypes</h4>
+      <div class="codecompare">
+         <pre class="wrong"><code>try
+{
+   string content = File.ReadAllText("somefile.txt");
+}
+catch (Exception ex) // te breed
+{
+   Console.WriteLine("An error occurred");
+}
+</code></pre>
+         <pre class="right"><code>try
+{
+   string content = File.ReadAllText("somefile.txt");
+}
+catch (IOException) // ok, specifiek genoeg
+{
+   Console.WriteLine("Fout bij het lezen van het bestand");
+}</code></pre>
+      </div>
+      <h4>Meerdere <code>catch</code>-blokken</h4>
+      <p>Overweeg meerdere <code>catch</code>-blokken, met exceptietypes van specifiek naar algemeen:</p>
+      <pre class="right"><code>string content;
+string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+try {
+   content = File.ReadAllText(filePath);
+} catch (FileNotFoundException e) { // file not found
+   lblMessage.Content = $"File {filePath} not found";
+} catch (IOException e) { // unable to open for reading
+   lblMessage.Content = $"Unable to open {filePath}";
+} catch (Exception e) { // use general Exception as fallback
+   lblMessage.Content = $"Unknown error reading {filePath}";
+}
+// process content
+// ...
+</code></pre>
+      <p>Merk op dat hoewel de <code>FileNotFoundException</code> in principe kan vervangen worden door een <code>if (!File.Exists(filePath)) ...</code>, het gebruik hier te verdedigen is omdat er al een try-catch blok voorkomt.</p>
+
+      <h4>Beperkte <code>try</code>-blok</h4>
+      <p>Zet niet meer code in het <code>try</code>-blok dan strikt nodig:</p>
+      <div class="codecompare">
+         <pre class="wrong"><code>try {
+   string content;
+   string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+   string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+   content = File.ReadAllText(filePath);
+   // process content
+   // ...
+} catch (FileNotFoundException e) { // file not found
+   lblMessage.Content = $"File {filePath} not found";
+} catch (IOException e) { // unable to open for reading
+   lblMessage.Content = $"Unable to open {filePath}";
+} catch (Exception e) { // use general Exception as fallback
+   lblMessage.Content = $"Unknown error reading {filePath}";
+}</code></pre>
+         <pre class="right"><code>string content;
+string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
+try {
+   content = File.ReadAllText(filePath);
+} catch (FileNotFoundException e) { // file not found
+   lblMessage.Content = $"File {filePath} not found";
+} catch (IOException e) { // unable to open for reading
+   lblMessage.Content = $"Unable to open {filePath}";
+} catch (Exception e) { // use general Exception as fallback
+   lblMessage.Content = $"Unknown error reading {filePath}";
+}
+// process content
+// ...
+</code></pre>
+      </div>
+      <h4>Zo laat mogelijk (meestal)</h4>
+      <p>Een vuistregel is dat het beter is de </p>
+
+      <h3>Finally</h3>
+      <p>Het <code>finally</code>-blok wordt <em>altijd</em> uitgevoerd op het einde van het try-catch blok, wat er ook gebeurt. Dit verzekert b.v. dat bronnen correct afgesloten worden:</p>
+      <pre class="right"><code>string content;
+try
+{
+   reader = new StreamReader("somefile.txt");
+   content = reader.ReadToEnd();
+}
+catch (FileNotFoundException)
+{
+   Console.WriteLine($"Bestand niet gevonden");
+}
+catch (IOException ex)
+{
+   Console.WriteLine($"Fout bij lezen: {ex.Message}");
+}
+finally
+{
+   reader.Close(); // bestand wordt gesloten, zelfs als een exceptie optreedt
+   Console.WriteLine("File closed.");
+}</code></pre>
+
+      <h3>Throw</h3>
+      <p>Je kan ook zelf excepties opgooien. Wil je b.v. een methodes al declareren, maar de body pas later uitwerken, dan kan je tijdelijk <code>NotImplementedException</code> gebruiken</p>
+      <pre><code>public static User TryLogin(string login, string pw) {
+   throw new NotImplementedException("Deze feature is nog niet geïmplementeerd");
+}
+public static User FindUser(int id) {
+   throw new NotImplementedException("Deze feature is nog niet geïmplementeerd");
+}
+public static void Delete() {
+   throw new NotImplementedException("Deze feature is nog niet geïmplementeerd");
+}
+// ...</code></pre>
+      <p>In een tweede voorbeeld worden in een methode <code>FindKeywordInFile()</code> niet alleen excepties opgevangen, maar ook opgegooid, zodat ze hoger in de <code>Main()</code> weer kunnen opgevangen en afgehandeld worden:</p>
+      <pre><code>static void Main() {
+   try {
+      int lineNumber = FindKeywordInFile("sample.txt", "keyword");
+   }
+   catch (FileNotFoundException ex) {
+      Console.WriteLine($"Fout: {ex.Message}");
+   }
+   catch (IOException ex) {
+      Console.WriteLine($"Fout: {ex.Message}");
+   }
+   catch (Exception ex) {
+      Console.WriteLine($"Onverwachte fout: {ex.Message}");
+   }
+}
+
+static int FindKeywordInFile(string filePath, string keyword) {
+   if (!File.Exists(filePath)) {
+      throw new FileNotFoundException($"Bestand '{filePath}' niet gevonden.");
+   }
+   if (string.IsNullOrWhiteSpace(keyword)) {
+      throw new ArgumentException("De zoekterm mag niet null of leeg zijn.");
+   }
+   try {
+      string[] lines = File.ReadAllLines(filePath);
+      for (int i = 0; i &lt; lines.Length; i++) {
+         if (lines[i].Contains(keyword)) {
+               return i + 1;  // gevonden op regel i + 1
+         }
+      }
+      return -1; // keyword niet gevonden
+   }
+   catch (IOException) {
+      throw new IOException($"Kan het bestand '{filePath}' niet lezen.");
+   }
+   catch (Exception ex) {
+      throw new Exception("Een onbekende fout is opgetreden.", ex);
+   }
+}</code></pre>
+   <p>Je kan je de vraag stellen wat voor zin het heeft een exceptie te catchen, en dezelfde exceptie weer te throwen:</p>
+   <pre><code>static int FindKeywordInFile(string filePath, string keyword) {
+   ...
+   catch (IOException) {
+      throw new IOException($"Kan het bestand '{filePath}' niet lezen.");
+   }
+   ...
+}</code></pre>
+      <p>Op zich kan je dit weglaten; dit werkt evengoed:</p>
+      <pre><code>static void Main() {
+   try {
+      int lineNumber = FindKeywordInFile("sample.txt", "keyword");
+   }
+   catch (FileNotFoundException ex) {
+      Console.WriteLine($"Fout: {ex.Message}");
+   }
+   catch (IOException ex) {
+      Console.WriteLine($"Fout: {ex.Message}");
+   }
+   catch (Exception ex) {
+      Console.WriteLine($"Onverwachte fout: {ex.Message}");
+   }
+}
+
+static int FindKeywordInFile(string filePath, string keyword) {
+   if (!File.Exists(filePath)) {
+      throw new FileNotFoundException($"Bestand '{filePath}' niet gevonden.");
+   }
+   if (string.IsNullOrWhiteSpace(keyword)) {
+      throw new ArgumentException("De zoekterm mag niet null of leeg zijn.");
+   }
+   string[] lines = File.ReadAllLines(filePath);
+   for (int i = 0; i &lt; lines.Length; i++) {
+      if (lines[i].Contains(keyword)) {
+            return i + 1;  // gevonden op regel i + 1
+      }
+   }
+   return -1; // keyword niet gevonden
+}</code></pre>
+      <p>Excepties catchen en weer opgooien is alleen nuttig in volgende situaties:</p>
+      <ul>
+         <li>aangepaste foutmelding: voeg meer details toe, b.v. om welk bestand het gaat</li>
+         <li>aangepaste exceptie type: catch één exceptie type, en throw een ander (b.v. custom) type</li>
+         <li>extra acties: je kan bijkomend de fouten loggen, resources vrijgeven enz...</li>
+      </ul>
+      <p>Maar als je niks toevoegt, heeft een exceptie opvangen en weer opgooien geen zin natuurlijk:</p>
+      <pre class="wrong"><code>...
+catch (IOException ex) {
+   throw ex; // pretty pointless
+}
+...
+</code></pre>
+
 
 
    </main>
