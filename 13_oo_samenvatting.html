@@ -151,7 +151,8 @@
          Een <mark>class</mark> is een blauwdruk voor objecten; het bevat class <mark>members</mark>, i.e. <strong>variabelen</strong>, <strong>properties</strong>, <strong>constructors</strong> en <strong>methods</strong>. Schematisch voorbeeld:
       </p>
       <div class="precontainer">
-         <pre><code>public class VeilingItem {
+         <pre><code>public class VeilingItem
+{
    // private variables
    private decimal minimumBod;
    private List&lt;decimal&gt; Biedingen = new List&lt;decimal&gt;();
@@ -163,18 +164,21 @@
 
    // public constructors
    public VeilingItem() { }
-   public VeilingItem(string vn, string an) {
+   public VeilingItem(string vn, string an)
+   {
       this.Naam = vn;
       this.Beschrijving = an;
    }
 
    // public ToString() implementation
-   public override string ToString() {
+   public override string ToString()
+   {
       return $"{Naam} (hoogste bod: {HoogsteBod})";
    }
 
    // public and private methods
-   public bool VerwerkBod(decimal bod) {
+   public bool VerwerkBod(decimal bod)
+   {
       if (bod &lt; minimumBod) return false;
       Biedingen.Add(bod);
       return true;
@@ -185,7 +189,8 @@
       <h3>Associatie (compositie &amp; aggregatie)</h3>
       <p>Bij <mark>associatie</mark> gebruik je bestaande klassen in je nieuwe klasse ("heeft een..."):</p>
       <div class="precontainer">
-         <pre><code>class Room {
+         <pre><code>class Room
+{
    public string Name { get; set; }
    public string Description { get; set; }
    public List&lt;Item&gt; Items { get; set; } = new List&lt;Item&gt;(); // aggregatie: item kan bestaan zonder room
@@ -193,7 +198,6 @@
    public string Image { get; }
 }
 </code></pre>
-         <div class="codemarker" data-text="virtual" data-nth="2"></div>
       </div>
       <p>
          Er zijn twee soorten associaties:
@@ -208,28 +212,36 @@
          Een <mark>property</mark> is als een variabele, maar met meer controle over hoe waarden ingesteld (<em>get</em>) of gelezen (<em>set</em>) worden. Enkele variaties:
       </p>
       <div class="precontainer">
-         <pre><code>class Customer {
+         <pre><code>class Customer
+{
    // automatische get/set properties
    public string FirstName { get; set; }
    public string LastName { get; set; }
 
    // property met enkel getter: read-only
-   public string NameAndEmail {
-      get { return $"{FirstName} {LastName} &lt;{Email}&gt;"; }
+   public string NameAndEmail
+   {
+      get
+      {
+         return $"{FirstName} {LastName} &lt;{Email}&gt;";
+      }
    }
 
    // publieke get, private set (waarde instellen kan enkel binnen de class)
    public int ClientId { get; private set; }
 
-   // property met validatie
-   private MailAddress _email;
-   public string Email {
-      get { return _email.Address; }
-      set {
-         try { MailAddress email = new MailAddress(value); }
-         catch (FormatException) { throw new ArgumentException($"ongeldige email"); }
+   // property met validatie en default waarde
+   public int Rating { // niet-automatische property met validatie
+      get;
+      set
+      {
+         if (value &lt; 1 || value &gt; 5)
+         {
+            throw new ArgumentOutOfRangeException($"rating moet tussen 1 en 5 liggen");
+         }
+         field = value;
       }
-   }
+   } = 3;
 }
 </code></pre>
       </div>
@@ -241,25 +253,28 @@
    // static members
    private static string rexAccount = @"^\d\d\d-\d\d\d\d\d\d\d-\d\d$";
    public static int NumCreated { get; private set; } = 0;
-   public static bool IsValidNumber(string nr) {
+   public static bool IsValidNumber(string nr)
+   {
       return Regex.Match(nr, rexAccount).Success;
    }
 
    // non-static members
    public decimal Balance { get; set; } = 0;
    public string Number { get; set; }
-   public void Deposit(decimal amount) {
+   public void Deposit(decimal amount)
+   {
       Balance += amount;
    }
 
-   public Account(string number) {
+   public Account(string number)
+   {
       NumCreated++;
       Number = number;
    }
 }
 </code></pre>
-         <div class="codemarker" data-text="private static string rexAccount = @&quot;^\d\d\d-\d\d\d\d\d\d\d-\d\d$&quot;" data-height="110" data-color="#7030A099"></div>
-         <div class="codemarker" data-text="public decimal Balance { get; set; } = 0;" data-height="110" data-color="#2C618B99"></div>
+         <div class="codemarker" data-text="private static string rexAccount = @&quot;^\d\d\d-\d\d\d\d\d\d\d-\d\d$&quot;" data-height="125" data-color="#7030A099"></div>
+         <div class="codemarker" data-text="public decimal Balance { get; set; } = 0;" data-height="125" data-color="#2C618B99"></div>
       </div>
       <ul class="arrow">
          <li class="purple">static: opgeroepen vanop de klasse</li>
@@ -298,7 +313,8 @@ Console.WriteLine($"Account {acc1.Number} has balance {acc1.Balance}");
          Zo zou je bijvoorbeeld functionaliteit voor het werken met HTML code kunnen onderbrengen in een statische class <code class="classcolor">MyHtmlFunctions</code>:
       </p>
       <div class="precontainer">
-         <pre><code>static class MyHtmlFunctions {
+         <pre><code>static class MyHtmlFunctions
+{
    public static Regex RexHtmlTag { get; } = new Regex(@"&lt;[^&gt;]+&gt;");
    public static string[] TagsList { get; } = { "A", "ABBR", ... };
    public static List&lt;string&gt; GetLayoutErrors(string htmlCode) { ... }
@@ -329,7 +345,8 @@ bool tagExists = MyHtmlFunctions.TagsList.Contains("BIG");
       </p>
       <div class="precontainer">
          <pre><code>// basisklasse Persoon
-internal class Persoon {
+internal class Persoon
+{
    public string Name { get; set; }
    public string Adres { get; set; }
 }
@@ -338,7 +355,8 @@ internal class Persoon {
       <p>Twee voorbeelden van afgeleide (overgeërfde) klassen:</p>
       <div class="precontainer">
          <pre><code>// overgeërfde klasse Klant; heeft de property Loon en de overgeërfde properties Naam en Adres
-internal class Klant : Persoon {
+internal class Klant : Persoon
+{
    public decimal Loon { get; set; }
 }
 </code></pre>
@@ -346,7 +364,8 @@ internal class Klant : Persoon {
       </div>
       <div class="precontainer">
          <pre><code>// overgeërfde klasse Werknemer; heeft de property KlantNr en de overgeërfde properties Naam en Adres
-internal class Werknemer : Persoon {
+internal class Werknemer : Persoon
+{
    public string KlantNr { get; set; }
 }
 </code></pre>
@@ -364,7 +383,8 @@ internal class Werknemer : Persoon {
          <div>
             <div class="precontainer">
                <pre><code>// basisklasse Persoon
-internal class Persoon {
+internal class Persoon
+{
    public string Name { get; set; }
    public string Adres { get; set; }
 }
@@ -372,14 +392,16 @@ internal class Persoon {
             </div>
             <div class="precontainer">
                <pre><code>// overgeërfde klasse Klant
-internal class Klant : Persoon {
+internal class Klant : Persoon
+{
    public decimal Loon { get; set; }
 }
 </code></pre>
             </div>
             <div class="precontainer">
                <pre><code>// overgeërfde klasse Werknemer
-internal class Werknemer : Persoon {
+internal class Werknemer : Persoon
+{
    public string KlantNr { get; set; }
 }
 </code></pre>
@@ -395,12 +417,15 @@ personen.Add(new Klant() { Name = "Bernard", KlantNr = 466123 });
 personen.Add(new Klant() { Name = "Chloë", KlantNr = 466123 });
 
 // verloop personen en druk gegevens af
-foreach (Persoon p in personen) {
-   if (p is Werknemer) { // controleer of p Werknemer is
+foreach (Persoon p in personen)
+{
+   if (p is Werknemer) // controleer of p Werknemer is
+   {
       Werknemer w = p as Werknemer; // zoja, cast naar Werknemer
       Console.WriteLine($"Werknemer met badge #{w.BadgeNr}: {w.Name}"); // nu kan je BadgeNr gebruiken
    }
-   if (p is Klant) { // controleer of p Klant is
+   if (p is Klant) // controleer of p Klant is
+   {
       Klant k = p as Klant; // zoja, cast naar Klant
       Console.WriteLine($"Klant met nummer #{k.KlantNr}: {k.Name}"); // nu kan je KlantNr gebruiken
    }
@@ -418,17 +443,21 @@ foreach (Persoon p in personen) {
          Het sleutelwoord <mark>base</mark> verwijst expliciet naar een member uit de superklasse:
       </p>
       <div class="precontainer">
-         <pre><code>class Persoon {
-   public virtual void GeefBeschrijving() {
+         <pre><code>class Persoon
+{
+   public virtual void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een persoon");
    }
 }
 </code></pre>
-         <div class="codemarker" data-text="public virtual void GeefBeschrijving"></div>
+         <div class="codemarker" data-text="public virtual void GeefBeschrijving()"></div>
       </div>
       <div class="precontainer">
-         <pre><code>class Klant : Persoon {
-   public override void GeefBeschrijving() {
+         <pre><code>class Klant : Persoon
+{
+   public override void GeefBeschrijving()
+   {
       base.GeefBeschrijving(); // voer eerst GeefBeschrijving() uit Persoon uit
       Console.WriteLine("ik ben een klant"); // voer dan deze regel uit
    }
@@ -471,12 +500,14 @@ Customer cust3 = new Customer(
          </div>
          <div class="precontainer">
             <pre><code>// default constructor
-public Customer() {
+public Customer()
+{
    registerDate = DateTime.Now;
 }
 
 // constructor waarnaar verwezen wordt
-public Customer(string fn, string ln) {
+public Customer(string fn, string ln)
+{
    registerDate = DateTime.Now;
    FirstName = fn;
    LastName = ln;
@@ -484,11 +515,12 @@ public Customer(string fn, string ln) {
 }
 
 // constructor met parameters; this(fn, ln) verwijst naar de constructor hierboven
-public Customer(string fn, string ln, int rt) : this(fn, ln) {
+public Customer(string fn, string ln, int rt) : this(fn, ln)
+{
    Rating = rt;
 }
 </code></pre>
-            <div class="codemarker" data-text="public Customer(string fn, string ln) {" data-height="130"></div>
+            <div class="codemarker" data-text="public Customer(string fn, string ln)" data-height="145"></div>
             <div class="codemarker" data-text="this(fn, ln)" data-nth="2"></div>
          </div>
       </div>
@@ -498,13 +530,15 @@ public Customer(string fn, string ln, int rt) : this(fn, ln) {
       </p>
       <div class="codecompare top">
          <div class="precontainer">
-            <pre><code>class Persoon {
+            <pre><code>class Persoon
+{
 
 }
 </code></pre>
          </div>
          <div class="precontainer">
-            <pre><code>class Persoon {
+            <pre><code>class Persoon
+{
    public Persoon() { }
 }
 </code></pre>
@@ -514,9 +548,11 @@ public Customer(string fn, string ln, int rt) : this(fn, ln) {
       <pre><code>Persoon p2 = new Persoon(); // OK: impliciete lege standaardconstructor gebruikt</code></pre>
       <p>Als een klasse wél een constructor bevat, dan vervalt deze standaardconstructor:</p>
       <div class="precontainer">
-         <pre><code>class Persoon {
+         <pre><code>class Persoon
+{
    public string Naam { get; set; }
-   public Persoon(string nm) {
+   public Persoon(string nm)
+   {
       Naam = nm;
    }
 }
@@ -529,14 +565,17 @@ Persoon p2 = new Persoon(); // FOUT: lege constructor bestaat niet
          Je kan uiteraard wel zelf een constructor zonder parameters voorzien:
       </p>
       <div class="precontainer">
-         <pre><code>class Persoon {
+         <pre><code>class Persoon
+{
    public string Naam { get; set; }
-   public Persoon(string nm) {
+   public Persoon(string nm)
+   {
       Naam = nm;
    }
 
    // voorzie zelf een lege constructor
-   public Persoon() {
+   public Persoon()
+   {
       Naam = "Onbekend";
    }
 }
@@ -566,30 +605,35 @@ constructor van Klant...</pre>
          </div>
          <div>
             <div class="precontainer">
-               <pre><code>class Persoon {
+               <pre><code>class Persoon
+{
    public string Name { get; set; }
 
    // lege constructor
-   public Persoon() {
+   public Persoon()
+   {
       Name = "onbekend";
       Console.WriteLine("constructor 1 van Persoon...");
    }
 
    // deze niet-lege constructor wordt eerst uitgevoerd
-   public Persoon(string nm) {
+   public Persoon(string nm)
+   {
       Name = nm;
       Console.WriteLine("constructor 2 van Persoon...");
    }
 }
 </code></pre>
-               <div class="codemarker" data-text="public Persoon(string nm) {                          " data-height="90" data-color="#2C618B99"></div>
+               <div class="codemarker" data-text="public Persoon(string nm)" data-height="105" data-width="430" data-color="#2C618B99"></div>
             </div>
             <div class="precontainer">
-               <pre><code>class Klant : Persoon {
+               <pre><code>class Klant : Persoon
+{
    public string KlantNr { get; set; }
 
    // voer eerst base constructor van Persoon uit
-   public Klant(string nm, string nr) : base(nm) {
+   public Klant(string nm, string nr) : base(nm)
+   {
       // voer daarna de rest uit
       KlantNr = nr;
       Console.WriteLine("constructor van Klant...");
@@ -597,7 +641,7 @@ constructor van Klant...</pre>
 }
 </code></pre>
                <div class="codemarker" data-text="base(nm)" data-color="#2C618B99"></div>
-               <div class="codemarker" data-text="KlantNr = nr;                                 " data-color="#7030A099" data-height="45"></div>
+               <div class="codemarker" data-text="KlantNr = nr;" data-color="#7030A099"  data-width="380" data-height="45"></div>
             </div>
          </div>
       </div>
@@ -620,38 +664,42 @@ constructor van Klant...</pre>
          </div>
          <div>
             <div class="precontainer">
-               <pre><code>class Persoon {
+               <pre><code>class Persoon
+{
    public string Name { get; set; }
 
    // deze lege constructor wordt eerst uitgevoerd
-   public Persoon() {
+   public Persoon()
+   {
       Name = "onbekend";
       Console.WriteLine("constructor 1 van Persoon...");
    }
 
    // niet-lege constructor
-   public Persoon(string nm) {
+   public Persoon(string nm)
+   {
       Name = nm;
       Console.WriteLine("constructor 2 van Persoon...");
    }
 }
 </code></pre>
-               <div class="codemarker" data-text="public Persoon() {                                   " data-height="90" data-color="#2C618B99"></div>
+               <div class="codemarker" data-text="public Persoon()" data-height="105" data-width="450" data-color="#2C618B99"></div>
             </div>
             <div class="precontainer">
-               <pre><code>class Klant : Persoon {
+               <pre><code>class Klant : Persoon
+{
    public string KlantNr { get; set; }
 
    // geen base, voer eerst lege constructor van Persoon uit
-   public Klant(string nm, string nr)            {
+   public Klant(string nm, string nr)
+   {
       // voer daarna de rest uit
       KlantNr = nr;
       Console.WriteLine("constructor van Klant...");
    }
 }
 </code></pre>
-               <div class="codemarker" data-text=")            {" data-color="#2C618B99"></div>
-               <div class="codemarker" data-text="KlantNr = nr;                                 " data-color="#7030A099" data-height="45"></div>
+               <div class="codemarker" data-text="KlantNr = nr;" data-color="#7030A099" data-height="45" data-width="380"></div>
             </div>
          </div>
       </div>
@@ -720,14 +768,17 @@ constructor van Klant...</pre>
          De standaard zichtbaarheid is altijd <mark>private</mark>, dus nergens zichtbaar buiten de klasse, zelfs niet in afgeleide klassen:
       </p>
       <div class="precontainer">
-         <pre><code>class Account {
+         <pre><code>class Account
+{
    int Deposit { get; set; } = 5000;
 }
 </code></pre>
       </div>
       <div class="precontainer">
-         <pre><code>class SavingAccount : Account {
-   public void PrintDeposit() {
+         <pre><code>class SavingAccount : Account
+{
+   public void PrintDeposit()
+   {
       Console.WriteLine($"The current deposit is {Deposit}"); // fout in afgeleide klasse: Deposit is private
    }
 }
@@ -746,14 +797,17 @@ sa.PrintDeposit();
          Als je de zichtbaarheid wil uitbreiden tot de klasse en alle afgeleide klassen, dan markeer je het <mark>protected</mark>:
       </p>
       <div class="precontainer">
-         <pre><code>class Account {
+         <pre><code>class Account
+{
    int Deposit { get; set; } = 5000;
 }
 </code></pre>
       </div>
       <div class="precontainer">
-         <pre><code>class SavingAccount : Account {
-   public void PrintDeposit() {
+         <pre><code>class SavingAccount : Account
+{
+   public void PrintDeposit()
+   {
       Console.WriteLine($"The current deposit is {Deposit}"); // OK in afgeleide klasse: Deposit is protected
    }
 }
@@ -772,13 +826,15 @@ sa.PrintDeposit();
          Als je de zichtbaarheid wil uitbreiden tot overal, dan markeer je het <mark>public</mark>:
       </p>
       <div class="precontainer">
-         <pre><code>class Account {
+         <pre><code>class Account
+{
    int Deposit { get; set; } = 5000;
 }
 </code></pre>
       </div>
       <div class="precontainer">
-         <pre><code>class SavingAccount : Account {
+         <pre><code>class SavingAccount : Account
+{
    public void PrintDeposit() {
       Console.WriteLine($"The current deposit is {Deposit}"); // OK in afgeleide klasse: Deposit is public
    }
@@ -800,16 +856,19 @@ sa.PrintDeposit();
          Een <mark>abstracte class</mark> moet <strong>overgeërfd</strong> worden om te kunnen gebruiken; het is “nog niet af”
       </p>
       <pre><code>// Meubel is abstract en kan niet rechtstreeks gebruikt worden
-abstract class Meubel {
+abstract class Meubel
+{
          ...
 }</code></pre>
       <pre><code>// Tafel erft over van Meubel en kan wel gebruikt worden
-class Tafel : Meubel {
+class Tafel : Meubel
+{
    ...
 }
 </code></pre>
       <pre><code>// Stoel erft over van Meubel en kan wel gebruikt worden
-class Stoel : Meubel {
+class Stoel : Meubel
+{
    ...
 }
 </code></pre>
@@ -825,7 +884,8 @@ Meubel meubel1 = new Meubel(); // FOUT: Meubel is abstract
       <p>
          Een <mark>abstracte methode of property</mark> <em>moet</em> <strong>overschreven</strong> worden in afgeleide klassen met <code>override</code>.
       </p>
-      <pre><code>abstract class Persoon {
+      <pre><code>abstract class Persoon
+{
    ...
 
    // merk op: geen body want is abstract en moet overschreven worden
@@ -833,16 +893,19 @@ Meubel meubel1 = new Meubel(); // FOUT: Meubel is abstract
 }
 </code></pre>
       <pre><code>// FOUT: afgeleide klasse Werknemer moet implementatie van GeefBeschrijving() voorzien
-class Werknemer : Persoon {
+class Werknemer : Persoon
+{
    ...
 }
 </code></pre>
       <pre><code>// OK: afgeleide klasse Klant voorziet implementatie van GeefBeschrijving()
-class Klant : Persoon {
+class Klant : Persoon
+{
    ...
 
    // markeer de overschrijvende member met override
-   public override void GeefBeschrijving() {
+   public override void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een klant");
    }
 }
@@ -856,7 +919,8 @@ class Klant : Persoon {
             <pre><code>List&lt;Persoon&gt; personen = new List&lt;Persoon&gt;();
 personen.Add(new Klant());
 personen.Add(new Werknemer());
-foreach (Persoon p in personen) {
+foreach (Persoon p in personen)
+{
    p.GeefBeschrijving();
 }</code></pre>
 
@@ -886,13 +950,15 @@ ik ben een werknemer</pre>
       </p>
       <div class="codecompare top">
          <pre><code>// FOUT: klasse bevat abstracte members, dus moet zelf ook abstract zijn
-class Persoon {
+class Persoon
+{
    ...
    public abstract void GeefBeschrijving();
 }
 </code></pre>
          <pre><code>// OK, methode en class abstract
-abstract class Persoon {
+abstract class Persoon
+{
    ...
    public abstract void GeefBeschrijving();
 }
@@ -903,24 +969,29 @@ abstract class Persoon {
          Een class member <mark>virtual</mark> declareren is als abstract, behalve dat het niet <em>moet</em> maar <em>mag</em> overschreven worden in afgeleide klassen (weer met <code>override</code>).
       </p>
       <pre><code>// basisklasse Persoon voorziet een algemene implementatie van GeefBeschrijving()
-class Persoon {
+class Persoon
+{
    ...
-   public virtual void GeefBeschrijving() {
+   public virtual void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een persoon");
    }
 }
 </code></pre>
       <pre><code>// afgeleide klasse Werknemer voorziet geen eigen versie, geen probleem
-class Werknemer : Persoon {
+class Werknemer : Persoon
+{
    ...
 }
 </code></pre>
       <pre><code>// afgeleide klasse Klant voorziet wel een eigen versie, ook goed
-class Klant : Persoon {
+class Klant : Persoon
+{
    ...
 
    // markeer weer met override
-   public override void GeefBeschrijving() {
+   public override void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een klant");
    }
 }
@@ -935,7 +1006,8 @@ class Klant : Persoon {
 personen.Add(new Persoon());
 personen.Add(new Werknemer());
 personen.Add(new Klant ());
-foreach (Persoon p in personen) {
+foreach (Persoon p in personen)
+{
    p.GeefBeschrijving();
 }
 </code></pre>
@@ -956,30 +1028,36 @@ ik ben een klant</pre>
       <p>
          Als je een class member <mark>override sealed</mark> declareert, kunnen ze niet verder overschreven worden in afgeleide klassen
       </p>
-      <pre><code>class Persoon {
+      <pre><code>class Persoon
+{
    ...
 
    // methode mag overschreven worden want is marked virtual
-   public virtual void GeefBeschrijving() {
+   public virtual void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een persoon");
    }
 }
 </code></pre>
-      <pre><code>class Klant : Persoon {
+      <pre><code>class Klant : Persoon
+{
    ...
 
    // methode overschreven met override sealed
-   public override sealed void GeefBeschrijving() {
+   public override sealed void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een klant");
    }
 }
 </code></pre>
       <pre><code>// OK: afgeleide klasse Klant voorziet implementatie van GeefBeschrijving()
-class BevoorrechteKlant : Klant {
+class BevoorrechteKlant : Klant
+{
    ...
 
    // FOUT: kan niet overschreven worden want is sealed door Klant
-   public override void GeefBeschrijving() {
+   public override void GeefBeschrijving()
+   {
       Console.WriteLine("ik ben een bevoorrechte klant");
    }
 }
@@ -987,11 +1065,13 @@ class BevoorrechteKlant : Klant {
       <h3>new</h3>
       <p>Je kan in theorie ook members die niet abstract of virtual gemarkeerd zijn, toch overschrijven met <mark>new</mark>:</p>
       <div class="precontainer">
-         <pre><code>class Persoon {
+         <pre><code>class Persoon
+{
     ...
 
     // niet abstract of virtual
-    public void GeefBeschrijving() {
+    public void GeefBeschrijving()
+    {
         Console.WriteLine("ik ben een persoon");
     }
 }
@@ -999,11 +1079,13 @@ class BevoorrechteKlant : Klant {
          <div class="codemarker" data-text="public void"></div>
       </div>
       <div class="precontainer">
-         <pre><code>class Klant : Persoon {
+         <pre><code>class Klant : Persoon
+{
     ...
 
     // toch overschreven met new
-    public new void GeefBeschrijving() {
+    public new void GeefBeschrijving()
+    {
         Console.WriteLine("ik ben een klant");
     }
 }
@@ -1028,7 +1110,8 @@ class BevoorrechteKlant : Klant {
 personen.Add(new Persoon());
 personen.Add(new Werknemer());
 personen.Add(new Klant());
-foreach (Persoon p in personen) {
+foreach (Persoon p in personen)
+{
     p.GeefBeschrijving();
 }
 </code></pre>
@@ -1061,7 +1144,7 @@ ik ben een werknemer</pre>
       </div>
       <div class="tips" data-caption="☝️ GEBRUIK GEEN NEW">
          <p>
-            Merk op hoe er nu effectief een verschil is tussen b.v. Klant:GeefBeschrijving() en Persoon:GeefBeschrijving(). Er is geen verband meer met de methode in de superklasse, het polymorfisme is verloren gegaan.
+            Merk op hoe er nu effectief een verschil is tussen b.v. <code>Klant:GeefBeschrijving()</code> en <code>Persoon:GeefBeschrijving()</code>. Er is geen verband meer met de methode in de superklasse, het polymorfisme is verloren gegaan.
          </p>
       </div>
 

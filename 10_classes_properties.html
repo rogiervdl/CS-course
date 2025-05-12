@@ -118,8 +118,10 @@
          <img src="img/10_classes_properties/classmaken-2.png" alt="" class="w-500 bordered">
       </div>
       <p>We hebben al een lege class met enkel een naam:</p>
-      <pre><code>namespace WpfBanking {
-   class Customer {
+      <pre><code>namespace WpfBanking
+{
+   class Customer
+   {
    }
 }
 </code></pre>
@@ -191,45 +193,60 @@
    private DateTime birthDate;
    private DateTime registerDate;
 
-   public int GetClientId() { // getter voor clienId
+   public int GetClientId() // getter voor clienId
+   {
       return clientId;
    }
-   public string GetFirstName() { // getter voor firstName
+   public string GetFirstName() // getter voor firstName
+   {
       return firstName;
    }
-   public void SetFirstName(string fn) { // setter voor firstName
+   public void SetFirstName(string fn) // setter voor firstName
+   {
       firstName = fn;
    }
-   public string GetLastName() { // getter voor lastName
+   public string GetLastName() // getter voor lastName
+   {
       return lastName;
    }
-   public void SetLastName(string ln) { // setter voor lastName
+   public void SetLastName(string ln) // setter voor lastName
+   {
       lastName = ln;
    }
-   public MailAddress GetEmail() { // getter voor email
+   public MailAddress GetEmail() // getter voor email
+   {
       return email;
    }
-   public void SetEmail(string em) { // setter voor email, met validatie
-      try {
+   public void SetEmail(string em) // setter voor email, met validatie
+   {
+      try
+      {
          MailAddress m = new MailAddress(em);
-      } catch (FormatException) {
+      }
+      catch (FormatException)
+      {
          throw new ArgumentException($"ongeldig email");
       }
       email = em;
    }
-   public int GetRating() { // getter voor rating
+   public int GetRating() // getter voor rating
+   {
       return rating;
    }
-   public void SetRating(int rtn) { // setter voor rating, met validatie
-      if (rtn &lt; 1 || rtn &gt; 5) {
+   public void SetRating(int rtn) // setter voor rating, met validatie
+   {
+      if (rtn &lt; 1 || rtn &gt; 5)
+      {
          throw new ArgumentOutOfRangeException($"rating moet tussen 1 en 5 liggen");
       }
       rating = rtn;
    }
-   public DateTime GetBirthDate() { // getter voor birthDate
+   public DateTime GetBirthDate() // getter voor birthDate
+   {
       return birthDate;
    }
-   public void SetBirthDate(DateTime bd) { // setter voor birthDate
+   public void SetBirthDate(DateTime bd) // setter voor birthDate
+   {
       birthDate = bd;
    }
 }</code></pre>
@@ -237,17 +254,20 @@
       <p>Daarom heeft men verkorte notaties bedacht, de zgn. <mark>properties</mark>. Dit fragment...</p>
       <pre><code>private string firstName;
 ...
-public string GetFirstName() {
+public string GetFirstName()
+{
    return firstName;
 }
-public void SetFirstName(string fn) {
+public void SetFirstName(string fn)
+{
    firstName = fn;
 }
 </code></pre>
       <p>...wordt dan verkort tot een <mark>property</mark></p>
       <pre><code>private string firstName;
 ...
-public string FirstName { // naam begint met een hoofletter, en geen haakjes()
+public string FirstName // naam begint met een hoofletter, en geen haakjes()
+{
    get { return firstName; } // implementatie getter
    set { firstName = value; } // implementatie setter (met gereserveerd woord "value")
 }
@@ -261,11 +281,54 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
       <h3>property standaardwaarde</h3>
       <p>Je kan <strong>standaardwaarden</strong> opgeven op deze manier:</p>
       <pre><code>public string Balance { get; set; } = 0; // automatische property met standaardwaarde</code></pre>
+      <h3>property met validatie</h3>
+      <h4>gebruik <code>value</code></h4>
+      <p>
+         Je kan de setter waarde valideren door getter en setter expliciet uit te schrijven met hulp van een extra private variabele.
+         Men noemt dit ook een <mark>niet-automatische property</mark>. Het gereserveerd woord <code>value</code> bevat de in te stellen waarde.
+      </p>
+      <pre><code>private int _rating = 3; // hulpvariabele; afspraak: prefix met _
+
+public int Rating
+{
+   get { return _rating; }
+   set
+   {
+      if (value &lt; 1 || value &gt; 5)
+      {
+         throw new ArgumentOutOfRangeException($"rating moet tussen 1 en 5 liggen");
+      }
+      _rating = value;
+   }
+}
+</code></pre>
+      <h4>gebruik <code class="keyword">field</code></h4>
+      <p>
+         Zo'n extra hulpvariabele staat natuurlijk een beetje vreemd. Daarom kan je sinds C#12 de code inkorten met <code class="keyword">field</code>, dat de hulpvariabele vervangt:
+      </p>
+      <pre><code>public int Rating
+{
+   get;
+   set
+   {
+      if (value &lt; 1 || value &gt; 5)
+      {
+         throw new ArgumentOutOfRangeException($"rating moet tussen 1 en 5 liggen");
+      }
+      field = value; // gebruik field als hulpvariabele
+   }
+}</code></pre>
+      <p>Omdat dit een recente feature is, moet je volgende regel toevoegen aan de XAML van het .csproj projectbestand:</p>
+      <pre class="language-html language-xaml"><code>&lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+   &lt;PropertyGroup&gt;
+      ...
+      &lt;LangVersion&gt;preview&lt;/LangVersion&gt;&lt;!-- voeg dit toe --&gt;
+   &lt;/PropertyGroup&gt;
+&lt;/Project&gt;</code></pre>
       <h3>volledig codevoorbeeld</h3>
       <p>De volledige code van de class tot nu toe is een stuk korter geworden:</p>
-      <pre class="right"><code>class Customer {
-   private string _email; // conventie: prefix property variabelen met _
-   private int _rating = 3; // conventie: prefix property variabelen met _
+      <pre class="right"><code>class Customer
+{
    private DateTime registerDate;
 
    public int ClientId { get; } // automatische read-only property
@@ -273,25 +336,31 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
    public string LastName { get; set; } // automatische property
    public DateTime BirthDate { get; set; } // automatische property
    public string Email { // niet-automatische property met validatie
-      get { return _email; }
-      set {
-         try {
-            MailAddress m = new MailAddress(value);
-            _email = value;
-         } catch (FormatException) {
+      get;
+      set
+      {
+         try
+         {
+            field = new MailAddress(value).Address;
+         }
+         catch (FormatException)
+         {
             throw new ArgumentException($"ongeldig email");
          }
       }
    }
-   public int Rating { // niet-automatische property met validatie
-      get { return _rating; }
-      set {
-         if (value &lt; 1 || value &gt; 5) {
+   public int Rating // niet-automatische property met validatie
+   {
+      get;
+      set
+      {
+         if (value &lt; 1 || value &gt; 5)
+         {
             throw new ArgumentOutOfRangeException($"rating moet tussen 1 en 5 liggen");
          }
-         _rating = value;
+         field = value;
       }
-   }
+   } = 3;
 }
 </code></pre>
       <p>De properties kunnen nu publiek gebruikt worden:</p>
@@ -307,7 +376,8 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
       <p>
          Voor elke klasse bestaat, of je ‘m nu specifieert of niet, een <strong>lege constructor</strong>, d.i. de constructor zonder parameters:
       </p>
-      <pre><code>class Customer {
+      <pre><code>class Customer
+{
    // variabele(n)
    private DateTime registerDate;
 
@@ -325,7 +395,8 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
       <img src="img/10_classes_properties/properties-standaard.png" alt="" class="bordered w-600">
       <h3>aangepaste constructor</h3>
       <p>Je kan de constructor aanpassen om allerlei initialisaties te doen:</p>
-      <pre><code>class Customer {
+      <pre><code>class Customer
+{
    // variabele(n)
    private DateTime registerDate;
 
@@ -336,7 +407,8 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
    public int Rating { get; set; }
 
    // aangepaste constructor
-   public Customer() {
+   public Customer()
+   {
       registerDate = DateTime.Now;
       FirstName = "John";
       LastName = "Doe";
@@ -345,11 +417,13 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
    }
 }</code></pre>
       <p>Dit is trouwens exact wat we al die tijd in <code>MainWindow()</code> deden, de constructor van de <code class="classcolor">MainWindow</code> pagina:</p>
-      <pre><code>public partial class MainWindow : Window {
+      <pre><code>public partial class MainWindow : Window
+{
    private DispatcherTimer timer;
 
    // MainWindow standaardconstructor
-   public MainWindow() {
+   public MainWindow()
+   {
       InitializeComponent();
       sldAmount.Maximum = 100;
       sldAmount.Value = aantalEllipsen = 20;
@@ -363,7 +437,8 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
       <p>De variabelen en properties hebben nu beginwaarden meegekregen in de constructor:</p>
       <img src="img/10_classes_properties/properties-inits.png" alt="" class="bordered w-600">
       <p>Vaak kan je de constructor leeg te laten, en gewoon property standaardwaarden instellen:</p>
-      <pre><code>class Customer {
+      <pre><code>class Customer
+{
    // variabele(n)
    private DateTime registerDate = DateTime.Now;
 
@@ -380,12 +455,14 @@ public string FirstName { // naam begint met een hoofletter, en geen haakjes()
       <h3>constructors met parameters</h3>
       <p>Je kan bijkomende constructors definiëren mét parameters:</p>
       <pre><code>// default constructor, zonder parameters
-public Customer() {
+public Customer()
+{
    registerDate = DateTime.Now;
 }
 
 // constructor met parameters
-public Customer(string fn, string ln) {
+public Customer(string fn, string ln)
+{
    registerDate = DateTime.Now;
    FirstName = fn;
    LastName = ln;
@@ -393,7 +470,8 @@ public Customer(string fn, string ln) {
 }
 
 // constructor met parameters
-public Customer(string fn, string ln, int rt) {
+public Customer(string fn, string ln, int rt)
+{
    registerDate = DateTime.Now;
    FirstName = fn;
    LastName = ln;
@@ -420,14 +498,16 @@ cust.Rating = 4;
 
 </code></pre>
 <pre class="right w-400"><code>// object initializer syntax
-Customer cust3 = new Customer() {
+Customer cust3 = new Customer()
+{
    FirstName = "Johnny",
    LastName = "Miles",
    Rating = 4
 };
 </code></pre>
    <pre class="right w-400"><code>// object initializer syntax zonder ()
-Customer cust3 = new Customer {
+Customer cust3 = new Customer
+{
    FirstName = "Johnny",
    LastName = "Miles",
    Rating = 4
@@ -437,15 +517,18 @@ Customer cust3 = new Customer {
       <h2>Methodes</h2>
       <h3>eigen methodes</h3>
       <p>Laat we onze klasse uitbreiden met methodes. Voegen we eerst nog een klasse <code class="classcolor">Account</code> toe...</p>
-      <pre><code>namespace WpfBanking {
-   class Account {
+      <pre><code>namespace WpfBanking
+{
+   class Account
+   {
       // properties
       public string AccountNr { get; set; }
       public Customer Holder { get; set; } // we gebruiken onze eigen Customer klasse
       public decimal Balance { get; set; } = 0; // tip: voor geldbedragen gebruiken we altijd decimal
 
       // constructor
-      public Account(string nr) {
+      public Account(string nr)
+      {
          AccountNr = nr;
       }
    }
@@ -460,24 +543,30 @@ Customer cust3 = new Customer {
       public List&lt;Account&gt; Accounts { get; } = new List&lt;Account&gt;(); // we gebruiken eigen Account klasse
 
       // constructor
-      public Bank(string name) {
+      public Bank(string name)
+      {
          Name = name;
       }
 
       // klasse methodes
-      public bool IsHealthy() {
+      public bool IsHealthy()
+      {
          return CalculateGrandTotal() &gt; 0;
       }
-      private decimal CalculateGrandTotal() {
+      private decimal CalculateGrandTotal()
+      {
          decimal total = 0;
-         foreach (Account a in Accounts) {
+         foreach (Account a in Accounts)
+         {
             total += a.Balance;
          }
          return total;
       }
-      public List&lt;A&gt;ccount&gt; GetAccountsLessThan(decimal amount) {
+      public List&lt;A&gt;ccount&gt; GetAccountsLessThan(decimal amount)
+      {
          List&lt;Account&gt; accounts = new List&lt;Account&gt;();
-         foreach (Account a in Accounts) {
+         foreach (Account a in Accounts)
+         {
             if (a.Balance &lt; amount) accounts.Add(a);
          }
          return accounts;
@@ -493,28 +582,34 @@ Customer cust3 = new Customer {
       <img src="img/10_classes_properties/methodes.png" alt="" class="bordered w-600">
       <h3><code>override ToString()</code></h3>
       <p>Elk object heeft een standaard <code>ToString()</code> implementatie, d.w.z. de weergave in een <code>string</code> context. Voegen we b.v. een paar <code>Customer</code> instanties toe aan een <code>ListBox</code>:</p>
-      <pre><code>Customer cust1 = new Customer() {
+      <pre><code>Customer cust1 = new Customer()
+{
     FirstName = "Miles",
     LastName = "Davis",
     Rating = 5
 };
-Customer cust2 = new Customer() {
+Customer cust2 = new Customer()
+{
     FirstName = "Pharoah",
     LastName = "Sanders",
     Rating = 3
 };
-Customer cust3 = new Customer() {
+Customer cust3 = new Customer()
+{
     FirstName = "John",
     LastName = "Coltrane",
     Rating = 4
 };
-lbxCustomers.Items.Add(new ListBoxItem() {
+lbxCustomers.Items.Add(new ListBoxItem()
+{
     Content = cust1
 });
-lbxCustomers.Items.Add(new ListBoxItem() {
+lbxCustomers.Items.Add(new ListBoxItem()
+{
     Content = cust2
 });
-lbxCustomers.Items.Add(new ListBoxItem() {
+lbxCustomers.Items.Add(new ListBoxItem()
+{
     Content = cust3
 });
 </code></pre>
@@ -604,13 +699,15 @@ public string FirstName
 public Customer() { }
 
 // extra constructors met parameters
-public Customer(string fn, string ln) {
+public Customer(string fn, string ln)
+{
    registerDate = DateTime.Now;
    FirstName = fn;
    LastName = ln;
    Rating = (new Random()).Next(1, 6);
 }
-public Customer(string fn, string ln, int rt) : this(fn, ln) {
+public Customer(string fn, string ln, int rt) : this(fn, ln)
+{
    Rating = rt;
 }
 </code></pre>
@@ -624,11 +721,13 @@ Customer cust3 = new Customer("Johnny", "Miles", 4);
 public Customer() { }
 </code></pre>
             <pre><code>Customer cust1 = new Customer();
-Customer cust2 = new Customer() {
+Customer cust2 = new Customer()
+{
    FirstName = "Bobby",
    LastName = "Peru"
 };
-Customer cust3 = new Customer() {
+Customer cust3 = new Customer()
+{
    FirstName = "Johnny",
    LastName = "Miles",
    Rating = 4

@@ -240,22 +240,23 @@ static class Validator {
          Een <mark>enum</mark> is een <strong>nieuw gegevenstype</strong> bestaande uit een vaste set waarden. Omdat je het type vaak op verschillende plaatsen in je project wil gebruiken, definieer je enums best buiten de class, rechtstreeks in de namespace:
       </p>
       <img src="img/11_static_enum/enum.png" alt="" class="w-900">
+      <h3>conversie van en naar int</h3>
       <p>
          Enums worden intern opgeslagen als <strong>gehele getallen</strong>, dus je kan makkelijk omzetten naar <code>int</code> en omgekeerd:
       </p>
       <div class="precontainer">
          <pre><code>namespace EnumDemoConsole {
    // Maandag=0, Dinsdag=1, ..., Zondag=6
-   public enum Weekdag { Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag }
+   public enum WeekdagType { Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag }
    class Program {
       static void Main(string[] args) {
-         Weekdag dag1 = Weekdag.Dinsdag;
+         WeekdagType dag1 = WeekdagType.Dinsdag;
          Console.WriteLine(dag1);
-         Weekdag dag2 = dag1 + 4; // geheel getal bijtellen
+         WeekdagType dag2 = dag1 + 4; // geheel getal bijtellen
          Console.WriteLine(dag2);
-         int dagnr = (int)dag2; // omzetten Weekdag naar int
+         int dagnr = (int)dag2; // omzetten WeekdagType naar int
          Console.WriteLine(dagnr);
-         Weekdag dag3 = (Weekdag)2; // omzetten int naar Weekdag
+         WeekdagType dag3 = (WeekdagType)2; // omzetten int naar WeekdagType
          Console.WriteLine(dag3);
          Console.ReadKey();
       }
@@ -271,14 +272,17 @@ Zaterdag
 Woensdag</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+      <h3>conversie van en naar string</h3>
+      <p>
+         Converteer van en naar string met <code>Enum.TryParse()</code> en <code>ToString()</code>:
+      </p>
+      <div class="precontainer">
+         <pre><code>public enum WeekdagType { Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag }
 
-
-
-
-
-
-
-
+Enum.TryParse("Woensdag", out WeekdagType weekdag1); // weekdag1 is WeekdagType.Woensdag
+string strWeekdag1 = weekdag1.ToString(); // strWeekdag1 is "Woensdag"
+</code></pre>
+      </div>
    </main>
    <footer>
       <img src="common/img/thats-all.jpg" alt="">

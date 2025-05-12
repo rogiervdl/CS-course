@@ -1581,6 +1581,24 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
          <img src="img/07_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="w-300">
          <figcaption>resultaat</figcaption>
       </figure>
+      <h4>TextBlock of Label?</h4>
+      <div class="tips" data-caption="🤷🏻‍♀️TEXTBLOCK OF LABEL?">
+         <p><code>&lt;Label&gt;</code> en <code>&lt;TextBlock&gt;</code> dienen beiden om tekst weer te geven.</p>
+         <p><code>&lt;Label&gt;</code>:</p>
+         <ul>
+            <li>voor bijschriften van <strong>interactieve controls</strong> (<code>&lt;ListBox&gt;</code>, <code>&lt;TextBox&gt;</code>, <code>&lt;ComboBox&gt;</code>, <code>&lt;Slider&gt;</code>...)</li>
+            <li>bestaat altijd uit één regel</li>
+            <li>de tekst verandert in principe niet</li>
+         </ul>
+         <p><code>&lt;TextBlock&gt;</code>:</p>
+         <ul>
+            <li>voor paragrafen, titels en bijschriften van <strong>niet-interactieve controls</strong> (<code>&lt;Image&gt;</code>, <code>&lt;StackPanel&gt;</code>, <code>&lt;Ellipe&gt;)</code>...</li>
+            <li>mag uit meerdere regels bestaan</li>
+            <li>tekstopmaak (kleur, vet, cursief...) is mogelijk</li>
+            <li>de tekst mag aangepast worden</li>
+         </ul>
+      </div>
+
 
       <h2 id="textbox">TextBox</h2>
       <p>Een TextBox is een control waarmee de gebruiker vrije tekst kan invoeren (= tekstveld), zowel single line (op één regel) als op meerdere regels (multi-line).</p>

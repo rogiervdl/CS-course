@@ -77,10 +77,6 @@ figcaption {
 	font-style: italic;
 }
 
-figure:not(.console) figcaption {
-	margin-top: -5px;
-}
-
 main>h1,
 main>h2,
 main>h3,
@@ -276,6 +272,10 @@ body .green {
 body .brown {
 	border-color: #996633;
 	color: #996633;
+}
+
+body .keyword {
+	color: #3200ff;
 }
 
 figure.console pre {
@@ -944,6 +944,7 @@ body pre.right,
 body div.right,
 body pre.wrong,
 body div.wrong {
+	overflow: visible !important;
 	position: relative;
 }
 
