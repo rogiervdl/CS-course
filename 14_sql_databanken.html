@@ -436,7 +436,13 @@ namespace WpfCompany {
          <img src="img/14_sql_databanken/db_connstring.png" alt="" class="w-600 bordered">
          <figcaption>aanmaken connection string</figcaption>
       </figure>
-      <p>In het volgende dialoogvenster kies je de server, authenticatiemethode, en dan de databank:</p>
+      <div class="tips" data-caption="💡TIP">
+         <p>
+            Als je de server explorer niet ziet, open het via <strong>View</strong>, <strong>Server Explorer</strong>
+         </p>
+      </div>
+
+      <p>In het volgende dialoogvenster kies je de server en authenticatiemethode (vul dezelfde gegevens in als waarmee je connecteert op SQL Server Management Studio), en dan de databank:</p>
       <figure>
          <img src="img/14_sql_databanken/db_connstring_dialog.png" alt="" class="w-300 bordered">
          <figcaption>aanmaken connection string</figcaption>
@@ -468,18 +474,18 @@ namespace WpfCompany {
          </p>
       </div>
       <h3>Stap 3: NuGet packages toevoegen</h3>
-      <p>Om deze configuratie te kunnen aanspreken en om SQL te kunnen uitvoeren, hebben we twee NuGet packages nodig: <strong>System.Configuration.ConfigurationManager</strong> en <strong>System.Data.SqlClient</strong>:</p>
+      <p>Om deze configuratie te kunnen aanspreken en om SQL te kunnen uitvoeren, hebben we twee NuGet packages nodig: <strong>System.Configuration.ConfigurationManager</strong> en <strong>Microsoft.Data.SqlClient</strong>. Voeg ze toe samen met de StyleCop analyzers die in elk project moet zitten:</p>
       <figure>
          <img src="img/14_sql_databanken/nuget.png" alt="" class="w-700 bordered">
          <figcaption>installeren nodige NuGet packages</figcaption>
       </figure>
       <h3>Stap 4: namespaces toevoegen</h3>
       <p>
-         Voeg vervolgens referenties toe naar de <code>System.Configuration</code> en <code>System.Data.SqlClient</code> namespaces bovenaan elke C# pagina waar je SQL wil gebruiken, en je bent klaar om te starten:
+         Voeg vervolgens referenties toe naar de <code>System.Configuration</code> en <code>Microsoft.Data.SqlClient</code> namespaces bovenaan elke C# pagina waar je SQL wil gebruiken, en je bent klaar om te starten:
       </p>
       <pre><code>using System;
 using System.Configuration; // voeg deze toe
-using System.Data.SqlClient; // voeg deze toe
+using Microsoft.Data.SqlClient; // voeg deze toe
 using System.Windows;
 using System.Windows.Controls;
 
@@ -604,7 +610,7 @@ using (SqlConnection conn = new SqlConnection(connString)) { // open zo laat mog
       </p>
       <p><img src="img/14_sql_databanken/cl-add.png" alt="" class="w-600 bordered"></p>
       <h3>Stap 2: NuGet packages toevoegen</h3>
-      <p>Vergeet niet weer de NuGet packages <strong>System.Configuration.ConfigurationManager</strong> en <strong>System.Data.SqlClient</strong> toe te voegen aan dit nieuw project:</p>
+      <p>Vergeet niet weer de NuGet packages <strong>System.Configuration.ConfigurationManager</strong> en <strong>Microsoft.Data.SqlClient</strong> toe te voegen aan dit nieuw project:</p>
       <figure>
          <img src="img/14_sql_databanken/nuget.png" alt="" class="w-700 bordered">
          <figcaption>installeren nodige NuGet packages</figcaption>
