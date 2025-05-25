@@ -8,6 +8,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="common/styles.css">
    <link rel="stylesheet" href="css/styles.css">
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body class="prism-vslight language-cs showpro" id="top">
@@ -78,20 +79,34 @@
       </a>
    </nav>
    <h1>03. Iteraties</h1>
-   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
+   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a
+            href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a
+            href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a
+            href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a
+            href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a
+            href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
    <div id="toc"></div>
    <main>
 
       <!-- VIDEO -->
       <h2>Op Youtube</h2>
-      <p>Deze video maakt deel uit van de <a href="https://www.youtube.com/playlist?list=PLYfkd2Gq0ciEi9lCmNbiy8NmcyqGMQd7f">IIP playlist</a> van de <a href="https://www.youtube.com/@rogiervanderlinde1775">Youtube channel</a> van Rogier van der Linde. </p>
-      <p><em>Let op: deze video's zijn al een paar jaar oud, dus hier en daar kunnen kleine afwijkingen voorkomen met deze cursus, die wel altijd up-to-date is. </em></p>
+      <p>Deze video maakt deel uit van de <a
+            href="https://www.youtube.com/playlist?list=PLYfkd2Gq0ciEi9lCmNbiy8NmcyqGMQd7f">IIP playlist</a> van de <a
+            href="https://www.youtube.com/@rogiervanderlinde1775">Youtube channel</a> van Rogier van der Linde. </p>
+      <p><em>Let op: deze video's zijn al een paar jaar oud, dus hier en daar kunnen kleine afwijkingen voorkomen met
+            deze cursus, die wel altijd up-to-date is. </em></p>
 
       <div class="flexcontainer youtubecontainer">
-         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/aq0P6lPJgRs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/aq0P6lPJgRs"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
          <figure class="print">
-            <a href="https://www.youtube.com/watch?v=aq0P6lPJgRs"><img src="img/03_iteraties/youtube-iteraties.png" alt="" class="w-500"></a>
-            <figcaption><a href="https://www.youtube.com/watch?v=aq0P6lPJgRs">https://www.youtube.com/watch?v=aq0P6lPJgRs</a></figcaption>
+            <a href="https://www.youtube.com/watch?v=aq0P6lPJgRs"><img src="img/03_iteraties/youtube-iteraties.png"
+                  alt="" class="w-500"></a>
+            <figcaption><a
+                  href="https://www.youtube.com/watch?v=aq0P6lPJgRs">https://www.youtube.com/watch?v=aq0P6lPJgRs</a>
+            </figcaption>
          </figure>
          <div class="youtube_toc">
             <ul>
@@ -264,7 +279,8 @@ Geraden</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Voorbeeld 3: aflopend tellen</h4>
-      <p>Je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
+      <p>Je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of
+         <code>&minus;=</code>):</p>
       <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;)
 {
     Console.WriteLine(i);
@@ -278,9 +294,11 @@ Geraden</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h3>FOREACH-iteratie</h3>
-      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten, ListBoxItem's, ...).</p>
+      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten,
+         ListBoxItem's, ...).</p>
       <h4>Voorbeeld 1: karakters van een string overlopen</h4>
-      <p>Een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een foreach-iteratie:</p>
+      <p>Een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een
+         foreach-iteratie:</p>
       <pre><code>string str = "Hello!";
 
 foreach (char letter in str)
@@ -298,7 +316,8 @@ o
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Voorbeeld 2: items van een ListBox overlopen</h4>
-      <p>Foreach wordt ook veel gebruikt in WPF, b.v. om de <a href="07_wpfcontrols.html#alle-items-overlopen">Items van een ListBox te overlopen</a></p>
+      <p>Foreach wordt ook veel gebruikt in WPF, b.v. om de <a href="07_wpfcontrols.html#alle-items-overlopen">Items van
+            een ListBox te overlopen</a></p>
       <h2>Juiste iteratie kiezen</h2>
       <ul>
          <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code>while</code></li>
@@ -312,7 +331,10 @@ o
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
          <p>@2024, Rogier van der Linde</p>
-         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
+         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a
+               href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a
+               href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a
+               href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
