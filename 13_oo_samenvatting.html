@@ -764,7 +764,7 @@ constructor van Klant...</pre>
             <br><em>&mdash; vergelijk met een post die privé is, enkel voor jou zichtbaar</em>
          </li>
       </ul>
-      <h3>standaard: <code>private</code></h3>
+      <h3>standaard: <code>private</code> voor members</h3>
       <p>
          De standaard zichtbaarheid is altijd <mark>private</mark>, dus nergens zichtbaar buiten de klasse, zelfs niet in afgeleide klassen:
       </p>
@@ -800,7 +800,7 @@ sa.PrintDeposit();
       <div class="precontainer">
          <pre><code>class Account
 {
-   int Deposit { get; set; } = 5000;
+   protected int Deposit { get; set; } = 5000;
 }
 </code></pre>
       </div>
@@ -829,7 +829,7 @@ sa.PrintDeposit();
       <div class="precontainer">
          <pre><code>class Account
 {
-   int Deposit { get; set; } = 5000;
+   public int Deposit { get; set; } = 5000;
 }
 </code></pre>
       </div>
