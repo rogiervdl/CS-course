@@ -11,7 +11,7 @@
    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body class="prism-vslight language-cs showpro" id="top">
+<body class="prism prism-vslight language-cs showpro" id="top">
    <div id="mode">
       <span>n00b</span>
       <label class="switch">
@@ -440,7 +440,7 @@ Console.WriteLine($"Het grootste getal is: {grootste}");
       <div class="pro">
          <h3>Null conditional operator (a.k.a. Elvis operator)</h3>
          <p>Syntax: <code class="em">a?.b</code></p>
-         <p>Betekent: <i>“als a null is, neem null, anders property b”</i>. <br>Neem volgend fragment:</p>
+         <p>Betekent: <em>“als a null is, neem null, anders property b”</em>. <br>Neem volgend fragment:</p>
          <pre><code>string userName = null;
 if (user != null) { // user may be null
     userName = user.Name;
@@ -451,7 +451,7 @@ if (user != null) { // user may be null
          <pre><code>string btwNumber = persons?[0].Partner?.Company?.VatNumber; // null als ergens een null voorkomt</code></pre>
          <h3>Null coalescing operator</h3>
          <p>Syntax: <code class="em">a ?? b</code></p>
-         <p>Betekent: <i>“als a null is, neem dan b”</i>. Is hetzelfde als <code>a == null ? b : a</code>.
+         <p>Betekent: <em>“als a null is, neem dan b”</em>. Is hetzelfde als <code>a == null ? b : a</code>.
             <br>Voorbeeldfragment:
          </p>
          <pre><code>string hello = $"welcome {name ?? " stranger"}";</code></pre>

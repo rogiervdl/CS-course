@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- [html-validate-disable no-trailing-whitespace] -->
+<!-- [html-validate-disable no-inline-style] -->
 <html lang="nl">
 
 <head>
@@ -11,7 +12,7 @@
    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body class="prism-vslight language-cs showpro" id="top">
+<body class="prism prism-vslight language-cs showpro" id="top">
    <div id="mode">
       <span>n00b</span>
       <label class="switch">
@@ -432,8 +433,7 @@ OOOOO</pre>
       </div>
 
       <h2>Call by reference / value</h2>
-      <p>Dit gaat over de vraag: <i>wat gebeurt er als een methode de waarde van een binnenkomende parameter
-            verandert?</i></p>
+      <p>Dit gaat over de vraag: <em>wat gebeurt er als een methode de waarde van een binnenkomende parameter verandert?</em></p>
       <ul>
          <li><strong>Call by value</strong>: de variabele geeft enkel zijn waarde door, wijzigingen gaan verloren
             <br>Geldt voor: alle primitieve types (<code>bool</code>, <code>char</code>, <code>int</code>,
@@ -444,8 +444,7 @@ OOOOO</pre>
             <br>Geldt voor: al de rest (objecten, arrays, lijsten…)
          </li>
       </ul>
-      <p>De voorbeelden verder maken gebruik van <a href="05_arrays.html">arrays</a> dat in het volgende deel aan bod
-         komt, dus misschien wil je dat deel eerst bestuderen en dan naar hier terugkeren.</p>
+      <p>De voorbeelden verder maken gebruik van <a href="05_arrays.html">arrays</a> dat in het volgende deel aan bod komt, dus misschien wil je dat deel eerst bestuderen en dan naar hier terugkeren.</p>
       <h3>Call by value voorbeeld</h3>
       <p>Als je bv. een int meegeeft met een methode, dan blijven wijzigingen door die methode niet behouden:</p>
       <pre><code>static void Verdubbel(int get)
@@ -724,7 +723,7 @@ private static void Main(string[] args)
       <p><img src="img/04_methodes/methodes-optional.png" alt="" class="w-800"></p>
 
       <p>Een tweede iets uitgebreider voorbeeld met achteraan drie <em class="em">optionele parameters</em> (merk op:
-         optionele parameters moeten <i>achteraan</i> de parameterlijst staan):</p>
+         optionele parameters moeten <em>achteraan</em> de parameterlijst staan):</p>
       <pre><code>private static string OrderDetails(string verkoper, string product, decimal prijs, string klant = null, int aantal = 1, int kortingPerc = 0)
 {
    return $@"

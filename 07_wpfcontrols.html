@@ -11,7 +11,7 @@
    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body class="prism-vslight language-cs showpro" id="top">
+<body class="prism prism-vslight language-cs showpro" id="top">
    <div id="mode">
       <span>n00b</span>
       <label class="switch">
@@ -1269,7 +1269,7 @@ if (lstBoodschappen.SelectedItem != null)
       <img src="img/07_wpfcontrols/mediaElement-toolbox.png" alt="" class="bordered w-200">
       <p>XAML code (<code>LoadedBehavior</code> moet op <code>Manual</code> gezet worden als je zelf wil kunnen starten en stoppen):</p>
       <pre class="language-html language-xaml"><code>&lt;MediaElement x:Name="melMyVideo" LoadedBehavior="Manual" Width="300" Height="200" ...  /&gt;</code></pre>
-      <p>C# code (veronderstel een bestand <i>myvideo.mp4</i> in een submap <i>Media</i>):</p>
+      <p>C# code (veronderstel een bestand <em>myvideo.mp4</em> in een submap <em>Media</em>):</p>
       <pre><code>melMyVideo.Source = new Uri(@"Media/myvideo.mp4", UriKind.Relative);
 melMyVideo.Play();</code></pre>
 <figure>
@@ -1532,10 +1532,10 @@ else if(radGroot.IsChecked == true)
                <td>uitlijning</td>
             </tr>
             <tr>
-               <td style="vertical-align: top;"><code>TextWrapping</code></td>
+               <td><code>TextWrapping</code></td>
                <td>
                   Bepaalt de tekstterugloop indien de tekst te lang is om op één regel te passen. Mogelijke waarden zijn:
-                  <ul style="padding-left: 15px;">
+                  <ul>
                      <li><code>NoWrap</code>: tekst wordt niet op een andere regel gezet</li>
                      <li><code>Wrap</code>: tekst wordt gesplits op meerdere regels, zelfs indien er geen afbreekpunt is (spatie)</li>
                      <li><code>WrapWithOverflow</code>: tekst wordt enkel gesplits indien er een afbreekpunt is. Anders is de tekst onzichtbaar</li>
