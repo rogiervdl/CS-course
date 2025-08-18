@@ -585,33 +585,33 @@ Customer cust3 = new Customer
       <p>Elk object heeft een standaard <code>ToString()</code> implementatie, d.w.z. de weergave in een <code>string</code> context. Voegen we b.v. een paar <code>Customer</code> instanties toe aan een <code>ListBox</code>:</p>
       <pre><code>Customer cust1 = new Customer()
 {
-    FirstName = "Miles",
-    LastName = "Davis",
-    Rating = 5
+   FirstName = "Miles",
+   LastName = "Davis",
+   Rating = 5
 };
 Customer cust2 = new Customer()
 {
-    FirstName = "Pharoah",
-    LastName = "Sanders",
-    Rating = 3
+   FirstName = "Pharoah",
+   LastName = "Sanders",
+   Rating = 3
 };
 Customer cust3 = new Customer()
 {
-    FirstName = "John",
-    LastName = "Coltrane",
-    Rating = 4
+   FirstName = "John",
+   LastName = "Coltrane",
+   Rating = 4
 };
 lbxCustomers.Items.Add(new ListBoxItem()
 {
-    Content = cust1
+   Content = cust1
 });
 lbxCustomers.Items.Add(new ListBoxItem()
 {
-    Content = cust2
+   Content = cust2
 });
 lbxCustomers.Items.Add(new ListBoxItem()
 {
-    Content = cust3
+   Content = cust3
 });
 </code></pre>
       <p>De weergave van de customers in de <code>ListBox</code> is nogal nietszeggend:</p>
@@ -631,9 +631,9 @@ lbxCustomers.Items.Add(new ListBoxItem()
       <img src="img/10_classes_properties/tostring2.png" alt="" class="w-300 bordered">
       <p>Nog een ander voorbeeld van zo'n <code>string</code> context, in een Console toepassing:</p>
       <pre><code>Customer cust1 = new Customer() {
-    FirstName = "Miles",
-    LastName = "Davis",
-    Rating = 5
+   FirstName = "Miles",
+   LastName = "Davis",
+   Rating = 5
 };
 Console.WriteLine($"customer 1: {cust1}");
 </code></pre>
@@ -776,19 +776,6 @@ Customer cust3 = new Customer()
       <h2>Klassen inspecteren in debugger</h2>
       <p>In debugger mode kun je doorklikken in de objectstructuur, bv. <strong>Bank → Accounts → Customers →</strong>...</p>
       <img src="img/10_classes_properties/debugger.png" alt="" class="w-600 bordered">
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    </main>
    <footer>

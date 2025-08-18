@@ -388,13 +388,13 @@ txt1.TextAlignment = TextAlignment.Right;
 &lt;TextBlock x:Name="txtBericht" Text="" /&gt;
 </code></pre>
       <pre><code>private void Btn1_Click(object sender, RoutedEventArgs e) {
-    txtBericht.Content = "KNOP 1 geklikt";
+   txtBericht.Content = "KNOP 1 geklikt";
 }
 private void Btn2_Click(object sender, RoutedEventArgs e) {
-    txtBericht.Content = "KNOP 2 geklikt";
+   txtBericht.Content = "KNOP 2 geklikt";
 }
 private void Btn3_Click(object sender, RoutedEventArgs e) {
-    txtBericht.Content = "KNOP 3 geklikt";
+   txtBericht.Content = "KNOP 3 geklikt";
 }
 ...
 </code></pre>
@@ -425,11 +425,11 @@ private void Btn_Click(object sender, RoutedEventArgs e) {
 &lt;TextBlock x:Name="lblBericht" Text="" /&gt;</code></pre>
       <pre><code>private void Btn_Click(object sender, RoutedEventArgs e)
 {
-    Button btn = (Button)sender;
-    int timesClicked = Convert.ToInt32(btn.Tag);
-    timesClicked++;
-    btn.Tag = Convert.ToString(timesClicked);
-    lblBericht.Text = $"{btn.Content} is {timesClicked} keer geklikt";
+   Button btn = (Button)sender;
+   int timesClicked = Convert.ToInt32(btn.Tag);
+   timesClicked++;
+   btn.Tag = Convert.ToString(timesClicked);
+   lblBericht.Text = $"{btn.Content} is {timesClicked} keer geklikt";
 }
 </code></pre>
       <figure>
@@ -624,12 +624,12 @@ private void BtnClick(object sender, RoutedEventArgs e)
 </code></pre>
       <pre><code>private void chbYesNo_Checked(object sender, RoutedEventArgs e)
 {
-    txtMessage.Content = "ja, mee eens";
+   txtMessage.Content = "ja, mee eens";
 }
 
 private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 {
-    txtMessage.Content = "nee, niet mee eens";
+   txtMessage.Content = "nee, niet mee eens";
 }
 </code></pre>
       <figure>
@@ -643,14 +643,14 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 </code></pre>
          <pre><code>private void ChbYesNo_Click(object sender, RoutedEventArgs e)
 {
-    if (chbYesNo.IsChecked == true)
-    {
-        txtMessage.Text = "ja, mee eens";
-    }
-    else
-    {
-        txtMessage.Text = "nee, niet mee eens";
-    }
+   if (chbYesNo.IsChecked == true)
+   {
+      txtMessage.Text = "ja, mee eens";
+   }
+   else
+   {
+      txtMessage.Text = "nee, niet mee eens";
+   }
 }
 </code></pre>
          <p>Of nog korter, met de <a href="01_variabelen.html#ternaire-operator">ternaire operator</a>:</p>
@@ -737,7 +737,7 @@ cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met ite
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
       <pre><code>if (cboKleuren.SelectedIndex != -1)
 {
-    // gebruiker heeft een item geselecteerd
+   // gebruiker heeft een item geselecteerd
 }
 </code></pre>
       <p>of ook:</p>
@@ -749,15 +749,15 @@ cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met ite
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (cboKleuren.SelectedItem != null)
 {
-    ComboBoxItem selectie = (ComboBoxItem)cboKleuren.SelectedItem; // cast naar ComboBoxItem
-    string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
+   ComboBoxItem selectie = (ComboBoxItem)cboKleuren.SelectedItem; // cast naar ComboBoxItem
+   string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
 
-    // doe iets met variabele 'inhoud'
+   // doe iets met variabele 'inhoud'
 }</code></pre>
       <h4>Itereren over items in een ComboBox</h4>
       <pre><code>foreach (ComboBoxItem item in cboKleuren.Items)
 {
-    // doe iets met item, bv.: item.Content
+   // doe iets met item, bv.: item.Content
 }</code></pre>
       <h4>Samenvattend voorbeeld</h4>
       <p>Voorbeeld voor selecteren van tweede optie en toevoegen item in C#, en tonen geselecteerde optie in een <code>TextBlock</code>:</p>
@@ -770,19 +770,19 @@ if (cboKleuren.SelectedItem != null)
 </code></pre>
       <pre><code>public MainWindow()
 {
-    InitializeComponent();
-    // selecteer tweede optie
-    cbxCountries.SelectedIndex = 1;
-    // voeg nog een item "Spanje" toe
-    ComboBoxItem newItem = new ComboBoxItem();
-    newItem.Content = "Spanje";
-    cbxCountries.Items.Add(newItem);
+   InitializeComponent();
+   // selecteer tweede optie
+   cbxCountries.SelectedIndex = 1;
+   // voeg nog een item "Spanje" toe
+   ComboBoxItem newItem = new ComboBoxItem();
+   newItem.Content = "Spanje";
+   cbxCountries.Items.Add(newItem);
 }
 
 private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
 {
-    ComboBoxItem selectedItem = (ComboBoxItem)cbxCountries.SelectedItem;
-    txtMessage.Text = $"geselecteerd: {selectedItem.Content}";
+   ComboBoxItem selectedItem = (ComboBoxItem)cbxCountries.SelectedItem;
+   txtMessage.Text = $"geselecteerd: {selectedItem.Content}";
 }
 </code></pre>
       <figure>
@@ -829,8 +829,8 @@ private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventA
       <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
 if (dpcGeboortedatum.SelectedDate != null)
 {
-    DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
-    // doe iets met variabele 'datum'
+   DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
+   // doe iets met variabele 'datum'
 }</code></pre>
 
       <h2 id="ellipse">Ellipse</h2>
@@ -875,30 +875,30 @@ if (dpcGeboortedatum.SelectedDate != null)
       <h3>Voorbeelden</h3>
       <h4>Ellips met twee sliders</h4>
       <pre class="language-html language-xaml"><code>&lt;Canvas x:Name="canvas1" Width="250" Height="150" Background="#FFF1F1F1"
-         Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
-     &lt;Ellipse x:Name="ellipse1" Width="100" Height="50" Stroke="Blue" Fill="LightBlue"/&gt;
- &lt;/Canvas&gt;
- &lt;TextBlock Text="Breedte:" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top"/&gt;
- &lt;Slider x:Name="sldWidth" Maximum="250" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
-    Margin="85,165,0,0" VerticalAlignment="Top" /&gt;
- &lt;TextBlock x:Name="txtWidth" Text="100" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top"/&gt;
- &lt;TextBlock Text="Hoogte:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/&gt;
- &lt;Slider x:Name="sldHeight" Maximum="150" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
-    Margin="85,190,0,0" VerticalAlignment="Top"/&gt;
- &lt;TextBlock x:Name="txtHeight" Text="50" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top"/&gt;</code></pre>
+      Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+   &lt;Ellipse x:Name="ellipse1" Width="100" Height="50" Stroke="Blue" Fill="LightBlue"/&gt;
+&lt;/Canvas&gt;
+&lt;TextBlock Text="Breedte:" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sldWidth" Maximum="250" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+   Margin="85,165,0,0" VerticalAlignment="Top" /&gt;
+&lt;TextBlock x:Name="txtWidth" Text="100" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top"/&gt;
+&lt;TextBlock Text="Hoogte:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sldHeight" Maximum="150" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+   Margin="85,190,0,0" VerticalAlignment="Top"/&gt;
+&lt;TextBlock x:Name="txtHeight" Text="50" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top"/&gt;</code></pre>
       <p>De C# code-behind:</p>
       <pre><code>public MainWindow()
 {
-    InitializeComponent();
-    sldWidth.Value = 100;
-    sldHeight.Value = 50;
+   InitializeComponent();
+   sldWidth.Value = 100;
+   sldHeight.Value = 50;
 }
 private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
-    ellipse1.Width = sldWidth.Value;
-    ellipse1.Height = sldHeight.Value;
-    txtWidth.Text = $"{sldWidth.Value:F0}";
-    txtHeight.Text = $"{sldWidth.Value:F0}";
+   ellipse1.Width = sldWidth.Value;
+   ellipse1.Height = sldHeight.Value;
+   txtWidth.Text = $"{sldWidth.Value:F0}";
+   txtHeight.Text = $"{sldWidth.Value:F0}";
 }
 </code></pre>
       <figure>
@@ -1011,15 +1011,15 @@ private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&l
 </code></pre>
       <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e)
 {
-    imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
 }
 private void BtnShow2_Click(object sender, RoutedEventArgs e)
 {
-    imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
 }
 private void BtnShow3_Click(object sender, RoutedEventArgs e)
 {
-    imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
 }
 </code></pre>
       <figure>
@@ -1216,7 +1216,7 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
       <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
       <pre><code>if (lstBoodschappen.SelectedIndex != -1)
 {
-    // er werd (minimum) één item geselecteerd
+   // er werd (minimum) één item geselecteerd
 }</code></pre>
       <p>of ook:</p>
       <pre><code>if (lstBoodschappen.SelectedItem != null)
@@ -1232,15 +1232,15 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (lstBoodschappen.SelectedItem != null)
 {
-    ListBoxItem selectie = (ListBoxItem)lstBoodschappen.SelectedItem; // cast naar ListBoxItem
-    string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
+   ListBoxItem selectie = (ListBoxItem)lstBoodschappen.SelectedItem; // cast naar ListBoxItem
+   string inhoud = selectie.Content.ToString(); // zet inhoud van geselecteerde item om naar een string
 
-    // doe iets met variabele 'inhoud'
+   // doe iets met variabele 'inhoud'
 }</code></pre>
       <h4>Geselecteerde items overlopen (multiple selection mode)</h4>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems)
 {
-    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
+   // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
       <h4>Alle items overlopen</h4>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items)
@@ -1399,8 +1399,8 @@ else if(radGroot.IsChecked == true)
    TickFrequency="10" ValueChanged="Sld1_ValueChanged" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" /&gt;
 </code></pre>
       <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e) {
-    txtValue.Content = Math.Round(sld1.Value).ToString();
-    rct1.Width = Math.Round(sld1.Value);
+   txtValue.Content = Math.Round(sld1.Value).ToString();
+   rct1.Width = Math.Round(sld1.Value);
 }</code></pre>
       <figure>
          <img src="img/07_wpfcontrols/rectangle_slider.gif" alt="" class="w-500 bordered">
@@ -1471,8 +1471,8 @@ else if(radGroot.IsChecked == true)
 </code></pre>
       <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
 {
-    int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
-    txtValue.Text = sliderVal.ToString();
+   int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
+   txtValue.Text = sliderVal.ToString();
 }
 </code></pre>
       <figure>
@@ -1573,10 +1573,10 @@ txtMyTextBlock.Inlines.Add(new Run("groen") { Foreground = Brushes.Green });
 txtMyTextBlock.Inlines.Add(" of ");
 txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
 {
-    FontWeight = FontWeights.Bold,
-    FontStyle = FontStyles.Italic,
-    TextDecorations = TextDecorations.Underline,
-    Foreground = Brushes.Green
+   FontWeight = FontWeights.Bold,
+   FontStyle = FontStyles.Italic,
+   TextDecorations = TextDecorations.Underline,
+   Foreground = Brushes.Green
 });</code></pre>
       <figure>
          <img src="img/07_wpfcontrols/textblock-opmaak.png" alt="resultaat textblock inlines" class="w-300">
@@ -1657,7 +1657,6 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
       <pre><code>txtNaam.Text = "";</code></pre>
       <p>of ook:</p>
       <pre><code>txtNaam.Clear();</code></pre>
-
 
    </main>
    <footer>

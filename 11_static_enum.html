@@ -126,15 +126,15 @@ string tekst = String.Join(Environment.NewLine, lines); // statische methode Joi
       <p>Een voorbeeld van een statische property in <code class="classcolor">Customer</code>:</p>
       <div class="precontainer">
          <pre><code>class Customer {
-      ...
-      // voeg static property toe (houdt aantal gecreëerde Customers bij)
-      public static int NumCustomersCreated { get; set; } = 0;
+   ...
+   // voeg static property toe (houdt aantal gecreëerde Customers bij)
+   public static int NumCustomersCreated { get; set; } = 0;
 
-      public Customer() {
-         ...
-         NumCustomersCreated++;
-      }
+   public Customer() {
+      ...
+      NumCustomersCreated++;
    }
+}
          </code></pre>
          <div class="codemarker" data-text="public static int NumCustomersCreated { get; set; } = 0;"></div>
       </div>

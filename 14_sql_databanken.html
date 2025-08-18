@@ -469,9 +469,9 @@ public class Employee
       <p>Basisschema voor het uitvoeren van SQL queries: </p>
       <pre><code>string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 using (SqlConnection conn = new SqlConnection(connString)) {
-    conn.Open();
-    // voer je SQL query hier uit
-    // ...
+   conn.Open();
+   // voer je SQL query hier uit
+   // ...
 }</code></pre>
       <p>Dankzij de <code>using</code> wordt de connectie automatisch gesloten. Dit is belangrijk, want aangezien een server maar een beperkt aantal gelijktijdige connecties toelaat, kunnen bij teveel openstaande connecties nieuwe connecties geweigerd worden en de databank onbereikbaar worden.</p>
       <h4>SELECT queries</h4>
@@ -1070,24 +1070,24 @@ namespace WpfCompany {
       <p><img src="img/14_sql_databanken/main-list.png" alt="" class="bordered w-400"></p>
       <div class="precontainer">
          <pre><code>public MainWindow() {
-    InitializeComponent();
-    ShowEmployees();
+   InitializeComponent();
+   ShowEmployees();
 }
 
 public void ShowEmployees(int? selectedId = null) {
-    // wis lijst en labels
-    lbxResults.Items.Clear();
-    lblEmail.Content = lblGender.Content = lblBirthdate.Content = lblCode.Content = lblBoss.Content = "";
+   // wis lijst en labels
+   lbxResults.Items.Clear();
+   lblEmail.Content = lblGender.Content = lblBirthdate.Content = lblCode.Content = lblBoss.Content = "";
 
-    // laad alle werknemers in
-    List&lt;Employee&gt; allEmployees = Employee.GetAll();
-    foreach (Employee emp in allEmployees) {
-        lbxResults.Items.Add(new ListBoxItem() {
-            Content = $"{emp.Id}: {emp.FirstName} {emp.LastName}",
-            Tag = emp.Id, // onthoud de id in de Tag attribuut voor later
-            IsSelected = selectedId == emp.Id
-        });
-    }
+   // laad alle werknemers in
+   List&lt;Employee&gt; allEmployees = Employee.GetAll();
+   foreach (Employee emp in allEmployees) {
+      lbxResults.Items.Add(new ListBoxItem() {
+         Content = $"{emp.Id}: {emp.FirstName} {emp.LastName}",
+         Tag = emp.Id, // onthoud de id in de Tag attribuut voor later
+         IsSelected = selectedId == emp.Id
+      });
+   }
 }</code></pre>
          <div class="codemarker" data-text="Employee.GetAll()" data-color="purple"></div>
       </div>

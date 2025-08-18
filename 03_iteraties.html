@@ -79,34 +79,20 @@
       </a>
    </nav>
    <h1>03. Iteraties</h1>
-   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a
-            href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a
-            href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a
-            href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a
-            href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a
-            href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
+   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
    <div id="toc"></div>
    <main>
 
       <!-- VIDEO -->
       <h2>Op Youtube</h2>
-      <p>Deze video maakt deel uit van de <a
-            href="https://www.youtube.com/playlist?list=PLYfkd2Gq0ciEi9lCmNbiy8NmcyqGMQd7f">IIP playlist</a> van de <a
-            href="https://www.youtube.com/@rogiervanderlinde1775">Youtube channel</a> van Rogier van der Linde. </p>
-      <p><em>Let op: deze video's zijn al een paar jaar oud, dus hier en daar kunnen kleine afwijkingen voorkomen met
-            deze cursus, die wel altijd up-to-date is. </em></p>
+      <p>Deze video maakt deel uit van de <a href="https://www.youtube.com/playlist?list=PLYfkd2Gq0ciEi9lCmNbiy8NmcyqGMQd7f">IIP playlist</a> van de <a href="https://www.youtube.com/@rogiervanderlinde1775">Youtube channel</a> van Rogier van der Linde. </p>
+      <p><em>Let op: deze video's zijn al een paar jaar oud, dus hier en daar kunnen kleine afwijkingen voorkomen met deze cursus, die wel altijd up-to-date is. </em></p>
 
       <div class="flexcontainer youtubecontainer">
-         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/aq0P6lPJgRs"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/aq0P6lPJgRs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
          <figure class="print">
-            <a href="https://www.youtube.com/watch?v=aq0P6lPJgRs"><img src="img/03_iteraties/youtube-iteraties.png"
-                  alt="" class="w-500"></a>
-            <figcaption><a
-                  href="https://www.youtube.com/watch?v=aq0P6lPJgRs">https://www.youtube.com/watch?v=aq0P6lPJgRs</a>
-            </figcaption>
+            <a href="https://www.youtube.com/watch?v=aq0P6lPJgRs"><img src="img/03_iteraties/youtube-iteraties.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=aq0P6lPJgRs">https://www.youtube.com/watch?v=aq0P6lPJgRs</a></figcaption>
          </figure>
          <div class="youtube_toc">
             <ul>
@@ -129,13 +115,11 @@
       </ul>
       <h2>Iteratie-structuren</h2>
       <h3>WHILE-iteratie</h3>
-      <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Deze voorwaarde wordt
-         <strong>eerst</strong> gecontroleerd (0 of meerdere keren herhaald).
-      </p>
+      <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Deze voorwaarde wordt <strong>eerst</strong> gecontroleerd (0 of meerdere keren herhaald).</p>
       <p><img src="img/03_iteraties/while_flowchart.png" alt="while-flowchart" class="w-200"></p>
       <pre><code>while (voorwaarde)
 {
-    // te herhalen instructies
+   // te herhalen instructies
 }
 </code></pre>
       <h4>Voorbeeld 1</h4>
@@ -144,8 +128,8 @@
 
 while (getal &lt;= 5)
 {
-    Console.WriteLine(getal);
-    getal++;
+   Console.WriteLine(getal);
+   getal++;
 }
 </code></pre>
       <figure class="console">
@@ -161,9 +145,9 @@ while (getal &lt;= 5)
       <pre><code>string voortdoen = "ja";
 while (voortdoen == "ja")
 {
-    Console.WriteLine($"We doen voort...");
-    Console.Write("Voortdoen? ja of nee: ");
-    voortdoen = Console.ReadLine();
+   Console.WriteLine($"We doen voort...");
+   Console.Write("Voortdoen? ja of nee: ");
+   voortdoen = Console.ReadLine();
 }
 Console.WriteLine("We doen niet meer voort.");
 </code></pre>
@@ -179,13 +163,12 @@ We doen niet meer voort.</pre>
       </figure>
 
       <h3>DO WHILE-iteratie</h3>
-      <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Statements worden
-         <strong>éérst</strong> uitgevoerd, nadien pas wordt voorwaarde gecontroleerd (1 of meerdere keren herhaald).
+      <p>Voert instructieblok uit zolang aan een bepaalde voorwaarde wordt voldaan. Statements worden <strong>éérst</strong> uitgevoerd, nadien pas wordt voorwaarde gecontroleerd (1 of meerdere keren herhaald).
       </p>
       <p><img src="img/03_iteraties/do_while_flowchart.png" alt="while-flowchart" class="w-200"></p>
       <pre><code>do
 {
-    // te herhalen instructies
+   // te herhalen instructies
 }
 while (voorwaarde);
 </code></pre>
@@ -195,8 +178,8 @@ while (voorwaarde);
 
 do
 {
-    Console.WriteLine(getal);
-    getal++;
+   Console.WriteLine(getal);
+   getal++;
 }
 while (getal &lt;= 5);
 </code></pre>
@@ -216,8 +199,8 @@ Console.WriteLine("Raad een getal tussen 1 en 10");
 int getal;
 do
 {
-    Console.Write("Jouw gok: ");
-    getal = Convert.ToInt32(Console.ReadLine());
+   Console.Write("Jouw gok: ");
+   getal = Convert.ToInt32(Console.ReadLine());
 }
 while (getal != geheimGetal);
 Console.WriteLine("Geraden");
@@ -247,13 +230,13 @@ Geraden</pre>
       <p><img src="img/03_iteraties/for_flowchart.png" alt="for-flowchart" class="w-250"></p>
       <pre><code>for (begin; voorwaarde; increment)
 {
-    // te herhalen instructies
+   // te herhalen instructies
 }
 </code></pre>
       <h4>Voorbeeld 1: oplopend tellen</h4>
       <pre><code>for (int i = 1; i &lt;= 5; i++)
 {
-    Console.WriteLine(i);
+   Console.WriteLine(i);
 }
 </code></pre>
       <figure class="console">
@@ -268,7 +251,7 @@ Geraden</pre>
       <p>Het increment hoeft niet altijd met één omhoog te gaan, onderstaande lus telt met sprongen van twee:</p>
       <pre><code>for (int i = 1; i &lt;=10; i+=2)
 {
-    Console.WriteLine(i);
+   Console.WriteLine(i);
 }</code></pre>
       <figure class="console">
          <pre>1
@@ -279,11 +262,10 @@ Geraden</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h4>Voorbeeld 3: aflopend tellen</h4>
-      <p>Je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of
-         <code>&minus;=</code>):</p>
+      <p>Je kunt ook aftellen door gebruik te maken van de decrement-operator (<code>&minus;&minus;</code> of <code>&minus;=</code>):</p>
       <pre><code>for (int i = 5; i &gt;= 1; i&minus;&minus;)
 {
-    Console.WriteLine(i);
+   Console.WriteLine(i);
 }</code></pre>
       <figure class="console">
          <pre>5
@@ -294,16 +276,14 @@ Geraden</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <h3>FOREACH-iteratie</h3>
-      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten,
-         ListBoxItem's, ...).</p>
-      <h4>Voorbeeld 1: karakters van een string overlopen</h4>
-      <p>Een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een
-         foreach-iteratie:</p>
+      <p>Met een foreach-iteratie kan je door alle elementen van een collectie itereren (array's, lijsten, ListBoxItem's, ...).</p>
+      <h4>Console voorbeeld: karakters van een string overlopen</h4>
+      <p>Een string is een collectie van karakters (<code>char</code>'s) en kan je dus ook overlopen d.m.v. een foreach-iteratie:</p>
       <pre><code>string str = "Hello!";
 
 foreach (char letter in str)
 {
-    Console.WriteLine(letter);
+   Console.WriteLine(letter);
 }
 </code></pre>
       <figure class="console">
@@ -315,9 +295,8 @@ o
 !</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h4>Voorbeeld 2: items van een ListBox overlopen</h4>
-      <p>Foreach wordt ook veel gebruikt in WPF, b.v. om de <a href="07_wpfcontrols.html#alle-items-overlopen">Items van
-            een ListBox te overlopen</a></p>
+      <h4>WPF voorbeeld: items van een ListBox overlopen</h4>
+      <p>Foreach wordt ook veel gebruikt in WPF, b.v. om de <a href="07_wpfcontrols.html#alle-items-overlopen">Items van een ListBox te overlopen</a></p>
       <h2>Juiste iteratie kiezen</h2>
       <ul>
          <li>aantal iteraties afhankelijk van voorwaarde, <strong>0 of meer keer</strong>: <code>while</code></li>
@@ -331,10 +310,7 @@ o
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
          <p>@2024, Rogier van der Linde</p>
-         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a
-               href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a
-               href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a
-               href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
+         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>
    <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>

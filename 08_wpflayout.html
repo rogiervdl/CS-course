@@ -93,21 +93,11 @@
          </figure>
          <div class="youtube_toc">
             <ul>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70">0:00 Intro</a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70?t=69">1:09 Window control</a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=148">2:28 popups</a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=488">8:08 oldskool drag-drop layout via designer</a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=623">10:23 positionering met margin en alignment</a>
-               </li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70">0:00 Intro</a></li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70?t=69">1:09 Window control</a></li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=148">2:28 popups</a></li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=488">8:08 oldskool drag-drop layout via designer</a></li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=623">10:23 positionering met margin en alignment</a></li>
                <li>
                   <a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=700">11:40 layout met panels</a>
                   <ul>
@@ -128,9 +118,7 @@
                      <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=1925">32:05 WPF DockPanel vs. CSS fixed, CSS flexbox, CSS grid</a></li>
                   </ul>
                </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=2084">34:44 samenvatting</a>
-               </li>
+               <li><a href="https://www.youtube.com/watch?v=B6VQzjlFd70&t=2084">34:44 samenvatting</a></li>
             </ul>
          </div>
       </div>
@@ -314,7 +302,6 @@
          <li>de <code class="em">Padding</code> bepaalt de ruimte binnen de control, dus tussen tekst en rand</li>
          <li>de <code class="em">Margin</code> bepaalt de ruimte buiten de control, hier links en boven tot de <code>&lt;Grid&gt;</code></li>
       </ul>
-
 
       <h3>VerticalAlignment en HorizontalAlignment</h3>
       <p>De attributen <code class="em">VerticalAlignment</code> en <code class="em">HorizontalAlignment</code> bepalen hoe de control gepositioneerd wordt t.o.v. de parent. Als afstanden worden de marges genomen. Stel je ze b.v. in op <code>Right</code> resp. <code>Bottom</code>, dan worden de rechter- en onderwaarden van Margin genomen:</p>
@@ -589,16 +576,16 @@
       <p>Een menu bouw je met <code>Menu</code> en <code>MenuItem</code> controls, typisch in combinatie met een <a href="#dockpanel">DockPanel</a>:</p>
       <pre class="language-html language-xaml"><code>&lt;DockPanel LastChildFill="True"&gt;
    &lt;Menu DockPanel.Dock="Top"&gt;
-       &lt;MenuItem Header="_File"&gt;
-           &lt;MenuItem Header="_Open..." /&gt;
-           &lt;MenuItem Header="_Save" /&gt;
-           &lt;MenuItem Header="Save _As..." /&gt;
-           &lt;Separator /&gt;
-           &lt;MenuItem Header="E_xit" Click="ExitItem_Click" /&gt;
-       &lt;/MenuItem&gt;
-       &lt;MenuItem Header="_Help"&gt;
-           &lt;MenuItem Header="_About" /&gt;
-       &lt;/MenuItem&gt;
+      &lt;MenuItem Header="_File"&gt;
+         &lt;MenuItem Header="_Open..." /&gt;
+         &lt;MenuItem Header="_Save" /&gt;
+         &lt;MenuItem Header="Save _As..." /&gt;
+         &lt;Separator /&gt;
+         &lt;MenuItem Header="E_xit" Click="ExitItem_Click" /&gt;
+      &lt;/MenuItem&gt;
+      &lt;MenuItem Header="_Help"&gt;
+         &lt;MenuItem Header="_About" /&gt;
+      &lt;/MenuItem&gt;
    &lt;/Menu&gt;
    &lt;Grid&gt;&lt;/Grid&gt;
 &lt;/DockPanel&gt;
@@ -607,8 +594,8 @@
       <p>Voorbeeld van een event handler voor het exit menu item:</p>
       <pre><code>private void ExitItem_Click(object sender, RoutedEventArgs e)
 {
-    // 0 wilt zeggen dat er niets is fout gelopen
-    Environment.Exit(0);
+   // 0 wilt zeggen dat er niets is fout gelopen
+   Environment.Exit(0);
 }
 </code></pre>
       <figure>
@@ -682,16 +669,16 @@
       <p>Een <code class="em">TabControl</code> voorbeeld:</p>
       <pre class="language-html language-xaml"><code>&lt;TabControl SelectedIndex="2" &gt;
    &lt;TabItem Header="Tab 1" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 1 content here...&lt;/TextBox&gt;
+      &lt;TextBox Padding="10"&gt;tab 1 content here...&lt;/TextBox&gt;
    &lt;/TabItem&gt;
    &lt;TabItem  Header="Tab 2" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 2 content here...&lt;/TextBox&gt;
+      &lt;TextBox Padding="10"&gt;tab 2 content here...&lt;/TextBox&gt;
    &lt;/TabItem&gt;
    &lt;TabItem Header="Tab 3" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 3 content here...&lt;/TextBox&gt;
+      &lt;TextBox Padding="10"&gt;tab 3 content here...&lt;/TextBox&gt;
    &lt;/TabItem&gt;
    &lt;TabItem Header="Tab 4" Margin="0" Padding="10,5"&gt;
-       &lt;TextBox Padding="10"&gt;tab 4 content here...&lt;/TextBox&gt;
+      &lt;TextBox Padding="10"&gt;tab 4 content here...&lt;/TextBox&gt;
    &lt;/TabItem&gt;
 &lt;/TabControl&gt;</code></pre>
       <figure>

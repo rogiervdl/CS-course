@@ -93,12 +93,8 @@
          </figure>
          <div class="youtube_toc">
             <ul>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8">0:00 intro</a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=30">0:30 gebruikte namespaces</a>
-               </li>
+               <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8">0:00 intro</a></li>
+               <li><a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=30">0:30 gebruikte namespaces</a></li>
                <li>
                   <a href="https://www.youtube.com/watch?v=j-ECPszC8x8&t=187">3:07 demo: inlezen tekstbestand en regels weergeven in ListBox</a>
                   <ul>
@@ -425,10 +421,10 @@ string filePath = System.IO.Path.Combine(folderPath, "mycontacts.txt");
 
 // open stream and start reading
 using (StreamReader reader = File.OpenText(filePath)) {
-    string line;
-    while ((line = reader.ReadLine()) != null) {
-        if (line.Contains("jennifer")) foundLines.Add(line);
-    }
+   string line;
+   while ((line = reader.ReadLine()) != null) {
+      if (line.Contains("jennifer")) foundLines.Add(line);
+   }
 } // stream closes automatically
 </code></pre>
          <p><code>StreamWriter</code> voorbeeld:</p>
@@ -438,8 +434,8 @@ string filePath = System.IO.Path.Combine(folderPath, "myfile.txt");
 
 // open stream and start writing
 using (StreamWriter writer = File.CreateText(filePath)) {
-    writer.WriteLine("Dit is lijn 1");
-    writer.WriteLine("Dit is lijn 2");
+   writer.WriteLine("Dit is lijn 1");
+   writer.WriteLine("Dit is lijn 2");
 } // stream closes automatically
 </code></pre>
          <p>In praktijk zul je streamend lezen of schrijven in deze cursus nooit nodig hebben.</p>
@@ -514,7 +510,7 @@ using (StreamWriter writer = File.CreateText(filePath)) {
 string[] files = Directory.GetFiles(desktop); // lijst van bestanden (volledig pad)
 foreach (string file in files)
 {
-    Console.WriteLine(new FileInfo(file).Name); // geef enkel de namen weer
+   Console.WriteLine(new FileInfo(file).Name); // geef enkel de namen weer
 }</code></pre>
       <h4>Controleren of een map bestaat</h4>
       <pre><code>string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

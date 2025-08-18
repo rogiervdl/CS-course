@@ -469,8 +469,8 @@ Console.WriteLine(getallen.Count); // Count property</code></pre>
 
 for (int i = 0; i &lt; namen.Count; i++)
 {
-    string naam = namen[i];
-    Console.WriteLine($"{i + 1}. {naam}");
+   string naam = namen[i];
+   Console.WriteLine($"{i + 1}. {naam}");
 }
 </code></pre>
       <figure class="console">
@@ -486,7 +486,7 @@ for (int i = 0; i &lt; namen.Count; i++)
 
 foreach (string naam in namen)
 {
-    Console.WriteLine(naam);
+   Console.WriteLine(naam);
 }
 </code></pre>
       <figure class="console">
@@ -503,11 +503,11 @@ Chun</pre>
 bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
 if (gevonden)
 {
-    Console.WriteLine("Het element komt wel in de lijst voor");
+   Console.WriteLine("Het element komt wel in de lijst voor");
 }
 else
 {
-    Console.WriteLine("Het element komt niet in de lijst voor.");
+   Console.WriteLine("Het element komt niet in de lijst voor.");
 }
 </code></pre>
       <figure class="console">
@@ -521,7 +521,7 @@ else
 getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
 foreach (int getal in getallen)
 {
-    Console.WriteLine(getal);
+   Console.WriteLine(getal);
 }
 </code></pre>
       <figure class="console">
@@ -700,7 +700,7 @@ Console.WriteLine($"Dictionary 1 bevat key \"noot\": {(dict1.Keys.Contains("noot
 Console.WriteLine($"Dictionary 1 bevat waarde 3: {(dict1.Values.Contains(3) ? "ja" : "nee")}"); // controleer of value bestaat
 foreach (KeyValuePair&lt;string, int&gt; item in dict1)
 {
-    Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+   Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
 }
 </code></pre>
          <figure class="console">
@@ -1206,28 +1206,28 @@ Custom date format 2: 25/11/2024 03:18:21</pre>
 private int count = 0;
 public MainWindow()
 {
-    InitializeComponent();
-    timer.Interval = TimeSpan.FromMilliseconds(1000);
-    timer.Tick += Timer_Tick;
+   InitializeComponent();
+   timer.Interval = TimeSpan.FromMilliseconds(1000);
+   timer.Tick += Timer_Tick;
 }
 private void Timer_Tick(object sender, EventArgs e)
 {
-    count++;
-    txtCount.Text = count.ToString();
+   count++;
+   txtCount.Text = count.ToString();
 }
 
 private void BtnStart_Click(object sender, RoutedEventArgs e)
 {
-    timer.Start();
-    btnStart.IsEnabled = false;
-    btnStop.IsEnabled = true;
+   timer.Start();
+   btnStart.IsEnabled = false;
+   btnStop.IsEnabled = true;
 }
 
 private void BtnStop_Click(object sender, RoutedEventArgs e)
 {
-    timer.Stop();
-    btnStart.IsEnabled = true;
-    btnStop.IsEnabled = false;
+   timer.Stop();
+   btnStart.IsEnabled = true;
+   btnStop.IsEnabled = false;
 }
 </code></pre>
          <figure>
@@ -1303,9 +1303,9 @@ Console.log($"Pad naar mijn desktop: {pathToDesktop}");</code></pre>
 
 // Define the query expression.
 int[] scoresAbove80 =
-    (from score in scores
-    where score &gt; 80
-    select score).ToArray();
+   (from score in scores
+   where score &gt; 80
+   select score).ToArray();
 
 // Execute the query.
 Console.Write(string.Join(", ", scoresAbove80));
@@ -1631,7 +1631,7 @@ wmPlayer.settings.mute = true; // muten
 );
 if (result == MessageBoxResult.OK)
 {
-    Environment.Exit(0);
+   Environment.Exit(0);
 }
 </code></pre>
       <figure>
@@ -1749,25 +1749,25 @@ Timer is gestopt. De verstreken tijd is 2.47s</pre>
 </code></pre>
       <pre><code>private Stopwatch watch = new Stopwatch();
 public MainWindow() {
-    InitializeComponent();
+   InitializeComponent();
 }
 private void SetButtonStates() {
-    btnStart.IsEnabled = !watch.IsRunning;
-    btnLap.IsEnabled = watch.IsRunning;
-    btnStop.IsEnabled = watch.IsRunning;
+   btnStart.IsEnabled = !watch.IsRunning;
+   btnLap.IsEnabled = watch.IsRunning;
+   btnStop.IsEnabled = watch.IsRunning;
 }
 private void BtnStart_Click(object sender, RoutedEventArgs e) {
-    watch.Start();
-    SetButtonStates();
+   watch.Start();
+   SetButtonStates();
 }
 private void BtnLap_Click(object sender, RoutedEventArgs e) {
-    TimeSpan elapsed = watch.Elapsed;
-    lbxLaps.Items.Add(new ListBoxItem() { Content = elapsed.ToString() });
-    SetButtonStates();
+   TimeSpan elapsed = watch.Elapsed;
+   lbxLaps.Items.Add(new ListBoxItem() { Content = elapsed.ToString() });
+   SetButtonStates();
 }
 private void BtnStop_Click(object sender, RoutedEventArgs e) {
-    watch.Stop();
-    SetButtonStates();
+   watch.Stop();
+   SetButtonStates();
 }
 private void BtnReset_Click(object sender, RoutedEventArgs e) {
    lbxLaps.Items.Clear();

@@ -1068,13 +1068,13 @@ class BevoorrechteKlant : Klant
       <div class="precontainer">
          <pre><code>class Persoon
 {
-    ...
+   ...
 
-    // niet abstract of virtual
-    public void GeefBeschrijving()
-    {
-        Console.WriteLine("ik ben een persoon");
-    }
+   // niet abstract of virtual
+   public void GeefBeschrijving()
+   {
+      Console.WriteLine("ik ben een persoon");
+   }
 }
 </code></pre>
          <div class="codemarker" data-text="public void"></div>
@@ -1082,13 +1082,13 @@ class BevoorrechteKlant : Klant
       <div class="precontainer">
          <pre><code>class Klant : Persoon
 {
-    ...
+   ...
 
-    // toch overschreven met new
-    public new void GeefBeschrijving()
-    {
-        Console.WriteLine("ik ben een klant");
-    }
+   // toch overschreven met new
+   public new void GeefBeschrijving()
+   {
+      Console.WriteLine("ik ben een klant");
+   }
 }
 </code></pre>
          <div class="codemarker" data-text="public new void"></div>
@@ -1113,7 +1113,7 @@ personen.Add(new Werknemer());
 personen.Add(new Klant());
 foreach (Persoon p in personen)
 {
-    p.GeefBeschrijving();
+   p.GeefBeschrijving();
 }
 </code></pre>
             </div>
