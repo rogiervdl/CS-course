@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>Console | C# cursus</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="common/styles.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="prism prism-vslight language-cs showpro" id="top">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox">
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="01_basis.html" class="main__thumb active">
+         <p class="thumb__title">01. basis</p>
+         <img class="thumb__visual" src="img/01_basis/icon.png" alt="">
+      </a>
+      <a href="02_variabelen.html" class="main__thumb">
+         <p class="thumb__title">02. variabelen</p>
+         <img class="thumb__visual" src="img/02_variabelen/icon.jpg" alt="">
+      </a>
+      <a href="03_selecties.html" class="main__thumb">
+         <p class="thumb__title">03. selecties</p>
+         <img class="thumb__visual" src="img/03_selecties/icon.jpg" alt="">
+      </a>
+      <a href="04_iteraties.html" class="main__thumb">
+         <p class="thumb__title">04. iteraties</p>
+         <img class="thumb__visual" src="img/04_iteraties/icon.jpg" alt="">
+      </a>
+      <a href="05_methodes.html" class="main__thumb">
+         <p class="thumb__title">05. methodes</p>
+         <img class="thumb__visual" src="img/05_methodes/icon.jpg" alt="">
+      </a>
+      <a href="06_arrays.html" class="main__thumb">
+         <p class="thumb__title">06. arrays</p>
+         <img class="thumb__visual" src="img/06_arrays/icon.jpg" alt="">
+      </a>
+      <a href="07_wpf.html" class="main__thumb">
+         <p class="thumb__title">07. WPF</p>
+         <img class="thumb__visual" src="img/07_wpf/icon.png" alt="">
+      </a>
+      <a href="08_layout.html" class="main__thumb pro">
+         <p class="thumb__title">08. layout</p>
+         <img class="thumb__visual" src="img/08_layout/icon2.png" alt="">
+      </a>
+      <a href="09_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">09. bestanden</p>
+         <img class="thumb__visual" src="img/09_bestanden/icon.png" alt="">
+      </a>
+      <a href="10_classes.html" class="main__thumb pro">
+         <p class="thumb__title">10. classes</p>
+         <img class="thumb__visual" src="img/10_classes/icon.png" alt="">
+      </a>
+      <a href="11_static_enum.html" class="main__thumb pro">
+         <p class="thumb__title">11. static en enum</p>
+         <img class="thumb__visual" src="img/11_static_enum/icon.png" alt="">
+      </a>
+      <a href="12_overerving.html" class="main__thumb pro">
+         <p class="thumb__title">12. overerving</p>
+         <img class="thumb__visual" src="img/12_overerving/icon.jpg" alt="">
+      </a>
+      <a href="13_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">13. databanken</p>
+         <img class="thumb__visual" src="img/13_databanken/icon.png" alt="">
+      </a>
+      <a href="A_dotnet.html" class="main__thumb">
+         <p class="thumb__title">appendix: .NET</p>
+         <img class="thumb__visual" src="img/A_dotnet/icon.png" alt="">
+      </a>
+      <a href="B_oo_samenvatting.html" class="main__thumb pro">
+         <p class="thumb__title">appendix: OO<br>samenvatting</p>
+         <img class="thumb__visual" src="img/B_oo_samenvatting/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>01. basis</h1>
+   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
+   <div id="toc"></div>
+   <main>
+
+      <h2>Programmeren in Notepad++</h2>
+      <p>Over wat programmeren is, en hoe je praktisch C# consoleprogramma's maakt in Notepad++ lees je in <a href="https://rogiervdl.github.io/DEVENV-course/05_npp.html">https://rogiervdl.github.io/DEVENV-course/05_npp.html</a></p>
+
+      <h2>Console</h2>
+      <p>Met de klasse <code>Console</code> is het mogelijk om tekst naar de console te schrijven en invoer van de gebruiker uit de console uit te lezen (basis I/O).</p>
+
+      <h3>Waarde schrijven</h3>
+      <h4>op één regel</h4>
+      <pre><code>Console.Write("a");
+Console.Write("b");
+Console.Write("c");</code></pre>
+      <figure class="console">
+         <pre>
+abc</pre>
+         <figcaption>Write(): schrijf en blijf op dezelfde regel</figcaption>
+      </figure>
+      <h4>op aparte regels</h4>
+      <pre><code>Console.WriteLine("a");
+Console.WriteLine("b");
+Console.WriteLine("c");</code></pre>
+      <figure class="console">
+         <pre>
+a
+b
+c</pre>
+         <figcaption>WriteLine(): schrijf en ga naar de volgende regel</figcaption>
+      </figure>
+      <h3>Waarde inlezen</h3>
+      <h4>Tekst inlezen</h4>
+      <pre><code>Console.Write("Voer je naam in: "); // vraag om de naam van de gebruiker (blijf op zelfde lijn)
+string naam = Console.ReadLine();   // lees de naam in en sla deze op in een variabele
+
+Console.WriteLine($"Hallo, {naam}"); // schrijf een boodschap naar de console</code></pre>
+      <figure>
+         <img src="img/A_dotnet/console-lezen.gif" alt="regel inlezen en weergeven" class="w-250">
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>Getal inlezen</h4>
+      <p>Console.ReadLine() geeft altijd een tekst terug; als je een getal wil, moet je het converteren met <code>Convert.ToInt32()</code> (gehele getallen) of <code>Convert.ToDouble()</code> (kommagetallen):</p>
+      <pre><code>Console.Write("Geef een aantal in: ");
+int aantal = Convert.ToInt32(Console.ReadLine());   // zet de tekst om naar een geheel getal met Convert.ToInt32()
+Console.Write("Geef een prijs in: ");
+double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToInt32()</code></pre>
+      <h4>Karakter inlezen</h4>
+      <h5>met weergave</h5>
+      <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
+char keuze = Console.ReadKey().KeyChar;
+Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
+      <figure>
+         <img src="img/A_dotnet/console-readkey1.gif" alt="" class="w-250">
+         <figcaption>resultaat in de console: het ingetikte karakter wordt weergegeven</figcaption>
+      </figure>
+      <h5>zonder weergave</h5>
+      <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
+char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet weergegeven in console
+Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
+      <figure>
+         <img src="img/A_dotnet/console-readkey2.gif" alt="" class="w-250">
+         <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
+      </figure>
+      <p>Soms wordt dit ook gebruikt om met het vervolg van het programma te wachten tot de gebruiker een toets indrukt:</p>
+      <pre><code>Console.WriteLine("druk een toets om verder te gaan...");
+Console.ReadKey(true); </code></pre>
+      <h3>Tekstkleuren</h3>
+      <p>Met de properties <code>ForegroundColor</code> en <code>BackgroundColor</code> kan je de tekstkleur, respectievelijk de achtergrondkleur van de uitvoer in de console instellen.</p>
+      <pre><code>Console.ForegroundColor = ConsoleColor.Red; // rode tekstkleur
+Console.BackgroundColor = ConsoleColor.White; // witte achtergrond
+
+Console.WriteLine("Hello, World!");</code></pre>
+      <figure>
+         <img src="img/A_dotnet/console-kleuren.png" alt="uitvoer console kleuren" class="w-250">
+         <figcaption>resultaat console kleuren</figcaption>
+      </figure>
+      <p>Om opnieuw de oorspronkelijke tekst- en achtergrondkleur in te stellen, maak je gebruik van de methode <code>ResetColor()</code>:</p>
+      <pre><code>Console.ResetColor();</code></pre>
+      <h3>Console wissen</h3>
+      <p>Om het console-venster leeg te maken, maak je gebruik van de <code>Clear()</code>-methode:</p>
+      <pre><code>Console.Clear(); // wis de inhoud van het console-venster</code></pre>
+      <h3>UTF-8 karakters</h3>
+      <p>Standaard kan je in de console alleen de eerste 127 ASCII karakters gebruiken (zie b.v. <a href="https://www.asciitable.com/">asciitable.com</a> ). Andere karakters worden fout weergegeven:</p>
+      <pre><code>Console.WriteLine("A 1 +"); // gewone ASCII karakters worden correct weergegeven
+Console.WriteLine("∑ → ◈"); // andere karakters worden fout weergegeven</code></pre>
+      <figure class="console">
+         <pre>
+A 1 +
+S ⸮ ?</pre>
+         <figcaption>speciale karakters worden fout weergegeven</figcaption>
+      </figure>
+      <p>Om speciale karakters correct weer te geven, moet je <code>Console.OutputEncoding</code> instellen:</p>
+      <pre><code>Console.OutputEncoding = Encoding.UTF8; // stel utf-8 karakterset in
+Console.WriteLine("A 1 +");
+Console.WriteLine("∑ → ◈"); // andere karakters worden nu ook correct weergegeven</code></pre>
+      <figure class="console">
+         <pre>
+A 1 +
+∑ → ◈</pre>
+         <figcaption>speciale karakters worden nu correct weergegeven</figcaption>
+      </figure>
+      <p>Merk op: zelfs dan kunnen karakters soms verkeerd of anders weergegeven worden, afhankelijk van de beschikbare lettertypes, en zeker bij emoji's. </p>
+      <pre><code>Console.OutputEncoding = Encoding.UTF8;
+Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
+      <figure class="console">
+         <img src="img/A_dotnet/console-emojis.png" alt="" class="w-350">
+         <figcaption>emoji's worden soms anders of verkeerd weergegeven</figcaption>
+      </figure>
+      <h3>Samenvatting properties en methodes</h3>
+      <p>Overzicht van alle properties en methodes gebruikt in dit hoofdstuk:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>BackgroundColor</code></td>
+               <td>De achtergrondkleur die achter de tekst in de console wordt weergegeven</td>
+            </tr>
+            <tr>
+               <td><code>ForegroundColor</code></td>
+               <td>De tekstkleur voor het weergeven van tekst in de console</td>
+            </tr>
+            <tr>
+               <td><code>OutputEncoding</code></td>
+               <td>Het karakterset gebruikt in de console</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Clear()</code></td>
+               <td>Wist de inhoud van het console-venster</td>
+            </tr>
+            <tr>
+               <td><code>Read()</code></td>
+               <td>Lees één karakter uit, uit de console</td>
+            </tr>
+            <tr>
+               <td><code>ReadKey()</code></td>
+               <td>Leest één karakter uit, uit de console. Biedt de mogelijkheid om de ingetypte toets niet weer te geven</td>
+            </tr>
+            <tr>
+               <td><code>ReadLine()</code></td>
+               <td>Leest een volledige regel uit, uit de console</td>
+            </tr>
+            <tr>
+               <td><code>ResetColor()</code></td>
+               <td>Herstelt de voor- en achtergrondkleur naar de oorspronkelijke kleuren</td>
+            </tr>
+            <tr>
+               <td><code>Write()</code></td>
+               <td>Schrijft de waarde naar de console</td>
+            </tr>
+            <tr>
+               <td><code>WriteLine()</code></td>
+               <td>Schrijft de waarde naar de console en eindigt de regel met een newline-karakter</td>
+            </tr>
+         </tbody>
+      </table>
+
+      <h2>Strings</h2>
+      <p>
+         Een <mark>string</mark> is een <strong>datatype</strong> dat een reeks van karakters (letters, cijfers, ...) kan bevatten.
+         String's worden altijd tussen <strong>dubbele quotes</strong> geplaatst.
+      </p>
+      <pre><code>string boodschap = "Hello, World!";
+Console.WriteLine(boodschap);</code></pre>
+      <figure class="console">
+         <pre>Hello, World!</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Karakters escapen</h3>
+      <p>De volgende karakters moeten ge-escaped worden d.m.v. een backslash (<code>\</code>):</p>
+      <ul>
+         <li>dubbele quote (<code>&quot;</code>)</li>
+         <li>backslash (<code>\</code>)</li>
+      </ul>
+      <pre><code>Console.WriteLine("Simon says: \"jump\"");
+Console.WriteLine("C:\\users\\john.doe\\documents");</code></pre>
+      <figure class="console">
+         <pre>Simon says: &quot;jump&quot;
+C:\users\john.doe\documents</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Concatenatie</h3>
+      <p>Om meerdere strings samen te voegen tot één string (<em>concatenatie</em>), maak je gebruik van de
+         <code>+</code>-operator:
+      </p>
+      <pre><code>// voorbeeld 1
+string begroeting = "Hallo, ";
+string naam = "John";
+
+string boodschap = begroeting + naam;
+Console.WriteLine(boodschap);
+
+// voorbeeld 2
+Console.WriteLine("Mijn naam is: " + naam);</code></pre>
+      <figure class="console">
+         <pre>Hallo, John
+Mijn naam is: John</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Newlines</h3>
+      <p>Je kunt op twee manieren het begin van een nieuwe regel markeren:</p>
+      <ol>
+         <li>met behulp van het <code>\n</code>-karakter</li>
+         <li>met <code>Environment.NewLine</code> (aanbevolen)</li>
+      </ol>
+      <pre><code>Console.WriteLine("Regel 1\nRegel 2"); // optie 1
+Console.WriteLine($"Regel 1{Environment.NewLine}Regel 2"); // optie 2</code></pre>
+      <figure class="console">
+         <pre>Regel 1
+Regel 2
+Regel 1
+Regel 2</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>De notatie met <code>Environment.NewLine</code> krijgt de voorkeur, omdat op sommige besturingssystemen <code>\r\n</code> verwacht wordt in plaats van <code>\n</code>.
+      </p>
+      <h3>Multiline strings</h3>
+      <p>Om een string over meerdere regels te spreiden, kan je gebruik maken van <em>multiline strings</em>. Om een multiline string te maken, zet je een <code>@</code>-karakter vóór de openings-quote:</p>
+      <pre><code>Console.WriteLine(@"Regel 1
+Regel 2
+Regel 3");
+</code></pre>
+      <figure class="console">
+         <pre>Regel 1
+Regel 2
+Regel 3</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <div class="tips" data-caption="☝️ESCAPES IN MULTILINE STRINGS">
+         <p>Multiline strings hebben aparte regels voor escapes: <code>\</code>-karakters hoef <strong>niet</strong> te escapen, en een dubbele quote (<code>&quot;</code>) moet je <strong>verdubbelen</strong>:</p>
+         <pre><code>Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
+Console.WriteLine(@"Simon says: ""jump!"""); // quotes verdubbelen</code></pre>
+         <p>Als je dat allemaal wat veel vindt om te onthouden, vermijd dan multiline strings als je karakters moet escapen.</p>
+      </div>
+
+      <h3>String interpolatie</h3>
+      <p>Via string-interpolatie kan je eenvoudig strings samenstellen. Dit kan op twee verschillende manieren:</p>
+      <pre><code>string naam = "John";
+int leeftijd = 35;
+
+Console.WriteLine("Mijn naam is " + naam + ", ik ben " + leeftijd + " jaar oud."); // zonder interpolatie
+Console.WriteLine("Mijn naam is {0}, ik ben {1} jaar oud.", naam, leeftijd); // interpolatie met parameters
+Console.WriteLine($"Mijn naam is {naam}, ik ben {leeftijd} jaar oud."); // interpolatie met $ &rarr; gebruik bij voorkeur deze notatie</code></pre>
+      <figure class="console">
+         <pre>Mijn naam is John, ik ben 35 jaar oud.
+Mijn naam is John, ik ben 35 jaar oud.
+Mijn naam is John, ik ben 35 jaar oud.</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Je kan niet alleen variabelen, maar ook expressies interpoleren, b.v.:</p>
+      <pre><code>int getal = 17;
+
+Console.WriteLine($"Het getal {getal} is {(getal % 2 == 0 ? "even" : "oneven")}."); // let op: expressie moet tussen haakjes () staan</code></pre>
+      <figure class="console">
+         <pre>Het getal 17 is oneven.</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Je kan $ interpolatie tenslotte combineren met @ multiline:</p>
+      <pre><code>string name = "Bozo";
+int year = 2024;
+string header = $@"******************************
+** {name} for president in {year}
+******************************";
+Console.WriteLine(header);
+</code></pre>
+      <figure class="console">
+         <pre>******************************
+** Bozo for president in 2024
+******************************</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+      <h3>Properties en methodes</h3>
+      <p>.NET biedt een aantal extra properties en methodes die je kan gebruiken op strings via de <code>String</code> wrapper class, zie <a href="A_dotnet.html#string">appendix: .NET - String klasse</a></p>
+
+      <!-- COMMENTAAR -->
+      <h2>Commentaar</h2>
+
+      <p>Met commentaar voeg je extra informatie toe aan je code. Commentaar is vrije tekst die niet uitgevoerd wordt.</p>
+
+      <h3>Commentaar op één regel</h3>
+      <pre><code>// Eerste regel
+// Tweede regel
+</code></pre>
+      <h3>Commentaar over meerdere regels</h3>
+      <pre><code>/* Eerste regel
+   Tweede regel */
+</code></pre>
+      <h3>Vuistregels voor goede commentaar</h3>
+      <p>Enkele tips/vuistregels voor een zo leesbare commentaar:</p>
+      <ul>
+         <li>voeg commentaar pas toe als je programma zo goed als af is, zo vermijd je nodeloos werk</li>
+         <li>grote blokken als methodes voorzie je bovenaan van een commentaarblok</li>
+         <li>verdeel de coderegels in stukken van telkens een paar regels, en zet bovenaan <em>elk stuk</em> commentaar in één regel (sla niks over)</li>
+         <li>scheid stukken telkens met één blanco regel</li>
+      </ul>
+
+      <pre><code>/// &lt;summary&gt;
+/// Theorie hoofdstuk 03 – commentaar voorbeeld
+/// Auteur: Rogier van der Linde
+/// &lt;/summary&gt;
+static void Main(string[] args)
+{
+   // vraag een antwoord
+   Console.Write("Geef een geheel getal: ");
+   string antwoord = Console.ReadLine();
+
+   // converteer naar getal
+   int getal1 = Convert.ToInt32(antwoord);
+
+   // resultaat teruggeven
+   Console.WriteLine($"Het kwadraat is: {getal1 * getal1}");
+   Console.ReadLine();
+}
+</code></pre>
+
+
+   </main>
+   <footer>
+      <img src="common/img/thats-all.jpg" alt="">
+      <div class="footer__bottom">
+         <p>@2024, Rogier van der Linde</p>
+         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
+      </div>
+   </footer>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <!-- scripts -->
+   <script src="common/vendor/prism/prism.js"></script>
+   <script src="common/vendor/hystmodal/hystmodal.min.js"></script>
+   <script src="common/js/mode.js"></script>
+   <script src="common/js/scripts.js"></script>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7JWZ9HHW0');
+   </script>
+</body>
+
+</html>
