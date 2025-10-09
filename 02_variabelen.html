@@ -132,7 +132,7 @@
       <p>Een <em>declaratie</em> is een nieuwe variabele aanmaken met een naam.</p>
       <pre><code>string halloTekst; // tekst
 int leeftijd; // geheel getal
-float leeftijd; // kommagetal
+double leeftijd; // kommagetal
 char teken; // karakter
 bool isCorrectAntwoord; // ja of nee
 </code></pre>
@@ -172,6 +172,30 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
                <td><code>bool gevonden = false;</code></td>
             </tr>
             <tr>
+               <td><code>double</code> *</td>
+               <td>kommagetallen (15-16 tekens) (pos/neg)</td>
+               <td><code>0.0D</code></td>
+               <td><code>double area = 12.3D; // of gewoon 12.3</code></td>
+            </tr>
+            <tr>
+               <td><code>decimal</code> *</td>
+               <td>voor geldbedragen, hogere precisie (28-29 tekens)</td>
+               <td><code>0.0M</code></td>
+               <td><code>decimal price = 12.99M;</code></td>
+            </tr>
+            <tr>
+               <td><code>string</code> *</td>
+               <td>tekenreeks (tekst)</td>
+               <td><code>null</code></td>
+               <td><code>string auto = &quot;Honda&quot;;</code></td>
+            </tr>
+            <tr>
+               <td><code>char</code> *</td>
+               <td>één teken (letter, cijfer, leesteken, ...)</td>
+               <td><code>'\0'</code> (nul)</td>
+               <td><code>char geslacht = 'V';</code></td>
+            </tr>
+            <tr>
                <td><code>byte</code></td>
                <td>gehele getallen (8 bits, 0 tot 255)</td>
                <td><code>0</code></td>
@@ -194,30 +218,6 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
                <td>kommagetallen (6-7 tekens) (pos/neg)</td>
                <td><code>0.0F</code></td>
                <td><code>float price = 2.95F;</code></td>
-            </tr>
-            <tr>
-               <td><code>double</code> *</td>
-               <td>kommagetallen (15-16 tekens) (pos/neg)</td>
-               <td><code>0.0D</code></td>
-               <td><code>double area = 12.3D; // of gewoon 12.3</code></td>
-            </tr>
-            <tr>
-               <td><code>decimal</code></td>
-               <td>voor geldbedragen, hogere precisie (28-29 tekens)</td>
-               <td><code>0.0M</code></td>
-               <td><code>decimal price = 12.99M;</code></td>
-            </tr>
-            <tr>
-               <td><code>string</code> *</td>
-               <td>tekenreeks (tekst)</td>
-               <td><code>null</code></td>
-               <td><code>string auto = &quot;Honda&quot;;</code></td>
-            </tr>
-            <tr>
-               <td><code>char</code> *</td>
-               <td>één teken (letter, cijfer, leesteken, ...)</td>
-               <td><code>'\0'</code> (nul)</td>
-               <td><code>char geslacht = 'V';</code></td>
             </tr>
          </tbody>
       </table>
