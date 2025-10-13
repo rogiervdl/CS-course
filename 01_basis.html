@@ -348,9 +348,11 @@ Mijn naam is John, ik ben 35 jaar oud.</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <p>Je kan niet alleen variabelen, maar ook expressies interpoleren, b.v.:</p>
-      <pre><code>int getal = 17;
+      <pre><code>int getal1 = 17;
+int getal2 = 9;
 
-Console.WriteLine($"Het getal {getal} is {(getal % 2 == 0 ? "even" : "oneven")}."); // let op: expressie moet tussen haakjes () staan</code></pre>
+Console.WriteLine($"De som van {getal1} en {getal2} is {getal1 + getal2}."); 
+Console.WriteLine($"Het getal {getal1} is {(getal1 % 2 == 0 ? "even" : "oneven")}."); // let op: bij gebruik quotes gebruik extra haakjes ()</code></pre>
       <figure class="console">
          <pre>Het getal 17 is oneven.</pre>
          <figcaption>resultaat in de console</figcaption>
