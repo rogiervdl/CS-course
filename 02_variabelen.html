@@ -244,41 +244,44 @@ halloTekst = "Hallo Iedereen!"; // toewijzing: variabele krijgt (nieuwe) waarde<
                <td><code>&euro; 12,34</code></td>
             </tr>
             <tr>
-               <td><code>F1</code></td>
-               <td>&ldquo;fixed&rdquo;, één cijfer na de komma</td>
-               <td><code>12,3</code></td>
-            </tr>
-            <tr>
-               <td><code>F2</code></td>
-               <td>twee cijfers na de komma</td>
+               <td><code>F</code></td>
+               <td>&ldquo;fixed&rdquo;, 2 cijfers na de komma</td>
                <td><code>12,34</code></td>
             </tr>
             <tr>
                <td><code>P</code></td>
-               <td>weergave als percentage met 2 cijfers na de komma</td>
+               <td>&ldquo;percentage&rdquo;, 2 cijfers na de komma</td>
                <td><code>1.234,57%</code></td>
+            </tr>
+            <tr>
+               <td><code>C0</code>, <code>C1</code>..., <code>F0</code>, <code>F1</code>..., <code>P0</code>, <code>P1</code>..., </td>
+               <td>weergave met 0, 1... cijfers na de komma</td>
+               <td><code>1.234%</code></td>
             </tr>
          </tbody>
       </table>
       <p>Je kan ze gebruiken als argument in <code>ToString()</code>:</p>
-      <pre><code>double getal = 12.3456789;
-Console.WriteLine($"één cijfer na de komma: {getal.ToString("F1")}");
-Console.WriteLine($"twee cijfers na de komma: {getal.ToString("F2")}");
-Console.WriteLine($"als percentage (x100): {getal.ToString("P")}");
-Console.WriteLine($"als bedrag: {getal.ToString("C")}");
+      <pre><code>double getal = 1.3456789;
+Console.WriteLine($"(F1) fixed, één cijfer na de komma: {getal.ToString("F1")}");
+Console.WriteLine($"(F2) fixed, twee cijfers na de komma: {getal.ToString("F2")} // of gewoon F");
+Console.WriteLine($"(P0) percentage, geen cijfers na de komma: {getal.ToString("P0")}");
+Console.WriteLine($"(C1) currency, één cijfer na de komma: {getal.ToString("C1")}"); 
+Console.WriteLine($"(C2) currency, twee cijfers na de komma: {getal.ToString("C2")} // of gewoon C");
 </code></pre>
       <p>Ook rechtstreeks in string interpolatie kan:</p>
-      <pre><code>double getal = 12.3456789;
-Console.WriteLine($"één cijfer na de komma: {getal:F1}");
-Console.WriteLine($"twee cijfers na de komma: {getal:F2}");
-Console.WriteLine($"als percentage (x100): {getal:P}");
-Console.WriteLine($"als bedrag: {getal:C}");
+      <pre><code>double getal = 1.3456789;
+Console.WriteLine($"(F1) fixed, één cijfer na de komma: {getal:F1}");
+Console.WriteLine($"(F2) fixed, twee cijfers na de komma: {getal:F2} // of gewoon F");
+Console.WriteLine($"(P0) percentage, geen cijfers na de komma: {getal:P0}");
+Console.WriteLine($"(C1) currency, één cijfer na de komma: {getal:C1}"); 
+Console.WriteLine($"(C2) currency, twee cijfers na de komma: {getal:C2} // of gewoon C");
 </code></pre>
       <figure class="console">
-         <pre>één cijfer na de komma: 12,3
-twee cijfers na de komma: 12,35
-als percentage (x100): 1.234,50%
-als bedrag: € 12,35</pre>
+         <pre class="w-500">(F1) fixed, één cijfer na de komma: 1,3
+(F2) fixed, twee cijfers na de komma: 1,35 // of gewoon F
+(P0) percentage, geen cijfers na de komma: 135%
+(C1) currency, één cijfer na de komma: € 1,3
+(C2) currency, twee cijfers na de komma: € 1,35 // of gewoon C</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <div class="tips" data-caption="💡TIP">
