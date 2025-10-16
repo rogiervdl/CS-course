@@ -378,6 +378,31 @@ Console.WriteLine(" is een hatelijke dag");</code></pre>
          <pre>donderdag is een hatelijke dag</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+		<p>Zonder <code>break</code> zal het springen naar de volgende <code>case</code>:</p>
+      <pre><code>int dagNummer = 4;
+
+switch (dagNummer)
+{
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        Console.WriteLine($"Dag {dagNummer} is een weekdag.");
+        break;
+    case 6:
+    case 7:
+        Console.WriteLine($"Dag {dagNummer} is een weekenddag.");
+        break;
+
+    default:
+        Console.WriteLine($"{dagNummer} is onngeldig!");
+        break;
+}</code></pre>
+      <figure class="console">
+         <pre>dag 4 is een weekdag.</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
 
 
       <h2>Ternaire operator</h2>
