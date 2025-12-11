@@ -451,6 +451,11 @@ body main .w-1200 {
 	overflow-y: auto;
 }
 
+.h-250 {
+	height: 250px;
+	overflow-y: auto;
+}
+
 .h-300 {
 	height: 300px;
 	overflow-y: auto;

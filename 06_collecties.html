@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<!-- [html-validate-disable no-trailing-whitespace] -->
+<html lang="nl">
+
+<head>
+   <title>C# collecties | C# cursus</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="common/styles.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="prism prism-vslight language-cs showpro" id="top">
+   <div id="mode">
+      <span>n00b</span>
+      <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+      </label>
+      <span>pro</span>
+   </div>
+   <nav class="site__nav">
+      <a href="01_basis.html" class="main__thumb">
+         <p class="thumb__title">01. basis</p>
+         <img class="thumb__visual" src="img/01_basis/icon.png" alt="">
+      </a>
+      <a href="02_variabelen.html" class="main__thumb">
+         <p class="thumb__title">02. variabelen</p>
+         <img class="thumb__visual" src="img/02_variabelen/icon.jpg" alt="">
+      </a>
+      <a href="03_selecties.html" class="main__thumb">
+         <p class="thumb__title">03. selecties</p>
+         <img class="thumb__visual" src="img/03_selecties/icon.jpg" alt="">
+      </a>
+      <a href="04_iteraties.html" class="main__thumb">
+         <p class="thumb__title">04. iteraties</p>
+         <img class="thumb__visual" src="img/04_iteraties/icon.jpg" alt="">
+      </a>
+      <a href="05_methodes.html" class="main__thumb">
+         <p class="thumb__title">05. methodes</p>
+         <img class="thumb__visual" src="img/05_methodes/icon.jpg" alt="">
+      </a>
+      <a href="06_collecties.html" class="main__thumb active">
+         <p class="thumb__title">06. collecties</p>
+         <img class="thumb__visual" src="img/06_collecties/icon.jpg" alt="">
+      </a>
+      <a href="07_wpf.html" class="main__thumb">
+         <p class="thumb__title">07. WPF</p>
+         <img class="thumb__visual" src="img/07_wpf/icon.png" alt="">
+      </a>
+      <a href="08_layout.html" class="main__thumb pro">
+         <p class="thumb__title">08. layout</p>
+         <img class="thumb__visual" src="img/08_layout/icon2.png" alt="">
+      </a>
+      <a href="09_bestanden.html" class="main__thumb pro">
+         <p class="thumb__title">09. bestanden</p>
+         <img class="thumb__visual" src="img/09_bestanden/icon.png" alt="">
+      </a>
+      <a href="10_classes.html" class="main__thumb pro">
+         <p class="thumb__title">10. classes</p>
+         <img class="thumb__visual" src="img/10_classes/icon.png" alt="">
+      </a>
+      <a href="11_static_enum.html" class="main__thumb pro">
+         <p class="thumb__title">11. static en enum</p>
+         <img class="thumb__visual" src="img/11_static_enum/icon.png" alt="">
+      </a>
+      <a href="12_overerving.html" class="main__thumb pro">
+         <p class="thumb__title">12. overerving</p>
+         <img class="thumb__visual" src="img/12_overerving/icon.jpg" alt="">
+      </a>
+      <a href="13_databanken.html" class="main__thumb pro">
+         <p class="thumb__title">13. databanken</p>
+         <img class="thumb__visual" src="img/13_databanken/icon.png" alt="">
+      </a>
+      <a href="A_dotnet.html" class="main__thumb">
+         <p class="thumb__title">appendix: .NET</p>
+         <img class="thumb__visual" src="img/A_dotnet/icon.png" alt="">
+      </a>
+      <a href="B_oo_samenvatting.html" class="main__thumb pro">
+         <p class="thumb__title">appendix: OO<br>samenvatting</p>
+         <img class="thumb__visual" src="img/B_oo_samenvatting/icon.png" alt="">
+      </a>
+   </nav>
+   <h1>06. collecties</h1>
+   <p class="othercourses"><small>Dit hoofdstuk is onderdeel van de cursus <a href="https://rogiervdl.github.io/CS-course/">C#</a>. Andere cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a>, <a href="https://rogiervdl.github.io/CSS-course/">CSS</a>, <a href="https://rogiervdl.github.io/JS-course/">Javascript</a>, <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a>.</small></p>
+   <div id="toc"></div>
+   <main>
+
+      <!-- VIDEO -->
+      <h2>Op Youtube</h2>
+      <p>Deze video maakt deel uit van de <a href="https://www.youtube.com/playlist?list=PLYfkd2Gq0ciEi9lCmNbiy8NmcyqGMQd7f">IIP playlist</a> van de <a href="https://www.youtube.com/@rogiervanderlinde1775">Youtube channel</a> van Rogier van der Linde. </p>
+      <p><em>Let op: deze video's zijn al een paar jaar oud, dus hier en daar kunnen kleine afwijkingen voorkomen met deze cursus, die wel altijd up-to-date is. </em></p>
+      <div class="flexcontainer youtubecontainer">
+         <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/mi4zT5SC7Og" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <figure class="print">
+            <a href="https://www.youtube.com/watch?v=mi4zT5SC7Og"><img src="img/06_collecties/youtube-iip-collecties.png" alt="" class="w-500"></a>
+            <figcaption><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og">https://www.youtube.com/watch?v=mi4zT5SC7Og</a></figcaption>
+         </figure>
+         <div class="youtube_toc">
+            <ul>
+               <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og">0:00 wat zijn collecties</a></li>
+               <li>
+                  <a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=91">1:31 soorten collecties</a>
+                  <ul>
+                     <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=121">2:01 de array</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=135">2:15 de list</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=176">2:56 de stack (LIFO)</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=202">3:22 de queue (FIFO)</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og&t=224">3:47 de dictionary</a></li>
+                  </ul>
+               </li>
+               <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og?t=347">5:47 de array in C# (int en string voorbeeld)</a></li>
+               <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og?t=1604">17:44 arrays gebruikt in methodes</a></li>
+               <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og?t=1431">23:51 de List in C# (boodschappenlijstje voorbeeld)</a></li>
+               <li><a href="https://www.youtube.com/watch?v=mi4zT5SC7Og?t=1953">32:33 vergelijking array en List</a>
+               </li>
+            </ul>
+         </div>
+
+      </div>
+
+		<!-- COLLECTIES -->
+      <h2>Soorten collecties</h2>
+      <p>Een <mark>collectie</mark> is een verzameling gegevens van hetzelfde type met één naam. Enkele voorbeelden:
+      </p>
+      <ul>
+         <li>een <code>string</code> is een verzameling <code>char</code>s</li>
+         <li>een <code>album</code> is een verzameling <code>foto</code>’s</li>
+         <li>een <code>namenlijst</code> is een verzameling <code>namen</code></li>
+         <li>een <code>afbeelding</code> is een verzameling <code>pixels</code></li>
+         <li>de <code>reeks van Fibonacci</code> (1, 1, 2, 3, 5, 8…) is een verzameling <code>getallen</code></li>
+         <li>…</li>
+      </ul>
+      <p>
+         Belangrijk: je kan <strong>geen verschillende types mixen</strong> (bv. getallen en teksten) in één collectie!
+      </p>
+
+      <p>Alle klassen (behalve arrays) zitten in de <code>System.Collections.Generic</code> namespace. Om ze te kunnen gebruiken, moet je dus een <code>using</code> toevoegen: </p>
+      <pre><code>using System;
+using System.Collections.Generic;
+...</code></pre>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Klasse</th>
+               <th scope="col">Beschrijving</th>
+               <th scope="col">Te vergelijken met</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Array</td>
+               <td>vaste lengte; wrapper class rond native C# arrays</td>
+               <td>vaste stoelen in een wachtzaal</td>
+            </tr>
+            <tr>
+               <td>List&lt;T&gt;</td>
+               <td>variabele lengte; toevoegen of verwijderen items kan overal</td>
+               <td>platenkast</td>
+            </tr>
+            <tr>
+               <td>Stack&lt;T&gt;</td>
+               <td>variabele lengte, <mark>LIFO</mark> (last in, first out): toevoegen en verwijderen aan einde</td>
+               <td>stapel pannenkoeken</td>
+            </tr>
+            <tr>
+               <td>Queue&lt;T&gt;</td>
+               <td>variabele lengte; <mark>FIFO</mark> (first in, first out): toevoegen aan einde, verwijderen aan begin</td>
+               <td>wachtrij aan de kassa</td>
+            </tr>
+            <tr>
+               <td>Dictionary&lt;TKey, Tvalue&gt;</td>
+               <td>variabele lengte; key-value paren, met unieke keys</td>
+               <td>lockers met unieke naambordjes</td>
+            </tr>
+            <tr>
+               <td>HashSet&lt;T&gt;</td>
+               <td>variabele lengte; lijst unieke waarden</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>SortedDictionary&lt;TKey, Tvalue&gt;</td>
+               <td>variabele lengte; als Dictionary, maar dan automatisch gesorteerd op TKey</td>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      <figure id="figCollections">
+         <div>
+            <img src="img/A_dotnet/collecties_array.jpg" alt="">
+            <img src="img/A_dotnet/collecties_dictionary.jpg" alt="">
+            <img src="img/A_dotnet/collecties_list.jpg" alt="">
+            <img src="img/A_dotnet/collecties_queue.jpg" alt="">
+            <img src="img/A_dotnet/collecties_stack.jpg" alt="">
+         </div>
+         <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
+      </figure>
+		<p>In dit hoofdstuk focussen we op <strong>arrays</strong> en <strong>lijsten</strong>. Maar je moet de eigenschappen van de andere collecties wel kennen voor de theorie.</p>
+
+      <h2>Arrays</h2>
+      <p>
+         Arrays maken deel uit van een breder concept, <strong>collecties</strong> genoemd. .NET biedt verschillende
+         soorten collecties aan als <code>List</code>, <code>Stack</code>, <code>Queue</code> enz... &mdash; zie <a href="A_dotnet.html#collectie-classes">dit overzicht</a>.
+         C# als taal kent maar één soort collectie, de <mark>array</mark>.
+      </p>
+      <p>Een array is een variabele die verwijst naar een genummerde reeks waarden, startend bij index 0:</p>
+      <p>
+         <img src="img/06_collecties/array.png" alt="array" class="w-500">
+      </p>
+      <p>Arrays hebben volgende fundamentele eigenschappen:</p>
+      <ul>
+         <li>het aantal plaatsen is <strong>vast</strong></li>
+         <li>de plaatsen zijn <strong>genummerd vanaf 0</strong></li>
+         <li>alle plaatsen hebben <strong>hetzelfde type</strong> (ofwel <code>int</code>, ofwel <code>string</code>, ofwel <code>boolean</code>...)</li>
+         <li>je kan altijd de waarden instellen of veranderen, de <strong>waarden zijn veranderlijk</strong></li>
+      </ul>
+      <p>Zie ook <a href="A_dotnet.html#array-of-lijst">deze vergelijking met lijsten</a></p>
+      <figure>
+         <img src="img/06_collecties/5-eggs-one-apple-thinking.jpg" class="w-400" alt="">
+         <figcaption><span class="larger">⚠️</span> alle elementen van een array hebben <strong>hetzelfde type</strong></figcaption>
+      </figure>
+      <h3>Declaratie en initialisatie</h3>
+      <p>Voorbeelden:</p>
+      <pre><code>int[] cijfers = new int[6]; // array van 6 ints
+string[] namen = new string[20]; // array van 20 strings
+bool[] weekdagenOpen = new bool[7]; // array van 7 bools
+</code></pre>
+      <p>Je kunt meteen beginwaarden opgeven tussen accolades, gescheiden met komma's:</p>
+      <pre><code>int[] getallen = { 5, 8, 3, 12, 7 };
+double[] kommagetallen = { 1.5, 10.2, 19.85, 3.1415 };
+char[] letters = { 'a', 'b', 'c', 'd' };
+string[] fruit = { "appel", "banaan", "citroen" };
+</code></pre>
+      <h3>Waarden aanpassen</h3>
+      <p>Je kan geen elementen toevoegen of verwijderen in een array; het aantal elementen is vast. Je kan wel de waarde van een element veranderen:</p>
+      <pre><code>int[] getallen = new int[6]; // array van 6 ints, van 0 tot 5
+getallen[0] = -2;  // zet getal -2 op eerste plaats
+getallen[2] = 7;   // zet getal 7 op derde plaats
+getallen[4] = 1;  // zet getal 1 op vijfde plaats
+getallen[5] = 11;  // zet getal 11 op zesde (laatste) plaats
+
+string[] namenlijst = new string[5]; // array van 5 strings, van 0 tot 4
+namenlijst[0] = "Jef";
+namenlijst[1] = "Yasmina";
+namenlijst[4] = "Long";</code></pre>
+      <figure>
+         <img src="img/06_collecties/array-default-int.jpg" class="w-500" alt="">
+         <br><img src="img/06_collecties/array-default-string.jpg" class="w-500" alt="">
+         <figcaption>
+            <span class="larger">⚠️</span> plaatsen worden <strong>genummerd vanaf 0</strong>
+            <br><span class="larger">⚠️</span> type <code>int</code> heeft <strong>standaardwaarde 0</strong>
+            <br><span class="larger">⚠️</span> type <code>string</code> heeft <strong>standaardwaarde <code>null</code></strong>
+         </figcaption>
+      </figure>
+
+      <h3>Gebruiken</h3>
+      <h4>één element opvragen</h4>
+      <p>Je kunt een waarde uitlezen uit een array op basis van de <em>index</em> van dit element (eerste = index 0):</p>
+      <pre><code>string[] kleuren = { "blauw", "groen", "rood", "geel" };
+string eerste = kleuren[0]; // blauw; eerste element heeft index 0
+string tweede = kleuren[1]; // groen; tweede element heeft index 1
+string laatste = kleuren[kleuren.Length - 1]; // geel; manier om laatste element op te vragen</code></pre>
+      <h4>lengte opvragen</h4>
+      <p>Met de lengte wordt het aantal beschikbare plaatsen bedoeld, niet het aantal plaatsen dat effectief een waarde
+         gekregen heeft. Gebruik de <code>Length</code> property:</p>
+      <pre><code>int[] getallen = new int[7]; // array met 7 plaatsen &rarr; lengte is 7
+getallen[0] = 10;
+getallen[2] = 5;
+getallen[5] = 7;
+int lengte = getallen.Length;
+Console.WriteLine($"De lengte van de array is: {lengte}");
+</code></pre>
+      <figure class="console">
+         <pre>De lengte van de array is: 7</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>inlezen met for-loop</h4>
+      <p>Codevoorbeeld voor het inlezen van een array:</p>
+      <div class="precontainer">
+         <pre><code>string[] namen = new string[4];
+for (int i = 0; i &lt; namen.Length; i++) {
+   Console.Write($"Geef naam {i + 1} van {namen.Length}: ");
+   namen[i] = Console.ReadLine();
+}
+Console.WriteLine("Bedankt!");
+</code></pre>
+      </div>
+      <figure class="console">
+         <pre>Geef naam 1 van 4: Kawtar
+Geef naam 1 van 4: Arne
+Geef naam 1 van 4: Dmitri
+Geef naam 1 van 4: Yolanthe
+Bedankt!</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>overlopen met for-loop</h4>
+      <p>Gebruik de <code>for</code>-lus met de <code>Length</code> property als je de index van elk element in de array nodig hebt:</p>
+      <div class="precontainer">
+         <pre><code>string[] namen = { "Zakaria", "Nelly", "Killian", "Chun" };
+for (int i = 0; i &lt; namen.Length; i++)
+{
+   string naam = namen[i]; // element op index i
+   Console.WriteLine($"{i + 1}. {naam}");
+}</code></pre>
+      </div>
+      <figure class="console">
+         <pre>1. Zakaria
+2. Nelly
+3. Killian
+4. Chun</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>overlopen met foreach-loop</h4>
+      <p>Gebruik <code>foreach</code> als je de index van de elementen niet nodig hebt:</p>
+      <pre><code>int[] numbers = { 2, 5, 9, 3, 4, 6, 7 };
+
+foreach (int num in numbers)
+{
+   Console.WriteLine(num);
+}
+</code></pre>
+      <figure class="console">
+         <pre>2
+5
+9
+3
+4
+6
+7</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Properties en methodes</h3>
+      <p>De .NET <code>Array</code> class biedt volgende properties en methodes:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Length</code></td>
+               <td>het aantal beschikbare plaatsen in de array</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Clear()</code></td>
+               <td>reset alle elementen naar de defaultwaarde (0 voor ints, null voor strings enz...)</td>
+            </tr>
+            <tr>
+               <td><code>Contains()</code></td>
+               <td>controleert of de array een gegeven waarde bevat</td>
+            </tr>
+            <tr>
+               <td><code>Array.IndexOf()</code></td>
+               <td>zoekt de positie (index) van een gegeven waarde; -1 indien niet gevonden</td>
+            </tr>
+            <tr>
+               <td><code>Array.Reverse()</code></td>
+               <td>keert de volgorde van de elementen om</td>
+            </tr>
+            <tr>
+               <td><code>Array.Sort()</code></td>
+               <td>sorteert een gegeven array</td>
+            </tr>
+            <tr>
+               <td><code>String.Split()</code></td>
+               <td>splitst een string in een array</td>
+            </tr>
+            <tr>
+               <td><code>String.Join()</code></td>
+               <td>voegt een array samen tot een string</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>voorbeeld: nagaan of waarde voorkomt in een array met <code>Contains()</code></h4>
+      <p>Gebruik <code>Contains()</code> (returnwaarde <code>true</code> of <code>false</code>):</p>
+      <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
+bool gevonden = fruit.Contains("citroen");
+if (gevonden)
+{
+   Console.WriteLine("De array bevat het woord \"citroen\"");
+}</code></pre>
+      <h4>voorbeeld: positie van een waarde in een array met <code>IndexOf()</code></h4>
+      <p>Gebruik <code>IndexOf()</code> om de positie te vinden (-1 indien niet gevonden):</p>
+      <pre><code>string[] fruit = { "appel", "banaan", "citroen" };
+int pos = Array.IndexOf(fruit, "citroen");
+if (pos &gt; -1)
+{
+   Console.WriteLine($"Het woord \"citroen\" is gevonden op positie {pos}");
+}</code></pre>
+      <h4>voorbeeld: array sorteren met <code>Sort()</code></h4>
+      <p>Gebruik <code>Array.Sort()</code> om een array <em>oplopend</em> te sorteren:</p>
+      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+Array.Sort(getallen); // sorteer getallen van klein naar groot
+
+foreach (int getal in getallen)
+{
+   Console.WriteLine(getal);
+}
+   </code></pre>
+      <figure class="console">
+         <pre>2
+3
+6
+7
+9</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p>Gebruik in combinatie met <code>Array.Reverse()</code> om een array <em>aflopend</em> te sorteren:</p>
+      <pre><code>int[] getallen = { 7, 3, 9, 2, 6 };
+Array.Sort(getallen); // sorteer getallen van klein naar groot
+Array.Reverse(getallen); // keer volgorde om
+
+foreach (int getal in getallen)
+{
+   Console.WriteLine(getal);
+}</code></pre>
+      <figure class="console">
+         <pre>9
+7
+6
+3
+2</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h3>Samenvoegen en splitsen</h3>
+      <p>De .NET <a href="A_dotnet.html#string">String</a> class biedt volgende methodes:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>split()</code></td>
+               <td>splitst een string in een array</td>
+            </tr>
+            <tr>
+               <td><code>join()</code></td>
+               <td>voegt een array samen tot een string</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>voorbeeld: array samenvoegen tot een string met <code>string.Join()</code></h4>
+      <p>Gebruik <code>string.Join()</code>:</p>
+      <pre class="language-cs"><code>int[] getallen = { 5, 7, 12, 8, 3 }; // &rarr; int[] array
+string samengevoegd = string.Join(", ", getallen); // "5, 7, 12, 8, 3" &rarr; één string
+Console.WriteLine(samengevoegd);</code></pre>
+      <figure class="console">
+         <pre>5, 7, 12, 8, 3</pre>
+         <figcaption>Join() voorbeeld met array</figcaption>
+      </figure>
+      <h4>voorbeeld: string rond spaties splitsen naar een array met <code>Split()</code></h4>
+      <pre><code>string zin = "dit is een zin met meerdere woorden";
+string[] woorden = zin.Split(' '); // verdeel zin in woorden
+foreach (string woord in woorden)
+{
+   Console.WriteLine(woord);
+}</code></pre>
+      <figure class="console">
+         <pre>dit
+is
+een
+zin
+met
+meerdere
+woorden</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+		<div class="pro">
+
+			<h4>voorbeeld: string rond karakters splitsen naar een array met <code>Split()</code></h4>
+			<p>Je kan als parameter van <code>Split()</code> een array van karakters opgeven waarrond gesplitst moet worden:</p>
+			<pre><code>string txt = "0477/234.56.78"; // &rarr; één string
+string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", "78" } &rarr; string[] array
+</code></pre>
+         <h3>LINQ extensie methodes</h3>
+         <p>
+            .NET LINQ biedt ook een hoop extensie methodes die je kan gebruiken, <br>zie <a href="A_dotnet.html#linq-extensie-methodes">02. NET classes - LINQ extensie methodes voor collecties</a>
+         </p>
+      </div>
+
+      <!-- LIST -->
+      <h2 id="list">Lijsten</h2>
+      <p>Een <mark>lijst</mark> is een collectie van elementen van <strong>één bepaald type</strong> (<code>string</code>, <code>int</code>, <code>double</code>, ...). Het verschil met een gewone array is dat <strong>het aantal elementen onbepaald is</strong>.</p>
+      <h3>Declaratie en initialisatie</h3>
+      <p>Algemene syntax:</p>
+      <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
+</code></pre>
+      <p>Je mag het ook inkorten tot:</p>
+      <pre><code>List&lt;type&gt; naamLijst = new (); // korte notatie
+</code></pre>
+      <p>Code voorbeelden:</p>
+      <pre><code>List&lt;int&gt; getallen = new (); // een lijst van int's
+List&lt;bool&gt; myList = new (); // een lijst van bool's
+List&lt;string&gt; namen = new (); // een lijst van string's
+</code></pre>
+      <p>Je kan meteen een aantal beginwaarden meegeven:</p>
+      <pre><code>List&lt;int&gt; getallen = new () { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
+</code></pre>
+
+      <h3>Waarden aanpassen</h3>
+      <p>Elementen wijzigen doe je net zoals bij arrays eenvoudig met een toewijzing (<code>=</code>). Code voorbeeld:</p>
+      <pre><code>List&lt;int&gt; getallen = new () { 4, 8, 3 }; // lijst is 4, 8, 3
+getallen[1] = 5; // tweede element wijzigen naar 5, lijst is nu: 4, 5, 3
+</code></pre>
+      <h3>Elementen toevoegen of verwijderen</h3>
+		<p>Gebruik hiervoor de methodes <code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code> of <code>Clear()</code>.</p>
+		<p>Voorbeeld voor toevoegen:</p>
+      <pre><code>List&lt;string&gt; fruit = new (); // declaratie (nieuwe lijst van string's)
+fruit.Add("appel"); // lijst bevat 1 element
+fruit.Add("banaan"); // lijst bevat 2 elementen
+fruit.Add("citroen"); // lijst bevat 3 elementen
+</code></pre>
+		<p>Voorbeeld voor verwijderen (enkel de <em>eerst gevonden waarde</em> zal verwijderd worden):</p>
+      <pre><code>List&lt;int&gt; getallen = new () {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.Remove(5); // verwijder element met waarde 5 (enkel eerste); inhoud van de lijst: 2, 7, 5
+</code></pre>
+      <p>Je kan een element ook verwijderen op basis van de index met <code>RemoveAt()</code>:</p>
+      <pre><code>List&lt;int&gt; getallen = new () {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.RemoveAt(2); // verwijder het derde element; de lijst is nu 2, 5, 5
+</code></pre>
+      <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
+      <pre><code>List&lt;int&gt; getallen = new () { 2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+getallen.Clear(); // de lijst is nu leeg</code></pre>
+
+		<h3>Gebruiken</h3>
+      <h4>één element opvragen</h4>
+      <p>Je kunt een element uit een lijst opvragen op basis van de index van het element, startend vanaf 0. Code voorbeeld:</p>
+      <pre><code>List&lt;string&gt; kleuren = new () { "rood", "groen", "blauw" };
+string eerste = kleuren[0]; // eerste element heeft index 0
+Console.WriteLine($"Het eerste element is: {eerste}");
+Console.WriteLine($"Het tweede element is: {kleuren[1]}");
+string laatste = kleuren[kleuren.Count - 1]; // manier om laatste element op te vragen
+Console.WriteLine($"Het laatste element is: {laatste}");</code></pre>
+      <figure class="console">
+         <pre>Het eerste element is: rood
+Het tweede element is: groen
+Het laatste element is: blauw</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>aantal elementen opvragen</h4>
+      <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen:</p>
+      <div class="precontainer">
+         <pre><code>List&lt;int&gt; getallen = new () { 2, 5, 8 };
+Console.WriteLine(getallen.Count); // Count property</code></pre>
+         <div class="codemarker" data-text="Count"></div>
+      </div>
+      <figure class="console">
+         <pre>3</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <p><em><span class="larger">⚠️</span> voor arrays gebruik je <code>Length</code>, bij lijsten gebruik je <code>Count</code></em></p>
+
+      <h4>inlezen met do-while</h4>
+      <p>Codevoorbeeld voor het inlezen van een lijst:</p>
+      <div class="precontainer">
+         <pre><code>List&lt;string&gt; namen = new ();
+string nieuweNaam;				
+do 
+{
+   Console.Write($"Geef de volgende naam (laat leeg om te stoppen): ");
+   nieuweNaam = Console.ReadLine();
+   if (!string.IsNullOrWhiteSpace(nieuweNaam)) namen.Add(nieuweNaam);
+} 
+while (!string.IsNullOrWhiteSpace(nieuweNaam));
+Console.WriteLine("Bedankt!");
+</code></pre>
+      </div>
+      <figure class="console">
+         <pre>Geef de volgende naam (laat leeg om te stoppen): Kawtar
+Geef de volgende naam (laat leeg om te stoppen): Arne
+Geef de volgende naam (laat leeg om te stoppen): Dmitri
+Geef de volgende naam (laat leeg om te stoppen): 
+Bedankt!</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+		<h4>overlopen met for-loop</h4>
+      <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
+      <pre><code>List&lt;string&gt; namen = new () { "Zakaria", "Nelly", "Killian", "Chun" };
+
+for (int i = 0; i &lt; namen.Count; i++)
+{
+   string naam = namen[i];
+   Console.WriteLine($"{i + 1}. {naam}");
+}
+</code></pre>
+      <figure class="console">
+         <pre>1. Zakaria
+2. Nelly
+3. Killian
+4. Chun</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>overlopen met foreach-loop</h4>
+      <p>Indien je de index (positie) van het element niet nodig hebt kan je <code>foreach</code> gebruiken:</p>
+      <pre><code>List&lt;string&gt; namen = new () { "Zakaria", "Nelly", "Killian", "Chun" };
+
+foreach (string naam in namen)
+{
+   Console.WriteLine(naam);
+}
+</code></pre>
+      <figure class="console">
+         <pre>Zakaria
+Nelly
+Killian
+Chun</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+
+      <h3>Properties en methodes</h3>
+      <p>Een <code>List</code> class biedt volgende properties en methodes:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Count</code></td>
+               <td>het huidig aantal elementen in de lijst</td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Methode</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Add()</code></td>
+               <td>voeg een waarde toe aan het einde</td>
+            </tr>
+            <tr>
+               <td><code>Contains()</code></td>
+               <td>controleert of de lijst een gegeven waarde bevat</td>
+            </tr>
+            <tr>
+               <td><code>IndexOf()</code></td>
+               <td>zoekt de positie (index) van een gegeven waarde; -1 indien niet gevonden</td>
+            </tr>
+            <tr>
+               <td><code>Insert()</code></td>
+               <td>voeg een waarde in op een gegeven positie</td>
+            </tr>
+            <tr>
+               <td><code>Remove()</code></td>
+               <td>verwijder een element</td>
+            </tr>
+            <tr>
+               <td><code>Reverse()</code></td>
+               <td>keert de volgorde van de elementen om</td>
+            </tr>
+            <tr>
+               <td><code>Sort()</code></td>
+               <td>sorteert een gegeven array</td>
+            </tr>
+         </tbody>
+      </table>
+
+      <h4>voorbeeld: nagaan of element voorkomt in lijst met <code>Contains()</code></h4>
+      <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
+      <pre><code>List&lt;string&gt; fruit = new () { "appel", "banaan", "citroen" };
+
+bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
+if (gevonden)
+{
+   Console.WriteLine("Het element komt wel in de lijst voor");
+}
+else
+{
+   Console.WriteLine("Het element komt niet in de lijst voor.");
+}
+</code></pre>
+      <figure class="console">
+         <pre>Het element komt in de lijst voor</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h4>voorbeeld: lijst sorteren met <code>Sort()</code></h4>
+      <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
+      <pre><code>List&lt;int&gt; getallen = new () { 7, 3, 9, 5 };
+
+getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
+foreach (int getal in getallen)
+{
+   Console.WriteLine(getal);
+}
+</code></pre>
+      <figure class="console">
+         <pre>3
+5
+7
+9</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+		<h3>Samenvoegen en splitsen</h3>
+      <h4>elementen in een lijst samenvoegen tot één string met <code>string.Join()</code></h4>
+      <p>Gebruik <code>string.Join()</code> om elementen van een list samen te voegen tot één string. Het eerste argument is de "lijm" tussen elementen:</p>
+      <pre><code>List&lt;int&gt; getallen = new () { 7, 3, 9, 5 };
+
+Console.WriteLine(string.Join(" - ", getallen));</code></pre>
+      <figure class="console">
+         <pre>7 - 3 - 9 - 5</pre>
+         <figcaption>resultaat in de console</figcaption>
+      </figure>
+      <h2>Lijst of array?</h2>
+      <p>Er zijn nogal wat syntactische verschillen. Een overzichtstabel:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col"></th>
+               <th scope="col">Array</th>
+               <th scope="col">List</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>lengte</td>
+               <td>vast</td>
+               <td>flexibel</td>
+            </tr>
+            <tr>
+               <td>declaratie</td>
+               <td><code>int[] cijfers = new int[3];</code></td>
+               <td><code>List&lt;int&gt; cijfers = new ();</code></td>
+            </tr>
+            <tr>
+               <td>initialisatie</td>
+               <td><code>int[] cijfers = { 4, 1, 11 };</code></td>
+               <td><code>List&lt;int&gt; cijfers = new () { 4, 1, 11 };</code></td>
+            </tr>
+            <tr>
+               <td>elementen toevoegen/verwijderen</td>
+               <td>niet mogelijk</td>
+               <td><code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code>, <code>Clear()</code></td>
+            </tr>
+            <tr>
+               <td>elementen lezen/schrijven</td>
+               <td><code>cijfers[i]</code></td>
+               <td><code>cijfers[i]</code></td>
+            </tr>
+            <tr>
+               <td>aantal elementen</td>
+               <td><code>cijfers.Length</code></td>
+               <td><code>cijfers.Count</code></td>
+            </tr>
+            <tr>
+               <td>sorteren</td>
+               <td><code>Array.Sort(cijfers)</code></td>
+               <td><code>cijfers.Sort()</code></td>
+            </tr>
+            <tr>
+               <td>bevat waarde</td>
+               <td><code>cijfers.Contains(4)</code></td>
+               <td><code>cijfers.Contains(4)</code></td>
+            </tr>
+            <tr>
+               <td>string splitten naar...</td>
+               <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ');</code></td>
+               <td><code>string txt = &quot;aap noot mies&quot;;</code><br><code>string[] woorden = txt.Split(' ').ToList();</code></td>
+            </tr>
+            <tr>
+               <td>samenvoegen</td>
+               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
+               <td><code>string.Join(&quot;, &quot;, cijfers)</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Vergelijkend voorbeeld met een aantal typische methodes:</p>
+      <div class="codecompare">
+         <div>
+            <pre><code>string tekst = "aap noot mies";
+string[] woorden = tekst.Split(' ');
+Console.WriteLine($"deze tekst bevat {woorden.Length} woorden");
+if (woorden.Contains("aap")) Console.WriteLine("de woorden bevatten \"aap\"");
+Array.Sort(woorden);
+Console.WriteLine($"de woorden, alfabetisch: {string.Join(" - ", woorden)}");
+</code></pre>
+            <figure class="console">
+               <pre>deze tekst bevat 3 woorden
+de woorden bevatten "aap"
+de woorden, alfabetisch: aap - mies - noot</pre>
+               <figcaption>resultaat in de console</figcaption>
+            </figure>
+         </div>
+         <div>
+            <pre><code>List&lt;int&gt; cijfers = new ();
+cijfers.Add(7);
+cijfers.Add(1);
+cijfers.Add(-3);
+Console.WriteLine($"deze lijst bevat {cijfers.Count} getallen");
+if (cijfers.Contains(1)) Console.WriteLine("de lijst bevat de waarde 1");
+cijfers.Sort();
+Console.WriteLine($"cijfers (van laag naar hoog): {string.Join(", ", cijfers)}");</code></pre>
+            <figure class="console">
+               <pre>deze lijst bevat 3 getallen
+de lijst bevat de waarde 1
+cijfers (van laag naar hoog): -3, 1, 7</pre>
+               <figcaption>resultaat in de console</figcaption>
+            </figure>
+         </div>
+      </div>
+      <p>
+         Lijsten zijn zeker makkelijker in gebruik en flexibeler dan arrays. Arrays nemen dan weer een vaste geheugenruimte in, terwijl voor lijsten bij elke toevoeging nieuw geheugen moet gezocht worden, waardoor ze een stuk trager zijn. Dus:
+      </p>
+      <ul>
+         <li>gaat het om een <strong>vast aantal</strong> elementen? → gebruik een <strong>array</strong></li>
+         <li>gaat het om <strong>heel veel</strong> elementen? → gebruik een <strong>array</strong></li>
+         <li>is <strong>performantie</strong> belangrijk? → gebruik een <strong>array</strong></li>
+         <li>in alle <strong>andere gevallen</strong> → gebruik een <strong>lijst</strong></li>
+      </ul>
+      <div class="pro">
+         <!-- STACK -->
+         <h3>Stack&lt;T&gt;</h3>
+         <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
+         <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = stack.Pop(); // 11
+int val2 = stack.Pop(); // 8
+stack.Push(23);
+int val3 = stack.Pop(); // 23
+int val4 = stack.Pop(); // 4
+int val5 = stack.Pop(); // FOUT! stack is leeg
+</code></pre>
+
+         <!-- QUEUE -->
+         <h3>Queue&lt;T&gt;</h3>
+         <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
+         <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = queue.Dequeue(); // 4
+int val2 = queue.Dequeue(); // 8
+queue.Enqueue(23);
+int val3 = queue.Dequeue(); // 11
+int val4 = queue.Dequeue(); // 23
+int val5 = queue.Dequeue(); // FOUT! queue is leeg
+</code></pre>
+
+         <!-- HASHSET -->
+         <h3>HashSet&lt;T&gt;</h3>
+         <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
+         <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
+set.Add("banaan");
+set.Add("citroen");
+set.Add("banaan");
+set.Add("banaan");
+set.Add("appel");
+set.Add("appel");
+set.Add("peer");
+Console.WriteLine(string.Join(", ", set));</code></pre>
+         <figure class="console">
+            <pre>banaan, appel, citroen, peer</pre>
+            <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
+         </figure>
+
+         <!-- DICTIONARY -->
+         <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
+         <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
+         <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
+dict1["tuin"] = 11; // voeg een nieuw key-value paar toe
+dict1.Remove("mies"); // verwijder een key-value paar
+dict1["noot"] = 4; // verander de waarde van ene key-value paar
+Console.WriteLine($"Dictionary 1 bevat key \"noot\": {(dict1.Keys.Contains("noot") ? "ja" : "nee")}"); // controleer of key bestaat
+Console.WriteLine($"Dictionary 1 bevat waarde 3: {(dict1.Values.Contains(3) ? "ja" : "nee")}"); // controleer of value bestaat
+foreach (KeyValuePair&lt;string, int&gt; item in dict1)
+{
+   Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+}
+</code></pre>
+         <figure class="console">
+            <pre>Dictionary 1 bevat key "noot": ja
+Dictionary 1 bevat waarde 3: nee
+Key: aap, Value: 6
+Key: noot, Value: 4
+Key: tuin, Value: 11</pre>
+            <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
+         </figure>
+         <h3>LINQ extensie methodes</h3>
+         <p>Linq biedt een aantal <a href="05_methodes.html#extensie-methodes">extensie methodes</a> met de <a href="05_methodes.html#lambda-expressies">lambda expressie syntax</a> voor collecties. Een greep uit het aanbod:</p>
+         <table class="light">
+            <thead>
+               <tr>
+                  <th scope="col">Methode</th>
+                  <th scope="col">Omschrijving</th>
+                  <th scope="col">Returntype</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>All()</code></td>
+                  <td>controleer of alle items aan een voorwaarde voldoen</td>
+                  <td><code>bool</code></td>
+               </tr>
+               <tr>
+                  <td><code>Any()</code></td>
+                  <td>controleer of minstens één item aan een voorwaarde voldoet</td>
+                  <td><code>bool</code></td>
+               </tr>
+               <tr>
+                  <td><code>Average()</code></td>
+                  <td>bepaal het gemiddelde van de items</td>
+                  <td><code>double</code></td>
+               </tr>
+               <tr>
+                  <td><code>Count()</code></td>
+                  <td>tel het aantal items</td>
+                  <td><code>int</code></td>
+               </tr>
+               <tr>
+                  <td><code>Distinct()</code></td>
+                  <td>verwijder alle dubbels</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>First()</code></td>
+                  <td>geef het eerste item; fout indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>FirstOrDefault()</code></td>
+                  <td>geef het eerste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>Last()</code></td>
+                  <td>geef het laatste item; fout indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>LastOrDefault()</code></td>
+                  <td>geef het laatste item; standaardwaarde (<code>null</code>/0/...) indien niet gevonden</td>
+                  <td><code>object</code></td>
+               </tr>
+               <tr>
+                  <td><code>OrderBy()</code></td>
+                  <td>sorteer items op basis van een item waarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Select()</code></td>
+                  <td>selecteer van elk item een waarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Sum()</code></td>
+                  <td>bepaal de som van de items</td>
+                  <td><code>int/double</code></td>
+               </tr>
+               <tr>
+                  <td><code>Take()</code></td>
+                  <td>neem de eerste n items</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+               <tr>
+                  <td><code>Where()</code></td>
+                  <td>filter items op basis van een voorwaarde</td>
+                  <td><code>IEnumerable</code></td>
+               </tr>
+            </tbody>
+         </table>
+         <p>Voorbeelden met arrays:</p>
+         <pre><code>string[] fruits = { "apple", "pear", "grape", "banana", "banana", "jackfruit", "banana" };
+string[] fruitsLength5 = fruits.Where(f =&gt; f.Length == 5).ToArray(); // { "apple", "grape" }
+int[] fruitLengths = fruits.Select(f =&gt; f.Length).ToArray(); // { 5, 4, 5, 6, 9 }
+bool containsBanana = fruits.Any(f =&gt; f == "banana"); // true
+int numBananas = fruits.Count(f =&gt; f == "banana"); // 3
+string firstLength7 = fruits.FirstOrDefault(f =&gt; f.Length == 7); // null
+string[] fruitsUnique = fruits.Distinct().ToArray(); // { "apple", "pear", "grape", "banana", "jackfruit" }
+string[] fruitsFirst3 = fruits.Take(3).ToArray(); // { "apple", "pear", "grape" }
+string[] fruitsByLength = fruits.Distinct().OrderBy(f =&gt; f.Length).ToArray(); // { "pear", "apple", "grape", "banana", "jackfruit" }
+
+int[] numbers = { 3, 8, 1, 5, 10 };
+double avg = numbers.Average(); // 5.4
+int sum = numbers.Sum(); // 27
+int lowest = numbers.Min() // 1
+int first = numbers.First() // 3
+int last = numbers.Last() // 10
+</code></pre>
+         <ul class="arrow">
+            <li>dit werkt even goed met <code>List&lt;&gt;</code>; gebruik dan waar nodig <code>ToList()</code> in plaats van <code>ToArray()</code> om een <code>IEnumerable</code> om te zetten</li>
+         </ul>
+
+      </div>
+
+
+   </main>
+   <footer>
+      <img src="common/img/thats-all.jpg" alt="">
+      <div class="footer__bottom">
+         <p>@2024, Rogier van der Linde</p>
+         <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
+      </div>
+   </footer>
+   <a aria-label="up" id="up" href="#top"><span class="fas fa-chevron-circle-up"></span></a>
+   <!-- scripts -->
+   <script src="common/vendor/prism/prism.js"></script>
+   <script src="common/vendor/hystmodal/hystmodal.min.js"></script>
+   <script src="common/js/mode.js"></script>
+   <script src="common/js/scripts.js"></script>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7JWZ9HHW0"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7JWZ9HHW0');
+   </script>
+</body>
+
+</html>

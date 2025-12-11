@@ -238,6 +238,7 @@ function startApp() {
 		c.setAttribute('contenteditable', 'true');
 	});
 	document.querySelectorAll('[contenteditable]').forEach(prismBlock => {
+		Prism.highlightElement(prismBlock);
 		prismBlock.addEventListener('blur', () => {
 			Prism.highlightElement(prismBlock);
 		});
