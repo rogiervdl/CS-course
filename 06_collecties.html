@@ -502,46 +502,46 @@ string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", 
       <pre><code>List&lt;type&gt; naamLijst = new List&lt;type&gt;(); // type is het type van de elementen in de collectie (int, double, string, ...)
 </code></pre>
       <p>Je mag het ook inkorten tot:</p>
-      <pre><code>List&lt;type&gt; naamLijst = new (); // korte notatie
+      <pre><code>List&lt;type&gt; naamLijst = new(); // korte notatie
 </code></pre>
       <p>Code voorbeelden:</p>
-      <pre><code>List&lt;int&gt; getallen = new (); // een lijst van int's
-List&lt;bool&gt; myList = new (); // een lijst van bool's
-List&lt;string&gt; namen = new (); // een lijst van string's
+      <pre><code>List&lt;int&gt; getallen = new(); // een lijst van int's
+List&lt;bool&gt; myList = new(); // een lijst van bool's
+List&lt;string&gt; namen = new(); // een lijst van string's
 </code></pre>
       <p>Je kan meteen een aantal beginwaarden meegeven:</p>
-      <pre><code>List&lt;int&gt; getallen = new () { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
+      <pre><code>List&lt;int&gt; getallen = new() { 5, 12, 7, 9, 3 };  // de lijst getallen bevat 5 elementen: 5, 12, 7, 9 en 3
 </code></pre>
 
       <h3>Waarden aanpassen</h3>
       <p>Elementen wijzigen doe je net zoals bij arrays eenvoudig met een toewijzing (<code>=</code>). Code voorbeeld:</p>
-      <pre><code>List&lt;int&gt; getallen = new () { 4, 8, 3 }; // lijst is 4, 8, 3
+      <pre><code>List&lt;int&gt; getallen = new() { 4, 8, 3 }; // lijst is 4, 8, 3
 getallen[1] = 5; // tweede element wijzigen naar 5, lijst is nu: 4, 5, 3
 </code></pre>
       <h3>Elementen toevoegen of verwijderen</h3>
 		<p>Gebruik hiervoor de methodes <code>Add()</code>, <code>Remove()</code>, <code>RemoveAt()</code> of <code>Clear()</code>.</p>
 		<p>Voorbeeld voor toevoegen:</p>
-      <pre><code>List&lt;string&gt; fruit = new (); // declaratie (nieuwe lijst van string's)
+      <pre><code>List&lt;string&gt; fruit = new(); // declaratie (nieuwe lijst van string's)
 fruit.Add("appel"); // lijst bevat 1 element
 fruit.Add("banaan"); // lijst bevat 2 elementen
 fruit.Add("citroen"); // lijst bevat 3 elementen
 </code></pre>
 		<p>Voorbeeld voor verwijderen (enkel de <em>eerst gevonden waarde</em> zal verwijderd worden):</p>
-      <pre><code>List&lt;int&gt; getallen = new () {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+      <pre><code>List&lt;int&gt; getallen = new() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
 getallen.Remove(5); // verwijder element met waarde 5 (enkel eerste); inhoud van de lijst: 2, 7, 5
 </code></pre>
       <p>Je kan een element ook verwijderen op basis van de index met <code>RemoveAt()</code>:</p>
-      <pre><code>List&lt;int&gt; getallen = new () {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+      <pre><code>List&lt;int&gt; getallen = new() {2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
 getallen.RemoveAt(2); // verwijder het derde element; de lijst is nu 2, 5, 5
 </code></pre>
       <p>Met de methode <code>Clear()</code>, kan je alle elementen uit de lijst verwijderen:</p>
-      <pre><code>List&lt;int&gt; getallen = new () { 2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
+      <pre><code>List&lt;int&gt; getallen = new() { 2, 5, 7, 5 }; // inhoud van de lijst: 2, 5, 7, 5
 getallen.Clear(); // de lijst is nu leeg</code></pre>
 
 		<h3>Gebruiken</h3>
       <h4>één element opvragen</h4>
       <p>Je kunt een element uit een lijst opvragen op basis van de index van het element, startend vanaf 0. Code voorbeeld:</p>
-      <pre><code>List&lt;string&gt; kleuren = new () { "rood", "groen", "blauw" };
+      <pre><code>List&lt;string&gt; kleuren = new() { "rood", "groen", "blauw" };
 string eerste = kleuren[0]; // eerste element heeft index 0
 Console.WriteLine($"Het eerste element is: {eerste}");
 Console.WriteLine($"Het tweede element is: {kleuren[1]}");
@@ -556,7 +556,7 @@ Het laatste element is: blauw</pre>
       <h4>aantal elementen opvragen</h4>
       <p>Met de property <code>Count</code> kan je het aantal elementen dat op dat moment in de List zit opvragen:</p>
       <div class="precontainer">
-         <pre><code>List&lt;int&gt; getallen = new () { 2, 5, 8 };
+         <pre><code>List&lt;int&gt; getallen = new() { 2, 5, 8 };
 Console.WriteLine(getallen.Count); // Count property</code></pre>
          <div class="codemarker" data-text="Count"></div>
       </div>
@@ -569,7 +569,7 @@ Console.WriteLine(getallen.Count); // Count property</code></pre>
       <h4>inlezen met do-while</h4>
       <p>Codevoorbeeld voor het inlezen van een lijst:</p>
       <div class="precontainer">
-         <pre><code>List&lt;string&gt; namen = new ();
+         <pre><code>List&lt;string&gt; namen = new();
 string nieuweNaam;				
 do 
 {
@@ -592,7 +592,7 @@ Bedankt!</pre>
 
 		<h4>overlopen met for-loop</h4>
       <p>Indien je de index (positie) van het element in de lijst nodig hebt.</p>
-      <pre><code>List&lt;string&gt; namen = new () { "Zakaria", "Nelly", "Killian", "Chun" };
+      <pre><code>List&lt;string&gt; namen = new() { "Zakaria", "Nelly", "Killian", "Chun" };
 
 for (int i = 0; i &lt; namen.Count; i++)
 {
@@ -609,7 +609,7 @@ for (int i = 0; i &lt; namen.Count; i++)
       </figure>
       <h4>overlopen met foreach-loop</h4>
       <p>Indien je de index (positie) van het element niet nodig hebt kan je <code>foreach</code> gebruiken:</p>
-      <pre><code>List&lt;string&gt; namen = new () { "Zakaria", "Nelly", "Killian", "Chun" };
+      <pre><code>List&lt;string&gt; namen = new() { "Zakaria", "Nelly", "Killian", "Chun" };
 
 foreach (string naam in namen)
 {
@@ -681,7 +681,7 @@ Chun</pre>
 
       <h4>voorbeeld: nagaan of element voorkomt in lijst met <code>Contains()</code></h4>
       <p>Met de methode <code>Contains()</code> kan je nagaan of een element voorkomt in een lijst. De methode stuurt <code>true</code> terug indien de meegegeven waarde zich in de lijst bevindt:</p>
-      <pre><code>List&lt;string&gt; fruit = new () { "appel", "banaan", "citroen" };
+      <pre><code>List&lt;string&gt; fruit = new() { "appel", "banaan", "citroen" };
 
 bool gevonden = fruit.Contains("citroen"); // ga na of het woord "citroen" in de lijst voorkomt
 if (gevonden)
@@ -699,7 +699,7 @@ else
       </figure>
       <h4>voorbeeld: lijst sorteren met <code>Sort()</code></h4>
       <p>De methode <code>Sort()</code> sorteert de elementen in een lijst in <strong>oplopende volgorde</strong> (van klein naar groot, of voor tekst alfabetische van 'a' tot 'z'):</p>
-      <pre><code>List&lt;int&gt; getallen = new () { 7, 3, 9, 5 };
+      <pre><code>List&lt;int&gt; getallen = new() { 7, 3, 9, 5 };
 
 getallen.Sort(); // sorteer de elementen in de lijst (volgorde van elementen in lijst zélf verandert!)
 foreach (int getal in getallen)
@@ -717,14 +717,14 @@ foreach (int getal in getallen)
 		<h3>Samenvoegen en splitsen</h3>
       <h4>elementen in een lijst samenvoegen tot één string met <code>string.Join()</code></h4>
       <p>Gebruik <code>string.Join()</code> om elementen van een list samen te voegen tot één string. Het eerste argument is de "lijm" tussen elementen:</p>
-      <pre><code>List&lt;int&gt; getallen = new () { 7, 3, 9, 5 };
+      <pre><code>List&lt;int&gt; getallen = new() { 7, 3, 9, 5 };
 
 Console.WriteLine(string.Join(" - ", getallen));</code></pre>
       <figure class="console">
          <pre>7 - 3 - 9 - 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
-      <h2>Lijst of array?</h2>
+      <h2>Lijst en array vergeleken</h2>
       <p>Er zijn nogal wat syntactische verschillen. Een overzichtstabel:</p>
       <table class="light">
          <thead>
@@ -743,12 +743,12 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
             <tr>
                <td>declaratie</td>
                <td><code>int[] cijfers = new int[3];</code></td>
-               <td><code>List&lt;int&gt; cijfers = new ();</code></td>
+               <td><code>List&lt;int&gt; cijfers = new();</code></td>
             </tr>
             <tr>
                <td>initialisatie</td>
                <td><code>int[] cijfers = { 4, 1, 11 };</code></td>
-               <td><code>List&lt;int&gt; cijfers = new () { 4, 1, 11 };</code></td>
+               <td><code>List&lt;int&gt; cijfers = new() { 4, 1, 11 };</code></td>
             </tr>
             <tr>
                <td>elementen toevoegen/verwijderen</td>
@@ -805,7 +805,7 @@ de woorden, alfabetisch: aap - mies - noot</pre>
             </figure>
          </div>
          <div>
-            <pre><code>List&lt;int&gt; cijfers = new ();
+            <pre><code>List&lt;int&gt; cijfers = new();
 cijfers.Add(7);
 cijfers.Add(1);
 cijfers.Add(-3);
