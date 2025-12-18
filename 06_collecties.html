@@ -135,6 +135,10 @@
       <p>
          Belangrijk: je kan <strong>geen verschillende types mixen</strong> (bv. getallen en teksten) in één collectie!
       </p>
+      <figure>
+         <img src="img/06_collecties/5-eggs-one-apple-thinking.jpg" class="w-400" alt="">
+         <figcaption><span class="larger">⚠️</span> alle elementen van een collectie hebben <strong>hetzelfde type</strong></figcaption>
+      </figure>
 
       <p>Alle klassen (behalve arrays) zitten in de <code>System.Collections.Generic</code> namespace. Om ze te kunnen gebruiken, moet je dus een <code>using</code> toevoegen: </p>
       <pre><code>using System;
@@ -174,12 +178,12 @@ using System.Collections.Generic;
                <td>variabele lengte; key-value paren, met unieke keys</td>
                <td>lockers met unieke naambordjes</td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td>HashSet&lt;T&gt;</td>
                <td>variabele lengte; lijst unieke waarden</td>
                <td></td>
             </tr>
-            <tr>
+            <tr class="pro">
                <td>SortedDictionary&lt;TKey, Tvalue&gt;</td>
                <td>variabele lengte; als Dictionary, maar dan automatisch gesorteerd op TKey</td>
                <td></td>
@@ -189,12 +193,12 @@ using System.Collections.Generic;
       <figure id="figCollections">
          <div>
             <img src="img/A_dotnet/collecties_array.jpg" alt="">
-            <img src="img/A_dotnet/collecties_dictionary.jpg" alt="">
             <img src="img/A_dotnet/collecties_list.jpg" alt="">
-            <img src="img/A_dotnet/collecties_queue.jpg" alt="">
             <img src="img/A_dotnet/collecties_stack.jpg" alt="">
+            <img src="img/A_dotnet/collecties_queue.jpg" alt="">
+            <img src="img/A_dotnet/collecties_dictionary.jpg" alt="">
          </div>
-         <figcaption>in volgorde: Array, Dictionary, List, Queue en Stack</figcaption>
+         <figcaption>in volgorde: Array, List, Stack, Queue en Dictionary</figcaption>
       </figure>
 		<p>In dit hoofdstuk focussen we op <strong>arrays</strong> en <strong>lijsten</strong>. Maar je moet de eigenschappen van de andere collecties wel kennen voor de theorie.</p>
 
@@ -216,10 +220,6 @@ using System.Collections.Generic;
          <li>je kan altijd de waarden instellen of veranderen, de <strong>waarden zijn veranderlijk</strong></li>
       </ul>
       <p>Zie ook <a href="A_dotnet.html#array-of-lijst">deze vergelijking met lijsten</a></p>
-      <figure>
-         <img src="img/06_collecties/5-eggs-one-apple-thinking.jpg" class="w-400" alt="">
-         <figcaption><span class="larger">⚠️</span> alle elementen van een array hebben <strong>hetzelfde type</strong></figcaption>
-      </figure>
       <h3>Declaratie en initialisatie</h3>
       <p>Voorbeelden:</p>
       <pre><code>int[] cijfers = new int[6]; // array van 6 ints
@@ -724,6 +724,73 @@ Console.WriteLine(string.Join(" - ", getallen));</code></pre>
          <pre>7 - 3 - 9 - 5</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
+		<div class="pro">
+			<h2>Voorbeelden voor andere collecties</h2>
+         <!-- STACK -->
+         <h3>Stack&lt;T&gt;</h3>
+         <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
+         <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = stack.Pop(); // 11
+int val2 = stack.Pop(); // 8
+stack.Push(23);
+int val3 = stack.Pop(); // 23
+int val4 = stack.Pop(); // 4
+int val5 = stack.Pop(); // FOUT! stack is leeg
+</code></pre>
+
+         <!-- QUEUE -->
+         <h3>Queue&lt;T&gt;</h3>
+         <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
+         <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
+int val1 = queue.Dequeue(); // 4
+int val2 = queue.Dequeue(); // 8
+queue.Enqueue(23);
+int val3 = queue.Dequeue(); // 11
+int val4 = queue.Dequeue(); // 23
+int val5 = queue.Dequeue(); // FOUT! queue is leeg
+</code></pre>
+
+         <!-- DICTIONARY -->
+         <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
+         <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
+         <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
+dict1["tuin"] = 11; // voeg een nieuw key-value paar toe
+dict1.Remove("mies"); // verwijder een key-value paar
+dict1["noot"] = 4; // verander de waarde van ene key-value paar
+Console.WriteLine($"Dictionary 1 bevat key \"noot\": {(dict1.Keys.Contains("noot") ? "ja" : "nee")}"); // controleer of key bestaat
+Console.WriteLine($"Dictionary 1 bevat waarde 3: {(dict1.Values.Contains(3) ? "ja" : "nee")}"); // controleer of value bestaat
+foreach (KeyValuePair&lt;string, int&gt; item in dict1)
+{
+   Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+}
+</code></pre>
+         <figure class="console">
+            <pre>Dictionary 1 bevat key "noot": ja
+Dictionary 1 bevat waarde 3: nee
+Key: aap, Value: 6
+Key: noot, Value: 4
+Key: tuin, Value: 11</pre>
+            <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
+         </figure>
+
+         <!-- HASHSET -->
+         <h3>HashSet&lt;T&gt;</h3>
+         <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
+         <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
+set.Add("banaan");
+set.Add("citroen");
+set.Add("banaan");
+set.Add("banaan");
+set.Add("appel");
+set.Add("appel");
+set.Add("peer");
+Console.WriteLine(string.Join(", ", set));</code></pre>
+         <figure class="console">
+            <pre>banaan, appel, citroen, peer</pre>
+            <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
+         </figure>
+
+		</div>
       <h2>Lijst en array vergeleken</h2>
       <p>Er zijn nogal wat syntactische verschillen. Een overzichtstabel:</p>
       <table class="light">
@@ -831,70 +898,7 @@ cijfers (van laag naar hoog): -3, 1, 7</pre>
          <li>in alle <strong>andere gevallen</strong> → gebruik een <strong>lijst</strong></li>
       </ul>
       <div class="pro">
-         <!-- STACK -->
-         <h3>Stack&lt;T&gt;</h3>
-         <p>Een <code>Stack&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Push()</code> (plaats element op de stapel) en <code>Pop()</code> (pak een element van de stapel):</p>
-         <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;(new int[] { 4, 8, 11 });
-int val1 = stack.Pop(); // 11
-int val2 = stack.Pop(); // 8
-stack.Push(23);
-int val3 = stack.Pop(); // 23
-int val4 = stack.Pop(); // 4
-int val5 = stack.Pop(); // FOUT! stack is leeg
-</code></pre>
-
-         <!-- QUEUE -->
-         <h3>Queue&lt;T&gt;</h3>
-         <p>Een <code>Queue&lt;T&gt;</code> is als een <code>List&lt;T&gt;</code> maar dan zonder methodes <code>Add()</code> of <code>Remove()</code>, en in plaats daarvan <code>Enqueue()</code> (plaats element achteraan de wachtrij) en <code>Dequeue()</code> (pak een element vooraan de wachtrij):</p>
-         <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;(new int[] { 4, 8, 11 });
-int val1 = queue.Dequeue(); // 4
-int val2 = queue.Dequeue(); // 8
-queue.Enqueue(23);
-int val3 = queue.Dequeue(); // 11
-int val4 = queue.Dequeue(); // 23
-int val5 = queue.Dequeue(); // FOUT! queue is leeg
-</code></pre>
-
-         <!-- HASHSET -->
-         <h3>HashSet&lt;T&gt;</h3>
-         <p>Een <code>HashSet&lt;T&gt;</code> is hetzelfde als een <code>List&lt;T&gt;</code>, behalve dat de lijst uniek gehouden wordt:</p>
-         <pre><code>HashSet&lt;string&gt; set = new HashSet&lt;string&gt;(new string[] { "banaan", "appel" });
-set.Add("banaan");
-set.Add("citroen");
-set.Add("banaan");
-set.Add("banaan");
-set.Add("appel");
-set.Add("appel");
-set.Add("peer");
-Console.WriteLine(string.Join(", ", set));</code></pre>
-         <figure class="console">
-            <pre>banaan, appel, citroen, peer</pre>
-            <figcaption>voorbeeldfragment HashSet&lt;T&gt;</figcaption>
-         </figure>
-
-         <!-- DICTIONARY -->
-         <h3>Dictionary&lt;TKey,Tvalue&gt;</h3>
-         <p>De <code>Dictionary</code> wordt gebruikt voor key-value paren, waarbij de keys uniek moeten zijn. De methodes en properties lijken sterk op <code>List&lt;T&gt;</code>. Voorbeeldfragment met typische methodes en properties:</p>
-         <pre><code>Dictionary&lt;string, int&gt; dict1 = new Dictionary&lt;string, int&gt; { { "aap", 6 }, { "noot", 3 }, { "mies", -7 } };
-dict1["tuin"] = 11; // voeg een nieuw key-value paar toe
-dict1.Remove("mies"); // verwijder een key-value paar
-dict1["noot"] = 4; // verander de waarde van ene key-value paar
-Console.WriteLine($"Dictionary 1 bevat key \"noot\": {(dict1.Keys.Contains("noot") ? "ja" : "nee")}"); // controleer of key bestaat
-Console.WriteLine($"Dictionary 1 bevat waarde 3: {(dict1.Values.Contains(3) ? "ja" : "nee")}"); // controleer of value bestaat
-foreach (KeyValuePair&lt;string, int&gt; item in dict1)
-{
-   Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
-}
-</code></pre>
-         <figure class="console">
-            <pre>Dictionary 1 bevat key "noot": ja
-Dictionary 1 bevat waarde 3: nee
-Key: aap, Value: 6
-Key: noot, Value: 4
-Key: tuin, Value: 11</pre>
-            <figcaption>voorbeeldfragment Dictionary&lt;string,int&gt;</figcaption>
-         </figure>
-         <h3>LINQ extensie methodes</h3>
+         <h2>LINQ extensie methodes</h2>
          <p>Linq biedt een aantal <a href="05_methodes.html#extensie-methodes">extensie methodes</a> met de <a href="05_methodes.html#lambda-expressies">lambda expressie syntax</a> voor collecties. Een greep uit het aanbod:</p>
          <table class="light">
             <thead>
