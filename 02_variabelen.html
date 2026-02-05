@@ -117,7 +117,7 @@
                   </ul>
                </li>
                <li><a href="https://www.youtube.com/watch?v=zHaZUBq_MNU&t=1432">23:52 variabelen in WPF - random generator demo</a></li>
-               <li><a href="https://www.youtube.com/watch?v=zHaZUBq_MNU&t=1787">29:47 stijregels en tips</a></li>
+               <li><a href="https://www.youtube.com/watch?v=zHaZUBq_MNU&t=1787">29:47 stijlregels en tips</a></li>
             </ul>
          </div>
       </div>
@@ -132,7 +132,7 @@
       <p>Een <em>declaratie</em> is een nieuwe variabele aanmaken met een naam.</p>
       <pre><code>string halloTekst; // tekst
 int leeftijd; // geheel getal
-double leeftijd; // kommagetal
+double prijs; // kommagetal
 char teken; // karakter
 bool isCorrectAntwoord; // ja of nee
 </code></pre>
@@ -327,7 +327,7 @@ const string Name = Console.ReadLine();  // FOUT! constante moet vaste waarde he
       <pre><code>int getal1; // alle waarden tussen -2,147,483,648 en 2,147,483,647
 int? getal2; // nullable int alle waarden tussen -2,147,483,648 en 2,147,483,647 of null
 
-bool test1 // true of false
+bool test1; // true of false
 bool? test2; // nullable boolean: true, false of null
 </code></pre>
       <p>Nullable types zijn handig als je een bepaald primitief type wil gebruiken dat ook geen waarde moet kunnen hebben ("leeg").</p>
@@ -351,7 +351,7 @@ bool? test2; // nullable boolean: true, false of null
       <p>Er zijn twee soorten conversies:</p>
       <ul>
          <li><em>verbredende</em> conversie: van een kleiner naar een groter bereik, b.v. van een <code>double</code> (kommagetal) naar een <code>string</code> (tekst)</li>
-         <li><em>vernauwende</em> conversie: van een groter naar een kleiner bereik, b. van een <code>double</code> (kommagetal) naar een <code>int</code> (geheel getal)</li>
+         <li><em>vernauwende</em> conversie: van een groter naar een kleiner bereik, b.v. van een <code>double</code> (kommagetal) naar een <code>int</code> (geheel getal)</li>
       </ul>
       <h3>impliciete conversie</h3>
       <p>Verbredende conversies gebeuren vaak automatisch of <em>impliciet</em>:</p>
@@ -371,7 +371,7 @@ string str2 = $"het geheel getal is {int1}"; // OK: impliciete conversie van int
 string str1 = int1.ToString();
 </code></pre>
       <h4>Convert klasse</h4>
-      <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de Convert klasse (zie <a href="A_dotnet.html#convert">02. NET classes - Convert</a>):</p>
+      <p>Er zijn veel manieren om conversies door te voeren. De makkelijkste is met de methodes van de Convert klasse (zie <a href="A_dotnet.html#convert">appendix: .NET - Convert</a>):</p>
       <pre><code>string str1 = "13"; string str2 = "13.45";
 int int1 = Convert.ToInt32(str1);
 double dbl1 = Convert.ToDouble(str2);</code></pre>
@@ -482,14 +482,14 @@ double g = a * 2.0 / 5; // resultaat is 26.0 / 5, of 5.2
       </table>
       <h3>Math-klasse</h3>
       <p>
-         Voor bewerkingen als <em>Round()</em>, <em>Max()</em> enz... en constanten als <em>PI</em> zie <a href="A_dotnet.html#math">02. NET classes - Math</a>
+         Voor bewerkingen als <em>Round()</em>, <em>Max()</em> enz. en constanten als <em>PI</em> zie <a href="A_dotnet.html#math">appendix: .NET - Math</a>
       </p>
 
    </main>
    <footer>
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
-         <p>@2024, Rogier van der Linde</p>
+         <p>@2026, Rogier van der Linde</p>
          <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>

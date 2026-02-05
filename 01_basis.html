@@ -129,7 +129,7 @@ Console.WriteLine($"Hallo, {naam}"); // schrijf een boodschap naar de console</c
       <pre><code>Console.Write("Geef een aantal in: ");
 int aantal = Convert.ToInt32(Console.ReadLine());   // zet de tekst om naar een geheel getal met Convert.ToInt32()
 Console.Write("Geef een prijs in: ");
-double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToInt32()</code></pre>
+double prijs = Convert.ToDouble(Console.ReadLine());   // zet de tekst om naar een kommagetal met Convert.ToDouble()</code></pre>
       <h4>Karakter inlezen</h4>
       <h5>met weergave</h5>
       <pre><code>Console.Write("Wil je verder gaan? [j/n]: ");
@@ -145,7 +145,7 @@ char keuze = Console.ReadKey(true).KeyChar; // true &rarr; karakter wordt niet w
 Console.WriteLine($"\nJe koos: {keuze}");</code></pre>
       <figure>
          <img src="img/A_dotnet/console-readkey2.gif" alt="" class="w-250">
-         <figcaption>resultaat in de console het ingetikte karakter wordt niet weergegeven</figcaption>
+         <figcaption>resultaat in de console: het ingetikte karakter wordt niet weergegeven</figcaption>
       </figure>
       <p>Soms wordt dit ook gebruikt om met het vervolg van het programma te wachten tot de gebruiker een toets indrukt:</p>
       <pre><code>Console.WriteLine("druk een toets om verder te gaan...");
@@ -212,7 +212,7 @@ Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
             </tr>
             <tr>
                <td><code>OutputEncoding</code></td>
-               <td>Het karakterset gebruikt in de console</td>
+               <td>De karakterset gebruikt in de console</td>
             </tr>
          </tbody>
       </table>
@@ -230,15 +230,15 @@ Console.WriteLine("✂ ✍ ✈ ☀");</code></pre>
             </tr>
             <tr>
                <td><code>Read()</code></td>
-               <td>Lees één karakter uit, uit de console</td>
+               <td>Lees één karakter uit de console</td>
             </tr>
             <tr>
                <td><code>ReadKey()</code></td>
-               <td>Leest één karakter uit, uit de console. Biedt de mogelijkheid om de ingetypte toets niet weer te geven</td>
+               <td>Leest één karakter uit de console. Biedt de mogelijkheid om de ingetypte toets niet weer te geven</td>
             </tr>
             <tr>
                <td><code>ReadLine()</code></td>
-               <td>Leest een volledige regel uit, uit de console</td>
+               <td>Leest een volledige regel uit de console</td>
             </tr>
             <tr>
                <td><code>ResetColor()</code></td>
@@ -327,7 +327,7 @@ Regel 3</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <div class="tips" data-caption="☝️ESCAPES IN MULTILINE STRINGS">
-         <p>Multiline strings hebben aparte regels voor escapes: <code>\</code>-karakters hoef <strong>niet</strong> te escapen, en een dubbele quote (<code>&quot;</code>) moet je <strong>verdubbelen</strong>:</p>
+         <p>Multiline strings hebben aparte regels voor escapes: <code>\</code>-karakters hoef je <strong>niet</strong> te escapen, en een dubbele quote (<code>&quot;</code>) moet je <strong>verdubbelen</strong>:</p>
          <pre><code>Console.WriteLine(@"C:\users\john.doe\documents"); // backslash NIET escapen
 Console.WriteLine(@"Simon says: ""jump!"""); // quotes verdubbelen</code></pre>
          <p>Als je dat allemaal wat veel vindt om te onthouden, vermijd dan multiline strings als je karakters moet escapen.</p>
@@ -354,7 +354,8 @@ int getal2 = 9;
 Console.WriteLine($"De som van {getal1} en {getal2} is {getal1 + getal2}."); 
 Console.WriteLine($"Het getal {getal1} is {(getal1 % 2 == 0 ? "even" : "oneven")}."); // let op: bij gebruik quotes gebruik extra haakjes ()</code></pre>
       <figure class="console">
-         <pre>Het getal 17 is oneven.</pre>
+         <pre>De som van 17 en 9 is 26.
+Het getal 17 is oneven.</pre>
          <figcaption>resultaat in de console</figcaption>
       </figure>
       <p>Je kan $ interpolatie tenslotte combineren met @ multiline:</p>
@@ -421,7 +422,7 @@ static void Main(string[] args)
    <footer>
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
-         <p>@2024, Rogier van der Linde</p>
+         <p>@2026, Rogier van der Linde</p>
          <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>

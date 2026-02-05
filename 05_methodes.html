@@ -241,7 +241,7 @@ private static int GrootsteGemeneDeler(int get1, int get2)
       <p>Dergelijke methodes <strong>"genereren"</strong>. Methode die een getal inleest tot het positief is:</p>
       <p><img src="img/05_methodes/methode-type3.png" alt="" class="w-800"></p>
       <h3>Type 4: met parameters, met return &mdash; "berekenen"</h3>
-      <p>Dergelijke methodes accepteren input, en geven een resultaat terug: ze "genereren". Methode die twee gehele getallen vraagt, en de grootste gemene deler teruggeeft:</p>
+      <p>Dergelijke methodes accepteren input, en geven een resultaat terug: ze "berekenen". Methode die twee gehele getallen vraagt, en de grootste gemene deler teruggeeft:</p>
       <p><img src="img/05_methodes/methode-type4.png" alt="" class="w-800"></p>
       <h3>Parameters vs. argumenten</h3>
       <div class="tips" data-caption="🎓 DEFINITIE">
@@ -305,7 +305,7 @@ Geef een positief getal: 18
 De grootste gemene deler is: 6</pre>
       </figure>
       <h3>Voorbeeld 2, console app: kerstboom</h3>
-      <p>Een voorbeeld consoletoepassing die een hoogte, breedte en optinoeel een karakter inleest, en een kerstboom afdrukt:</p>
+      <p>Een voorbeeld consoletoepassing die een hoogte, breedte en optioneel een karakter inleest, en een kerstboom afdrukt:</p>
       <div class="precontainer">
          <pre><code>class Program
 {
@@ -538,8 +538,8 @@ static double BerekenVolume(int l, int b, int h) // parameters: l, b, h
       <p>De juiste implementatie:</p>
       <pre><code>static double CelsiusNaarFahrenheit(double celsius)
 {
-    int farenheit = celsius * 1.8 + 32; // ok: gebruik extra  variabele
-    return farenheit;
+    double fahrenheit = celsius * 1.8 + 32; // ok: gebruik extra variabele
+    return fahrenheit;
 }
 </code></pre>
 
@@ -626,10 +626,10 @@ private static void Main(string[] args)
       <div class="precontainer">
          <pre><code class="redcomments">private static int GrootsteGemeneDeler()
 {
-   Console.Write("Geef het eerste getal: "); // FOUT! vermijd lezen van de Console
-   int get1 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd schrijven naar de Console
-   Console.Write("Geef het tweede getal: "); // FOUT! vermijd lezen van de Console
-   int get2 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd schrijven naar de Console
+   Console.Write("Geef het eerste getal: "); // FOUT! vermijd schrijven naar de Console
+   int get1 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd lezen van de Console
+   Console.Write("Geef het tweede getal: "); // FOUT! vermijd schrijven naar de Console
+   int get2 = Convert.ToInt32(Console.ReadLine()); // FOUT! vermijd lezen van de Console
    int ggd = Math.Min(get1, get2);
    while (get1 % ggd != 0 || get2 % ggd != 0)
    {
@@ -695,7 +695,7 @@ Verkoop: {aantal} x {product}
 Korting: {(kortingPerc == 0 ? "geen" : kortingPerc + "%")}
 Te betalen: {Math.Round(prijs * aantal * (100 - kortingPerc) / 100, 2)} euro";
 }</code></pre>
-      <p>Als je geen waarde meegeeft bij de method call, wordt de opgegeven standaardwaarde genomen. Volgende method oproep is dus geldig:</p>
+      <p>Als je geen waarde meegeeft bij de methode-aanroep, wordt de opgegeven standaardwaarde genomen. Volgende methode-aanroep is dus geldig:</p>
       <pre><code>Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m)); // noot: 12.5m is hoe je een decimal literal noteert</code></pre>
       <figure class="console">
          <pre>Verkoper: Gift shop
@@ -719,9 +719,9 @@ Console.WriteLine(OrderDetails("Gift shop", "Red Mug", 12.5m, "Sara Kazani", 3, 
          <pre>Verkoper: Gift shop
 Klant: (onbekend)
 Verkoop: 1 x Red Mug
-Korting: 15%
-Te betalen: 10,62 euro</pre>
-         <figcaption>resultaat in de console, klant en aantal niet opgegeven</figcaption>
+Korting: 20%
+Te betalen: 10 euro</pre>
+         <figcaption>resultaat in de console, klant en aantal niet opgegeven (kortingPerc: 20)</figcaption>
       </figure>
       <ul>
          <li class="arrow">named parameters maken je code ook leesbaarder</li>
@@ -775,7 +775,7 @@ int encodedNumVowels = sentence.MyEncode().MyCountVowels(); // chaining example<
    <footer>
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
-         <p>@2024, Rogier van der Linde</p>
+         <p>@2026, Rogier van der Linde</p>
          <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>

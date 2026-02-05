@@ -21,6 +21,10 @@
       <span>pro</span>
    </div>
    <nav class="site__nav">
+      <a href="01_basis.html" class="main__thumb">
+         <p class="thumb__title">01. basis</p>
+         <img class="thumb__visual" src="img/01_basis/icon.png" alt="">
+      </a>
       <a href="02_variabelen.html" class="main__thumb">
          <p class="thumb__title">02. variabelen</p>
          <img class="thumb__visual" src="img/02_variabelen/icon.jpg" alt="">
@@ -1152,18 +1156,18 @@ str1 = str1.Trim(); // ",Guitar, drum, Bass,."
 str1 = str1.Trim(new char[] { ',', '.' }); // "Guitar, drum, Bass"</code></pre>
       <h4>Controle op deelstrings</h4>
       <pre><code>string str2 = "Now have that tasty morning burger.";
-int int1 = str1.IndexOf("at"); // 11
-int int2 = str1.IndexOf('z'); // -1; not found
-int int3 = str1.LastIndexOf('e'); // 32
-bool bool1 = str1.StartsWith("No"); // true
-bool bool2 = str1.Contains("that"); // true
-bool bool3 = str1.Contains('X'); // false</code></pre>
+int int1 = str2.IndexOf("at"); // 11
+int int2 = str2.IndexOf('z'); // -1; not found
+int int3 = str2.LastIndexOf('e'); // 32
+bool bool1 = str2.StartsWith("No"); // true
+bool bool2 = str2.Contains("that"); // true
+bool bool3 = str2.Contains('X'); // false</code></pre>
       <h4>Tekst vervangen, omzetten, inkorten</h4>
       <pre><code>string str1 = "Hey hey hey, please DO NOT touch that!";
 string str2 = str1.Substring(0, 21); // "Hey hey hey, please DO"
 string str3 = str1.ToLower(); // "hey hey hey, please do not touch that!"
 string str4 = str1.ToUpper(); // "HEY HEY HEY, PLEASE DO NOT TOUCH THAT!"
-string str4 = str1.Replace("hey", "yo"); // "Hey yo yo, please DO NOT touch that!!" &rarr; hoofdlettergevoelig, vervangt alle
+string str4 = str1.Replace("hey", "yo"); // "Hey yo yo, please DO NOT touch that!" &rarr; hoofdlettergevoelig, vervangt alle
 </code></pre>
 
       <h4>Nagaan of een string leeg is</h4>
@@ -1235,7 +1239,7 @@ string[] parts2 = txt.Split(new char[] { '/', '.' }); // { "0477", "234", "56", 
    <footer>
       <img src="common/img/thats-all.jpg" alt="">
       <div class="footer__bottom">
-         <p>@2024, Rogier van der Linde</p>
+         <p>@2026, Rogier van der Linde</p>
          <p>cursussen in dezelfde reeks: <a href="https://rogiervdl.github.io/HTML-course/">HTML</a> &mdash; <a href="https://rogiervdl.github.io/CSS-course/">CSS</a> &mdash; <a href="https://rogiervdl.github.io/JS-course/">Javascript</a> &mdash; <a href="https://rogiervdl.github.io/DEVENV-course/">Ontwikkelomgeving</a></p>
       </div>
    </footer>
