@@ -314,7 +314,7 @@
 &lt;/Grid&gt;</code></pre>
 		<figure>
 			<img src="img/08_layout/marginpadding-bottomright.png" alt="" class="bordered w-300">
-			<figcaption>rechstonder gepositioneerd</figcaption>
+			<figcaption>rechtsonder gepositioneerd</figcaption>
 		</figure>
 		<p>De standaardwaarden voor <code>VerticalAlignment</code> en <code>HorizontalAlignment</code> zijn <code>Stretch</code>, dus als je het weglaat wordt de control uitgerokken, b.v. <code>VerticalAlignment</code> weglaten rekt verticaal uit:</p>
 		<pre class="language-html language-xaml"><code>&lt;Grid&gt;
@@ -336,7 +336,19 @@
 			<figcaption>verticaal gecentreerd, horizontaal links resp. rechts</figcaption>
 		</figure>
 
-
+		<h3>TextAlignment</h3>
+		<p>Het attribuut <code class="em">TextAlignment</code> bepaalt hoe de <em>tekst</em> binnen een control uitgelijnd wordt: links, rechts, gecentreerd of uitgelijnd (justify). Dit is vooral van toepassing op tekstcontrols als <code>TextBlock</code> en <code>TextBox</code>. Mogelijke waarden: <code>Left</code>, <code>Right</code>, <code>Center</code> en <code>Justify</code>.</p>
+		<p>Een voorbeeld van een gecenteerde titel, een uitgevulde tekst en een rechts uitgelijnd tekstvak:</p>
+		<pre class="language-html language-xaml"><code>&lt;TextBlock TextAlignment="Center" FontWeight="Bold" Margin="10" Padding="10"&gt;Titel&lt;/TextBlock&gt;
+&lt;TextBlock TextAlignment="Justify" Margin="10" Padding="10" Background="#FFEEEE" TextWrapping="Wrap"&gt;
+   planken tapioca de op er jungles...
+&lt;/TextBlock&gt;
+&lt;TextBox Width="80" TextAlignment="Right" HorizontalAlignment="Left" Margin="10" Padding="3"&gt;1234&lt;/TextBox&gt;
+</code></pre>
+		<figure>
+			<img src="img/08_layout/textalignment.png" alt="" class="bordered w-500">
+			<figcaption>uitlijning van tekst in <code>TextBlock</code> en <code>TextBox</code></figcaption>
+		</figure>
 
 		<h2>WPF panels</h2>
 		<h3>overzicht</h3>
@@ -418,7 +430,7 @@
 
 		<h3 id="grid">Grid</h3>
 		<p>
-			Bij <code class="em">Grid</code> kan je een grid van rijen en kolommen definiëren met <code>Grid.ColumnDefintions</code> en <code>Grid.RowDefinitions</code>. Daarna plaats je elementen in de juiste rij/kolom met <code>Grid.Row</code> en <code>Grid.Column</code>.
+			Bij <code class="em">Grid</code> kan je een grid van rijen en kolommen definiëren met <code>Grid.ColumnDefinitions</code> en <code>Grid.RowDefinitions</code>. Daarna plaats je elementen in de juiste rij/kolom met <code>Grid.Row</code> en <code>Grid.Column</code>.
 		</p>
 		<pre class="language-html language-xaml"><code>&lt;Grid Margin="10"&gt;
    &lt;Grid.ColumnDefinitions&gt;
@@ -478,6 +490,27 @@
 		<figure>
 			<img src="img/08_layout/grid2.png" alt="" class="w-400 bordered">
 			<figcaption>grid voorbeeld</figcaption>
+		</figure>
+		<p>Standaard neemt elk element precies één cel in. Met <code class="em">Grid.ColumnSpan</code> en <code class="em">Grid.RowSpan</code> kan een element meerdere kolommen of rijen overspannen. De standaardwaarde is <code>1</code>; geef een hogere waarde om een element over meerdere cellen te laten lopen.</p>
+		<p>Zo kan je bijvoorbeeld een titel toevoegen die over alle kolommen loopt (<code>ColumnSpan</code>):</p>
+		<pre class="language-html language-xaml"><code>&lt;Grid Margin="10"&gt;
+   &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width="80" /&gt;
+      &lt;ColumnDefinition Width="*" /&gt;
+   &lt;/Grid.ColumnDefinitions&gt;
+   &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height="Auto" /&gt;
+      &lt;RowDefinition Height="Auto" /&gt;
+      &lt;RowDefinition Height="Auto" /&gt;
+      &lt;RowDefinition Height="*" /&gt;
+   &lt;/Grid.RowDefinitions&gt;
+   &lt;TextBlock Text="Leave a comment" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="18" Margin="5" /&gt;
+   ...
+&lt;/Grid&gt;
+</code></pre>
+		<figure>
+			<img src="img/08_layout/grid3.png" alt="" class="w-400 bordered">
+			<figcaption>columnspan voorbeeld</figcaption>
 		</figure>
 		<h3 id="stackpanel">StackPanel</h3>
 		<p>
