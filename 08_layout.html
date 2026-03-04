@@ -907,7 +907,21 @@ MessageBoxResult result = MessageBox.Show("Weet je het zeker?", "Bevestigen", Me
 			Download de volledige code: <a href="files/08_layout/SlnDemoFrame.zip">SlnDemoFrame.zip</a>
 		</p>
 
-
+		<h3>User controls (samenvatting)</h3>
+		<p>Met een <strong>User Control</strong> maak je een herbruikbaar blok UI: eigen XAML en code-behind in één bestand. Je voegt hem toe via <em>Add → User Control (WPF)...</em>, bouwt er bijvoorbeeld een label + tekstveld of een groep knoppen in, en gebruikt die daarna overal waar je wilt door de control in je venster of pagina te plaatsen (met de juiste namespace). Zo houd je je schermen overzichtelijk en voorkom je dubbele code.</p>
+		<p>Demo: een eenvoudige control <code>LabeledTextBox</code> en gebruik in een venster:</p>
+		<pre class="language-html language-xaml"><code>&lt;!-- LabeledTextBox.xaml --&gt;
+&lt;UserControl x:Class="WpfApp.LabeledTextBox" ... &gt;
+   &lt;StackPanel&gt;
+      &lt;TextBlock x:Name="lblLabel" Text="Label" /&gt;
+      &lt;TextBox x:Name="txtValue" /&gt;
+   &lt;/StackPanel&gt;
+&lt;/UserControl&gt;</code></pre>
+		<pre class="language-html language-xaml"><code>&lt;!-- MainWindow.xaml: voeg namespace toe, b.v. xmlns:local="clr-namespace:WpfApp" --&gt;
+&lt;StackPanel Margin="10"&gt;
+   &lt;local:LabeledTextBox x:Name="ucNaam" /&gt;
+   &lt;local:LabeledTextBox x:Name="ucEmail" /&gt;
+&lt;/StackPanel&gt;</code></pre>
 
 	</main>
 	<footer>
