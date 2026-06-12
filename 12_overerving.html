@@ -69,10 +69,6 @@
          <p class="thumb__title">12. overerving</p>
          <img class="thumb__visual" src="img/12_overerving/icon.jpg" alt="">
       </a>
-      <a href="B_oo_samenvatting.html" class="main__thumb pro">
-         <p class="thumb__title">appendix: OO<br>samenvatting</p>
-         <img class="thumb__visual" src="img/B_oo_samenvatting/icon.png" alt="">
-      </a>
       <a href="13_databanken.html" class="main__thumb pro">
          <p class="thumb__title">13. databanken</p>
          <img class="thumb__visual" src="img/13_databanken/icon.png" alt="">
@@ -453,10 +449,12 @@ class KipKaNijn {
    public string Naam { get; set; }
 
    public Kat() { }
-   public Kat(int lf, string bio, string nm) : base(lf, bio) { Naam = nm; }
+   public Kat(int lf, string bio, string nm) { Leeftijd = lf; Bio = bio; Naam = nm; }
 
    public override string Info() {
-      return @$"{base.Info()}
+      return $@"Info:
+- Leeftijd: {Leeftijd} jaar oud
+- Bio: {Bio}
 - Naam: {Naam}";
    }
    public override string ToString() {
@@ -467,17 +465,13 @@ class KipKaNijn {
    }
 }
             </code></pre>
-            <div class="codemarker" data-text="base(lf, bio)"></div>
-            <div class="codemarker" data-text="base.Info()"></div>
             <div class="codemarker" data-text="override"></div>
          </div>
          <img src="img/12_overerving/kat_overerving.png" alt="" class="w-300">
       </div>
       <ul class="arrow">
          <li>de afgeleide klasse <code class="classcolor">Kat</code> bevat alles uit de basisklasse <code class="classcolor">Huisdier</code> aangevuld met naam, uitbreidingen van de twee constructoren, een <code>Spreek()</code> en een <code>ToString()</code> methode</li>
-         <li>met <code>: base(lf, bio)</code> wordt eerst de constructor uit de basisklasse <code class="classcolor">Huisdier</code> opgeroepen</li>
-         <li>met <code>override</code> geef je aan dat de methode <code>Info()</code> die uit de basisklasse <code class="classcolor">Huisdier</code> overschrijft</li>
-         <li>met <code>base.Info()</code> wordt de <code>Info()</code> methode de basisklasse <code class="classcolor">Huisdier</code> opgeroepen</li>
+         <li><code>override</code> geeft aan dat de methode <code>Info()</code> de versie uit de basisklasse overschrijft &mdash; dit wordt verder uitgelegd in het hoofdstuk <em>virtual, override en sealed</em></li>
       </ul>
       <p>De implementaties van de twee andere subklassen <code class="classcolor">Kip</code> en <code class="classcolor">Konijn</code>:</p>
       <div class="codecompare top">
@@ -486,7 +480,7 @@ class KipKaNijn {
    public static List&lt;Recept&gt; Recepten = new List&lt;Recept&gt;();
 
    public Kip() { }
-   public Kip(int lf, string bio) : base(lf, bio) { }
+   public Kip(int lf, string bio) { Leeftijd = lf; Bio = bio; }
 
    public override string ToString() {
       return $"Dier: kip, leeftijd: {Leeftijd}";
@@ -496,7 +490,6 @@ class KipKaNijn {
    }
 }
 </code></pre>
-            <div class="codemarker" data-text="virtual" data-nth="2"></div>
          </div>
          <img src="img/12_overerving/kip_overerving.png" alt="" class="w-300">
       </div>
@@ -507,10 +500,12 @@ class KipKaNijn {
    public static List&lt;Recept&gt; Recepten = new List&lt;Recept&gt;();
 
    public Konijn() { }
-   public Konijn(int lf, string bio, string nm) : base(lf, bio) { Naam = nm; }
+   public Konijn(int lf, string bio, string nm) { Leeftijd = lf; Bio = bio; Naam = nm; }
 
    public override string Info() {
-      return @$"{base.Info()}
+      return $@"Info:
+- Leeftijd: {Leeftijd} jaar oud
+- Bio: {Bio}
 - Naam: {Naam}";
    }
    public override string ToString() {
@@ -518,7 +513,6 @@ class KipKaNijn {
    }
 }
 </code></pre>
-            <div class="codemarker" data-text="virtual" data-nth="2"></div>
          </div>
          <p><img src="img/12_overerving/konijn_overerving.png" alt="" class="w-300"></p>
       </div>
@@ -529,6 +523,72 @@ class KipKaNijn {
             <strong>aanvullen/aanpassen</strong> waar nodig.
          </p>
       </div>
+
+      <h2><code>base</code></h2>
+      <h3>Constructor: <code>: base(...)</code></h3>
+      <p>
+         Met <mark><code>: base(...)</code></mark> roep je de constructor van de basisklasse op vanuit de constructor van de afgeleide klasse.
+         Zo hoef je de gedeelde initialisatie niet te herhalen:
+      </p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre data-caption="Huisdier.cs"><code>class Huisdier {
+   public int Leeftijd { get; set; }
+   public string Bio { get; set; }
+   public Huisdier(int lf, string bio) {
+      Leeftijd = lf;
+      Bio = bio;
+   }
+}</code></pre>
+         </div>
+         <div class="precontainer">
+            <pre data-caption="Kat.cs"><code>class Kat : Huisdier {
+   public string Naam { get; set; }
+   public Kat(int lf, string bio, string nm) : base(lf, bio) {
+      Naam = nm;
+   }
+}</code></pre>
+            <div class="codemarker" data-text=": base(lf, bio)"></div>
+         </div>
+      </div>
+      <ul class="arrow">
+         <li>de constructor van de basisklasse <code class="classcolor">Huisdier</code> wordt eerst opgeroepen, met de parameters <code>lf</code> en <code>bio</code></li>
+         <li>daarna voert de eigen constructor van <code class="classcolor">Kat</code> zijn eigen initialisatie uit (<code>Naam = nm</code>)</li>
+         <li>zonder <code>: base(...)</code> wordt automatisch de parameterloze constructor van de basisklasse opgeroepen</li>
+      </ul>
+
+      <h3>Methodes en properties: <code>base.Methode()</code></h3>
+      <p>
+         Met <mark><code>base.Methode()</code></mark> roep je een methode of property van de basisklasse op vanuit de afgeleide klasse.
+         Handig wanneer je de implementatie van de basisklasse wil <strong>uitbreiden</strong> in plaats van volledig vervangen:
+      </p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre data-caption="Huisdier.cs"><code>class Huisdier {
+   ...
+   public virtual string Info() {
+      return $@"Info:
+- Leeftijd: {Leeftijd} jaar oud
+- Bio: {Bio}";
+   }
+}</code></pre>
+         </div>
+         <div class="precontainer">
+            <pre data-caption="Kat.cs"><code>class Kat : Huisdier {
+   ...
+   public override string Info() {
+      return @$"{base.Info()}
+- Naam: {Naam}";
+   }
+}</code></pre>
+            <div class="codemarker" data-text="base.Info()"></div>
+         </div>
+      </div>
+      <ul class="arrow">
+         <li><code>base.Info()</code> roept de implementatie van <code class="classcolor">Huisdier</code> op; <code class="classcolor">Kat</code> voegt er de naam aan toe</li>
+         <li>zonder <code>base.Info()</code> zou je de volledige basisimplementatie zelf moeten herhalen</li>
+         <li>bij een <code>abstract</code> methode bestaat er geen basisimplementatie en kan je <code>base</code> niet gebruiken (zie hoofdstuk <em>abstract</em>)</li>
+      </ul>
 
       <h2>Virtual, override en sealed</h2>
       <h3><code>virtual</code> en <code>override</code></h3>
