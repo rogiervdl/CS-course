@@ -530,6 +530,99 @@ class KipKaNijn {
          </p>
       </div>
 
+      <h2>Virtual, override en sealed</h2>
+      <h3><code>virtual</code> en <code>override</code></h3>
+      <p>
+         Standaard kan een methode uit een basisklasse <strong>niet</strong> overschreven worden in een afgeleide klasse.
+         Wil je dat toch toelaten, markeer je de methode in de basisklasse als <mark><code>virtual</code></mark>.
+         In de afgeleide klasse gebruik je dan <mark><code>override</code></mark> om de methode te overschrijven:
+      </p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre data-caption="Huisdier.cs"><code>class Huisdier {
+   ...
+   public virtual string Info() {
+      return $@"Info:
+- Leeftijd: {Leeftijd} jaar oud
+- Bio: {Bio}";
+   }
+}</code></pre>
+            <div class="codemarker" data-text="virtual"></div>
+         </div>
+         <div class="precontainer">
+            <pre data-caption="Kat.cs"><code>class Kat : Huisdier {
+   ...
+   public override string Info() {
+      return @$"{base.Info()}
+- Naam: {Naam}";
+   }
+}</code></pre>
+            <div class="codemarker" data-text="override"></div>
+         </div>
+      </div>
+      <ul class="arrow">
+         <li>een <code>virtual</code> methode in de basisklasse heeft wél een implementatie (in tegenstelling tot <code>abstract</code>, zie verder)</li>
+         <li>een afgeleide klasse die de methode <strong>niet</strong> overschrijft, erft gewoon de basisimplementatie</li>
+         <li>een afgeleide klasse die de methode wél overschrijft, gebruikt <code>override</code></li>
+         <li>met <code>base.Info()</code> kan je vanuit de <code>override</code> de oorspronkelijke basisimplementatie nog aanroepen</li>
+      </ul>
+      <p>Hetzelfde geldt ook voor <strong>properties</strong>:</p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre data-caption="Huisdier.cs"><code>class Huisdier {
+   ...
+   public virtual string Omschrijving { get; } = "Een huisdier";
+}</code></pre>
+            <div class="codemarker" data-text="virtual"></div>
+         </div>
+         <div class="precontainer">
+            <pre data-caption="Kat.cs"><code>class Kat : Huisdier {
+   ...
+   public override string Omschrijving { get; } = "Een kat";
+}</code></pre>
+            <div class="codemarker" data-text="override"></div>
+         </div>
+      </div>
+
+      <h3><code>sealed</code></h3>
+      <p>
+         Met <mark><code>sealed</code></mark> verbied je verdere overerving of overschrijving. Dit kan op twee manieren:
+      </p>
+      <p><strong>1. Sealed klasse</strong>: de klasse zelf kan niet meer als basisklasse gebruikt worden:</p>
+      <div class="codecompare top">
+         <pre><code>sealed class Kat : Huisdier {
+   ...
+}</code></pre>
+         <div>
+            <pre class="wrong"><code>class PersischeKat : Kat {  // fout: Kat is sealed
+   ...
+}</code></pre>
+         </div>
+      </div>
+      <p><strong>2. Sealed override</strong>: een overschreven methode of property kan niet nogmaals overschreven worden in verdere subklassen:</p>
+      <div class="codecompare top">
+         <div class="precontainer">
+            <pre><code>class Kat : Huisdier {
+   public sealed override string Info() {
+      ...
+   }
+}</code></pre>
+            <div class="codemarker" data-text="sealed override"></div>
+         </div>
+         <div>
+            <pre class="wrong"><code>class PersischeKat : Kat {
+   public override string Info() {  // fout: Info() is sealed in Kat
+      ...
+   }
+}</code></pre>
+         </div>
+      </div>
+      <ul class="arrow">
+         <li><code>sealed</code> op een klasse wordt zelden gebruikt, maar voorkomt ongewenste extensies</li>
+         <li><code>sealed override</code> op methodes en properties is nuttig wanneer je verdere wijzigingen in subklassen wil verbieden</li>
+         <li>op methodes en properties is <code>sealed</code> altijd verplicht gecombineerd met <code>override</code>; een gewone (niet-<code>virtual</code>) methode is immers standaard al sealed &mdash; je kan ze zonder <code>virtual</code> sowieso niet overschrijven</li>
+      </ul>
+
       <h2>Abstract</h2>
       <h3>Abstracte klassen</h3>
       <p>
