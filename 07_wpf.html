@@ -88,7 +88,7 @@
    <main>
 
       <!-- VIDEO -->
-      <h2>Youtube</h2>
+      <!-- <h2>Youtube</h2>
       <h3>IIP &mdash; visual studio &amp; WPF</h3>
       <div class="flexcontainer youtubecontainer">
          <iframe class="youtube" width="600" height="378" src="https://www.youtube.com/embed/d8eND5KaB1c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -155,7 +155,7 @@
                </li>
             </ul>
          </div>
-      </div>
+      </div> -->
 
       <h2>Algemeen</h2>
       <h3>WPF controls overzicht</h3>
@@ -516,11 +516,13 @@ private void BtnClick(object sender, RoutedEventArgs e)
       </figure>
       </div>
 
-      <h2 id="button">Button</h2>
+      <h2>Input controls</h2>
+
+      <h3 id="button">Button</h3>
       <p>Een <em>Button</em> is een knop waarop de gebruiker kan klikken. De basis XAML:</p>
       <pre class="language-html language-xaml"><code>&lt;Button x:Name="btnTest" Content="Klik mij" Click="BtnTest_Click" .../&gt;
 </code></pre>
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <table class="light">
          <thead>
             <tr>
@@ -557,8 +559,8 @@ private void BtnClick(object sender, RoutedEventArgs e)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeeld</h3>
-      <h4>Tekst tonen bij klik op button</h4>
+      <h4>Voorbeeld</h4>
+      <h5>Tekst tonen bij klik op button</h5>
       <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;Button x:Name="btnSpeak" Content="Zeg Iets" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Width="100" Height="23" Click="BtnSpeak_Click"/&gt;
 </code></pre>
@@ -571,11 +573,129 @@ private void BtnClick(object sender, RoutedEventArgs e)
          <figcaption>button demo</figcaption>
       </figure>
 
-      <h2 id="checkbox">CheckBox</h2>
+      <h3 id="datepicker">DatePicker</h3>
+      <p>Een <em>DatePicker</em> is een control waarmee je een gebruiker een datum kunt laten invoeren door deze te selecteren via een kalender.</p>
+      <pre class="language-html language-xaml"><code>&lt;DatePicker x:Name="datBirthday" SelectedDate="01/08/1970" SelectedDateChanged="DatBirthday_SelectedDateChanged" .../&gt;</code></pre>
+      <p><img src="img/07_wpf/datepicker_control.png" alt="" class="w-250"></p>
+
+      <h4>Properties en events</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectedDate</code></td>
+               <td>De datum die de gebruiker geselecteerd heeft (type <code>DateTime</code>). Indien de gebruiker géén datum geselecteerd heeft, is de waarde van deze property <code>null</code></td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>SelectedDateChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een datum selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Voorbeelden</h4>
+      <h5>Geselecteerde datum opvragen</h5>
+      <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
+if (dpcGeboortedatum.SelectedDate != null)
+{
+   DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
+   // doe iets met variabele 'datum'
+}</code></pre>
+
+      <h3 id="slider">Slider</h3>
+      <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
+      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True"
+   TickFrequency="10" Width="500" ValueChanged="Sld1_ValueChanged" .../&gt;</code></pre>
+      <figure>
+         <img src="img/07_wpf/slider_control.png" alt="" class="w-500 bordered">
+         <figcaption>Slider control</figcaption>
+      </figure>
+      <h4>Properties en events</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Minimum</code></td>
+               <td>kleinste waarde die de gebruiker kan selecteren</td>
+            </tr>
+            <tr>
+               <td><code>Maximum</code></td>
+               <td>grootste waarde die de gebruiker kan selecteren</td>
+            </tr>
+            <tr>
+               <td><code>Value</code></td>
+               <td>geselecteerde waarde</td>
+            </tr>
+            <tr>
+               <td><code>IsSnapToTickEnabled</code></td>
+               <td>indien <code>true</code>, moet de schuifbalk steeds op een streepje gezet worden</td>
+            </tr>
+            <tr>
+               <td><code>TickFrequency</code></td>
+               <td>afstand tussen twee opeenvolgende streepjes <em>(= 'ticks')</em></td>
+            </tr>
+         </tbody>
+      </table>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Event</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>ValueChanged</code></td>
+               <td>afgevuurd wanneer de gebruiker een waarde selecteert</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Voorbeelden</h4>
+      <h5>Een geselecteerde waarde opvragen</h5>
+      <pre><code>double waarde = sldVolume.Value;
+// doe iets met variabele 'waarde' (bv.: weergeven in een TextBlock)</code></pre>
+      <h5>Geselecteerde waarde weergeven in een TextBlock</h5>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10"
+   HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
+</code></pre>
+      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+{
+   int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
+   txtValue.Text = sliderVal.ToString();
+}
+</code></pre>
+      <figure>
+         <img src="img/07_wpf/slider_demo.gif" alt="" class="w-500 bordered">
+         <figcaption>slider demo</figcaption>
+      </figure>
+
+      <h2>Keuze controls</h2>
+
+      <h3 id="checkbox">CheckBox</h3>
       <p>Een <em>CheckBox</em> is een keuzevakje dat de gebruiker kan aan/uit-vinken. De basis XAML:</p>
       <pre class="language-html language-xaml"><code>&lt;CheckBox x:Name="chbAutoSave" Content="Automatisch opslaan" IsChecked="True" Checked="ChbAutoSave_Checked" Unchecked="ChbAutoSave_Checked" .../&gt;</code></pre>
       <p><img src="img/07_wpf/checkbox_control.png" alt="voorbeeld checkbox" class="w-150"></p>
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <table class="light">
          <thead>
             <tr>
@@ -612,15 +732,15 @@ private void BtnClick(object sender, RoutedEventArgs e)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Controleren of CheckBox is aangevinkt</h4>
+      <h4>Voorbeelden</h4>
+      <h5>Controleren of CheckBox is aangevinkt</h5>
       <pre><code>if (chkThuisbezorgen.IsChecked == true)
 {
    // checkbox is aangevinkt
 }</code></pre>
-      <h4>CheckBox via code aanvinken</h4>
+      <h5>CheckBox via code aanvinken</h5>
       <pre><code>chkThuisbezorgen.IsChecked = true; // false om af te vinken</code></pre>
-      <h4>Checked / Unchecked events</h4>
+      <h5>Checked / Unchecked events</h5>
       <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;CheckBox x:Name="chbYesNo" Content="mee eens of niet?" HorizontalAlignment="Left" Margin="27,70,0,0" VerticalAlignment="Top" Checked="chbYesNo_Checked" Unchecked="chbYesNo_Unchecked"/&gt;
 </code></pre>
@@ -663,7 +783,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 </code></pre>
       </div>
 
-      <h2 id="combobox">ComboBox</h2>
+      <h3 id="combobox">ComboBox</h3>
       <p>Een ComboBox is een drop-down lijst met opties (<code>ComboBoxItem</code>'s) waarin de gebruiker één item kan selecteren. De basis XAML:</p>
       <pre class="language-html language-xaml"><code>&lt;ComboBox x:Name="cbxColors" Width="120" SelectionChanged="cbxColors_SelectionChanged" ...&gt;
    &lt;ComboBoxItem Content="Rood"/&gt;
@@ -672,7 +792,7 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
 &lt;/ComboBox&gt;</code></pre>
       <p>De manier van werken items is bijna identiek met de <a href="#listbox">Listbox</a>, alleen gebruiken we <code>ComboBoxItem</code> i.p.v. <code>ListBoxItem</code>, en bestaat er geen <code>SelectionMode="Multiple"</code> voor de <code>ComboBox</code>.</p>
       <p><img src="img/07_wpf/combobox_comboboxitems.png" alt="combobox items" class="w-350"></p>
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <p>Properties en events van <code>ComboBox</code>:</p>
       <table class="light">
          <thead>
@@ -729,14 +849,14 @@ private void chbYesNo_Unchecked(object sender, RoutedEventArgs e)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Dynamisch items toevoegen</h4>
+      <h4>Voorbeelden</h4>
+      <h5>Dynamisch items toevoegen</h5>
       <pre><code>ComboBoxItem item = new ComboBoxItem(); // maak een nieuw ComboBoxItem
 item.Content = "Oranje"; // stel de inhoud (tekst) van het item in
 cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met items in de ComboBox</code></pre>
       <p>of korter genoteerd:</p>
       <pre><code>cboKleuren.Items.Add(new ComboBoxItem() { Content = "Oranje" }); // initialisatie en toevoegen in één keer</code></pre>
-      <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
+      <h5>Nagaan of gebruiker een item geselecteerd heeft</h5>
       <pre><code>if (cboKleuren.SelectedIndex != -1)
 {
    // gebruiker heeft een item geselecteerd
@@ -747,7 +867,7 @@ cboKleuren.Items.Add(item); // voeg het nieuwe item toe aan de collectie met ite
 {
    // gebruiker heeft een item geselecteerd
 } </code></pre>
-      <h4>Inhoud van het geselecteerde item opvragen</h4>
+      <h5>Inhoud van het geselecteerde item opvragen</h5>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (cboKleuren.SelectedItem != null)
 {
@@ -756,12 +876,12 @@ if (cboKleuren.SelectedItem != null)
 
    // doe iets met variabele 'inhoud'
 }</code></pre>
-      <h4>Itereren over items in een ComboBox</h4>
+      <h5>Itereren over items in een ComboBox</h5>
       <pre><code>foreach (ComboBoxItem item in cboKleuren.Items)
 {
    // doe iets met item, bv.: item.Content
 }</code></pre>
-      <h4>Samenvattend voorbeeld</h4>
+      <h5>Samenvattend voorbeeld</h5>
       <p>Voorbeeld voor selecteren van tweede optie en toevoegen item in C#, en tonen geselecteerde optie in een <code>TextBlock</code>:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtMessage" Text="..." HorizontalAlignment="Left" Margin="27,20,0,0" VerticalAlignment="Top"/&gt;
 &lt;ComboBox x:Name="cbxCountries" HorizontalAlignment="Left" Margin="27,66,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxCountries_SelectionChanged"&gt;
@@ -792,281 +912,7 @@ private void cbxCountries_SelectionChanged(object sender, SelectionChangedEventA
          <figcaption>ComboBox demo</figcaption>
       </figure>
 
-      <h2 id="datepicker">DatePicker</h2>
-      <p>Een <em>DatePicker</em> is een control waarmee je een gebruiker een datum kunt laten invoeren door deze te selecteren via een kalender.</p>
-      <pre class="language-html language-xaml"><code>&lt;DatePicker x:Name="datBirthday" SelectedDate="01/08/1970" SelectedDateChanged="DatBirthday_SelectedDateChanged" .../&gt;</code></pre>
-      <p><img src="img/07_wpf/datepicker_control.png" alt="" class="w-250"></p>
-
-      <h3>Properties en events</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>SelectedDate</code></td>
-               <td>De datum die de gebruiker geselecteerd heeft (type <code>DateTime</code>). Indien de gebruiker géén datum geselecteerd heeft, is de waarde van deze property <code>null</code></td>
-            </tr>
-         </tbody>
-      </table>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Event</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>SelectedDateChanged</code></td>
-               <td>afgevuurd wanneer de gebruiker een datum selecteert</td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Voorbeelden</h3>
-      <h4>Geselecteerde datum opvragen</h4>
-      <pre><code>// controleer eerst of gebruiker een datum geselecteerd heeft!
-if (dpcGeboortedatum.SelectedDate != null)
-{
-   DateTime datum = dpcGeboortedatum.SelectedDate.Value; // opgelet: .Value
-   // doe iets met variabele 'datum'
-}</code></pre>
-
-      <h2 id="ellipse">Ellipse</h2>
-      <p>XAML voorbeeldcode:</p>
-      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
-      <figure>
-         <img src="img/07_wpf/ellipse.png" alt="" class="w-300 bordered">
-         <figcaption>Ellipse voorbeeld</figcaption>
-      </figure>
-      <h3>Properties en events</h3>
-      <p>De belangrijkste properties van de <code>Ellipse</code> zijn dezelfde als die van <code>Rectangle</code>:</p>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Fill</code></td>
-               <td>vulkleur</td>
-            </tr>
-            <tr>
-               <td><code>Height</code></td>
-               <td>hoogte</td>
-            </tr>
-            <tr>
-               <td><code>Stroke</code></td>
-               <td>randkleur</td>
-            </tr>
-            <tr>
-               <td><code>StrokeThickness</code></td>
-               <td>randdikte</td>
-            </tr>
-            <tr>
-               <td><code>Width</code></td>
-               <td>breedte</td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Voorbeelden</h3>
-      <h4>Ellips met twee sliders</h4>
-      <pre class="language-html language-xaml"><code>&lt;Canvas x:Name="canvas1" Width="250" Height="150" Background="#FFF1F1F1"
-      Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
-   &lt;Ellipse x:Name="ellipse1" Width="100" Height="50" Stroke="Blue" Fill="LightBlue"/&gt;
-&lt;/Canvas&gt;
-&lt;TextBlock Text="Breedte:" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top"/&gt;
-&lt;Slider x:Name="sldWidth" Maximum="250" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
-   Margin="85,165,0,0" VerticalAlignment="Top" /&gt;
-&lt;TextBlock x:Name="txtWidth" Text="100" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top"/&gt;
-&lt;TextBlock Text="Hoogte:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/&gt;
-&lt;Slider x:Name="sldHeight" Maximum="150" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
-   Margin="85,190,0,0" VerticalAlignment="Top"/&gt;
-&lt;TextBlock x:Name="txtHeight" Text="50" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top"/&gt;</code></pre>
-      <p>De C# code-behind:</p>
-      <pre><code>public MainWindow()
-{
-   InitializeComponent();
-   sldWidth.Value = 100;
-   sldHeight.Value = 50;
-}
-private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
-{
-   ellipse1.Width = sldWidth.Value;
-   ellipse1.Height = sldHeight.Value;
-   txtWidth.Text = $"{sldWidth.Value:F0}";
-   txtHeight.Text = $"{sldWidth.Value:F0}";
-}
-</code></pre>
-      <figure>
-         <img src="img/07_wpf/ellipse-demo.gif" alt="" class="w-350">
-         <figcaption>Ellipse voorbeeld</figcaption>
-      </figure>
-
-
-      <h2 id="image">Image</h2>
-      <h3>Basisvoorbeeld</h3>
-      <p>Je kunt een <code>Image</code>-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Image x:Name="img1" Source="Images/photo1.jpg" Height="100" Width="100" .../&gt;</code></pre>
-      <p><img src="img/07_wpf/image_photo.jpg" alt="" class="w-100"></p>
-      <h3><code>Stretch</code> property</h3>
-      <p>Met <code>Stretch</code> kan je instellen wat moet gebeuren als de afmetingen van de afbeelding afwijken van de <code>Image</code>:</p>
-      <pre class="language-html language-xaml"><code>&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="None"  /&gt;
-&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Fill" /&gt;
-&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
-&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="UniformToFill" /&gt;
-</code></pre>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Stretch waarde</th>
-               <th scope="col">Vervorming?</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>None</code></td>
-               <td>nee</td>
-               <td>afbeelding wordt geplaatst in de werkelijke afmetingen</td>
-            </tr>
-            <tr>
-               <td><code>Fill</code></td>
-               <td>ja</td>
-               <td>afbeelding horizontaal en verticaal uitgerokken</td>
-            </tr>
-            <tr>
-               <td><code>Uniform</code></td>
-               <td>nee</td>
-               <td>afbeelding past in de <code>Image</code></td>
-            </tr>
-            <tr>
-               <td><code>UniformToFill</code></td>
-               <td>nee</td>
-               <td>afbeelding bedekt de <code>Image</code></td>
-            </tr>
-         </tbody>
-      </table>
-      <figure>
-         <img src="img/07_wpf/image-stretch.png" alt="" class="w-350">
-         <figcaption>in volgorde: <code>None</code> &mdash; <code>Fill</code> &mdash; <code>Uniform</code> &mdash; <code>UniformToFill</code></figcaption>
-      </figure>
-      <h3>Rand en achtergrondkleur</h3>
-      <p>Gebruik een <code>Border</code> control rond de <code>Image</code> voor rand en achtergrondkleur:</p>
-      <pre class="language-html language-xaml"><code>&lt;Border BorderBrush="DarkGreen" BorderThickness="2" Background="Beige"&gt;
-   &lt;Image Height="100" Width="100" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
-&lt;/Border&gt;
-</code></pre>
-      <img src="img/07_wpf/image-border.png" alt="" class="w-100">
-
-      <h3>Afbeeldingen toevoegen aan je project</h3>
-      <p>
-         Zie <a href="https://rogiervdl.github.io/DEVENV-course/04_visualstudio.html#media-en-andere-bestanden-toevoegen">https://rogiervdl.github.io/DEVENV-course/04_visualstudio.html#media-en-andere-bestanden-toevoegen</a>
-      </p>
-
-      <h3>Properties en events</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Source</code></td>
-               <td>Bepaalt welke afbeelding getoond moet worden (locatie, Bitmap, ...)</td>
-            </tr>
-         </tbody>
-      </table>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Event</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>MouseEnter</code></td>
-               <td>afgevuurd wanneer de gebruiker met de cursor over de afbeelding beweegt</td>
-            </tr>
-            <tr>
-               <td><code>MouseLeave</code></td>
-               <td>afgevuurd wanneer de gebruiker met de cursor buiten de afbeelding beweegt</td>
-            </tr>
-         </tbody>
-      </table>
-      <h3>Voorbeelden</h3>
-      <h4>Dynamisch afbeelding instellen</h4>
-      <pre><code>imgPizza.Source = new BitmapImage(new Uri(@"afbeeldingen/pizza.png", UriKind.RelativeOrAbsolute)); // afbeelding: afbeeldingen/pizza.png</code></pre>
-      <h4>Voorbeeld met drie buttons</h4>
-      <pre class="language-html language-xaml"><code>&lt;Image x:Name="imgPhoto" Source="Images/photo1.jpg" HorizontalAlignment="Left" Height="100" Margin="27,35,0,0" VerticalAlignment="Top" Width="100"/&gt;
-&lt;Button x:Name="btnShow1" Content="toon foto 1" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow1_Click" /&gt;
-&lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow2_Click"/&gt;
-&lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow3_Click"/&gt;
-</code></pre>
-      <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e)
-{
-   imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
-}
-private void BtnShow2_Click(object sender, RoutedEventArgs e)
-{
-   imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
-}
-private void BtnShow3_Click(object sender, RoutedEventArgs e)
-{
-   imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
-}
-</code></pre>
-      <figure>
-         <img src="img/07_wpf/image_demo.gif" alt="" class="w-350">
-         <figcaption>image demo</figcaption>
-      </figure>
-
-      <h2 id="label">Label</h2>
-      <p>De functie is hetzelfde als <code>&lt;label&gt;</code> in HTML: een beschrijvende tekst naast een form control. Voorbeeld:</p>
-      <pre class="language-html language-xaml"><code>&lt;Label x:Name="txtNaam" Content="Je naam:" .../&gt;
-&lt;TextBox x:Name="inpNaam" .../&gt;</code></pre>
-      <p><img src="img/07_wpf/label.png" alt="" class="bordered w-200"></p>
-      <h3>Properties</h3>
-      <table class="light">
-         <thead>
-            <tr>
-               <th scope="col">Property</th>
-               <th scope="col">Omschrijving</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><code>Content</code></td>
-               <td>De inhoud (tekst) van het label</td>
-            </tr>
-            <tr>
-               <td><code>FontSize</code></td>
-               <td>tekstgrootte</td>
-            </tr>
-            <tr>
-               <td><code>FontFamily</code></td>
-               <td>lettertype</td>
-            </tr>
-            <tr>
-               <td><code>FontWeight</code></td>
-               <td>lettergewicht</td>
-            </tr>
-            <tr>
-               <td><code>ForeGround</code></td>
-               <td>tekstkleur</td>
-            </tr>
-         </tbody>
-      </table>
-
-      <h2 id="listbox">ListBox</h2>
+      <h3 id="listbox">ListBox</h3>
       <p>Een ListBox lijkt sterk op een <a href="#combobox">ComboBox</a> &mdash; het is ook een lijst van items waaruit je kan kiezen. De voornaamste verschillen:</p>
       <ul>
          <li>de items worden in een vak (eventueel met scrollbar) weergegeven in plaats van in een dropdown</li>
@@ -1085,7 +931,7 @@ private void BtnShow3_Click(object sender, RoutedEventArgs e)
          <img src="img/07_wpf/listbox.png" alt="" class="w-350">
          <figcaption>ListBox voorbeeld</figcaption>
       </figure>
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <p>Properties en events van <code>ListBox</code>:</p>
       <table class="light">
          <thead>
@@ -1195,8 +1041,8 @@ private void BtnShow3_Click(object sender, RoutedEventArgs e)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Dynamisch items toevoegen</h4>
+      <h4>Voorbeelden</h4>
+      <h5>Dynamisch items toevoegen</h5>
       <pre><code>ListBoxItem item = new ListBoxItem(); // maak een nieuw ListBoxItem
 item.Content = "Brood"; // stel de inhoud (tekst) van het item in
 
@@ -1215,7 +1061,7 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
          </ul>
       </div>
 
-      <h4>Nagaan of gebruiker een item geselecteerd heeft</h4>
+      <h5>Nagaan of gebruiker een item geselecteerd heeft</h5>
       <pre><code>if (lstBoodschappen.SelectedIndex != -1)
 {
    // er werd (minimum) één item geselecteerd
@@ -1230,7 +1076,7 @@ lstBoodschappen.Items.Add("Eieren");</code></pre>
 {
    // gebruiker heeft (minimum) één item geselecteerd
 }</code></pre>
-      <h4>Geselecteerde item en inhoud opvragen (single selection mode)</h4>
+      <h5>Geselecteerde item en inhoud opvragen (single selection mode)</h5>
       <pre><code>// controleer eerst of er een selectie gemaakt werd!
 if (lstBoodschappen.SelectedItem != null)
 {
@@ -1239,17 +1085,17 @@ if (lstBoodschappen.SelectedItem != null)
 
    // doe iets met variabele 'inhoud'
 }</code></pre>
-      <h4>Geselecteerde items overlopen (multiple selection mode)</h4>
+      <h5>Geselecteerde items overlopen (multiple selection mode)</h5>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.SelectedItems)
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
-      <h4>Alle items overlopen</h4>
+      <h5>Alle items overlopen</h5>
       <pre><code>foreach (ListBoxItem item in lstBoodschappen.Items)
 {
    // doe iets met loop-variabele 'item', bv.: item.Content opvragen
 }</code></pre>
-      <h4>Item verplaatsen naar andere ListBox</h4>
+      <h5>Item verplaatsen naar andere ListBox</h5>
       <p>
          <strong>Opgelet!</strong> Een ListBoxItem mag slechts in één ListBox tegelijkertijd zitten. Wanneer je een ListBoxItem tussen twee ListBox-controls wilt verplaatsen, moet je het item dus <strong>eerst verwijderen</strong> uit de oorspronkelijke lijst vóór je het kunt toevoegen aan de andere lijst!
       </p>
@@ -1264,23 +1110,7 @@ if (lstBoodschappen.SelectedItem != null)
 }
 </code></pre>
 
-      <div class="pro">
-
-      <h2 id="mediaelement">MediaElement</h2>
-      <p>De <code>MediaElement</code> WPF control is geschikt voor de weergave van video, zonder controls. Het is te vinden in de tweede helft van de toolbox:</p>
-      <img src="img/07_wpf/mediaElement-toolbox.png" alt="" class="bordered w-200">
-      <p>XAML code (<code>LoadedBehavior</code> moet op <code>Manual</code> gezet worden als je zelf wil kunnen starten en stoppen):</p>
-      <pre class="language-html language-xaml"><code>&lt;MediaElement x:Name="melMyVideo" LoadedBehavior="Manual" Width="300" Height="200" ...  /&gt;</code></pre>
-      <p>C# code (veronderstel een bestand <em>myvideo.mp4</em> in een submap <em>Media</em>):</p>
-      <pre><code>melMyVideo.Source = new Uri(@"Media/myvideo.mp4", UriKind.Relative);
-melMyVideo.Play();</code></pre>
-<figure>
-   <img src="img/07_wpf/mediaelement-control.png" alt="" class="w-250 bordered">
-   <figcaption>eenvoudige video weergave, zonder controls</figcaption>
-</figure>
-      </div>
-
-      <h2 id="radiobutton">RadioButton</h2>
+      <h3 id="radiobutton">RadioButton</h3>
       <p>Een <code>RadioButton</code> lijkt op <code>CheckBox</code> &mdash; het is ook een keuze die de gebruiker kan aanduiden. De verschillen zijn:</p>
       <ul>
          <li><code>RadioButton</code>'s worden als rondje weergegeven, <code>CheckBox</code> als vierkant</li>
@@ -1296,7 +1126,7 @@ melMyVideo.Play();</code></pre>
          <figcaption>bij een groep radiobuttons kan je er maar één selecteren</figcaption>
       </figure>
 
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <table class="light">
          <thead>
             <tr>
@@ -1337,8 +1167,8 @@ melMyVideo.Play();</code></pre>
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Nagaan welke RadioButton aangevinkt is</h4>
+      <h4>Voorbeelden</h4>
+      <h5>Nagaan welke RadioButton aangevinkt is</h5>
       <pre><code>if (radKlein.IsChecked == true)
 {
    // optie 'klein' is aangevinkt
@@ -1351,73 +1181,72 @@ else if(radGroot.IsChecked == true)
 {
    // optie 'groot' is aangevinkt
 }</code></pre>
-      <h4>Programmatorisch een RadioButton aan-/afvinken</h4>
+      <h5>Programmatorisch een RadioButton aan-/afvinken</h5>
       <pre><code>radAfhalen.IsChecked = true; // false om af te vinken</code></pre>
 
-      <h2 id="rectangle">Rectangle</h2>
-      <p>De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
-      <figure>
-         <img src="img/07_wpf/rectangle.png" alt="" class="w-300 bordered">
-         <figcaption>Rectangle voorbeeld</figcaption>
-      </figure>
-      <h3>Properties en events</h3>
+      <h2>Media controls</h2>
+
+      <h3 id="image">Image</h3>
+      <h4>Basisvoorbeeld</h4>
+      <p>Je kunt een <code>Image</code>-control gebruiken om een afbeeling weer te geven op het scherm. De basis XAML:</p>
+      <pre class="language-html language-xaml"><code>&lt;Image x:Name="img1" Source="Images/photo1.jpg" Height="100" Width="100" .../&gt;</code></pre>
+      <p><img src="img/07_wpf/image_photo.jpg" alt="" class="w-100"></p>
+      <h4><code>Stretch</code> property</h4>
+      <p>Met <code>Stretch</code> kan je instellen wat moet gebeuren als de afmetingen van de afbeelding afwijken van de <code>Image</code>:</p>
+      <pre class="language-html language-xaml"><code>&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="None"  /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Fill" /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
+&lt;Image Height="100" Width="200" Source="Images/jordy1.jpg" Margin="10" Stretch="UniformToFill" /&gt;
+</code></pre>
       <table class="light">
          <thead>
             <tr>
-               <th scope="col">Property</th>
+               <th scope="col">Stretch waarde</th>
+               <th scope="col">Vervorming?</th>
                <th scope="col">Omschrijving</th>
             </tr>
          </thead>
          <tbody>
             <tr>
+               <td><code>None</code></td>
+               <td>nee</td>
+               <td>afbeelding wordt geplaatst in de werkelijke afmetingen</td>
+            </tr>
+            <tr>
                <td><code>Fill</code></td>
-               <td>vulkleur</td>
+               <td>ja</td>
+               <td>afbeelding horizontaal en verticaal uitgerokken</td>
             </tr>
             <tr>
-               <td><code>Height</code></td>
-               <td>hoogte</td>
+               <td><code>Uniform</code></td>
+               <td>nee</td>
+               <td>afbeelding past in de <code>Image</code></td>
             </tr>
             <tr>
-               <td><code>Stroke</code></td>
-               <td>randkleur</td>
-            </tr>
-            <tr>
-               <td><code>StrokeThickness</code></td>
-               <td>randdikte</td>
-            </tr>
-            <tr>
-               <td><code>Width</code></td>
-               <td>breedte</td>
+               <td><code>UniformToFill</code></td>
+               <td>nee</td>
+               <td>afbeelding bedekt de <code>Image</code></td>
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>breedte aanpassen met Slider</h4>
-      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" Margin="20,170,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
-&lt;Rectangle x:Name="rct1" Fill="#FFF4F4F5" Width="100" Height="100" Stroke="Black" Margin="20,20,0,0"
-   HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;
-&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300"  Width="520" IsSnapToTickEnabled="True"
-   TickFrequency="10" ValueChanged="Sld1_ValueChanged" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" /&gt;
+      <figure>
+         <img src="img/07_wpf/image-stretch.png" alt="" class="w-350">
+         <figcaption>in volgorde: <code>None</code> &mdash; <code>Fill</code> &mdash; <code>Uniform</code> &mdash; <code>UniformToFill</code></figcaption>
+      </figure>
+      <h4>Rand en achtergrondkleur</h4>
+      <p>Gebruik een <code>Border</code> control rond de <code>Image</code> voor rand en achtergrondkleur:</p>
+      <pre class="language-html language-xaml"><code>&lt;Border BorderBrush="DarkGreen" BorderThickness="2" Background="Beige"&gt;
+   &lt;Image Height="100" Width="100" Source="Images/jordy1.jpg" Margin="10" Stretch="Uniform" /&gt;
+&lt;/Border&gt;
 </code></pre>
-      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e) {
-   txtValue.Content = Math.Round(sld1.Value).ToString();
-   rct1.Width = Math.Round(sld1.Value);
-}</code></pre>
-      <figure>
-         <img src="img/07_wpf/rectangle_slider.gif" alt="" class="w-500 bordered">
-         <figcaption>slider demo</figcaption>
-      </figure>
+      <img src="img/07_wpf/image-border.png" alt="" class="w-100">
 
-      <h2 id="slider">Slider</h2>
-      <p>Een Slider is een control waarmee de gebruiker een numerieke waarde kan selecteren tussen bepaalde grenzen, door middel van een schuifbalkje. De basis XAML:</p>
-      <pre class="language-html language-xaml"><code>&lt;Slider x:Name="sld1" Minimum="50" Maximum="300" Value="100" IsSnapToTickEnabled="True"
-   TickFrequency="10" Width="500" ValueChanged="Sld1_ValueChanged" .../&gt;</code></pre>
-      <figure>
-         <img src="img/07_wpf/slider_control.png" alt="" class="w-500 bordered">
-         <figcaption>Slider control</figcaption>
-      </figure>
-      <h3>Properties en events</h3>
+      <h4>Afbeeldingen toevoegen aan je project</h4>
+      <p>
+         Zie <a href="https://rogiervdl.github.io/DEVENV-course/04_visualstudio.html#media-en-andere-bestanden-toevoegen">https://rogiervdl.github.io/DEVENV-course/04_visualstudio.html#media-en-andere-bestanden-toevoegen</a>
+      </p>
+
+      <h4>Properties en events</h4>
       <table class="light">
          <thead>
             <tr>
@@ -1427,24 +1256,8 @@ else if(radGroot.IsChecked == true)
          </thead>
          <tbody>
             <tr>
-               <td><code>Minimum</code></td>
-               <td>kleinste waarde die de gebruiker kan selecteren</td>
-            </tr>
-            <tr>
-               <td><code>Maximum</code></td>
-               <td>grootste waarde die de gebruiker kan selecteren</td>
-            </tr>
-            <tr>
-               <td><code>Value</code></td>
-               <td>geselecteerde waarde</td>
-            </tr>
-            <tr>
-               <td><code>IsSnapToTickEnabled</code></td>
-               <td>indien <code>true</code>, moet de schuifbalk steeds op een streepje gezet worden</td>
-            </tr>
-            <tr>
-               <td><code>TickFrequency</code></td>
-               <td>afstand tussen twee opeenvolgende streepjes <em>(= 'ticks')</em></td>
+               <td><code>Source</code></td>
+               <td>Bepaalt welke afbeelding getoond moet worden (locatie, Bitmap, ...)</td>
             </tr>
          </tbody>
       </table>
@@ -1457,32 +1270,98 @@ else if(radGroot.IsChecked == true)
          </thead>
          <tbody>
             <tr>
-               <td><code>ValueChanged</code></td>
-               <td>afgevuurd wanneer de gebruiker een waarde selecteert</td>
+               <td><code>MouseEnter</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor over de afbeelding beweegt</td>
+            </tr>
+            <tr>
+               <td><code>MouseLeave</code></td>
+               <td>afgevuurd wanneer de gebruiker met de cursor buiten de afbeelding beweegt</td>
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Een geselecteerde waarde opvragen</h4>
-      <pre><code>double waarde = sldVolume.Value;
-// doe iets met variabele 'waarde' (bv.: weergeven in een TextBlock)</code></pre>
-      <h4>Geselecteerde waarde weergeven in een TextBlock</h4>
-      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" HorizontalAlignment="Left" Margin="550,200,0,0" VerticalAlignment="Top"/&gt;
-&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300" IsSnapToTickEnabled="True" TickFrequency="10"
-   HorizontalAlignment="Left" Margin="36,198,0,0" VerticalAlignment="Top" Width="500" ValueChanged="Sld1_ValueChanged"/&gt;
+      <h4>Voorbeelden</h4>
+      <h5>Dynamisch afbeelding instellen</h5>
+      <pre><code>imgPizza.Source = new BitmapImage(new Uri(@"afbeeldingen/pizza.png", UriKind.RelativeOrAbsolute)); // afbeelding: afbeeldingen/pizza.png</code></pre>
+      <h5>Voorbeeld met drie buttons</h5>
+      <pre class="language-html language-xaml"><code>&lt;Image x:Name="imgPhoto" Source="Images/photo1.jpg" HorizontalAlignment="Left" Height="100" Margin="27,35,0,0" VerticalAlignment="Top" Width="100"/&gt;
+&lt;Button x:Name="btnShow1" Content="toon foto 1" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow1_Click" /&gt;
+&lt;Button x:Name="btnShow2" Content="toon foto 2" HorizontalAlignment="Left" Margin="122,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow2_Click"/&gt;
+&lt;Button x:Name="btnShow3" Content="toon foto 3" HorizontalAlignment="Left" Margin="216,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnShow3_Click"/&gt;
 </code></pre>
-      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+      <pre><code>private void BtnShow1_Click(object sender, RoutedEventArgs e)
 {
-   int sliderVal = Convert.ToInt32(Math.Round(sld1.Value)); // int: rond af naar geheel getal
-   txtValue.Text = sliderVal.ToString();
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo1.jpg", UriKind.Relative));
+}
+private void BtnShow2_Click(object sender, RoutedEventArgs e)
+{
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo2.jpg", UriKind.Relative));
+}
+private void BtnShow3_Click(object sender, RoutedEventArgs e)
+{
+   imgPhoto.Source = new BitmapImage(new Uri("Images/photo3.jpg", UriKind.Relative));
 }
 </code></pre>
       <figure>
-         <img src="img/07_wpf/slider_demo.gif" alt="" class="w-500 bordered">
-         <figcaption>slider demo</figcaption>
+         <img src="img/07_wpf/image_demo.gif" alt="" class="w-350">
+         <figcaption>image demo</figcaption>
       </figure>
 
-      <h2 id="textblock">TextBlock</h2>
+      <div class="pro">
+
+      <h3 id="mediaelement">MediaElement</h3>
+      <p>De <code>MediaElement</code> WPF control is geschikt voor de weergave van video, zonder controls. Het is te vinden in de tweede helft van de toolbox:</p>
+      <img src="img/07_wpf/mediaElement-toolbox.png" alt="" class="bordered w-200">
+      <p>XAML code (<code>LoadedBehavior</code> moet op <code>Manual</code> gezet worden als je zelf wil kunnen starten en stoppen):</p>
+      <pre class="language-html language-xaml"><code>&lt;MediaElement x:Name="melMyVideo" LoadedBehavior="Manual" Width="300" Height="200" ...  /&gt;</code></pre>
+      <p>C# code (veronderstel een bestand <em>myvideo.mp4</em> in een submap <em>Media</em>):</p>
+      <pre><code>melMyVideo.Source = new Uri(@"Media/myvideo.mp4", UriKind.Relative);
+melMyVideo.Play();</code></pre>
+<figure>
+   <img src="img/07_wpf/mediaelement-control.png" alt="" class="w-250 bordered">
+   <figcaption>eenvoudige video weergave, zonder controls</figcaption>
+</figure>
+      </div>
+
+      <h2>Tekst controls</h2>
+
+      <h3 id="label">Label</h3>
+      <p>De functie is hetzelfde als <code>&lt;label&gt;</code> in HTML: een beschrijvende tekst naast een form control. Voorbeeld:</p>
+      <pre class="language-html language-xaml"><code>&lt;Label x:Name="txtNaam" Content="Je naam:" .../&gt;
+&lt;TextBox x:Name="inpNaam" .../&gt;</code></pre>
+      <p><img src="img/07_wpf/label.png" alt="" class="bordered w-200"></p>
+      <h4>Properties</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Content</code></td>
+               <td>De inhoud (tekst) van het label</td>
+            </tr>
+            <tr>
+               <td><code>FontSize</code></td>
+               <td>tekstgrootte</td>
+            </tr>
+            <tr>
+               <td><code>FontFamily</code></td>
+               <td>lettertype</td>
+            </tr>
+            <tr>
+               <td><code>FontWeight</code></td>
+               <td>lettergewicht</td>
+            </tr>
+            <tr>
+               <td><code>ForeGround</code></td>
+               <td>tekstkleur</td>
+            </tr>
+         </tbody>
+      </table>
+
+      <h3 id="textblock">TextBlock</h3>
       <p>Gebruik een <code>TextBlock</code> om tekst weer te geven:</p>
       <ul>
          <li>eenvoudige tekst (een woord, zin, titel, resultaat berekening...)</li>
@@ -1492,7 +1371,7 @@ else if(radGroot.IsChecked == true)
       <p>De basis XAML:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBlock Width="200" Margin="39,41,0,0" TextWrapping="Wrap" Text="bacon ham hock, doner fatback pastrami landjaeger pork short ribs jerky corned beef" .../&gt;</code></pre>
       <p><img src="img/07_wpf/textblock.png" alt="" class="w-300 bordered"></p>
-      <h3>Properties</h3>
+      <h4>Properties</h4>
       <table class="light">
          <thead>
             <tr>
@@ -1546,16 +1425,16 @@ else if(radGroot.IsChecked == true)
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>Eenvoudige tekst instellen</h4>
+      <h4>Voorbeelden</h4>
+      <h5>Eenvoudige tekst instellen</h5>
       <pre><code>txtMyTextBlock.Text = "Hello, World!";</code></pre>
-      <h4>Tekst over meerdere regels verspreiden</h4>
+      <h5>Tekst over meerdere regels verspreiden</h5>
       <p><strong>Versie 1: met <code>Environment.NewLine</code>:</strong></p>
       <pre><code>txtMyTextBlock.Text = $"Eerste regel{Environment.NewLine}Tweede regel";</code></pre>
       <p><strong>Versie 2: met multi-line strings:</strong></p>
       <pre><code>txtMyTextBlock.Text = @"Eerste regel
 tweede regel";</code></pre>
-      <h4>Tekst met opmaak</h4>
+      <h5>Tekst met opmaak</h5>
       <p>XAML versie:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBlock&gt;
    Voorbeeld tekst met &lt;Bold&gt;vet&lt;/Bold&gt;, &lt;Italic&gt;cursief&lt;/Italic&gt;, &lt;Underline&gt;onderlijnd&lt;/Underline&gt;&lt;LineBreak/&gt;
@@ -1584,7 +1463,7 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
          <img src="img/07_wpf/textblock-opmaak.png" alt="resultaat textblock inlines" class="w-300">
          <figcaption>resultaat</figcaption>
       </figure>
-      <h4>TextBlock of Label?</h4>
+      <h5>TextBlock of Label?</h5>
       <div class="tips" data-caption="🤷🏻‍♀️TEXTBLOCK OF LABEL?">
          <p><code>&lt;Label&gt;</code> en <code>&lt;TextBlock&gt;</code> dienen beiden om tekst weer te geven.</p>
          <p><code>&lt;Label&gt;</code>:</p>
@@ -1602,8 +1481,7 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
          </ul>
       </div>
 
-
-      <h2 id="textbox">TextBox</h2>
+      <h3 id="textbox">TextBox</h3>
       <p>Een TextBox is een control waarmee de gebruiker vrije tekst kan invoeren (= tekstveld), zowel single line (op één regel) als op meerdere regels (multi-line).</p>
       <p>De basis XAML, één invoerregel:</p>
       <pre class="language-html language-xaml"><code>&lt;TextBox x:Name="txt1" Height="25" Width="200" .../&gt;</code></pre>
@@ -1613,7 +1491,7 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
          <img src="img/07_wpf/textbox_demo.gif" alt="" class="w-250 bordered">
          <figcaption>gebruik TextWrapping en AcceptsReturn</figcaption>
       </figure>
-      <h3>Properties en events</h3>
+      <h4>Properties en events</h4>
       <table class="light">
          <thead>
             <tr>
@@ -1650,15 +1528,145 @@ txtMyTextBlock.Inlines.Add(new Run("alles tegelijk")
             </tr>
          </tbody>
       </table>
-      <h3>Voorbeelden</h3>
-      <h4>De inhoud van een tekstveld opvragen</h4>
+      <h4>Voorbeelden</h4>
+      <h5>De inhoud van een tekstveld opvragen</h5>
       <pre><code>string naam = txtNaam.Text;</code></pre>
-      <h4>De inhoud van een numerieke tekst opvragen</h4>
+      <h5>De inhoud van een numerieke tekst opvragen</h5>
       <pre><code>int lengte = Convert.ToInt32(txtLengte.Text);</code></pre>
-      <h4>De inhoud van een tekstveld leegmaken</h4>
+      <h5>De inhoud van een tekstveld leegmaken</h5>
       <pre><code>txtNaam.Text = "";</code></pre>
       <p>of ook:</p>
       <pre><code>txtNaam.Clear();</code></pre>
+
+      <h2>Shape controls</h2>
+
+      <h3 id="ellipse">Ellipse</h3>
+      <p>XAML voorbeeldcode:</p>
+      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/07_wpf/ellipse.png" alt="" class="w-300 bordered">
+         <figcaption>Ellipse voorbeeld</figcaption>
+      </figure>
+      <h4>Properties en events</h4>
+      <p>De belangrijkste properties van de <code>Ellipse</code> zijn dezelfde als die van <code>Rectangle</code>:</p>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Voorbeelden</h4>
+      <h5>Ellips met twee sliders</h5>
+      <pre class="language-html language-xaml"><code>&lt;Canvas x:Name="canvas1" Width="250" Height="150" Background="#FFF1F1F1"
+      Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+   &lt;Ellipse x:Name="ellipse1" Width="100" Height="50" Stroke="Blue" Fill="LightBlue"/&gt;
+&lt;/Canvas&gt;
+&lt;TextBlock Text="Breedte:" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sldWidth" Maximum="250" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+   Margin="85,165,0,0" VerticalAlignment="Top" /&gt;
+&lt;TextBlock x:Name="txtWidth" Text="100" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top"/&gt;
+&lt;TextBlock Text="Hoogte:" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/&gt;
+&lt;Slider x:Name="sldHeight" Maximum="150" Width="150" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Left"
+   Margin="85,190,0,0" VerticalAlignment="Top"/&gt;
+&lt;TextBlock x:Name="txtHeight" Text="50" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top"/&gt;</code></pre>
+      <p>De C# code-behind:</p>
+      <pre><code>public MainWindow()
+{
+   InitializeComponent();
+   sldWidth.Value = 100;
+   sldHeight.Value = 50;
+}
+private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)
+{
+   ellipse1.Width = sldWidth.Value;
+   ellipse1.Height = sldHeight.Value;
+   txtWidth.Text = $"{sldWidth.Value:F0}";
+   txtHeight.Text = $"{sldWidth.Value:F0}";
+}
+</code></pre>
+      <figure>
+         <img src="img/07_wpf/ellipse-demo.gif" alt="" class="w-350">
+         <figcaption>Ellipse voorbeeld</figcaption>
+      </figure>
+
+      <h3 id="rectangle">Rectangle</h3>
+      <p>De basis XAML:</p>
+      <pre class="language-html language-xaml"><code>&lt;Rectangle HorizontalAlignment="Left" Height="30" Width="100" Margin="10,10,0,0" Fill="#EEEEFF" Stroke="DarkBlue" VerticalAlignment="Top"/&gt;</code></pre>
+      <figure>
+         <img src="img/07_wpf/rectangle.png" alt="" class="w-300 bordered">
+         <figcaption>Rectangle voorbeeld</figcaption>
+      </figure>
+      <h4>Properties en events</h4>
+      <table class="light">
+         <thead>
+            <tr>
+               <th scope="col">Property</th>
+               <th scope="col">Omschrijving</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><code>Fill</code></td>
+               <td>vulkleur</td>
+            </tr>
+            <tr>
+               <td><code>Height</code></td>
+               <td>hoogte</td>
+            </tr>
+            <tr>
+               <td><code>Stroke</code></td>
+               <td>randkleur</td>
+            </tr>
+            <tr>
+               <td><code>StrokeThickness</code></td>
+               <td>randdikte</td>
+            </tr>
+            <tr>
+               <td><code>Width</code></td>
+               <td>breedte</td>
+            </tr>
+         </tbody>
+      </table>
+      <h4>Voorbeelden</h4>
+      <h5>breedte aanpassen met Slider</h5>
+      <pre class="language-html language-xaml"><code>&lt;TextBlock x:Name="txtValue" Text="100" Margin="20,170,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
+&lt;Rectangle x:Name="rct1" Fill="#FFF4F4F5" Width="100" Height="100" Stroke="Black" Margin="20,20,0,0"
+   HorizontalAlignment="Left" VerticalAlignment="Top" /&gt;
+&lt;Slider x:Name="sld1" Minimum="50" Value="100" Maximum="300"  Width="520" IsSnapToTickEnabled="True"
+   TickFrequency="10" ValueChanged="Sld1_ValueChanged" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" /&gt;
+</code></pre>
+      <pre><code>private void Sld1_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e) {
+   txtValue.Content = Math.Round(sld1.Value).ToString();
+   rct1.Width = Math.Round(sld1.Value);
+}</code></pre>
+      <figure>
+         <img src="img/07_wpf/rectangle_slider.gif" alt="" class="w-500 bordered">
+         <figcaption>slider demo</figcaption>
+      </figure>
 
    </main>
    <footer>
